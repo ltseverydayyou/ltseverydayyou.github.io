@@ -2,18 +2,60 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Viper</title>
   <style>
     body {
+      background-color: #000;
+      margin: 0;
+      height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
-      margin: 0;
+    }
+
+    .squircle {
+      width: 200px;
+      height: 200px;
+      background-color: #111;
+      border: 2px solid #fff;
+      border-radius: 30%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: background 0.5s ease;
+      cursor: pointer;
+    }
+
+    .squircle span {
+      color: #fff;
+      font-size: 2rem;
+      font-family: sans-serif;
+      z-index: 1;
+    }
+
+    .squircle:hover {
+      background: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet);
+      background-size: 400% 400%;
+      animation: rainbow 3s linear infinite;
+    }
+
+    @keyframes rainbow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    a {
+      text-decoration: none;
     }
   </style>
 </head>
 <body>
-  <div>viper</div>
+  <a href="https://github.com/Cosmella-v">
+    <div class="squircle">
+      <span>viper</span>
+    </div>
+  </a>
 </body>
 </html>
