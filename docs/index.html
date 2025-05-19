@@ -23,46 +23,21 @@ body {
   color: var(--text-color);
   font-family: sans-serif;
 }
-.topbar {
-  display: flex;
-  align-items: center;
-  padding: 1rem;
-}
-.tabs {
-  display: flex;
-  gap: 0.5rem;
-}
+.topbar { display: flex; align-items: center; padding: 1rem; }
+.tabs { display: flex; gap: 0.5rem; }
 .tab {
   padding: 0.5rem 1rem;
   background: var(--card-bg);
   color: var(--text-color);
   border: 2px solid var(--text-color);
   border-radius: 30%;
-  transition: background 0.5s ease;
+  transition: background 0.3s ease;
   cursor: default;
 }
-.tab.active {
-  background: var(--text-color);
-  color: var(--bg-color);
-}
-.tab:hover:not([data-tab="test"]) {
-  background: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet);
-  background-size: 400% 400%;
-  animation: rainbow 3s linear infinite;
-}
-.tab[data-tab="test"] {
-  opacity: 0.5;
-  pointer-events: none;
-}
-@keyframes rainbow {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-.title {
-  margin: 0 auto;
-  font-size: 1.5rem;
-}
+.tab.active { background: var(--text-color); color: var(--bg-color); }
+.tab:hover:not([data-tab="test"]) { background: var(--text-color); color: var(--bg-color); }
+.tab[data-tab="test"] { opacity: 0.5; pointer-events: none; }
+.title { margin: 0 auto; font-size: 1.5rem; }
 .theme-toggle {
   padding: 0.5rem 1rem;
   background: var(--card-bg);
@@ -71,13 +46,8 @@ body {
   border-radius: 30%;
   cursor: pointer;
 }
-.section {
-  display: none;
-  padding: 2rem;
-}
-.section.active {
-  display: block;
-}
+.section { display: none; padding: 2rem; }
+.section.active { display: block; }
 .button-link {
   display: inline-flex;
   align-items: center;
@@ -90,48 +60,31 @@ body {
   border-radius: 4px;
   cursor: pointer;
 }
-.button-link img {
-  width: 24px;
-  height: 24px;
-}
-.button-link:hover {
-  background: var(--text-color);
-  color: var(--bg-color);
-}
-.scripts-header {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
-}
-.scripts-header img {
-  width: 24px;
-  height: 24px;
-}
-.copy-container {
-  display: inline-block;
-  margin: 0.5rem;
-}
+.button-link img { width: 24px; height: 24px; }
+.button-link:hover { background: var(--text-color); color: var(--bg-color); }
+.scripts-content { display: flex; gap: 2rem; }
+.scripts-buttons { display: flex; flex-direction: column; gap: 0.5rem; }
 .copy-btn {
   padding: 0.5rem 1rem;
   background: var(--card-bg);
   color: var(--text-color);
   border: 1px solid var(--text-color);
   border-radius: 4px;
+  text-align: left;
   cursor: pointer;
 }
-.copy-container:hover .snippet {
-  display: block;
-}
-.snippet {
-  display: none;
+.copy-btn:hover { background: var(--text-color); color: var(--bg-color); }
+.overview {
+  flex: 1;
   background: var(--snippet-bg);
-  color: var(--text-color);
-  padding: 0.5rem;
+  padding: 1rem;
   border-radius: 4px;
-  font-family: monospace;
-  margin-top: 0.5rem;
+}
+.overview h2 { margin-top: 0; }
+.overview pre {
   white-space: pre-wrap;
+  font-family: monospace;
+  margin: 0;
 }
 .squircle {
   width: 200px;
@@ -144,9 +97,7 @@ body {
   align-items: center;
   cursor: pointer;
 }
-.squircle span {
-  font-size: 2rem;
-}
+.squircle span { font-size: 2rem; }
 .squircle:hover {
   background: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet);
   background-size: 400% 400%;
@@ -164,6 +115,7 @@ body {
     <div class="title">Aervanix's Domain</div>
     <div class="theme-toggle">Toggle Theme</div>
   </div>
+
   <div id="Main" class="section active">
     <button class="button-link" onclick="window.location.href='https://scriptblox.com/u/Aervanix'">
       <img src="https://r2.guns.lol/7e671c9b-1689-4d72-a5e5-b972f7d7fb09.png" alt="Scriptblox">Scriptblox
@@ -178,41 +130,100 @@ body {
       <img src="https://assets.guns.lol/guns_logo_no_background_cropped.png" alt="guns.lol">guns.lol
     </button>
   </div>
+
   <div id="Scripts" class="section">
     <div class="scripts-header">
       <img src="https://r2.guns.lol/61937224-d93e-4444-a831-3b04acdbe231.webp" alt="Logo">
       <span>Nameless Admin</span>
     </div>
-    <div class="copy-container">
-      <button class="copy-btn" data-copy="loadstring(game:HttpGet('https://raw.githubusercontent.com/ltseverydayyou/Nameless-Admin/main/Source.lua'))();">Copy Main Version</button>
-      <pre class="snippet"><code>loadstring(game:HttpGet('https://raw.githubusercontent.com/ltseverydayyou/Nameless-Admin/main/Source.lua'))();</code></pre>
-    </div>
-    <div class="copy-container">
-      <button class="copy-btn" data-copy="loadstring(game:HttpGet('https://raw.githubusercontent.com/ltseverydayyou/Nameless-Admin/main/NA%20testing.lua'))();">Copy Testing Version</button>
-      <pre class="snippet"><code>loadstring(game:HttpGet('https://raw.githubusercontent.com/ltseverydayyou/Nameless-Admin/main/NA%20testing.lua'))();</code></pre>
+    <div class="scripts-content">
+      <div class="scripts-buttons">
+        <button class="copy-btn" data-copy="[[loadstring(game:HttpGet('https://raw.githubusercontent.com/ltseverydayyou/Nameless-Admin/main/Source.lua'))();]]">Nameless Admin - Main Version</button>
+        <button class="copy-btn" data-copy="[[loadstring(game:HttpGet('https://raw.githubusercontent.com/ltseverydayyou/Nameless-Admin/main/NA%20testing.lua'))();]]">Nameless Admin - Testing Version</button>
+        <button class="copy-btn" data-copy="[[loadstring(game:HttpGet([[https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/main/Universe Viewer]]))();]]">Game Universe Viewer</button>
+        <button class="copy-btn" data-copy="[[loadstring(game:HttpGet([[https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/Delulu Office.lua]]))();]]">Delusional Office</button>
+        <button class="copy-btn" data-copy="[[local rs = game:GetService('RunService')
+local rep = game:GetService('ReplicatedStorage')
+local ws = game:GetService('Workspace')
+local cg = game:GetService('CoreGui')
+local rte = true
+local pr = rep:WaitForChild('playerremote')
+
+local n = nil
+repeat 
+    local s,r = pcall(function()
+        return loadstring(game:HttpGet('https://raw.githubusercontent.com/ltseverydayyou/Nameless-Admin/main/NamelessAdminNotifications.lua'))()
+    end)
+    if s then
+        n = r
+    else
+        warn('Couldn''t load notification module, retrying...')
+        task.wait()
+    end
+until n ~= nil
+
+local nt = n.Notify
+
+local function t()
+    if not rte then return end
+    
+    local s, e = pcall(function()
+        if ws:FindFirstChild('roomnumber') then
+            ws.roomnumber.Name = 'roomnumbe'
+            nt({
+                Title = 'Success',
+                Description = 'Anticheat bypassed',
+                Duration = 2,
+            })
+            task.delay(1, function()
+                nt({Title='Warning',Description='If doors won''t open, an entity has spawned.',Duration=6,})
+            end)
+        elseif ws:FindFirstChild('roomnumbe') then
+            ws.roomnumbe.Name = 'roomnumber'
+            nt({Title='Notice',Description='Anticheat activated',Duration=2,})
+        end
+    end)
+    if not s then nt({Title='Error',Description='Failed to toggle',Duration=3,}) end
+end
+rs.Stepped:Connect(function()
+    pr:FireServer('setsprintstate',false)
+end)
+local sg=Instance.new('ScreenGui');sg.Name='BypassPanel';sg.ResetOnSpawn=false;sg.ZIndexBehavior=Enum.ZIndexBehavior.Sibling
+pcall(function()sg.Parent=cg end)
+if not sg.Parent then sg.Parent=game.Players.LocalPlayer:WaitForChild('PlayerGui') end
+local rb=Instance.new('TextButton',sg)
+rb.Name='BypassButton';rb.Size=UDim2.new(0,120,0,40);rb.Position=UDim2.new(0.5,-60,0,10)
+rb.BackgroundColor3=Color3.fromRGB(40,40,40);rb.BackgroundTransparency=0.2
+rb.Text='Bypass';rb.TextColor3=Color3.fromRGB(255,255,255);rb.Font=Enum.Font.GothamBold;rb.TextSize=16
+local rc=Instance.new('UICorner',rb);rc.CornerRadius=UDim.new(0,8)
+NAdrag=... -- omitted for brevity
+nt({Title='Loaded',Description='Anticheat ready',Duration=3});task.delay(2,function()nt({Title='Anti-Death',Description='Sprint protection enabled',Duration=4})end)
+]]">Rooms & Doors</button>
+        <button class="copy-btn" data-copy="[[loadstring(game:HttpGet('https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/Be Dead Forever Farm.lua'))();]]">Be Dead Forever Simulator</button>
+        <button class="copy-btn" data-copy="[[loadstring(game:HttpGet('https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/shiftlock?raw=true'))();]]">Mobile Shiftlock</button>
+        <button class="copy-btn" data-copy="[[loadstring(game:HttpGet('https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/VirtualKeyboard.lua'))();]]">Virtual Keyboard</button>
+      </div>
+      <div class="overview">
+        <h2>Overview</h2>
+        <pre><code id="overview-code">nothing selected</code></pre>
+      </div>
     </div>
   </div>
+
   <div id="test" class="section">
     <div class="squircle"><span>viper</span></div>
   </div>
+
   <script>
     const tabs = document.querySelectorAll('.tab');
     const sections = document.querySelectorAll('.section');
-    tabs.forEach(tab => {
-      if(tab.dataset.tab !== 'test') tab.addEventListener('click', () => {
-        tabs.forEach(t => t.classList.remove('active'));
-        sections.forEach(s => s.classList.remove('active'));
-        tab.classList.add('active');
-        document.getElementById(tab.dataset.tab).classList.add('active');
-      });
-    });
-    document.querySelector('.theme-toggle').addEventListener('click', () => {
-      document.body.classList.toggle('light');
-    });
+    tabs.forEach(tab => { if(tab.dataset.tab!=='test'){ tab.addEventListener('click',()=>{ tabs.forEach(t=>t.classList.remove('active')); sections.forEach(s=>s.classList.remove('active')); tab.classList.add('active'); document.getElementById(tab.dataset.tab).classList.add('active'); }); }});
+    document.querySelector('.theme-toggle').addEventListener('click',()=>{ document.body.classList.toggle('light'); });
     document.querySelectorAll('.copy-btn').forEach(btn => {
       btn.addEventListener('click', () => {
-        const text = btn.getAttribute('data-copy');
-        navigator.clipboard.writeText(text);
+        const code = btn.getAttribute('data-copy').slice(2, -2);
+        navigator.clipboard.writeText(code);
+        document.getElementById('overview-code').textContent = code;
       });
     });
   </script>
