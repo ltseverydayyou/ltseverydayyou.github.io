@@ -3,59 +3,147 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Viper</title>
+  <title>Viper Site</title>
   <style>
-    body {
-      background-color: #000;
-      margin: 0;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .squircle {
-      width: 200px;
-      height: 200px;
-      background-color: #111;
-      border: 2px solid #fff;
-      border-radius: 30%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      transition: background 0.5s ease;
-      cursor: pointer;
-    }
-
-    .squircle span {
-      color: #fff;
-      font-size: 2rem;
-      font-family: sans-serif;
-      z-index: 1;
-    }
-
-    .squircle:hover {
-      background: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet);
-      background-size: 400% 400%;
-      animation: rainbow 3s linear infinite;
-    }
-
-    @keyframes rainbow {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    a {
-      text-decoration: none;
-    }
+:root {
+  --bg-color: #000;
+  --text-color: #fff;
+  --card-bg: #111;
+}
+body.light {
+  --bg-color: #fff;
+  --text-color: #000;
+  --card-bg: #eee;
+}
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  margin: 0;
+  font-family: sans-serif;
+}
+.topbar {
+  display: flex;
+  background-color: var(--card-bg);
+}
+.tab {
+  padding: 1rem;
+  cursor: pointer;
+}
+.tab.active {
+  border-bottom: 2px solid var(--text-color);
+}
+.theme-toggle {
+  margin-left: auto;
+  padding: 1rem;
+  cursor: pointer;
+}
+.section {
+  display: none;
+  padding: 2rem;
+}
+.section.active {
+  display: block;
+}
+.copy-btn {
+  display: inline-block;
+  margin: 0.5rem 0;
+  padding: 0.5rem 1rem;
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  border: 1px solid var(--text-color);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.copy-btn:hover {
+  background-color: var(--text-color);
+  color: var(--bg-color);
+}
+.squircle {
+  width: 200px;
+  height: 200px;
+  background-color: var(--card-bg);
+  border: 2px solid var(--text-color);
+  border-radius: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background 0.5s ease;
+  cursor: pointer;
+}
+.squircle span {
+  color: var(--text-color);
+  font-size: 2rem;
+  z-index: 1;
+}
+.squircle:hover {
+  background: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet);
+  background-size: 400% 400%;
+  animation: rainbow 3s linear infinite;
+}
+@keyframes rainbow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
   </style>
 </head>
 <body>
-  <a href="https://github.com/Cosmella-v">
-    <div class="squircle">
-      <span>viper</span>
-    </div>
-  </a>
+  <div class="topbar">
+    <div class="tab active" data-tab="Main">Main</div>
+    <div class="tab" data-tab="Scripts">Scripts</div>
+    <div class="tab" data-tab="test">test</div>
+    <div class="theme-toggle">Toggle Theme</div>
+  </div>
+  <div id="Main" class="section active">
+    <div>W.I.P</div>
+  </div>
+  <div id="Scripts" class="section">
+    <div>Nameless Admin</div>
+    <button class="copy-btn" data-copy="loadstring(game:HttpGet('https://raw.githubusercontent.com/ltseverydayyou/Nameless-Admin/main/Source.lua'))();">
+      Copy Main Version
+    </button>
+    <button class="copy-btn" data-copy="loadstring(game:HttpGet('https://raw.githubusercontent.com/ltseverydayyou/Nameless-Admin/main/NA%20testing.lua'))();">
+      Copy Testing Version
+    </button>
+  </div>
+  <div id="test" class="section">
+    <a href="https://github.com/Cosmella-v"><div class="squircle"><span>viper</span></div></a>
+  </div>
+  <script>
+    // Tab switching
+    const tabs = document.querySelectorAll('.tab');
+    const sections = document.querySelectorAll('.section');
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        sections.forEach(s => s.classList.remove('active'));
+        tab.classList.add('active');
+        document.getElementById(tab.dataset.tab).classList.add('active');
+      });
+    });
+
+    // Theme toggle
+    document.querySelector('.theme-toggle').addEventListener('click', () => {
+      document.body.classList.toggle('light');
+    });
+
+    // Copy to clipboard
+    const copyButtons = document.querySelectorAll('.copy-btn');
+    copyButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const text = btn.getAttribute('data-copy');
+        navigator.clipboard.writeText(text).then(() => {
+          const original = btn.textContent;
+          btn.textContent = 'Copied!';
+          setTimeout(() => btn.textContent = original, 2000);
+        });
+      });
+    });
+  </script>
 </body>
 </html>
