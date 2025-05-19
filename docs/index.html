@@ -24,7 +24,7 @@ body { margin: 0; background: var(--bg-color); color: var(--text-color); font-fa
 .tab.active { background: var(--text-color); color: var(--bg-color); }
 .tab:hover:not([data-tab="test"]) { background: var(--text-color); color: var(--bg-color); }
 .tab[data-tab="test"] { opacity: 0.5; pointer-events: none; }
-.title { flex: 1; text-align: center; font-size: 1.5rem; }
+.title { flex: 1; text-align: center; font-size: 1.5rem; display: flex; align-items: center; justify-content: center; }
 .theme-toggle { margin-left: 1rem; padding: 0.5rem 1rem; background: var(--card-bg); color: var(--text-color); border: 2px solid var(--text-color); border-radius: 30%; cursor: pointer; }
 .section { display: none; padding: 2rem; }
 .section.active { display: block; }
@@ -51,14 +51,25 @@ body { margin: 0; background: var(--bg-color); color: var(--text-color); font-fa
       <div class="tab" data-tab="Scripts">Scripts</div>
       <div class="tab" data-tab="test">test</div>
     </div>
-    <div class="title">Aervanix's Domain</div>
+    <div class="title">Aervanix's Domain <img src="https://avatars.githubusercontent.com/u/117316014?v=4" alt="GitHub" style="width:24px;height:24px;border-radius:50%;margin-left:0.5rem;"></div>
     <div class="theme-toggle">Toggle Theme</div>
+  </div>
+  <div align="center">
+    <a href="https://discord.com/users/641335879381680129">
+      <img src="https://lanyard.cnrad.dev/api/641335879381680129?theme=dark&animated=true" height="150" alt="Discord Presence" />
+    </a>
   </div>
   <div id="Main" class="section active">
     <button class="button-link" onclick="if(confirm('Are you sure?')) window.location.href='https://scriptblox.com/u/Aervanix';"><img src="https://r2.guns.lol/7e671c9b-1689-4d72-a5e5-b972f7d7fb09.png" alt="Scriptblox">Scriptblox</button>
     <button class="button-link" onclick="if(confirm('Are you sure?')) window.location.href='https://rscripts.net/@ltseverydayyou';"><img src="https://r2.guns.lol/b9234319-f7c7-4b19-840e-600a2044d401.png" alt="rscripts">rscripts</button>
     <button class="button-link" onclick="if(confirm('Are you sure?')) window.location.href='https://discord.com/invite/zzjYhtMGFD';"><img src="https://cdn.simpleicons.org/discord" alt="Discord">Discord Server</button>
     <button class="button-link" onclick="if(confirm('Are you sure?')) window.location.href='https://guns.lol/ltseverydayyou';"><img src="https://assets.guns.lol/guns_logo_no_background_cropped.png" alt="guns.lol">guns.lol</button>
+    <button class="button-link" onclick="if(confirm('Are you sure?')) window.location.href='https://link.brawlstars.com/invite/friend/en/?tag=9PCGLC29V&token=scwxs4x9';"><img src="https://r2.guns.lol/b5074f3d-a5bf-440d-a9d6-59c1baf62880.png" alt="Brawl Stars Friend">Brawl Stars Friend Request</button>
+    <button class="button-link" onclick="if(confirm('Are you sure?')) window.location.href='https://brawlace.com/players/%239PCGLC29V';"><img src="https://brawlace.com/assets/images/icon.png?v=3.35" alt="Brawl Stars Profile">Brawl Stars Profile</button>
+    <div style="margin-top:1rem;font-weight:bold;">ROBLOX SECTIONS</div>
+    <button class="button-link" onclick="if(confirm('Are you sure?')) window.location.href='https://www.roblox.com/users/2502806181/profile';"><img src="https://cdn.simpleicons.org/roblox" alt="Roblox">Aervanix</button>
+    <button class="button-link" onclick="if(confirm('Are you sure?')) window.location.href='https://www.roblox.com/users/2845101018/profile';"><img src="https://cdn.simpleicons.org/roblox" alt="Roblox">Jadiellovescats3</button>
+    <button class="button-link" onclick="if(confirm('Are you sure?')) window.location.href='https://www.roblox.com/users/11761417/profile';"><img src="https://cdn.simpleicons.org/roblox" alt="Roblox">9121a63458</button>
   </div>
   <div id="Scripts" class="section">
     <div class="scripts-content">
@@ -66,12 +77,17 @@ body { margin: 0; background: var(--bg-color); color: var(--text-color); font-fa
         <button class="copy-btn" data-copy="loadstring(game:HttpGet('https://raw.githubusercontent.com/ltseverydayyou/Nameless-Admin/main/Source.lua'))();">NA Main Version</button>
         <button class="copy-btn" data-copy="loadstring(game:HttpGet('https://raw.githubusercontent.com/ltseverydayyou/Nameless-Admin/main/NA%20testing.lua'))();">NA Testing Version</button>
         <button class="copy-btn" data-copy="loadstring(game:HttpGet('https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/Delulu%20Office.lua'))();">Delusional Office</button>
-        <button class="copy-btn" data-copy="loadstring(game:HttpGet('https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/VirtualKeyboard.lua'))();">Virtual Keyboard</button>
+        <button class="copy-btn" data-copy="loadstring(game:HttpGet('https://raw.githubusercontent.com/ltseeverydayyou/uuuuuuu/refs/heads/main/VirtualKeyboard.lua'))();">Virtual Keyboard</button>
         <button class="copy-btn" data-copy="loadstring(game:HttpGet('https://raw.githubusercontent.com/ltseeverydayyou/uuuuuuu/main/Universe%20Viewer'))();">Game Universe Viewer</button>
-        <button class="copy-btn" data-copy="loadstring(game:HttpGet('https://github.com/ltseverydayyou/uuuuuuu/blob/main/shiftlock?raw=true'))();">Mobile Shiftlock</button>
-        <button class="copy-btn" data-copy="loadstring(game:HttpGet('https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/main/the%20rake'))();">The Rake REMASTERED</button>
+        <button class="copy-btn" data-copy="loadstring(game:HttpGet('https://github.com/ltseeverydayyou/uuuuuuu/blob/main/shiftlock?raw=true'))();">Mobile Shiftlock</button>
+        <button class="copy-btn" data-copy="loadstring(game:HttpGet('https://raw.githubusercontent.com/ltseeverydayyou/uuuuuuu/main/the%20rake'))();">The Rake REMASTERED</button>
         <button class="copy-btn" data-copy="loadstring(game:HttpGet('https://raw.githubusercontent.com/ltseeverydayyou/uuuuuuu/refs/heads/main/Be%20Dead%20Forever%20Farm.lua'))();">be dead forever simulator</button>
         <button class="copy-btn" data-copy="loadstring(game:HttpGet('https://raw.githubusercontent.com/ltseeverydayyou/uuuuuuu/refs/heads/main/mobileBACKPACK.lua'))();">Custom Mobile Backpack</button>
+        <button class="copy-btn" data-copy="loadstring(game:HttpGet('https://raw.githubusercontent.com/ltseeverydayyou/uuuuuuu/refs/heads/main/The%20Maze.lua'))();">The Maze</button>
+        <button class="copy-btn" data-copy="loadstring(game:HttpGet('https://raw.githubusercontent.com/ltseeverydayyou/endless-doors/main/endless%20madness%20buster', true))();">Endless Doors</button>
+        <button class="copy-btn" data-copy="loadstring(game:HttpGet('https://raw.githubusercontent.com/ltseeverydayyou/uuuuuuu/main/sky%20ball'))();">Sky Ball</button>
+        <button class="copy-btn" data-copy="loadstring(game:HttpGet('https://raw.githubusercontent.com/ltseeverydayyou/uuuuuuu/main/pressure%20god.lua'))();">Pressure</button>
+        <button class="copy-btn" data-copy="loadstring(game:HttpGet('https://raw.githubusercontent.com/ltseeverydayyou/uuuuuuu/main/anime%20ball'))();">Anime Ball</button>
       </div>
       <div class="overview">
         <h3>Overview</h3>
@@ -86,14 +102,12 @@ body { margin: 0; background: var(--bg-color); color: var(--text-color); font-fa
   <script>
     const tabs = document.querySelectorAll('.tab');
     const sections = document.querySelectorAll('.section');
-    tabs.forEach(tab => {
-      if(tab.dataset.tab!=='test') tab.addEventListener('click',()=>{tabs.forEach(t=>t.classList.remove('active'));sections.forEach(s=>s.classList.remove('active'));tab.classList.add('active');document.getElementById(tab.dataset.tab).classList.add('active');});
-    });
-    document.querySelector('.theme-toggle').addEventListener('click',()=>{document.body.classList.toggle('light');});
-    document.querySelectorAll('.copy-btn').forEach(btn=>{
-      btn.addEventListener('mouseenter',()=>{document.getElementById('overview-code').textContent=btn.getAttribute('data-copy');});
-      btn.addEventListener('mouseleave',()=>{document.getElementById('overview-code').textContent='nothing selected';});
-      btn.addEventListener('click',()=>{navigator.clipboard.writeText(btn.getAttribute('data-copy'));const feedback=document.getElementById('copy-feedback');feedback.textContent='Copied';feedback.classList.add('show');setTimeout(()=>{feedback.classList.remove('show');},1000);});
+    tabs.forEach(tab => { if(tab.dataset.tab !== 'test') tab.addEventListener('click', () => { tabs.forEach(t => t.classList.remove('active')); sections.forEach(s => s.classList.remove('active')); tab.classList.add('active'); document.getElementById(tab.dataset.tab).classList.add('active'); }); });
+    document.querySelector('.theme-toggle').addEventListener('click', () => { document.body.classList.toggle('light'); });
+    document.querySelectorAll('.copy-btn').forEach(btn => {
+      btn.addEventListener('mouseenter', () => { document.getElementById('overview-code').textContent = btn.getAttribute('data-copy'); });
+      btn.addEventListener('mouseleave', () => { document.getElementById('overview-code').textContent = 'nothing selected'; });
+      btn.addEventListener('click', () => { navigator.clipboard.writeText(btn.getAttribute('data-copy')); const feedback = document.getElementById('copy-feedback'); feedback.textContent = 'Copied'; feedback.classList.add('show'); setTimeout(() => { feedback.classList.remove('show'); }, 1000); });
     });
   </script>
 </body>
