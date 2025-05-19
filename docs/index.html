@@ -5,54 +5,115 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Aervanix's Domain</title>
   <style>
+html, body {
+  height: 100%; margin: 0; padding: 0;
+}
 :root {
-  --bg-color: #000;
   --text-color: #fff;
-  --card-bg: #111;
+  --card-bg: rgba(0,0,0,0.6);
   --snippet-bg: rgba(255,255,255,0.1);
+  --default-bg: conic-gradient(from 0deg, #000, #555, #000);
 }
-body.light {
-  --bg-color: #fff;
-  --text-color: #000;
-  --card-bg: #eee;
-  --snippet-bg: rgba(0,0,0,0.1);
+body {
+  color: var(--text-color);
+  font-family: sans-serif;
+  background: var(--default-bg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
-body { margin: 0; background: var(--bg-color); color: var(--text-color); font-family: sans-serif; }
 .topbar { display: flex; align-items: center; padding: 1rem; }
 .tabs { display: flex; gap: 0.5rem; }
-.tab { padding: 0.5rem 1rem; background: var(--card-bg); color: var(--text-color); border: 2px solid var(--text-color); border-radius: 30%; transition: background 0.2s, color 0.2s; cursor: default; }
-.tab.active { background: var(--text-color); color: var(--bg-color); }
-.tab:hover:not([data-tab="test"]) { background: var(--text-color); color: var(--bg-color); }
+.tab {
+  padding: 0.5rem 1rem;
+  background: var(--card-bg);
+  color: var(--text-color);
+  border: 2px solid var(--text-color);
+  border-radius: 30%;
+  transition: background 0.2s, color 0.2s;
+  cursor: default;
+}
+.tab.active { background: var(--text-color); color: #000; }
+.tab:hover:not([data-tab="test"]) { background: var(--text-color); color: #000; }
 .tab[data-tab="test"] { opacity: 0.5; pointer-events: none; }
-.title { flex: 1; text-align: center; font-size: 1.5rem; display: flex; align-items: center; justify-content: center; }
-.theme-toggle { margin-left: 1rem; padding: 0.5rem 1rem; background: var(--card-bg); color: var(--text-color); border: 2px solid var(--text-color); border-radius: 30%; cursor: pointer; }
+.title {
+  flex: 1;
+  text-align: center;
+  font-size: 1.5rem;
+  display: flex; align-items: center; justify-content: center;
+}
+.button-bg, .button-reset {
+  margin-left: 1rem;
+  padding: 0.5rem 1rem;
+  background: var(--card-bg);
+  color: var(--text-color);
+  border: 2px solid var(--text-color);
+  border-radius: 30%;
+  transition: background 0.2s, color 0.2s;
+  cursor: pointer;
+}
 .section { display: none; padding: 2rem; }
 .section.active { display: block; }
-.button-link, .copy-btn { display: inline-flex; align-items: center; gap: 0.5rem; margin: 0.5rem; padding: 0.5rem 1rem; background: var(--card-bg); color: var(--text-color); border: 1px solid var(--text-color); border-radius: 4px; cursor: pointer; transition: background 0.2s, color 0.2s; }
+.button-link, .copy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: var(--card-bg);
+  color: var(--text-color);
+  border: 1px solid var(--text-color);
+  border-radius: 4px;
+  transition: background 0.2s, color 0.2s;
+  cursor: pointer;
+}
 .button-link img, .copy-btn img { width: 24px; height: 24px; }
-.button-link:hover, .copy-btn:hover { background: var(--text-color); color: var(--bg-color); }
-.scripts-content { display: flex; gap: 2rem; align-items: flex-start; }
-.buttons-container { display: flex; flex-direction: column; gap: 0.5rem; max-height: 60vh; overflow-y: auto; width: 200px; }
-.copy-btn { width: 100%; text-align: left; }
-.overview { flex: 2; background: var(--snippet-bg); padding: 1rem; border-radius: 4px; position: relative; }
+.button-link:hover, .copy-btn:hover { background: var(--text-color); color: #000; }
+.scripts-content { display: flex; flex-direction: column; gap: 1rem; }
+.buttons-container { display: flex; flex-wrap: wrap; gap: 0.5rem; max-height: 60vh; overflow-y: auto; }
+.overview {
+  background: var(--snippet-bg);
+  padding: 1rem;
+  border-radius: 4px;
+  position: relative;
+}
 .overview h3 { margin-top: 0; }
 .overview pre { white-space: pre-wrap; font-family: monospace; }
-.overview .feedback { position: absolute; bottom: 0.5rem; right: 1rem; opacity: 0; transition: opacity 0.3s ease; }
+.overview .feedback {
+  position: absolute;
+  bottom: 0.5rem;
+  right: 1rem;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
 .overview .feedback.show { opacity: 1; }
-.squircle { width: 200px; height: 200px; background: var(--card-bg); border: 2px solid var(--text-color); border-radius: 30%; display: flex; justify-content: center; align-items: center; cursor: pointer; transition: transform 0.3s ease; }
+.squircle {
+  width: 200px; height: 200px;
+  background: var(--card-bg);
+  border: 2px solid var(--text-color);
+  border-radius: 30%;
+  display: flex; justify-content: center; align-items: center;
+  transition: transform 0.3s;
+  cursor: pointer;
+}
 #test .squircle:hover { animation: spin 1s linear infinite; }
 @keyframes spin { to { transform: rotate(360deg); } }
 </style>
 </head>
 <body>
+  <input type="file" id="bg-input" accept="image/*,video/*" style="display:none">
   <div class="topbar">
     <div class="tabs">
       <div class="tab active" data-tab="Main">Main</div>
       <div class="tab" data-tab="Scripts">Scripts</div>
       <div class="tab" data-tab="test">test</div>
     </div>
-    <div class="title">Aervanix's Domain <img src="https://avatars.githubusercontent.com/u/117316014?v=4" alt="GitHub" style="width:24px;height:24px;border-radius:50%;margin-left:0.5rem;"></div>
-    <div class="theme-toggle">Toggle Theme</div>
+    <div class="title">
+      Aervanix's Domain
+      <img src="https://avatars.githubusercontent.com/u/117316014?v=4" alt="GitHub" style="width:24px;height:24px;border-radius:50%;margin-left:0.5rem;">
+    </div>
+    <div class="button-bg">Change Background</div>
+    <div class="button-reset">Toggle Background</div>
   </div>
   <div align="center">
     <a href="https://discord.com/users/641335879381680129">
@@ -60,58 +121,55 @@ body { margin: 0; background: var(--bg-color); color: var(--text-color); font-fa
     </a>
   </div>
   <div id="Main" class="section active">
-    <button class="button-link" onclick="if(confirm('Are you sure?')) window.location.href='https://scriptblox.com/u/Aervanix';"><img src="https://r2.guns.lol/7e671c9b-1689-4d72-a5e5-b972f7d7fb09.png" alt="Scriptblox">Scriptblox</button>
-    <button class="button-link" onclick="if(confirm('Are you sure?')) window.location.href='https://rscripts.net/@ltseverydayyou';"><img src="https://r2.guns.lol/b9234319-f7c7-4b19-840e-600a2044d401.png" alt="rscripts">rscripts</button>
-    <button class="button-link" onclick="if(confirm('Are you sure?')) window.location.href='https://discord.com/invite/zzjYhtMGFD';"><img src="https://cdn.simpleicons.org/discord" alt="Discord">Discord Server</button>
-    <button class="button-link" onclick="if(confirm('Are you sure?')) window.location.href='https://guns.lol/ltseverydayyou';"><img src="https://assets.guns.lol/guns_logo_no_background_cropped.png" alt="guns.lol">guns.lol</button>
-    <button class="button-link" onclick="if(confirm('Are you sure?')) window.location.href='https://link.brawlstars.com/invite/friend/en/?tag=9PCGLC29V&token=scwxs4x9';"><img src="https://r2.guns.lol/b5074f3d-a5bf-440d-a9d6-59c1baf62880.png" alt="Brawl Stars Friend">Brawl Stars Friend Request</button>
-    <button class="button-link" onclick="if(confirm('Are you sure?')) window.location.href='https://brawlace.com/players/%239PCGLC29V';"><img src="https://brawlace.com/assets/images/icon.png?v=3.35" alt="Brawl Stars Profile">Brawl Stars Profile</button>
-    <button class="button-link" onclick="if(confirm('Are you sure?')) window.location.href='https://github.com/ltseverydayyou';"><img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" style="width:24px;height:24px;">GitHub</button>
-    <button class="button-link" onclick="if(confirm('Are you sure?')) window.location.href='https://open.spotify.com/user/316a6txgaro3ethw6pochw3uripy';"><img src="https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_CMYK_Green.png" alt="Spotify" style="width:24px;height:24px;">Spotify</button>
-    <button class="button-link" onclick="if(confirm('Are you sure?')) window.location.href='https://steamcommunity.com/id/ltseverydayyou';"><img src="https://cdn.cloudflare.steamstatic.com/store/home/store_home_share.jpg" alt="Steam" style="width:24px;height:24px;">Steam</button>
-    <div style="margin-top:1rem;font-weight:bold;">ROBLOX SECTIONS</div>
-    <button class="button-link" onclick="if(confirm('Are you sure?')) window.location.href='https://www.roblox.com/users/2502806181/profile';"><img src="https://cdn.simpleicons.org/roblox" alt="Roblox">Aervanix</button>
-    <button class="button-link" onclick="if(confirm('Are you sure?')) window.location.href='https://www.roblox.com/users/2845101018/profile';"><img src="https://cdn.simpleicons.org/roblox" alt="Roblox">Jadiellovescats3</button>
-    <button class="button-link" onclick="if(confirm('Are you sure?')) window.location.href='https://www.roblox.com/users/11761417/profile';"><img src="https://cdn.simpleicons.org/roblox" alt="Roblox">9121a63458</button>
+    <button class="button-link" onclick="if(confirm('Are you sure?')) location.href='https://scriptblox.com/u/Aervanix';"><img src="https://r2.guns.lol/7e671c9b-1689-4d72-a5e5-b972f7d7fb09.png">Scriptblox</button>
+    <button class="button-link" onclick="if(confirm('Are you sure?')) location.href='https://rscripts.net/@ltseverydayyou';"><img src="https://r2.guns.lol/b9234319-f7c7-4b19-840e-600a2044d401.png">rscripts</button>
+    <button class="button-link" onclick="if(confirm('Are you sure?')) location.href='https://discord.com/invite/zzjYhtMGFD';"><img src="https://cdn.simpleicons.org/discord">Discord Server</button>
+    <button class="button-link" onclick="if(confirm('Are you sure?')) location.href='https://guns.lol/ltseverydayyou';"><img src="https://assets.guns.lol/guns_logo_no_background_cropped.png">guns.lol</button>
+    <button class="button-link" onclick="if(confirm('Are you sure?')) location.href='https://link.brawlstars.com/invite/friend/en/?tag=9PCGLC29V&token=scwxs4x9';"><img src="https://r2.guns.lol/b5074f3d-a5bf-440d-a9d6-59c1baf62880.png">Brawl Stars Friend</button>
+    <button class="button-link" onclick="if(confirm('Are you sure?')) location.href='https://brawlace.com/players/%239PCGLC29V';"><img src="https://brawlace.com/assets/images/icon.png?v=3.35">Brawl Stars Profile</button>
+    <button class="button-link" onclick="if(confirm('Are you sure?')) location.href='https://github.com/ltseverydayyou';"><img src="https://cdn.simpleicons.org/github">GitHub</button>
+    <button class="button-link" onclick="if(confirm('Are you sure?')) location.href='https://open.spotify.com/user/316a6txgaro3ethw6pochw3uripy';"><img src="https://cdn.simpleicons.org/spotify">Spotify</button>
+    <button class="button-link" onclick="if(confirm('Are you sure?')) location.href='https://steamcommunity.com/id/ltseverydayyou';"><img src="https://cdn.simpleicons.org/steam">Steam</button>
+    <div style="margin-top:1rem;font-weight:bold;width:100%;">ROBLOX SECTIONS</div>
+    <button class="button-link" onclick="if(confirm('Are you sure?')) location.href='https://www.roblox.com/users/2502806181/profile';"><img src="https://cdn.simpleicons.org/roblox">Aervanix</button>
+    <button class="button-link" onclick="if(confirm('Are you sure?')) location.href='https://www.roblox.com/users/2845101018/profile';"><img src="https://cdn.simpleicons.org/roblox">Jadiellovescats3</button>
+    <button class="button-link" onclick="if(confirm('Are you sure?')) location.href='https://www.roblox.com/users/11761417/profile';"><img src="https://cdn.simpleicons.org/roblox">9121a63458</button>
   </div>
   <div id="Scripts" class="section">
-    <div class="scripts-content">
-      <div class="buttons-container">
-        <button class="copy-btn" data-copy="loadstring(game:HttpGet('https://raw.githubusercontent.com/ltseverydayyou/Nameless-Admin/main/Source.lua'))();">NA Main Version</button>
-        <button class="copy-btn" data-copy="loadstring(game:HttpGet('https://raw.githubusercontent.com/ltseverydayyou/Nameless-Admin/main/NA%20testing.lua'))();">NA Testing Version</button>
-        <button class="copy-btn" data-copy="loadstring(game:HttpGet('https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/Delulu%20Office.lua'))();">Delusional Office</button>
-        <button class="copy-btn" data-copy="loadstring(game:HttpGet('https://raw.githubusercontent.com/ltseeverydayyou/uuuuuuu/refs/heads/main/VirtualKeyboard.lua'))();">Virtual Keyboard</button>
-        <button class="copy-btn" data-copy="loadstring(game:HttpGet('https://raw.githubusercontent.com/ltseeverydayyou/uuuuuuu/main/Universe%20Viewer'))();">Game Universe Viewer</button>
-        <button class="copy-btn" data-copy="loadstring(game:HttpGet('https://github.com/ltseeverydayyou/uuuuuuu/blob/main/shiftlock?raw=true'))();">Mobile Shiftlock</button>
-        <button class="copy-btn" data-copy="loadstring(game:HttpGet('https://raw.githubusercontent.com/ltseeverydayyou/uuuuuuu/main/the%20rake'))();">The Rake REMASTERED</button>
-        <button class="copy-btn" data-copy="loadstring(game:HttpGet('https://raw.githubusercontent.com/ltseeverydayyou/uuuuuuu/refs/heads/main/Be%20Dead%20Forever%20Farm.lua'))();">be dead forever simulator</button>
-        <button class="copy-btn" data-copy="loadstring(game:HttpGet('https://raw.githubusercontent.com/ltseeverydayyou/uuuuuuu/refs/heads/main/mobileBACKPACK.lua'))();">Custom Mobile Backpack</button>
-        <button class="copy-btn" data-copy="loadstring(game:HttpGet('https://raw.githubusercontent.com/ltseeverydayyou/uuuuuuu/refs/heads/main/The%20Maze.lua'))();">The Maze</button>
-        <button class="copy-btn" data-copy="loadstring(game:HttpGet('https://raw.githubusercontent.com/ltseeverydayyou/endless-doors/main/endless%20madness%20buster', true))();">Endless Doors</button>
-        <button class="copy-btn" data-copy="loadstring(game:HttpGet('https://raw.githubusercontent.com/ltseeverydayyou/uuuuuuu/main/sky%20ball'))();">Sky Ball</button>
-        <button class="copy-btn" data-copy="loadstring(game:HttpGet('https://raw.githubusercontent.com/ltseeverydayyou/uuuuuuu/main/pressure%20god.lua'))();">Pressure</button>
-        <button class="copy-btn" data-copy="loadstring(game:HttpGet('https://raw.githubusercontent.com/ltseeverydayyou/uuuuuuu/main/anime%20ball'))();">Anime Ball</button>
-      </div>
-      <div class="overview">
-        <h3>Overview</h3>
-        <pre><code id="overview-code">nothing selected</code></pre>
-        <div class="feedback" id="copy-feedback"></div>
-      </div>
+    <div class="overview">
+      <h3>Overview</h3>
+      <pre><code id="overview-code">nothing selected</code></pre>
+      <div class="feedback" id="copy-feedback"></div>
+    </div>
+    <div class="buttons-container">
+      <button class="copy-btn" data-copy="loadstring(game:HttpGet('https://raw.githubusercontent.com/ltseverydayyou/Nameless-Admin/main/Source.lua'))();">NA Main Version</button>
+      <button class="copy-btn" data-copy="loadstring(game:HttpGet('https://raw.githubusercontent.com/ltseverydayyou/Nameless-Admin/main/NA%20testing.lua'))();">NA Testing Version</button>
+      <button class="copy-btn" data-copy="loadstring(game:HttpGet('https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/Delulu%20Office.lua'))();">Delusional Office</button>
+      <button class="copy-btn" data-copy="loadstring(game:HttpGet('https://raw.githubusercontent.com/ltseeverydayyou/uuuuuuu/refs/heads/main/VirtualKeyboard.lua'))();">Virtual Keyboard</button>
+      <button class="copy-btn" data-copy="loadstring(game:HttpGet('https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/main/Universe%20Viewer'))();">Game Universe Viewer</button>
+      <button class="copy-btn" data-copy="loadstring(game:HttpGet('https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/blob/main/shiftlock?raw=true'))();">Mobile Shiftlock</button>
+      <button class="copy-btn" data-copy="loadstring(game:HttpGet('https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/main/the%20rake'))();">The Rake REMASTERED</button>
+      <button class="copy-btn" data-copy="loadstring(game:HttpGet('https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/Be%20Dead%20Forever%20Farm.lua'))();">Be Dead Forever Simulator</button>
+      <button class="copy-btn" data-copy="loadstring(game:HttpGet('https://raw.githubusercontent.com/ltseeverydayyou/uuuuuuu/refs/heads/main/mobileBACKPACK.lua'))();">Custom Mobile Backpack</button>
+      <button class="copy-btn" data-copy="loadstring(game:HttpGet('https://raw.githubusercontent.com/ltseeverydayyou/uuuuuuu/refs/heads/main/The%20Maze.lua'))();">The Maze</button>
+      <button class="copy-btn" data-copy="loadstring(game:HttpGet('https://raw.githubusercontent.com/ltseverydayyou/endless-doors/main/endless%20madness%20buster', true))();">Endless Doors</button>
+      <button class="copy-btn" data-copy="loadstring(game:HttpGet('https://raw.githubusercontent.com/ltseeverydayyou/uuuuuuu/main/sky%20ball'))();">Sky Ball</button>
+      <button class="copy-btn" data-copy="loadstring(game:HttpGet('https://raw.githubusercontent.com/ltseeverydayyou/uuuuuuu/main/pressure%20god.lua'))();">Pressure</button>
+      <button class="copy-btn" data-copy="loadstring(game:HttpGet('https://raw.githubusercontent.com/ltseeverydayyou/uuuuuuu/main/anime%20ball'))();">Anime Ball</button>
     </div>
   </div>
   <div id="test" class="section">
     <div class="squircle"><span>viper</span></div>
   </div>
   <script>
-    const tabs = document.querySelectorAll('.tab');
-    const sections = document.querySelectorAll('.section');
-    tabs.forEach(tab => { if(tab.dataset.tab !== 'test') tab.addEventListener('click', () => { tabs.forEach(t => t.classList.remove('active')); sections.forEach(s => s.classList.remove('active')); tab.classList.add('active'); document.getElementById(tab.dataset.tab).classList.add('active'); }); });
-    document.querySelector('.theme-toggle').addEventListener('click', () => { document.body.classList.toggle('light'); });
-    document.querySelectorAll('.copy-btn').forEach(btn => {
-      btn.addEventListener('mouseenter', () => { document.getElementById('overview-code').textContent = btn.getAttribute('data-copy'); });
-      btn.addEventListener('mouseleave', () => { document.getElementById('overview-code').textContent = 'nothing selected'; });
-      btn.addEventListener('click', () => { navigator.clipboard.writeText(btn.getAttribute('data-copy')); const feedback = document.getElementById('copy-feedback'); feedback.textContent = 'Copied'; feedback.classList.add('show'); setTimeout(() => { feedback.classList.remove('show'); }, 1000); });
-    });
+    const tabs=document.querySelectorAll('.tab');
+    const sections=document.querySelectorAll('.section');
+    tabs.forEach(tab=>{if(tab.dataset.tab!=='test')tab.addEventListener('click',()=>{tabs.forEach(t=>t.classList.remove('active'));sections.forEach(s=>s.classList.remove('active'));tab.classList.add('active');document.getElementById(tab.dataset.tab).classList.add('active');});});
+    const bgInput=document.getElementById('bg-input');
+    document.querySelector('.button-bg').addEventListener('click',()=>bgInput.click());
+    bgInput.addEventListener('change',e=>{const file=e.target.files[0];if(!file)return;const url=URL.createObjectURL(file);document.body.style.background=`url(${url}) center/cover no-repeat`;document.body.style.backgroundSize='cover';});
+    document.querySelector('.button-reset').addEventListener('click',()=>{document.body.style.background='var(--default-bg)';document.body.style.backgroundSize='cover';});
+    document.querySelectorAll('.copy-btn').forEach(btn=>{btn.addEventListener('mouseenter',()=>document.getElementById('overview-code').textContent=btn.dataset.copy);btn.addEventListener('mouseleave',()=>document.getElementById('overview-code').textContent='nothing selected');btn.addEventListener('click',()=>{navigator.clipboard.writeText(btn.dataset.copy);const f=document.getElementById('copy-feedback');f.textContent='Copied';f.classList.add('show');setTimeout(()=>f.classList.remove('show'),1000);});});
   </script>
 </body>
 </html>
