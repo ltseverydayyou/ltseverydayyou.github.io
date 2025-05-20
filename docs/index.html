@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Aervanix's Domain</title>
   <style>
 html, body { height:100%; margin:0; padding:0; scroll-behavior: smooth; }
@@ -84,62 +84,61 @@ body {
   opacity:1;
   transform: translateY(0);
 }
-.button-link, .copy-btn {
-  display:inline-flex;
-  align-items:center;
-  gap:0.5rem;
-  margin:0.5rem;
-  padding:0.5rem 1rem;
-  background:var(--card-bg);
-  color:var(--text-color);
-  border:1px solid var(--text-color);
-  border-radius:4px;
-  cursor:pointer;
-  transition: all var(--transition-fast);
+.script-card {
+  background: var(--card-bg);
+  border: 1px solid var(--text-color);
+  padding: 1rem;
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+  margin: 0.5rem auto;
+  color: var(--text-color);
+  gap: 1rem;
 }
-.button-link img, .copy-btn img {
-  width:24px;
-  height:24px;
-  transition: transform var(--transition-fast);
+.script-card button {
+  background: var(--text-color);
+  color: #000;
+  border: none;
+  padding: 0.3rem 0.7rem;
+  cursor: pointer;
+  border-radius: 4px;
+  font-weight: bold;
+  transition: background 0.3s;
 }
-.button-link:hover, .copy-btn:hover {
-  background:var(--text-color);
-  color:#000;
-  transform: scale(1.05);
+.script-card button:hover {
+  background: #eee;
 }
-.button-link:hover img, .copy-btn:hover img {
-  transform: scale(1.2);
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.8);
 }
-.buttons-container {
-  display:flex;
-  flex-wrap:wrap;
-  gap:0.5rem;
-  max-height:60vh;
-  overflow-y:auto;
+.modal-content {
+  background: #222;
+  color: #fff;
+  margin: 10% auto;
+  padding: 2rem;
+  width: 80%;
+  max-width: 800px;
+  border-radius: 8px;
+  position: relative;
 }
-.overview {
-  background:var(--snippet-bg);
-  padding:1rem;
-  border-radius:4px;
-  position:relative;
-  animation: fadeInBody 0.8s ease-in;
+.modal-content pre {
+  white-space: pre-wrap;
+  word-break: break-word;
 }
-.overview h3 {
-  margin-top:0;
-}
-.overview pre {
-  white-space:pre-wrap;
-  font-family:monospace;
-}
-.overview .feedback {
-  position:absolute;
-  bottom:0.5rem;
-  right:1rem;
-  opacity:0;
-  transition:opacity 0.4s ease;
-}
-.overview .feedback.show {
-  opacity:1;
+.close {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  font-size: 1.5rem;
+  cursor: pointer;
 }
 .squircle {
   width:200px;
@@ -159,7 +158,7 @@ body {
 @keyframes spin {
   to { transform:rotate(360deg); }
 }
-</style>
+  </style>
 </head>
 <body>
   <input type="file" id="bg-input" accept="image/*,video/*" style="display:none">
@@ -176,11 +175,13 @@ body {
     <div class="button-bg">Change Background</div>
     <div class="button-reset">Toggle Background</div>
   </div>
+
   <div align="center">
     <a href="https://discord.com/users/641335879381680129">
       <img src="https://lanyard.cnrad.dev/api/641335879381680129?theme=dark&animated=true" height="150" alt="Discord Presence">
     </a>
   </div>
+
   <div id="Main" class="section active">
     <button class="button-link" onclick="if(confirm('Are you sure?')) window.location.href='https://scriptblox.com/u/Aervanix';"><img src="https://r2.guns.lol/7e671c9b-1689-4d72-a5e5-b972f7d7fb09.png" alt="Scriptblox">Scriptblox</button>
     <button class="button-link" onclick="if(confirm('Are you sure?')) window.location.href='https://rscripts.net/@ltseverydayyou';"><img src="https://r2.guns.lol/b9234319-f7c7-4b19-840e-600a2044d401.png" alt="rscripts">rscripts</button>
@@ -197,31 +198,138 @@ body {
     <button class="button-link" onclick="if(confirm('Are you sure?')) window.location.href='https://www.roblox.com/users/11761417/profile';"><img src="https://cdn.simpleicons.org/roblox" alt="Roblox">9121a63458</button>
   </div>
   <div id="Scripts" class="section">
-    <div class="overview">
-      <h3>Overview</h3>
-      <pre><code id="overview-code">nothing selected</code></pre>
-      <div class="feedback" id="copy-feedback"></div>
+  <div class="overview">
+    <h3>Overview</h3>
+    <pre><code id="overview-code">nothing selected</code></pre>
+    <div class="feedback" id="copy-feedback"></div>
+  </div>
+
+  <div class="buttons-container">
+    <div class="script-card" data-url="https://raw.githubusercontent.com/ltseverydayyou/Nameless-Admin/main/Source.lua">
+      <span>NA Main Version</span>
+      <div>
+        <button class="btn-copy">📋 Copy</button>
+        <button class="btn-view">👁 View</button>
+      </div>
     </div>
-    <div class="buttons-container">
-      <button class="copy-btn" data-copy="loadstring(game:HttpGet('https://raw.githubusercontent.com/ltseverydayyou/Nameless-Admin/main/Source.lua'))();">NA Main Version</button>
-      <button class="copy-btn" data-copy="loadstring(game:HttpGet('https://raw.githubusercontent.com/ltseverydayyou/Nameless-Admin/main/NA%20testing.lua'))();">NA Testing Version</button>
-      <button class="copy-btn" data-copy="loadstring(game:HttpGet('https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/Delulu%20Office.lua'))();">Delusional Office</button>
-      <button class="copy-btn" data-copy="loadstring(game:HttpGet('https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/VirtualKeyboard.lua'))();">Virtual Keyboard</button>
-      <button class="copy-btn" data-copy="loadstring(game:HttpGet('https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/main/Universe%20Viewer'))();">Game Universe Viewer</button>
-      <button class="copy-btn" data-copy="loadstring(game:HttpGet('https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/shiftlock'))();">Mobile Shiftlock</button>
-      <button class="copy-btn" data-copy="loadstring(game:HttpGet('https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/main/the%20rake'))();">The Rake REMASTERED</button>
-      <button class="copy-btn" data-copy="loadstring(game:HttpGet('https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/Be%20Dead%20Forever%20Farm.lua'))();">Be Dead Forever Simulator</button>
-      <button class="copy-btn" data-copy="loadstring(game:HttpGet('https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/mobileBACKPACK.lua'))();">Custom Mobile Backpack</button>
-      <button class="copy-btn" data-copy="loadstring(game:HttpGet('https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/The%20Maze.lua'))();">The Maze</button>
-      <button class="copy-btn" data-copy="loadstring(game:HttpGet('https://raw.githubusercontent.com/ltseverydayyou/endless-doors/main/endless%20madness%20buster', true))();">Endless Doors</button>
-      <button class="copy-btn" data-copy="loadstring(game:HttpGet('https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/main/sky%20ball'))();">Sky Ball</button>
-      <button class="copy-btn" data-copy="loadstring(game:HttpGet('https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/main/pressure%20god.lua'))();">Pressure</button>
-      <button class="copy-btn" data-copy="loadstring(game:HttpGet('https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/main/anime%20ball'))();">Anime Ball</button>
+
+    <div class="script-card" data-url="https://raw.githubusercontent.com/ltseverydayyou/Nameless-Admin/main/NA%20testing.lua">
+      <span>NA Testing Version</span>
+      <div>
+        <button class="btn-copy">📋 Copy</button>
+        <button class="btn-view">👁 View</button>
+      </div>
+    </div>
+
+    <div class="script-card" data-url="https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/Delulu%20Office.lua">
+      <span>Delusional Office</span>
+      <div>
+        <button class="btn-copy">📋 Copy</button>
+        <button class="btn-view">👁 View</button>
+      </div>
+    </div>
+
+    <div class="script-card" data-url="https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/VirtualKeyboard.lua">
+      <span>Virtual Keyboard</span>
+      <div>
+        <button class="btn-copy">📋 Copy</button>
+        <button class="btn-view">👁 View</button>
+      </div>
+    </div>
+
+    <div class="script-card" data-url="https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/main/Universe%20Viewer">
+      <span>Game Universe Viewer</span>
+      <div>
+        <button class="btn-copy">📋 Copy</button>
+        <button class="btn-view">👁 View</button>
+      </div>
+    </div>
+
+    <div class="script-card" data-url="https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/shiftlock">
+      <span>Mobile Shiftlock</span>
+      <div>
+        <button class="btn-copy">📋 Copy</button>
+        <button class="btn-view">👁 View</button>
+      </div>
+    </div>
+
+    <div class="script-card" data-url="https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/main/the%20rake">
+      <span>The Rake REMASTERED</span>
+      <div>
+        <button class="btn-copy">📋 Copy</button>
+        <button class="btn-view">👁 View</button>
+      </div>
+    </div>
+
+    <div class="script-card" data-url="https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/Be%20Dead%20Forever%20Farm.lua">
+      <span>Be Dead Forever Simulator</span>
+      <div>
+        <button class="btn-copy">📋 Copy</button>
+        <button class="btn-view">👁 View</button>
+      </div>
+    </div>
+
+    <div class="script-card" data-url="https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/mobileBACKPACK.lua">
+      <span>Custom Mobile Backpack</span>
+      <div>
+        <button class="btn-copy">📋 Copy</button>
+        <button class="btn-view">👁 View</button>
+      </div>
+    </div>
+
+    <div class="script-card" data-url="https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/The%20Maze.lua">
+      <span>The Maze</span>
+      <div>
+        <button class="btn-copy">📋 Copy</button>
+        <button class="btn-view">👁 View</button>
+      </div>
+    </div>
+
+    <div class="script-card" data-url="https://raw.githubusercontent.com/ltseverydayyou/endless-doors/main/endless%20madness%20buster">
+      <span>Endless Doors</span>
+      <div>
+        <button class="btn-copy">📋 Copy</button>
+        <button class="btn-view">👁 View</button>
+      </div>
+    </div>
+
+    <div class="script-card" data-url="https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/main/sky%20ball">
+      <span>Sky Ball</span>
+      <div>
+        <button class="btn-copy">📋 Copy</button>
+        <button class="btn-view">👁 View</button>
+      </div>
+    </div>
+
+    <div class="script-card" data-url="https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/main/pressure%20god.lua">
+      <span>Pressure</span>
+      <div>
+        <button class="btn-copy">📋 Copy</button>
+        <button class="btn-view">👁 View</button>
+      </div>
+    </div>
+
+    <div class="script-card" data-url="https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/main/anime%20ball">
+      <span>Anime Ball</span>
+      <div>
+        <button class="btn-copy">📋 Copy</button>
+        <button class="btn-view">👁 View</button>
+      </div>
     </div>
   </div>
+
+  <div id="scriptModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <pre><code id="modal-code">Loading...</code></pre>
+    </div>
+  </div>
+</div>
+
   <div id="test" class="section">
     <div class="squircle"><span>viper</span></div>
   </div>
+
   <script>
     document.querySelectorAll('.tab').forEach(tab => {
       if (tab.dataset.tab !== 'test') tab.addEventListener('click', () => {
@@ -231,6 +339,7 @@ body {
         document.getElementById(tab.dataset.tab).classList.add('active');
       });
     });
+
     const bgInput = document.getElementById('bg-input');
     document.querySelector('.button-bg').addEventListener('click', () => bgInput.click());
     bgInput.addEventListener('change', e => {
@@ -244,23 +353,48 @@ body {
       };
       reader.readAsDataURL(file);
     });
+
     document.querySelector('.button-reset').addEventListener('click', () => {
       document.body.style.background = 'var(--default-bg) no-repeat center/cover fixed';
       localStorage.removeItem('customBg');
     });
+
     window.addEventListener('load', () => {
       const saved = localStorage.getItem('customBg');
       if (saved) document.body.style.background = `url(${saved}) no-repeat center/cover fixed`;
     });
-    document.querySelectorAll('.copy-btn').forEach(btn => {
-      btn.addEventListener('mouseenter', () => document.getElementById('overview-code').textContent = btn.dataset.copy);
-      btn.addEventListener('mouseleave', () => document.getElementById('overview-code').textContent = 'nothing selected');
-      btn.addEventListener('click', () => {
-        navigator.clipboard.writeText(btn.dataset.copy);
-        const fb = document.getElementById('copy-feedback');
-        fb.textContent = 'Copied'; fb.classList.add('show');
-        setTimeout(() => fb.classList.remove('show'), 1000);
+
+    document.querySelectorAll('.btn-copy').forEach(btn => {
+      btn.addEventListener('click', e => {
+        const url = e.target.closest('.script-card').dataset.url;
+        const loadstring = `loadstring(game:HttpGet('${url}'))();`;
+        navigator.clipboard.writeText(loadstring);
+        alert('Script copied to clipboard!');
       });
+    });
+
+    document.querySelectorAll('.btn-view').forEach(btn => {
+      btn.addEventListener('click', e => {
+        const url = e.target.closest('.script-card').dataset.url;
+        const modal = document.getElementById('scriptModal');
+        const codeEl = document.getElementById('modal-code');
+        codeEl.textContent = 'Loading...';
+        modal.style.display = 'block';
+        fetch(url).then(res => res.text()).then(data => {
+          codeEl.textContent = data;
+        }).catch(() => {
+          codeEl.textContent = 'Failed to load script.';
+        });
+      });
+    });
+
+    document.querySelector('.close').addEventListener('click', () => {
+      document.getElementById('scriptModal').style.display = 'none';
+    });
+
+    window.addEventListener('click', e => {
+      const modal = document.getElementById('scriptModal');
+      if (e.target === modal) modal.style.display = 'none';
     });
   </script>
 </body>
