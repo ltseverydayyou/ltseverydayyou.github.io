@@ -5,40 +5,160 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Aervanix's Domain</title>
   <style>
-html, body { height:100%; margin:0; padding:0; }
+html, body { height:100%; margin:0; padding:0; scroll-behavior: smooth; }
 :root {
   --text-color: #fff;
   --card-bg: rgba(0,0,0,0.6);
   --snippet-bg: rgba(255,255,255,0.1);
   --default-bg: conic-gradient(from 0deg, #000, #555, #000);
+  --transition-fast: 0.2s ease;
+  --transition-slow: 0.6s ease;
 }
 body {
   color: var(--text-color);
-  font-family: sans-serif;
+  font-family: 'Segoe UI', sans-serif;
   background: var(--default-bg) no-repeat center/cover fixed;
+  animation: fadeInBody var(--transition-slow) both;
 }
-.topbar { display:flex; align-items:center; padding:1rem; }
+@keyframes fadeInBody {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.topbar { display:flex; align-items:center; padding:1rem; animation: fadeInBody 0.8s ease-in; }
 .tabs { display:flex; gap:0.5rem; }
-.tab { padding:0.5rem 1rem; background:var(--card-bg); color:var(--text-color); border:2px solid var(--text-color); border-radius:30%; cursor:default; transition:0.2s; }
-.tab.active { background:var(--text-color); color:#000; }
-.tab:hover:not([data-tab="test"]) { background:var(--text-color); color:#000; }
-.tab[data-tab="test"] { opacity:0.5; pointer-events:none; }
-.title { flex:1; text-align:center; font-size:1.5rem; display:flex; align-items:center; justify-content:center; }
-.button-bg, .button-reset { margin-left:1rem; padding:0.5rem 1rem; background:var(--card-bg); color:var(--text-color); border:2px solid var(--text-color); border-radius:30%; cursor:pointer; transition:0.2s; }
-.section { display:none; padding:2rem; }
-.section.active { display:block; }
-.button-link, .copy-btn { display:inline-flex; align-items:center; gap:0.5rem; margin:0.5rem; padding:0.5rem 1rem; background:var(--card-bg); color:var(--text-color); border:1px solid var(--text-color); border-radius:4px; cursor:pointer; transition:0.2s; }
-.button-link img, .copy-btn img { width:24px; height:24px; }
-.button-link:hover, .copy-btn:hover { background:var(--text-color); color:#000; }
-.buttons-container { display:flex; flex-wrap:wrap; gap:0.5rem; max-height:60vh; overflow-y:auto; }
-.overview { background:var(--snippet-bg); padding:1rem; border-radius:4px; position:relative; }
-.overview h3 { margin-top:0; }
-.overview pre { white-space:pre-wrap; font-family:monospace; }
-.overview .feedback { position:absolute; bottom:0.5rem; right:1rem; opacity:0; transition:0.3s; }
-.overview .feedback.show { opacity:1; }
-.squircle { width:200px; height:200px; background:var(--card-bg); border:2px solid var(--text-color); border-radius:30%; display:flex; justify-content:center; align-items:center; transition:transform 0.3s; cursor:pointer; }
-#test .squircle:hover { animation:spin 1s linear infinite; }
-@keyframes spin { to { transform:rotate(360deg); } }
+.tab {
+  padding:0.5rem 1rem;
+  background:var(--card-bg);
+  color:var(--text-color);
+  border:2px solid var(--text-color);
+  border-radius:30%;
+  cursor:default;
+  transition: background var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
+}
+.tab.active {
+  background:var(--text-color);
+  color:#000;
+  transform: scale(1.05);
+}
+.tab:hover:not([data-tab="test"]) {
+  background:var(--text-color);
+  color:#000;
+  transform: scale(1.1);
+}
+.tab[data-tab="test"] {
+  opacity:0.5;
+  pointer-events:none;
+}
+.title {
+  flex:1;
+  text-align:center;
+  font-size:1.5rem;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.button-bg, .button-reset {
+  margin-left:1rem;
+  padding:0.5rem 1rem;
+  background:var(--card-bg);
+  color:var(--text-color);
+  border:2px solid var(--text-color);
+  border-radius:30%;
+  cursor:pointer;
+  transition: all var(--transition-fast);
+}
+.button-bg:hover, .button-reset:hover {
+  background:var(--text-color);
+  color:#000;
+  transform: scale(1.05);
+}
+.section {
+  display:none;
+  padding:2rem;
+  opacity:0;
+  transform: translateY(10px);
+  transition: all var(--transition-slow);
+}
+.section.active {
+  display:block;
+  opacity:1;
+  transform: translateY(0);
+}
+.button-link, .copy-btn {
+  display:inline-flex;
+  align-items:center;
+  gap:0.5rem;
+  margin:0.5rem;
+  padding:0.5rem 1rem;
+  background:var(--card-bg);
+  color:var(--text-color);
+  border:1px solid var(--text-color);
+  border-radius:4px;
+  cursor:pointer;
+  transition: all var(--transition-fast);
+}
+.button-link img, .copy-btn img {
+  width:24px;
+  height:24px;
+  transition: transform var(--transition-fast);
+}
+.button-link:hover, .copy-btn:hover {
+  background:var(--text-color);
+  color:#000;
+  transform: scale(1.05);
+}
+.button-link:hover img, .copy-btn:hover img {
+  transform: scale(1.2);
+}
+.buttons-container {
+  display:flex;
+  flex-wrap:wrap;
+  gap:0.5rem;
+  max-height:60vh;
+  overflow-y:auto;
+}
+.overview {
+  background:var(--snippet-bg);
+  padding:1rem;
+  border-radius:4px;
+  position:relative;
+  animation: fadeInBody 0.8s ease-in;
+}
+.overview h3 {
+  margin-top:0;
+}
+.overview pre {
+  white-space:pre-wrap;
+  font-family:monospace;
+}
+.overview .feedback {
+  position:absolute;
+  bottom:0.5rem;
+  right:1rem;
+  opacity:0;
+  transition:opacity 0.4s ease;
+}
+.overview .feedback.show {
+  opacity:1;
+}
+.squircle {
+  width:200px;
+  height:200px;
+  background:var(--card-bg);
+  border:2px solid var(--text-color);
+  border-radius:30%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  transition:transform 0.3s ease;
+  cursor:pointer;
+}
+#test .squircle:hover {
+  animation:spin 1s linear infinite;
+}
+@keyframes spin {
+  to { transform:rotate(360deg); }
+}
 </style>
 </head>
 <body>
