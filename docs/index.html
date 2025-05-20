@@ -67,6 +67,35 @@ body {
   cursor:pointer;
   transition: all var(--transition-fast);
 }
+.button-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: var(--card-bg);
+  border: 1px solid var(--text-color);
+  color: var(--text-color);
+  border-radius: 4px;
+  margin: 0.5rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.button-link:hover {
+  background: var(--text-color);
+  color: #000;
+  transform: scale(1.05);
+}
+.button-link img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  border-radius: 4px;
+  transition: transform 0.3s ease;
+}
+.button-link:hover img {
+  transform: scale(1.2);
+}
 .button-bg:hover, .button-reset:hover {
   background:var(--text-color);
   color:#000;
@@ -198,11 +227,6 @@ body {
     <button class="button-link" onclick="if(confirm('Are you sure?')) window.location.href='https://www.roblox.com/users/11761417/profile';"><img src="https://cdn.simpleicons.org/roblox" alt="Roblox">9121a63458</button>
   </div>
   <div id="Scripts" class="section">
-  <div class="overview">
-    <h3>Overview</h3>
-    <pre><code id="overview-code">nothing selected</code></pre>
-    <div class="feedback" id="copy-feedback"></div>
-  </div>
 
   <div class="buttons-container">
     <div class="script-card" data-url="https://raw.githubusercontent.com/ltseverydayyou/Nameless-Admin/main/Source.lua">
