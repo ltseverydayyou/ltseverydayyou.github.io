@@ -4,6 +4,7 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Aervanix’s Domain</title>
+<link rel="icon" href="https://avatars.githubusercontent.com/u/117316014?v=4"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-lua.min.js"></script>
@@ -16,206 +17,233 @@
   --accent: #90e0ef;
   --transition: 0.4s ease-in-out;
 }
-* { box-sizing: border-box; }
+* { box-sizing: border-box; margin:0; padding:0; }
 body {
-  margin: 0;
-  padding: 0;
-  min-height: 100vh;
-  font-family: 'Segoe UI', sans-serif;
-  color: var(--text-main);
-  background: var(--bg-gradient) fixed;
-  display: flex;
-  flex-direction: column;
+  min-height:100vh;
+  font-family:'Segoe UI',sans-serif;
+  color:var(--text-main);
+  background:var(--bg-gradient) fixed;
+  display:flex;
+  flex-direction:column;
 }
-a { text-decoration: none; color: inherit; }
 .topbar {
-  display: flex;
-  align-items: center;
-  padding: 1rem 2rem;
-  backdrop-filter: blur(10px);
-  background: var(--glass-bg);
-  border-bottom: 1px solid var(--glass-border);
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  align-items:center;
+  padding:1rem 2rem;
+  backdrop-filter:blur(10px);
+  background:var(--glass-bg);
+  border-bottom:1px solid var(--glass-border);
 }
-.tabs { display: flex; gap: 1rem; }
+.tabs { display:flex; gap:1rem; }
 .tab {
-  padding: .5rem 1rem;
-  border-radius: 1rem;
-  border: 2px solid transparent;
-  cursor: pointer;
-  transition: var(--transition);
-  font-weight: 600;
+  padding:.5rem 1rem;
+  border-radius:1rem;
+  border:2px solid transparent;
+  cursor:pointer;
+  transition:var(--transition);
+  font-weight:600;
 }
 .tab.active, .tab:hover {
-  background: var(--accent);
-  color: #0d1b2a;
-  border-color: var(--accent);
-  transform: scale(1.1);
+  background:var(--accent);
+  color:#0d1b2a;
+  border-color:var(--accent);
+  transform:scale(1.1);
 }
 .title {
-  flex: 1;
-  text-align: center;
-  font-size: 1.5rem;
-  font-weight: bold;
+  text-align:center;
+  font-size:1.5rem;
+  font-weight:bold;
 }
 .avatar {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  margin-left: 1rem;
-  transition: transform var(--transition);
+  width:32px;
+  height:32px;
+  border-radius:50%;
+  transition:transform var(--transition);
 }
-.avatar:hover { transform: scale(1.1); }
+.avatar:hover { transform:scale(1.1); }
+.presence {
+  text-align:center;
+  padding-top:1rem;
+}
 .section {
-  display: none;
-  opacity: 0;
-  transform: translateY(10px);
-  transition: opacity var(--transition), transform var(--transition);
+  display:none;
+  opacity:0;
+  transform:translateY(10px);
+  transition:opacity var(--transition), transform var(--transition);
 }
 .section.active {
-  display: block;
-  opacity: 1;
-  transform: translateY(0);
+  display:block;
+  opacity:1;
+  transform:translateY(0);
 }
+details.dropdown {
+  background:var(--glass-bg);
+  border:1px solid var(--glass-border);
+  border-radius:.75rem;
+  padding:1rem;
+  max-width:1200px;
+  width:90%;
+  margin:2rem auto;
+}
+details.dropdown summary {
+  font-size:1.25rem;
+  font-weight:600;
+  cursor:pointer;
+  list-style:none;
+}
+details.dropdown summary::-webkit-details-marker { display:none; }
+details[open] summary::after { content:'▲'; float:right; }
+details summary::after { content:'▼'; float:right; }
 .links-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(100px,1fr));
-  gap: 1.5rem;
-  padding: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
-  justify-items: center;
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(100px,1fr));
+  gap:1.5rem;
+  margin-top:1rem;
 }
 .link-squircle {
-  width: 96px;
-  height: 96px;
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
-  border-radius: 30%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: .5rem;
-  transition: var(--transition);
+  width:96px;
+  height:96px;
+  background:var(--glass-bg);
+  border:1px solid var(--glass-border);
+  border-radius:30%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:.5rem;
+  transition:var(--transition);
 }
 .link-squircle img {
-  width: 40px;
-  height: 40px;
-  margin-bottom: .5rem;
+  width:40px;
+  height:40px;
+  margin-bottom:.5rem;
 }
 .link-squircle span {
-  font-size: .85rem;
-  text-align: center;
+  font-size:.85rem;
+  text-align:center;
 }
 .link-squircle:hover {
-  background: rgba(255,255,255,0.1);
-  border-color: var(--accent);
-  transform: translateY(-5px) scale(1.05);
+  background:rgba(255,255,255,0.1);
+  border-color:var(--accent);
+  transform:translateY(-5px) scale(1.05);
 }
 .script-card {
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
-  padding: 1rem;
-  border-radius: .75rem;
-  margin: 1rem auto;
-  max-width: 600px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
-  transition: transform var(--transition), box-shadow var(--transition);
+  background:var(--glass-bg);
+  border:1px solid var(--glass-border);
+  padding:1rem;
+  border-radius:.75rem;
+  max-width:600px;
+  margin:1rem auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:1rem;
+  transition:transform var(--transition), box-shadow var(--transition);
 }
 .script-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  transform:translateY(-3px);
+  box-shadow:0 8px 20px rgba(0,0,0,0.2);
 }
 .script-card button {
-  background: var(--accent);
-  color: #0d1b2a;
-  border: none;
-  padding: .5rem 1rem;
-  border-radius: .5rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background var(--transition), transform var(--transition);
+  background:var(--accent);
+  color:#0d1b2a;
+  border:none;
+  padding:.5rem 1rem;
+  border-radius:.5rem;
+  font-weight:600;
+  cursor:pointer;
+  transition:background var(--transition), transform var(--transition);
 }
 .script-card button:hover {
-  background: #fff;
-  transform: scale(1.05);
+  background:#fff;
+  transform:scale(1.05);
 }
 .modal {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.8);
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transition: opacity var(--transition);
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.8);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  opacity:0;
+  transition:opacity var(--transition);
 }
 .modal.show {
-  display: flex;
-  opacity: 1;
+  display:flex;
+  opacity:1;
 }
 .modal-content {
-  background: #1b263b;
-  color: var(--text-main);
-  padding: 2rem;
-  border-radius: 1rem;
-  max-width: 800px;
-  width: 90%;
-  position: relative;
-  animation: scaleIn var(--transition);
+  background:#1b263b;
+  color:var(--text-main);
+  padding:2rem;
+  border-radius:1rem;
+  max-width:800px;
+  width:90%;
+  position:relative;
+  animation:scaleIn var(--transition);
 }
 @keyframes scaleIn {
-  from { opacity: 0; transform: scale(0.95); }
-  to { opacity: 1; transform: scale(1); }
+  from { opacity:0; transform:scale(0.95); }
+  to { opacity:1; transform:scale(1); }
 }
 .close {
-  position: absolute;
-  top: 1rem;
-  right: 1.5rem;
-  font-size: 1.5rem;
-  cursor: pointer;
+  position:absolute;
+  top:1rem;
+  right:1.5rem;
+  font-size:1.5rem;
+  cursor:pointer;
+}
+.preview-container {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:1rem;
+  margin:2rem auto;
+  max-width:800px;
+  width:90%;
 }
 textarea {
-  width: 90%;
-  max-width: 800px;
-  padding: 1rem;
-  font-family: monospace;
-  font-size: 1rem;
-  border-radius: .5rem;
-  border: 1px solid var(--glass-border);
-  background: var(--glass-bg);
-  color: var(--text-main);
+  width:100%;
+  padding:1rem;
+  font-family:monospace;
+  font-size:1rem;
+  border-radius:.5rem;
+  border:1px solid var(--glass-border);
+  background:var(--glass-bg);
+  color:var(--text-main);
+}
+.button-group {
+  display:flex;
+  gap:1rem;
 }
 button.primary, button.secondary {
-  border: none;
-  border-radius: .5rem;
-  padding: .5rem 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: var(--transition);
+  border:none;
+  border-radius:.5rem;
+  padding:.5rem 1rem;
+  font-weight:600;
+  cursor:pointer;
+  transition:var(--transition);
 }
 button.primary:hover, button.secondary:hover {
-  transform: scale(1.05);
+  transform:scale(1.05);
 }
-button.primary { background: #fff; color: #0d1b2a; }
-button.secondary { background: #90ee90; color: #0d1b2a; }
+button.primary { background:#fff; color:#0d1b2a; }
+button.secondary { background:#90ee90; color:#0d1b2a; }
 pre {
-  background: #1e1e1e;
-  color: #fff;
-  padding: 1rem;
-  border-radius: .5rem;
-  overflow: auto;
+  width:100%;
+  background:#1e1e1e;
+  color:#fff;
+  padding:1rem;
+  border-radius:.5rem;
+  overflow:auto;
 }
 iframe {
-  width: 90%;
-  max-width: 800px;
-  height: 300px;
-  border: 1px solid var(--glass-border);
-  border-radius: .5rem;
-  background: #fff;
+  width:100%;
+  height:300px;
+  border:1px solid var(--glass-border);
+  border-radius:.5rem;
+  background:#fff;
 }
 </style>
 </head>
@@ -231,43 +259,46 @@ iframe {
     <img src="https://avatars.githubusercontent.com/u/117316014?v=4" alt="Avatar" class="avatar"/>
   </div>
 
-  <div style="text-align:center;padding-top:1rem">
+  <div class="presence">
     <a href="https://discord.com/users/641335879381680129" target="_blank">
       <img src="https://lanyard.cnrad.dev/api/641335879381680129?theme=dark&animated=true" alt="Discord Presence" height="150"/>
     </a>
   </div>
 
   <div id="main" class="section active">
-    <div class="links-grid">
-      <a class="link-squircle" href="https://scriptblox.com/u/Aervanix" target="_blank">
-        <img src="https://r2.guns.lol/7e671c9b-1689-4d72-a5e5-b972f7d7fb09.png" alt="Scriptblox"/>
-        <span>Scriptblox</span>
-      </a>
-      <a class="link-squircle" href="https://rscripts.net/@ltseverydayyou" target="_blank">
-        <img src="https://r2.guns.lol/b9234319-f7c7-4b19-840e-600a2044d401.png" alt="rscripts"/>
-        <span>rscripts</span>
-      </a>
-      <a class="link-squircle" href="https://discord.com/invite/zzjYhtMGFD" target="_blank">
-        <img src="https://cdn.simpleicons.org/discord" alt="Discord"/>
-        <span>Discord</span>
-      </a>
-      <a class="link-squircle" href="https://guns.lol/ltseverydayyou" target="_blank">
-        <img src="https://assets.guns.lol/guns_logo_no_background_cropped.png" alt="Guns.lol"/>
-        <span>guns.lol</span>
-      </a>
-      <a class="link-squircle" href="https://github.com/ltseverydayyou" target="_blank">
-        <img src="https://cdn.simpleicons.org/github" alt="GitHub"/>
-        <span>GitHub</span>
-      </a>
-      <a class="link-squircle" href="https://open.spotify.com/user/316a6txgaro3ethw6pochw3uripy" target="_blank">
-        <img src="https://cdn.simpleicons.org/spotify" alt="Spotify"/>
-        <span>Spotify</span>
-      </a>
-      <a class="link-squircle" href="https://steamcommunity.com/id/ltseverydayyou" target="_blank">
-        <img src="https://cdn.simpleicons.org/steam" alt="Steam"/>
-        <span>Steam</span>
-      </a>
-    </div>
+    <details class="dropdown" open>
+      <summary>Links</summary>
+      <div class="links-grid">
+        <a class="link-squircle" href="https://scriptblox.com/u/Aervanix" target="_blank">
+          <img src="https://r2.guns.lol/7e671c9b-1689-4d72-a5e5-b972f7d7fb09.png" alt="Scriptblox"/>
+          <span>Scriptblox</span>
+        </a>
+        <a class="link-squircle" href="https://rscripts.net/@ltseverydayyou" target="_blank">
+          <img src="https://r2.guns.lol/b9234319-f7c7-4b19-840e-600a2044d401.png" alt="rscripts"/>
+          <span>rscripts</span>
+        </a>
+        <a class="link-squircle" href="https://discord.com/invite/zzjYhtMGFD" target="_blank">
+          <img src="https://cdn.simpleicons.org/discord" alt="Discord"/>
+          <span>Discord</span>
+        </a>
+        <a class="link-squircle" href="https://guns.lol/ltseverydayyou" target="_blank">
+          <img src="https://assets.guns.lol/guns_logo_no_background_cropped.png" alt="Guns.lol"/>
+          <span>guns.lol</span>
+        </a>
+        <a class="link-squircle" href="https://github.com/ltseverydayyou" target="_blank">
+          <img src="https://cdn.simpleicons.org/github" alt="GitHub"/>
+          <span>GitHub</span>
+        </a>
+        <a class="link-squircle" href="https://open.spotify.com/user/316a6txgaro3ethw6pochw3uripy" target="_blank">
+          <img src="https://cdn.simpleicons.org/spotify" alt="Spotify"/>
+          <span>Spotify</span>
+        </a>
+        <a class="link-squircle" href="https://steamcommunity.com/id/ltseverydayyou" target="_blank">
+          <img src="https://cdn.simpleicons.org/steam" alt="Steam"/>
+          <span>Steam</span>
+        </a>
+      </div>
+    </details>
   </div>
 
   <div id="scripts" class="section">
@@ -344,21 +375,25 @@ iframe {
 
   <div id="lua" class="section">
     <h2 style="text-align:center;">Lua Syntax Preview</h2>
-    <textarea id="lua-input" placeholder="Paste Lua code here..."></textarea>
-    <div style="display:flex;gap:1rem;justify-content:center;padding:1rem 0">
-      <button class="primary" onclick="updateLuaPreview()">Highlight</button>
-      <button class="secondary" onclick="beautifyLua()">Beautify</button>
+    <div class="preview-container">
+      <textarea id="lua-input" placeholder="Paste Lua code here..."></textarea>
+      <div class="button-group">
+        <button class="primary" onclick="updateLuaPreview()">Highlight</button>
+        <button class="secondary" onclick="beautifyLua()">Beautify</button>
+      </div>
+      <pre><code id="lua-output" class="language-lua">-- Highlighted code will appear here</code></pre>
     </div>
-    <pre><code id="lua-output" class="language-lua">-- Highlighted code will appear here</code></pre>
   </div>
 
   <div id="html" class="section">
     <h2 style="text-align:center;">HTML Live Preview</h2>
-    <textarea id="html-input" placeholder="Paste HTML here..."></textarea>
-    <div style="text-align:center;padding:1rem 0">
-      <button class="primary" onclick="updatePreview()">Render</button>
+    <div class="preview-container">
+      <textarea id="html-input" placeholder="Paste HTML here..."></textarea>
+      <div class="button-group">
+        <button class="primary" onclick="updatePreview()">Render</button>
+      </div>
+      <iframe id="html-output"></iframe>
     </div>
-    <iframe id="html-output"></iframe>
   </div>
 
 <script>
