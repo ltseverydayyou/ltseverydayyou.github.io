@@ -1,477 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Aervanix’s Domain</title>
-<link rel="icon" href="https://avatars.githubusercontent.com/u/117316014?v=4"/>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css"/>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-lua.min.js"></script>
-<style>
-:root {
-  --bg-gradient: linear-gradient(135deg,#0d1b2a,#1b263b);
-  --glass-bg: rgba(255,255,255,0.05);
-  --glass-border: rgba(255,255,255,0.15);
-  --text-main: #e0e1dd;
-  --accent: #90e0ef;
-  --transition: 0.4s ease-in-out;
-}
-* { box-sizing: border-box; margin:0; padding:0; }
-body {
-  min-height:100vh;
-  font-family:'Segoe UI',sans-serif;
-  color:var(--text-main);
-  background:var(--bg-gradient) fixed;
-  display:flex;
-  flex-direction:column;
-}
-.topbar {
-  display:grid;
-  grid-template-columns:auto 1fr auto;
-  align-items:center;
-  padding:1rem 2rem;
-  backdrop-filter:blur(10px);
-  background:var(--glass-bg);
-  border-bottom:1px solid var(--glass-border);
-}
-.tabs { display:flex; gap:1rem; }
-.tab {
-  padding:.5rem 1rem;
-  border-radius:1rem;
-  border:2px solid transparent;
-  cursor:pointer;
-  transition:var(--transition);
-  font-weight:600;
-}
-.tab.active, .tab:hover {
-  background:var(--accent);
-  color:#0d1b2a;
-  border-color:var(--accent);
-  transform:scale(1.1);
-}
-.title {
-  text-align:center;
-  font-size:1.5rem;
-  font-weight:bold;
-}
-.avatar {
-  width:32px;
-  height:32px;
-  border-radius:50%;
-  transition:transform var(--transition);
-}
-.avatar:hover { transform:scale(1.1); }
-.presence {
-  text-align:center;
-  padding-top:1rem;
-}
-.section {
-  display:none;
-  opacity:0;
-  transform:translateY(10px);
-  transition:opacity var(--transition), transform var(--transition);
-}
-.section.active {
-  display:block;
-  opacity:1;
-  transform:translateY(0);
-}
-details.dropdown {
-  background:var(--glass-bg);
-  border:1px solid var(--glass-border);
-  border-radius:.75rem;
-  padding:1rem;
-  max-width:1200px;
-  width:90%;
-  margin:2rem auto;
-}
-details.dropdown summary {
-  font-size:1.25rem;
-  font-weight:600;
-  cursor:pointer;
-  list-style:none;
-}
-details.dropdown summary::-webkit-details-marker { display:none; }
-details[open] summary::after { content:'▲'; float:right; }
-details summary::after { content:'▼'; float:right; }
-.links-grid {
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(100px,1fr));
-  gap:1.5rem;
-  margin-top:1rem;
-}
-.link-squircle {
-  width:96px;
-  height:96px;
-  background:var(--glass-bg);
-  border:1px solid var(--glass-border);
-  border-radius:30%;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  padding:.5rem;
-  transition:var(--transition);
-}
-.link-squircle img {
-  width:40px;
-  height:40px;
-  margin-bottom:.5rem;
-}
-.link-squircle span {
-  font-size:.85rem;
-  text-align:center;
-}
-.link-squircle:hover {
-  background:rgba(255,255,255,0.1);
-  border-color:var(--accent);
-  transform:translateY(-5px) scale(1.05);
-}
-.script-card {
-  background:var(--glass-bg);
-  border:1px solid var(--glass-border);
-  padding:1rem;
-  border-radius:.75rem;
-  max-width:600px;
-  margin:1rem auto;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:1rem;
-  transition:transform var(--transition), box-shadow var(--transition);
-}
-.script-card:hover {
-  transform:translateY(-3px);
-  box-shadow:0 8px 20px rgba(0,0,0,0.2);
-}
-.script-card button {
-  background:var(--accent);
-  color:#0d1b2a;
-  border:none;
-  padding:.5rem 1rem;
-  border-radius:.5rem;
-  font-weight:600;
-  cursor:pointer;
-  transition:background var(--transition), transform var(--transition);
-}
-.script-card button:hover {
-  background:#fff;
-  transform:scale(1.05);
-}
-.modal {
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,0.8);
-  display:none;
-  align-items:center;
-  justify-content:center;
-  opacity:0;
-  transition:opacity var(--transition);
-}
-.modal.show {
-  display:flex;
-  opacity:1;
-}
-.modal-content {
-  background:#1b263b;
-  color:var(--text-main);
-  padding:2rem;
-  border-radius:1rem;
-  max-width:800px;
-  width:90%;
-  position:relative;
-  animation:scaleIn var(--transition);
-}
-@keyframes scaleIn {
-  from { opacity:0; transform:scale(0.95); }
-  to { opacity:1; transform:scale(1); }
-}
-.close {
-  position:absolute;
-  top:1rem;
-  right:1.5rem;
-  font-size:1.5rem;
-  cursor:pointer;
-}
-.preview-container {
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:1rem;
-  margin:2rem auto;
-  max-width:800px;
-  width:90%;
-}
-textarea {
-  width:100%;
-  padding:1rem;
-  font-family:monospace;
-  font-size:1rem;
-  border-radius:.5rem;
-  border:1px solid var(--glass-border);
-  background:var(--glass-bg);
-  color:var(--text-main);
-}
-.button-group {
-  display:flex;
-  gap:1rem;
-}
-button.primary, button.secondary {
-  border:none;
-  border-radius:.5rem;
-  padding:.5rem 1rem;
-  font-weight:600;
-  cursor:pointer;
-  transition:var(--transition);
-}
-button.primary:hover, button.secondary:hover {
-  transform:scale(1.05);
-}
-button.primary { background:#fff; color:#0d1b2a; }
-button.secondary { background:#90ee90; color:#0d1b2a; }
-pre {
-  width:100%;
-  background:#1e1e1e;
-  color:#fff;
-  padding:1rem;
-  border-radius:.5rem;
-  overflow:auto;
-}
-iframe {
-  width:100%;
-  height:300px;
-  border:1px solid var(--glass-border);
-  border-radius:.5rem;
-  background:#fff;
-}
-</style>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Aervanix’s Domain</title>
+  <link rel="icon" href="https://avatars.githubusercontent.com/u/117316014?v=4"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-lua.min.js"></script>
+  <style>
+    :root {
+      --sidebar-w: 160px;
+      --bg-grad: linear-gradient(135deg,#0d1b2a,#1b263b);
+      --glass: rgba(255,255,255,0.05);
+      --border: rgba(255,255,255,0.15);
+      --text: #e0e1dd;
+      --accent: #90e0ef;
+      --trans: 0.4s ease-in-out;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{display:flex;min-height:100vh;font-family:'Segoe UI',sans-serif;color:var(--text);background:var(--bg-grad) fixed}
+    .sidebar{position:fixed;top:0;left:0;bottom:0;width:var(--sidebar-w);background:var(--glass);border-right:1px solid var(--border);backdrop-filter:blur(10px);display:flex;flex-direction:column;align-items:center;padding-top:2rem;gap:1rem;z-index:100}
+    .sidebar .tab{width:100%;text-align:center;padding:.75rem 1rem;border-radius:.5rem;cursor:pointer;transition:background var(--trans),transform var(--trans)}
+    .sidebar .tab:hover{background:rgba(255,255,255,0.1);transform:scale(1.05)}
+    .sidebar .tab.active{background:var(--accent);color:#0d1b2a}
+    .container{margin-left:var(--sidebar-w);flex:1;display:flex;flex-direction:column}
+    .topbar{height:4rem;backdrop-filter:blur(10px);background:var(--glass);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:center;position:relative}
+    .title{font-size:1.5rem;font-weight:bold;animation:rainbow 4s linear infinite}
+    @keyframes rainbow{0%,100%{color:#ff0000}16%{color:#ff7f00}33%{color:#ffff00}50%{color:#00ff00}66%{color:#0000ff}83%{color:#4b0082}}
+    .avatar{position:absolute;right:1rem;width:32px;height:32px;border-radius:50%;cursor:pointer;transition:transform var(--trans)}
+    .avatar:hover{transform:scale(1.1)}
+    .avatar-dropdown{position:absolute;top:4rem;right:1rem;background:var(--glass);border:1px solid var(--border);border-radius:.5rem;padding:.5rem 1rem;white-space:nowrap;opacity:0;transform:translateY(-10px);transition:opacity var(--trans),transform var(--trans)}
+    .avatar-dropdown.show{opacity:1;transform:translateY(0)}
+    .presence{text-align:center;margin:1rem 0}
+    .section{padding:1rem;max-height:0;opacity:0;overflow:hidden;transform:translateY(20px);transition:opacity var(--trans),transform var(--trans),max-height var(--trans)}
+    .section.active{max-height:2000px;opacity:1;transform:translateY(0)}
+    .link-group{margin:2rem auto;width:90%;max-width:1200px}
+    .link-group h3{font-size:1.25rem;margin-bottom:1rem;color:var(--accent)}
+    .links-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:1.5rem}
+    .link-squircle{background:var(--glass);border:1px solid var(--border);border-radius:30%;width:96px;height:96px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:.5rem;transition:transform var(--trans),border-color var(--trans)}
+    .link-squircle img{width:40px;height:40px;margin-bottom:.5rem}
+    .link-squircle span{font-size:.85rem;text-align:center}
+    .link-squircle:hover{transform:translateY(-5px) scale(1.05);border-color:var(--accent)}
+    .script-card{background:var(--glass);border:1px solid var(--border);padding:1rem;border-radius:.75rem;max-width:600px;margin:1rem auto;display:flex;justify-content:space-between;align-items:center;gap:1rem;transition:transform var(--trans),box-shadow var(--trans)}
+    .script-card:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,0,0,0.2)}
+    .script-card button{background:var(--accent);color:#0d1b2a;border:none;padding:.5rem 1rem;border-radius:.5rem;font-weight:600;cursor:pointer;transition:transform var(--trans),background var(--trans)}
+    .script-card button:hover{transform:scale(1.05);background:#fff}
+    .modal{position:fixed;inset:0;background:rgba(0,0,0,0.8);display:none;align-items:center;justify-content:center;opacity:0;transition:opacity var(--trans)}
+    .modal.show{display:flex;opacity:1}
+    .modal-content{background:#1b263b;color:var(--text);padding:2rem;border-radius:1rem;max-width:800px;width:90%;max-height:90vh;overflow-y:auto;position:relative;animation:scaleIn var(--trans)}
+    @keyframes scaleIn{from{opacity:0;transform:scale(0.95)}to{opacity:1;transform:scale(1)}}
+    .close{position:absolute;top:1rem;right:1.5rem;font-size:1.5rem;cursor:pointer}
+    .preview-container{display:flex;flex-direction:column;align-items:center;gap:1rem;margin:2rem auto;max-width:800px;width:90%}
+    textarea{width:100%;padding:1rem;font-family:monospace;font-size:1rem;border-radius:.5rem;border:1px solid var(--border);background:var(--glass);color:var(--text)}
+    .button-group{display:flex;gap:1rem}
+    button.primary,button.secondary{border:none;border-radius:.5rem;padding:.5rem 1rem;font-weight:600;cursor:pointer;transition:transform var(--trans)}
+    button.primary:hover,button.secondary:hover{transform:scale(1.05)}
+    button.primary{background:#fff;color:#0d1b2a}
+    button.secondary{background:#90ee90;color:#0d1b2a}
+    pre{width:100%;background:#1e1e1e;color:#fff;padding:1rem;border-radius:.5rem;overflow:auto}
+    iframe{width:100%;height:300px;border:1px solid var(--border);border-radius:.5rem;background:#fff}
+  </style>
 </head>
 <body>
-  <div class="topbar">
-    <div class="tabs">
-      <div class="tab active" data-tab="main">Home</div>
-      <div class="tab" data-tab="scripts">Scripts</div>
-      <div class="tab" data-tab="lua">Lua Preview</div>
-      <div class="tab" data-tab="html">HTML Preview</div>
+  <nav class="sidebar">
+    <div class="tab active" data-tab="main">Home</div>
+    <div class="tab" data-tab="scripts">Scripts</div>
+    <div class="tab" data-tab="lua">Lua Preview</div>
+    <div class="tab" data-tab="html">HTML Preview</div>
+  </nav>
+  <div class="container">
+    <header class="topbar">
+      <div class="title">Aervanix’s Domain</div>
+      <img id="avatar" src="https://avatars.githubusercontent.com/u/117316014?v=4" class="avatar" alt="Avatar"/>
+      <div id="avatar-dropdown" class="avatar-dropdown"></div>
+    </header>
+    <div class="presence">
+      <a href="https://discord.com/users/641335879381680129" target="_blank">
+        <img src="https://lanyard.cnrad.dev/api/641335879381680129?theme=dark&animated=true"
+             alt="Discord Presence" height="150"/>
+      </a>
     </div>
-    <div class="title">Aervanix’s Domain</div>
-    <img src="https://avatars.githubusercontent.com/u/117316014?v=4" alt="Avatar" class="avatar"/>
+    <section id="main" class="section active">
+      <div class="link-group">
+        <h3>Socials</h3>
+        <div id="social-links" class="links-grid"></div>
+      </div>
+      <div class="link-group">
+        <h3>Roblox</h3>
+        <div id="roblox-links" class="links-grid"></div>
+      </div>
+    </section>
+    <section id="scripts" class="section">
+      <div class="script-card" data-url="https://raw.githubusercontent.com/ltseverydayyou/Nameless-Admin/main/Source.lua">
+        <span>NA Main Version</span><div><button class="btn-copy">Copy</button><button class="btn-view">View</button></div>
+      </div>
+      <div class="script-card" data-url="https://raw.githubusercontent.com/ltseverydayyou/Nameless-Admin/main/NA%20testing.lua">
+        <span>NA Testing Version</span><div><button class="btn-copy">Copy</button><button class="btn-view">View</button></div>
+      </div>
+      <div class="script-card" data-url="https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/Delulu%20Office.lua">
+        <span>Delusional Office</span><div><button class="btn-copy">Copy</button><button class="btn-view">View</button></div>
+      </div>
+      <div class="script-card" data-url="https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/VirtualKeyboard.lua">
+        <span>Virtual Keyboard</span><div><button class="btn-copy">Copy</button><button class="btn-view">View</button></div>
+      </div>
+      <div class="script-card" data-url="https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/main/Universe%20Viewer">
+        <span>Game Universe Viewer</span><div><button class="btn-copy">Copy</button><button class="btn-view">View</button></div>
+      </div>
+      <div class="script-card" data-url="https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/shiftlock">
+        <span>Mobile Shiftlock</span><div><button class="btn-copy">Copy</button><button class="btn-view">View</button></div>
+      </div>
+      <div class="script-card" data-url="https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/mobileBACKPACK.lua">
+        <span>Custom Mobile Backpack</span><div><button class="btn-copy">Copy</button><button class="btn-view">View</button></div>
+      </div>
+      <div class="script-card" data-url="https://raw.githubusercontent.com/ltseverydayyou/endless-doors/main/endless%20madness%20buster">
+        <span>Endless Doors</span><div><button class="btn-copy">Copy</button><button class="btn-view">View</button></div>
+      </div>
+      <div class="script-card" data-url="https://raw.githubusercontent.com/ltseverydayyou/Nameless-Admin/refs/heads/main/Animation%20Spoofer">
+        <span>Animation Spoofer</span><div><button class="btn-copy">Copy</button><button class="btn-view">View</button></div>
+      </div>
+      <div id="scriptModal" class="modal">
+        <div class="modal-content"><span class="close">×</span><pre><code id="modal-code" class="language-lua">Loading...</code></pre></div>
+      </div>
+    </section>
+    <section id="lua" class="section">
+      <h2 style="text-align:center">Lua Syntax Preview</h2>
+      <div class="preview-container"><textarea id="lua-input" placeholder="Paste Lua code here..."></textarea><div class="button-group"><button class="primary" onclick="updateLuaPreview()">Highlight</button><button class="secondary" onclick="beautifyLua()">Beautify</button></div><pre><code id="lua-output" class="language-lua">-- Highlighted code will appear here</code></pre></div>
+    </section>
+    <section id="html" class="section">
+      <h2 style="text-align:center">HTML Live Preview</h2>
+      <div class="preview-container"><textarea id="html-input" placeholder="Paste HTML here..."></textarea><div class="button-group"><button class="primary" onclick="updatePreview()">Render</button></div><iframe id="html-output"></iframe></div>
+    </section>
   </div>
-
-  <div class="presence">
-    <a href="https://discord.com/users/641335879381680129" target="_blank">
-      <img src="https://lanyard.cnrad.dev/api/641335879381680129?theme=dark&animated=true" alt="Discord Presence" height="150"/>
-    </a>
-  </div>
-
-  <div id="main" class="section active">
-    <details class="dropdown" open>
-      <summary>Links</summary>
-      <div class="links-grid">
-        <a class="link-squircle" href="https://scriptblox.com/u/Aervanix" target="_blank">
-          <img src="https://r2.guns.lol/7e671c9b-1689-4d72-a5e5-b972f7d7fb09.png" alt="Scriptblox"/>
-          <span>Scriptblox</span>
-        </a>
-        <a class="link-squircle" href="https://rscripts.net/@ltseverydayyou" target="_blank">
-          <img src="https://r2.guns.lol/b9234319-f7c7-4b19-840e-600a2044d401.png" alt="rscripts"/>
-          <span>rscripts</span>
-        </a>
-        <a class="link-squircle" href="https://discord.com/invite/zzjYhtMGFD" target="_blank">
-          <img src="https://cdn.simpleicons.org/discord" alt="Discord"/>
-          <span>Discord</span>
-        </a>
-        <a class="link-squircle" href="https://guns.lol/ltseverydayyou" target="_blank">
-          <img src="https://assets.guns.lol/guns_logo_no_background_cropped.png" alt="Guns.lol"/>
-          <span>guns.lol</span>
-        </a>
-        <a class="link-squircle" href="https://github.com/ltseverydayyou" target="_blank">
-          <img src="https://cdn.simpleicons.org/github" alt="GitHub"/>
-          <span>GitHub</span>
-        </a>
-        <a class="link-squircle" href="https://open.spotify.com/user/316a6txgaro3ethw6pochw3uripy" target="_blank">
-          <img src="https://cdn.simpleicons.org/spotify" alt="Spotify"/>
-          <span>Spotify</span>
-        </a>
-        <a class="link-squircle" href="https://steamcommunity.com/id/ltseverydayyou" target="_blank">
-          <img src="https://cdn.simpleicons.org/steam" alt="Steam"/>
-          <span>Steam</span>
-        </a>
-      </div>
-    </details>
-  </div>
-
-  <div id="scripts" class="section">
-    <div class="script-card" data-url="https://raw.githubusercontent.com/ltseverydayyou/Nameless-Admin/main/Source.lua">
-      <span>NA Main Version</span>
-      <div>
-        <button class="btn-copy">Copy</button>
-        <button class="btn-view">View</button>
-      </div>
-    </div>
-    <div class="script-card" data-url="https://raw.githubusercontent.com/ltseverydayyou/Nameless-Admin/main/NA%20testing.lua">
-      <span>NA Testing Version</span>
-      <div>
-        <button class="btn-copy">Copy</button>
-        <button class="btn-view">View</button>
-      </div>
-    </div>
-    <div class="script-card" data-url="https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/Delulu%20Office.lua">
-      <span>Delusional Office</span>
-      <div>
-        <button class="btn-copy">Copy</button>
-        <button class="btn-view">View</button>
-      </div>
-    </div>
-    <div class="script-card" data-url="https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/VirtualKeyboard.lua">
-      <span>Virtual Keyboard</span>
-      <div>
-        <button class="btn-copy">Copy</button>
-        <button class="btn-view">View</button>
-      </div>
-    </div>
-    <div class="script-card" data-url="https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/main/Universe%20Viewer">
-      <span>Game Universe Viewer</span>
-      <div>
-        <button class="btn-copy">Copy</button>
-        <button class="btn-view">View</button>
-      </div>
-    </div>
-    <div class="script-card" data-url="https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/shiftlock">
-      <span>Mobile Shiftlock</span>
-      <div>
-        <button class="btn-copy">Copy</button>
-        <button class="btn-view">View</button>
-      </div>
-    </div>
-    <div class="script-card" data-url="https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/mobileBACKPACK.lua">
-      <span>Custom Mobile Backpack</span>
-      <div>
-        <button class="btn-copy">Copy</button>
-        <button class="btn-view">View</button>
-      </div>
-    </div>
-    <div class="script-card" data-url="https://raw.githubusercontent.com/ltseverydayyou/endless-doors/main/endless%20madness%20buster">
-      <span>Endless Doors</span>
-      <div>
-        <button class="btn-copy">Copy</button>
-        <button class="btn-view">View</button>
-      </div>
-    </div>
-    <div class="script-card" data-url="https://raw.githubusercontent.com/ltseverydayyou/Nameless-Admin/refs/heads/main/Animation%20Spoofer">
-      <span>Animation Spoofer</span>
-      <div>
-        <button class="btn-copy">Copy</button>
-        <button class="btn-view">View</button>
-      </div>
-    </div>
-    <div id="scriptModal" class="modal">
-      <div class="modal-content">
-        <span class="close">×</span>
-        <pre><code id="modal-code" class="language-lua">Loading...</code></pre>
-      </div>
-    </div>
-  </div>
-
-  <div id="lua" class="section">
-    <h2 style="text-align:center;">Lua Syntax Preview</h2>
-    <div class="preview-container">
-      <textarea id="lua-input" placeholder="Paste Lua code here..."></textarea>
-      <div class="button-group">
-        <button class="primary" onclick="updateLuaPreview()">Highlight</button>
-        <button class="secondary" onclick="beautifyLua()">Beautify</button>
-      </div>
-      <pre><code id="lua-output" class="language-lua">-- Highlighted code will appear here</code></pre>
-    </div>
-  </div>
-
-  <div id="html" class="section">
-    <h2 style="text-align:center;">HTML Live Preview</h2>
-    <div class="preview-container">
-      <textarea id="html-input" placeholder="Paste HTML here..."></textarea>
-      <div class="button-group">
-        <button class="primary" onclick="updatePreview()">Render</button>
-      </div>
-      <iframe id="html-output"></iframe>
-    </div>
-  </div>
-
-<script>
-document.querySelectorAll('.tab').forEach(t=>{
-  t.addEventListener('click',()=>{
-    document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
-    document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
-    t.classList.add('active');
-    document.getElementById(t.dataset.tab).classList.add('active');
-  });
-});
-function updatePreview(){
-  document.getElementById('html-output').srcdoc = document.getElementById('html-input').value;
-}
-function updateLuaPreview(){
-  const input = document.getElementById('lua-input').value;
-  const output = document.getElementById('lua-output');
-  output.textContent = input;
-  Prism.highlightElement(output);
-  const errors = [];
-  const fc = (input.match(/\bfunction\b/g)||[]).length;
-  const ec = (input.match(/\bend\b/g)||[]).length;
-  const rc = (input.match(/\brepeat\b/g)||[]).length;
-  const uc = (input.match(/\buntil\b/g)||[]).length;
-  if(ec<fc) errors.push(`Missing "end" (functions ${fc}, ends ${ec})`);
-  if(rc!==uc) errors.push(`repeat/until mismatch (${rc}/${uc})`);
-  if(errors.length) alert('⚠️ Lua Issues:\n\n'+errors.join('\n'));
-}
-function beautifyLua(){
-  let code = document.getElementById('lua-input').value
-    .replace(/then\s+/g,'then\n')
-    .replace(/else\s+/g,'\nelse\n')
-    .replace(/elseif\s+/g,'\nelseif ')
-    .replace(/do\s+/g,'do\n')
-    .replace(/\bend\b/g,'\nend')
-    .replace(/repeat\s+/g,'repeat\n')
-    .replace(/\s+until\s+/g,'\nuntil ')
-    .replace(/;\s*/g,';\n');
-  const lines = code.split('\n');
-  let indent=0, out='';
-  lines.forEach(l=>{
-    const line=l.trim();
-    if(!line) return;
-    if(/^(end|else|elseif|until)\b/.test(line)) indent=Math.max(indent-1,0);
-    out+= '  '.repeat(indent) + line + '\n';
-    if(/^(function|if|for|while|repeat)\b/.test(line)) indent++;
-    if(/^(else|elseif)\b/.test(line)) indent++;
-    if(/until\b/.test(line)) indent=Math.max(indent-1,0);
-  });
-  document.getElementById('lua-input').value = out.trim();
-  updateLuaPreview();
-}
-document.querySelectorAll('.btn-copy').forEach(btn=>{
-  btn.addEventListener('click',e=>{
-    const u = e.target.closest('.script-card').dataset.url;
-    navigator.clipboard.writeText(`loadstring(game:HttpGet('${u}'))();`);
-  });
-});
-document.querySelectorAll('.btn-view').forEach(btn=>{
-  btn.addEventListener('click',e=>{
-    const u = e.target.closest('.script-card').dataset.url;
-    const m = document.getElementById('scriptModal');
-    const c = document.getElementById('modal-code');
-    c.textContent='Loading...';
-    m.classList.add('show');
-    fetch(u).then(r=>r.text()).then(d=>{
-      c.textContent=d;
-      Prism.highlightElement(c);
-    }).catch(()=>{ c.textContent='Failed to load.'; });
-  });
-});
-document.querySelector('.close').addEventListener('click',()=>{
-  document.getElementById('scriptModal').classList.remove('show');
-});
-window.addEventListener('click',e=>{
-  if(e.target===document.getElementById('scriptModal'))
-    document.getElementById('scriptModal').classList.remove('show');
-});
-</script>
+  <script>
+    const socialLinks=[{href:'https://scriptblox.com/u/Aervanix',img:'https://r2.guns.lol/7e671c9b-1689-4d72-a5e5-b972f7d7fb09.png',alt:'Scriptblox',label:'Scriptblox'},{href:'https://rscripts.net/@ltseverydayyou',img:'https://r2.guns.lol/b9234319-f7c7-4b19-840e-600a2044d401.png',alt:'rscripts',label:'rscripts'},{href:'https://discord.com/invite/zzjYhtMGFD',img:'https://cdn.simpleicons.org/discord',alt:'Discord',label:'Discord'},{href:'https://guns.lol/ltseverydayyou',img:'https://assets.guns.lol/guns_logo_no_background_cropped.png',alt:'guns.lol',label:'guns.lol'},{href:'https://github.com/ltseverydayyou',img:'https://cdn.simpleicons.org/github',alt:'GitHub',label:'GitHub'},{href:'https://open.spotify.com/user/316a6txgaro3ethw6pochw3uripy',img:'https://cdn.simpleicons.org/spotify',alt:'Spotify',label:'Spotify'},{href:'https://steamcommunity.com/id/ltseverydayyou',img:'https://cdn.simpleicons.org/steam',alt:'Steam',label:'Steam'}];
+    const robloxLinks=[{href:'https://www.roblox.com/users/2502806181/profile',img:'https://cdn.simpleicons.org/roblox',alt:'Roblox',label:'Aervanix'},{href:'https://www.roblox.com/users/2845101018/profile',img:'https://cdn.simpleicons.org/roblox',alt:'Roblox',label:'Jadiellovescats3'},{href:'https://www.roblox.com/users/11761417/profile',img:'https://cdn.simpleicons.org/roblox',alt:'Roblox',label:'9121a63458'}];
+    function renderLinks(){const s=document.getElementById('social-links'),r=document.getElementById('roblox-links');socialLinks.forEach(l=>{const a=document.createElement('a');a.className='link-squircle';a.href=l.href;a.target='_blank';const i=document.createElement('img');i.src=l.img;i.alt=l.alt;const sp=document.createElement('span');sp.textContent=l.label;a.append(i,sp);s.append(a)});robloxLinks.forEach(l=>{const a=document.createElement('a');a.className='link-squircle';a.href=l.href;a.target='_blank';const i=document.createElement('img');i.src=l.img;i.alt=l.alt;const sp=document.createElement('span');sp.textContent=l.label;a.append(i,sp);r.append(a)})}
+    window.addEventListener('DOMContentLoaded',()=>{
+      renderLinks();
+      const tabs=document.querySelectorAll('.sidebar .tab');
+      tabs.forEach(t=>t.addEventListener('click',()=>{
+        tabs.forEach(x=>x.classList.remove('active'));
+        document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+        t.classList.add('active');
+        document.getElementById(t.dataset.tab).classList.add('active');
+      }));
+      document.getElementById('avatar').addEventListener('click',(()=>{
+        let cooldown=false;
+        const texts=['GET OUT','hai :3','cuh','guh','click off','OUCH',':c','legshot on top','i uhhh forgot my name 💀','dont touch me please','i am not a toy','stop clicking me','i am NOT a button'];
+        const dd=document.getElementById('avatar-dropdown');
+        return function(){
+          if(cooldown) return;
+          cooldown=true;
+          const txt=texts[Math.floor(Math.random()*texts.length)];
+          dd.textContent=txt;
+          dd.classList.add('show');
+          setTimeout(()=>{dd.classList.remove('show');},3000);
+          setTimeout(()=>{cooldown=false;},3000);
+        }
+      })());
+    });
+    function updatePreview(){document.getElementById('html-output').srcdoc=document.getElementById('html-input').value}
+    function updateLuaPreview(){const i=document.getElementById('lua-input').value,o=document.getElementById('lua-output');o.textContent=i;Prism.highlightElement(o);const e=[],f=(i.match(/\bfunction\b/g)||[]).length,en=(i.match(/\bend\b/g)||[]).length,r=(i.match(/\brepeat\b/g)||[]).length,u=(i.match(/\buntil\b/g)||[]).length; if(en<f)e.push(`Missing "end" (${f}/${en})`);if(r!==u)e.push(`repeat/until mismatch (${r}/${u})`);if(e.length)alert('⚠️ Lua Issues:\n\n'+e.join('\n'))}
+    function beautifyLua(){const raw=document.getElementById('lua-input').value;let lines=raw.replace(/then\s+/g,'then\n').replace(/else\s+/g,'\nelse\n').replace(/elseif\s+/g,'\nelseif ').replace(/do\s+/g,'do\n').replace(/\bend\b/g,'\nend').replace(/repeat\s+/g,'repeat\n').replace(/\s+until\s+/g,'\nuntil ').replace(/;\s*/g,';\n').split('\n').map(l=>l.trim());let indent=0,blocks=[],cur=[];lines.forEach(line=>{if(!line){if(cur.length)blocks.push(cur);blocks.push([]);cur=[]}else cur.push(line)});if(cur.length)blocks.push(cur);const out=blocks.map(b=>{let arr=b.map(line=>{if(/^(end|else|elseif|until)\b/.test(line))indent=Math.max(indent-1,0);const t='  '.repeat(indent)+line;if(/^(function|if|for|while|repeat)\b/.test(line))indent++;if(/^(else|elseif)\b/.test(line))indent++;if(/until\b/.test(line))indent=Math.max(indent-1,0);return t});const as=arr.filter(l=>l.includes('='));if(as.length){const m=Math.max(...as.map(l=>l.split('=')[0].length));arr=arr.map(l=>{if(!l.includes('='))return l;const [lhs,...r]=l.split('=');return lhs.trimEnd().padEnd(m)+' = '+r.join('=').trim()})}return arr.join('\n')}).join('\n');document.getElementById('lua-input').value=out.trim();updateLuaPreview()}
+    document.querySelectorAll('.btn-copy').forEach(b=>b.addEventListener('click',e=>{navigator.clipboard.writeText(`loadstring(game:HttpGet('${e.target.closest('.script-card').dataset.url}'))();`)}));
+    document.querySelectorAll('.btn-view').forEach(b=>b.addEventListener('click',e=>{const url=e.target.closest('.script-card').dataset.url,modal=document.getElementById('scriptModal'),code=document.getElementById('modal-code');code.textContent='Loading…';modal.classList.add('show');fetch(url).then(r=>r.text()).then(d=>{code.textContent=d;Prism.highlightElement(code)}).catch(()=>{code.textContent='Failed to load.'})}));
+    document.querySelector('.close').addEventListener('click',()=>document.getElementById('scriptModal').classList.remove('show'));
+    window.addEventListener('click',e=>{if(e.target===document.getElementById('scriptModal'))document.getElementById('scriptModal').classList.remove('show')});
+  </script>
 </body>
 </html>
