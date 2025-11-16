@@ -23,7 +23,8 @@ radial-gradient(1000px 800px at 110% 120%, rgba(167,139,250,.12), transparent 60
 linear-gradient(135deg,var(--g1),var(--g2));
 font:15px/1.45 ui-sans-serif,system-ui,"Segoe UI",Roboto,Helvetica,Arial;overflow-x:hidden;animation:bg 22s linear infinite}
 @keyframes bg{0%{filter:brightness(1)}50%{filter:brightness(1.08)}100%{filter:brightness(1)}}
-.l{display:grid;grid-template-columns:220px 1fr;min-height:100svh}
+.l{display:grid;grid-template-columns:220px 1fr;min-height:100svh;transition:transform .35s ease,opacity .25s ease}
+.l.collapsed{transform-origin:top;transform:scaleY(0.05);opacity:0;pointer-events:none}
 .as{position:sticky;top:0;height:100svh;padding:20px 14px;border-right:1px solid rgba(255,255,255,var(--bdA));backdrop-filter:saturate(140%) blur(10px);background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.03));display:flex;flex-direction:column;gap:14px}
 .br{padding:6px 4px;font-weight:800;color:var(--mu);letter-spacing:.3px}
 .nb{display:flex;flex-direction:column;gap:8px}
@@ -54,6 +55,14 @@ font:15px/1.45 ui-sans-serif,system-ui,"Segoe UI",Roboto,Helvetica,Arial;overflo
 .g{margin:28px auto;width:min(1100px,92%)}
 .g h3{margin:0 0 12px;color:var(--ac);font-weight:900}
 .gr{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(110px,1fr))}
+.home-section{margin-bottom:26px}
+.home-section__header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px}
+.home-section__header h3{margin:0;font-weight:900;background:linear-gradient(90deg,var(--ac),var(--ac2),var(--ac));-webkit-background-clip:text;background-clip:text;color:transparent;background-size:200% 200%;animation:homeGradient 6s linear infinite}
+.home-section__header h3::selection{background:none}
+.home-section__toggle{border:none;background:rgba(255,255,255,.08);color:var(--tx);padding:4px 10px;border-radius:999px;font-weight:700;cursor:pointer;transition:transform .25s,background .25s}
+.home-section__toggle:hover{transform:translateY(-1px);background:rgba(255,255,255,.15)}
+.home-section__toggle:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
+.home-section__content--collapsed{display:none}
 .tl{position:relative;padding:12px 10px;border-radius:22px;border:1px solid rgba(255,255,255,var(--bdA));background:rgba(255,255,255,var(--glA));display:flex;flex-direction:column;align-items:center;gap:8px;text-decoration:none;color:var(--tx);min-height:110px;transform:perspective(600px) rotateX(0) rotateY(0) translateZ(0);transition:transform .45s,box-shadow .45s,filter .45s}
 .tl img{width:42px;height:42px;object-fit:contain;filter:drop-shadow(0 6px 10px rgba(0,0,0,.3))}
 .tl span{font-size:13px}
@@ -64,12 +73,19 @@ font:15px/1.45 ui-sans-serif,system-ui,"Segoe UI",Roboto,Helvetica,Arial;overflo
 .tl:nth-child(3n+1){animation:f2 7s ease-in-out infinite}
 @keyframes f1{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
 @keyframes f2{0%,100%{transform:translateY(0)}50%{transform:translateY(3px)}}
+@keyframes homeGradient{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
 .sc{display:flex;align-items:center;justify-content:space-between;gap:12px;background:rgba(255,255,255,var(--glA));border:1px solid rgba(255,255,255,var(--bdA));border-radius:16px;padding:14px 16px;transition:transform .35s,box-shadow .35s,background .35s}
 .sc:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgba(0,0,0,.3)}
+.sc_info{display:flex;align-items:center;gap:12px;flex:1;min-width:0}
+.sc_img{width:48px;height:48px;border-radius:12px;object-fit:cover;border:1px solid rgba(255,255,255,var(--bdA));background:rgba(255,255,255,.08)}
+.sc_text{display:flex;align-items:center;gap:8px;flex-wrap:wrap;min-width:0}
+.sc.featured{background:linear-gradient(135deg,rgba(102,227,255,.12),rgba(167,139,250,.08));border-color:rgba(102,227,255,.45);box-shadow:0 18px 40px rgba(102,227,255,.35)}
+.sc_badge{display:inline-flex;align-items:center;gap:4px;border-radius:999px;border:1px solid rgba(102,227,255,.6);padding:2px 10px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ac);background:rgba(102,227,255,.18)}
 .sc .nm{font-weight:800}
 .bn{position:relative;overflow:hidden;border:none;border-radius:12px;padding:10px 14px;font-weight:900;cursor:pointer;transition:transform .2s,filter .2s,background .2s}
 .bn:active{transform:translateY(1px)}
 .bn.cp{background:var(--ok);color:#0b1220}
+.bn.gm{background:linear-gradient(90deg,var(--ac),var(--ac2));color:#0b1220}
 .bn.vw{background:linear-gradient(90deg,var(--ac),var(--ac2));color:#0b1220}
 .brw{display:flex;gap:8px;flex-wrap:wrap}
 .rp{position:absolute;border-radius:50%;transform:translate(-50%,-50%);pointer-events:none;background:radial-gradient(circle at center, rgba(255,255,255,.6) 0%, rgba(255,255,255,.2) 40%, rgba(255,255,255,0) 70%);animation:rip .6s ease-out forwards}
@@ -87,7 +103,7 @@ pre{margin:0;padding:16px;max-height:70vh;overflow:auto}
 @keyframes shm{from{transform:translateX(-60%)}to{transform:translateX(60%)}}
 .ed{background:rgba(255,255,255,var(--glA));border:1px solid rgba(255,255,255,var(--bdA));border-radius:16px;padding:12px}
 textarea{width:100%;min-height:150px;resize:vertical;border-radius:12px;border:1px dashed rgba(255,255,255,var(--bdA));padding:12px;background:rgba(255,255,255,.04);color:var(--tx);font:13px ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
-.if{width:100%;height:360px;background:#fff;border:none;border-radius:12px}
+.if{width:100%;height:360px;background:#fff;border:none;border-radius:12px;resize:vertical;overflow:auto;min-height:160px}
 .cs{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
 .pl{position:relative;overflow:hidden;border:none;border-radius:999px;padding:10px 14px;font-weight:900;cursor:pointer;color:#0b1220;background:#fff;transition:transform .2s,background .2s}
 .pl.sc{background:var(--ok)}
@@ -123,22 +139,11 @@ textarea{width:100%;min-height:150px;resize:vertical;border-radius:12px;border:1
 <div class="pz"><a href="https://discord.com/users/641335879381680129" target="_blank" rel="noopener"><img src="https://lanyard.cnrad.dev/api/641335879381680129?theme=dark&animated=true" height="150" alt="discord"></a></div>
 
 <section id="ph" class="pp on">
-<div class="g"><h3>Socials</h3><div id="sg" class="gr"></div></div>
-<div class="g"><h3>Roblox</h3><div id="rg" class="gr"></div></div>
+<div id="home_sections"></div>
 </section>
 
 <section id="ps" class="pp">
-<div class="g">
-<div class="sc" data-u="https://raw.githubusercontent.com/ltseverydayyou/Nameless-Admin/main/Source.lua"><span class="nm">NA Main Version</span><div class="brw"><button class="bn cp" data-a="c">Copy</button><button class="bn vw" data-a="v">View</button></div></div>
-<div class="sc" data-u="https://raw.githubusercontent.com/ltseverydayyou/Nameless-Admin/main/NA%20testing.lua"><span class="nm">NA Testing Version</span><div class="brw"><button class="bn cp" data-a="c">Copy</button><button class="bn vw" data-a="v">View</button></div></div>
-<div class="sc" data-u="https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/Delulu%20Office.lua"><span class="nm">Delusional Office</span><div class="brw"><button class="bn cp" data-a="c">Copy</button><button class="bn vw" data-a="v">View</button></div></div>
-<div class="sc" data-u="https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/VirtualKeyboard.lua"><span class="nm">Virtual Keyboard</span><div class="brw"><button class="bn cp" data-a="c">Copy</button><button class="bn vw" data-a="v">View</button></div></div>
-<div class="sc" data-u="https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/main/Universe%20Viewer"><span class="nm">Game Universe Viewer</span><div class="brw"><button class="bn cp" data-a="c">Copy</button><button class="bn vw" data-a="v">View</button></div></div>
-<div class="sc" data-u="https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/shiftlock"><span class="nm">Mobile Shiftlock</span><div class="brw"><button class="bn cp" data-a="c">Copy</button><button class="bn vw" data-a="v">View</button></div></div>
-<div class="sc" data-u="https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/mobileBACKPACK.lua"><span class="nm">Custom Mobile Backpack</span><div class="brw"><button class="bn cp" data-a="c">Copy</button><button class="bn vw" data-a="v">View</button></div></div>
-<div class="sc" data-u="https://raw.githubusercontent.com/ltseverydayyou/endless-doors/main/endless%20madness%20buster"><span class="nm">Endless Doors</span><div class="brw"><button class="bn cp" data-a="c">Copy</button><button class="bn vw" data-a="v">View</button></div></div>
-<div class="sc" data-u="https://raw.githubusercontent.com/ltseverydayyou/Nameless-Admin/refs/heads/main/Animation%20Spoofer"><span class="nm">Animation Spoofer</span><div class="brw"><button class="bn cp" data-a="c">Copy</button><button class="bn vw" data-a="v">View</button></div></div>
-</div>
+<div class="g" id="sc_list"></div>
 </section>
 
 <section id="pl" class="pp">
@@ -191,48 +196,696 @@ textarea{width:100%;min-height:150px;resize:vertical;border-radius:12px;border:1
 </div>
 
 <script>
-const q=s=>document.querySelector(s),qa=s=>document.querySelectorAll(s)
-const sg=[{h:'https://scriptblox.com/u/Aervanix',i:'https://r2.guns.lol/7e671c9b-1689-4d72-a5e5-b972f7d7fb09.png',t:'Scriptblox'},{h:'https://rscripts.net/@ltseverydayyou',i:'https://r2.guns.lol/b9234319-f7c7-4b19-840e-600a2044d401.png',t:'rscripts'},{h:'https://discord.com/users/641335879381680129',i:'https://cdn.simpleicons.org/discord',t:'Discord Profile'},{h:'https://discord.com/invite/zzjYhtMGFD',i:'https://cdn.simpleicons.org/discord',t:'Discord Server'},{h:'https://guns.lol/ltseeverydayyou',i:'https://assets.guns.lol/guns_logo_no_background_cropped.png',t:'guns.lol'},{h:'https://github.com/ltseverydayyou',i:'https://cdn.simpleicons.org/github',t:'GitHub'},{h:'https://open.spotify.com/user/316a6txgaro3ethw6pochw3uripy',i:'https://cdn.simpleicons.org/spotify',t:'Spotify'},{h:'https://steamcommunity.com/id/ltseverydayyou',i:'https://cdn.simpleicons.org/steam',t:'Steam'}]
-const rg=[{h:'https://www.roblox.com/users/2502806181/profile',i:'https://cdn.simpleicons.org/roblox',t:'Aervanix'},{h:'https://www.roblox.com/users/2845101018/profile',i:'https://cdn.simpleicons.org/roblox',t:'Jadiellovescats3'},{h:'https://www.roblox.com/users/11761417/profile',i:'https://cdn.simpleicons.org/roblox',t:'AervanixVX'}]
-const host=s=>{try{return new URL(s).host.replace(/^www\./,'')}catch{return''}}
-function ripple(el,e){const r=document.createElement('span');r.className='rp';const b=el.getBoundingClientRect();r.style.left=(e.clientX-b.left)+'px';r.style.top=(e.clientY-b.top)+'px';el.appendChild(r);setTimeout(()=>r.remove(),600)}
-function tiles(id,arr){const w=q('#'+id);const f=document.createDocumentFragment();arr.forEach(o=>{const a=document.createElement('a');a.className='tl';a.href=o.h;a.target='_blank';a.rel='noopener';a.dataset.h=host(o.h);a.innerHTML=`<img alt="" src="${o.i}"><span>${o.t}</span>`;f.appendChild(a)});w.appendChild(f)}
-function toast(m){const t=q('#ts');t.textContent=m;t.classList.add('sh');clearTimeout(toast._id);toast._id=setTimeout(()=>t.classList.remove('sh'),1600)}
-function tp(el,txt,spd=18){el.textContent='';let i=0;const iv=setInterval(()=>{el.textContent+=txt.charAt(i++);if(i>=txt.length)clearInterval(iv)},spd)}
-function tab(id){const cur=document.querySelector('.pp.on');const nxt=q('#p'+id);qa('.tb').forEach(b=>b.classList.toggle('act',b.dataset.t===id));if(cur===nxt)return;if(cur){cur.classList.remove('in');cur.classList.add('out');setTimeout(()=>{cur.classList.remove('out');cur.classList.remove('on')},200)}nxt.classList.add('on');nxt.classList.add('in');setTimeout(()=>nxt.classList.remove('in'),220);history.replaceState(null,'','#'+id)}
-const fx=q('#fx');let avL=false,avT=0;const avTxt=['GET OUT','hai :3','cuh','guh','click off','OUCH',':c','legshot on top','i uhhh forgot my name 💀','dont touch me please','i am not a toy','stop clicking me','i am NOT a button']
-function onAv(){const now=performance.now();if(avL||now-avT<700)return;avL=true;avT=now;const t=avTxt[Math.floor(Math.random()*avTxt.length)];const b=q('#bb');b.classList.add('sh');tp(b,t,16);if(t==='GET OUT'){fx.currentTime=0;fx.play().catch(()=>{});document.body.animate([{transform:'translate(0,0)'},{transform:'translate(-6px,0)'},{transform:'translate(6px,0)'},{transform:'translate(0,0)'}],{duration:420,easing:'ease-out'})}if(t==='OUCH'){q('#av').classList.add('ouch');setTimeout(()=>q('#av').classList.remove('ouch'),700)}setTimeout(()=>b.classList.remove('sh'),1400);setTimeout(()=>avL=false,720)}
-const cache=new Map();let curCode=''
-function mOpen(t){q('#mt').textContent=t;q('#mb').className='sk';q('#mb').innerHTML='';q('#md').classList.add('sh');q('#md').setAttribute('aria-hidden','false')}
-function mClose(){q('#md').classList.remove('sh');q('#md').setAttribute('aria-hidden','true')}
-async function view(btn){const c=btn.closest('.sc');const url=c.dataset.u;const nm=c.querySelector('.nm').textContent.trim();mOpen(nm);try{const d=cache.has(url)?cache.get(url):await(await fetch(url,{cache:'no-store'})).text();cache.set(url,d);curCode=`loadstring(game:HttpGet('${url}'))();\n\n${d}`;const pre=document.createElement('pre');const cd=document.createElement('code');cd.className='language-lua';cd.textContent=d;pre.appendChild(cd);const b=q('#mb');b.className='';b.appendChild(pre);Prism.highlightElement(cd)}catch(e){const b=q('#mb');b.className='';b.innerHTML=`<div style="padding:16px">Failed to load</div>`}}
-async function copyLoader(btn){const url=btn.closest('.sc').dataset.u;await navigator.clipboard.writeText(`loadstring(game:HttpGet('${url}'))();`);toast('Copied ✔️')}
-function luaHl(){const t=q('#li').value;const o=q('#lo');o.textContent=t||'-- Highlighted code will appear here';Prism.highlightElement(o);const f=(t.match(/\bfunction\b/g)||[]).length;const e=(t.match(/\bend\b/g)||[]).length;const r=(t.match(/\brepeat\b/g)||[]).length;const u=(t.match(/\buntil\b/g)||[]).length;const a=[];if(e<f)a.push(`Missing end (${e}/${f})`);if(r!==u)a.push(`repeat/until (${r}/${u})`);if(a.length)toast('⚠️ '+a.join(' • '))}
-function luaB(){const L=q('#li').value.split('\n');let i=0;const out=[];for(let raw of L){const t=raw.trim();if(/^(end|else|elseif|until)\b/.test(t))i=Math.max(i-1,0);let ln='  '.repeat(i)+t;if(/^(function|if|for|while|repeat)\b/.test(t))i++;if(/^(else|elseif)\b/.test(t))i++;if(/until\b/.test(t))i=Math.max(i-1,0);out.push(ln)}const res=[];let g=[];const fl=()=>{if(!g.length)return;const ae=g.every(x=>x.includes('='));if(ae){const m=Math.max(...g.map(x=>x.indexOf('=')));for(const k of g){const p=k.indexOf('=');const a=k.slice(0,p).trimEnd().padEnd(m,' ');const b=k.slice(p+1).trim();res.push(a+' = '+b)}}else res.push(...g);g=[]};for(const l of out){if(l.trim()===''){fl();res.push('')}else g.push(l)}fl();q('#li').value=res.join('\n').trim();luaHl();toast('Beautified')}
-function htmlR(){q('#ho').srcdoc=q('#hi').value||'<!doctype html><title>Preview</title><style>html{font:16px system-ui;padding:18px}</style><h2>Nothing here yet.</h2>'}
-function themeGet(){return{ac:getComputedStyle(document.documentElement).getPropertyValue('--ac').trim()||'#66e3ff',ac2:getComputedStyle(document.documentElement).getPropertyValue('--ac2').trim()||'#a78bfa',g1:getComputedStyle(document.documentElement).getPropertyValue('--g1').trim()||'#0b1220',g2:getComputedStyle(document.documentElement).getPropertyValue('--g2').trim()||'#111c2e',glA:getComputedStyle(document.documentElement).getPropertyValue('--glA').trim()||'0.06',bdA:getComputedStyle(document.documentElement).getPropertyValue('--bdA').trim()||'0.12',rad:getComputedStyle(document.documentElement).getPropertyValue('--rad').trim()||'16px',fs:parseInt(getComputedStyle(document.documentElement).fontSize)||15}}
-function themeApply(t){const r=document.documentElement;r.style.setProperty('--ac',t.ac);r.style.setProperty('--ac2',t.ac2);r.style.setProperty('--g1',t.g1);r.style.setProperty('--g2',t.g2);r.style.setProperty('--glA',t.glA);r.style.setProperty('--bdA',t.bdA);r.style.setProperty('--rad',typeof t.rad==='number'?t.rad+'px':t.rad);r.style.fontSize=(t.fs||15)+'px'}
-function themeSave(){const t=themeGet();localStorage.setItem('th',JSON.stringify(t));toast('Theme saved ✔️')}
-function themeLoad(){const s=localStorage.getItem('th');if(!s)return;try{const t=JSON.parse(s);themeApply(t);q('#c_ac').value=t.ac;q('#c_ac2').value=t.ac2;q('#c_g1').value=t.g1;q('#c_g2').value=t.g2;q('#r_gl').value=t.glA;q('#r_bd').value=t.bdA;q('#n_rad').value=parseInt(t.rad)||16;q('#n_fs').value=t.fs||15}catch{}}
-function themeDefaults(){const t={ac:'#66e3ff',ac2:'#a78bfa',g1:'#0b1220',g2:'#111c2e',glA:'0.06',bdA:'0.12',rad:'16px',fs:15};themeApply(t);localStorage.removeItem('th');q('#c_ac').value=t.ac;q('#c_ac2').value=t.ac2;q('#c_g1').value=t.g1;q('#c_g2').value=t.g2;q('#r_gl').value=t.glA;q('#r_bd').value=t.bdA;q('#n_rad').value=parseInt(t.rad);q('#n_fs').value=t.fs;toast('Theme reset')}
-function themeApplyFromUi(){const t={ac:q('#c_ac').value,ac2:q('#c_ac2').value,g1:q('#c_g1').value,g2:q('#c_g2').value,glA:q('#r_gl').value,bdA:q('#r_bd').value,rad:q('#n_rad').value+'px',fs:parseInt(q('#n_fs').value)||15};themeApply(t);toast('Applied')}
-window.addEventListener('DOMContentLoaded',()=>{
-tiles('sg',sg);tiles('rg',rg)
-qa('.tb').forEach(b=>{b.addEventListener('click',e=>{ripple(b,e);tab(b.dataset.t)})})
-const init=location.hash.slice(1)||'h';tab(init)
-q('#av').addEventListener('click',onAv)
-document.addEventListener('click',e=>{const btn=e.target.closest('[data-a]');if(!btn)return;ripple(btn,e);if(btn.dataset.a==='v')view(btn);if(btn.dataset.a==='c')copyLoader(btn)})
-const btnX=q('#x');btnX.addEventListener('click',e=>{ripple(btnX,e);mClose()})
-q('#md').addEventListener('click',e=>{if(e.target.id==='md')mClose()})
-const btnCP=q('#cp');btnCP.addEventListener('click',async e=>{ripple(btnCP,e);if(!curCode)return;await navigator.clipboard.writeText(curCode);toast('Script copied ✔️')})
-const bHL=q('#lhl');bHL.addEventListener('click',e=>{ripple(bHL,e);luaHl()})
-const bBF=q('#lbf');bBF.addEventListener('click',e=>{ripple(bBF,e);luaB()})
-const bHR=q('#hr');bHR.addEventListener('click',e=>{ripple(bHR,e);htmlR()})
-const bTA=q('#t_apply');bTA.addEventListener('click',e=>{ripple(bTA,e);themeApplyFromUi()})
-const bTS=q('#t_save');bTS.addEventListener('click',e=>{ripple(bTS,e);themeSave()})
-const bTR=q('#t_reset');bTR.addEventListener('click',e=>{ripple(bTR,e);themeDefaults()})
-themeLoad()
-})
+const q = s => document.querySelector(s);
+const qa = s => document.querySelectorAll(s);
+
+const host = s => {
+  try {
+    return new URL(s).host.replace(/^www\./, '');
+  } catch {
+    return '';
+  }
+};
+
+const homeSections = [];
+let currentHomeSection = null;
+
+function AddHeader(title) {
+  const section = {
+    title: title || 'Home',
+    links: [],
+    open: true
+  };
+  homeSections.push(section);
+  currentHomeSection = section;
+  return section;
+}
+
+function AddLink(title, icon, link) {
+  if (!currentHomeSection) {
+    AddHeader('');
+  }
+  currentHomeSection.links.push({ title, icon: icon || '', link });
+  return currentHomeSection;
+}
+
+function renderHome() {
+  const list = q('#home_sections');
+  if (!list) {
+    return;
+  }
+
+  list.innerHTML = '';
+  const fragment = document.createDocumentFragment();
+
+  for (const section of homeSections) {
+    const block = document.createElement('div');
+    block.className = 'g home-section';
+
+    const headerWrap = document.createElement('div');
+    headerWrap.className = 'home-section__header';
+
+    const header = document.createElement('h3');
+    header.textContent = section.title;
+
+    const toggle = document.createElement('button');
+    toggle.type = 'button';
+    toggle.className = 'home-section__toggle';
+    toggle.setAttribute('aria-expanded', section.open ? 'true' : 'false');
+    toggle.innerHTML = section.open ? '▲' : '▼';
+
+    headerWrap.append(header, toggle);
+
+    const content = document.createElement('div');
+    content.className = 'gr home-section__content';
+    if (!section.open) {
+      content.classList.add('home-section__content--collapsed');
+    }
+
+    for (const item of section.links) {
+      const tile = document.createElement('a');
+      tile.className = 'tl';
+      tile.href = item.link;
+      tile.rel = 'noopener';
+      tile.target = '_blank';
+      tile.dataset.h = host(item.link);
+
+      const parts = [];
+      if (item.icon) {
+        parts.push(`<img alt="" src="${item.icon}">`);
+      }
+      parts.push(`<span>${item.title}</span>`);
+      tile.innerHTML = parts.join('');
+      content.appendChild(tile);
+    }
+
+    toggle.addEventListener('click', () => {
+      section.open = !section.open;
+      content.classList.toggle('home-section__content--collapsed', !section.open);
+      toggle.setAttribute('aria-expanded', section.open ? 'true' : 'false');
+      toggle.innerHTML = section.open ? '▲' : '▼';
+    });
+
+    block.append(headerWrap, content);
+    fragment.appendChild(block);
+  }
+
+  list.appendChild(fragment);
+}
+
+window.AddHeader = AddHeader;
+window.AddLink = AddLink;
+
+AddHeader('Socials');
+AddLink('Scriptblox', 'https://r2.guns.lol/7e671c9b-1689-4d72-a5e5-b972f7d7fb09.png', 'https://scriptblox.com/u/Aervanix');
+AddLink('rscripts', 'https://r2.guns.lol/b9234319-f7c7-4b19-840e-600a2044d401.png', 'https://rscripts.net/@ltseverydayyou');
+AddLink('Discord Profile', 'https://cdn.simpleicons.org/discord', 'https://discord.com/users/641335879381680129');
+AddLink('Discord Server', 'https://cdn.simpleicons.org/discord', 'https://discord.com/invite/zzjYhtMGFD');
+AddLink('guns.lol', 'https://assets.guns.lol/guns_logo_no_background_cropped.png', 'https://guns.lol/ltseeverydayyou');
+AddLink('GitHub', 'https://cdn.simpleicons.org/github', 'https://github.com/ltseverydayyou');
+AddLink('Spotify', 'https://cdn.simpleicons.org/spotify', 'https://open.spotify.com/user/316a6txgaro3ethw6pochw3uripy');
+AddLink('Steam', 'https://cdn.simpleicons.org/steam', 'https://steamcommunity.com/id/ltseverydayyou');
+
+AddHeader('Roblox');
+AddLink('AervanixVX', 'https://cdn.simpleicons.org/roblox', 'https://www.roblox.com/users/11761417/profile');
+AddLink('Aervanix', 'https://cdn.simpleicons.org/roblox', 'https://www.roblox.com/users/2502806181/profile');
+AddLink('Jadiellovescats3', 'https://cdn.simpleicons.org/roblox', 'https://www.roblox.com/users/2845101018/profile');
+
+AddHeader('Roblox Group(s)');
+AddLink('Dreadborne', 'https://tr.rbxcdn.com/180DAY-3598f5067f011a7e3b2ae3e0f08ca401/150/150/Image/Webp/noFilter', 'https://www.roblox.com/communities/36041342/Dreadborne-DEV-TEAM#!/about');
+
+const scriptItems = [];
+
+function renderScripts() {
+  const list = q('#sc_list');
+  if (!list) {
+    return;
+  }
+
+  list.innerHTML = '';
+  const featuredList = scriptItems.filter(item => item.featured);
+  const regularList = scriptItems.filter(item => !item.featured);
+  const sorted = [...featuredList, ...regularList];
+  const fragment = document.createDocumentFragment();
+
+  for (const item of sorted) {
+    const entry = document.createElement('div');
+    entry.className = 'sc';
+    if (item.featured) {
+      entry.classList.add('featured');
+    }
+    entry.dataset.u = item.url;
+
+    const info = document.createElement('div');
+    info.className = 'sc_info';
+
+    if (item.image) {
+      const img = document.createElement('img');
+      img.className = 'sc_img';
+      img.src = item.image;
+      img.alt = item.name;
+      info.appendChild(img);
+    }
+
+    const text = document.createElement('div');
+    text.className = 'sc_text';
+    const title = document.createElement('span');
+    title.className = 'nm';
+    title.textContent = item.name;
+    text.appendChild(title);
+
+    if (item.featured) {
+      const badge = document.createElement('span');
+      badge.className = 'sc_badge';
+      badge.textContent = 'Featured';
+      text.appendChild(badge);
+    }
+
+    info.appendChild(text);
+
+    const controls = document.createElement('div');
+    controls.className = 'brw';
+
+    const copyBtn = document.createElement('button');
+    copyBtn.className = 'bn cp';
+    copyBtn.dataset.a = 'c';
+    copyBtn.type = 'button';
+    copyBtn.textContent = 'Copy';
+
+    const viewBtn = document.createElement('button');
+    viewBtn.className = 'bn vw';
+    viewBtn.dataset.a = 'v';
+    viewBtn.type = 'button';
+    viewBtn.textContent = 'View';
+
+    controls.append(copyBtn, viewBtn);
+
+    if (item.game) {
+      const gameBtn = document.createElement('button');
+      gameBtn.className = 'bn gm';
+      gameBtn.dataset.game = item.game;
+      gameBtn.type = 'button';
+      gameBtn.textContent = 'Play';
+      controls.append(gameBtn);
+    }
+
+    entry.append(info, controls);
+    fragment.appendChild(entry);
+  }
+
+  list.appendChild(fragment);
+}
+
+function ScriptAdd(name, url, imageUrl, featured = false, gameLink = '') {
+  const flag = typeof featured === 'string' ? featured.toLowerCase() === 'true' : Boolean(featured);
+  scriptItems.push({
+    name,
+    url,
+    image: imageUrl || '',
+    featured: flag,
+    game: gameLink || ''
+  });
+  renderScripts();
+}
+
+window.ScriptAdd = ScriptAdd;
+
+ScriptAdd('NA Main Version', 'https://raw.githubusercontent.com/ltseverydayyou/Nameless-Admin/main/Source.lua', 'https://raw.githubusercontent.com/ltseverydayyou/Nameless-Admin/refs/heads/main/NAimages/NAnew.png', true);
+ScriptAdd('NA Testing Version', 'https://raw.githubusercontent.com/ltseverydayyou/Nameless-Admin/main/NA%20testing.lua', 'https://raw.githubusercontent.com/ltseverydayyou/Nameless-Admin/refs/heads/main/NAimages/NAnew.png');
+ScriptAdd('FNB Autoplayer', 'https://raw.githubusercontent.com/ltseverydayyou/FNB-playerrrr/refs/heads/main/AutoPlayerRevived.luau', 'https://tr.rbxcdn.com/180DAY-06421ce8666c82646547498e79a09589/150/150/Image/Png/noFilter', true, 'https://roblox.com/games/7603193259');
+ScriptAdd('Delusional Office', 'https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/Delulu%20Office.lua', 'https://tr.rbxcdn.com/180DAY-dbbcfeee2259d07f20b685e3229c3ac9/256/256/Image/Webp/noFilter', null, 'https://roblox.com/games/18749553947');
+ScriptAdd('Endless Doors', 'https://raw.githubusercontent.com/ltseverydayyou/endless-doors/main/endless%20madness%20buster', 'https://tr.rbxcdn.com/180DAY-57bc2bd7eba62e92b90b16d65c33ff71/256/256/Image/Webp/noFilter', null, 'https://roblox.com/games/17324251852');
+ScriptAdd('DeadCoin Farm', 'https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/Be%20Dead%20Forever%20Farm.lua', 'https://tr.rbxcdn.com/180DAY-995799e88760b15b0611cdd1c818eef5/256/256/Image/Webp/noFilter', null, 'https://roblox.com/games/2882332175');
+ScriptAdd('Project The Rake', 'https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/main/the%20rake', 'https://tr.rbxcdn.com/180DAY-b75d323ae9a6c5cd194b708e72c5348f/256/256/Image/Webp/noFilter', null, 'https://roblox.com/games/2413927524');
+ScriptAdd('studip anticheat bypasser', 'https://rawscripts.net/raw/Rooms-andamp-Doors-stupid-anticheat-bypasser-31204', 'https://tr.rbxcdn.com/180DAY-5e9ce9aecc5c87537054147721a1cc7b/256/256/Image/Webp/noFilter', null, 'https://roblox.com/games/5865058321');
+ScriptAdd('Simple Spy Reworked', 'https://gist.githubusercontent.com/ltseverydayyou/2398adb0db70abc4f752219a676f6cb2/raw/SimpleSpyRework.luau', null, true);
+ScriptAdd('Aervanix Aimbot', 'https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/NewAimbot.lua');
+ScriptAdd('Chat Translator', 'https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/translatoooor');
+ScriptAdd('Virtual Keyboard', 'https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/VirtualKeyboard.lua');
+ScriptAdd('Turtle Spy', 'https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/main/Turtle%20Spy.lua');
+ScriptAdd('Game Universe Viewer', 'https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/main/Universe%20Viewer');
+ScriptAdd('Mobile Shiftlock', 'https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/shiftlock');
+ScriptAdd('Custom Mobile Backpack', 'https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/mobileBACKPACK.lua');
+ScriptAdd('Animation Spoofer', 'https://raw.githubusercontent.com/ltseverydayyou/Nameless-Admin/refs/heads/main/Animation%20Spoofer');
+
+const layoutEl = q('#l');
+const fx = q('#fx');
+const avTxt = [
+  'GET OUT',
+  'hai :3',
+  'cuh',
+  'guh',
+  'click off',
+  'OUCH',
+  ':c',
+  'legshot on top',
+  'i uhhh forgot my name 💀',
+  'dont touch me please',
+  'i am not a toy',
+  'stop clicking me',
+  'i am NOT a button'
+];
+let avLocked = false;
+let avTimestamp = 0;
+let collapseTimer = null;
+let themeFlashTimer = null;
+let themeFlashBackup = null;
+
+function collapseEverything(duration = 3000) {
+  if (!layoutEl) {
+    return;
+  }
+  layoutEl.classList.add('collapsed');
+  clearTimeout(collapseTimer);
+  collapseTimer = setTimeout(() => layoutEl.classList.remove('collapsed'), duration);
+}
+
+function resetFlashThemeState() {
+  if (themeFlashTimer) {
+    clearTimeout(themeFlashTimer);
+    themeFlashTimer = null;
+  }
+  themeFlashBackup = null;
+}
+
+function flashOuchTheme() {
+  const backup = themeFlashBackup || themeGet();
+  themeFlashBackup = backup;
+  const flashTheme = {
+    ...backup,
+    g1: '#3c0000',
+    g2: '#610000',
+    ac: '#ff6b6b',
+    ac2: '#ffb3b3'
+  };
+  themeApply(flashTheme);
+  clearTimeout(themeFlashTimer);
+  themeFlashTimer = setTimeout(() => {
+    if (themeFlashBackup) {
+      themeApply(themeFlashBackup);
+      themeFlashBackup = null;
+      themeFlashTimer = null;
+    }
+  }, 3000);
+}
+
+function ripple(el, e) {
+  const r = document.createElement('span');
+  r.className = 'rp';
+  const bounds = el.getBoundingClientRect();
+  r.style.left = `${e.clientX - bounds.left}px`;
+  r.style.top = `${e.clientY - bounds.top}px`;
+  el.appendChild(r);
+  setTimeout(() => r.remove(), 600);
+}
+
+function toast(message) {
+  const t = q('#ts');
+  t.textContent = message;
+  t.classList.add('sh');
+  clearTimeout(toast._id);
+  toast._id = setTimeout(() => t.classList.remove('sh'), 1600);
+}
+
+function tp(el, txt, spd = 18) {
+  el.textContent = '';
+  let index = 0;
+  const iv = setInterval(() => {
+    el.textContent += txt.charAt(index++);
+    if (index >= txt.length) {
+      clearInterval(iv);
+    }
+  }, spd);
+}
+
+function tab(id) {
+  const current = document.querySelector('.pp.on');
+  const next = q('#p' + id);
+  qa('.tb').forEach(button => button.classList.toggle('act', button.dataset.t === id));
+  if (current === next) {
+    return;
+  }
+  if (current) {
+    current.classList.remove('in');
+    current.classList.add('out');
+    setTimeout(() => {
+      current.classList.remove('out');
+      current.classList.remove('on');
+    }, 200);
+  }
+  next.classList.add('on');
+  next.classList.add('in');
+  setTimeout(() => next.classList.remove('in'), 220);
+  history.replaceState(null, '', '#' + id);
+}
+
+function onAv() {
+  const now = performance.now();
+  if (avLocked || now - avTimestamp < 700) {
+    return;
+  }
+  avLocked = true;
+  avTimestamp = now;
+  const message = avTxt[Math.floor(Math.random() * avTxt.length)];
+  const badge = q('#bb');
+  badge.classList.add('sh');
+  tp(badge, message, 16);
+  if (message === 'GET OUT') {
+    fx.currentTime = 0;
+    fx.play().catch(() => {});
+    collapseEverything();
+  } else if (message === 'OUCH') {
+    flashOuchTheme();
+    q('#av').classList.add('ouch');
+    setTimeout(() => q('#av').classList.remove('ouch'), 700);
+  }
+  setTimeout(() => badge.classList.remove('sh'), 1400);
+  setTimeout(() => {
+    avLocked = false;
+  }, 720);
+}
+
+const cache = new Map();
+let curCode = '';
+
+function mOpen(title) {
+  q('#mt').textContent = title;
+  q('#mb').className = 'sk';
+  q('#mb').innerHTML = '';
+  q('#md').classList.add('sh');
+  q('#md').setAttribute('aria-hidden', 'false');
+}
+
+function mClose() {
+  q('#md').classList.remove('sh');
+  q('#md').setAttribute('aria-hidden', 'true');
+}
+
+async function view(btn) {
+  const card = btn.closest('.sc');
+  const url = card.dataset.u;
+  const name = card.querySelector('.nm').textContent.trim();
+  mOpen(name);
+  try {
+    const content = cache.has(url) ? cache.get(url) : await (await fetch(url, { cache: 'no-store' })).text();
+    cache.set(url, content);
+    curCode = `loadstring(game:HttpGet('${url}'))();\n\n${content}`;
+    const pre = document.createElement('pre');
+    const code = document.createElement('code');
+    code.className = 'language-lua';
+    code.textContent = content;
+    pre.appendChild(code);
+    const mb = q('#mb');
+    mb.className = '';
+    mb.appendChild(pre);
+    Prism.highlightElement(code);
+  } catch {
+    const mb = q('#mb');
+    mb.className = '';
+    mb.innerHTML = '<div style="padding:16px">Failed to load</div>';
+  }
+}
+
+async function copyLoader(btn) {
+  const url = btn.closest('.sc').dataset.u;
+  await navigator.clipboard.writeText(`loadstring(game:HttpGet('${url}'))();`);
+  toast('Copied ✔️');
+}
+
+function luaHl() {
+  const text = q('#li').value;
+  const output = q('#lo');
+  output.textContent = text || '-- Highlighted code will appear here';
+  Prism.highlightElement(output);
+  const count = pattern => (text.match(pattern) || []).length;
+  const f = count(/\bfunction\b/g);
+  const e = count(/\bend\b/g);
+  const r = count(/\brepeat\b/g);
+  const u = count(/\buntil\b/g);
+  const warnings = [];
+  if (e < f) {
+    warnings.push(`Missing end (${e}/${f})`);
+  }
+  if (r !== u) {
+    warnings.push(`repeat/until (${r}/${u})`);
+  }
+  if (warnings.length) {
+    toast('⚠️ ' + warnings.join(' • '));
+  }
+}
+
+function luaB() {
+  const lines = q('#li').value.split('\n');
+  let depth = 0;
+  const formatted = [];
+  for (let raw of lines) {
+    const trimmed = raw.trim();
+    if (/^(end|else|elseif|until)\b/.test(trimmed)) {
+      depth = Math.max(depth - 1, 0);
+    }
+    let line = '  '.repeat(depth) + trimmed;
+    if (/^(function|if|for|while|repeat)\b/.test(trimmed)) {
+      depth += 1;
+    }
+    if (/^(else|elseif)\b/.test(trimmed)) {
+      depth += 1;
+    }
+    if (/until\b/.test(trimmed)) {
+      depth = Math.max(depth - 1, 0);
+    }
+    formatted.push(line);
+  }
+
+  const polished = [];
+  let buffer = [];
+  const flush = () => {
+    if (!buffer.length) {
+      return;
+    }
+    const aligned = buffer.every(item => item.includes('='));
+    if (aligned) {
+      const maxIndex = Math.max(...buffer.map(item => item.indexOf('=')));
+      for (const entry of buffer) {
+        const pivot = entry.indexOf('=');
+        const left = entry.slice(0, pivot).trimEnd().padEnd(maxIndex, ' ');
+        const right = entry.slice(pivot + 1).trim();
+        polished.push(`${left} = ${right}`);
+      }
+    } else {
+      polished.push(...buffer);
+    }
+    buffer = [];
+  };
+
+  for (const entry of formatted) {
+    if (entry.trim() === '') {
+      flush();
+      polished.push('');
+    } else {
+      buffer.push(entry);
+    }
+  }
+  flush();
+
+  q('#li').value = polished.join('\n').trim();
+  luaHl();
+  toast('Beautified');
+}
+
+function htmlR() {
+  q('#ho').srcdoc =
+    q('#hi').value ||
+    '<!doctype html><title>Preview</title><style>html{font:16px system-ui;padding:18px}</style><h2>Nothing here yet.</h2>';
+}
+
+function themeGet() {
+  return {
+    ac: getComputedStyle(document.documentElement).getPropertyValue('--ac').trim() || '#66e3ff',
+    ac2: getComputedStyle(document.documentElement).getPropertyValue('--ac2').trim() || '#a78bfa',
+    g1: getComputedStyle(document.documentElement).getPropertyValue('--g1').trim() || '#0b1220',
+    g2: getComputedStyle(document.documentElement).getPropertyValue('--g2').trim() || '#111c2e',
+    glA: getComputedStyle(document.documentElement).getPropertyValue('--glA').trim() || '0.06',
+    bdA: getComputedStyle(document.documentElement).getPropertyValue('--bdA').trim() || '0.12',
+    rad: getComputedStyle(document.documentElement).getPropertyValue('--rad').trim() || '16px',
+    fs: parseInt(getComputedStyle(document.documentElement).fontSize, 10) || 15
+  };
+}
+
+function themeApply(theme) {
+  const root = document.documentElement;
+  root.style.setProperty('--ac', theme.ac);
+  root.style.setProperty('--ac2', theme.ac2);
+  root.style.setProperty('--g1', theme.g1);
+  root.style.setProperty('--g2', theme.g2);
+  root.style.setProperty('--glA', theme.glA);
+  root.style.setProperty('--bdA', theme.bdA);
+  root.style.setProperty('--rad', typeof theme.rad === 'number' ? `${theme.rad}px` : theme.rad);
+  root.style.fontSize = `${theme.fs || 15}px`;
+}
+
+function themeSave() {
+  resetFlashThemeState();
+  const theme = themeGet();
+  themeApply(theme);
+  localStorage.setItem('th', JSON.stringify(theme));
+  toast('Theme saved ✔️');
+}
+
+function themeLoad() {
+  resetFlashThemeState();
+  const saved = localStorage.getItem('th');
+  if (!saved) {
+    return;
+  }
+  try {
+    const parsed = JSON.parse(saved);
+    themeApply(parsed);
+    q('#c_ac').value = parsed.ac;
+    q('#c_ac2').value = parsed.ac2;
+    q('#c_g1').value = parsed.g1;
+    q('#c_g2').value = parsed.g2;
+    q('#r_gl').value = parsed.glA;
+    q('#r_bd').value = parsed.bdA;
+    q('#n_rad').value = parseInt(parsed.rad, 10) || 16;
+    q('#n_fs').value = parsed.fs || 15;
+  } catch {
+    // ignore
+  }
+}
+
+function themeDefaults() {
+  resetFlashThemeState();
+  const defaults = {
+    ac: '#66e3ff',
+    ac2: '#a78bfa',
+    g1: '#0b1220',
+    g2: '#111c2e',
+    glA: '0.06',
+    bdA: '0.12',
+    rad: '16px',
+    fs: 15
+  };
+  themeApply(defaults);
+  localStorage.removeItem('th');
+  q('#c_ac').value = defaults.ac;
+  q('#c_ac2').value = defaults.ac2;
+  q('#c_g1').value = defaults.g1;
+  q('#c_g2').value = defaults.g2;
+  q('#r_gl').value = defaults.glA;
+  q('#r_bd').value = defaults.bdA;
+  q('#n_rad').value = parseInt(defaults.rad, 10);
+  q('#n_fs').value = defaults.fs;
+  toast('Theme reset');
+}
+
+function themeApplyFromUi() {
+  resetFlashThemeState();
+  const theme = {
+    ac: q('#c_ac').value,
+    ac2: q('#c_ac2').value,
+    g1: q('#c_g1').value,
+    g2: q('#c_g2').value,
+    glA: q('#r_gl').value,
+    bdA: q('#r_bd').value,
+    rad: `${q('#n_rad').value}px`,
+    fs: parseInt(q('#n_fs').value, 10) || 15
+  };
+  themeApply(theme);
+  toast('Applied');
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  renderHome();
+  renderScripts();
+
+  qa('.tb').forEach(button => {
+    button.addEventListener('click', event => {
+      ripple(button, event);
+      tab(button.dataset.t);
+    });
+  });
+
+  const init = location.hash.slice(1) || 'h';
+  tab(init);
+
+  q('#av').addEventListener('click', onAv);
+
+  document.addEventListener('click', event => {
+    const btn = event.target.closest('[data-a],[data-game]');
+    if (!btn) {
+      return;
+    }
+    ripple(btn, event);
+    if (btn.dataset.a === 'v') {
+      view(btn);
+    } else if (btn.dataset.a === 'c') {
+      copyLoader(btn);
+    } else if (btn.dataset.game) {
+      window.open(btn.dataset.game, '_blank', 'noopener,noreferrer');
+    }
+  });
+
+  const btnX = q('#x');
+  btnX.addEventListener('click', event => {
+    ripple(btnX, event);
+    mClose();
+  });
+
+  q('#md').addEventListener('click', event => {
+    if (event.target.id === 'md') {
+      mClose();
+    }
+  });
+
+  const btnCP = q('#cp');
+  btnCP.addEventListener('click', async event => {
+    ripple(btnCP, event);
+    if (!curCode) {
+      return;
+    }
+    await navigator.clipboard.writeText(curCode);
+    toast('Script copied ✔️');
+  });
+
+  const bHL = q('#lhl');
+  bHL.addEventListener('click', event => {
+    ripple(bHL, event);
+    luaHl();
+  });
+
+  const bBF = q('#lbf');
+  bBF.addEventListener('click', event => {
+    ripple(bBF, event);
+    luaB();
+  });
+
+  const bHR = q('#hr');
+  bHR.addEventListener('click', event => {
+    ripple(bHR, event);
+    htmlR();
+  });
+
+  const bTA = q('#t_apply');
+  bTA.addEventListener('click', event => {
+    ripple(bTA, event);
+    themeApplyFromUi();
+  });
+
+  const bTS = q('#t_save');
+  bTS.addEventListener('click', event => {
+    ripple(bTS, event);
+    themeSave();
+  });
+
+  const bTR = q('#t_reset');
+  bTR.addEventListener('click', event => {
+    ripple(bTR, event);
+    themeDefaults();
+  });
+
+  themeLoad();
+});
 </script>
 </body>
 </html>
+
