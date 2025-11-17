@@ -927,9 +927,25 @@
         }
       }
 
+      .bi-toolbar {
+        margin-top: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+      }
+
+      .bi-toolbar__hint {
+        font-size: 13px;
+        color: var(--mu);
+      }
+
       .bi-table-wrap {
         margin-top: 10px;
-        max-height: 480px;
+        height: clamp(260px, 55vh, 480px);
+        min-height: 220px;
+        max-height: 80vh;
+        resize: vertical;
         overflow: auto;
         border-radius: 14px;
         border: 1px solid rgba(255, 255, 255, var(--bdA));
@@ -962,6 +978,38 @@
 
       #bi-list-table tbody tr:hover {
         background-color: rgba(255, 255, 255, 0.08);
+      }
+
+      #pb.bi-fullscreen {
+        position: fixed;
+        inset: 0;
+        padding: 36px;
+        z-index: 1300;
+        background: rgba(4, 6, 12, 0.96);
+        overflow: auto;
+      }
+
+      #pb.bi-fullscreen .g.ed {
+        width: min(1200px, 100%);
+        margin: 0 auto;
+        padding: 0;
+      }
+
+      #pb.bi-fullscreen h3 {
+        margin-top: 0;
+      }
+
+      #pb.bi-fullscreen .bi-table-wrap {
+        height: min(70vh, calc(100vh - 220px));
+        max-height: none;
+      }
+
+      #pb.bi-fullscreen .bi-toolbar {
+        justify-content: flex-end;
+      }
+
+      body.bi-buildericons-fullscreen {
+        overflow: hidden;
       }
 
       @media (prefers-reduced-motion: reduce) {
@@ -1153,6 +1201,17 @@
                   <p id="bi-loading-text"></p>
                 </div>
 
+                <div class="bi-toolbar">
+                  <span class="bi-toolbar__hint">Drag the list edge to resize</span>
+                  <button
+                    class="pl sc"
+                    type="button"
+                    id="bi-fullscreen-toggle"
+                  >
+                    Full screen
+                  </button>
+                </div>
+
                 <div class="bi-table-wrap">
                   <table id="bi-list-table" cellspacing="3">
                     <thead>
@@ -1324,6 +1383,10 @@
 
       window.AddHeader = AddHeader;
       window.AddLink = AddLink;
+
+      const builderIconsSection = q("#pb");
+      const builderIconsFullScreenButton = q("#bi-fullscreen-toggle");
+      let builderIconsFullscreen = false;
 
       AddHeader("Socials");
       AddLink(
@@ -1683,6 +1746,9 @@
       function tab(id) {
         const current = document.querySelector(".pp.on");
         const next = q(`#p${id}`);
+        if (id !== "b") {
+          setBuilderIconsFullscreen(false);
+        }
         qa(".tb").forEach((button) => {
           button.classList.toggle("act", button.dataset.t === id);
         });
@@ -1704,6 +1770,30 @@
         next.classList.add("in");
         setTimeout(() => next.classList.remove("in"), 220);
         history.replaceState(null, "", `#${id}`);
+      }
+
+      function setBuilderIconsFullscreen(force) {
+        const shouldEnable =
+          typeof force === "boolean" ? force : !builderIconsFullscreen;
+        if (shouldEnable === builderIconsFullscreen) {
+          return;
+        }
+
+        builderIconsFullscreen = shouldEnable;
+        builderIconsSection?.classList.toggle(
+          "bi-fullscreen",
+          builderIconsFullscreen
+        );
+        document.body.classList.toggle(
+          "bi-buildericons-fullscreen",
+          builderIconsFullscreen
+        );
+
+        if (builderIconsFullScreenButton) {
+          builderIconsFullScreenButton.textContent = builderIconsFullscreen
+            ? "Exit full screen"
+            : "Full screen";
+        }
       }
 
       function onAv() {
@@ -1816,12 +1906,227 @@
         }
       }
 
+      const inlineFunctionRegex = /(function\s*\([^)]*\))\s*return\s*([^\r\n]+?)\s*end/;
+
+      function expandInlineFunctions(line) {
+        const lineIndentMatch = line.match(/^(\s*)/);
+        const lineIndent = lineIndentMatch ? lineIndentMatch[1] : "";
+        let result = line;
+        while (true) {
+          inlineFunctionRegex.lastIndex = 0;
+          const match = inlineFunctionRegex.exec(result);
+          if (!match) {
+            break;
+          }
+          const before = result.slice(0, match.index);
+          const suffix = result.slice(match.index + match[0].length);
+          const header = match[1].trimEnd();
+          const body = match[2].trim();
+          result = `${before}${header}\n${lineIndent}    ${body}\n${lineIndent}end${suffix}`;
+        }
+        return result;
+      }
+
+      function splitArguments(argsString) {
+        if (!argsString) {
+          return [];
+        }
+
+        const args = [];
+        let buffer = "";
+        let depth = 0;
+        let braces = 0;
+        let brackets = 0;
+        let inString = null;
+        let escaping = false;
+
+        const pushArgument = () => {
+          args.push(buffer);
+          buffer = "";
+        };
+
+        for (let i = 0; i < argsString.length; i += 1) {
+          const char = argsString[i];
+          if (escaping) {
+            buffer += char;
+            escaping = false;
+            continue;
+          }
+          if (inString) {
+            buffer += char;
+            if (char === "\\") {
+              escaping = true;
+            } else if (char === inString) {
+              inString = null;
+            }
+            continue;
+          }
+          if (char === "'" || char === '"') {
+            inString = char;
+            buffer += char;
+            continue;
+          }
+          if (char === "\\") {
+            buffer += char;
+            escaping = true;
+            continue;
+          }
+          if (char === "(") {
+            depth += 1;
+            buffer += char;
+            continue;
+          }
+          if (char === ")") {
+            depth = Math.max(depth - 1, 0);
+            buffer += char;
+            continue;
+          }
+          if (char === "{") {
+            braces += 1;
+            buffer += char;
+            continue;
+          }
+          if (char === "}") {
+            braces = Math.max(braces - 1, 0);
+            buffer += char;
+            continue;
+          }
+          if (char === "[") {
+            brackets += 1;
+            buffer += char;
+            continue;
+          }
+          if (char === "]") {
+            brackets = Math.max(brackets - 1, 0);
+            buffer += char;
+            continue;
+          }
+          if (
+            char === "," &&
+            depth === 0 &&
+            braces === 0 &&
+            brackets === 0 &&
+            !inString
+          ) {
+            pushArgument();
+            continue;
+          }
+          buffer += char;
+        }
+
+        if (buffer || argsString.trim().endsWith(",")) {
+          args.push(buffer);
+        }
+
+        return args;
+      }
+
+      function parseCall(text) {
+        const firstOpen = text.indexOf("(");
+        if (firstOpen === -1) {
+          return null;
+        }
+
+        let depth = 0;
+        let inString = null;
+        let escaping = false;
+        let closeIndex = -1;
+
+        for (let i = firstOpen; i < text.length; i += 1) {
+          const char = text[i];
+          if (escaping) {
+            escaping = false;
+            continue;
+          }
+          if (inString) {
+            if (char === "\\") {
+              escaping = true;
+            } else if (char === inString) {
+              inString = null;
+            }
+            continue;
+          }
+          if (char === '"' || char === "'") {
+            inString = char;
+            continue;
+          }
+          if (char === "(") {
+            depth += 1;
+            continue;
+          }
+          if (char === ")") {
+            depth -= 1;
+            if (depth === 0) {
+              closeIndex = i;
+              break;
+            }
+          }
+        }
+
+        if (closeIndex === -1) {
+          return null;
+        }
+
+        return {
+          beforeParen: text.slice(0, firstOpen + 1),
+          argsString: text.slice(firstOpen + 1, closeIndex),
+          afterClose: text.slice(closeIndex + 1)
+        };
+      }
+
+      function formatCall(entry, indentOverride) {
+        const sanitized = entry.trim();
+        if (!sanitized) {
+          return indentOverride ? `${indentOverride}${sanitized}` : entry;
+        }
+
+        const indentMatch = entry.match(/^(\s*)/);
+        const baseIndent = indentOverride ?? (indentMatch ? indentMatch[1] : "");
+        const parsedCall = parseCall(sanitized);
+        if (!parsedCall) {
+          return `${baseIndent}${sanitized}`;
+        }
+
+        const args = splitArguments(parsedCall.argsString);
+        const shouldWrap =
+          args.length > 1 &&
+          (sanitized.length > 80 ||
+            sanitized.includes("function(") ||
+            args.some((arg) => arg.trim().length > 40));
+
+        if (!shouldWrap) {
+          return `${baseIndent}${sanitized}`;
+        }
+
+        const lines = [];
+        lines.push(`${baseIndent}${parsedCall.beforeParen}`);
+        const childIndent = `${baseIndent}    `;
+        args.forEach((arg, index) => {
+          const trimmedArg = arg.trim();
+          if (!trimmedArg) {
+            if (index < args.length - 1) {
+              lines.push(`${childIndent},`);
+            }
+            return;
+          }
+          const formattedArg = formatCall(trimmedArg, childIndent);
+          const parts = formattedArg.split("\n");
+          if (index < args.length - 1) {
+            const lastIndex = parts.length - 1;
+            parts[lastIndex] = `${parts[lastIndex]},`;
+          }
+          lines.push(...parts);
+        });
+        lines.push(`${baseIndent})${parsedCall.afterClose}`);
+        return lines.join("\n");
+      }
+
       function luaB() {
-        const lines = q("#li").value.split("\n");
+        const lines = q("#li").value.replace(/\r/g, "").split("\n");
         let depth = 0;
         const formatted = [];
 
-        for (let raw of lines) {
+        for (const raw of lines) {
           const trimmed = raw.trim();
 
           if (/^(end|else|elseif|until)\b/.test(trimmed)) {
@@ -1845,8 +2150,19 @@
           formatted.push(line);
         }
 
+        const expanded = [];
+        for (const entry of formatted) {
+          const expandedEntry = expandInlineFunctions(entry);
+          expanded.push(...expandedEntry.split("\n"));
+        }
+
         const polished = [];
         let buffer = [];
+
+        const appendFormattedLine = (entry) => {
+          const formattedLine = formatCall(entry);
+          polished.push(...formattedLine.split("\n"));
+        };
 
         const flush = () => {
           if (!buffer.length) {
@@ -1865,16 +2181,18 @@
                 .trimEnd()
                 .padEnd(maxIndex, " ");
               const right = entry.slice(pivot + 1).trim();
-              polished.push(`${left} = ${right}`);
+              appendFormattedLine(`${left} = ${right}`);
             }
           } else {
-            polished.push(...buffer);
+            for (const entry of buffer) {
+              appendFormattedLine(entry);
+            }
           }
 
           buffer = [];
         };
 
-        for (const entry of formatted) {
+        for (const entry of expanded) {
           if (entry.trim() === "") {
             flush();
             polished.push("");
@@ -2256,6 +2574,19 @@
         bBF.addEventListener("click", (event) => {
           ripple(bBF, event);
           luaB();
+        });
+
+        if (builderIconsFullScreenButton) {
+          builderIconsFullScreenButton.addEventListener("click", (event) => {
+            ripple(builderIconsFullScreenButton, event);
+            setBuilderIconsFullscreen();
+          });
+        }
+
+        document.addEventListener("keydown", (event) => {
+          if (event.key === "Escape" && builderIconsFullscreen) {
+            setBuilderIconsFullscreen(false);
+          }
         });
 
         const bHR = q("#hr");
