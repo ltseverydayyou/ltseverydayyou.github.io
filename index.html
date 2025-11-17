@@ -1,891 +1,2290 @@
 <!doctype html>
 <html lang="en">
-<head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Aervanix’s Domain</title>
-<link rel="icon" href="https://avatars.githubusercontent.com/u/117316014?v=4"/>
-<meta property="og:title" content="Aervanix’s Domain"/>
-<meta property="og:type" content="website"/>
-<meta property="og:url" content="https://ltseverydayyou.github.io/"/>
-<meta property="og:image" content="https://avatars.githubusercontent.com/u/117316014?v=4"/>
-<meta name="twitter:card" content="summary_large_image"/>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css"/>
-<script defer src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
-<script defer src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-lua.min.js"></script>
-<style>
-:root{--g1:#0b1220;--g2:#111c2e;--tx:#e7e9ee;--mu:#a6adbb;--ac:#66e3ff;--ac2:#a78bfa;--ok:#72f3b6;--bdA:.12;--glA:.06;--rad:16px}
-*{box-sizing:border-box}
-html,body{height:100%}
-body{margin:0;color:var(--tx);background:
-radial-gradient(1200px 600px at -10% -10%, rgba(102,227,255,.12), transparent 60%),
-radial-gradient(1000px 800px at 110% 120%, rgba(167,139,250,.12), transparent 60%),
-linear-gradient(135deg,var(--g1),var(--g2));
-font:15px/1.45 ui-sans-serif,system-ui,"Segoe UI",Roboto,Helvetica,Arial;overflow-x:hidden;animation:bg 22s linear infinite}
-@keyframes bg{0%{filter:brightness(1)}50%{filter:brightness(1.08)}100%{filter:brightness(1)}}
-.l{display:grid;grid-template-columns:220px 1fr;min-height:100svh;transition:transform .35s ease,opacity .25s ease}
-.l.collapsed{transform-origin:top;transform:scaleY(0.05);opacity:0;pointer-events:none}
-.as{position:sticky;top:0;height:100svh;padding:20px 14px;border-right:1px solid rgba(255,255,255,var(--bdA));backdrop-filter:saturate(140%) blur(10px);background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.03));display:flex;flex-direction:column;gap:14px}
-.br{padding:6px 4px;font-weight:800;color:var(--mu);letter-spacing:.3px}
-.nb{display:flex;flex-direction:column;gap:8px}
-.tb{appearance:none;border:none;background:transparent;color:var(--tx);text-align:left;padding:10px 8px;font-weight:800;cursor:pointer;position:relative;overflow:hidden;transition:color .25s cubic-bezier(.2,.6,.2,1),transform .25s cubic-bezier(.2,.6,.2,1)}
-.tb::after{content:"";position:absolute;left:8px;right:70%;bottom:4px;height:2px;background:linear-gradient(90deg,var(--ac),var(--ac2));transform:scaleX(0);transform-origin:left;transition:transform .28s cubic-bezier(.2,.6,.2,1)}
-.tb:hover{transform:translateX(3px)}
-.tb:hover::after{transform:scaleX(1)}
-.tb.act{color:#fff}
-.tb.act::after{right:10px;transform:scaleX(1)}
-.top{position:sticky;top:0;height:66px;display:flex;align-items:center;justify-content:center;border-bottom:1px solid rgba(255,255,255,var(--bdA));backdrop-filter:saturate(140%) blur(8px);background:linear-gradient(180deg,rgba(0,0,0,.15),rgba(0,0,0,.05));z-index:5}
-.tt{margin:0;font-weight:900;letter-spacing:.3px;background:linear-gradient(90deg,var(--ac),var(--ac2),var(--ac));-webkit-background-clip:text;background-clip:text;color:transparent;animation:sh 6s linear infinite}
-@keyframes sh{0%{filter:brightness(1)}50%{filter:brightness(1.22)}100%{filter:brightness(1)}}
-.r{position:absolute;right:14px;display:flex;align-items:center;gap:10px}
-.av{width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,var(--bdA));cursor:pointer;transition:transform .2s,filter .2s}
-.av:active{transform:scale(.92)}
-.av.ouch{filter:drop-shadow(0 0 10px #ff6969);transform:scale(1.15)}
-.bb{position:absolute;top:58px;right:10px;padding:8px 10px;font-size:13px;color:#fff;background:rgba(15,15,20,.95);border:1px solid rgba(255,255,255,.12);border-radius:12px;opacity:0;transform:translateY(-6px) scale(.98);pointer-events:none;transition:opacity .35s,transform .35s}
-.bb.sh{opacity:1;transform:translateY(0) scale(1)}
-.ct{padding:28px clamp(14px,4vw,32px) 60px}
-.pz{display:flex;justify-content:center;margin:14px 0 26px;animation:fade .8s}
-@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-.pp{display:none;opacity:0;transform:translateY(8px);transition:opacity .35s,transform .35s}
-.pp.on{display:block;opacity:1;transform:none}
-.pp.in{animation:ain .35s both}
-.pp.out{animation:aout .32s both}
-@keyframes ain{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-@keyframes aout{from{opacity:1;transform:none}to{opacity:0;transform:translateY(8px)}}
-.g{margin:28px auto;width:min(1100px,92%)}
-.g h3{margin:0 0 12px;color:var(--ac);font-weight:900}
-.gr{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(110px,1fr))}
-.home-section{margin-bottom:26px}
-.home-section__header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px}
-.home-section__header h3{margin:0;font-weight:900;background:linear-gradient(90deg,var(--ac),var(--ac2),var(--ac));-webkit-background-clip:text;background-clip:text;color:transparent;background-size:200% 200%;animation:homeGradient 6s linear infinite}
-.home-section__header h3::selection{background:none}
-.home-section__toggle{border:none;background:rgba(255,255,255,.08);color:var(--tx);padding:4px 10px;border-radius:999px;font-weight:700;cursor:pointer;transition:transform .25s,background .25s}
-.home-section__toggle:hover{transform:translateY(-1px);background:rgba(255,255,255,.15)}
-.home-section__toggle:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
-.home-section__content--collapsed{display:none}
-.tl{position:relative;padding:12px 10px;border-radius:22px;border:1px solid rgba(255,255,255,var(--bdA));background:rgba(255,255,255,var(--glA));display:flex;flex-direction:column;align-items:center;gap:8px;text-decoration:none;color:var(--tx);min-height:110px;transform:perspective(600px) rotateX(0) rotateY(0) translateZ(0);transition:transform .45s,box-shadow .45s,filter .45s}
-.tl img{width:42px;height:42px;object-fit:contain;filter:drop-shadow(0 6px 10px rgba(0,0,0,.3))}
-.tl span{font-size:13px}
-.tl:hover{transform:perspective(600px) rotateX(5deg) rotateY(-5deg) translateY(-2px);box-shadow:0 18px 50px rgba(0,0,0,.35);filter:saturate(1.2)}
-.tl::after{content:attr(data-h);position:absolute;bottom:-20px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.7);color:#fff;font-size:11px;padding:2px 7px;border-radius:999px;border:1px solid rgba(255,255,255,.15);opacity:0;transition:opacity .2s,transform .2s;pointer-events:none;white-space:nowrap}
-.tl:hover::after{opacity:1;transform:translateX(-50%) translateY(-2px)}
-.tl:nth-child(3n){animation:f1 6s ease-in-out infinite}
-.tl:nth-child(3n+1){animation:f2 7s ease-in-out infinite}
-@keyframes f1{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
-@keyframes f2{0%,100%{transform:translateY(0)}50%{transform:translateY(3px)}}
-@keyframes homeGradient{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
-.sc{display:flex;align-items:center;justify-content:space-between;gap:12px;background:rgba(255,255,255,var(--glA));border:1px solid rgba(255,255,255,var(--bdA));border-radius:16px;padding:14px 16px;transition:transform .35s,box-shadow .35s,background .35s}
-.sc:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgba(0,0,0,.3)}
-.sc_info{display:flex;align-items:center;gap:12px;flex:1;min-width:0}
-.sc_img{width:48px;height:48px;border-radius:12px;object-fit:cover;border:1px solid rgba(255,255,255,var(--bdA));background:rgba(255,255,255,.08)}
-.sc_text{display:flex;align-items:center;gap:8px;flex-wrap:wrap;min-width:0}
-.sc.featured{background:linear-gradient(135deg,rgba(102,227,255,.12),rgba(167,139,250,.08));border-color:rgba(102,227,255,.45);box-shadow:0 18px 40px rgba(102,227,255,.35)}
-.sc_badge{display:inline-flex;align-items:center;gap:4px;border-radius:999px;border:1px solid rgba(102,227,255,.6);padding:2px 10px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ac);background:rgba(102,227,255,.18)}
-.sc .nm{font-weight:800}
-.bn{position:relative;overflow:hidden;border:none;border-radius:12px;padding:10px 14px;font-weight:900;cursor:pointer;transition:transform .2s,filter .2s,background .2s}
-.bn:active{transform:translateY(1px)}
-.bn.cp{background:var(--ok);color:#0b1220}
-.bn.gm{background:linear-gradient(90deg,var(--ac),var(--ac2));color:#0b1220}
-.bn.vw{background:linear-gradient(90deg,var(--ac),var(--ac2));color:#0b1220}
-.brw{display:flex;gap:8px;flex-wrap:wrap}
-.rp{position:absolute;border-radius:50%;transform:translate(-50%,-50%);pointer-events:none;background:radial-gradient(circle at center, rgba(255,255,255,.6) 0%, rgba(255,255,255,.2) 40%, rgba(255,255,255,0) 70%);animation:rip .6s ease-out forwards}
-@keyframes rip{from{width:0;height:0;opacity:.9}to{width:260px;height:260px;opacity:0}}
-.md{position:fixed;inset:0;display:grid;place-items:center;background:rgba(4,6,10,.65);backdrop-filter:blur(6px);opacity:0;pointer-events:none;transition:opacity .35s;z-index:50}
-.md.sh{opacity:1;pointer-events:auto}
-.mc{width:min(900px,92vw);max-height:86vh;overflow:auto;background:linear-gradient(180deg,rgba(22,28,42,.95),rgba(12,16,26,.95));border:1px solid rgba(255,255,255,var(--bdA));border-radius:18px;transform:translateY(10px) scale(.98);transition:transform .35s}
-.md.sh .mc{transform:none}
-.mh{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;position:sticky;top:0;background:linear-gradient(180deg,rgba(12,16,26,.9),rgba(12,16,26,.7));backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,var(--bdA))}
-.x{background:transparent;border:none;color:var(--mu);font-size:20px;width:40px;height:40px;border-radius:12px;cursor:pointer;transition:background .2s;position:relative;overflow:hidden}
-.x:hover{background:rgba(255,255,255,.06)}
-pre{margin:0;padding:16px;max-height:70vh;overflow:auto}
-.sk{height:220px;border-radius:12px;background:rgba(255,255,255,.06);position:relative;overflow:hidden}
-.sk::before{content:"";position:absolute;inset:-20%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.14),transparent);animation:shm 1.2s ease-in-out infinite}
-@keyframes shm{from{transform:translateX(-60%)}to{transform:translateX(60%)}}
-.ed{background:rgba(255,255,255,var(--glA));border:1px solid rgba(255,255,255,var(--bdA));border-radius:16px;padding:12px}
-textarea{width:100%;min-height:150px;resize:vertical;border-radius:12px;border:1px dashed rgba(255,255,255,var(--bdA));padding:12px;background:rgba(255,255,255,.04);color:var(--tx);font:13px ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
-.if{width:100%;height:360px;background:#fff;border:none;border-radius:12px;resize:vertical;overflow:auto;min-height:160px}
-.cs{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
-.pl{position:relative;overflow:hidden;border:none;border-radius:999px;padding:10px 14px;font-weight:900;cursor:pointer;color:#0b1220;background:#fff;transition:transform .2s,background .2s}
-.pl.sc{background:var(--ok)}
-.ts{position:fixed;left:50%;bottom:18px;transform:translateX(-50%) translateY(10px);background:rgba(15,15,22,.96);color:#fff;border:1px solid rgba(255,255,255,.12);padding:10px 14px;border-radius:12px;opacity:0;pointer-events:none;transition:opacity .35s,transform .35s;z-index:60}
-.ts.sh{opacity:1;transform:translateX(-50%)}
-.th{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
-.fi{display:flex;align-items:center;justify-content:space-between;gap:10px;background:rgba(255,255,255,var(--glA));border:1px solid rgba(255,255,255,var(--bdA));border-radius:var(--rad);padding:10px 12px}
-.fi input[type="color"]{width:42px;height:32px;border:none;background:transparent}
-.fi input[type="range"]{width:50%}
-.fi input[type="number"]{width:70px}
-@media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
-@media (max-width:860px){.l{grid-template-columns:1fr}.as{height:auto;position:relative;flex-direction:row;align-items:center;gap:10px;overflow:auto}.nb{flex-direction:row;flex-wrap:wrap}}
-</style>
-</head>
-<body>
-<div class="l" id="l">
-<aside class="as">
-<div class="br">Aervanix</div>
-<nav class="nb" id="nb">
-<button class="tb act" data-t="h">Home</button>
-<button class="tb" data-t="s">Scripts</button>
-<button class="tb" data-t="l">Lua</button>
-<button class="tb" data-t="w">HTML</button>
-<button class="tb" data-t="t">Theme</button>
-</nav>
-</aside>
-<main>
-<header class="top">
-<h1 class="tt">Aervanix’s Domain</h1>
-<div class="r"><img id="av" class="av" src="https://avatars.githubusercontent.com/u/117316014?v=4" alt="pfp"><div id="bb" class="bb"></div></div>
-</header>
-<div class="ct">
-<div class="pz"><a href="https://discord.com/users/641335879381680129" target="_blank" rel="noopener"><img src="https://lanyard.cnrad.dev/api/641335879381680129?theme=dark&animated=true" height="150" alt="discord"></a></div>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Aervanix’s Domain</title>
+    <link
+      rel="icon"
+      href="https://avatars.githubusercontent.com/u/117316014?v=4"
+    />
+    <meta property="og:title" content="Aervanix’s Domain" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://ltseverydayyou.github.io/" />
+    <meta
+      property="og:image"
+      content="https://avatars.githubusercontent.com/u/117316014?v=4"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css"
+    />
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-lua.min.js"
+    ></script>
+    <!-- BuilderIcons font parser -->
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/opentype.js@1.3.4/dist/opentype.min.js"
+    ></script>
 
-<section id="ph" class="pp on">
-<div id="home_sections"></div>
-</section>
-
-<section id="ps" class="pp">
-<div class="g" id="sc_list"></div>
-</section>
-
-<section id="pl" class="pp">
-<div class="g ed">
-<h3>Lua</h3>
-<textarea id="li" placeholder="Paste Lua code here..."></textarea>
-<div class="cs"><button class="pl" id="lhl">Highlight</button><button class="pl sc" id="lbf">Beautify</button></div>
-<pre><code id="lo" class="language-lua">-- Highlighted code will appear here</code></pre>
-</div>
-</section>
-
-<section id="pw" class="pp">
-<div class="g ed">
-<h3>HTML</h3>
-<textarea id="hi" placeholder="Paste HTML here..."></textarea>
-<div class="cs"><button class="pl" id="hr">Render</button></div>
-<iframe id="ho" class="if" title="preview"></iframe>
-</div>
-</section>
-
-<section id="pt" class="pp">
-<div class="g ed">
-<h3>Theme</h3>
-<div class="th">
-<div class="fi"><span>Accent</span><input id="c_ac" type="color" value="#66e3ff"/></div>
-<div class="fi"><span>Accent 2</span><input id="c_ac2" type="color" value="#a78bfa"/></div>
-<div class="fi"><span>BG 1</span><input id="c_g1" type="color" value="#0b1220"/></div>
-<div class="fi"><span>BG 2</span><input id="c_g2" type="color" value="#111c2e"/></div>
-<div class="fi"><span>Glass</span><input id="r_gl" type="range" min="0" max="0.3" step="0.01" value="0.06"/></div>
-<div class="fi"><span>Border</span><input id="r_bd" type="range" min="0" max="0.3" step="0.01" value="0.12"/></div>
-<div class="fi"><span>Radius</span><input id="n_rad" type="number" min="8" max="30" step="1" value="16"/></div>
-<div class="fi"><span>Font px</span><input id="n_fs" type="number" min="12" max="20" step="1" value="15"/></div>
-</div>
-<div class="cs"><button class="pl" id="t_apply">Apply</button><button class="pl sc" id="t_save">Save</button><button class="pl" id="t_reset">Reset</button></div>
-</div>
-</section>
-
-</div>
-</main>
-</div>
-
-<audio id="fx" preload="auto"><source src="get-out.mp3" type="audio/mpeg"/></audio>
-<div id="ts" class="ts"></div>
-
-<div id="md" class="md" aria-hidden="true">
-<div class="mc">
-<div class="mh"><strong id="mt" class="br">Loading…</strong><div><button class="bn cp" id="cp">Copy Script</button><button class="x" id="x">✕</button></div></div>
-<div id="mb" class="sk"></div>
-</div>
-</div>
-
-<script>
-const q = s => document.querySelector(s);
-const qa = s => document.querySelectorAll(s);
-
-const host = s => {
-  try {
-    return new URL(s).host.replace(/^www\./, '');
-  } catch {
-    return '';
-  }
-};
-
-const homeSections = [];
-let currentHomeSection = null;
-
-function AddHeader(title) {
-  const section = {
-    title: title || 'Home',
-    links: [],
-    open: true
-  };
-  homeSections.push(section);
-  currentHomeSection = section;
-  return section;
-}
-
-function AddLink(title, icon, link) {
-  if (!currentHomeSection) {
-    AddHeader('');
-  }
-  currentHomeSection.links.push({ title, icon: icon || '', link });
-  return currentHomeSection;
-}
-
-function renderHome() {
-  const list = q('#home_sections');
-  if (!list) {
-    return;
-  }
-
-  list.innerHTML = '';
-  const fragment = document.createDocumentFragment();
-
-  for (const section of homeSections) {
-    const block = document.createElement('div');
-    block.className = 'g home-section';
-
-    const headerWrap = document.createElement('div');
-    headerWrap.className = 'home-section__header';
-
-    const header = document.createElement('h3');
-    header.textContent = section.title;
-
-    const toggle = document.createElement('button');
-    toggle.type = 'button';
-    toggle.className = 'home-section__toggle';
-    toggle.setAttribute('aria-expanded', section.open ? 'true' : 'false');
-    toggle.innerHTML = section.open ? '▲' : '▼';
-
-    headerWrap.append(header, toggle);
-
-    const content = document.createElement('div');
-    content.className = 'gr home-section__content';
-    if (!section.open) {
-      content.classList.add('home-section__content--collapsed');
-    }
-
-    for (const item of section.links) {
-      const tile = document.createElement('a');
-      tile.className = 'tl';
-      tile.href = item.link;
-      tile.rel = 'noopener';
-      tile.target = '_blank';
-      tile.dataset.h = host(item.link);
-
-      const parts = [];
-      if (item.icon) {
-        parts.push(`<img alt="" src="${item.icon}">`);
+    <style>
+      :root {
+        --g1: #0b1220;
+        --g2: #111c2e;
+        --tx: #e7e9ee;
+        --mu: #a6adbb;
+        --ac: #66e3ff;
+        --ac2: #a78bfa;
+        --ok: #72f3b6;
+        --bdA: 0.12;
+        --glA: 0.06;
+        --rad: 16px;
       }
-      parts.push(`<span>${item.title}</span>`);
-      tile.innerHTML = parts.join('');
-      content.appendChild(tile);
-    }
 
-    toggle.addEventListener('click', () => {
-      section.open = !section.open;
-      content.classList.toggle('home-section__content--collapsed', !section.open);
-      toggle.setAttribute('aria-expanded', section.open ? 'true' : 'false');
-      toggle.innerHTML = section.open ? '▲' : '▼';
-    });
-
-    block.append(headerWrap, content);
-    fragment.appendChild(block);
-  }
-
-  list.appendChild(fragment);
-}
-
-window.AddHeader = AddHeader;
-window.AddLink = AddLink;
-
-AddHeader('Socials');
-AddLink('Scriptblox', 'https://r2.guns.lol/7e671c9b-1689-4d72-a5e5-b972f7d7fb09.png', 'https://scriptblox.com/u/Aervanix');
-AddLink('rscripts', 'https://r2.guns.lol/b9234319-f7c7-4b19-840e-600a2044d401.png', 'https://rscripts.net/@ltseverydayyou');
-AddLink('Discord Profile', 'https://cdn.simpleicons.org/discord', 'https://discord.com/users/641335879381680129');
-AddLink('Discord Server', 'https://cdn.simpleicons.org/discord', 'https://discord.com/invite/zzjYhtMGFD');
-AddLink('guns.lol', 'https://assets.guns.lol/guns_logo_no_background_cropped.png', 'https://guns.lol/ltseeverydayyou');
-AddLink('GitHub', 'https://cdn.simpleicons.org/github', 'https://github.com/ltseverydayyou');
-AddLink('Spotify', 'https://cdn.simpleicons.org/spotify', 'https://open.spotify.com/user/316a6txgaro3ethw6pochw3uripy');
-AddLink('Steam', 'https://cdn.simpleicons.org/steam', 'https://steamcommunity.com/id/ltseverydayyou');
-
-AddHeader('Roblox');
-AddLink('AervanixVX', 'https://cdn.simpleicons.org/roblox', 'https://www.roblox.com/users/11761417/profile');
-AddLink('Aervanix', 'https://cdn.simpleicons.org/roblox', 'https://www.roblox.com/users/2502806181/profile');
-AddLink('Jadiellovescats3', 'https://cdn.simpleicons.org/roblox', 'https://www.roblox.com/users/2845101018/profile');
-
-AddHeader('Roblox Group(s)');
-AddLink('Dreadborne', 'https://tr.rbxcdn.com/180DAY-3598f5067f011a7e3b2ae3e0f08ca401/150/150/Image/Webp/noFilter', 'https://www.roblox.com/communities/36041342/Dreadborne-DEV-TEAM#!/about');
-
-const scriptItems = [];
-
-function renderScripts() {
-  const list = q('#sc_list');
-  if (!list) {
-    return;
-  }
-
-  list.innerHTML = '';
-  const featuredList = scriptItems.filter(item => item.featured);
-  const regularList = scriptItems.filter(item => !item.featured);
-  const sorted = [...featuredList, ...regularList];
-  const fragment = document.createDocumentFragment();
-
-  for (const item of sorted) {
-    const entry = document.createElement('div');
-    entry.className = 'sc';
-    if (item.featured) {
-      entry.classList.add('featured');
-    }
-    entry.dataset.u = item.url;
-
-    const info = document.createElement('div');
-    info.className = 'sc_info';
-
-    if (item.image) {
-      const img = document.createElement('img');
-      img.className = 'sc_img';
-      img.src = item.image;
-      img.alt = item.name;
-      info.appendChild(img);
-    }
-
-    const text = document.createElement('div');
-    text.className = 'sc_text';
-    const title = document.createElement('span');
-    title.className = 'nm';
-    title.textContent = item.name;
-    text.appendChild(title);
-
-    if (item.featured) {
-      const badge = document.createElement('span');
-      badge.className = 'sc_badge';
-      badge.textContent = 'Featured';
-      text.appendChild(badge);
-    }
-
-    info.appendChild(text);
-
-    const controls = document.createElement('div');
-    controls.className = 'brw';
-
-    const copyBtn = document.createElement('button');
-    copyBtn.className = 'bn cp';
-    copyBtn.dataset.a = 'c';
-    copyBtn.type = 'button';
-    copyBtn.textContent = 'Copy';
-
-    const viewBtn = document.createElement('button');
-    viewBtn.className = 'bn vw';
-    viewBtn.dataset.a = 'v';
-    viewBtn.type = 'button';
-    viewBtn.textContent = 'View';
-
-    controls.append(copyBtn, viewBtn);
-
-    if (item.game) {
-      const gameBtn = document.createElement('button');
-      gameBtn.className = 'bn gm';
-      gameBtn.dataset.game = item.game;
-      gameBtn.type = 'button';
-      gameBtn.textContent = 'Play';
-      controls.append(gameBtn);
-    }
-
-    entry.append(info, controls);
-    fragment.appendChild(entry);
-  }
-
-  list.appendChild(fragment);
-}
-
-function ScriptAdd(name, url, imageUrl, featured = false, gameLink = '') {
-  const flag = typeof featured === 'string' ? featured.toLowerCase() === 'true' : Boolean(featured);
-  scriptItems.push({
-    name,
-    url,
-    image: imageUrl || '',
-    featured: flag,
-    game: gameLink || ''
-  });
-  renderScripts();
-}
-
-window.ScriptAdd = ScriptAdd;
-
-ScriptAdd('NA Main Version', 'https://raw.githubusercontent.com/ltseverydayyou/Nameless-Admin/main/Source.lua', 'https://raw.githubusercontent.com/ltseverydayyou/Nameless-Admin/refs/heads/main/NAimages/NAnew.png', true);
-ScriptAdd('NA Testing Version', 'https://raw.githubusercontent.com/ltseverydayyou/Nameless-Admin/main/NA%20testing.lua', 'https://raw.githubusercontent.com/ltseverydayyou/Nameless-Admin/refs/heads/main/NAimages/NAnew.png');
-ScriptAdd('FNB Autoplayer', 'https://raw.githubusercontent.com/ltseverydayyou/FNB-playerrrr/refs/heads/main/AutoPlayerRevived.luau', 'https://tr.rbxcdn.com/180DAY-06421ce8666c82646547498e79a09589/150/150/Image/Png/noFilter', true, 'https://roblox.com/games/7603193259');
-ScriptAdd('Delusional Office', 'https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/Delulu%20Office.lua', 'https://tr.rbxcdn.com/180DAY-dbbcfeee2259d07f20b685e3229c3ac9/256/256/Image/Webp/noFilter', null, 'https://roblox.com/games/18749553947');
-ScriptAdd('Endless Doors', 'https://raw.githubusercontent.com/ltseverydayyou/endless-doors/main/endless%20madness%20buster', 'https://tr.rbxcdn.com/180DAY-57bc2bd7eba62e92b90b16d65c33ff71/256/256/Image/Webp/noFilter', null, 'https://roblox.com/games/17324251852');
-ScriptAdd('DeadCoin Farm', 'https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/Be%20Dead%20Forever%20Farm.lua', 'https://tr.rbxcdn.com/180DAY-995799e88760b15b0611cdd1c818eef5/256/256/Image/Webp/noFilter', null, 'https://roblox.com/games/2882332175');
-ScriptAdd('Project The Rake', 'https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/main/the%20rake', 'https://tr.rbxcdn.com/180DAY-b75d323ae9a6c5cd194b708e72c5348f/256/256/Image/Webp/noFilter', null, 'https://roblox.com/games/2413927524');
-ScriptAdd('studip anticheat bypasser', 'https://rawscripts.net/raw/Rooms-andamp-Doors-stupid-anticheat-bypasser-31204', 'https://tr.rbxcdn.com/180DAY-5e9ce9aecc5c87537054147721a1cc7b/256/256/Image/Webp/noFilter', null, 'https://roblox.com/games/5865058321');
-ScriptAdd('Simple Spy Reworked', 'https://gist.githubusercontent.com/ltseverydayyou/2398adb0db70abc4f752219a676f6cb2/raw/SimpleSpyRework.luau', null, true);
-ScriptAdd('Aervanix Aimbot', 'https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/NewAimbot.lua');
-ScriptAdd('Chat Translator', 'https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/translatoooor');
-ScriptAdd('Virtual Keyboard', 'https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/VirtualKeyboard.lua');
-ScriptAdd('Turtle Spy', 'https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/main/Turtle%20Spy.lua');
-ScriptAdd('Game Universe Viewer', 'https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/main/Universe%20Viewer');
-ScriptAdd('Mobile Shiftlock', 'https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/shiftlock');
-ScriptAdd('Custom Mobile Backpack', 'https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/mobileBACKPACK.lua');
-ScriptAdd('Animation Spoofer', 'https://raw.githubusercontent.com/ltseverydayyou/Nameless-Admin/refs/heads/main/Animation%20Spoofer');
-
-const layoutEl = q('#l');
-const fx = q('#fx');
-const avTxt = [
-  'GET OUT',
-  'hai :3',
-  'cuh',
-  'guh',
-  'click off',
-  'OUCH',
-  ':c',
-  'legshot on top',
-  'i uhhh forgot my name 💀',
-  'dont touch me please',
-  'i am not a toy',
-  'stop clicking me',
-  'i am NOT a button'
-];
-let avLocked = false;
-let avTimestamp = 0;
-let collapseTimer = null;
-let themeFlashTimer = null;
-let themeFlashBackup = null;
-
-function collapseEverything(duration = 3000) {
-  if (!layoutEl) {
-    return;
-  }
-  layoutEl.classList.add('collapsed');
-  clearTimeout(collapseTimer);
-  collapseTimer = setTimeout(() => layoutEl.classList.remove('collapsed'), duration);
-}
-
-function resetFlashThemeState() {
-  if (themeFlashTimer) {
-    clearTimeout(themeFlashTimer);
-    themeFlashTimer = null;
-  }
-  themeFlashBackup = null;
-}
-
-function flashOuchTheme() {
-  const backup = themeFlashBackup || themeGet();
-  themeFlashBackup = backup;
-  const flashTheme = {
-    ...backup,
-    g1: '#3c0000',
-    g2: '#610000',
-    ac: '#ff6b6b',
-    ac2: '#ffb3b3'
-  };
-  themeApply(flashTheme);
-  clearTimeout(themeFlashTimer);
-  themeFlashTimer = setTimeout(() => {
-    if (themeFlashBackup) {
-      themeApply(themeFlashBackup);
-      themeFlashBackup = null;
-      themeFlashTimer = null;
-    }
-  }, 3000);
-}
-
-function ripple(el, e) {
-  const r = document.createElement('span');
-  r.className = 'rp';
-  const bounds = el.getBoundingClientRect();
-  r.style.left = `${e.clientX - bounds.left}px`;
-  r.style.top = `${e.clientY - bounds.top}px`;
-  el.appendChild(r);
-  setTimeout(() => r.remove(), 600);
-}
-
-function toast(message) {
-  const t = q('#ts');
-  t.textContent = message;
-  t.classList.add('sh');
-  clearTimeout(toast._id);
-  toast._id = setTimeout(() => t.classList.remove('sh'), 1600);
-}
-
-function tp(el, txt, spd = 18) {
-  el.textContent = '';
-  let index = 0;
-  const iv = setInterval(() => {
-    el.textContent += txt.charAt(index++);
-    if (index >= txt.length) {
-      clearInterval(iv);
-    }
-  }, spd);
-}
-
-function tab(id) {
-  const current = document.querySelector('.pp.on');
-  const next = q('#p' + id);
-  qa('.tb').forEach(button => button.classList.toggle('act', button.dataset.t === id));
-  if (current === next) {
-    return;
-  }
-  if (current) {
-    current.classList.remove('in');
-    current.classList.add('out');
-    setTimeout(() => {
-      current.classList.remove('out');
-      current.classList.remove('on');
-    }, 200);
-  }
-  next.classList.add('on');
-  next.classList.add('in');
-  setTimeout(() => next.classList.remove('in'), 220);
-  history.replaceState(null, '', '#' + id);
-}
-
-function onAv() {
-  const now = performance.now();
-  if (avLocked || now - avTimestamp < 700) {
-    return;
-  }
-  avLocked = true;
-  avTimestamp = now;
-  const message = avTxt[Math.floor(Math.random() * avTxt.length)];
-  const badge = q('#bb');
-  badge.classList.add('sh');
-  tp(badge, message, 16);
-  if (message === 'GET OUT') {
-    fx.currentTime = 0;
-    fx.play().catch(() => {});
-    collapseEverything();
-  } else if (message === 'OUCH') {
-    flashOuchTheme();
-    q('#av').classList.add('ouch');
-    setTimeout(() => q('#av').classList.remove('ouch'), 700);
-  }
-  setTimeout(() => badge.classList.remove('sh'), 1400);
-  setTimeout(() => {
-    avLocked = false;
-  }, 720);
-}
-
-const cache = new Map();
-let curCode = '';
-
-function mOpen(title) {
-  q('#mt').textContent = title;
-  q('#mb').className = 'sk';
-  q('#mb').innerHTML = '';
-  q('#md').classList.add('sh');
-  q('#md').setAttribute('aria-hidden', 'false');
-}
-
-function mClose() {
-  q('#md').classList.remove('sh');
-  q('#md').setAttribute('aria-hidden', 'true');
-}
-
-async function view(btn) {
-  const card = btn.closest('.sc');
-  const url = card.dataset.u;
-  const name = card.querySelector('.nm').textContent.trim();
-  mOpen(name);
-  try {
-    const content = cache.has(url) ? cache.get(url) : await (await fetch(url, { cache: 'no-store' })).text();
-    cache.set(url, content);
-    curCode = `loadstring(game:HttpGet('${url}'))();\n\n${content}`;
-    const pre = document.createElement('pre');
-    const code = document.createElement('code');
-    code.className = 'language-lua';
-    code.textContent = content;
-    pre.appendChild(code);
-    const mb = q('#mb');
-    mb.className = '';
-    mb.appendChild(pre);
-    Prism.highlightElement(code);
-  } catch {
-    const mb = q('#mb');
-    mb.className = '';
-    mb.innerHTML = '<div style="padding:16px">Failed to load</div>';
-  }
-}
-
-async function copyLoader(btn) {
-  const url = btn.closest('.sc').dataset.u;
-  await navigator.clipboard.writeText(`loadstring(game:HttpGet('${url}'))();`);
-  toast('Copied ✔️');
-}
-
-function luaHl() {
-  const text = q('#li').value;
-  const output = q('#lo');
-  output.textContent = text || '-- Highlighted code will appear here';
-  Prism.highlightElement(output);
-  const count = pattern => (text.match(pattern) || []).length;
-  const f = count(/\bfunction\b/g);
-  const e = count(/\bend\b/g);
-  const r = count(/\brepeat\b/g);
-  const u = count(/\buntil\b/g);
-  const warnings = [];
-  if (e < f) {
-    warnings.push(`Missing end (${e}/${f})`);
-  }
-  if (r !== u) {
-    warnings.push(`repeat/until (${r}/${u})`);
-  }
-  if (warnings.length) {
-    toast('⚠️ ' + warnings.join(' • '));
-  }
-}
-
-function luaB() {
-  const lines = q('#li').value.split('\n');
-  let depth = 0;
-  const formatted = [];
-  for (let raw of lines) {
-    const trimmed = raw.trim();
-    if (/^(end|else|elseif|until)\b/.test(trimmed)) {
-      depth = Math.max(depth - 1, 0);
-    }
-    let line = '  '.repeat(depth) + trimmed;
-    if (/^(function|if|for|while|repeat)\b/.test(trimmed)) {
-      depth += 1;
-    }
-    if (/^(else|elseif)\b/.test(trimmed)) {
-      depth += 1;
-    }
-    if (/until\b/.test(trimmed)) {
-      depth = Math.max(depth - 1, 0);
-    }
-    formatted.push(line);
-  }
-
-  const polished = [];
-  let buffer = [];
-  const flush = () => {
-    if (!buffer.length) {
-      return;
-    }
-    const aligned = buffer.every(item => item.includes('='));
-    if (aligned) {
-      const maxIndex = Math.max(...buffer.map(item => item.indexOf('=')));
-      for (const entry of buffer) {
-        const pivot = entry.indexOf('=');
-        const left = entry.slice(0, pivot).trimEnd().padEnd(maxIndex, ' ');
-        const right = entry.slice(pivot + 1).trim();
-        polished.push(`${left} = ${right}`);
+      * {
+        box-sizing: border-box;
       }
-    } else {
-      polished.push(...buffer);
-    }
-    buffer = [];
-  };
 
-  for (const entry of formatted) {
-    if (entry.trim() === '') {
-      flush();
-      polished.push('');
-    } else {
-      buffer.push(entry);
-    }
-  }
-  flush();
+      html,
+      body {
+        height: 100%;
+      }
 
-  q('#li').value = polished.join('\n').trim();
-  luaHl();
-  toast('Beautified');
-}
+      body {
+        margin: 0;
+        color: var(--tx);
+        background:
+          radial-gradient(
+            1200px 600px at -10% -10%,
+            rgba(102, 227, 255, 0.12),
+            transparent 60%
+          ),
+          radial-gradient(
+            1000px 800px at 110% 120%,
+            rgba(167, 139, 250, 0.12),
+            transparent 60%
+          ),
+          linear-gradient(135deg, var(--g1), var(--g2));
+        font: 15px/1.45 ui-sans-serif, system-ui, "Segoe UI", Roboto, Helvetica,
+          Arial;
+        overflow-x: hidden;
+        animation: bg 22s linear infinite;
+      }
 
-function htmlR() {
-  q('#ho').srcdoc =
-    q('#hi').value ||
-    '<!doctype html><title>Preview</title><style>html{font:16px system-ui;padding:18px}</style><h2>Nothing here yet.</h2>';
-}
+      @keyframes bg {
+        0% {
+          filter: brightness(1);
+        }
 
-function themeGet() {
-  return {
-    ac: getComputedStyle(document.documentElement).getPropertyValue('--ac').trim() || '#66e3ff',
-    ac2: getComputedStyle(document.documentElement).getPropertyValue('--ac2').trim() || '#a78bfa',
-    g1: getComputedStyle(document.documentElement).getPropertyValue('--g1').trim() || '#0b1220',
-    g2: getComputedStyle(document.documentElement).getPropertyValue('--g2').trim() || '#111c2e',
-    glA: getComputedStyle(document.documentElement).getPropertyValue('--glA').trim() || '0.06',
-    bdA: getComputedStyle(document.documentElement).getPropertyValue('--bdA').trim() || '0.12',
-    rad: getComputedStyle(document.documentElement).getPropertyValue('--rad').trim() || '16px',
-    fs: parseInt(getComputedStyle(document.documentElement).fontSize, 10) || 15
-  };
-}
+        50% {
+          filter: brightness(1.08);
+        }
 
-function themeApply(theme) {
-  const root = document.documentElement;
-  root.style.setProperty('--ac', theme.ac);
-  root.style.setProperty('--ac2', theme.ac2);
-  root.style.setProperty('--g1', theme.g1);
-  root.style.setProperty('--g2', theme.g2);
-  root.style.setProperty('--glA', theme.glA);
-  root.style.setProperty('--bdA', theme.bdA);
-  root.style.setProperty('--rad', typeof theme.rad === 'number' ? `${theme.rad}px` : theme.rad);
-  root.style.fontSize = `${theme.fs || 15}px`;
-}
+        100% {
+          filter: brightness(1);
+        }
+      }
 
-function themeSave() {
-  resetFlashThemeState();
-  const theme = themeGet();
-  themeApply(theme);
-  localStorage.setItem('th', JSON.stringify(theme));
-  toast('Theme saved ✔️');
-}
+      .l {
+        display: grid;
+        grid-template-columns: 220px 1fr;
+        min-height: 100svh;
+        transition:
+          transform 0.35s ease,
+          opacity 0.25s ease;
+      }
 
-function themeLoad() {
-  resetFlashThemeState();
-  const saved = localStorage.getItem('th');
-  if (!saved) {
-    return;
-  }
-  try {
-    const parsed = JSON.parse(saved);
-    themeApply(parsed);
-    q('#c_ac').value = parsed.ac;
-    q('#c_ac2').value = parsed.ac2;
-    q('#c_g1').value = parsed.g1;
-    q('#c_g2').value = parsed.g2;
-    q('#r_gl').value = parsed.glA;
-    q('#r_bd').value = parsed.bdA;
-    q('#n_rad').value = parseInt(parsed.rad, 10) || 16;
-    q('#n_fs').value = parsed.fs || 15;
-  } catch {
-    // ignore
-  }
-}
+      .l.collapsed {
+        transform-origin: top;
+        transform: scaleY(0.05);
+        opacity: 0;
+        pointer-events: none;
+      }
 
-function themeDefaults() {
-  resetFlashThemeState();
-  const defaults = {
-    ac: '#66e3ff',
-    ac2: '#a78bfa',
-    g1: '#0b1220',
-    g2: '#111c2e',
-    glA: '0.06',
-    bdA: '0.12',
-    rad: '16px',
-    fs: 15
-  };
-  themeApply(defaults);
-  localStorage.removeItem('th');
-  q('#c_ac').value = defaults.ac;
-  q('#c_ac2').value = defaults.ac2;
-  q('#c_g1').value = defaults.g1;
-  q('#c_g2').value = defaults.g2;
-  q('#r_gl').value = defaults.glA;
-  q('#r_bd').value = defaults.bdA;
-  q('#n_rad').value = parseInt(defaults.rad, 10);
-  q('#n_fs').value = defaults.fs;
-  toast('Theme reset');
-}
+      .as {
+        position: sticky;
+        top: 0;
+        height: 100svh;
+        padding: 20px 14px;
+        border-right: 1px solid rgba(255, 255, 255, var(--bdA));
+        backdrop-filter: saturate(140%) blur(10px);
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.07),
+          rgba(255, 255, 255, 0.03)
+        );
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
 
-function themeApplyFromUi() {
-  resetFlashThemeState();
-  const theme = {
-    ac: q('#c_ac').value,
-    ac2: q('#c_ac2').value,
-    g1: q('#c_g1').value,
-    g2: q('#c_g2').value,
-    glA: q('#r_gl').value,
-    bdA: q('#r_bd').value,
-    rad: `${q('#n_rad').value}px`,
-    fs: parseInt(q('#n_fs').value, 10) || 15
-  };
-  themeApply(theme);
-  toast('Applied');
-}
+      .br {
+        padding: 6px 4px;
+        font-weight: 800;
+        color: var(--mu);
+        letter-spacing: 0.3px;
+      }
 
-window.addEventListener('DOMContentLoaded', () => {
-  renderHome();
-  renderScripts();
+      .nb {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
 
-  qa('.tb').forEach(button => {
-    button.addEventListener('click', event => {
-      ripple(button, event);
-      tab(button.dataset.t);
-    });
-  });
+      .tb {
+        appearance: none;
+        border: none;
+        background: transparent;
+        color: var(--tx);
+        text-align: left;
+        padding: 10px 8px;
+        font-weight: 800;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        transition:
+          color 0.25s cubic-bezier(0.2, 0.6, 0.2, 1),
+          transform 0.25s cubic-bezier(0.2, 0.6, 0.2, 1);
+      }
 
-  const init = location.hash.slice(1) || 'h';
-  tab(init);
+      .tb::after {
+        content: "";
+        position: absolute;
+        left: 8px;
+        right: 70%;
+        bottom: 4px;
+        height: 2px;
+        background: linear-gradient(90deg, var(--ac), var(--ac2));
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.28s cubic-bezier(0.2, 0.6, 0.2, 1);
+      }
 
-  q('#av').addEventListener('click', onAv);
+      .tb:hover {
+        transform: translateX(3px);
+      }
 
-  document.addEventListener('click', event => {
-    const btn = event.target.closest('[data-a],[data-game]');
-    if (!btn) {
-      return;
-    }
-    ripple(btn, event);
-    if (btn.dataset.a === 'v') {
-      view(btn);
-    } else if (btn.dataset.a === 'c') {
-      copyLoader(btn);
-    } else if (btn.dataset.game) {
-      window.open(btn.dataset.game, '_blank', 'noopener,noreferrer');
-    }
-  });
+      .tb:hover::after {
+        transform: scaleX(1);
+      }
 
-  const btnX = q('#x');
-  btnX.addEventListener('click', event => {
-    ripple(btnX, event);
-    mClose();
-  });
+      .tb.act {
+        color: #fff;
+      }
 
-  q('#md').addEventListener('click', event => {
-    if (event.target.id === 'md') {
-      mClose();
-    }
-  });
+      .tb.act::after {
+        right: 10px;
+        transform: scaleX(1);
+      }
 
-  const btnCP = q('#cp');
-  btnCP.addEventListener('click', async event => {
-    ripple(btnCP, event);
-    if (!curCode) {
-      return;
-    }
-    await navigator.clipboard.writeText(curCode);
-    toast('Script copied ✔️');
-  });
+      .top {
+        position: sticky;
+        top: 0;
+        height: 66px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-bottom: 1px solid rgba(255, 255, 255, var(--bdA));
+        backdrop-filter: saturate(140%) blur(8px);
+        background: linear-gradient(
+          180deg,
+          rgba(0, 0, 0, 0.15),
+          rgba(0, 0, 0, 0.05)
+        );
+        z-index: 5;
+      }
 
-  const bHL = q('#lhl');
-  bHL.addEventListener('click', event => {
-    ripple(bHL, event);
-    luaHl();
-  });
+      .tt {
+        margin: 0;
+        font-weight: 900;
+        letter-spacing: 0.3px;
+        background: linear-gradient(90deg, var(--ac), var(--ac2), var(--ac));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        animation: sh 6s linear infinite;
+      }
 
-  const bBF = q('#lbf');
-  bBF.addEventListener('click', event => {
-    ripple(bBF, event);
-    luaB();
-  });
+      @keyframes sh {
+        0% {
+          filter: brightness(1);
+        }
 
-  const bHR = q('#hr');
-  bHR.addEventListener('click', event => {
-    ripple(bHR, event);
-    htmlR();
-  });
+        50% {
+          filter: brightness(1.22);
+        }
 
-  const bTA = q('#t_apply');
-  bTA.addEventListener('click', event => {
-    ripple(bTA, event);
-    themeApplyFromUi();
-  });
+        100% {
+          filter: brightness(1);
+        }
+      }
 
-  const bTS = q('#t_save');
-  bTS.addEventListener('click', event => {
-    ripple(bTS, event);
-    themeSave();
-  });
+      .r {
+        position: absolute;
+        right: 14px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
 
-  const bTR = q('#t_reset');
-  bTR.addEventListener('click', event => {
-    ripple(bTR, event);
-    themeDefaults();
-  });
+      .av {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        border: 1px solid rgba(255, 255, 255, var(--bdA));
+        cursor: pointer;
+        transition:
+          transform 0.2s,
+          filter 0.2s;
+      }
 
-  themeLoad();
-});
-</script>
-</body>
+      .av:active {
+        transform: scale(0.92);
+      }
+
+      .av.ouch {
+        filter: drop-shadow(0 0 10px #ff6969);
+        transform: scale(1.15);
+      }
+
+      .bb {
+        position: absolute;
+        top: 58px;
+        right: 10px;
+        padding: 8px 10px;
+        font-size: 13px;
+        color: #fff;
+        background: rgba(15, 15, 20, 0.95);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 12px;
+        opacity: 0;
+        transform: translateY(-6px) scale(0.98);
+        pointer-events: none;
+        transition:
+          opacity 0.35s,
+          transform 0.35s;
+      }
+
+      .bb.sh {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+
+      .ct {
+        padding: 28px clamp(14px, 4vw, 32px) 60px;
+      }
+
+      .pz {
+        display: flex;
+        justify-content: center;
+        margin: 14px 0 26px;
+        animation: fade 0.8s;
+      }
+
+      @keyframes fade {
+        from {
+          opacity: 0;
+          transform: translateY(6px);
+        }
+
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+
+      .pp {
+        display: none;
+        opacity: 0;
+        transform: translateY(8px);
+        transition:
+          opacity 0.35s,
+          transform 0.35s;
+      }
+
+      .pp.on {
+        display: block;
+        opacity: 1;
+        transform: none;
+      }
+
+      .pp.in {
+        animation: ain 0.35s both;
+      }
+
+      .pp.out {
+        animation: aout 0.32s both;
+      }
+
+      @keyframes ain {
+        from {
+          opacity: 0;
+          transform: translateY(8px);
+        }
+
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+
+      @keyframes aout {
+        from {
+          opacity: 1;
+          transform: none;
+        }
+
+        to {
+          opacity: 0;
+          transform: translateY(8px);
+        }
+      }
+
+      .g {
+        margin: 28px auto;
+        width: min(1100px, 92%);
+      }
+
+      .g h3 {
+        margin: 0 0 12px;
+        color: var(--ac);
+        font-weight: 900;
+      }
+
+      .gr {
+        display: grid;
+        gap: 16px;
+        grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+      }
+
+      .home-section {
+        margin-bottom: 26px;
+      }
+
+      .home-section__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 10px;
+      }
+
+      .home-section__header h3 {
+        margin: 0;
+        font-weight: 900;
+        background: linear-gradient(90deg, var(--ac), var(--ac2), var(--ac));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        background-size: 200% 200%;
+        animation: homeGradient 6s linear infinite;
+      }
+
+      .home-section__header h3::selection {
+        background: none;
+      }
+
+      .home-section__toggle {
+        border: none;
+        background: rgba(255, 255, 255, 0.08);
+        color: var(--tx);
+        padding: 4px 10px;
+        border-radius: 999px;
+        font-weight: 700;
+        cursor: pointer;
+        transition:
+          transform 0.25s,
+          background 0.25s;
+      }
+
+      .home-section__toggle:hover {
+        transform: translateY(-1px);
+        background: rgba(255, 255, 255, 0.15);
+      }
+
+      .home-section__toggle:focus-visible {
+        outline: 2px solid var(--ac);
+        outline-offset: 2px;
+      }
+
+      .home-section__content--collapsed {
+        display: none;
+      }
+
+      .tl {
+        position: relative;
+        padding: 12px 10px;
+        border-radius: 22px;
+        border: 1px solid rgba(255, 255, 255, var(--bdA));
+        background: rgba(255, 255, 255, var(--glA));
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        text-decoration: none;
+        color: var(--tx);
+        min-height: 110px;
+        transform:
+          perspective(600px) rotateX(0) rotateY(0) translateZ(0);
+        transition:
+          transform 0.45s,
+          box-shadow 0.45s,
+          filter 0.45s;
+      }
+
+      .tl img {
+        width: 42px;
+        height: 42px;
+        object-fit: contain;
+        filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.3));
+      }
+
+      .tl span {
+        font-size: 13px;
+      }
+
+      .tl:hover {
+        transform:
+          perspective(600px) rotateX(5deg) rotateY(-5deg)
+          translateY(-2px);
+        box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+        filter: saturate(1.2);
+      }
+
+      .tl::after {
+        content: attr(data-h);
+        position: absolute;
+        bottom: -20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(0, 0, 0, 0.7);
+        color: #fff;
+        font-size: 11px;
+        padding: 2px 7px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        opacity: 0;
+        transition:
+          opacity 0.2s,
+          transform 0.2s;
+        pointer-events: none;
+        white-space: nowrap;
+      }
+
+      .tl:hover::after {
+        opacity: 1;
+        transform: translateX(-50%) translateY(-2px);
+      }
+
+      .tl:nth-child(3n) {
+        animation: f1 6s ease-in-out infinite;
+      }
+
+      .tl:nth-child(3n + 1) {
+        animation: f2 7s ease-in-out infinite;
+      }
+
+      @keyframes f1 {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+
+        50% {
+          transform: translateY(-3px);
+        }
+      }
+
+      @keyframes f2 {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+
+        50% {
+          transform: translateY(3px);
+        }
+      }
+
+      @keyframes homeGradient {
+        0% {
+          background-position: 0% 50%;
+        }
+
+        50% {
+          background-position: 100% 50%;
+        }
+
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      .sc {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        background: rgba(255, 255, 255, var(--glA));
+        border: 1px solid rgba(255, 255, 255, var(--bdA));
+        border-radius: 16px;
+        padding: 14px 16px;
+        transition:
+          transform 0.35s,
+          box-shadow 0.35s,
+          background 0.35s;
+      }
+
+      .sc:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
+      }
+
+      .sc_info {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex: 1;
+        min-width: 0;
+      }
+
+      .sc_img {
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        object-fit: cover;
+        border: 1px solid rgba(255, 255, 255, var(--bdA));
+        background: rgba(255, 255, 255, 0.08);
+      }
+
+      .sc_text {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
+        min-width: 0;
+      }
+
+      .sc.featured {
+        background: linear-gradient(
+          135deg,
+          rgba(102, 227, 255, 0.12),
+          rgba(167, 139, 250, 0.08)
+        );
+        border-color: rgba(102, 227, 255, 0.45);
+        box-shadow: 0 18px 40px rgba(102, 227, 255, 0.35);
+      }
+
+      .sc_badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        border-radius: 999px;
+        border: 1px solid rgba(102, 227, 255, 0.6);
+        padding: 2px 10px;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--ac);
+        background: rgba(102, 227, 255, 0.18);
+      }
+
+      .sc .nm {
+        font-weight: 800;
+      }
+
+      .bn {
+        position: relative;
+        overflow: hidden;
+        border: none;
+        border-radius: 12px;
+        padding: 10px 14px;
+        font-weight: 900;
+        cursor: pointer;
+        transition:
+          transform 0.2s,
+          filter 0.2s,
+          background 0.2s;
+      }
+
+      .bn:active {
+        transform: translateY(1px);
+      }
+
+      .bn.cp {
+        background: var(--ok);
+        color: #0b1220;
+      }
+
+      .bn.gm {
+        background: linear-gradient(90deg, var(--ac), var(--ac2));
+        color: #0b1220;
+      }
+
+      .bn.vw {
+        background: linear-gradient(90deg, var(--ac), var(--ac2));
+        color: #0b1220;
+      }
+
+      .brw {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+
+      .rp {
+        position: absolute;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+        background: radial-gradient(
+          circle at center,
+          rgba(255, 255, 255, 0.6) 0%,
+          rgba(255, 255, 255, 0.2) 40%,
+          rgba(255, 255, 255, 0) 70%
+        );
+        animation: rip 0.6s ease-out forwards;
+      }
+
+      @keyframes rip {
+        from {
+          width: 0;
+          height: 0;
+          opacity: 0.9;
+        }
+
+        to {
+          width: 260px;
+          height: 260px;
+          opacity: 0;
+        }
+      }
+
+      .md {
+        position: fixed;
+        inset: 0;
+        display: grid;
+        place-items: center;
+        background: rgba(4, 6, 10, 0.65);
+        backdrop-filter: blur(6px);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.35s;
+        z-index: 50;
+      }
+
+      .md.sh {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .mc {
+        width: min(900px, 92vw);
+        max-height: 86vh;
+        overflow: auto;
+        background: linear-gradient(
+          180deg,
+          rgba(22, 28, 42, 0.95),
+          rgba(12, 16, 26, 0.95)
+        );
+        border: 1px solid rgba(255, 255, 255, var(--bdA));
+        border-radius: 18px;
+        transform: translateY(10px) scale(0.98);
+        transition: transform 0.35s;
+      }
+
+      .md.sh .mc {
+        transform: none;
+      }
+
+      .mh {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 14px;
+        position: sticky;
+        top: 0;
+        background: linear-gradient(
+          180deg,
+          rgba(12, 16, 26, 0.9),
+          rgba(12, 16, 26, 0.7)
+        );
+        backdrop-filter: blur(8px);
+        border-bottom: 1px solid rgba(255, 255, 255, var(--bdA));
+      }
+
+      .x {
+        background: transparent;
+        border: none;
+        color: var(--mu);
+        font-size: 20px;
+        width: 40px;
+        height: 40px;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: background 0.2s;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .x:hover {
+        background: rgba(255, 255, 255, 0.06);
+      }
+
+      pre {
+        margin: 0;
+        padding: 16px;
+        max-height: 70vh;
+        overflow: auto;
+      }
+
+      .sk {
+        height: 220px;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.06);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .sk::before {
+        content: "";
+        position: absolute;
+        inset: -20%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.14),
+          transparent
+        );
+        animation: shm 1.2s ease-in-out infinite;
+      }
+
+      @keyframes shm {
+        from {
+          transform: translateX(-60%);
+        }
+
+        to {
+          transform: translateX(60%);
+        }
+      }
+
+      .ed {
+        background: rgba(255, 255, 255, var(--glA));
+        border: 1px solid rgba(255, 255, 255, var(--bdA));
+        border-radius: 16px;
+        padding: 12px;
+      }
+
+      textarea {
+        width: 100%;
+        min-height: 150px;
+        resize: vertical;
+        border-radius: 12px;
+        border: 1px dashed rgba(255, 255, 255, var(--bdA));
+        padding: 12px;
+        background: rgba(255, 255, 255, 0.04);
+        color: var(--tx);
+        font: 13px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      }
+
+      .if {
+        width: 100%;
+        height: 360px;
+        background: #fff;
+        border: none;
+        border-radius: 12px;
+        resize: vertical;
+        overflow: auto;
+        min-height: 160px;
+      }
+
+      .cs {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-top: 10px;
+      }
+
+      .pl {
+        position: relative;
+        overflow: hidden;
+        border: none;
+        border-radius: 999px;
+        padding: 10px 14px;
+        font-weight: 900;
+        cursor: pointer;
+        color: #0b1220;
+        background: #fff;
+        transition:
+          transform 0.2s,
+          background 0.2s;
+      }
+
+      .pl.sc {
+        background: var(--ok);
+      }
+
+      .ts {
+        position: fixed;
+        left: 50%;
+        bottom: 18px;
+        transform: translateX(-50%) translateY(10px);
+        background: rgba(15, 15, 22, 0.96);
+        color: #fff;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        padding: 10px 14px;
+        border-radius: 12px;
+        opacity: 0;
+        pointer-events: none;
+        transition:
+          opacity 0.35s,
+          transform 0.35s;
+        z-index: 60;
+      }
+
+      .ts.sh {
+        opacity: 1;
+        transform: translateX(-50%);
+      }
+
+      .th {
+        display: grid;
+        gap: 14px;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      }
+
+      .fi {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        background: rgba(255, 255, 255, var(--glA));
+        border: 1px solid rgba(255, 255, 255, var(--bdA));
+        border-radius: var(--rad);
+        padding: 10px 12px;
+      }
+
+      .fi input[type="color"] {
+        width: 42px;
+        height: 32px;
+        border: none;
+        background: transparent;
+      }
+
+      .fi input[type="range"] {
+        width: 50%;
+      }
+
+      .fi input[type="number"] {
+        width: 70px;
+      }
+
+      /* BuilderIcons tab styling */
+
+      #bi-root {
+        margin-top: 10px;
+      }
+
+      #bi-loading-screen {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding: 18px 0;
+      }
+
+      #bi-loading-spinner {
+        border: 6px solid rgba(255, 255, 255, 0.08);
+        border-top: 6px solid var(--ac);
+        border-radius: 50%;
+        width: 64px;
+        aspect-ratio: 1 / 1;
+        animation: bi-loading-spin 1s linear infinite;
+      }
+
+      #bi-loading-text {
+        margin-top: 16px;
+        font-size: 14px;
+        color: var(--mu);
+      }
+
+      @keyframes bi-loading-spin {
+        0% {
+          transform: rotate(0deg);
+        }
+
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      .bi-table-wrap {
+        margin-top: 10px;
+        max-height: 480px;
+        overflow: auto;
+        border-radius: 14px;
+        border: 1px solid rgba(255, 255, 255, var(--bdA));
+        background: rgba(10, 12, 20, 0.9);
+      }
+
+      #bi-list-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 13px;
+      }
+
+      #bi-list-table th,
+      #bi-list-table td {
+        text-align: center;
+        padding: 6px 8px;
+      }
+
+      #bi-list-table thead {
+        background-color: rgba(255, 255, 255, 0.06);
+      }
+
+      #bi-list-table tbody tr:nth-child(odd) {
+        background-color: rgba(255, 255, 255, 0.02);
+      }
+
+      #bi-list-table tbody tr:nth-child(even) {
+        background-color: rgba(255, 255, 255, 0.04);
+      }
+
+      #bi-list-table tbody tr:hover {
+        background-color: rgba(255, 255, 255, 0.08);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+          scroll-behavior: auto !important;
+        }
+      }
+
+      @media (max-width: 860px) {
+        .l {
+          grid-template-columns: 1fr;
+        }
+
+        .as {
+          height: auto;
+          position: relative;
+          flex-direction: row;
+          align-items: center;
+          gap: 10px;
+          overflow: auto;
+        }
+
+        .nb {
+          flex-direction: row;
+          flex-wrap: wrap;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="l" id="l">
+      <aside class="as">
+        <div class="br">Aervanix</div>
+        <nav class="nb" id="nb">
+          <button class="tb act" data-t="h">Home</button>
+          <button class="tb" data-t="s">Scripts</button>
+          <button class="tb" data-t="l">Lua</button>
+          <button class="tb" data-t="w">HTML</button>
+          <button class="tb" data-t="t">Theme</button>
+          <button class="tb" data-t="b">Roblox BuilderIcons</button>
+        </nav>
+      </aside>
+
+      <main>
+        <header class="top">
+          <h1 class="tt">Aervanix’s Domain</h1>
+          <div class="r">
+            <img
+              id="av"
+              class="av"
+              src="https://avatars.githubusercontent.com/u/117316014?v=4"
+              alt="pfp"
+            />
+            <div id="bb" class="bb"></div>
+          </div>
+        </header>
+
+        <div class="ct">
+          <div class="pz">
+            <a
+              href="https://discord.com/users/641335879381680129"
+              target="_blank"
+              rel="noopener"
+            >
+              <img
+                src="https://lanyard.cnrad.dev/api/641335879381680129?theme=dark&animated=true"
+                height="150"
+                alt="discord"
+              />
+            </a>
+          </div>
+
+          <section id="ph" class="pp on">
+            <div id="home_sections"></div>
+          </section>
+
+          <section id="ps" class="pp">
+            <div class="g" id="sc_list"></div>
+          </section>
+
+          <section id="pl" class="pp">
+            <div class="g ed">
+              <h3>Lua</h3>
+              <textarea id="li" placeholder="Paste Lua code here..."></textarea>
+              <div class="cs">
+                <button class="pl" id="lhl">Highlight</button>
+                <button class="pl sc" id="lbf">Beautify</button>
+              </div>
+              <pre>
+<code id="lo" class="language-lua">-- Highlighted code will appear here</code>
+              </pre>
+            </div>
+          </section>
+
+          <section id="pw" class="pp">
+            <div class="g ed">
+              <h3>HTML</h3>
+              <textarea id="hi" placeholder="Paste HTML here..."></textarea>
+              <div class="cs">
+                <button class="pl" id="hr">Render</button>
+              </div>
+              <iframe id="ho" class="if" title="preview"></iframe>
+            </div>
+          </section>
+
+          <section id="pt" class="pp">
+            <div class="g ed">
+              <h3>Theme</h3>
+              <div class="th">
+                <div class="fi">
+                  <span>Accent</span>
+                  <input id="c_ac" type="color" value="#66e3ff" />
+                </div>
+                <div class="fi">
+                  <span>Accent 2</span>
+                  <input id="c_ac2" type="color" value="#a78bfa" />
+                </div>
+                <div class="fi">
+                  <span>BG 1</span>
+                  <input id="c_g1" type="color" value="#0b1220" />
+                </div>
+                <div class="fi">
+                  <span>BG 2</span>
+                  <input id="c_g2" type="color" value="#111c2e" />
+                </div>
+                <div class="fi">
+                  <span>Glass</span>
+                  <input
+                    id="r_gl"
+                    type="range"
+                    min="0"
+                    max="0.3"
+                    step="0.01"
+                    value="0.06"
+                  />
+                </div>
+                <div class="fi">
+                  <span>Border</span>
+                  <input
+                    id="r_bd"
+                    type="range"
+                    min="0"
+                    max="0.3"
+                    step="0.01"
+                    value="0.12"
+                  />
+                </div>
+                <div class="fi">
+                  <span>Radius</span>
+                  <input
+                    id="n_rad"
+                    type="number"
+                    min="8"
+                    max="30"
+                    step="1"
+                    value="16"
+                  />
+                </div>
+                <div class="fi">
+                  <span>Font px</span>
+                  <input
+                    id="n_fs"
+                    type="number"
+                    min="12"
+                    max="20"
+                    step="1"
+                    value="15"
+                  />
+                </div>
+              </div>
+              <div class="cs">
+                <button class="pl" id="t_apply">Apply</button>
+                <button class="pl sc" id="t_save">Save</button>
+                <button class="pl" id="t_reset">Reset</button>
+              </div>
+            </div>
+          </section>
+
+          <!-- Roblox BuilderIcons tab -->
+          <section id="pb" class="pp">
+            <div class="g ed">
+              <h3>Roblox BuilderIcons</h3>
+              <div id="bi-root">
+                <div id="bi-loading-screen">
+                  <div id="bi-loading-spinner"></div>
+                  <p id="bi-loading-text"></p>
+                </div>
+
+                <div class="bi-table-wrap">
+                  <table id="bi-list-table" cellspacing="3">
+                    <thead>
+                      <tr>
+                        <th rowspan="2" id="bi-index-header-row">Index</th>
+                        <th colspan="2">Icon</th>
+                        <th rowspan="2" style="width: 100%">
+                          Name / Ligature components
+                        </th>
+                        <th rowspan="2">Glyph codepoint</th>
+                      </tr>
+                      <tr>
+                        <th>Normal</th>
+                        <th>Filled (Bold)</th>
+                      </tr>
+                    </thead>
+                    <tbody id="bi-list-body"></tbody>
+                  </table>
+                </div>
+
+                <template id="bi-entry-template">
+                  <tr>
+                    <td></td>
+                    <td style="font-family: BuilderIcons;"></td>
+                    <td
+                      style="font-family: BuilderIcons; font-weight: bold;"
+                    ></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </template>
+              </div>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+
+    <audio id="fx" preload="auto">
+      <source src="get-out.mp3" type="audio/mpeg" />
+    </audio>
+    <div id="ts" class="ts"></div>
+
+    <div id="md" class="md" aria-hidden="true">
+      <div class="mc">
+        <div class="mh">
+          <strong id="mt" class="br">Loading…</strong>
+          <div>
+            <button class="bn cp" id="cp">Copy Script</button>
+            <button class="x" id="x">✕</button>
+          </div>
+        </div>
+        <div id="mb" class="sk"></div>
+      </div>
+    </div>
+
+    <script>
+      const q = (s) => document.querySelector(s);
+      const qa = (s) => document.querySelectorAll(s);
+
+      const host = (s) => {
+        try {
+          return new URL(s).host.replace(/^www\./, "");
+        } catch {
+          return "";
+        }
+      };
+
+      const homeSections = [];
+      let currentHomeSection = null;
+
+      function AddHeader(title) {
+        const section = {
+          title: title || "Home",
+          links: [],
+          open: true
+        };
+        homeSections.push(section);
+        currentHomeSection = section;
+        return section;
+      }
+
+      function AddLink(title, icon, link) {
+        if (!currentHomeSection) {
+          AddHeader("");
+        }
+
+        currentHomeSection.links.push({
+          title,
+          icon: icon || "",
+          link
+        });
+
+        return currentHomeSection;
+      }
+
+      function renderHome() {
+        const list = q("#home_sections");
+        if (!list) {
+          return;
+        }
+
+        list.innerHTML = "";
+        const fragment = document.createDocumentFragment();
+
+        for (const section of homeSections) {
+          const block = document.createElement("div");
+          block.className = "g home-section";
+
+          const headerWrap = document.createElement("div");
+          headerWrap.className = "home-section__header";
+
+          const header = document.createElement("h3");
+          header.textContent = section.title;
+
+          const toggle = document.createElement("button");
+          toggle.type = "button";
+          toggle.className = "home-section__toggle";
+          toggle.setAttribute(
+            "aria-expanded",
+            section.open ? "true" : "false"
+          );
+          toggle.innerHTML = section.open ? "▲" : "▼";
+
+          headerWrap.append(header, toggle);
+
+          const content = document.createElement("div");
+          content.className = "gr home-section__content";
+          if (!section.open) {
+            content.classList.add("home-section__content--collapsed");
+          }
+
+          for (const item of section.links) {
+            const tile = document.createElement("a");
+            tile.className = "tl";
+            tile.href = item.link;
+            tile.rel = "noopener";
+            tile.target = "_blank";
+            tile.dataset.h = host(item.link);
+
+            const parts = [];
+            if (item.icon) {
+              parts.push(`<img alt="" src="${item.icon}">`);
+            }
+            parts.push(`<span>${item.title}</span>`);
+            tile.innerHTML = parts.join("");
+            content.appendChild(tile);
+          }
+
+          toggle.addEventListener("click", () => {
+            section.open = !section.open;
+            content.classList.toggle(
+              "home-section__content--collapsed",
+              !section.open
+            );
+            toggle.setAttribute(
+              "aria-expanded",
+              section.open ? "true" : "false"
+            );
+            toggle.innerHTML = section.open ? "▲" : "▼";
+          });
+
+          block.append(headerWrap, content);
+          fragment.appendChild(block);
+        }
+
+        list.appendChild(fragment);
+      }
+
+      window.AddHeader = AddHeader;
+      window.AddLink = AddLink;
+
+      AddHeader("Socials");
+      AddLink(
+        "Scriptblox",
+        "https://r2.guns.lol/7e671c9b-1689-4d72-a5e5-b972f7d7fb09.png",
+        "https://scriptblox.com/u/Aervanix"
+      );
+      AddLink(
+        "rscripts",
+        "https://r2.guns.lol/b9234319-f7c7-4b19-840e-600a2044d401.png",
+        "https://rscripts.net/@ltseverydayyou"
+      );
+      AddLink(
+        "Discord Profile",
+        "https://cdn.simpleicons.org/discord",
+        "https://discord.com/users/641335879381680129"
+      );
+      AddLink(
+        "Discord Server",
+        "https://cdn.simpleicons.org/discord",
+        "https://discord.com/invite/zzjYhtMGFD"
+      );
+      AddLink(
+        "guns.lol",
+        "https://assets.guns.lol/guns_logo_no_background_cropped.png",
+        "https://guns.lol/ltseeverydayyou"
+      );
+      AddLink(
+        "GitHub",
+        "https://cdn.simpleicons.org/github",
+        "https://github.com/ltseverydayyou"
+      );
+      AddLink(
+        "Spotify",
+        "https://cdn.simpleicons.org/spotify",
+        "https://open.spotify.com/user/316a6txgaro3ethw6pochw3uripy"
+      );
+      AddLink(
+        "Steam",
+        "https://cdn.simpleicons.org/steam",
+        "https://steamcommunity.com/id/ltseverydayyou"
+      );
+
+      AddHeader("Roblox");
+      AddLink(
+        "AervanixVX",
+        "https://cdn.simpleicons.org/roblox",
+        "https://www.roblox.com/users/11761417/profile"
+      );
+      AddLink(
+        "Aervanix",
+        "https://cdn.simpleicons.org/roblox",
+        "https://www.roblox.com/users/2502806181/profile"
+      );
+      AddLink(
+        "Jadiellovescats3",
+        "https://cdn.simpleicons.org/roblox",
+        "https://www.roblox.com/users/2845101018/profile"
+      );
+
+      AddHeader("Roblox Group(s)");
+      AddLink(
+        "Dreadborne",
+        "https://tr.rbxcdn.com/180DAY-3598f5067f011a7e3b2ae3e0f08ca401/150/150/Image/Webp/noFilter",
+        "https://www.roblox.com/communities/36041342/Dreadborne-DEV-TEAM#!/about"
+      );
+
+      const scriptItems = [];
+
+      function renderScripts() {
+        const list = q("#sc_list");
+        if (!list) {
+          return;
+        }
+
+        list.innerHTML = "";
+        const featuredList = scriptItems.filter((item) => item.featured);
+        const regularList = scriptItems.filter((item) => !item.featured);
+        const sorted = [...featuredList, ...regularList];
+        const fragment = document.createDocumentFragment();
+
+        for (const item of sorted) {
+          const entry = document.createElement("div");
+          entry.className = "sc";
+          if (item.featured) {
+            entry.classList.add("featured");
+          }
+          entry.dataset.u = item.url;
+
+          const info = document.createElement("div");
+          info.className = "sc_info";
+
+          if (item.image) {
+            const img = document.createElement("img");
+            img.className = "sc_img";
+            img.src = item.image;
+            img.alt = item.name;
+            info.appendChild(img);
+          }
+
+          const text = document.createElement("div");
+          text.className = "sc_text";
+
+          const title = document.createElement("span");
+          title.className = "nm";
+          title.textContent = item.name;
+          text.appendChild(title);
+
+          if (item.featured) {
+            const badge = document.createElement("span");
+            badge.className = "sc_badge";
+            badge.textContent = "Featured";
+            text.appendChild(badge);
+          }
+
+          info.appendChild(text);
+
+          const controls = document.createElement("div");
+          controls.className = "brw";
+
+          const copyBtn = document.createElement("button");
+          copyBtn.className = "bn cp";
+          copyBtn.dataset.a = "c";
+          copyBtn.type = "button";
+          copyBtn.textContent = "Copy";
+
+          const viewBtn = document.createElement("button");
+          viewBtn.className = "bn vw";
+          viewBtn.dataset.a = "v";
+          viewBtn.type = "button";
+          viewBtn.textContent = "View";
+
+          controls.append(copyBtn, viewBtn);
+
+          if (item.game) {
+            const gameBtn = document.createElement("button");
+            gameBtn.className = "bn gm";
+            gameBtn.dataset.game = item.game;
+            gameBtn.type = "button";
+            gameBtn.textContent = "Play";
+            controls.append(gameBtn);
+          }
+
+          entry.append(info, controls);
+          fragment.appendChild(entry);
+        }
+
+        list.appendChild(fragment);
+      }
+
+      function ScriptAdd(name, url, imageUrl, featured = false, gameLink = "") {
+        const flag =
+          typeof featured === "string"
+            ? featured.toLowerCase() === "true"
+            : Boolean(featured);
+
+        scriptItems.push({
+          name,
+          url,
+          image: imageUrl || "",
+          featured: flag,
+          game: gameLink || ""
+        });
+
+        renderScripts();
+      }
+
+      window.ScriptAdd = ScriptAdd;
+
+      ScriptAdd(
+        "NA Main Version",
+        "https://raw.githubusercontent.com/ltseverydayyou/Nameless-Admin/main/Source.lua",
+        "https://raw.githubusercontent.com/ltseverydayyou/Nameless-Admin/refs/heads/main/NAimages/NAnew.png",
+        true
+      );
+      ScriptAdd(
+        "NA Testing Version",
+        "https://raw.githubusercontent.com/ltseverydayyou/Nameless-Admin/main/NA%20testing.lua",
+        "https://raw.githubusercontent.com/ltseverydayyou/Nameless-Admin/refs/heads/main/NAimages/NAnew.png"
+      );
+      ScriptAdd(
+        "FNB Autoplayer",
+        "https://raw.githubusercontent.com/ltseverydayyou/FNB-playerrrr/refs/heads/main/AutoPlayerRevived.luau",
+        "https://tr.rbxcdn.com/180DAY-06421ce8666c82646547498e79a09589/150/150/Image/Png/noFilter",
+        true,
+        "https://roblox.com/games/7603193259"
+      );
+      ScriptAdd(
+        "Delusional Office",
+        "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/Delulu%20Office.lua",
+        "https://tr.rbxcdn.com/180DAY-dbbcfeee2259d07f20b685e3229c3ac9/256/256/Image/Webp/noFilter",
+        null,
+        "https://roblox.com/games/18749553947"
+      );
+      ScriptAdd(
+        "Endless Doors",
+        "https://raw.githubusercontent.com/ltseverydayyou/endless-doors/main/endless%20madness%20buster",
+        "https://tr.rbxcdn.com/180DAY-57bc2bd7eba62e92b90b16d65c33ff71/256/256/Image/Webp/noFilter",
+        null,
+        "https://roblox.com/games/17324251852"
+      );
+      ScriptAdd(
+        "DeadCoin Farm",
+        "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/Be%20Dead%20Forever%20Farm.lua",
+        "https://tr.rbxcdn.com/180DAY-995799e88760b15b0611cdd1c818eef5/256/256/Image/Webp/noFilter",
+        null,
+        "https://roblox.com/games/2882332175"
+      );
+      ScriptAdd(
+        "Project The Rake",
+        "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/main/the%20rake",
+        "https://tr.rbxcdn.com/180DAY-b75d323ae9a6c5cd194b708e72c5348f/256/256/Image/Webp/noFilter",
+        null,
+        "https://roblox.com/games/2413927524"
+      );
+      ScriptAdd(
+        "studip anticheat bypasser",
+        "https://rawscripts.net/raw/Rooms-andamp-Doors-stupid-anticheat-bypasser-31204",
+        "https://tr.rbxcdn.com/180DAY-5e9ce9aecc5c87537054147721a1cc7b/256/256/Image/Webp/noFilter",
+        null,
+        "https://roblox.com/games/5865058321"
+      );
+      ScriptAdd(
+        "Simple Spy Reworked",
+        "https://gist.githubusercontent.com/ltseverydayyou/2398adb0db70abc4f752219a676f6cb2/raw/SimpleSpyRework.luau",
+        null,
+        true
+      );
+      ScriptAdd(
+        "Aervanix Aimbot",
+        "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/NewAimbot.lua"
+      );
+      ScriptAdd(
+        "Chat Translator",
+        "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/translatoooor"
+      );
+      ScriptAdd(
+        "Virtual Keyboard",
+        "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/VirtualKeyboard.lua"
+      );
+      ScriptAdd(
+        "Turtle Spy",
+        "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/main/Turtle%20Spy.lua"
+      );
+      ScriptAdd(
+        "Game Universe Viewer",
+        "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/main/Universe%20Viewer"
+      );
+      ScriptAdd(
+        "Mobile Shiftlock",
+        "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/shiftlock"
+      );
+      ScriptAdd(
+        "Custom Mobile Backpack",
+        "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/mobileBACKPACK.lua"
+      );
+      ScriptAdd(
+        "Animation Spoofer",
+        "https://raw.githubusercontent.com/ltseverydayyou/Nameless-Admin/refs/heads/main/Animation%20Spoofer"
+      );
+
+      const layoutEl = q("#l");
+      const fx = q("#fx");
+      const avTxt = [
+        "GET OUT",
+        "hai :3",
+        "cuh",
+        "guh",
+        "click off",
+        "OUCH",
+        ":c",
+        "legshot on top",
+        "i uhhh forgot my name 💀",
+        "dont touch me please",
+        "i am not a toy",
+        "stop clicking me",
+        "i am NOT a button"
+      ];
+      let avLocked = false;
+      let avTimestamp = 0;
+      let collapseTimer = null;
+      let themeFlashTimer = null;
+      let themeFlashBackup = null;
+
+      function collapseEverything(duration = 3000) {
+        if (!layoutEl) {
+          return;
+        }
+        layoutEl.classList.add("collapsed");
+        clearTimeout(collapseTimer);
+        collapseTimer = setTimeout(
+          () => layoutEl.classList.remove("collapsed"),
+          duration
+        );
+      }
+
+      function resetFlashThemeState() {
+        if (themeFlashTimer) {
+          clearTimeout(themeFlashTimer);
+          themeFlashTimer = null;
+        }
+        themeFlashBackup = null;
+      }
+
+      function flashOuchTheme() {
+        const backup = themeFlashBackup || themeGet();
+        themeFlashBackup = backup;
+
+        const flashTheme = {
+          ...backup,
+          g1: "#3c0000",
+          g2: "#610000",
+          ac: "#ff6b6b",
+          ac2: "#ffb3b3"
+        };
+
+        themeApply(flashTheme);
+        clearTimeout(themeFlashTimer);
+        themeFlashTimer = setTimeout(() => {
+          if (themeFlashBackup) {
+            themeApply(themeFlashBackup);
+            themeFlashBackup = null;
+            themeFlashTimer = null;
+          }
+        }, 3000);
+      }
+
+      function ripple(el, e) {
+        const r = document.createElement("span");
+        r.className = "rp";
+        const bounds = el.getBoundingClientRect();
+        r.style.left = `${e.clientX - bounds.left}px`;
+        r.style.top = `${e.clientY - bounds.top}px`;
+        el.appendChild(r);
+        setTimeout(() => r.remove(), 600);
+      }
+
+      function toast(message) {
+        const t = q("#ts");
+        t.textContent = message;
+        t.classList.add("sh");
+        clearTimeout(toast._id);
+        toast._id = setTimeout(() => t.classList.remove("sh"), 1600);
+      }
+
+      function tp(el, txt, spd = 18) {
+        el.textContent = "";
+        let index = 0;
+        const iv = setInterval(() => {
+          el.textContent += txt.charAt(index++);
+          if (index >= txt.length) {
+            clearInterval(iv);
+          }
+        }, spd);
+      }
+
+      function tab(id) {
+        const current = document.querySelector(".pp.on");
+        const next = q(`#p${id}`);
+        qa(".tb").forEach((button) => {
+          button.classList.toggle("act", button.dataset.t === id);
+        });
+
+        if (current === next) {
+          return;
+        }
+
+        if (current) {
+          current.classList.remove("in");
+          current.classList.add("out");
+          setTimeout(() => {
+            current.classList.remove("out");
+            current.classList.remove("on");
+          }, 200);
+        }
+
+        next.classList.add("on");
+        next.classList.add("in");
+        setTimeout(() => next.classList.remove("in"), 220);
+        history.replaceState(null, "", `#${id}`);
+      }
+
+      function onAv() {
+        const now = performance.now();
+        if (avLocked || now - avTimestamp < 700) {
+          return;
+        }
+
+        avLocked = true;
+        avTimestamp = now;
+
+        const message = avTxt[Math.floor(Math.random() * avTxt.length)];
+        const badge = q("#bb");
+        badge.classList.add("sh");
+        tp(badge, message, 16);
+
+        if (message === "GET OUT") {
+          fx.currentTime = 0;
+          fx.play().catch(() => {});
+          collapseEverything();
+        } else if (message === "OUCH") {
+          flashOuchTheme();
+          q("#av").classList.add("ouch");
+          setTimeout(() => q("#av").classList.remove("ouch"), 700);
+        }
+
+        setTimeout(() => badge.classList.remove("sh"), 1400);
+        setTimeout(() => {
+          avLocked = false;
+        }, 720);
+      }
+
+      const cache = new Map();
+      let curCode = "";
+
+      function mOpen(title) {
+        q("#mt").textContent = title;
+        q("#mb").className = "sk";
+        q("#mb").innerHTML = "";
+        q("#md").classList.add("sh");
+        q("#md").setAttribute("aria-hidden", "false");
+      }
+
+      function mClose() {
+        q("#md").classList.remove("sh");
+        q("#md").setAttribute("aria-hidden", "true");
+      }
+
+      async function view(btn) {
+        const card = btn.closest(".sc");
+        const url = card.dataset.u;
+        const name = card.querySelector(".nm").textContent.trim();
+
+        mOpen(name);
+
+        try {
+          const content = cache.has(url)
+            ? cache.get(url)
+            : await (await fetch(url, { cache: "no-store" })).text();
+
+          cache.set(url, content);
+          curCode = `loadstring(game:HttpGet('${url}'))();\n\n${content}`;
+
+          const pre = document.createElement("pre");
+          const code = document.createElement("code");
+          code.className = "language-lua";
+          code.textContent = content;
+          pre.appendChild(code);
+
+          const mb = q("#mb");
+          mb.className = "";
+          mb.appendChild(pre);
+          Prism.highlightElement(code);
+        } catch {
+          const mb = q("#mb");
+          mb.className = "";
+          mb.innerHTML = '<div style="padding:16px">Failed to load</div>';
+        }
+      }
+
+      async function copyLoader(btn) {
+        const url = btn.closest(".sc").dataset.u;
+        await navigator.clipboard.writeText(
+          `loadstring(game:HttpGet('${url}'))();`
+        );
+        toast("Copied ✔️");
+      }
+
+      function luaHl() {
+        const text = q("#li").value;
+        const output = q("#lo");
+        output.textContent = text || "-- Highlighted code will appear here";
+        Prism.highlightElement(output);
+
+        const count = (pattern) => (text.match(pattern) || []).length;
+        const f = count(/\bfunction\b/g);
+        const e = count(/\bend\b/g);
+        const r = count(/\brepeat\b/g);
+        const u = count(/\buntil\b/g);
+
+        const warnings = [];
+        if (e < f) {
+          warnings.push(`Missing end (${e}/${f})`);
+        }
+        if (r !== u) {
+          warnings.push(`repeat/until (${r}/${u})`);
+        }
+        if (warnings.length) {
+          toast(`⚠️ ${warnings.join(" • ")}`);
+        }
+      }
+
+      function luaB() {
+        const lines = q("#li").value.split("\n");
+        let depth = 0;
+        const formatted = [];
+
+        for (let raw of lines) {
+          const trimmed = raw.trim();
+
+          if (/^(end|else|elseif|until)\b/.test(trimmed)) {
+            depth = Math.max(depth - 1, 0);
+          }
+
+          const line = `${"  ".repeat(depth)}${trimmed}`;
+
+          if (/^(function|if|for|while|repeat)\b/.test(trimmed)) {
+            depth += 1;
+          }
+
+          if (/^(else|elseif)\b/.test(trimmed)) {
+            depth += 1;
+          }
+
+          if (/until\b/.test(trimmed)) {
+            depth = Math.max(depth - 1, 0);
+          }
+
+          formatted.push(line);
+        }
+
+        const polished = [];
+        let buffer = [];
+
+        const flush = () => {
+          if (!buffer.length) {
+            return;
+          }
+
+          const aligned = buffer.every((item) => item.includes("="));
+          if (aligned) {
+            const maxIndex = Math.max(
+              ...buffer.map((item) => item.indexOf("="))
+            );
+            for (const entry of buffer) {
+              const pivot = entry.indexOf("=");
+              const left = entry
+                .slice(0, pivot)
+                .trimEnd()
+                .padEnd(maxIndex, " ");
+              const right = entry.slice(pivot + 1).trim();
+              polished.push(`${left} = ${right}`);
+            }
+          } else {
+            polished.push(...buffer);
+          }
+
+          buffer = [];
+        };
+
+        for (const entry of formatted) {
+          if (entry.trim() === "") {
+            flush();
+            polished.push("");
+          } else {
+            buffer.push(entry);
+          }
+        }
+        flush();
+
+        q("#li").value = polished.join("\n").trim();
+        luaHl();
+        toast("Beautified");
+      }
+
+      function htmlR() {
+        q("#ho").srcdoc =
+          q("#hi").value ||
+          '<!doctype html><title>Preview</title><style>html{font:16px system-ui;padding:18px}</style><h2>Nothing here yet.</h2>';
+      }
+
+      function themeGet() {
+        const styles = getComputedStyle(document.documentElement);
+        return {
+          ac: styles.getPropertyValue("--ac").trim() || "#66e3ff",
+          ac2: styles.getPropertyValue("--ac2").trim() || "#a78bfa",
+          g1: styles.getPropertyValue("--g1").trim() || "#0b1220",
+          g2: styles.getPropertyValue("--g2").trim() || "#111c2e",
+          glA: styles.getPropertyValue("--glA").trim() || "0.06",
+          bdA: styles.getPropertyValue("--bdA").trim() || "0.12",
+          rad: styles.getPropertyValue("--rad").trim() || "16px",
+          fs: parseInt(styles.fontSize, 10) || 15
+        };
+      }
+
+      function themeApply(theme) {
+        const root = document.documentElement;
+        root.style.setProperty("--ac", theme.ac);
+        root.style.setProperty("--ac2", theme.ac2);
+        root.style.setProperty("--g1", theme.g1);
+        root.style.setProperty("--g2", theme.g2);
+        root.style.setProperty("--glA", theme.glA);
+        root.style.setProperty("--bdA", theme.bdA);
+        root.style.setProperty(
+          "--rad",
+          typeof theme.rad === "number" ? `${theme.rad}px` : theme.rad
+        );
+        root.style.fontSize = `${theme.fs || 15}px`;
+      }
+
+      function themeSave() {
+        resetFlashThemeState();
+        const theme = themeGet();
+        themeApply(theme);
+        localStorage.setItem("th", JSON.stringify(theme));
+        toast("Theme saved ✔️");
+      }
+
+      function themeLoad() {
+        resetFlashThemeState();
+        const saved = localStorage.getItem("th");
+        if (!saved) {
+          return;
+        }
+
+        try {
+          const parsed = JSON.parse(saved);
+          themeApply(parsed);
+          q("#c_ac").value = parsed.ac;
+          q("#c_ac2").value = parsed.ac2;
+          q("#c_g1").value = parsed.g1;
+          q("#c_g2").value = parsed.g2;
+          q("#r_gl").value = parsed.glA;
+          q("#r_bd").value = parsed.bdA;
+          q("#n_rad").value = parseInt(parsed.rad, 10) || 16;
+          q("#n_fs").value = parsed.fs || 15;
+        } catch {
+          // ignore
+        }
+      }
+
+      function themeDefaults() {
+        resetFlashThemeState();
+        const defaults = {
+          ac: "#66e3ff",
+          ac2: "#a78bfa",
+          g1: "#0b1220",
+          g2: "#111c2e",
+          glA: "0.06",
+          bdA: "0.12",
+          rad: "16px",
+          fs: 15
+        };
+
+        themeApply(defaults);
+        localStorage.removeItem("th");
+
+        q("#c_ac").value = defaults.ac;
+        q("#c_ac2").value = defaults.ac2;
+        q("#c_g1").value = defaults.g1;
+        q("#c_g2").value = defaults.g2;
+        q("#r_gl").value = defaults.glA;
+        q("#r_bd").value = defaults.bdA;
+        q("#n_rad").value = parseInt(defaults.rad, 10);
+        q("#n_fs").value = defaults.fs;
+
+        toast("Theme reset");
+      }
+
+      function themeApplyFromUi() {
+        resetFlashThemeState();
+        const theme = {
+          ac: q("#c_ac").value,
+          ac2: q("#c_ac2").value,
+          g1: q("#c_g1").value,
+          g2: q("#c_g2").value,
+          glA: q("#r_gl").value,
+          bdA: q("#r_bd").value,
+          rad: `${q("#n_rad").value}px`,
+          fs: parseInt(q("#n_fs").value, 10) || 15
+        };
+        themeApply(theme);
+        toast("Applied");
+      }
+
+      function initBuilderIcons() {
+        const loadingScreenElement = document.getElementById(
+          "bi-loading-screen"
+        );
+        const loadingTextElement = document.getElementById("bi-loading-text");
+        const listTableElement = document.getElementById("bi-list-table");
+
+        if (
+          !loadingScreenElement ||
+          !loadingTextElement ||
+          !listTableElement ||
+          !window.opentype
+        ) {
+          return;
+        }
+
+        let loadingText = "";
+        let loadingTextDotCount = 0;
+
+        function updateLoadingText() {
+          loadingTextElement.textContent =
+            loadingText + ".".repeat(loadingTextDotCount);
+        }
+
+        setInterval(() => {
+          loadingTextDotCount += 1;
+          if (loadingTextDotCount > 3) {
+            loadingTextDotCount = 0;
+          }
+          updateLoadingText();
+        }, 500);
+
+        function setLoadingScreenText(text) {
+          const wrap = listTableElement.parentElement;
+          if (!wrap) return;
+
+          if (text) {
+            loadingText = text;
+            updateLoadingText();
+            loadingScreenElement.style.display = "flex";
+            wrap.style.display = "none";
+          } else {
+            loadingScreenElement.style.display = "none";
+            wrap.style.display = "block";
+          }
+        }
+
+        function sleepAsync(time) {
+          return new Promise((resolve) => setTimeout(resolve, time));
+        }
+
+        async function fetchFontBuffer(url) {
+          while (true) {
+            try {
+              const resp = await fetch(url);
+              return await resp.arrayBuffer();
+            } catch {
+              await sleepAsync(1000);
+            }
+          }
+        }
+
+        (async function () {
+          setLoadingScreenText("Fetching font files");
+
+          const baseURL =
+            "https://raw.githubusercontent.com/MaximumADHD/Roblox-Client-Tracker/refs/heads/roblox/LuaPackages/Packages/_Index/BuilderIcons/BuilderIcons/Font/";
+
+          const regularFontBuffer = await fetchFontBuffer(
+            `${baseURL}BuilderIcons-Regular.ttf`
+          );
+          const filledFontBuffer = await fetchFontBuffer(
+            `${baseURL}BuilderIcons-Filled.ttf`
+          );
+
+          setLoadingScreenText("Parsing font files");
+
+          document.fonts.add(
+            new FontFace("BuilderIcons", regularFontBuffer, {
+              weight: "normal"
+            })
+          );
+          document.fonts.add(
+            new FontFace("BuilderIcons", filledFontBuffer, {
+              weight: "bold"
+            })
+          );
+
+          const regularFontData = opentype.parse(regularFontBuffer);
+          const filledFontData = opentype.parse(filledFontBuffer);
+
+          const entries = [];
+
+          function scanFont(font) {
+            const glyphsData = font.glyphs;
+
+            font.tables?.gsub?.lookups?.forEach((lookup) => {
+              lookup.subtables?.forEach((subtable) => {
+                const coverageGlyphs = subtable.coverage?.glyphs;
+                subtable.ligatureSets?.forEach(
+                  (ligatureSet, ligatureSetIndex) => {
+                    ligatureSet.forEach((ligatureData) => {
+                      const componentsString = [
+                        coverageGlyphs?.[ligatureSetIndex],
+                        ...ligatureData.components
+                      ]
+                        .map((value) =>
+                          String.fromCodePoint(
+                            glyphsData.get(value)?.unicode ?? 0
+                          )
+                        )
+                        .join("");
+
+                      if (
+                        !entries.find(
+                          (entryData) =>
+                            entryData.components === componentsString
+                        )
+                      ) {
+                        entries.push({
+                          components: componentsString,
+                          unicode:
+                            glyphsData.get(ligatureData.ligGlyph ?? 0)
+                              ?.unicode ?? 0
+                        });
+                      }
+                    });
+                  }
+                );
+              });
+            });
+
+            for (let index = 0; index < glyphsData.length; index++) {
+              const glyphData = glyphsData.get(index);
+              const glyphName = glyphData?.name;
+              const glyphUnicode = glyphData?.unicode;
+              const glyphCodepoint = glyphData?.unicodes.find(
+                (value) => value !== glyphUnicode
+              );
+
+              if (
+                glyphName &&
+                glyphCodepoint != null &&
+                !entries.find(
+                  (entryData) => entryData.components === glyphName
+                )
+              ) {
+                entries.push({
+                  components: glyphName,
+                  unicode: glyphCodepoint
+                });
+              }
+            }
+          }
+
+          scanFont(regularFontData);
+          scanFont(filledFontData);
+
+          const entryTemplateElement = document.getElementById(
+            "bi-entry-template"
+          );
+          const listBodyElement = document.getElementById("bi-list-body");
+
+          entries.sort((entryA, entryB) =>
+            entryA.components.localeCompare(entryB.components)
+          );
+
+          entries.forEach((entryData, index) => {
+            const entryElement = entryTemplateElement.content.cloneNode(true);
+            const tdElements = entryElement.querySelectorAll("td");
+
+            const unicodeCodepoint = entryData.unicode;
+            const unicodeCharacter = String.fromCodePoint(unicodeCodepoint);
+
+            tdElements[0].textContent = String(index + 1);
+            tdElements[1].textContent = unicodeCharacter;
+            tdElements[2].textContent = unicodeCharacter;
+            tdElements[3].textContent = entryData.components;
+            tdElements[4].textContent = `U+${unicodeCodepoint
+              .toString(16)
+              .toUpperCase()}`;
+
+            listBodyElement.appendChild(entryElement);
+          });
+
+          const indexHeader = document.getElementById("bi-index-header-row");
+          if (indexHeader) {
+            indexHeader.textContent = `Index (${entries.length})`;
+          }
+
+          setLoadingScreenText(null);
+        })();
+      }
+
+      window.addEventListener("DOMContentLoaded", () => {
+        renderHome();
+        renderScripts();
+
+        qa(".tb").forEach((button) => {
+          button.addEventListener("click", (event) => {
+            ripple(button, event);
+            tab(button.dataset.t);
+          });
+        });
+
+        const init = location.hash.slice(1) || "h";
+        tab(init);
+
+        q("#av").addEventListener("click", onAv);
+
+        document.addEventListener("click", (event) => {
+          const btn = event.target.closest("[data-a],[data-game]");
+          if (!btn) {
+            return;
+          }
+          ripple(btn, event);
+          if (btn.dataset.a === "v") {
+            view(btn);
+          } else if (btn.dataset.a === "c") {
+            copyLoader(btn);
+          } else if (btn.dataset.game) {
+            window.open(btn.dataset.game, "_blank", "noopener,noreferrer");
+          }
+        });
+
+        const btnX = q("#x");
+        btnX.addEventListener("click", (event) => {
+          ripple(btnX, event);
+          mClose();
+        });
+
+        q("#md").addEventListener("click", (event) => {
+          if (event.target.id === "md") {
+            mClose();
+          }
+        });
+
+        const btnCP = q("#cp");
+        btnCP.addEventListener("click", async (event) => {
+          ripple(btnCP, event);
+          if (!curCode) {
+            return;
+          }
+          await navigator.clipboard.writeText(curCode);
+          toast("Script copied ✔️");
+        });
+
+        const bHL = q("#lhl");
+        bHL.addEventListener("click", (event) => {
+          ripple(bHL, event);
+          luaHl();
+        });
+
+        const bBF = q("#lbf");
+        bBF.addEventListener("click", (event) => {
+          ripple(bBF, event);
+          luaB();
+        });
+
+        const bHR = q("#hr");
+        bHR.addEventListener("click", (event) => {
+          ripple(bHR, event);
+          htmlR();
+        });
+
+        const bTA = q("#t_apply");
+        bTA.addEventListener("click", (event) => {
+          ripple(bTA, event);
+          themeApplyFromUi();
+        });
+
+        const bTS = q("#t_save");
+        bTS.addEventListener("click", (event) => {
+          ripple(bTS, event);
+          themeSave();
+        });
+
+        const bTR = q("#t_reset");
+        bTR.addEventListener("click", (event) => {
+          ripple(bTR, event);
+          themeDefaults();
+        });
+
+        themeLoad();
+        initBuilderIcons();
+      });
+    </script>
+  </body>
 </html>
-
