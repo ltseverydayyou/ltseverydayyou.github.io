@@ -927,6 +927,13 @@
         }
       }
 
+      #bi-root {
+        margin-top: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
       .bi-toolbar {
         margin-top: 10px;
         display: flex;
@@ -940,44 +947,111 @@
         color: var(--mu);
       }
 
-      .bi-table-wrap {
-        margin-top: 10px;
-        height: clamp(260px, 55vh, 480px);
-        min-height: 220px;
-        max-height: 80vh;
-        resize: vertical;
-        overflow: auto;
+      .bi-grid-wrap {
         border-radius: 14px;
         border: 1px solid rgba(255, 255, 255, var(--bdA));
-        background: rgba(10, 12, 20, 0.9);
+        background: rgba(255, 255, 255, 0.02);
+        padding: 6px;
+        max-height: min(70vh, 75svh);
+        overflow: auto;
       }
 
-      #bi-list-table {
-        width: 100%;
-        border-collapse: collapse;
+      .bi-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 12px;
+      }
+
+      .bi-entry {
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        padding: 14px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        background: linear-gradient(
+          220deg,
+          rgba(255, 255, 255, 0.02),
+          rgba(255, 255, 255, 0.005)
+        );
+      }
+
+      .bi-entry:hover {
+        border-color: rgba(255, 255, 255, 0.4);
+      }
+
+      .bi-entry__glyphs {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+      }
+
+      .bi-entry__glyph {
+        width: 56px;
+        height: 56px;
+        border-radius: 12px;
+        display: grid;
+        place-items: center;
+        font-family: BuilderIcons, ui-sans-serif;
+        font-size: 32px;
+        background: rgba(255, 255, 255, 0.04);
+      }
+
+      .bi-entry__glyph--bold {
+        font-weight: 700;
+      }
+
+      .bi-entry__meta {
+        display: flex;
+        justify-content: space-between;
+        font-size: 12px;
+        color: var(--mu);
+      }
+
+      .bi-entry__name {
+        font-weight: 600;
+        font-size: 15px;
+        line-height: 1.2;
+        word-break: break-word;
+      }
+
+      .bi-entry__components {
+        color: var(--mu);
         font-size: 13px;
+        min-height: 44px;
+        line-height: 1.4;
+        word-break: break-word;
       }
 
-      #bi-list-table th,
-      #bi-list-table td {
-        text-align: center;
-        padding: 6px 8px;
+      .bi-entry__glyph-labels {
+        display: flex;
+        justify-content: center;
+        gap: 18px;
+        font-size: 12px;
+        color: var(--mu);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
       }
 
-      #bi-list-table thead {
-        background-color: rgba(255, 255, 255, 0.06);
+      .bi-entry__glyph-labels span {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
       }
 
-      #bi-list-table tbody tr:nth-child(odd) {
-        background-color: rgba(255, 255, 255, 0.02);
+      .bi-entry__actions {
+        display: flex;
+        justify-content: flex-end;
       }
 
-      #bi-list-table tbody tr:nth-child(even) {
-        background-color: rgba(255, 255, 255, 0.04);
+      .bi-entry__copy {
+        font-size: 14px;
+        padding: 8px 12px;
       }
 
-      #bi-list-table tbody tr:hover {
-        background-color: rgba(255, 255, 255, 0.08);
+      .bi-entry__copy--success {
+        background: var(--ok);
+        color: #051014;
       }
 
       #pb.bi-fullscreen {
@@ -999,7 +1073,7 @@
         margin-top: 0;
       }
 
-      #pb.bi-fullscreen .bi-table-wrap {
+      #pb.bi-fullscreen .bi-grid-wrap {
         height: min(70vh, calc(100vh - 220px));
         max-height: none;
       }
@@ -1202,7 +1276,7 @@
                 </div>
 
                 <div class="bi-toolbar">
-                  <span class="bi-toolbar__hint">Drag the list edge to resize</span>
+                  <span class="bi-toolbar__hint">BuilderIcons displayed inline with the rest of the domain</span>
                   <button
                     class="pl sc"
                     type="button"
@@ -1212,37 +1286,14 @@
                   </button>
                 </div>
 
-                <div class="bi-table-wrap">
-                  <table id="bi-list-table" cellspacing="3">
-                    <thead>
-                      <tr>
-                        <th rowspan="2" id="bi-index-header-row">Index</th>
-                        <th colspan="2">Icon</th>
-                        <th rowspan="2" style="width: 100%">
-                          Name / Ligature components
-                        </th>
-                        <th rowspan="2">Glyph codepoint</th>
-                      </tr>
-                      <tr>
-                        <th>Normal</th>
-                        <th>Filled (Bold)</th>
-                      </tr>
-                    </thead>
-                    <tbody id="bi-list-body"></tbody>
-                  </table>
+                <div class="bi-grid-wrap">
+                  <div
+                    id="bi-grid"
+                    class="bi-grid"
+                    role="list"
+                    aria-label="BuilderIcons glyphs"
+                  ></div>
                 </div>
-
-                <template id="bi-entry-template">
-                  <tr>
-                    <td></td>
-                    <td style="font-family: BuilderIcons;"></td>
-                    <td
-                      style="font-family: BuilderIcons; font-weight: bold;"
-                    ></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                </template>
               </div>
             </div>
           </section>
@@ -2322,16 +2373,25 @@
           "bi-loading-screen"
         );
         const loadingTextElement = document.getElementById("bi-loading-text");
-        const listTableElement = document.getElementById("bi-list-table");
+        const gridElement = document.getElementById("bi-grid");
+        const toolbarHintElement = document.querySelector(".bi-toolbar__hint");
 
         if (
           !loadingScreenElement ||
           !loadingTextElement ||
-          !listTableElement ||
+          !gridElement ||
           !window.opentype
         ) {
           return;
         }
+
+        const escapeHtml = (value) =>
+          (value || "")
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#39;");
 
         let loadingText = "";
         let loadingTextDotCount = 0;
@@ -2350,17 +2410,14 @@
         }, 500);
 
         function setLoadingScreenText(text) {
-          const wrap = listTableElement.parentElement;
-          if (!wrap) return;
-
           if (text) {
             loadingText = text;
             updateLoadingText();
             loadingScreenElement.style.display = "flex";
-            wrap.style.display = "none";
+            gridElement.style.display = "none";
           } else {
             loadingScreenElement.style.display = "none";
-            wrap.style.display = "block";
+            gridElement.style.display = "grid";
           }
         }
 
@@ -2440,7 +2497,10 @@
                           components: componentsString,
                           unicode:
                             glyphsData.get(ligatureData.ligGlyph ?? 0)
-                              ?.unicode ?? 0
+                              ?.unicode ?? 0,
+                          label:
+                            glyphsData.get(ligatureData.ligGlyph ?? 0)?.name ||
+                            componentsString
                         });
                       }
                     });
@@ -2466,7 +2526,8 @@
               ) {
                 entries.push({
                   components: glyphName,
-                  unicode: glyphCodepoint
+                  unicode: glyphCodepoint,
+                  label: glyphName
                 });
               }
             }
@@ -2475,36 +2536,96 @@
           scanFont(regularFontData);
           scanFont(filledFontData);
 
-          const entryTemplateElement = document.getElementById(
-            "bi-entry-template"
-          );
-          const listBodyElement = document.getElementById("bi-list-body");
-
-          entries.sort((entryA, entryB) =>
-            entryA.components.localeCompare(entryB.components)
-          );
-
-          entries.forEach((entryData, index) => {
-            const entryElement = entryTemplateElement.content.cloneNode(true);
-            const tdElements = entryElement.querySelectorAll("td");
-
-            const unicodeCodepoint = entryData.unicode;
-            const unicodeCharacter = String.fromCodePoint(unicodeCodepoint);
-
-            tdElements[0].textContent = String(index + 1);
-            tdElements[1].textContent = unicodeCharacter;
-            tdElements[2].textContent = unicodeCharacter;
-            tdElements[3].textContent = entryData.components;
-            tdElements[4].textContent = `U+${unicodeCodepoint
-              .toString(16)
-              .toUpperCase()}`;
-
-            listBodyElement.appendChild(entryElement);
+          entries.sort((entryA, entryB) => {
+            const nameA = entryA.components || "";
+            const nameB = entryB.components || "";
+            return nameA.localeCompare(nameB);
           });
 
-          const indexHeader = document.getElementById("bi-index-header-row");
-          if (indexHeader) {
-            indexHeader.textContent = `Index (${entries.length})`;
+          gridElement.innerHTML = "";
+
+          entries.forEach((entryData, index) => {
+            const unicodeCodepoint = entryData.unicode || 0;
+            const unicodeCharacter = unicodeCodepoint
+              ? String.fromCodePoint(unicodeCodepoint)
+              : "";
+            const displayName =
+              entryData.label ||
+              entryData.components ||
+              `Glyph ${index + 1}`;
+            const componentsLabel = entryData.components || "";
+            const codePointLabel = `U+${unicodeCodepoint
+              .toString(16)
+              .toUpperCase()
+              .padStart(4, "0")}`;
+            const showComponents =
+              componentsLabel && componentsLabel !== displayName;
+            const componentsMarkup = showComponents
+              ? `<div class="bi-entry__components">Components: ${escapeHtml(
+                  componentsLabel
+                )}</div>`
+              : "";
+
+            const entryElement = document.createElement("article");
+            entryElement.className = "bi-entry";
+            entryElement.setAttribute("role", "listitem");
+            entryElement.innerHTML = `
+              <div class="bi-entry__glyphs">
+                <span class="bi-entry__glyph" aria-hidden="true">${escapeHtml(
+                  unicodeCharacter
+                )}</span>
+                <span class="bi-entry__glyph bi-entry__glyph--bold" aria-hidden="true">${escapeHtml(
+                  unicodeCharacter
+                )}</span>
+              </div>
+              <div class="bi-entry__glyph-labels">
+                <span>Regular</span>
+                <span>Bold</span>
+              </div>
+              <div class="bi-entry__meta">
+                <span>#${index + 1}</span>
+                <span>${codePointLabel}</span>
+              </div>
+              <div class="bi-entry__name" title="${escapeHtml(displayName)}">
+                ${escapeHtml(displayName)}
+              </div>
+              ${componentsMarkup}
+              <div class="bi-entry__actions">
+                <button type="button" class="pl bi-entry__copy">Copy name</button>
+              </div>
+            `;
+
+            const copyButton = entryElement.querySelector(".bi-entry__copy");
+            if (copyButton) {
+              const defaultLabel = copyButton.textContent || "Copy name";
+              let resetTimer;
+
+              const resetCopyButton = () => {
+                copyButton.textContent = defaultLabel;
+                copyButton.classList.remove("bi-entry__copy--success");
+              };
+
+              copyButton.addEventListener("click", async () => {
+                try {
+                  await navigator.clipboard.writeText(displayName);
+                  copyButton.textContent = "Copied!";
+                  copyButton.classList.add("bi-entry__copy--success");
+                  toast("Icon name copied");
+                } catch {
+                  copyButton.textContent = "Copy failed";
+                  toast("Copy failed");
+                } finally {
+                  clearTimeout(resetTimer);
+                  resetTimer = setTimeout(resetCopyButton, 1400);
+                }
+              });
+            }
+
+            gridElement.appendChild(entryElement);
+          });
+
+          if (toolbarHintElement) {
+            toolbarHintElement.textContent = `Showing ${entries.length} icons`;
           }
 
           setLoadingScreenText(null);
