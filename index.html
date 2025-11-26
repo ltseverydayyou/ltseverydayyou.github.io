@@ -888,6 +888,283 @@
         width: 70px;
       }
 
+      .versions-panel__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 8px;
+      }
+
+      .versions-panel__header-controls {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+      }
+
+      .versions-panel__intro {
+        font-size: 13px;
+        color: var(--mu);
+        margin: 2px 0 0;
+        max-width: 640px;
+      }
+
+      .version-card__docs {
+        font-size: 12px;
+        color: var(--ac2);
+        text-decoration: none;
+        letter-spacing: 0.08em;
+      }
+
+      .version-card__docs:hover {
+        text-decoration: underline;
+      }
+
+      .version-card__status {
+        font-size: 11px;
+        color: var(--mu);
+        margin-top: 6px;
+      }
+
+      .versions-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 16px;
+        margin-top: 16px;
+      }
+
+      .version-card {
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, var(--bdA));
+        border-radius: var(--rad);
+        padding: 18px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        min-height: 220px;
+      }
+
+      .version-card__head {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        align-items: flex-start;
+      }
+
+      .version-card__title {
+        margin: 0;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+        font-size: 15px;
+        text-transform: uppercase;
+        color: var(--ac);
+      }
+
+      .version-card__desc {
+        margin: 2px 0 0;
+        font-size: 12px;
+        color: var(--mu);
+      }
+
+      .version-card__refresh {
+        border: none;
+        background: rgba(255, 255, 255, 0.08);
+        border-radius: 999px;
+        padding: 6px 12px;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--tx);
+        cursor: pointer;
+        transition: transform 0.2s ease, background 0.2s ease;
+      }
+
+      .version-card__refresh:hover {
+        transform: translateY(-1px);
+        background: rgba(255, 255, 255, 0.16);
+      }
+
+      .version-card__body dl,
+      .executor-card__body dl {
+        margin: 0;
+        display: grid;
+        gap: 6px 10px;
+        grid-template-columns: auto 1fr;
+      }
+
+      .version-card__body dt,
+      .executor-card__body dt {
+        font-size: 11px;
+        letter-spacing: 0.08em;
+        color: var(--mu);
+        text-transform: uppercase;
+      }
+
+      .version-card__body dd,
+      .executor-card__body dd {
+        margin: 0;
+        font-size: 14px;
+        font-weight: 700;
+        color: var(--tx);
+        word-break: break-word;
+      }
+
+      .version-card__placeholder,
+      .executor-card__placeholder {
+        font-size: 13px;
+        color: var(--mu);
+      }
+
+      .executor-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 16px;
+        margin-top: 16px;
+      }
+
+      .executor-card {
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, var(--bdA));
+        border-radius: var(--rad);
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        min-height: 220px;
+      }
+
+      .executor-card__title {
+        margin: 0;
+        font-weight: 800;
+        font-size: 16px;
+        flex: 1;
+      }
+
+      .executor-card__meta {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+      }
+
+      .executor-card__meta-info {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .executor-card__type {
+        font-size: 12px;
+        color: var(--mu);
+        text-transform: uppercase;
+      }
+
+      .executor-card__pills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+
+      .executor-card__pill {
+        padding: 4px 10px;
+        border-radius: 999px;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        background: rgba(255, 255, 255, 0.06);
+        color: var(--tx);
+      }
+
+      .executor-card__pill--good {
+        background: rgba(114, 243, 182, 0.2);
+        color: #0d2114;
+      }
+
+      .executor-card__pill--warn {
+        background: rgba(255, 132, 132, 0.3);
+        color: #2d0808;
+      }
+
+      .executor-card__pill--info {
+        background: rgba(166, 173, 187, 0.2);
+        color: var(--mu);
+      }
+
+      .executor-card__status-pill {
+        padding: 3px 10px;
+        border-radius: 999px;
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #0b1220;
+        background: rgba(114, 243, 182, 0.7);
+        box-shadow: 0 0 10px rgba(114, 243, 182, 0.5);
+      }
+
+      .executor-card__status-pill--down {
+        background: rgba(255, 132, 132, 0.9);
+        color: #2d0808;
+        box-shadow: 0 0 10px rgba(255, 132, 132, 0.6);
+      }
+
+      .executor-tabs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 12px;
+      }
+
+      .executor-tab {
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        background: rgba(255, 255, 255, 0.04);
+        color: var(--tx);
+        text-transform: uppercase;
+        font-size: 11px;
+        letter-spacing: 0.12em;
+        padding: 6px 14px;
+        border-radius: 999px;
+        cursor: pointer;
+        transition: background 0.2s ease, border-color 0.2s ease;
+      }
+
+      .executor-tab--active {
+        border-color: rgba(102, 227, 255, 0.8);
+        background: rgba(102, 227, 255, 0.15);
+      }
+
+      .executor-divider {
+        margin: 18px 0 8px;
+        font-size: 12px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--mu);
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: 10px;
+      }
+
+      .executor-card__links {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      .executor-card__links a {
+        font-size: 12px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--ac);
+      }
+
+      .version-card__error,
+      .executor-card__error {
+        color: #ff8484;
+        font-size: 13px;
+        margin: 0;
+      }
+
       /* BuilderIcons tab styling */
 
       #bi-root {
@@ -1126,6 +1403,8 @@
           <button class="tb" data-t="l">Lua</button>
           <button class="tb" data-t="w">HTML</button>
           <button class="tb" data-t="t">Theme</button>
+          <button class="tb" data-t="v">Versions</button>
+          <button class="tb" data-t="e">Executors</button>
           <button class="tb" data-t="b">Roblox BuilderIcons</button>
         </nav>
       </aside>
@@ -1262,6 +1541,81 @@
                 <button class="pl sc" id="t_save">Save</button>
                 <button class="pl" id="t_reset">Reset</button>
               </div>
+            </div>
+          </section>
+
+          <section id="pv" class="pp">
+            <div class="g ed">
+              <div class="versions-panel__header">
+                <h3>Roblox versions</h3>
+                <a
+                  class="version-card__docs"
+                  href="https://docs.weao.xyz/weao-api-reference/roblox-versions"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Docs
+                </a>
+              </div>
+              <p class="versions-panel__intro">
+                Realtime release data for current, future, and past Roblox builds powered by the WEAO API.
+              </p>
+              <div id="versions-grid" class="versions-grid"></div>
+            </div>
+          </section>
+
+          <section id="pe" class="pp">
+            <div class="g ed">
+              <div class="versions-panel__header">
+                <div>
+                  <h3>Executor statuses</h3>
+                  <p class="versions-panel__intro">
+                    Live sUNC/UNC, detected, and platform details for every tracked executor.
+                  </p>
+                </div>
+                <div class="versions-panel__header-controls">
+                  <a
+                    class="version-card__docs"
+                    href="https://docs.weao.xyz/weao-api-reference/exploits"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Docs
+                  </a>
+                  <button
+                    class="version-card__refresh"
+                    type="button"
+                    id="executor-refresh"
+                  >
+                    Refresh
+                  </button>
+                </div>
+              </div>
+              <div class="executor-tabs" role="tablist">
+                <button
+                  type="button"
+                  class="executor-tab executor-tab--active"
+                  data-filter="all"
+                >
+                  All
+                </button>
+                <button type="button" class="executor-tab" data-filter="windows">
+                  Windows
+                </button>
+                <button type="button" class="executor-tab" data-filter="mac">
+                  MAC
+                </button>
+                <button type="button" class="executor-tab" data-filter="android">
+                  Android
+                </button>
+                <button type="button" class="executor-tab" data-filter="ios">
+                  iOS
+                </button>
+              </div>
+              <div id="executor-status" class="version-card__status">
+                Waiting for data...
+              </div>
+              <div id="executor-grid" class="executor-grid"></div>
             </div>
           </section>
 
@@ -1516,6 +1870,383 @@
       );
 
       const scriptItems = [];
+
+      const versionBaseUrl = "https://weao.gg/api/versions";
+      const versionSpecs = [
+        {
+          type: "current",
+          title: "Current (Live)",
+          description: "Latest builds for Windows, Mac, Android, and iOS.",
+          endpoint: "current",
+          fields: [
+            { key: "Windows", label: "Windows" },
+            { key: "WindowsDate", label: "Windows date" },
+            { key: "Android", label: "Android" },
+            { key: "AndroidDate", label: "Android date" },
+            { key: "iOS", label: "iOS" },
+            { key: "iOSDate", label: "iOS date" },
+            { key: "Mac", label: "Mac" },
+            { key: "MacDate", label: "Mac date" }
+          ]
+        },
+        {
+          type: "future",
+          title: "Future (Live)",
+          description: "Next builds that the live channel is tracking.",
+          endpoint: "future",
+          fields: [
+            { key: "Windows", label: "Windows" },
+            { key: "WindowsDate", label: "Windows date" },
+            { key: "Mac", label: "Mac" },
+            { key: "MacDate", label: "Mac date" }
+          ]
+        },
+        {
+          type: "past",
+          title: "Past (Live)",
+          description: "Previous deployments that can still be referenced.",
+          endpoint: "past",
+          fields: [
+            { key: "Windows", label: "Windows" },
+            { key: "WindowsDate", label: "Windows date" },
+            { key: "Mac", label: "Mac" },
+            { key: "MacDate", label: "Mac date" }
+          ]
+        }
+      ];
+      const versionElements = new Map();
+
+      function initVersionCards() {
+        const grid = q("#versions-grid");
+        if (!grid) {
+          return;
+        }
+
+        versionElements.clear();
+        grid.innerHTML = "";
+
+        for (const spec of versionSpecs) {
+          const card = document.createElement("article");
+          card.className = "version-card";
+
+          const header = document.createElement("div");
+          header.className = "version-card__head";
+
+          const textStack = document.createElement("div");
+          const title = document.createElement("p");
+          title.className = "version-card__title";
+          title.textContent = spec.title;
+          const desc = document.createElement("p");
+          desc.className = "version-card__desc";
+          desc.textContent = spec.description;
+          textStack.append(title, desc);
+
+          const refresh = document.createElement("button");
+          refresh.type = "button";
+          refresh.className = "version-card__refresh";
+          refresh.textContent = "Refresh";
+          refresh.addEventListener("click", () => fetchVersionData(spec));
+
+          header.append(textStack, refresh);
+
+          const body = document.createElement("div");
+          body.className = "version-card__body";
+          body.innerHTML = '<p class="version-card__placeholder">Loading...</p>';
+
+          const status = document.createElement("div");
+          status.className = "version-card__status";
+          status.textContent = "Waiting for data...";
+
+          card.append(header, body, status);
+          grid.appendChild(card);
+
+          versionElements.set(spec.type, { body, status });
+        }
+      }
+
+      function renderVersionData(container, data, fields) {
+        const dl = document.createElement("dl");
+
+        for (const field of fields) {
+          const dt = document.createElement("dt");
+          dt.textContent = field.label;
+          const dd = document.createElement("dd");
+          const value =
+            data && Object.prototype.hasOwnProperty.call(data, field.key)
+              ? data[field.key]
+              : null;
+          dd.textContent = value ?? "N/A";
+          dl.append(dt, dd);
+        }
+
+        container.innerHTML = "";
+        container.appendChild(dl);
+      }
+
+      async function fetchVersionData(spec) {
+        const elements = versionElements.get(spec.type);
+        if (!elements) {
+          return;
+        }
+
+        const { body, status } = elements;
+        status.textContent = "Fetching data...";
+        body.innerHTML = '<p class="version-card__placeholder">Loading...</p>';
+
+        try {
+          const res = await fetch(`${versionBaseUrl}/${spec.endpoint}`);
+          if (!res.ok) {
+            throw new Error(`${res.status} ${res.statusText || "Error"}`);
+          }
+
+          const payload = await res.json();
+          renderVersionData(body, payload, spec.fields);
+          const timestamp = new Date().toLocaleTimeString([], {
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit"
+          });
+          status.textContent = `Updated ${timestamp}`;
+        } catch (error) {
+          body.innerHTML = `<p class="version-card__error">Unable to load data: ${error.message}</p>`;
+          status.textContent = "Failed to load";
+        }
+      }
+
+      const executorEndpoint = "https://weao.gg/api/status/exploits";
+      const executorPlatformOrder = ["Windows", "Android", "iOS", "Mac"];
+      const platformFilters = {
+        all: () => true,
+        windows: (platform) => (platform || "").toLowerCase() === "windows",
+        mac: (platform) => (platform || "").toLowerCase() === "mac",
+        android: (platform) => (platform || "").toLowerCase() === "android",
+        ios: (platform) => (platform || "").toLowerCase() === "ios"
+      };
+      let executorFilter = "all";
+      let executorCache = [];
+
+      const isExternalExecutor = (entry) => {
+        return (entry?.extype || "").toLowerCase().includes("external");
+      };
+
+      function getPlatformRank(platform) {
+        if (!platform) {
+          return executorPlatformOrder.length;
+        }
+        const normalized = (platform || "").toLowerCase();
+        const index = executorPlatformOrder.findIndex(
+          (item) => item.toLowerCase() === normalized
+        );
+        return index === -1 ? executorPlatformOrder.length : index;
+      }
+
+      function formatPercent(value) {
+        if (value === 0) {
+          return "0%";
+        }
+        if (typeof value === "number") {
+          return `${value}%`;
+        }
+        if (typeof value === "string" && value.trim()) {
+          return `${value}%`;
+        }
+        return "-";
+      }
+
+      function createExecutorCard(executor) {
+        const card = document.createElement("article");
+        card.className = "executor-card";
+
+        const title = document.createElement("p");
+        title.className = "executor-card__title";
+        title.textContent = executor.title;
+
+        const meta = document.createElement("div");
+        meta.className = "executor-card__meta";
+
+        const infoStack = document.createElement("div");
+        infoStack.className = "executor-card__meta-info";
+
+        const type = document.createElement("span");
+        type.className = "executor-card__type";
+        type.textContent = executor.platform || "Unknown";
+
+        const statusPill = document.createElement("span");
+        statusPill.className = `executor-card__status-pill${
+          executor.updateStatus ? "" : " executor-card__status-pill--down"
+        }`;
+        statusPill.textContent = executor.updateStatus ? "Up" : "Down";
+
+        infoStack.append(type, statusPill);
+        meta.append(title, infoStack);
+
+        const pills = document.createElement("div");
+        pills.className = "executor-card__pills";
+
+        const addPill = (text, variant) => {
+          if (!text) {
+            return;
+          }
+          const pill = document.createElement("span");
+          pill.className = `executor-card__pill${
+            variant ? ` executor-card__pill--${variant}` : ""
+          }`;
+          pill.textContent = text;
+          pills.appendChild(pill);
+        };
+
+        const categoryText = isExternalExecutor(executor) ? "External" : "Internal";
+        addPill(categoryText, categoryText === "External" ? "info" : "good");
+        addPill(executor.uncStatus ? "UNC" : "No UNC", executor.uncStatus ? "good" : "warn");
+        addPill(executor.detected ? "Detected" : "Undetected", executor.detected ? "warn" : "good");
+        addPill(executor.free ? "Free" : "Paid", executor.free ? "good" : "info");
+        addPill(executor.beta ? "Beta" : "Stable", executor.beta ? "info" : "good");
+
+        const body = document.createElement("div");
+        body.className = "executor-card__body";
+        const fields = [
+          { label: "Type", value: executor.extype },
+          { label: "Version", value: executor.version },
+          { label: "RBX version", value: executor.rbxversion },
+          { label: "sUNC", value: formatPercent(executor.suncPercentage) },
+          { label: "UNC", value: formatPercent(executor.uncPercentage) },
+          { label: "Last updated", value: executor.updatedDate }
+        ];
+
+        for (const field of fields) {
+          const dt = document.createElement("dt");
+          dt.textContent = field.label;
+          const dd = document.createElement("dd");
+          dd.textContent = field.value ?? "-";
+          body.append(dt, dd);
+        }
+
+        const links = document.createElement("div");
+        links.className = "executor-card__links";
+        if (executor.websitelink) {
+          const siteLink = document.createElement("a");
+          siteLink.href = executor.websitelink;
+          siteLink.target = "_blank";
+          siteLink.rel = "noopener noreferrer";
+          siteLink.textContent = "Website";
+          links.appendChild(siteLink);
+        }
+        if (executor.discordlink) {
+          const discordLink = document.createElement("a");
+          discordLink.href = executor.discordlink;
+          discordLink.target = "_blank";
+          discordLink.rel = "noopener noreferrer";
+          discordLink.textContent = "Discord";
+          links.appendChild(discordLink);
+        }
+
+        card.append(meta, pills, body);
+        if (links.childElementCount) {
+          card.appendChild(links);
+        }
+
+        return card;
+      }
+
+      function renderExecutorCards() {
+        const grid = q("#executor-grid");
+        if (!grid) {
+          return;
+        }
+
+        const entries = executorCache.filter((entry) => entry && entry.title);
+        if (!entries.length) {
+          grid.innerHTML =
+            '<p class="executor-card__placeholder">No executor data available.</p>';
+          return;
+        }
+
+        const sorted = entries
+          .slice()
+          .sort((a, b) => {
+            const aIsExternal = isExternalExecutor(a);
+            const bIsExternal = isExternalExecutor(b);
+            const typeRank = Number(!aIsExternal) - Number(!bIsExternal);
+            if (typeRank !== 0) {
+              return typeRank;
+            }
+
+            const rankDiff = getPlatformRank(a.platform) - getPlatformRank(b.platform);
+            if (rankDiff !== 0) {
+              return rankDiff;
+            }
+
+            return (a.title || "").localeCompare(b.title || "");
+          })
+          .filter((entry) => platformFilters[executorFilter](entry.platform));
+
+        if (!sorted.length) {
+          grid.innerHTML =
+            '<p class="executor-card__placeholder">No executor data available.</p>';
+          return;
+        }
+
+        grid.innerHTML = "";
+        const fragment = document.createDocumentFragment();
+
+        if (executorFilter === "windows") {
+          const internals = sorted.filter((entry) => !isExternalExecutor(entry));
+          const externals = sorted.filter(isExternalExecutor);
+          internals.forEach((executor) => fragment.appendChild(createExecutorCard(executor)));
+          if (externals.length) {
+            const divider = document.createElement("div");
+            divider.className = "executor-divider";
+            divider.textContent = "External";
+            fragment.appendChild(divider);
+            externals.forEach((executor) => fragment.appendChild(createExecutorCard(executor)));
+          }
+        } else {
+          sorted.forEach((executor) => fragment.appendChild(createExecutorCard(executor)));
+        }
+
+        grid.appendChild(fragment);
+      }
+
+      function setExecutorFilter(filter) {
+        executorFilter = platformFilters[filter] ? filter : "all";
+        qa(".executor-tab").forEach((tab) => {
+          tab.classList.toggle(
+            "executor-tab--active",
+            tab.dataset.filter === executorFilter
+          );
+        });
+        renderExecutorCards();
+      }
+
+      async function loadExecutorStatuses() {
+        const grid = q("#executor-grid");
+        const status = q("#executor-status");
+        if (!grid || !status) {
+          return;
+        }
+
+        status.textContent = "Fetching executor statuses...";
+        grid.innerHTML = '<p class="executor-card__placeholder">Loading...</p>';
+
+        try {
+          const res = await fetch(executorEndpoint);
+          if (!res.ok) {
+            throw new Error(`${res.status} ${res.statusText || "Error"}`);
+          }
+          const payload = await res.json();
+          executorCache = Array.isArray(payload) ? payload : [];
+          renderExecutorCards();
+          const timestamp = new Date().toLocaleTimeString([], {
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit"
+          });
+          status.textContent = `Updated ${timestamp}`;
+        } catch (error) {
+          grid.innerHTML = `<p class="version-card__error">Unable to load executor data: ${error.message}</p>`;
+          status.textContent = "Failed to load";
+        }
+      }
 
       function renderScripts() {
         const list = q("#sc_list");
@@ -2645,6 +3376,18 @@
       window.addEventListener("DOMContentLoaded", () => {
         renderHome();
         renderScripts();
+        initVersionCards();
+        versionSpecs.forEach(fetchVersionData);
+        setExecutorFilter("all");
+        loadExecutorStatuses();
+
+        const executorTabs = qa(".executor-tab");
+        executorTabs.forEach((tab) => {
+          tab.addEventListener("click", (event) => {
+            ripple(tab, event);
+            setExecutorFilter(tab.dataset.filter);
+          });
+        });
 
         qa(".tb").forEach((button) => {
           button.addEventListener("click", (event) => {
@@ -2711,6 +3454,14 @@
           builderIconsFullScreenButton.addEventListener("click", (event) => {
             ripple(builderIconsFullScreenButton, event);
             setBuilderIconsFullscreen();
+          });
+        }
+
+        const bEX = q("#executor-refresh");
+        if (bEX) {
+          bEX.addEventListener("click", (event) => {
+            ripple(bEX, event);
+            loadExecutorStatuses();
           });
         }
 
