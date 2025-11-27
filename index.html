@@ -744,6 +744,23 @@
         min-height: 48px;
       }
 
+      .script-card__pills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        font-size: 11px;
+      }
+
+      .script-card__pill {
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, var(--bdA));
+        padding: 2px 10px;
+        background: rgba(255, 255, 255, 0.06);
+        color: var(--tx);
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+      }
+
       .script-card__buttons {
         display: flex;
         flex-wrap: wrap;
@@ -769,6 +786,39 @@
       .script-card__button:disabled {
         opacity: 0.4;
         cursor: not-allowed;
+      }
+
+      .script-card__stats {
+        font-size: 12px;
+        color: var(--mu);
+      }
+
+      .script-card__details {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 6px 12px;
+        margin: 4px 0;
+      }
+
+      .script-card__details dt {
+        margin: 0;
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--mu);
+        font-weight: 700;
+      }
+
+      .script-card__details dd {
+        margin: 0;
+        font-size: 12px;
+        color: var(--tx);
+        font-weight: 600;
+      }
+
+      .script-card__details a {
+        color: var(--ac);
+        text-decoration: none;
       }
 
       .script-card__footer {
@@ -2274,11 +2324,101 @@
         return parts.join(" - ");
       }
 
+      function getRobloxGameLink(entry) {
+        const placeId =
+          entry.game?.placeId ||
+          entry.game?.gameId ||
+          entry.placeId ||
+          entry.gameId;
+        if (!placeId) {
+          return null;
+        }
+        return `https://www.roblox.com/games/${placeId}`;
+      }
+
+      function getScriptMetadata(entry, source) {
+        const rawLikes = entry.likes ?? entry.likeCount;
+        const rawDislikes = entry.dislikes ?? entry.dislikeCount;
+        const likes = typeof rawLikes === "number" ? rawLikes : null;
+        const dislikes = typeof rawDislikes === "number" ? rawDislikes : null;
+        const ratio =
+          (likes ?? 0) + (dislikes ?? 0) > 0
+            ? Math.round(((likes ?? 0) / ((likes ?? 0) + (dislikes ?? 0))) * 100)
+            : null;
+        const keyRequired = entry.keySystem ?? entry.key ?? false;
+        const scriptType = entry.scriptType || "";
+        const universal = Boolean(entry.isUniversal);
+        const patched = Boolean(entry.isPatched);
+        const verified =
+          entry.user?.verified ??
+          entry.verified ??
+          false;
+        const author =
+          entry.user?.username ||
+          entry.author ||
+          entry.creator ||
+          entry.owner?.username ||
+          entry.ownerName ||
+          entry.createdBy?.name ||
+          (source === "ScriptBlox" ? "ScriptBlox user" : "Unknown");
+        const updated =
+          entry.lastUpdated || entry.last_updated || entry.lastBump || entry.updatedAt;
+        const created = entry.createdAt || entry.created_at;
+        const createdLabel = created ? formatScriptDate(created) : "";
+        const updatedLabel = updated ? formatScriptDate(updated) : "";
+        const timelineLabel =
+          source === "ScriptBlox"
+            ? createdLabel
+              ? `Posted ${createdLabel}`
+              : updatedLabel
+                ? `Updated ${updatedLabel}`
+                : ""
+            : updatedLabel
+              ? `Updated ${updatedLabel}`
+              : createdLabel
+                ? `Posted ${createdLabel}`
+                : "";
+        const gameName = entry.game?.title || entry.game?.name || "";
+        const gameLink =
+          entry.game?.gameLink ||
+          entry.gameLink ||
+          getRobloxGameLink(entry);
+        const pills = [];
+        if (verified) {
+          pills.push("Verified");
+        }
+        if (keyRequired) {
+          pills.push("Key required");
+        }
+        if (scriptType) {
+          pills.push(scriptType);
+        }
+        if (universal) {
+          pills.push("Universal");
+        }
+        if (patched) {
+          pills.push("Patched");
+        }
+        return {
+          author,
+          timelineLabel,
+          gameName,
+          likes,
+          dislikes,
+          ratio,
+          gameLink,
+          pills,
+          createdLabel,
+          updatedLabel
+        };
+      }
+
       function createScriptCard(entry, source) {
         const title = (entry.title || entry.name || "Untitled").trim();
         const card = document.createElement("article");
         card.className = "script-card";
 
+        const metaInfo = getScriptMetadata(entry, source);
         const imageUrl = resolveScriptImage(entry, source);
         if (imageUrl) {
           const thumb = document.createElement("img");
@@ -2299,7 +2439,7 @@
             ? `https://rscripts.net/script/${entry.slug}`
             : null) ||
           (source === "ScriptBlox" && entry.slug
-            ? `https://scriptblox.com/scripts/${entry.slug}`
+            ? `https://scriptblox.com/script/${entry.slug}`
             : null);
         if (customUrl) {
           titleLink.href = customUrl;
@@ -2312,17 +2452,19 @@
 
         const meta = document.createElement("div");
         meta.className = "script-card__meta";
-        const crew = entry.user?.username || entry.author || entry.creator || "Unknown";
-        const game = entry.game?.title || entry.game?.name || "";
-        const updated = formatScriptDate(entry.lastUpdated || entry.last_updated);
-        const parts = [`By ${crew}`];
-        if (game) {
-          parts.push(game);
+        const metaParts = [];
+        if (metaInfo.author) {
+          metaParts.push(`By ${metaInfo.author}`);
         }
-        if (updated) {
-          parts.push(`Updated ${updated}`);
+        if (metaInfo.gameName) {
+          metaParts.push(metaInfo.gameName);
         }
-        meta.textContent = parts.join(" - ");
+        if (metaInfo.timelineLabel) {
+          metaParts.push(metaInfo.timelineLabel);
+        }
+        meta.textContent = metaParts.length
+          ? metaParts.join(" | ")
+          : "Metadata unavailable";
 
         const description = document.createElement("p");
         description.className = "script-card__description";
@@ -2332,6 +2474,113 @@
             ? `${rawDescription.slice(0, 150).trim()}...`
             : rawDescription;
         description.textContent = trimmed || "No description provided.";
+
+        const layout = [titleLink, meta, description];
+
+        const details = document.createElement("dl");
+        details.className = "script-card__details";
+        let detailCount = 0;
+        const addDetail = (label, value, options) => {
+          if (!value) {
+            return;
+          }
+          const dt = document.createElement("dt");
+          dt.textContent = label;
+          const dd = document.createElement("dd");
+          if (options && options.href) {
+            const link = document.createElement("a");
+            link.href = options.href;
+            link.target = "_blank";
+            link.rel = "noopener noreferrer";
+            link.textContent = value;
+            dd.appendChild(link);
+          } else {
+            dd.textContent = value;
+          }
+          details.append(dt, dd);
+          detailCount += 1;
+        };
+
+        addDetail("Author", metaInfo.author);
+        if (metaInfo.gameName) {
+          addDetail(
+            "Game",
+            metaInfo.gameName,
+            metaInfo.gameLink ? { href: metaInfo.gameLink } : null
+          );
+        }
+        if (metaInfo.createdLabel) {
+          addDetail("Posted", metaInfo.createdLabel);
+        }
+        if (
+          metaInfo.updatedLabel &&
+          metaInfo.updatedLabel !== metaInfo.createdLabel
+        ) {
+          addDetail("Updated", metaInfo.updatedLabel);
+        }
+        if (detailCount) {
+          layout.push(details);
+        }
+
+        const statsParts = [];
+        if (typeof metaInfo.likes === "number") {
+          statsParts.push(`Likes ${metaInfo.likes.toLocaleString()}`);
+        }
+        if (typeof metaInfo.dislikes === "number") {
+          statsParts.push(`Dislikes ${metaInfo.dislikes.toLocaleString()}`);
+        }
+        if (metaInfo.ratio !== null && metaInfo.ratio !== undefined) {
+          statsParts.push(`Approval ${metaInfo.ratio}%`);
+        }
+        if (statsParts.length) {
+          const statsRow = document.createElement("div");
+          statsRow.className = "script-card__stats";
+          statsRow.textContent = statsParts.join(" | ");
+          layout.push(statsRow);
+        }
+ 
+        if (metaInfo.pills.length) {
+          const pillsRow = document.createElement("div");
+          pillsRow.className = "script-card__pills";
+          metaInfo.pills.forEach((text) => {
+            const pill = document.createElement("span");
+            pill.className = "script-card__pill";
+            pill.textContent = text;
+            pillsRow.appendChild(pill);
+          });
+          layout.push(pillsRow);
+        }
+
+        const buttonRow = document.createElement("div");
+        buttonRow.className = "script-card__buttons";
+        const copyBtn = document.createElement("button");
+        copyBtn.type = "button";
+        copyBtn.className = "script-card__button";
+        copyBtn.textContent = "Copy code";
+        copyBtn.addEventListener("click", () => {
+          copyScriptCode(entry, source);
+        });
+        buttonRow.appendChild(copyBtn);
+
+        if (source === "Rscripts" && entry.discord) {
+          const discordBtn = document.createElement("a");
+          discordBtn.className = "script-card__button";
+          discordBtn.textContent = "Open Discord";
+          discordBtn.href = entry.discord;
+          discordBtn.target = "_blank";
+          discordBtn.rel = "noopener noreferrer";
+          buttonRow.appendChild(discordBtn);
+        }
+
+        if (metaInfo.gameLink) {
+          const gameBtn = document.createElement("a");
+          gameBtn.className = "script-card__button";
+          gameBtn.textContent = "Open game";
+          gameBtn.href = metaInfo.gameLink;
+          gameBtn.target = "_blank";
+          gameBtn.rel = "noopener noreferrer";
+          buttonRow.appendChild(gameBtn);
+        }
 
         const footer = document.createElement("div");
         footer.className = "script-card__footer";
@@ -2355,29 +2604,6 @@
         }
 
         footer.append(viewsEl, actionLink);
-        const layout = [titleLink, meta, description];
-
-        const buttonRow = document.createElement("div");
-        buttonRow.className = "script-card__buttons";
-        const copyBtn = document.createElement("button");
-        copyBtn.type = "button";
-        copyBtn.className = "script-card__button";
-        copyBtn.textContent = "Copy code";
-        copyBtn.addEventListener("click", () => {
-          copyScriptCode(entry, source);
-        });
-        buttonRow.appendChild(copyBtn);
-
-        if (source === "Rscripts" && entry.discord) {
-          const discordBtn = document.createElement("a");
-          discordBtn.className = "script-card__button";
-          discordBtn.textContent = "Open Discord";
-          discordBtn.href = entry.discord;
-          discordBtn.target = "_blank";
-          discordBtn.rel = "noopener noreferrer";
-          buttonRow.appendChild(discordBtn);
-        }
-
         if (buttonRow.children.length) {
           layout.push(buttonRow);
         }
