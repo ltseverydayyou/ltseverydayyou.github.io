@@ -601,6 +601,207 @@
         font-weight: 800;
       }
 
+      .script-searcher {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+      }
+
+      .script-searcher__controls {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      .script-searcher__controls input {
+        flex: 1;
+        min-width: 240px;
+        padding: 12px 14px;
+        border-radius: 14px;
+        border: 1px solid rgba(255, 255, 255, var(--bdA));
+        background: rgba(255, 255, 255, 0.04);
+        color: var(--tx);
+        font: 14px ui-sans-serif, system-ui, "Segoe UI", Roboto, Helvetica, Arial;
+      }
+
+      .script-searcher__hint {
+        margin: 0;
+        font-size: 12px;
+        color: var(--mu);
+      }
+
+      .script-searcher__panels {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 18px;
+      }
+
+      .script-searcher__panel {
+        border: 1px solid rgba(255, 255, 255, var(--bdA));
+        border-radius: 16px;
+        background: rgba(255, 255, 255, var(--glA));
+        padding: 16px;
+      }
+
+      .script-searcher__panel-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 12px;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .script-searcher__panel-head-group {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .script-searcher__panel-head-group h3 {
+        margin: 0;
+        font-size: 16px;
+        font-weight: 700;
+      }
+
+      .script-searcher__panel-head-group span {
+        font-size: 12px;
+        color: var(--mu);
+      }
+
+      .script-searcher__panel-controls {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .script-searcher__panel-controls button {
+        border: 1px solid rgba(255, 255, 255, var(--bdA));
+        background: rgba(255, 255, 255, 0.06);
+        color: var(--tx);
+        border-radius: 999px;
+        padding: 4px 10px;
+        font-size: 12px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: opacity 0.2s ease;
+      }
+
+      .script-searcher__panel-controls button:disabled {
+        opacity: 0.3;
+        cursor: not-allowed;
+      }
+
+      .script-searcher__panel-page {
+        font-size: 12px;
+        color: var(--mu);
+        min-width: 70px;
+        text-align: center;
+      }
+
+      .script-searcher__grid {
+        display: grid;
+        gap: 14px;
+      }
+
+      .script-card {
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, var(--bdA));
+        padding: 12px 14px;
+        background: rgba(8, 12, 20, 0.5);
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      .script-card__thumb {
+        width: 100%;
+        border-radius: 10px;
+        object-fit: cover;
+        min-height: 140px;
+        background: rgba(255, 255, 255, 0.04);
+      }
+
+      .script-card__title {
+        font-weight: 700;
+        color: #fff;
+        text-decoration: none;
+      }
+
+      .script-card__title:focus-visible {
+        outline: 2px solid var(--ac);
+        outline-offset: 2px;
+      }
+
+      .script-card__meta {
+        font-size: 12px;
+        color: var(--mu);
+      }
+
+      .script-card__description {
+        font-size: 13px;
+        color: var(--tx);
+        min-height: 48px;
+      }
+
+      .script-card__buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .script-card__button {
+        border: 1px solid rgba(255, 255, 255, var(--bdA));
+        background: rgba(255, 255, 255, 0.05);
+        color: var(--tx);
+        border-radius: 999px;
+        padding: 6px 12px;
+        font-size: 12px;
+        font-weight: 600;
+        cursor: pointer;
+        text-decoration: none;
+        transition:
+          color 0.25s ease,
+          background 0.25s ease,
+          opacity 0.2s ease;
+      }
+
+      .script-card__button:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+      }
+
+      .script-card__footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 6px;
+        font-size: 11px;
+        color: var(--mu);
+      }
+
+      .script-card__link {
+        font-size: 12px;
+        font-weight: 700;
+        color: var(--ac);
+        text-decoration: none;
+      }
+
+      .script-searcher__error {
+        font-size: 12px;
+        color: #f08;
+        min-height: 18px;
+      }
+
+      .script-searcher__empty {
+        font-size: 12px;
+        color: var(--mu);
+        padding: 10px;
+        border-radius: 10px;
+        border: 1px dashed rgba(255, 255, 255, var(--bdA));
+        background: rgba(255, 255, 255, 0.02);
+      }
+
       .bn {
         position: relative;
         overflow: hidden;
@@ -1400,6 +1601,7 @@
         <nav class="nb" id="nb">
           <button class="tb act" data-t="h">Home</button>
           <button class="tb" data-t="s">Scripts</button>
+          <button class="tb" data-t="x">Script Searcher</button>
           <button class="tb" data-t="l">Lua</button>
           <button class="tb" data-t="w">HTML</button>
           <button class="tb" data-t="t">Theme</button>
@@ -1612,17 +1814,118 @@
                   iOS
                 </button>
               </div>
-              <div id="executor-status" class="version-card__status">
-                Waiting for data...
-              </div>
-              <div id="executor-grid" class="executor-grid"></div>
-            </div>
-          </section>
+          <div id="executor-status" class="version-card__status">
+            Waiting for data...
+          </div>
+          <div id="executor-grid" class="executor-grid"></div>
+        </div>
+      </section>
 
-          <!-- Roblox BuilderIcons tab -->
-          <section id="pb" class="pp">
-            <div class="g ed">
-              <h3>Roblox BuilderIcons</h3>
+      <section id="px" class="pp">
+        <div class="g ed">
+          <h3>Script Searcher</h3>
+          <div class="script-searcher" id="script-searcher">
+            <div class="script-searcher__controls">
+              <input
+                id="script-search-query"
+                type="search"
+                placeholder="Search titles, authors, or games"
+              />
+              <button class="pl sc" id="script-search-btn" type="button">
+                Search
+              </button>
+            </div>
+            <p class="script-searcher__hint">
+              Results powered by Rscripts and ScriptBlox APIs.
+            </p>
+            <div class="script-searcher__panels">
+              <div class="script-searcher__panel">
+              <div class="script-searcher__panel-head">
+                <div class="script-searcher__panel-head-group">
+                  <h3>Rscripts</h3>
+                  <span id="script-search-rscripts-meta"></span>
+                </div>
+                <div class="script-searcher__panel-controls">
+                  <button
+                    type="button"
+                    id="script-search-rscripts-prev"
+                    aria-label="Previous Rscripts page"
+                  >
+                    Prev
+                  </button>
+                  <span
+                    id="script-search-rscripts-page"
+                    class="script-searcher__panel-page"
+                  >
+                    Page 1
+                  </span>
+                  <button
+                    type="button"
+                    id="script-search-rscripts-next"
+                    aria-label="Next Rscripts page"
+                  >
+                    Next
+                  </button>
+                </div>
+              </div>
+              <div
+                id="script-search-rscripts-error"
+                class="script-searcher__error"
+                aria-live="polite"
+              ></div>
+                <div
+                  id="script-search-rscripts"
+                  class="script-searcher__grid"
+                ></div>
+              </div>
+              <div class="script-searcher__panel">
+              <div class="script-searcher__panel-head">
+                <div class="script-searcher__panel-head-group">
+                  <h3>ScriptBlox</h3>
+                  <span id="script-search-scriptblox-meta"></span>
+                </div>
+                <div class="script-searcher__panel-controls">
+                  <button
+                    type="button"
+                    id="script-search-scriptblox-prev"
+                    aria-label="Previous ScriptBlox page"
+                  >
+                    Prev
+                  </button>
+                  <span
+                    id="script-search-scriptblox-page"
+                    class="script-searcher__panel-page"
+                  >
+                    Page 1
+                  </span>
+                  <button
+                    type="button"
+                    id="script-search-scriptblox-next"
+                    aria-label="Next ScriptBlox page"
+                  >
+                    Next
+                  </button>
+                </div>
+              </div>
+              <div
+                id="script-search-scriptblox-error"
+                class="script-searcher__error"
+                aria-live="polite"
+              ></div>
+                <div
+                  id="script-search-scriptblox"
+                  class="script-searcher__grid"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Roblox BuilderIcons tab -->
+      <section id="pb" class="pp">
+        <div class="g ed">
+          <h3>Roblox BuilderIcons</h3>
               <div id="bi-root">
                 <div id="bi-loading-screen">
                   <div id="bi-loading-spinner"></div>
@@ -1870,6 +2173,452 @@
       );
 
       const scriptItems = [];
+
+      const scriptSearcherState = {
+        query: "",
+        rscripts: { page: 1, maxPages: 1 },
+        scriptblox: { page: 1, maxPages: 1 }
+      };
+
+      const scriptSearchPanels = {
+        rscripts: {
+          container: q("#script-search-rscripts"),
+          meta: q("#script-search-rscripts-meta"),
+          error: q("#script-search-rscripts-error"),
+          label: "Rscripts",
+          pageLabel: q("#script-search-rscripts-page"),
+          prev: q("#script-search-rscripts-prev"),
+          next: q("#script-search-rscripts-next")
+        },
+        scriptblox: {
+          container: q("#script-search-scriptblox"),
+          meta: q("#script-search-scriptblox-meta"),
+          error: q("#script-search-scriptblox-error"),
+          label: "ScriptBlox",
+          pageLabel: q("#script-search-scriptblox-page"),
+          prev: q("#script-search-scriptblox-prev"),
+          next: q("#script-search-scriptblox-next")
+        }
+      };
+      const MAX_SCRIPT_RESULTS = 8;
+
+      function updatePanelControls(panelKey) {
+        const panel = scriptSearchPanels[panelKey];
+        if (!panel || !panel.container) {
+          return;
+        }
+        const pagination = scriptSearcherState[panelKey] || { page: 1, maxPages: 1 };
+        if (panel.pageLabel) {
+          panel.pageLabel.textContent =
+            pagination.maxPages && pagination.maxPages > 1
+              ? `Page ${pagination.page} / ${pagination.maxPages}`
+              : `Page ${pagination.page}`;
+        }
+        if (panel.prev) {
+          panel.prev.disabled = pagination.page <= 1 || panel.isLoading;
+        }
+        if (panel.next) {
+          const hasLimit = pagination.maxPages && pagination.maxPages > 0;
+          panel.next.disabled =
+            (hasLimit ? pagination.page >= pagination.maxPages : false) ||
+            panel.isLoading;
+        }
+      }
+
+      function formatScriptDate(value) {
+        if (!value) {
+          return "Unknown date";
+        }
+        const date = new Date(value);
+        if (Number.isNaN(date.getTime())) {
+          return "Unknown date";
+        }
+        return date.toLocaleDateString(undefined, {
+          month: "short",
+          day: "numeric",
+          year: "numeric"
+        });
+      }
+
+      function resolveScriptImage(entry, source) {
+        const candidates = [
+          entry.image,
+          entry.game?.imgurl,
+          entry.game?.imageUrl,
+          entry.game?.gameLogo
+        ];
+        const picked = candidates.find((url) => typeof url === "string" && url.trim());
+        if (!picked) {
+          return "";
+        }
+        if (picked.startsWith("http")) {
+          return picked;
+        }
+        if (picked.startsWith("//")) {
+          return `https:${picked}`;
+        }
+        if (source === "ScriptBlox") {
+          return `https://scriptblox.com${picked.startsWith("/") ? "" : "/"}${picked}`;
+        }
+        return picked;
+      }
+
+      function getPanelPageSummary(panelKey, count) {
+        const pagination = scriptSearcherState[panelKey] || { page: 1, maxPages: 1 };
+        const parts = [
+          `${count} script${count === 1 ? "" : "s"}`,
+          pagination.maxPages && pagination.maxPages > 1
+            ? `Page ${pagination.page} / ${pagination.maxPages}`
+            : `Page ${pagination.page}`
+        ];
+        return parts.join(" - ");
+      }
+
+      function createScriptCard(entry, source) {
+        const title = (entry.title || entry.name || "Untitled").trim();
+        const card = document.createElement("article");
+        card.className = "script-card";
+
+        const imageUrl = resolveScriptImage(entry, source);
+        if (imageUrl) {
+          const thumb = document.createElement("img");
+          thumb.className = "script-card__thumb";
+          thumb.src = imageUrl;
+          thumb.alt = "";
+          card.appendChild(thumb);
+        }
+
+        const titleLink = document.createElement("a");
+        titleLink.className = "script-card__title";
+        titleLink.textContent = title;
+
+        const customUrl =
+          entry.url ||
+          entry.link ||
+          (source === "Rscripts" && entry.slug
+            ? `https://rscripts.net/script/${entry.slug}`
+            : null) ||
+          (source === "ScriptBlox" && entry.slug
+            ? `https://scriptblox.com/scripts/${entry.slug}`
+            : null);
+        if (customUrl) {
+          titleLink.href = customUrl;
+          titleLink.target = "_blank";
+          titleLink.rel = "noopener noreferrer";
+        } else {
+          titleLink.href = "#";
+          titleLink.addEventListener("click", (event) => event.preventDefault());
+        }
+
+        const meta = document.createElement("div");
+        meta.className = "script-card__meta";
+        const crew = entry.user?.username || entry.author || entry.creator || "Unknown";
+        const game = entry.game?.title || entry.game?.name || "";
+        const updated = formatScriptDate(entry.lastUpdated || entry.last_updated);
+        const parts = [`By ${crew}`];
+        if (game) {
+          parts.push(game);
+        }
+        if (updated) {
+          parts.push(`Updated ${updated}`);
+        }
+        meta.textContent = parts.join(" - ");
+
+        const description = document.createElement("p");
+        description.className = "script-card__description";
+        const rawDescription = (entry.description || entry.summary || "").trim();
+        const trimmed =
+          rawDescription.length > 150
+            ? `${rawDescription.slice(0, 150).trim()}...`
+            : rawDescription;
+        description.textContent = trimmed || "No description provided.";
+
+        const footer = document.createElement("div");
+        footer.className = "script-card__footer";
+        const viewsText =
+          entry.views ?? entry.viewCount ?? entry.totalViews ?? 0;
+        const viewsEl = document.createElement("span");
+        viewsEl.textContent = viewsText
+          ? `${Number(viewsText).toLocaleString()} views`
+          : "Views unknown";
+
+        const actionLink = document.createElement("a");
+        actionLink.className = "script-card__link";
+        actionLink.textContent = `Open on ${source}`;
+        if (customUrl) {
+          actionLink.href = customUrl;
+          actionLink.target = "_blank";
+          actionLink.rel = "noopener noreferrer";
+        } else {
+          actionLink.setAttribute("aria-disabled", "true");
+          actionLink.href = "#";
+        }
+
+        footer.append(viewsEl, actionLink);
+        const layout = [titleLink, meta, description];
+
+        const buttonRow = document.createElement("div");
+        buttonRow.className = "script-card__buttons";
+        const copyBtn = document.createElement("button");
+        copyBtn.type = "button";
+        copyBtn.className = "script-card__button";
+        copyBtn.textContent = "Copy code";
+        copyBtn.addEventListener("click", () => {
+          copyScriptCode(entry, source);
+        });
+        buttonRow.appendChild(copyBtn);
+
+        if (source === "Rscripts" && entry.discord) {
+          const discordBtn = document.createElement("a");
+          discordBtn.className = "script-card__button";
+          discordBtn.textContent = "Open Discord";
+          discordBtn.href = entry.discord;
+          discordBtn.target = "_blank";
+          discordBtn.rel = "noopener noreferrer";
+          buttonRow.appendChild(discordBtn);
+        }
+
+        if (buttonRow.children.length) {
+          layout.push(buttonRow);
+        }
+
+        layout.push(footer);
+        card.append(...layout);
+        return card;
+      }
+
+      function renderPanelMessage(panel, text) {
+        if (!panel?.container) {
+          return;
+        }
+        panel.container.innerHTML = "";
+        const messageEl = document.createElement("div");
+        messageEl.className = "script-searcher__empty";
+        messageEl.textContent = text;
+        panel.container.appendChild(messageEl);
+      }
+
+      function setPanelError(panel, text) {
+        if (!panel?.error) {
+          return;
+        }
+        panel.error.textContent = text || "";
+        if (text && panel.container) {
+          panel.container.innerHTML = "";
+          setPanelMeta(panel, "");
+        }
+      }
+
+      function setPanelMeta(panel, text) {
+        if (!panel?.meta) {
+          return;
+        }
+        panel.meta.textContent = text || "";
+      }
+
+      function renderSearchPanel(panelKey, scripts) {
+        const panel = scriptSearchPanels[panelKey];
+        if (!panel?.container) {
+          return;
+        }
+        panel.container.innerHTML = "";
+        if (!Array.isArray(scripts) || !scripts.length) {
+          setPanelMeta(panel, "No results");
+          renderPanelMessage(panel, "No scripts matched that query.");
+          return;
+        }
+        setPanelMeta(panel, getPanelPageSummary(panelKey, scripts.length));
+        scripts.slice(0, MAX_SCRIPT_RESULTS).forEach((entry) => {
+          panel.container.appendChild(createScriptCard(entry, panel.label));
+        });
+      }
+
+      function parsePanelPayload(panelKey, payload) {
+        if (panelKey === "rscripts") {
+          const info = payload?.info || {};
+          return {
+            scripts: Array.isArray(payload?.scripts) ? payload.scripts : [],
+            maxPages: Math.max(info.maxPages || 1, 1)
+          };
+        }
+        const result = payload?.result || {};
+        return {
+          scripts: Array.isArray(result.scripts) ? result.scripts : [],
+          maxPages: Math.max(result.totalPages || 1, 1)
+        };
+      }
+
+      async function fetchRscripts(query = "", page = 1) {
+        const url = new URL("https://rscripts.net/api/v2/scripts");
+        url.searchParams.set("page", page.toString());
+        url.searchParams.set("orderBy", "date");
+        url.searchParams.set("sort", "desc");
+        if (query) {
+          url.searchParams.set("q", query);
+        }
+        const response = await fetch(url.toString(), { mode: "cors" });
+        if (!response.ok) {
+          throw new Error("Rscripts API error");
+        }
+        return response.json();
+      }
+
+      async function fetchScriptblox(query = "", page = 1) {
+        const endpoint = query
+          ? "https://scriptblox.com/api/script/search"
+          : "https://scriptblox.com/api/script/fetch";
+        const url = new URL(endpoint);
+        if (query) {
+          url.searchParams.set("q", query);
+        }
+        url.searchParams.set("page", page.toString());
+        const response = await fetch(url.toString(), {
+          mode: "cors"
+        });
+        if (!response.ok) {
+          throw new Error("ScriptBlox API error");
+        }
+        return response.json();
+      }
+
+      async function copyScriptCode(entry, source) {
+        let scriptBody = entry.script;
+        if (!scriptBody && entry.rawScript) {
+          try {
+            const resp = await fetch(entry.rawScript, { mode: "cors" });
+            if (!resp.ok) {
+              throw new Error("Failed to fetch script");
+            }
+            scriptBody = await resp.text();
+          } catch (error) {
+            console.error(error);
+            toast("Unable to fetch script content");
+            return;
+          }
+        }
+        if (!scriptBody) {
+          toast("Script content unavailable");
+          return;
+        }
+        try {
+          await navigator.clipboard.writeText(scriptBody);
+          toast("Script copied");
+        } catch (error) {
+          console.error(error);
+          toast("Clipboard permissions denied");
+        }
+      }
+
+      async function loadPanel(panelKey) {
+        const panel = scriptSearchPanels[panelKey];
+        if (!panel || !panel.container || panel.isLoading) {
+          return;
+        }
+        panel.isLoading = true;
+        updatePanelControls(panelKey);
+        setPanelError(panel, "");
+        setPanelMeta(panel, "");
+        renderPanelMessage(panel, "Loading results...");
+        try {
+          const pagination = scriptSearcherState[panelKey];
+          const page = pagination?.page || 1;
+          const payload =
+            panelKey === "rscripts"
+              ? await fetchRscripts(scriptSearcherState.query, page)
+              : await fetchScriptblox(scriptSearcherState.query, page);
+          const parsed = parsePanelPayload(panelKey, payload);
+          scriptSearcherState[panelKey].maxPages = parsed.maxPages || 1;
+          updatePanelControls(panelKey);
+          renderSearchPanel(panelKey, parsed.scripts);
+        } catch (error) {
+          console.error(error);
+          const friendlyMessage =
+            panelKey === "scriptblox"
+              ? "ScriptBlox data requires direct API access. Try again shortly."
+              : "Unable to load scripts.";
+          setPanelError(panel, friendlyMessage);
+          renderPanelMessage(panel, "Results could not be loaded.");
+        } finally {
+          panel.isLoading = false;
+          updatePanelControls(panelKey);
+        }
+      }
+
+      function changePanelPage(panelKey, delta) {
+        const panel = scriptSearchPanels[panelKey];
+        if (!panel?.container) {
+          return;
+        }
+        const pagination = scriptSearcherState[panelKey];
+        if (!pagination) {
+          return;
+        }
+        const newPage = pagination.page + delta;
+        if (newPage < 1) {
+          return;
+        }
+        if (pagination.maxPages && pagination.maxPages > 0 && newPage > pagination.maxPages) {
+          return;
+        }
+        pagination.page = newPage;
+        updatePanelControls(panelKey);
+        loadPanel(panelKey);
+      }
+
+      async function performScriptSearch(term, button) {
+        scriptSearcherState.query = (term || "").trim();
+        scriptSearcherState.rscripts.page = 1;
+        scriptSearcherState.rscripts.maxPages = 1;
+        scriptSearcherState.scriptblox.page = 1;
+        scriptSearcherState.scriptblox.maxPages = 1;
+        updatePanelControls("rscripts");
+        updatePanelControls("scriptblox");
+        if (button) {
+          button.disabled = true;
+            button.textContent = "Searching...";
+        }
+        try {
+          await Promise.allSettled([loadPanel("rscripts"), loadPanel("scriptblox")]);
+        } finally {
+          if (button) {
+            button.disabled = false;
+            button.textContent = "Search";
+          }
+        }
+      }
+
+        function initScriptSearcher() {
+          const root = q("#script-searcher");
+          if (!root) {
+            return;
+          }
+          const input = root.querySelector("#script-search-query");
+          const button = root.querySelector("#script-search-btn");
+          if (!input || !button) {
+            return;
+          }
+
+          Object.entries(scriptSearchPanels).forEach(([key, panel]) => {
+            if (panel.prev) {
+              panel.prev.addEventListener("click", () => changePanelPage(key, -1));
+            }
+            if (panel.next) {
+              panel.next.addEventListener("click", () => changePanelPage(key, 1));
+            }
+            updatePanelControls(key);
+          });
+
+          const runSearch = () => performScriptSearch(input.value, button);
+          button.addEventListener("click", runSearch);
+          input.addEventListener("keydown", (event) => {
+            if (event.key === "Enter") {
+              event.preventDefault();
+              runSearch();
+            }
+          });
+
+          performScriptSearch("", null);
+        }
 
       const versionBaseUrl = "https://weao.gg/api/versions";
       const versionSpecs = [
@@ -3376,6 +4125,7 @@
       window.addEventListener("DOMContentLoaded", () => {
         renderHome();
         renderScripts();
+        initScriptSearcher();
         initVersionCards();
         versionSpecs.forEach(fetchVersionData);
         setExecutorFilter("all");
