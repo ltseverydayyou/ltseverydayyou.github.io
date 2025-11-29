@@ -1466,8 +1466,43 @@
         margin-top: 10px;
         display: flex;
         align-items: center;
-        justify-content: space-between;
         gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      .bi-toolbar__search {
+        flex: 1;
+        min-width: 220px;
+      }
+
+      .bi-toolbar__input {
+        width: 100%;
+        padding: 10px 14px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, var(--bdA));
+        background: rgba(255, 255, 255, 0.02);
+        color: var(--tx);
+        font: 14px ui-sans-serif, system-ui, "Segoe UI", Roboto, Helvetica, Arial;
+        transition:
+          border-color 0.2s ease,
+          background 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+
+      .bi-toolbar__input:focus-visible {
+        outline: none;
+        border-color: rgba(102, 227, 255, 0.8);
+        background: rgba(255, 255, 255, 0.04);
+        box-shadow: 0 0 0 2px rgba(102, 227, 255, 0.2);
+      }
+
+      .bi-toolbar__input::placeholder {
+        color: rgba(255, 255, 255, 0.5);
+      }
+
+      .bi-toolbar__input:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
       }
 
       .bi-toolbar__hint {
@@ -1488,6 +1523,16 @@
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
         gap: 12px;
+      }
+
+      .bi-grid__empty {
+        grid-column: 1 / -1;
+        text-align: center;
+        padding: 28px 16px;
+        border-radius: 12px;
+        border: 1px dashed rgba(255, 255, 255, var(--bdA));
+        color: var(--mu);
+        font-size: 14px;
       }
 
       .bi-entry {
@@ -1983,7 +2028,19 @@
                 </div>
 
                 <div class="bi-toolbar">
-                  <span class="bi-toolbar__hint">BuilderIcons displayed inline with the rest of the domain</span>
+                  <div class="bi-toolbar__search">
+                    <input
+                      id="bi-search"
+                      class="bi-toolbar__input"
+                      type="search"
+                      placeholder="Search icons by name or components"
+                      aria-label="Search BuilderIcons"
+                      autocomplete="off"
+                      spellcheck="false"
+                      disabled
+                    />
+                  </div>
+                  <span class="bi-toolbar__hint">Loading BuilderIcons...</span>
                   <button
                     class="pl sc"
                     type="button"
@@ -3338,7 +3395,7 @@
         "FNB Autoplayer",
         "https://raw.githubusercontent.com/ltseverydayyou/FNB-playerrrr/refs/heads/main/AutoPlayerRevived.luau",
         "https://tr.rbxcdn.com/180DAY-06421ce8666c82646547498e79a09589/150/150/Image/Png/noFilter",
-        true,
+        null,
         "https://roblox.com/games/7603193259"
       );
       ScriptAdd(
@@ -3378,13 +3435,27 @@
       );
       ScriptAdd(
         "Simple Spy Reworked",
-        "https://gist.githubusercontent.com/ltseverydayyou/2398adb0db70abc4f752219a676f6cb2/raw/SimpleSpyRework.luau",
-        null,
-        true
+        "https://gist.githubusercontent.com/ltseverydayyou/2398adb0db70abc4f752219a676f6cb2/raw/SimpleSpyRework.luau"
+      );
+      ScriptAdd(
+        "Dex ++ (Backup)",
+        "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/DexPlusBackup.luau"
+      );
+      ScriptAdd(
+        "Dex",
+        "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/DexByMoonMobile"
+      );
+      ScriptAdd(
+        "Minimap",
+        "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/minimap.luau"
       );
       ScriptAdd(
         "Aervanix Aimbot",
         "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/NewAimbot.lua"
+      );
+      ScriptAdd(
+        "Autoclicker",
+        "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/AutoClicker.luau"
       );
       ScriptAdd(
         "Chat Translator",
@@ -3422,15 +3493,16 @@
         "hai :3",
         "cuh",
         "guh",
-        "click off",
+        "fuck off",
         "OUCH",
         ":c",
+        "RAHHHHHH",
         "legshot on top",
         "i uhhh forgot my name 💀",
-        "dont touch me please",
         "i am not a toy",
         "stop clicking me",
-        "i am NOT a button"
+        "i am NOT a button",
+        "STOPPPPPPPP"
       ];
       let avLocked = false;
       let avTimestamp = 0;
@@ -4091,6 +4163,7 @@
         const loadingTextElement = document.getElementById("bi-loading-text");
         const gridElement = document.getElementById("bi-grid");
         const toolbarHintElement = document.querySelector(".bi-toolbar__hint");
+        const searchInputElement = document.getElementById("bi-search");
 
         if (
           !loadingScreenElement ||
@@ -4101,6 +4174,8 @@
           return;
         }
 
+        let builderIconEntries = [];
+
         const escapeHtml = (value) =>
           (value || "")
             .replace(/&/g, "&amp;")
@@ -4108,6 +4183,114 @@
             .replace(/>/g, "&gt;")
             .replace(/"/g, "&quot;")
             .replace(/'/g, "&#39;");
+
+        const createBuilderIconElement = (entryData) => {
+          const componentsMarkup = entryData.hasDistinctComponents
+            ? `<div class="bi-entry__components">Components: ${escapeHtml(
+                entryData.componentsLabel
+              )}</div>`
+            : "";
+
+          const entryElement = document.createElement("article");
+          entryElement.className = "bi-entry";
+          entryElement.setAttribute("role", "listitem");
+          entryElement.innerHTML = `
+            <div class="bi-entry__glyphs">
+              <span class="bi-entry__glyph" aria-hidden="true">${escapeHtml(
+                entryData.unicodeCharacter
+              )}</span>
+              <span class="bi-entry__glyph bi-entry__glyph--bold" aria-hidden="true">${escapeHtml(
+                entryData.unicodeCharacter
+              )}</span>
+            </div>
+            <div class="bi-entry__glyph-labels">
+              <span>Regular</span>
+              <span>Bold</span>
+            </div>
+            <div class="bi-entry__meta">
+              <span>#${entryData.displayIndex}</span>
+              <span>${entryData.codePointLabel}</span>
+            </div>
+            <div class="bi-entry__name" title="${escapeHtml(
+              entryData.displayName
+            )}">
+              ${escapeHtml(entryData.displayName)}
+            </div>
+            ${componentsMarkup}
+            <div class="bi-entry__actions">
+              <button type="button" class="pl bi-entry__copy">Copy name</button>
+            </div>
+          `;
+
+          const copyButton = entryElement.querySelector(".bi-entry__copy");
+          if (copyButton) {
+            const defaultLabel = copyButton.textContent || "Copy name";
+            let resetTimer;
+
+            const resetCopyButton = () => {
+              copyButton.textContent = defaultLabel;
+              copyButton.classList.remove("bi-entry__copy--success");
+            };
+
+            copyButton.addEventListener("click", async () => {
+              try {
+                await navigator.clipboard.writeText(entryData.displayName);
+                copyButton.textContent = "Copied!";
+                copyButton.classList.add("bi-entry__copy--success");
+                toast("Icon name copied");
+              } catch {
+                copyButton.textContent = "Copy failed";
+                toast("Copy failed");
+              } finally {
+                clearTimeout(resetTimer);
+                resetTimer = setTimeout(resetCopyButton, 1400);
+              }
+            });
+          }
+
+          return entryElement;
+        };
+
+        const renderBuilderIconGrid = (filterValue = "") => {
+          const normalizedFilter = (filterValue || "").trim().toLowerCase();
+          const activeEntries = normalizedFilter
+            ? builderIconEntries.filter((entry) =>
+                entry.searchText.includes(normalizedFilter)
+              )
+            : builderIconEntries;
+
+          gridElement.innerHTML = "";
+
+          if (!activeEntries.length) {
+            const emptyMessage = document.createElement("div");
+            emptyMessage.className = "bi-grid__empty";
+            emptyMessage.textContent = normalizedFilter
+              ? `No icons match "${filterValue}"`
+              : "No icons found";
+            gridElement.appendChild(emptyMessage);
+          } else {
+            const fragment = document.createDocumentFragment();
+            activeEntries.forEach((entryData) => {
+              fragment.appendChild(createBuilderIconElement(entryData));
+            });
+            gridElement.appendChild(fragment);
+          }
+
+          if (toolbarHintElement) {
+            const hintMessage = normalizedFilter
+              ? `Showing ${activeEntries.length} of ${builderIconEntries.length} icons`
+              : `Showing ${builderIconEntries.length} icons`;
+            toolbarHintElement.textContent = hintMessage;
+          }
+        };
+
+        if (searchInputElement) {
+          const handleSearchInput = (event) => {
+            renderBuilderIconGrid(event.target.value);
+          };
+          searchInputElement.addEventListener("input", handleSearchInput);
+          searchInputElement.addEventListener("search", handleSearchInput);
+        }
 
         let loadingText = "";
         let loadingTextDotCount = 0;
@@ -4258,9 +4441,7 @@
             return nameA.localeCompare(nameB);
           });
 
-          gridElement.innerHTML = "";
-
-          entries.forEach((entryData, index) => {
+          builderIconEntries = entries.map((entryData, index) => {
             const unicodeCodepoint = entryData.unicode || 0;
             const unicodeCharacter = unicodeCodepoint
               ? String.fromCodePoint(unicodeCodepoint)
@@ -4274,77 +4455,26 @@
               .toString(16)
               .toUpperCase()
               .padStart(4, "0")}`;
-            const showComponents =
-              componentsLabel && componentsLabel !== displayName;
-            const componentsMarkup = showComponents
-              ? `<div class="bi-entry__components">Components: ${escapeHtml(
-                  componentsLabel
-                )}</div>`
-              : "";
+            const searchText = `${displayName} ${componentsLabel} ${codePointLabel}`.toLowerCase();
 
-            const entryElement = document.createElement("article");
-            entryElement.className = "bi-entry";
-            entryElement.setAttribute("role", "listitem");
-            entryElement.innerHTML = `
-              <div class="bi-entry__glyphs">
-                <span class="bi-entry__glyph" aria-hidden="true">${escapeHtml(
-                  unicodeCharacter
-                )}</span>
-                <span class="bi-entry__glyph bi-entry__glyph--bold" aria-hidden="true">${escapeHtml(
-                  unicodeCharacter
-                )}</span>
-              </div>
-              <div class="bi-entry__glyph-labels">
-                <span>Regular</span>
-                <span>Bold</span>
-              </div>
-              <div class="bi-entry__meta">
-                <span>#${index + 1}</span>
-                <span>${codePointLabel}</span>
-              </div>
-              <div class="bi-entry__name" title="${escapeHtml(displayName)}">
-                ${escapeHtml(displayName)}
-              </div>
-              ${componentsMarkup}
-              <div class="bi-entry__actions">
-                <button type="button" class="pl bi-entry__copy">Copy name</button>
-              </div>
-            `;
-
-            const copyButton = entryElement.querySelector(".bi-entry__copy");
-            if (copyButton) {
-              const defaultLabel = copyButton.textContent || "Copy name";
-              let resetTimer;
-
-              const resetCopyButton = () => {
-                copyButton.textContent = defaultLabel;
-                copyButton.classList.remove("bi-entry__copy--success");
-              };
-
-              copyButton.addEventListener("click", async () => {
-                try {
-                  await navigator.clipboard.writeText(displayName);
-                  copyButton.textContent = "Copied!";
-                  copyButton.classList.add("bi-entry__copy--success");
-                  toast("Icon name copied");
-                } catch {
-                  copyButton.textContent = "Copy failed";
-                  toast("Copy failed");
-                } finally {
-                  clearTimeout(resetTimer);
-                  resetTimer = setTimeout(resetCopyButton, 1400);
-                }
-              });
-            }
-
-            gridElement.appendChild(entryElement);
+            return {
+              displayIndex: index + 1,
+              displayName,
+              componentsLabel,
+              hasDistinctComponents:
+                !!componentsLabel && componentsLabel !== displayName,
+              unicodeCharacter,
+              codePointLabel,
+              searchText
+            };
           });
 
-          if (toolbarHintElement) {
-            toolbarHintElement.textContent = `Showing ${entries.length} icons`;
+          setLoadingScreenText(null);
+          if (searchInputElement) {
+            searchInputElement.disabled = false;
           }
 
-          setLoadingScreenText(null);
+          renderBuilderIconGrid(searchInputElement ? searchInputElement.value : "");
         })();
       }
 
