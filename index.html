@@ -5105,36 +5105,36 @@
             toast("HTML formatted");
         }
 
-        function htmlOpenPreviewWindow() {
+          function htmlOpenPreviewWindow() {
             const editor = q("#hi");
             if (!editor) {
-                return;
+              return;
             }
-            const previewWindow = window.open("", "_blank", "noopener");
+            const htmlContent = editor.value || htmlEmptyPreview;
+            const blob = new Blob([htmlContent], { type: "text/html" });
+            const url = URL.createObjectURL(blob);
+            const previewWindow = window.open(url, "_blank", "noopener");
             if (!previewWindow) {
-                toast("Popup blocked");
-                return;
+              URL.revokeObjectURL(url);
+              toast("Popup blocked");
+              return;
             }
-            previewWindow.document.open();
-            previewWindow.document.write(editor.value || htmlEmptyPreview);
-            previewWindow.document.close();
-        }
+            const revoke = () => {
+              URL.revokeObjectURL(url);
+              previewWindow.removeEventListener("beforeunload", revoke);
+            };
+            previewWindow.addEventListener("beforeunload", revoke);
+          }
 
-        function htmlOpenHighlightWindow() {
+          function htmlOpenHighlightWindow() {
             const editor = q("#hi");
             if (!editor) {
-                return;
-            }
-            const highlightWindow = window.open("", "_blank", "noopener");
-            if (!highlightWindow) {
-                toast("Popup blocked");
-                return;
+              return;
             }
             const highlighted = escapeHtmlLite(
                 editor.value || "<!-- Nothing to highlight -->"
             );
-            highlightWindow.document.open();
-            highlightWindow.document.write(`<!doctype html>
+            const highlightHtml = `<!doctype html>
 <html>
   <head>
     <meta charset="utf-8" />
@@ -5150,9 +5150,21 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"><\/script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"><\/script>
   </body>
-</html>`);
-            highlightWindow.document.close();
-        }
+</html>`;
+            const blob = new Blob([highlightHtml], { type: "text/html" });
+            const url = URL.createObjectURL(blob);
+            const highlightWindow = window.open(url, "_blank", "noopener");
+            if (!highlightWindow) {
+              URL.revokeObjectURL(url);
+              toast("Popup blocked");
+              return;
+            }
+            const revoke = () => {
+              URL.revokeObjectURL(url);
+              highlightWindow.removeEventListener("beforeunload", revoke);
+            };
+            highlightWindow.addEventListener("beforeunload", revoke);
+          }
 
         function htmlSetTreeExpansion(expand) {
             qa("#html-structure details").forEach((entry) => {
