@@ -1674,23 +1674,28 @@
         }
       }
 
-      @media (max-width: 860px) {
+      @media (max-width: 1080px) {
         .l {
           grid-template-columns: 1fr;
         }
 
         .as {
-          height: auto;
           position: relative;
-          flex-direction: row;
-          align-items: center;
-          gap: 10px;
-          overflow: auto;
+          gap: 18px;
         }
 
         .nb {
           flex-direction: row;
           flex-wrap: wrap;
+        }
+
+        .as-actions {
+          width: 100%;
+          justify-content: flex-start;
+        }
+
+        .tb {
+          width: auto;
         }
       }
 
@@ -1735,8 +1740,9 @@
       }
 
       .l {
-        display: flex;
-        flex-direction: column;
+        display: grid;
+        grid-template-columns: 320px minmax(0, 1fr);
+        align-items: flex-start;
         gap: clamp(20px, 3vw, 36px);
         width: min(1200px, calc(100% - 40px));
         margin: 0 auto;
@@ -1748,8 +1754,9 @@
         top: clamp(12px, 3vw, 24px);
         z-index: 20;
         display: flex;
-        align-items: center;
-        justify-content: space-between;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
         gap: clamp(14px, 3vw, 32px);
         padding: clamp(12px, 2vw, 22px) clamp(16px, 3vw, 28px);
         border-radius: 28px;
@@ -1804,9 +1811,10 @@
 
       .nb {
         display: flex;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 6px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+        width: 100%;
       }
 
       .tb {
@@ -1819,6 +1827,8 @@
         letter-spacing: 0.08em;
         background: rgba(255, 255, 255, 0.04);
         color: var(--mu);
+        width: 100%;
+        text-align: center;
       }
 
       .tb:hover {
@@ -1838,6 +1848,8 @@
         display: flex;
         align-items: center;
         gap: 10px;
+        width: 100%;
+        justify-content: flex-start;
       }
 
       .nav-ghost {
@@ -2107,14 +2119,6 @@
         .hero {
           grid-template-columns: 1fr;
         }
-        .as {
-          flex-direction: column;
-          align-items: flex-start;
-        }
-        .as-actions {
-          width: 100%;
-          justify-content: space-between;
-        }
       }
 
       @media (max-width: 780px) {
@@ -2173,20 +2177,6 @@
           <button class="tb" data-t="b">Roblox BuilderIcons</button>
         </nav>
         <div class="as-actions">
-          <a
-            class="nav-ghost"
-            href="https://docs.weao.xyz"
-            target="_blank"
-            rel="noopener noreferrer"
-            >API Docs</a
-          >
-          <a
-            class="nav-ghost"
-            href="https://discord.gg/weaoxyz"
-            target="_blank"
-            rel="noopener noreferrer"
-            >Discord</a
-          >
           <div class="avatar-wrap">
             <img
               id="av"
@@ -2212,10 +2202,10 @@
               <a class="btn" href="#pe">Check executor status</a>
               <a
                 class="btn btn--ghost"
-                href="https://docs.weao.xyz"
+                href="https://discord.com/invite/zzjYhtMGFD"
                 target="_blank"
                 rel="noopener noreferrer"
-                >WEAO Docs</a
+                >Join VX Discord</a
               >
             </div>
             <dl class="hero__stats">
