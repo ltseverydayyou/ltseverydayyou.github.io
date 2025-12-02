@@ -1171,11 +1171,121 @@
             font-size: 12px;
         }
 
-        .html-lab__structure-empty {
+          .html-lab__structure-empty {
             margin: 0;
             font-size: 13px;
             color: var(--mu);
-        }
+          }
+
+          .rdd {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+          }
+
+          .rdd-header {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+          }
+
+          .rdd-header p {
+            margin: 4px 0 0;
+            color: var(--mu);
+          }
+
+          .rdd-link-out {
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 999px;
+            padding: 8px 16px;
+            font-weight: 700;
+            text-decoration: none;
+            color: var(--ac);
+            transition: border-color 0.2s ease, color 0.2s ease;
+          }
+
+          .rdd-link-out:hover {
+            border-color: rgba(255, 255, 255, 0.4);
+            color: #fff;
+          }
+
+          .rdd-grid {
+            display: grid;
+            gap: 16px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+          }
+
+          .rdd-card {
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 18px;
+            background: rgba(255, 255, 255, 0.02);
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+          }
+
+          .rdd-field {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+          }
+
+          .rdd-field label,
+          .rdd-field span {
+            font-size: 12px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--mu);
+          }
+
+          .rdd-field input,
+          .rdd-field select {
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 10px 12px;
+            background: rgba(255, 255, 255, 0.02);
+            color: var(--tx);
+            font: 14px ui-sans-serif, system-ui, "Segoe UI", Roboto, Helvetica, Arial;
+          }
+
+          .rdd-toggles {
+            display: grid;
+            gap: 8px;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+          }
+
+          .rdd-toggle {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 10px 12px;
+          }
+
+          .rdd-actions {
+            display: grid;
+            gap: 10px;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+          }
+
+          .rdd-actions button {
+            width: 100%;
+          }
+
+          .rdd-link-preview {
+            font-size: 13px;
+            word-break: break-all;
+            border: 1px dashed rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.02);
+          }
 
         .pl {
             position: relative;
@@ -2321,6 +2431,7 @@
                 <button class="tb" data-t="t">Theme</button>
                 <button class="tb" data-t="v">Versions</button>
                 <button class="tb" data-t="e">Executors</button>
+                <button class="tb" data-t="r">RDD</button>
                 <button class="tb" data-t="b">Roblox BuilderIcons</button>
             </nav>
         </aside>
@@ -2572,6 +2683,65 @@
             </section>
 
             <!-- Roblox BuilderIcons tab -->
+            <section id="pr" class="pp">
+                <div class="g ed rdd">
+                    <div class="rdd-header">
+                        <div>
+                            <h3>RDD versions downloader</h3>
+                            <p>Build download links for Roblox deployments without leaving this site. Buttons below open <strong>rdd.weao.gg</strong> with the right query parameters so you still get the full experience from the official tool.</p>
+                        </div>
+                        <a class="rdd-link-out" href="https://rdd.weao.gg" target="_blank" rel="noopener">Open rdd.weao.gg</a>
+                    </div>
+                    <div class="rdd-grid">
+                        <div class="rdd-card">
+                            <div class="rdd-field">
+                                <span>Binary type</span>
+                                <select id="rdd-binary">
+                                    <option value="WindowsPlayer">WindowsPlayer (Player)</option>
+                                    <option value="WindowsStudio64">WindowsStudio64 (Studio)</option>
+                                    <option value="MacPlayer">MacPlayer</option>
+                                    <option value="MacStudio">MacStudio</option>
+                                </select>
+                            </div>
+                            <div class="rdd-field">
+                                <span>Channel</span>
+                                <input id="rdd-channel" type="text" placeholder="LIVE" />
+                            </div>
+                            <div class="rdd-field">
+                                <span>Version hash (optional)</span>
+                                <input id="rdd-version" type="text" placeholder="version-xxxxxxxxxxxxxxxx" />
+                            </div>
+                            <div class="rdd-field">
+                                <span>Compression level</span>
+                                <input id="rdd-compression" type="number" min="1" max="9" value="5" />
+                            </div>
+                            <div class="rdd-toggles">
+                                <label class="rdd-toggle" for="rdd-compress">
+                                    <input id="rdd-compress" type="checkbox" />
+                                    <span>Compress zip output</span>
+                                </label>
+                                <label class="rdd-toggle" for="rdd-launcher">
+                                    <input id="rdd-launcher" type="checkbox" />
+                                    <span>Include launcher (Windows)</span>
+                                </label>
+                            </div>
+                            <div class="rdd-actions">
+                                <button class="pl sc" type="button" id="rdd-download-specific">Download version</button>
+                                <button class="pl" type="button" id="rdd-download-latest">Latest build</button>
+                                <button class="pl" type="button" id="rdd-download-previous">Previous build</button>
+                                <button class="pl" type="button" id="rdd-copy-link">Copy permanent link</button>
+                            </div>
+                        </div>
+                        <div class="rdd-card">
+                            <h4>Link preview</h4>
+                            <p>Fill in the fields to generate the same permanent link that RDD uses. Share it with teammates or bookmark it for later.</p>
+                            <div class="rdd-link-preview" id="rdd-link-preview">Add a version hash or use one of the quick buttons to generate a link.</div>
+                            <p id="rdd-status" class="rdd-link-preview" style="margin-top: 12px;" aria-live="polite">Ready.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <section id="pb" class="pp">
                 <div class="g ed">
                     <h3>Roblox BuilderIcons</h3>
@@ -5229,6 +5399,160 @@
             toast("Exported HTML");
         }
 
+        const rddBaseUrl = "https://rdd.weao.gg/";
+        const rddBinaryPlatformMap = {
+            WindowsPlayer: "Windows",
+            WindowsStudio64: "Windows",
+            MacPlayer: "Mac",
+            MacStudio: "Mac"
+        };
+
+        const rddElements = {
+            binary: q("#rdd-binary"),
+            channel: q("#rdd-channel"),
+            version: q("#rdd-version"),
+            compress: q("#rdd-compress"),
+            compression: q("#rdd-compression"),
+            launcher: q("#rdd-launcher"),
+            preview: q("#rdd-link-preview"),
+            status: q("#rdd-status"),
+            downloadSpecific: q("#rdd-download-specific"),
+            downloadLatest: q("#rdd-download-latest"),
+            downloadPrevious: q("#rdd-download-previous"),
+            copyLink: q("#rdd-copy-link")
+        };
+
+        function sanitizeRddChannel(value) {
+            const trimmed = value.trim();
+            return trimmed || "LIVE";
+        }
+
+        function sanitizeRddVersion(value) {
+            if (!value) {
+                return "";
+            }
+            let cleaned = value.trim().toLowerCase();
+            if (!cleaned) {
+                return "";
+            }
+            if (!cleaned.startsWith("version-")) {
+                cleaned = `version-${cleaned}`;
+            }
+            return cleaned;
+        }
+
+        function clampCompression(value) {
+            const num = parseInt(value, 10);
+            if (Number.isNaN(num)) {
+                return 5;
+            }
+            return Math.min(9, Math.max(1, num));
+        }
+
+        function buildRddLink(versionOverride) {
+            const params = new URLSearchParams();
+            params.set("channel", sanitizeRddChannel(rddElements.channel?.value || ""));
+            params.set("binaryType", rddElements.binary?.value || "WindowsPlayer");
+
+            const versionValue = versionOverride || sanitizeRddVersion(rddElements.version?.value || "");
+            if (versionValue) {
+                params.set("version", versionValue);
+            }
+
+            const compressEnabled = !!rddElements.compress?.checked;
+            if (compressEnabled) {
+                const level = clampCompression(rddElements.compression?.value || "5");
+                params.set("compressZip", "true");
+                params.set("compressionLevel", String(level));
+            }
+
+            if (rddElements.launcher?.checked) {
+                params.set("includeLauncher", "true");
+            }
+
+            return {
+                url: `${rddBaseUrl}?${params.toString()}`,
+                version: versionValue
+            };
+        }
+
+        function updateRddPreview() {
+            if (!rddElements.preview) {
+                return;
+            }
+            const {
+                url,
+                version
+            } = buildRddLink();
+            if (version) {
+                rddElements.preview.innerHTML = `<a href="${url}" target="_blank" rel="noopener">${url}</a>`;
+            } else {
+                rddElements.preview.textContent =
+                    "Add a version hash or use one of the quick download buttons to generate a link.";
+            }
+        }
+
+        function setRddStatus(message, isError = false) {
+            if (!rddElements.status) {
+                return;
+            }
+            rddElements.status.textContent = message;
+            rddElements.status.style.color = isError ? "#ff8484" : "";
+        }
+
+        async function fetchRddVersion(endpoint, platformKey) {
+            const response = await fetch(`https://weao.gg/api/versions/${endpoint}`);
+            if (!response.ok) {
+                throw new Error(`Unable to fetch ${endpoint} versions (${response.status})`);
+            }
+            const payload = await response.json();
+            const key = platformKey === "Mac" ? "Mac" : "Windows";
+            const versionHash = payload[key];
+            if (!versionHash) {
+                throw new Error("Version data unavailable for the selected binary type.");
+            }
+            return versionHash;
+        }
+
+        function openRddWindow(url) {
+            const win = window.open(url, "_blank", "noopener");
+            if (!win) {
+                toast("Popup blocked. Please allow popups for this site.");
+            } else {
+                setRddStatus("Opened download link in a new tab.");
+            }
+        }
+
+        async function handleRddAutoDownload(endpoint, button) {
+            if (!button || !rddElements.binary) {
+                return;
+            }
+            const binaryType = rddElements.binary.value;
+            const platformKey = rddBinaryPlatformMap[binaryType];
+            if (!platformKey) {
+                toast("Select a binary type first.");
+                return;
+            }
+            const originalText = button.textContent;
+            button.disabled = true;
+            button.textContent = "Fetching...";
+            setRddStatus("Fetching version information...");
+            try {
+                const versionHash = await fetchRddVersion(endpoint, platformKey);
+                rddElements.version.value = versionHash;
+                updateRddPreview();
+                const link = buildRddLink(versionHash);
+                openRddWindow(link.url);
+            } catch (error) {
+                console.error(error);
+                setRddStatus(error.message, true);
+                toast("Unable to fetch version info right now.");
+            } finally {
+                button.disabled = false;
+                button.textContent = originalText;
+            }
+        }
+
         function themeGet() {
             const styles = getComputedStyle(document.documentElement);
             return {
@@ -5897,6 +6221,72 @@
 
             renderHtmlStructure(((htmlEditor && htmlEditor.value) || "").trim());
             htmlR("manual");
+
+            const rddInputs = [
+                rddElements.binary,
+                rddElements.channel,
+                rddElements.version,
+                rddElements.compress,
+                rddElements.compression,
+                rddElements.launcher
+            ];
+            rddInputs.forEach((input) => {
+                if (!input) {
+                    return;
+                }
+                input.addEventListener("input", () => {
+                    if (input === rddElements.compression) {
+                        input.value = String(clampCompression(input.value));
+                    }
+                    updateRddPreview();
+                });
+            });
+            updateRddPreview();
+            setRddStatus("Ready.");
+
+            if (rddElements.downloadSpecific) {
+                rddElements.downloadSpecific.addEventListener("click", () => {
+                    const link = buildRddLink();
+                    if (!link.version) {
+                        setRddStatus("Enter a version hash first.", true);
+                        toast("Enter a version hash first.");
+                        return;
+                    }
+                    setRddStatus(`Opening ${link.version}...`);
+                    openRddWindow(link.url);
+                });
+            }
+
+            if (rddElements.downloadLatest) {
+                rddElements.downloadLatest.addEventListener("click", () => {
+                    handleRddAutoDownload("current", rddElements.downloadLatest);
+                });
+            }
+
+            if (rddElements.downloadPrevious) {
+                rddElements.downloadPrevious.addEventListener("click", () => {
+                    handleRddAutoDownload("past", rddElements.downloadPrevious);
+                });
+            }
+
+            if (rddElements.copyLink) {
+                rddElements.copyLink.addEventListener("click", async () => {
+                    const link = buildRddLink();
+                    if (!link.version) {
+                        setRddStatus("Add a version hash before copying the link.", true);
+                        toast("Add a version hash before copying.");
+                        return;
+                    }
+                    try {
+                        await navigator.clipboard.writeText(link.url);
+                        toast("RDD link copied.");
+                        setRddStatus(`Copied link for ${link.version}.`);
+                    } catch {
+                        toast("Clipboard permissions denied.");
+                        setRddStatus("Clipboard permissions denied.", true);
+                    }
+                });
+            }
 
             const bTA = q("#t_apply");
             bTA.addEventListener("click", (event) => {
