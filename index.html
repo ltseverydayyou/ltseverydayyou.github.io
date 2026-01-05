@@ -1019,7 +1019,7 @@
 
         .codex-tabs__fields {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             gap: 10px;
         }
 
@@ -2984,17 +2984,13 @@
                                 <button class="pl sc" type="button" id="codex-tabs-download">Download codexTabs.json</button>
                             </div>
                         </div>
-                    <div class="codex-tabs__layout">
+                            <div class="codex-tabs__layout">
                             <div class="codex-tabs__list" id="codex-tabs-list" role="listbox" aria-label="Codex tabs"></div>
                             <div class="codex-tabs__editor">
                                 <div class="codex-tabs__fields">
                                     <label class="codex-tabs__field">
                                         <span>Title</span>
                                         <input id="codex-tab-title" type="text" placeholder="Script title" />
-                                    </label>
-                                    <label class="codex-tabs__field">
-                                        <span>Name</span>
-                                        <input id="codex-tab-name" type="text" placeholder="Internal name" />
                                     </label>
                                     <label class="codex-tabs__field">
                                         <span>Index</span>
@@ -4221,22 +4217,18 @@
                 hasContent ? base.content :
                 "";
             const fallbackTitle = `Script ${idx + 1}`;
-            const normalizedName =
+            const normalizedTitle =
+                typeof base.title === "string" && base.title.trim() ?
+                base.title.trim() :
                 typeof base.Name === "string" && base.Name.trim() ?
                 base.Name.trim() :
                 typeof base.name === "string" && base.name.trim() ?
                 base.name.trim() :
-                typeof base.title === "string" && base.title.trim() ?
-                base.title.trim() :
                 fallbackTitle;
-            const normalizedTitle =
-                typeof base.title === "string" && base.title.trim() ?
-                base.title.trim() :
-                normalizedName || fallbackTitle;
             const normalizedIndex = Number(base.index);
             return {
                 ...base,
-                Name: normalizedName,
+                Name: normalizedTitle,
                 title: normalizedTitle,
                 index: Number.isFinite(normalizedIndex) ? normalizedIndex : idx + 1,
                 Src: script || "",
@@ -4323,12 +4315,11 @@
 
         function syncCodexTabForm() {
             const titleInput = q("#codex-tab-title");
-            const nameInput = q("#codex-tab-name");
             const indexInput = q("#codex-tab-index");
             const srcInput = q("#codex-tab-src");
             const entry = getActiveCodexTab();
             if (!entry) {
-                [titleInput, nameInput, indexInput, srcInput].forEach((input) => {
+                [titleInput, indexInput, srcInput].forEach((input) => {
                     if (input) {
                         input.value = "";
                     }
@@ -4338,9 +4329,6 @@
             }
             if (titleInput) {
                 titleInput.value = entry.title || "";
-            }
-            if (nameInput) {
-                nameInput.value = entry.Name || "";
             }
             if (indexInput) {
                 indexInput.value = Number.isFinite(entry.index) ? entry.index : "";
@@ -4452,7 +4440,7 @@
             addCodexTab({
                 ...current,
                 index: undefined,
-                Name: current.Name ? `${current.Name} copy` : undefined,
+                Name: current.title ? `${current.title} copy` : undefined,
                 title: current.title ? `${current.title} copy` : undefined
             });
             setCodexTabsStatus("Tab duplicated.");
@@ -4486,20 +4474,7 @@
                         return;
                     }
                     entry.title = titleInput.value;
-                    if (!entry.Name) {
-                        entry.Name = titleInput.value;
-                    }
-                    renderCodexTabsList();
-                });
-            }
-            const nameInput = q("#codex-tab-name");
-            if (nameInput) {
-                nameInput.addEventListener("input", () => {
-                    const entry = getActiveCodexTab();
-                    if (!entry) {
-                        return;
-                    }
-                    entry.Name = nameInput.value;
+                    entry.Name = titleInput.value;
                     renderCodexTabsList();
                 });
             }
