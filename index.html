@@ -928,6 +928,156 @@
             color: var(--tx);
         }
 
+        .codex-tabs {
+            border: 1px solid rgba(255, 255, 255, var(--bdA));
+            border-radius: 18px;
+            background: rgba(255, 255, 255, var(--glA));
+            padding: 14px;
+            display: grid;
+            gap: 12px;
+        }
+
+        .codex-tabs__head {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .codex-tabs__head p {
+            margin: 6px 0 0;
+            color: var(--mu);
+            max-width: 520px;
+        }
+
+        .codex-tabs__actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .codex-tabs__layout {
+            display: grid;
+            gap: 12px;
+            grid-template-columns: minmax(220px, 260px) 1fr;
+        }
+
+        .codex-tabs__list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            border: 1px solid rgba(255, 255, 255, var(--bdA));
+            border-radius: 14px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.04);
+            max-height: 360px;
+            overflow: auto;
+        }
+
+        .codex-tabs__item {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            align-items: center;
+            border: 1px solid rgba(255, 255, 255, var(--bdA));
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 10px;
+            color: var(--tx);
+            cursor: pointer;
+            text-align: left;
+            font-weight: 800;
+            transition:
+                transform 0.2s,
+                border-color 0.2s,
+                background 0.2s;
+        }
+
+        .codex-tabs__item span {
+            display: block;
+            font-size: 12px;
+            color: var(--mu);
+            font-weight: 600;
+        }
+
+        .codex-tabs__item:hover {
+            transform: translateX(2px);
+        }
+
+        .codex-tabs__item--active {
+            border-color: var(--ac);
+            background: rgba(102, 227, 255, 0.08);
+            box-shadow: 0 10px 26px rgba(0, 0, 0, 0.25);
+        }
+
+        .codex-tabs__editor {
+            display: grid;
+            gap: 10px;
+        }
+
+        .codex-tabs__fields {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 10px;
+        }
+
+        .codex-tabs__field {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            font-weight: 700;
+        }
+
+        .codex-tabs__field input {
+            padding: 10px 12px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, var(--bdA));
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--tx);
+        }
+
+        .codex-tabs__field small {
+            color: var(--mu);
+        }
+
+        .codex-tabs__editor-actions {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .codex-tabs__status {
+            font-size: 12px;
+            color: var(--mu);
+            min-height: 18px;
+        }
+
+        .codex-tabs__buttons {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .codex-tabs__preview {
+            margin: 0;
+            border: 1px solid rgba(255, 255, 255, var(--bdA));
+            border-radius: 12px;
+            background: rgba(8, 12, 20, 0.6);
+            padding: 10px;
+            min-height: 120px;
+            max-height: 320px;
+            overflow: auto;
+        }
+
+        .codex-tabs__empty {
+            font-size: 12px;
+            color: var(--mu);
+        }
+
         .bn {
             position: relative;
             overflow: hidden;
@@ -2470,6 +2620,14 @@
                 gap: 12px;
             }
 
+            .codex-tabs__layout {
+                grid-template-columns: 1fr;
+            }
+
+            .codex-tabs__list {
+                max-height: none;
+            }
+
             .tb {
                 width: auto;
                 flex: 1 1 calc(50% - 12px);
@@ -2520,7 +2678,7 @@
                 <button class="tb act" data-t="h">Home</button>
                 <button class="tb" data-t="s">Scripts</button>
                 <button class="tb" data-t="x">Script Searcher</button>
-                <button class="tb" data-t="c">Codex Scripts Convert</button>
+                <button class="tb" data-t="c">Codex Editor</button>
                 <button class="tb" data-t="l">Lua</button>
                 <button class="tb" data-t="w">HTML</button>
                 <button class="tb" data-t="t">Theme</button>
@@ -2780,7 +2938,7 @@
             <section id="pc" class="pp">
                 <div class="g ed codex-convert">
                     <div class="codex-convert__intro">
-                        <h3>Codex Scripts Convert</h3>
+                        <h3>Codex Editor</h3>
                         <p>Flip between a single <code>codexScriptCache.json</code> and individual script files. Everything runs in your browser.</p>
                     </div>
                     <div class="codex-convert__grid">
@@ -2812,6 +2970,51 @@
                             <button class="pl sc" type="button" id="codex-folder-convert">Download codexScriptCache.json</button>
                             <p id="codex-folder-status" class="codex-convert__hint" aria-live="polite"></p>
                             <p class="codex-convert__hint">autoExecute is forced to false, description is empty, index is alphabetical by file name.</p>
+                        </div>
+                    </div>
+                    <div class="codex-tabs">
+                            <div class="codex-tabs__head">
+                                <div>
+                                    <h4>Tab editor (codexTabs.json)</h4>
+                                    <p>Import your tabs file, keep <code>content</code> and <code>Src</code> aligned, then edit scripts with live highlighting.</p>
+                                </div>
+                            <div class="codex-tabs__actions">
+                                <input type="file" id="codex-tabs-input" accept=".json,application/json" hidden />
+                                <button class="pl" type="button" id="codex-tabs-upload">Import JSON</button>
+                                <button class="pl sc" type="button" id="codex-tabs-download">Download codexTabs.json</button>
+                            </div>
+                        </div>
+                    <div class="codex-tabs__layout">
+                            <div class="codex-tabs__list" id="codex-tabs-list" role="listbox" aria-label="Codex tabs"></div>
+                            <div class="codex-tabs__editor">
+                                <div class="codex-tabs__fields">
+                                    <label class="codex-tabs__field">
+                                        <span>Title</span>
+                                        <input id="codex-tab-title" type="text" placeholder="Script title" />
+                                    </label>
+                                    <label class="codex-tabs__field">
+                                        <span>Name</span>
+                                        <input id="codex-tab-name" type="text" placeholder="Internal name" />
+                                    </label>
+                                    <label class="codex-tabs__field">
+                                        <span>Index</span>
+                                        <input id="codex-tab-index" type="number" min="1" step="1" />
+                                    </label>
+                                </div>
+                                <div class="codex-tabs__editor-actions">
+                                    <div class="codex-tabs__status" id="codex-tabs-status" aria-live="polite"></div>
+                                    <div class="codex-tabs__buttons">
+                                        <button class="pl" type="button" id="codex-tabs-add">Add</button>
+                                        <button class="pl" type="button" id="codex-tabs-duplicate">Duplicate</button>
+                                        <button class="pl" type="button" id="codex-tabs-delete">Delete</button>
+                                    </div>
+                                </div>
+                                <label class="codex-tabs__field">
+                                    <span>Script (keeps Src &amp; content in sync)</span>
+                                    <textarea id="codex-tab-src" spellcheck="false" placeholder="Paste Lua script for this tab"></textarea>
+                                </label>
+                                <pre class="codex-tabs__preview"><code id="codex-tab-preview" class="language-lua">-- Highlighted script will appear here</code></pre>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -3922,14 +4125,19 @@
                 if (!entry || typeof entry !== "object") {
                     return;
                 }
-                const title = sanitizeCodexTitle(entry.title, idx + 1);
+                const title = sanitizeCodexTitle(entry.title ?? entry.Name, idx + 1);
                 const slugKey = title.toLowerCase();
                 const dupCount = slugCounts.get(slugKey) || 0;
                 slugCounts.set(slugKey, dupCount + 1);
                 const suffix = dupCount ? `-${dupCount + 1}` : "";
                 const filename = `${title}${suffix}${extension}`;
-                const body = typeof entry.content === "string" ? entry.content : "";
-                zip.file(filename, body || "");
+                const scriptBody =
+                    typeof entry.Src === "string" && entry.Src.length ?
+                    entry.Src :
+                    typeof entry.content === "string" ?
+                    entry.content :
+                    "";
+                zip.file(filename, scriptBody || "");
                 added += 1;
             });
             if (!added) {
@@ -3978,10 +4186,12 @@
                     idx + 1
                 );
                 entries.push({
+                    Name: title,
                     title,
                     description: "",
                     autoExecute: false,
                     content,
+                    Src: content,
                     index: idx + 1
                 });
             }
@@ -3993,6 +4203,384 @@
                 statusEl,
                 `Packed ${entries.length} file${entries.length === 1 ? "" : "s"} into codexScriptCache.json`
             );
+        }
+
+        const codexTabsState = {
+            entries: [],
+            activeIndex: 0
+        };
+
+        function normalizeCodexTab(entry, idx) {
+            const base = entry && typeof entry === "object" ? {
+                ...entry
+            } : {};
+            const hasSrc = typeof base.Src === "string" && base.Src.length;
+            const hasContent = typeof base.content === "string" && base.content.length;
+            const script =
+                hasSrc ? base.Src :
+                hasContent ? base.content :
+                "";
+            const fallbackTitle = `Script ${idx + 1}`;
+            const normalizedName =
+                typeof base.Name === "string" && base.Name.trim() ?
+                base.Name.trim() :
+                typeof base.name === "string" && base.name.trim() ?
+                base.name.trim() :
+                typeof base.title === "string" && base.title.trim() ?
+                base.title.trim() :
+                fallbackTitle;
+            const normalizedTitle =
+                typeof base.title === "string" && base.title.trim() ?
+                base.title.trim() :
+                normalizedName || fallbackTitle;
+            const normalizedIndex = Number(base.index);
+            return {
+                ...base,
+                Name: normalizedName,
+                title: normalizedTitle,
+                index: Number.isFinite(normalizedIndex) ? normalizedIndex : idx + 1,
+                Src: script || "",
+                content: script || ""
+            };
+        }
+
+        function setCodexTabsStatus(text, isError) {
+            const statusEl = q("#codex-tabs-status");
+            if (!statusEl) {
+                return;
+            }
+            statusEl.textContent = text || "";
+            statusEl.classList.toggle("codex-convert__hint--error", Boolean(isError));
+        }
+
+        function updateCodexTabPreview(script) {
+            const previewEl = q("#codex-tab-preview");
+            if (!previewEl) {
+                return;
+            }
+            previewEl.textContent = script || "-- Highlighted script will appear here";
+            if (window.Prism && Prism.highlightElement) {
+                Prism.highlightElement(previewEl);
+            }
+        }
+
+        function getActiveCodexTab() {
+            if (!codexTabsState.entries.length) {
+                return null;
+            }
+            const safeIndex = Math.min(
+                Math.max(codexTabsState.activeIndex, 0),
+                codexTabsState.entries.length - 1
+            );
+            codexTabsState.activeIndex = safeIndex;
+            return codexTabsState.entries[safeIndex];
+        }
+
+        function setActiveCodexTab(index) {
+            if (!codexTabsState.entries.length) {
+                return;
+            }
+            const nextIndex = Math.min(
+                Math.max(index, 0),
+                codexTabsState.entries.length - 1
+            );
+            codexTabsState.activeIndex = nextIndex;
+            renderCodexTabsList();
+            syncCodexTabForm();
+        }
+
+        function renderCodexTabsList() {
+            const listEl = q("#codex-tabs-list");
+            if (!listEl) {
+                return;
+            }
+            listEl.innerHTML = "";
+            if (!codexTabsState.entries.length) {
+                const empty = document.createElement("div");
+                empty.className = "codex-tabs__empty";
+                empty.textContent = "No tabs yet. Import or add one.";
+                listEl.appendChild(empty);
+                return;
+            }
+            codexTabsState.entries.forEach((entry, idx) => {
+                const item = document.createElement("button");
+                item.type = "button";
+                item.className =
+                    "codex-tabs__item" +
+                    (idx === codexTabsState.activeIndex ? " codex-tabs__item--active" : "");
+                item.dataset.index = idx.toString();
+                item.setAttribute("role", "option");
+                item.setAttribute("aria-selected", idx === codexTabsState.activeIndex ? "true" : "false");
+                const label = document.createElement("div");
+                label.textContent = entry.title || entry.Name || `Script ${idx + 1}`;
+                const meta = document.createElement("span");
+                meta.textContent = `Index ${entry.index ?? idx + 1}`;
+                item.append(label, meta);
+                item.addEventListener("click", () => setActiveCodexTab(idx));
+                listEl.appendChild(item);
+            });
+        }
+
+        function syncCodexTabForm() {
+            const titleInput = q("#codex-tab-title");
+            const nameInput = q("#codex-tab-name");
+            const indexInput = q("#codex-tab-index");
+            const srcInput = q("#codex-tab-src");
+            const entry = getActiveCodexTab();
+            if (!entry) {
+                [titleInput, nameInput, indexInput, srcInput].forEach((input) => {
+                    if (input) {
+                        input.value = "";
+                    }
+                });
+                updateCodexTabPreview("");
+                return;
+            }
+            if (titleInput) {
+                titleInput.value = entry.title || "";
+            }
+            if (nameInput) {
+                nameInput.value = entry.Name || "";
+            }
+            if (indexInput) {
+                indexInput.value = Number.isFinite(entry.index) ? entry.index : "";
+            }
+            if (srcInput) {
+                srcInput.value = entry.Src || entry.content || "";
+            }
+            updateCodexTabPreview(entry.Src || entry.content || "");
+        }
+
+        function loadCodexTabs(entries, sourceLabel) {
+            const conflicts = [];
+            const normalized = Array.isArray(entries) ?
+                entries.map((entry, idx) => {
+                    const hasConflict =
+                        entry &&
+                        typeof entry === "object" &&
+                        typeof entry.Src === "string" &&
+                        entry.Src &&
+                        typeof entry.content === "string" &&
+                        entry.content &&
+                        entry.Src !== entry.content;
+                    if (hasConflict) {
+                        conflicts.push(idx + 1);
+                    }
+                    return normalizeCodexTab(entry, idx);
+                }) :
+                [];
+            codexTabsState.entries = normalized.length ? normalized : [normalizeCodexTab({}, 0)];
+            codexTabsState.activeIndex = 0;
+            renderCodexTabsList();
+            syncCodexTabForm();
+            const suffix = sourceLabel ? ` from ${sourceLabel}` : "";
+            const conflictMessage = conflicts.length ?
+                ` Resolved Src/content mismatch on tab${conflicts.length === 1 ? "" : "s"} ${conflicts.join(", ")} (kept Src when present).` :
+                "";
+            setCodexTabsStatus(
+                `${codexTabsState.entries.length} tab${codexTabsState.entries.length === 1 ? "" : "s"} loaded${suffix}.${conflictMessage}`
+            );
+        }
+
+        async function importCodexTabsFile(file) {
+            if (!file) {
+                setCodexTabsStatus("Pick a codexTabs.json file to import.", true);
+                return;
+            }
+            setCodexTabsStatus("");
+            let parsed;
+            try {
+                parsed = JSON.parse(await file.text());
+            } catch (error) {
+                console.error(error);
+                setCodexTabsStatus("That file is not valid JSON.", true);
+                return;
+            }
+            if (!Array.isArray(parsed)) {
+                setCodexTabsStatus("Expected an array of tab entries.", true);
+                return;
+            }
+            loadCodexTabs(parsed, file.name);
+        }
+
+        function downloadCodexTabsJson() {
+            if (!codexTabsState.entries.length) {
+                setCodexTabsStatus("Add a tab before exporting.", true);
+                return;
+            }
+            const payload = codexTabsState.entries.map((entry, idx) =>
+                normalizeCodexTab(entry, idx)
+            );
+            const blob = new Blob([JSON.stringify(payload, null, 2)], {
+                type: "application/json"
+            });
+            downloadBlob(blob, "codexTabs.json");
+            setCodexTabsStatus(
+                `Downloaded ${payload.length} tab${payload.length === 1 ? "" : "s"} to codexTabs.json.`
+            );
+        }
+
+        function addCodexTab(seed) {
+            const base = seed ? {
+                ...seed
+            } : {
+                title: `Script ${codexTabsState.entries.length + 1}`,
+                Name: `Script ${codexTabsState.entries.length + 1}`,
+                Src: "",
+                content: ""
+            };
+            const entry = normalizeCodexTab(base, codexTabsState.entries.length);
+            entry.index =
+                Math.max(
+                    ...codexTabsState.entries.map((tab) =>
+                        Number.isFinite(tab.index) ? Number(tab.index) : 0
+                    ),
+                    0
+                ) + 1;
+            codexTabsState.entries.push(entry);
+            codexTabsState.activeIndex = codexTabsState.entries.length - 1;
+            renderCodexTabsList();
+            syncCodexTabForm();
+            setCodexTabsStatus("New tab added.");
+        }
+
+        function duplicateCodexTab() {
+            const current = getActiveCodexTab();
+            if (!current) {
+                return;
+            }
+            addCodexTab({
+                ...current,
+                index: undefined,
+                Name: current.Name ? `${current.Name} copy` : undefined,
+                title: current.title ? `${current.title} copy` : undefined
+            });
+            setCodexTabsStatus("Tab duplicated.");
+        }
+
+        function deleteCodexTab() {
+            if (!codexTabsState.entries.length) {
+                setCodexTabsStatus("Nothing to delete.", true);
+                return;
+            }
+            const targetIndex = Math.min(
+                Math.max(codexTabsState.activeIndex, 0),
+                codexTabsState.entries.length - 1
+            );
+            codexTabsState.entries.splice(targetIndex, 1);
+            if (!codexTabsState.entries.length) {
+                codexTabsState.entries.push(normalizeCodexTab({}, 0));
+            }
+            codexTabsState.activeIndex = Math.min(targetIndex, codexTabsState.entries.length - 1);
+            renderCodexTabsList();
+            syncCodexTabForm();
+            setCodexTabsStatus("Tab removed.");
+        }
+
+        function bindCodexTabInputs() {
+            const titleInput = q("#codex-tab-title");
+            if (titleInput) {
+                titleInput.addEventListener("input", () => {
+                    const entry = getActiveCodexTab();
+                    if (!entry) {
+                        return;
+                    }
+                    entry.title = titleInput.value;
+                    if (!entry.Name) {
+                        entry.Name = titleInput.value;
+                    }
+                    renderCodexTabsList();
+                });
+            }
+            const nameInput = q("#codex-tab-name");
+            if (nameInput) {
+                nameInput.addEventListener("input", () => {
+                    const entry = getActiveCodexTab();
+                    if (!entry) {
+                        return;
+                    }
+                    entry.Name = nameInput.value;
+                    renderCodexTabsList();
+                });
+            }
+            const indexInput = q("#codex-tab-index");
+            if (indexInput) {
+                indexInput.addEventListener("input", () => {
+                    const entry = getActiveCodexTab();
+                    if (!entry) {
+                        return;
+                    }
+                    const parsed = Number(indexInput.value);
+                    entry.index = Number.isFinite(parsed) ? parsed : entry.index;
+                    renderCodexTabsList();
+                });
+            }
+            const srcInput = q("#codex-tab-src");
+            if (srcInput) {
+                const update = () => {
+                    const entry = getActiveCodexTab();
+                    if (!entry) {
+                        return;
+                    }
+                    entry.Src = srcInput.value;
+                    entry.content = srcInput.value;
+                    updateCodexTabPreview(srcInput.value);
+                    setCodexTabsStatus("Synced script to Src and content.");
+                };
+                srcInput.addEventListener("input", update);
+            }
+        }
+
+        function initCodexTabsEditor() {
+            const tabsRoot = q(".codex-tabs");
+            if (!tabsRoot) {
+                return;
+            }
+            bindCodexTabInputs();
+            const uploadInput = q("#codex-tabs-input");
+            const uploadBtn = q("#codex-tabs-upload");
+            if (uploadBtn && uploadInput) {
+                uploadBtn.addEventListener("click", (event) => {
+                    ripple(uploadBtn, event);
+                    uploadInput.click();
+                });
+                uploadInput.addEventListener("change", (event) => {
+                    const file = event.target.files && event.target.files[0];
+                    importCodexTabsFile(file);
+                    uploadInput.value = "";
+                });
+            }
+            const resetBtn = q("#codex-tabs-reset");
+            const downloadBtn = q("#codex-tabs-download");
+            if (downloadBtn) {
+                downloadBtn.addEventListener("click", (event) => {
+                    ripple(downloadBtn, event);
+                    downloadCodexTabsJson();
+                });
+            }
+            const addBtn = q("#codex-tabs-add");
+            if (addBtn) {
+                addBtn.addEventListener("click", (event) => {
+                    ripple(addBtn, event);
+                    addCodexTab();
+                });
+            }
+            const duplicateBtn = q("#codex-tabs-duplicate");
+            if (duplicateBtn) {
+                duplicateBtn.addEventListener("click", (event) => {
+                    ripple(duplicateBtn, event);
+                    duplicateCodexTab();
+                });
+            }
+            const deleteBtn = q("#codex-tabs-delete");
+            if (deleteBtn) {
+                deleteBtn.addEventListener("click", (event) => {
+                    ripple(deleteBtn, event);
+                    deleteCodexTab();
+                });
+            }
+            loadCodexTabs([], "");
+            setCodexTabsStatus("Ready. Import codexTabs.json or add a tab.");
         }
 
         const versionBaseUrl = "https://weao.gg/api/versions";
@@ -6307,6 +6895,8 @@
                     codexStatus(q("#codex-folder-status"), "");
                 });
             }
+
+            initCodexTabsEditor();
 
             const executorTabs = qa(".executor-tab");
             executorTabs.forEach((tab) => {
