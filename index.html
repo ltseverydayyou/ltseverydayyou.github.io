@@ -4,19 +4,19 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Vyperia’s Domain</title>
+    <title>Vyperia's Domain</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="icon" href="https://avatars.githubusercontent.com/u/117316014?v=4" />
-    <meta property="og:title" content="Vyperia’s Domain" />
+    <meta property="og:title" content="Vyperia's Domain" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://ltseverydayyou.github.io/" />
-    <meta property="og:image" content="https://avatars.githubusercontent.com/u/117316014?v=4" />
-    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:card" content="summary" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" />
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-lua.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
     <!-- BuilderIcons font parser -->
     <script defer src="https://cdn.jsdelivr.net/npm/opentype.js@1.3.4/dist/opentype.min.js"></script>
     <!-- Lua beautifier runtime -->
@@ -583,6 +583,24 @@
             font-weight: 800;
         }
 
+        select {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--tx);
+            border: 1px solid rgba(255, 255, 255, var(--bdA));
+            border-radius: 12px;
+            padding: 10px 12px;
+        }
+
+        select:focus-visible {
+            outline: 2px solid var(--ac);
+            outline-offset: 2px;
+        }
+
+        select option {
+            background: #0b1220;
+            color: var(--tx);
+        }
+
         .script-searcher {
             display: flex;
             flex-direction: column;
@@ -832,6 +850,82 @@
             border-radius: 10px;
             border: 1px dashed rgba(255, 255, 255, var(--bdA));
             background: rgba(255, 255, 255, 0.02);
+        }
+
+        .codex-convert {
+            display: grid;
+            gap: 18px;
+        }
+
+        .codex-convert__intro p {
+            margin: 4px 0 0;
+            color: var(--mu);
+        }
+
+        .codex-convert__grid {
+            display: grid;
+            gap: 14px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        }
+
+        .codex-convert__card {
+            border: 1px solid rgba(255, 255, 255, var(--bdA));
+            border-radius: 18px;
+            background: rgba(255, 255, 255, var(--glA));
+            padding: 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .codex-convert__card h4 {
+            margin: 0;
+            font-weight: 800;
+        }
+
+        .codex-convert__card small {
+            color: var(--mu);
+        }
+
+        .codex-convert__field {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            font-weight: 700;
+        }
+
+        .codex-convert__field input,
+        .codex-convert__field select {
+            padding: 11px 12px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, var(--bdA));
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--tx);
+            font: 14px ui-sans-serif, system-ui, "Segoe UI", Roboto, Helvetica, Arial;
+            appearance: none;
+        }
+
+        .codex-convert__checkbox {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 700;
+        }
+
+        .codex-convert__hint {
+            margin: 0;
+            font-size: 12px;
+            color: var(--mu);
+        }
+
+        .codex-convert__hint--error {
+            color: #ff9c9c;
+        }
+
+        .codex-convert__status {
+            margin: 6px 0 0;
+            font-size: 13px;
+            color: var(--tx);
         }
 
         .bn {
@@ -2426,6 +2520,7 @@
                 <button class="tb act" data-t="h">Home</button>
                 <button class="tb" data-t="s">Scripts</button>
                 <button class="tb" data-t="x">Script Searcher</button>
+                <button class="tb" data-t="c">Codex Scripts Convert</button>
                 <button class="tb" data-t="l">Lua</button>
                 <button class="tb" data-t="w">HTML</button>
                 <button class="tb" data-t="t">Theme</button>
@@ -2677,6 +2772,46 @@
                                 <div id="script-search-scriptblox-error" class="script-searcher__error" aria-live="polite"></div>
                                 <div id="script-search-scriptblox" class="script-searcher__grid"></div>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="pc" class="pp">
+                <div class="g ed codex-convert">
+                    <div class="codex-convert__intro">
+                        <h3>Codex Scripts Convert</h3>
+                        <p>Flip between a single <code>codexScriptCache.json</code> and individual script files. Everything runs in your browser.</p>
+                    </div>
+                    <div class="codex-convert__grid">
+                        <div class="codex-convert__card">
+                            <h4>codexScriptCache.json → files</h4>
+                            <label class="codex-convert__field">
+                                <span>Upload cache file</span>
+                                <input type="file" id="codex-json-input" accept=".json,application/json" />
+                            </label>
+                            <label class="codex-convert__field">
+                                <span>File extension</span>
+                                <select id="codex-json-extension">
+                                    <option value="lua">.lua</option>
+                                    <option value="luau">.luau</option>
+                                    <option value="txt">.txt</option>
+                                </select>
+                            </label>
+                            <button class="pl sc" type="button" id="codex-json-convert">Download CodexScripts.zip</button>
+                            <p id="codex-json-status" class="codex-convert__hint" aria-live="polite"></p>
+                            <p class="codex-convert__hint">Exports as <code>CodexScripts.zip</code> with scripts at the root; titles become file names (duplicates are numbered).</p>
+                        </div>
+                        <div class="codex-convert__card">
+                            <h4>Folder/files → codexScriptCache.json</h4>
+                            <label class="codex-convert__field">
+                                <span>Select folder or files</span>
+                                <input type="file" id="codex-folder-input" multiple webkitdirectory accept=".lua,.luau,.txt,.log,.cfg,.script,.json" />
+                                <small>Pick a folder to pull everything inside (browser-supported).</small>
+                            </label>
+                            <button class="pl sc" type="button" id="codex-folder-convert">Download codexScriptCache.json</button>
+                            <p id="codex-folder-status" class="codex-convert__hint" aria-live="polite"></p>
+                            <p class="codex-convert__hint">autoExecute is forced to false, description is empty, index is alphabetical by file name.</p>
                         </div>
                     </div>
                 </div>
@@ -3708,6 +3843,156 @@
             });
 
             performScriptSearch("", null);
+        }
+
+        function codexStatus(element, text, isError) {
+            if (!element) {
+                return;
+            }
+            element.textContent = text || "";
+            element.classList.toggle("codex-convert__hint--error", Boolean(isError));
+        }
+
+        function sanitizeCodexTitle(rawTitle, fallbackIndex) {
+            const fallback =
+                typeof fallbackIndex === "number" && !Number.isNaN(fallbackIndex) ?
+                `script-${fallbackIndex}` :
+                "script";
+            const base = (rawTitle || "").toString().trim() || fallback;
+            const cleaned = base
+                .replace(/[^a-z0-9 _.-]/gi, " ")
+                .replace(/\s+/g, " ")
+                .trim();
+            return (cleaned || fallback).slice(0, 80);
+        }
+
+        function codexEnsureExtension(ext) {
+            const normalized = (ext || "lua").toString().trim().replace(/^[.]+/, "");
+            return `.${normalized || "lua"}`;
+        }
+
+        function downloadBlob(blob, filename) {
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+            setTimeout(() => URL.revokeObjectURL(url), 1500);
+        }
+
+        async function convertCodexJsonToFiles() {
+            const statusEl = q("#codex-json-status");
+            const input = q("#codex-json-input");
+            codexStatus(statusEl, "");
+            if (!window.JSZip) {
+                codexStatus(
+                    statusEl,
+                    "JSZip failed to load. Check your connection and retry.",
+                    true
+                );
+                return;
+            }
+            if (!input || !input.files || !input.files.length) {
+                codexStatus(statusEl, "Select a codexScriptCache.json first.", true);
+                return;
+            }
+            const file = input.files[0];
+            let parsed;
+            try {
+                parsed = JSON.parse(await file.text());
+            } catch (error) {
+                console.error(error);
+                codexStatus(statusEl, "That file is not valid JSON.", true);
+                return;
+            }
+            if (!Array.isArray(parsed)) {
+                codexStatus(statusEl, "Expected an array of script entries.", true);
+                return;
+            }
+            const extension = codexEnsureExtension(
+                (q("#codex-json-extension")?.value || "lua").toString()
+            );
+            const codexZipName = "CodexScripts";
+            const zip = new JSZip();
+            const slugCounts = new Map();
+            let added = 0;
+            parsed.forEach((entry, idx) => {
+                if (!entry || typeof entry !== "object") {
+                    return;
+                }
+                const title = sanitizeCodexTitle(entry.title, idx + 1);
+                const slugKey = title.toLowerCase();
+                const dupCount = slugCounts.get(slugKey) || 0;
+                slugCounts.set(slugKey, dupCount + 1);
+                const suffix = dupCount ? `-${dupCount + 1}` : "";
+                const filename = `${title}${suffix}${extension}`;
+                const body = typeof entry.content === "string" ? entry.content : "";
+                zip.file(filename, body || "");
+                added += 1;
+            });
+            if (!added) {
+                codexStatus(statusEl, "No script entries found in that file.", true);
+                return;
+            }
+            const blob = await zip.generateAsync({
+                type: "blob"
+            });
+            downloadBlob(blob, `${codexZipName}.zip`);
+            codexStatus(
+                statusEl,
+                `Exported ${added} script${added === 1 ? "" : "s"} into ${codexZipName}.zip`
+            );
+        }
+
+        async function convertFilesToCodexJson() {
+            const statusEl = q("#codex-folder-status");
+            const input = q("#codex-folder-input");
+            codexStatus(statusEl, "");
+            if (!input || !input.files || !input.files.length) {
+                codexStatus(statusEl, "Pick a folder or add some files first.", true);
+                return;
+            }
+            const allowedExt = /\.(lua|luau|txt|log|cfg|script|json)$/i;
+            const files = Array.from(input.files).filter((file) => {
+                if (file.name.startsWith(".")) {
+                    return false;
+                }
+                return allowedExt.test(file.name);
+            });
+            if (!files.length) {
+                codexStatus(statusEl, "No supported script files found.", true);
+                return;
+            }
+            files.sort((a, b) => {
+                return a.name.localeCompare(b.name, undefined, {
+                    sensitivity: "base"
+                }) || (a.webkitRelativePath || "").localeCompare(b.webkitRelativePath || "");
+            });
+            const entries = [];
+            for (const [idx, file] of files.entries()) {
+                const content = await file.text();
+                const title = sanitizeCodexTitle(
+                    file.name.replace(/\.[^.]+$/, ""),
+                    idx + 1
+                );
+                entries.push({
+                    title,
+                    description: "",
+                    autoExecute: false,
+                    content,
+                    index: idx + 1
+                });
+            }
+            const blob = new Blob([JSON.stringify(entries, null, 2)], {
+                type: "application/json"
+            });
+            downloadBlob(blob, "codexScriptCache.json");
+            codexStatus(
+                statusEl,
+                `Packed ${entries.length} file${entries.length === 1 ? "" : "s"} into codexScriptCache.json`
+            );
         }
 
         const versionBaseUrl = "https://weao.gg/api/versions";
@@ -5992,6 +6277,36 @@
             versionSpecs.forEach(fetchVersionData);
             setExecutorFilter("all");
             loadExecutorStatuses();
+
+            const codexJsonBtn = q("#codex-json-convert");
+            if (codexJsonBtn) {
+                codexJsonBtn.addEventListener("click", (event) => {
+                    ripple(codexJsonBtn, event);
+                    convertCodexJsonToFiles();
+                });
+            }
+
+            const codexFolderBtn = q("#codex-folder-convert");
+            if (codexFolderBtn) {
+                codexFolderBtn.addEventListener("click", (event) => {
+                    ripple(codexFolderBtn, event);
+                    convertFilesToCodexJson();
+                });
+            }
+
+            const codexJsonInput = q("#codex-json-input");
+            if (codexJsonInput) {
+                codexJsonInput.addEventListener("change", () => {
+                    codexStatus(q("#codex-json-status"), "");
+                });
+            }
+
+            const codexFolderInput = q("#codex-folder-input");
+            if (codexFolderInput) {
+                codexFolderInput.addEventListener("change", () => {
+                    codexStatus(q("#codex-folder-status"), "");
+                });
+            }
 
             const executorTabs = qa(".executor-tab");
             executorTabs.forEach((tab) => {
