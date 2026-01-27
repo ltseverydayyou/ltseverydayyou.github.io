@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-01-27T20:52:53.973Z",
+  "fetchedAt": "2026-01-27T21:32:32.244Z",
   "data": [
     {
       "_id": "680eaddf8b44717c060fcf8d",
@@ -1359,8 +1359,8 @@
     {
       "_id": "696e6eb415b7ec43591a186a",
       "title": "Cryptic",
-      "version": "Version-1.2.8",
-      "updatedDate": "01/27/2026 at 2:41 PM UTC",
+      "version": "Version-1.2.9",
+      "updatedDate": "01/27/2026 at 9:23 PM UTC",
       "uncStatus": true,
       "free": false,
       "detected": true,
