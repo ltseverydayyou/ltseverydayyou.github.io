@@ -2970,6 +2970,10 @@
                                     <option value="txt">.txt</option>
                                 </select>
                             </label>
+                            <label class="codex-convert__checkbox">
+                                <input type="checkbox" id="codex-json-noext" />
+                                <span>Don't append an extension</span>
+                            </label>
                             <button class="pl sc" type="button" id="codex-json-convert">Download
                                 CodexScripts.zip</button>
                             <p id="codex-json-status" class="codex-convert__hint" aria-live="polite"></p>
@@ -4108,9 +4112,12 @@
                 codexStatus(statusEl, "Expected an array of script entries.", true);
                 return;
             }
-            const extension = codexEnsureExtension(
-                (q("#codex-json-extension")?.value || "lua").toString()
-            );
+            const noExtension = Boolean(q("#codex-json-noext")?.checked);
+            const extension = noExtension ?
+                "" :
+                codexEnsureExtension(
+                    (q("#codex-json-extension")?.value || "lua").toString()
+                );
             const codexZipName = "CodexScripts";
             const zip = new JSZip();
             const slugCounts = new Map();
@@ -5191,7 +5198,7 @@
             "Endless Doors",
             "https://raw.githubusercontent.com/ltseverydayyou/endless-doors/main/endless%20madness%20buster",
             "https://tr.rbxcdn.com/180DAY-57bc2bd7eba62e92b90b16d65c33ff71/256/256/Image/Webp/noFilter",
-            null,
+            true,
             "https://roblox.com/games/17324251852"
         );
         ScriptAdd(
@@ -5226,14 +5233,14 @@
             "Evader",
             "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/Evader.luau",
             "https://tr.rbxcdn.com/180DAY-d405e923e16cb595ad9f204afb2c71da/256/256/Image/Webp/noFilter",
-            true,
+            null,
             "https://roblox.com/games/9872472334"
         );
         ScriptAdd(
             "Anime Ball",
             "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/main/AnimeBallParry.lua",
             "https://tr.rbxcdn.com/180DAY-292864d530c8005defb5fa917bb63e0a/256/256/Image/Webp/noFilter",
-            true,
+            null,
             "https://roblox.com/games/14861721759"
         );
         ScriptAdd(
