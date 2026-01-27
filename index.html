@@ -4556,7 +4556,11 @@
             setCodexTabsStatus("Ready. Import codexTabs.json or add a tab.");
         }
 
-        const versionBaseUrl = "https://weao.gg/api/versions";
+        const weaoCacheBase = "/.well-known/weao";
+        const versionCacheUrl = `${weaoCacheBase}/versions.json`;
+        const executorCacheUrl = `${weaoCacheBase}/executors.json`;
+        let versionCache = null;
+        let versionCacheFetchedAt = null;
         const versionSpecs = [{
             type: "current",
             title: "Current (Live)",
@@ -4674,7 +4678,7 @@
                 refresh.type = "button";
                 refresh.className = "version-card__refresh";
                 refresh.textContent = "Refresh";
-                refresh.addEventListener("click", () => fetchVersionData(spec));
+                refresh.addEventListener("click", () => fetchVersionData(spec, true));
 
                 header.append(textStack, refresh);
 
@@ -4696,6 +4700,23 @@
             }
         }
 
+        function formatCacheTimestamp(value) {
+            if (!value) {
+                return null;
+            }
+            const date = new Date(value);
+            if (Number.isNaN(date.getTime())) {
+                return null;
+            }
+            return date.toLocaleString([], {
+                month: "short",
+                day: "numeric",
+                hour: "2-digit",
+                minute: "2-digit",
+                second: "2-digit"
+            });
+        }
+
         function renderVersionData(container, data, fields) {
             const dl = document.createElement("dl");
 
@@ -4715,7 +4736,21 @@
             container.appendChild(dl);
         }
 
-        async function fetchVersionData(spec) {
+        async function loadVersionCache(force = false) {
+            if (versionCache && !force) {
+                return versionCache;
+            }
+            const res = await fetch(`${versionCacheUrl}?t=${Date.now()}`);
+            if (!res.ok) {
+                throw new Error(`${res.status} ${res.statusText || "Error"} (WEAO cache)`);
+            }
+            const payload = await res.json();
+            versionCacheFetchedAt = payload.fetchedAt || payload.updatedAt || null;
+            versionCache = payload.data || payload;
+            return versionCache;
+        }
+
+        async function fetchVersionData(spec, force = false) {
             const elements = versionElements.get(spec.type);
             if (!elements) {
                 return;
@@ -4729,26 +4764,20 @@
             body.innerHTML = '<p class="version-card__placeholder">Loading...</p>';
 
             try {
-                const res = await fetch(`${versionBaseUrl}/${spec.endpoint}`);
-                if (!res.ok) {
-                    throw new Error(`${res.status} ${res.statusText || "Error"}`);
+                const versions = await loadVersionCache(force);
+                const payload = versions?.[spec.endpoint];
+                if (!payload) {
+                    throw new Error("No cached data available for this view.");
                 }
-
-                const payload = await res.json();
                 renderVersionData(body, payload, spec.fields);
-                const timestamp = new Date().toLocaleTimeString([], {
-                    hour: "2-digit",
-                    minute: "2-digit",
-                    second: "2-digit"
-                });
-                status.textContent = `Updated ${timestamp}`;
+                const timestamp = formatCacheTimestamp(versionCacheFetchedAt);
+                status.textContent = timestamp ? `Cached ${timestamp}` : "Updated from cache";
             } catch (error) {
                 body.innerHTML = `<p class="version-card__error">Unable to load data: ${error.message}</p>`;
                 status.textContent = "Failed to load";
             }
         }
 
-        const executorEndpoint = "https://weao.gg/api/status/exploits";
         const executorPlatformOrder = ["Windows", "Android", "iOS", "Mac"];
         const platformFilters = {
             all: () => true,
@@ -4759,6 +4788,7 @@
         };
         let executorFilter = "all";
         let executorCache = [];
+        let executorCacheFetchedAt = null;
 
         function updateHeroStats(overrides = {}) {
             const scriptCount =
@@ -5011,22 +5041,20 @@
             grid.innerHTML = '<p class="executor-card__placeholder">Loading...</p>';
 
             try {
-                const res = await fetch(executorEndpoint);
+                const res = await fetch(`${executorCacheUrl}?t=${Date.now()}`);
                 if (!res.ok) {
                     throw new Error(`${res.status} ${res.statusText || "Error"}`);
                 }
                 const payload = await res.json();
-                executorCache = Array.isArray(payload) ? payload : [];
+                executorCacheFetchedAt = payload.fetchedAt || payload.updatedAt || null;
+                const data = payload.data ?? payload;
+                executorCache = Array.isArray(data) ? data : [];
                 renderExecutorCards();
                 updateHeroStats({
                     executorCount: executorCache.length
                 });
-                const timestamp = new Date().toLocaleTimeString([], {
-                    hour: "2-digit",
-                    minute: "2-digit",
-                    second: "2-digit"
-                });
-                status.textContent = `Updated ${timestamp}`;
+                const timestamp = formatCacheTimestamp(executorCacheFetchedAt);
+                status.textContent = timestamp ? `Cached ${timestamp}` : "Updated from cache";
             } catch (error) {
                 grid.innerHTML = `<p class="version-card__error">Unable to load executor data: ${error.message}</p>`;
                 status.textContent = "Failed to load";
@@ -6370,11 +6398,11 @@
         }
 
         async function fetchRddVersion(endpoint, platformKey) {
-            const response = await fetch(`https://weao.gg/api/versions/${endpoint}`);
-            if (!response.ok) {
-                throw new Error(`Unable to fetch ${endpoint} versions (${response.status})`);
+            const versions = await loadVersionCache();
+            const payload = versions?.[endpoint];
+            if (!payload) {
+                throw new Error(`Version data unavailable for ${endpoint}.`);
             }
-            const payload = await response.json();
             const key = platformKey === "Mac" ? "Mac" : "Windows";
             const versionHash = payload[key];
             if (!versionHash) {
