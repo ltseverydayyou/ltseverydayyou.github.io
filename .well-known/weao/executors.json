@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-01-27T20:49:07.193Z",
+  "fetchedAt": "2026-01-27T20:52:53.973Z",
   "data": [
     {
       "_id": "680eaddf8b44717c060fcf8d",
@@ -24,8 +24,8 @@
       "suncPercentage": 94,
       "uncPercentage": 99,
       "sunc": {
-        "suncScrap": "vUmSXMfqk6hvAFyZ",
-        "suncKey": "bFvhbXbx00OqEmIGxadB84nKt6OTHPMS"
+        "suncScrap": "Rz2fo7fxhdneY9d9",
+        "suncKey": "bQLGtQ5Zln68D9AwzPk52hnYxOtBbcbS"
       },
       "__v": 1,
       "recommendedReason": {
@@ -257,11 +257,11 @@
       "cost": "$18.99 Lifetime",
       "decompiler": true,
       "multiInject": true,
-      "suncPercentage": 100,
+      "suncPercentage": 86,
       "uncPercentage": 99,
       "sunc": {
-        "suncScrap": "fX21ypNRFxyiJeik",
-        "suncKey": "yYjHoKJ9x6IYoNUp0tHeomX4vtKYNVS6"
+        "suncScrap": "HEGOj4oEborlyEvQ",
+        "suncKey": "e5SU4dWNFW3bCGUEaszVsHRR3EL4KaQM"
       },
       "__v": 1,
       "recommendedReason": {
@@ -332,11 +332,11 @@
       "cost": "$5.99 Weekly",
       "decompiler": true,
       "multiInject": true,
-      "suncPercentage": 100,
+      "suncPercentage": 90,
       "uncPercentage": 99,
       "sunc": {
-        "suncScrap": "Jj3ISSJNwBweEGOj",
-        "suncKey": "CT7BbwDzZjWVJd3EeyoiT9zoZA92a4xl"
+        "suncScrap": "kwy9dH9wGiDOUmkF",
+        "suncKey": "IxPJNcMwhXTdWwP9iWbSoAcrc56mhCEH"
       },
       "__v": 1,
       "recommendedReason": {
@@ -367,11 +367,11 @@
       "unlinked": false,
       "decompiler": true,
       "multiInject": true,
-      "suncPercentage": 97,
+      "suncPercentage": 94,
       "uncPercentage": 99,
       "sunc": {
-        "suncScrap": "HedSY7yUP0fYmxwX",
-        "suncKey": "gZI2IInLbm9H6fWL9BhzTqqJliOEtlPT"
+        "suncScrap": "EKnZrROqjeUFt25T",
+        "suncKey": "P7Fhghl8ynvDdek0FOqx4q0mkecWq5Yh"
       },
       "__v": 1,
       "recommendedReason": {
@@ -680,8 +680,8 @@
       },
       "clientmods": true,
       "sunc": {
-        "suncScrap": "l0oHqqvAToR9vV6i",
-        "suncKey": "zoyflbbqeBuxCYDlGtUj5dvKgreRq9Zj"
+        "suncScrap": "Ran2pjcaHLL4mnnG",
+        "suncKey": "tf04N4aEHFg3iTopJl3GD04PGTYM0Ulx"
       },
       "trackerId": "WEAO1af938a2",
       "slug": {
@@ -869,12 +869,12 @@
       "elementCertified": true,
       "decompiler": true,
       "multiInject": false,
-      "suncPercentage": 97,
+      "suncPercentage": 95,
       "uncPercentage": 99,
       "hidden": false,
       "sunc": {
-        "suncScrap": "IAfScge1xC95KLOO",
-        "suncKey": "8flWefSG523d3jlM61RocwrAiypUo3Mi"
+        "suncScrap": "mKQQfxsOVv7mTcXq",
+        "suncKey": "XPo0eMP1GIibvkP1MN87TaYFLzWk9IVk"
       },
       "__v": 1,
       "recommendedReason": {
@@ -1380,8 +1380,8 @@
       "uncPercentage": 99,
       "hidden": false,
       "sunc": {
-        "suncScrap": "6KEgwAnEaUxPIZ21",
-        "suncKey": "beeghj97Wu1i8svbWoo4UtuyH0pPlvl6"
+        "suncScrap": "bCuqmw9XAmYZJeTL",
+        "suncKey": "Bn63yd3bHGAT5wbXRpzTlF4fm9hwqZ9z"
       },
       "__v": 1,
       "recommendedReason": {
