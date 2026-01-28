@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-01-28T14:26:48.388Z",
+  "fetchedAt": "2026-01-28T14:57:09.608Z",
   "data": [
     {
       "_id": "680eaddf8b44717c060fcf8d",
@@ -260,8 +260,8 @@
       "suncPercentage": 100,
       "uncPercentage": 99,
       "sunc": {
-        "suncScrap": "EtW456n8O6OPG6y8",
-        "suncKey": "fb8BAOGz3SwnaHFuKhhYO1NSVNR8xn3g"
+        "suncScrap": "XhNSDf9pvaM1QDCj",
+        "suncKey": "t8prFCS4a302ynvLrglnYC4zfnrqhMpH"
       },
       "__v": 1,
       "recommendedReason": {
