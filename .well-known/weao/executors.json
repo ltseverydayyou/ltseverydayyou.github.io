@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-01-28T11:20:49.448Z",
+  "fetchedAt": "2026-01-28T11:43:59.560Z",
   "data": [
     {
       "_id": "680eaddf8b44717c060fcf8d",
@@ -257,11 +257,11 @@
       "cost": "$18.99 Lifetime",
       "decompiler": true,
       "multiInject": true,
-      "suncPercentage": 86,
+      "suncPercentage": 100,
       "uncPercentage": 99,
       "sunc": {
-        "suncScrap": "HEGOj4oEborlyEvQ",
-        "suncKey": "e5SU4dWNFW3bCGUEaszVsHRR3EL4KaQM"
+        "suncScrap": "EtW456n8O6OPG6y8",
+        "suncKey": "fb8BAOGz3SwnaHFuKhhYO1NSVNR8xn3g"
       },
       "__v": 1,
       "recommendedReason": {
@@ -367,11 +367,11 @@
       "unlinked": false,
       "decompiler": true,
       "multiInject": true,
-      "suncPercentage": 94,
+      "suncPercentage": 96,
       "uncPercentage": 99,
       "sunc": {
-        "suncScrap": "EKnZrROqjeUFt25T",
-        "suncKey": "P7Fhghl8ynvDdek0FOqx4q0mkecWq5Yh"
+        "suncScrap": "Hi3PrRpwKCKQfSRI",
+        "suncKey": "zqg8jFsm4mqESnp6hvgSHw1MIrj2vOcT"
       },
       "__v": 1,
       "recommendedReason": {
