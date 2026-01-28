@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-01-28T01:41:03.274Z",
+  "fetchedAt": "2026-01-28T03:24:57.670Z",
   "data": [
     {
       "_id": "680eaddf8b44717c060fcf8d",
@@ -852,8 +852,8 @@
     {
       "_id": "68084641b50548f01fd62713",
       "title": "Bunni.fun",
-      "version": "2.5.7 R3",
-      "updatedDate": "01/27/2026 at 3:06 PM UTC",
+      "version": "2.5.8 R1",
+      "updatedDate": "01/28/2026 at 1:53 AM UTC",
       "uncStatus": true,
       "free": true,
       "detected": true,
