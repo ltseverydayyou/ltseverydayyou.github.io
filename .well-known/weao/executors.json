@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-01-29T19:50:39.094Z",
+  "fetchedAt": "2026-01-29T20:26:42.006Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -116,12 +116,12 @@
       "_id": "680ab721b50548f01fd62715",
       "title": "Photon",
       "version": "6.1",
-      "updatedDate": "01/27/2026 at 1:11 PM UTC",
+      "updatedDate": "01/29/2026 at 8:03 PM UTC",
       "uncStatus": false,
       "free": false,
       "detected": false,
-      "rbxversion": "version-f8734e043e1e40a2",
-      "updateStatus": false,
+      "rbxversion": "version-4464ba36ceea461e",
+      "updateStatus": true,
       "websitelink": "https://photonsys.sellpass.io/",
       "discordlink": "https://discord.gg/vro",
       "purchaselink": "https://photonsys.sellpass.io/products/Photon-Lifetime",
@@ -141,8 +141,8 @@
     {
       "_id": "66837bf003fe5828bec91bc5",
       "title": "DX9WARE V2",
-      "version": "1.1.165",
-      "updatedDate": "01/29/2026 at 7:35 PM UTC",
+      "version": "1.1.166",
+      "updatedDate": "01/29/2026 at 7:59 PM UTC",
       "uncStatus": false,
       "free": false,
       "detected": false,
@@ -508,7 +508,7 @@
       "free": false,
       "detected": true,
       "rbxversion": "version-4464ba36ceea461e",
-      "updateStatus": true,
+      "updateStatus": false,
       "websitelink": "https://getwave.gg",
       "discordlink": "https://discord.gg/rARhPpN7fY",
       "beta": false,
