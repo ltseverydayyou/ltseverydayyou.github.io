@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-01-30T11:25:25.288Z",
+  "fetchedAt": "2026-01-30T11:49:38.740Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -1205,12 +1205,12 @@
       "_id": "6907cafc4b9bde193883d902",
       "title": "Severe",
       "version": "v2",
-      "updatedDate": "01/15/2026 at 12:36 AM UTC",
+      "updatedDate": "01/30/2026 at 11:28 AM UTC",
       "uncStatus": false,
       "free": false,
       "detected": false,
-      "rbxversion": "version-1588a9c58c674e38",
-      "updateStatus": false,
+      "rbxversion": "version-4464ba36ceea461e",
+      "updateStatus": true,
       "websitelink": "https://discord.gg/QaheZpKzsX",
       "discordlink": "https://discord.gg/QaheZpKzsX",
       "purchaselink": "https://discord.gg/QaheZpKzsX",
