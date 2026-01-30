@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-01-30T15:51:21.072Z",
+  "fetchedAt": "2026-01-30T16:35:25.830Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -583,8 +583,8 @@
     {
       "_id": "66ee1fcae70ddffe81ca0f0c",
       "title": "Codex",
-      "version": "2.703.1353",
-      "updatedDate": "01/13/2026 at 1:52 AM UTC",
+      "version": "2.705.924",
+      "updatedDate": "01/30/2026 at 4:10 PM UTC",
       "uncStatus": true,
       "free": true,
       "detected": false,
