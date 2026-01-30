@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-01-30T17:20:22.865Z",
+  "fetchedAt": "2026-01-30T17:59:00.724Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -785,13 +785,13 @@
     {
       "_id": "6837e1ca5f37edc7f4ff0197",
       "title": "Ronin",
-      "version": "Version-3.8.2",
-      "updatedDate": "01/24/2026 at 2:03 PM UTC",
+      "version": "Version-3.8.3",
+      "updatedDate": "01/30/2026 at 5:29 PM UTC",
       "uncStatus": false,
       "free": false,
       "detected": false,
-      "rbxversion": "version-8b8c34790f814a73",
-      "updateStatus": false,
+      "rbxversion": "version-4464ba36ceea461e",
+      "updateStatus": true,
       "websitelink": "https://getronin.xyz/",
       "discordlink": "https://discord.gg/HJ7zmrjhUG",
       "purchaselink": "https://bloxproducts.com/r/weao#Ronin",
