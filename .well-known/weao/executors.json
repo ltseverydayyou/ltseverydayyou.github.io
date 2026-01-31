@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-01-31T16:53:05.184Z",
+  "fetchedAt": "2026-01-31T17:20:58.623Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -741,13 +741,13 @@
     {
       "_id": "681baa53ab565e11d3feba0e",
       "title": "Volcano",
-      "version": "v3.2.2",
-      "updatedDate": "01/27/2026 at 1:51 AM UTC",
+      "version": "v3.2.3",
+      "updatedDate": "01/31/2026 at 5:18 PM UTC",
       "uncStatus": true,
       "free": false,
       "detected": true,
-      "rbxversion": "version-f8734e043e1e40a2",
-      "updateStatus": false,
+      "rbxversion": "version-db4634f0e27d4d36",
+      "updateStatus": true,
       "websitelink": "https://volcano.wtf",
       "discordlink": "https://volcano.wtf/discord.html",
       "beta": false,
