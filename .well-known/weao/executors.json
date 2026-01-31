@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-01-31T06:34:46.597Z",
+  "fetchedAt": "2026-01-31T07:16:29.774Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -1300,12 +1300,12 @@
     {
       "_id": "6949f6f40260ad9e36c736ff",
       "title": "Vega X",
-      "version": "2.704.1060",
-      "updatedDate": "01/29/2026 at 1:25 PM UTC",
+      "version": "2.705.924",
+      "updatedDate": "01/31/2026 at 7:04 AM UTC",
       "uncStatus": true,
       "free": true,
       "detected": false,
-      "rbxversion": "2.704.1060",
+      "rbxversion": "2.705.924",
       "updateStatus": true,
       "websitelink": "https://www.vegax.gg",
       "discordlink": "https://www.vegax.gg/discord.html",
