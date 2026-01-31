@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-01-31T23:18:57.570Z",
+  "fetchedAt": "2026-01-31T23:44:27.733Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -482,7 +482,7 @@
       "free": false,
       "detected": false,
       "rbxversion": "version-0f5223fb6e7e4955",
-      "updateStatus": false,
+      "updateStatus": true,
       "websitelink": "https://matrixhubs.shop/",
       "discordlink": "https://matrixhub.xyz/discord.html",
       "beta": false,
