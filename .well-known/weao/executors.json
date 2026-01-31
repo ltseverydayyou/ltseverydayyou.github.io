@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-01-31T22:48:05.669Z",
+  "fetchedAt": "2026-01-31T23:18:57.570Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -322,7 +322,7 @@
       "index": 1,
       "elementCertified": false,
       "cost": "$5.99 Weekly",
-      "decompiler": true,
+      "decompiler": false,
       "multiInject": true,
       "suncPercentage": 98,
       "uncPercentage": 99,
