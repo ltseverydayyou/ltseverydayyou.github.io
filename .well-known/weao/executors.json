@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-02-01T04:51:56.467Z",
+  "fetchedAt": "2026-02-01T05:58:08.272Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -522,11 +522,11 @@
       "cost": "$5.99 Weekly",
       "decompiler": true,
       "multiInject": true,
-      "suncPercentage": 90,
+      "suncPercentage": 100,
       "uncPercentage": 99,
       "sunc": {
-        "suncScrap": "kwy9dH9wGiDOUmkF",
-        "suncKey": "IxPJNcMwhXTdWwP9iWbSoAcrc56mhCEH"
+        "suncScrap": "sUSMILer2W4h6cEv",
+        "suncKey": "H4zy64gtK8cyHnjxH3sZUPLBfNHaGC4A"
       },
       "__v": 1,
       "recommendedReason": {
@@ -852,13 +852,13 @@
     {
       "_id": "68084641b50548f01fd62713",
       "title": "Bunni.fun",
-      "version": "2.5.8 R1",
-      "updatedDate": "01/28/2026 at 1:53 AM UTC",
+      "version": "2.5.9 R1",
+      "updatedDate": "02/01/2026 at 5:31 AM UTC",
       "uncStatus": true,
       "free": true,
       "detected": true,
-      "rbxversion": "version-f8734e043e1e40a2",
-      "updateStatus": false,
+      "rbxversion": "version-db4634f0e27d4d36",
+      "updateStatus": true,
       "websitelink": "https://bunni.fun/",
       "discordlink": "https://discord.gg/9DPW2G22cF",
       "beta": false,
