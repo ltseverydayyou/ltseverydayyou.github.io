@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-02-03T18:07:05.405Z",
+  "fetchedAt": "2026-02-03T19:12:56.353Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -1301,7 +1301,7 @@
       "_id": "6949f6f40260ad9e36c736ff",
       "title": "Vega X",
       "version": "2.705.924",
-      "updatedDate": "01/31/2026 at 7:04 AM UTC",
+      "updatedDate": "02/03/2026 at 6:40 PM UTC",
       "uncStatus": true,
       "free": true,
       "detected": false,
