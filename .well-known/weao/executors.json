@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-02-04T04:21:54.215Z",
+  "fetchedAt": "2026-02-04T05:29:48.513Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -215,7 +215,7 @@
       "_id": "6733c47fd9dd590769498131",
       "title": "Cryptic",
       "version": "Version-2.705.924",
-      "updatedDate": "02/02/2026 at 10:50 PM UTC",
+      "updatedDate": "02/04/2026 at 5:07 AM UTC",
       "uncStatus": true,
       "free": true,
       "detected": false,
@@ -305,7 +305,7 @@
     {
       "_id": "67576d22d9181811c292bb79",
       "title": "Volt",
-      "version": "1.1.9.0",
+      "version": "1.1.9.2",
       "updatedDate": "01/31/2026 at 10:11 AM UTC",
       "uncStatus": true,
       "free": false,
