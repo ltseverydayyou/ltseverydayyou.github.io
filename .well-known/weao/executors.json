@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-02-04T19:56:19.739Z",
+  "fetchedAt": "2026-02-04T20:35:01.096Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -1333,12 +1333,12 @@
       "_id": "6949f9ee0260ad9e36c73700",
       "title": "RbxCli",
       "version": "1.4.2-alpha",
-      "updatedDate": "01/31/2026 at 9:52 PM UTC",
+      "updatedDate": "02/04/2026 at 8:32 PM UTC",
       "uncStatus": false,
       "free": false,
       "detected": false,
-      "rbxversion": "version-db4634f0e27d4d36",
-      "updateStatus": false,
+      "rbxversion": "version-3e7a57d7e53b4881",
+      "updateStatus": true,
       "discordlink": "https://discord.gg/RZgUP8UZQ3",
       "purchaselink": "https://bloxproducts.com/r/weao#RbxCli",
       "beta": false,
