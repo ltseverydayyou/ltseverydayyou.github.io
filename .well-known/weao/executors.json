@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-02-04T10:08:29.186Z",
+  "fetchedAt": "2026-02-04T11:00:29.158Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -882,7 +882,7 @@
       },
       "purchaselink": "https://jjblox.xyz/?ref=weao",
       "keysystem": true,
-      "clientmods": true,
+      "clientmods": false,
       "trackerId": "WEAO5cb33bac",
       "slug": {
         "fullDescription": "Bunni.lol started as Visual and was later rebranded. Some updates can take a bit longer after Roblox updates, but it otherwise performs well and feels polished. It includes a decompiler, 100% sUNC, and is a solid choice if you want a clean interface and a decompiler. Bunni.lol uses a key system (you can buy a key to bypass it if you want). Keep in mind their client-modification bypass works as of November 9, 2025.",
@@ -892,8 +892,7 @@
           "https://cdn.weao.gg/slug/bunnilol/screenshot1.png",
           "https://cdn.weao.gg/slug/bunnilol/screenshot2.png"
         ]
-      },
-      "detectionReason": "We are currently retesting this exploit's detection status, some users report bans after running the sUNC test. Keep this in mind!"
+      }
     },
     {
       "_id": "68899949e376f58c849e0e67",
