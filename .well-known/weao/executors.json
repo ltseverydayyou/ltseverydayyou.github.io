@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-02-05T07:37:53.097Z",
+  "fetchedAt": "2026-02-05T08:24:07.490Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -258,12 +258,12 @@
     {
       "_id": "671411144ca6cb25603cc3b0",
       "title": "Seliware",
-      "version": "2.2.2",
-      "updatedDate": "02/04/2026 at 7:16 PM UTC",
+      "version": "2.1.9",
+      "updatedDate": "02/05/2026 at 8:23 AM UTC",
       "uncStatus": true,
       "free": false,
       "detected": true,
-      "rbxversion": "version-3e7a57d7e53b4881",
+      "rbxversion": "version-4464ba36ceea461e",
       "updateStatus": false,
       "websitelink": "https://seliware.com",
       "discordlink": "https://discord.com/invite/nzEggEE9vx",
