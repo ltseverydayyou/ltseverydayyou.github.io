@@ -1,16 +1,16 @@
 {
-  "fetchedAt": "2026-02-07T05:11:38.422Z",
+  "fetchedAt": "2026-02-07T05:57:10.154Z",
   "data": [
     {
       "_id": "680eaddf8b44717c060fcf8d",
       "title": "Velocity",
-      "version": "0.7.7",
-      "updatedDate": "01/31/2026 at 4:14 PM UTC",
+      "version": "0.7.8",
+      "updatedDate": "02/07/2026 at 5:17 AM UTC",
       "uncStatus": true,
       "free": true,
       "detected": true,
-      "rbxversion": "version-db4634f0e27d4d36",
-      "updateStatus": false,
+      "rbxversion": "version-80c7b8e578f241ff",
+      "updateStatus": true,
       "websitelink": "https://realvelocity.xyz/",
       "discordlink": "https://discord.com/invite/velocityide",
       "beta": false,
@@ -461,7 +461,7 @@
       "recommendedReason": {
         "features": []
       },
-      "clientmods": true,
+      "clientmods": false,
       "trackerId": "WEAO4916b797",
       "slug": {
         "fullDescription": "Seliware is a cheap premium exploit that’s become popular for budget users, it’s only $3.99 a week, so it’s definitely one of the cheapest paid options. It updates fairly quickly, some people used to say the UI was lacking, but with its recent update, it most definitely isn't lacking, and it also supports custom UIs. sits around 98% SUNC, and its client-modification bypass works. Pretty good value for a paid exploit.",
@@ -474,7 +474,8 @@
           "https://cdn.weao.gg/slug/seliware/screenshot4.png"
         ]
       },
-      "beta": false
+      "beta": false,
+      "detectionReason": "Many users are currently reporting bans. Take normal precautions and use an alt account!"
     },
     {
       "_id": "67576d22d9181811c292bb79",
