@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-02-07T23:56:21.219Z",
+  "fetchedAt": "2026-02-08T02:32:33.954Z",
   "data": [
     {
       "_id": "680eaddf8b44717c060fcf8d",
@@ -318,7 +318,7 @@
       "free": false,
       "detected": true,
       "rbxversion": "version-80c7b8e578f241ff",
-      "updateStatus": false,
+      "updateStatus": true,
       "websitelink": "https://getwave.gg",
       "discordlink": "https://discord.gg/rARhPpN7fY",
       "beta": false,
