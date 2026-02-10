@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-02-10T16:04:10.838Z",
+  "fetchedAt": "2026-02-10T17:17:34.553Z",
   "data": [
     {
       "_id": "680eaddf8b44717c060fcf8d",
@@ -270,7 +270,7 @@
       "clientmods": true,
       "trackerId": "WEAO00393718",
       "slug": {
-        "fullDescription": "Potassium is a premium exploit that is only $20 for a lifetime subscription, a great deal compared to other exploits on the market. Features 100% sUNC, a working client-modification bypass, and a pretty nice UI. Great for new users who want a cheap option or script developers who just want an exploit for casual developing.",
+        "fullDescription": "Potassium is a premium exploit that is only $22.99 for a lifetime subscription, a great deal compared to other exploits on the market. Features 100% sUNC, a working client-modification bypass, and a pretty nice UI. Great for new users who want a cheap option or script developers who just want an exploit for casual developing.",
         "logo": "https://cdn.weao.gg/slug/potassium/logo.png",
         "owner": "perm, v03",
         "screenshots": [
@@ -464,7 +464,7 @@
       "clientmods": false,
       "trackerId": "WEAO4916b797",
       "slug": {
-        "fullDescription": "Seliware is a cheap premium exploit that’s become popular for budget users, it’s only $3.99 a week, so it’s definitely one of the cheapest paid options. It updates fairly quickly, some people used to say the UI was lacking, but with its recent update, it most definitely isn't lacking, and it also supports custom UIs. sits around 98% SUNC, and its client-modification bypass works. Pretty good value for a paid exploit.",
+        "fullDescription": "Seliware is a cheap premium exploit that’s become popular for budget users, it’s only $3.99 a week, so it’s definitely one of the cheapest paid options. It updates fairly quickly and has a great-looking modern UI too. sits around 94% sUNC, unfortunately it is detected and can result in you getting banned. So always take normal precautions and use an alt account. Pretty good value for a paid exploit.",
         "logo": "https://cdn.weao.gg/slug/seliware/logo.png",
         "owner": "Dx",
         "screenshots": [
@@ -744,8 +744,8 @@
     {
       "_id": "6837e1ca5f37edc7f4ff0197",
       "title": "Ronin",
-      "version": "Version-3.8.5",
-      "updatedDate": "02/08/2026 at 10:09 PM UTC",
+      "version": "Version-3.8.6",
+      "updatedDate": "02/10/2026 at 4:28 PM UTC",
       "uncStatus": false,
       "free": false,
       "detected": false,
@@ -886,7 +886,7 @@
       "clientmods": false,
       "trackerId": "WEAO5cb33bac",
       "slug": {
-        "fullDescription": "Bunni.lol started as Visual and was later rebranded. Some updates can take a bit longer after Roblox updates, but it otherwise performs well and feels polished. It includes a decompiler, 100% sUNC, and is a solid choice if you want a clean interface and a decompiler. Bunni.lol uses a key system (you can buy a key to bypass it if you want). Keep in mind their client-modification bypass works as of November 9, 2025.",
+        "fullDescription": "Bunni.fun started as Visual and was later rebranded. Some updates can take a bit longer after Roblox updates, but it otherwise performs well and feels polished. It includes a decompiler, 100% sUNC, and is a solid choice if you want a clean interface and a decompiler. Bunni.fun uses a key system (you can buy a key to bypass it if you want). Keep in mind that it is currently detected, and you should always take normal precautions and use an alt account.",
         "logo": "https://cdn.weao.gg/slug/bunnilol/logo.png",
         "owner": "Peyton",
         "screenshots": [
