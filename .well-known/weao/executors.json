@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-02-09T23:41:34.744Z",
+  "fetchedAt": "2026-02-10T01:03:12.752Z",
   "data": [
     {
       "_id": "680eaddf8b44717c060fcf8d",
@@ -343,7 +343,7 @@
         "features": []
       },
       "longestRunning": true,
-      "clientmods": false,
+      "clientmods": true,
       "trackerId": "WEAO2c8e5827",
       "hidden": false
     },
