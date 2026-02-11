@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-02-11T19:19:48.722Z",
+  "fetchedAt": "2026-02-11T20:01:56.302Z",
   "data": [
     {
       "_id": "680eaddf8b44717c060fcf8d",
@@ -213,12 +213,12 @@
     {
       "_id": "66837bf003fe5828bec91bc5",
       "title": "DX9WARE V2",
-      "version": "1.1.170",
-      "updatedDate": "02/11/2026 at 7:05 PM UTC",
+      "version": "1.1.171",
+      "updatedDate": "02/11/2026 at 7:35 PM UTC",
       "uncStatus": false,
       "free": false,
       "detected": false,
-      "rbxversion": "version-80c7b8e578f241ff",
+      "rbxversion": "version-bd08027bb04e4045",
       "updateStatus": true,
       "websitelink": "https://cultofintellect.com/",
       "discordlink": "https://discord.gg/coi",
@@ -287,12 +287,12 @@
       "_id": "680ab721b50548f01fd62715",
       "title": "Photon",
       "version": "6.1",
-      "updatedDate": "02/05/2026 at 5:47 PM UTC",
+      "updatedDate": "02/11/2026 at 7:28 PM UTC",
       "uncStatus": false,
       "free": false,
       "detected": false,
-      "rbxversion": "version-80c7b8e578f241ff",
-      "updateStatus": false,
+      "rbxversion": "version-bd08027bb04e4045",
+      "updateStatus": true,
       "websitelink": "https://photonsys.sellpass.io/",
       "discordlink": "https://discord.gg/vro",
       "purchaselink": "https://photonsys.sellpass.io/products/Photon-Lifetime",
