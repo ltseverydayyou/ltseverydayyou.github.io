@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-02-11T22:02:20.453Z",
+  "fetchedAt": "2026-02-11T22:49:44.547Z",
   "data": [
     {
       "_id": "680eaddf8b44717c060fcf8d",
@@ -312,13 +312,13 @@
     {
       "_id": "662ae7576238b7f2082f253b",
       "title": "Wave",
-      "version": "NEW-1.0.8",
-      "updatedDate": "02/07/2026 at 11:06 PM UTC",
+      "version": "NEW-1.1.0",
+      "updatedDate": "02/11/2026 at 10:37 PM UTC",
       "uncStatus": true,
       "free": false,
       "detected": true,
-      "rbxversion": "version-80c7b8e578f241ff",
-      "updateStatus": false,
+      "rbxversion": "version-bd08027bb04e4045",
+      "updateStatus": true,
       "websitelink": "https://getwave.gg",
       "discordlink": "https://discord.gg/rARhPpN7fY",
       "beta": false,
@@ -1334,13 +1334,13 @@
     {
       "_id": "6949f9ee0260ad9e36c73700",
       "title": "RbxCli",
-      "version": "1.5.0-alpha",
-      "updatedDate": "02/09/2026 at 2:24 AM UTC",
+      "version": "1.6.0-alpha",
+      "updatedDate": "02/11/2026 at 10:35 PM UTC",
       "uncStatus": false,
       "free": false,
       "detected": false,
-      "rbxversion": "version-80c7b8e578f241ff",
-      "updateStatus": false,
+      "rbxversion": "version-bd08027bb04e4045",
+      "updateStatus": true,
       "discordlink": "https://discord.gg/RZgUP8UZQ3",
       "purchaselink": "https://bloxproducts.com/r/weao#RbxCli",
       "beta": false,
