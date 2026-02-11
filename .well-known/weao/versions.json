@@ -1,11 +1,11 @@
 {
-  "fetchedAt": "2026-02-11T18:09:16.514Z",
+  "fetchedAt": "2026-02-11T19:19:48.722Z",
   "data": {
     "current": {
-      "Windows": "version-80c7b8e578f241ff",
-      "WindowsDate": "2/5/2026, 5:08:00 PM UTC",
-      "Mac": "version-6298eb58de444612",
-      "MacDate": "2/5/2026, 5:07:52 PM UTC",
+      "Windows": "version-bd08027bb04e4045",
+      "WindowsDate": "2/11/2026, 7:05:21 PM UTC",
+      "Mac": "version-82324853106949ff",
+      "MacDate": "2/11/2026, 7:05:32 PM UTC",
       "Android": "2.697.926",
       "AndroidDate": "11/6/2025, 6:42:55 PM UTC",
       "iOS": "2.697.925",
@@ -18,10 +18,10 @@
       "MacDate": "2/10/2026, 10:40:54 AM UTC"
     },
     "past": {
-      "Windows": "version-4464ba36ceea461e",
-      "WindowsDate": "2/5/2026, 1:31:32 AM UTC",
-      "Mac": "version-ddc7047376c34905",
-      "MacDate": "1/29/2026, 7:35:35 PM UTC"
+      "Windows": "version-80c7b8e578f241ff",
+      "WindowsDate": "2/5/2026, 5:08:00 PM UTC",
+      "Mac": "version-6298eb58de444612",
+      "MacDate": "2/5/2026, 5:07:52 PM UTC"
     }
   }
 }
