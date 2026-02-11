@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-02-11T20:01:56.302Z",
+  "fetchedAt": "2026-02-11T20:55:51.942Z",
   "data": [
     {
       "_id": "680eaddf8b44717c060fcf8d",
@@ -700,13 +700,13 @@
     {
       "_id": "67f9db8ae4b61d8d6421db6e",
       "title": "Hydrogen",
-      "version": "707.0750",
-      "updatedDate": "02/05/2026 at 5:07 PM UTC",
+      "version": "708.0750",
+      "updatedDate": "02/11/2026 at 8:04 PM UTC",
       "uncStatus": true,
       "free": true,
       "detected": false,
-      "rbxversion": "version-6298eb58de444612",
-      "updateStatus": false,
+      "rbxversion": "version-82324853106949ff",
+      "updateStatus": true,
       "websitelink": "https://www.hydrogen.lat/",
       "discordlink": "https://discord.gg/2aKTJkwxdp",
       "beta": false,
