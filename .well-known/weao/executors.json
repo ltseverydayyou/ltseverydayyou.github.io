@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-02-13T19:52:49.038Z",
+  "fetchedAt": "2026-02-13T20:34:34.229Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -111,7 +111,7 @@
           "https://cdn.weao.gg/slug/xeno/screenshot3.png"
         ]
       },
-      "hidden": false
+      "hidden": true
     },
     {
       "_id": "680ab721b50548f01fd62715",
