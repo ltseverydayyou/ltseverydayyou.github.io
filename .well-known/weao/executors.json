@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-02-14T12:40:22.017Z",
+  "fetchedAt": "2026-02-14T13:31:41.801Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -370,7 +370,7 @@
       "platform": "Windows",
       "extype": "wexecutor",
       "roleId": "1366164709996363988",
-      "index": 8,
+      "index": 6,
       "elementCertified": true,
       "decompiler": true,
       "multiInject": true,
