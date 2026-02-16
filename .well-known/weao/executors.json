@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-02-16T15:09:45.092Z",
+  "fetchedAt": "2026-02-16T15:57:09.639Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -18,7 +18,7 @@
       "extype": "wexecutor",
       "roleId": "1350595821728698388",
       "purchaselink": "https://bloxproducts.com/r/weao#Potassium",
-      "index": 4,
+      "index": 2,
       "cost": "$22.99 Lifetime",
       "decompiler": true,
       "multiInject": true,
@@ -756,7 +756,7 @@
       "platform": "Windows",
       "extype": "wexecutor",
       "roleId": "1361806029255348224",
-      "index": 3,
+      "index": 4,
       "unlinked": false,
       "decompiler": true,
       "multiInject": true,
