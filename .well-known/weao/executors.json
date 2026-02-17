@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-02-17T21:18:47.051Z",
+  "fetchedAt": "2026-02-17T21:57:10.684Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -1266,8 +1266,8 @@
     {
       "_id": "692794d789eb1e034ad699c3",
       "title": "MacSploit",
-      "version": "1.9.8d",
-      "updatedDate": "02/17/2026 at 12:54 PM UTC",
+      "version": "1.9.8c",
+      "updatedDate": "02/17/2026 at 9:36 PM UTC",
       "uncStatus": true,
       "free": false,
       "detected": false,
@@ -1301,13 +1301,13 @@
     {
       "_id": "6949f6f40260ad9e36c736ff",
       "title": "Vega X",
-      "version": "2.706.750",
-      "updatedDate": "02/17/2026 at 6:46 PM UTC",
+      "version": "2.708.880",
+      "updatedDate": "02/17/2026 at 9:29 PM UTC",
       "uncStatus": true,
       "free": true,
       "detected": false,
-      "rbxversion": "2.706.750",
-      "updateStatus": false,
+      "rbxversion": "2.708.880",
+      "updateStatus": true,
       "websitelink": "https://www.vegax.gg",
       "discordlink": "https://www.vegax.gg/discord.html",
       "beta": false,
