@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-02-19T00:02:12.187Z",
+  "fetchedAt": "2026-02-19T03:15:10.911Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -307,13 +307,13 @@
     {
       "_id": "67576d22d9181811c292bb79",
       "title": "Volt",
-      "version": "1.1.13.0",
-      "updatedDate": "02/11/2026 at 11:08 PM UTC",
+      "version": "1.2.1.0",
+      "updatedDate": "02/19/2026 at 2:23 AM UTC",
       "uncStatus": true,
       "free": false,
       "detected": true,
-      "rbxversion": "version-bd08027bb04e4045",
-      "updateStatus": false,
+      "rbxversion": "version-df7528517c6849f7",
+      "updateStatus": true,
       "websitelink": "https://volt.bz/",
       "discordlink": "https://discord.com/invite/voltbz",
       "beta": false,
@@ -788,13 +788,13 @@
     {
       "_id": "6837e1ca5f37edc7f4ff0197",
       "title": "Ronin",
-      "version": "Version-3.8.7",
-      "updatedDate": "02/14/2026 at 11:28 PM UTC",
+      "version": "Version-3.8.8",
+      "updatedDate": "02/19/2026 at 1:38 AM UTC",
       "uncStatus": false,
       "free": false,
       "detected": false,
-      "rbxversion": "version-bd08027bb04e4045",
-      "updateStatus": false,
+      "rbxversion": "version-df7528517c6849f7",
+      "updateStatus": true,
       "websitelink": "https://getronin.xyz/",
       "discordlink": "https://discord.gg/HJ7zmrjhUG",
       "purchaselink": "https://bloxproducts.com/r/weao#Ronin",
