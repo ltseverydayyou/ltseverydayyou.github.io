@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-02-19T19:08:58.595Z",
+  "fetchedAt": "2026-02-19T19:50:17.097Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -1336,8 +1336,8 @@
     {
       "_id": "6949f9ee0260ad9e36c73700",
       "title": "RbxCli",
-      "version": "1.6.4-alpha",
-      "updatedDate": "02/18/2026 at 8:55 PM UTC",
+      "version": "1.6.5-alpha",
+      "updatedDate": "02/19/2026 at 7:21 PM UTC",
       "uncStatus": false,
       "free": false,
       "detected": false,
