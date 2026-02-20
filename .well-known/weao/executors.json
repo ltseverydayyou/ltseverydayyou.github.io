@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-02-20T21:48:41.494Z",
+  "fetchedAt": "2026-02-20T22:21:58.541Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -272,7 +272,7 @@
       "platform": "Windows",
       "extype": "wexecutor",
       "roleId": "1297289530361249945",
-      "index": 3,
+      "index": 5,
       "unlinked": false,
       "elementCertified": true,
       "cost": "$3.99 Weekly",
@@ -370,7 +370,7 @@
       "platform": "Windows",
       "extype": "wexecutor",
       "roleId": "1366164709996363988",
-      "index": 6,
+      "index": 7,
       "elementCertified": true,
       "decompiler": true,
       "multiInject": true,
@@ -757,7 +757,7 @@
       "platform": "Windows",
       "extype": "wexecutor",
       "roleId": "1361806029255348224",
-      "index": 5,
+      "index": 3,
       "unlinked": false,
       "decompiler": true,
       "multiInject": true,
