@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-02-20T19:51:52.707Z",
+  "fetchedAt": "2026-02-20T20:27:03.023Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -1213,7 +1213,7 @@
       "free": false,
       "detected": false,
       "rbxversion": "version-bd08027bb04e4045",
-      "updateStatus": false,
+      "updateStatus": true,
       "websitelink": "https://discord.gg/QaheZpKzsX",
       "discordlink": "https://discord.gg/QaheZpKzsX",
       "purchaselink": "https://bloxproducts.com/r/weao#Severe",
