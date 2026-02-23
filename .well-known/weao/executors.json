@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-02-23T15:05:26.608Z",
+  "fetchedAt": "2026-02-23T16:01:54.620Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -542,8 +542,8 @@
     {
       "_id": "66ee1eafe70ddffe81ca0f0b",
       "title": "Delta",
-      "version": "2.704.1060",
-      "updatedDate": "01/22/2026 at 11:39 PM UTC",
+      "version": "2.708.880",
+      "updatedDate": "02/23/2026 at 3:55 PM UTC",
       "uncStatus": true,
       "free": true,
       "detected": false,
@@ -943,8 +943,8 @@
     {
       "_id": "68899ac3e376f58c849e0e68",
       "title": "Delta",
-      "version": "2.704.1059",
-      "updatedDate": "01/22/2026 at 11:38 PM UTC",
+      "version": "2.708.880",
+      "updatedDate": "02/23/2026 at 3:57 PM UTC",
       "uncStatus": true,
       "free": true,
       "detected": false,
