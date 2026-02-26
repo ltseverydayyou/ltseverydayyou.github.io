@@ -1,11 +1,11 @@
 {
-  "fetchedAt": "2026-02-26T21:18:12.513Z",
+  "fetchedAt": "2026-02-26T21:53:12.034Z",
   "data": {
     "current": {
       "Windows": "version-760d064d05424689",
       "WindowsDate": "2/26/2026, 8:51:06 PM UTC",
-      "Mac": "version-b29f0194bebd445b",
-      "MacDate": "2/18/2026, 8:15:07 PM UTC",
+      "Mac": "version-99769ee4146d4ccf",
+      "MacDate": "2/26/2026, 9:40:44 PM UTC",
       "Android": "2.697.926",
       "AndroidDate": "11/6/2025, 6:42:55 PM UTC",
       "iOS": "2.697.925",
@@ -20,8 +20,8 @@
     "past": {
       "Windows": "version-df7528517c6849f7",
       "WindowsDate": "2/18/2026, 8:14:21 PM UTC",
-      "Mac": "version-82324853106949ff",
-      "MacDate": "2/11/2026, 7:05:32 PM UTC"
+      "Mac": "version-b29f0194bebd445b",
+      "MacDate": "2/18/2026, 8:15:07 PM UTC"
     }
   }
 }
