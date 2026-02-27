@@ -1287,6 +1287,58 @@
             margin-top: 10px;
         }
 
+        .lua-manifest {
+            display: grid;
+            gap: 10px;
+        }
+
+        .lua-manifest p {
+            margin: 0;
+            color: var(--mu);
+            font-size: 13px;
+        }
+
+        .lua-manifest__controls {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .lua-manifest__controls input {
+            flex: 1;
+            min-width: 180px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, var(--bdA));
+            padding: 10px 12px;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--tx);
+            font: 14px ui-sans-serif, system-ui, "Segoe UI", Roboto, Helvetica, Arial;
+        }
+
+        .lua-manifest__actions {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .lua-manifest__link {
+            color: var(--ac);
+            text-decoration: none;
+            font-size: 12px;
+            word-break: break-all;
+        }
+
+        .lua-manifest__status {
+            margin: 0;
+            font-size: 12px;
+            color: var(--mu);
+        }
+
+        .lua-manifest__status--error {
+            color: #ff9c9c;
+        }
+
         .html-lab {
             display: flex;
             flex-direction: column;
@@ -2682,6 +2734,7 @@
                 <button class="tb" data-t="x">Script Searcher</button>
                 <button class="tb" data-t="c">Codex Editor</button>
                 <button class="tb" data-t="l">Lua</button>
+                <button class="tb" data-t="m">Manifest Generator</button>
                 <button class="tb" data-t="w">HTML</button>
                 <button class="tb" data-t="t">Theme</button>
                 <button class="tb" data-t="v">Versions</button>
@@ -2727,6 +2780,27 @@
                     <pre>
 <code id="lo" class="language-lua">-- Highlighted code will appear here</code>
               </pre>
+                </div>
+            </section>
+
+            <section id="pm" class="pp">
+                <div class="g ed lua-manifest">
+                    <h3>LUA by ID Manifest</h3>
+                    <p>Use Steam AppIDs only. SteamTools is required for manifest usage:
+                        <a href="https://steamtools.net" target="_blank" rel="noopener noreferrer">steamtools.net</a>.
+                    </p>
+                    <div class="lua-manifest__controls">
+                        <input id="lua-manifest-appid" type="text" inputmode="numeric"
+                            placeholder="Enter Steam AppID (e.g. 730)" />
+                        <button class="pl sc" type="button" id="lua-manifest-go">Resolve</button>
+                    </div>
+                    <div class="lua-manifest__actions">
+                        <button class="pl" type="button" id="lua-manifest-open" disabled>Open file</button>
+                        <button class="pl" type="button" id="lua-manifest-copy" disabled>Copy URL</button>
+                    </div>
+                    <a id="lua-manifest-link" class="lua-manifest__link" target="_blank" rel="noopener noreferrer"
+                        hidden></a>
+                    <p id="lua-manifest-status" class="lua-manifest__status" aria-live="polite"></p>
                 </div>
             </section>
 
@@ -5901,6 +5975,254 @@
             legacyLuaBeautify();
         }
 
+        let luaManifestFinalUrl = "";
+        let luaManifestProvider = "";
+
+        function setLuaManifestStatus(text, isError = false) {
+            const statusEl = q("#lua-manifest-status");
+            if (!statusEl) {
+                return;
+            }
+            statusEl.textContent = text || "";
+            statusEl.classList.toggle("lua-manifest__status--error", Boolean(isError));
+        }
+
+        function setLuaManifestResult(url, provider = "") {
+            luaManifestFinalUrl = url || "";
+            luaManifestProvider = provider || "";
+
+            const openBtn = q("#lua-manifest-open");
+            const copyBtn = q("#lua-manifest-copy");
+            const linkEl = q("#lua-manifest-link");
+            const hasUrl = Boolean(luaManifestFinalUrl);
+
+            if (openBtn) {
+                openBtn.disabled = !hasUrl;
+            }
+            if (copyBtn) {
+                copyBtn.disabled = !hasUrl;
+            }
+            if (!linkEl) {
+                return;
+            }
+
+            linkEl.hidden = !hasUrl;
+            if (!hasUrl) {
+                linkEl.removeAttribute("href");
+                linkEl.textContent = "";
+                return;
+            }
+
+            linkEl.href = luaManifestFinalUrl;
+            linkEl.textContent =
+                luaManifestFinalUrl.length > 140 ?
+                    `${luaManifestFinalUrl.slice(0, 140)}...` :
+                    luaManifestFinalUrl;
+        }
+
+        function extractSteamAppId(rawValue) {
+            const raw = (rawValue || "").trim();
+            if (!raw) {
+                return "";
+            }
+            if (/^\d+$/.test(raw)) {
+                return raw;
+            }
+            const decoded = (() => {
+                try {
+                    return decodeURIComponent(raw);
+                } catch {
+                    return raw;
+                }
+            })();
+            const patterns = [
+                /store\.steampowered\.com\/app\/(\d+)/i,
+                /steamcommunity\.com\/app\/(\d+)/i,
+                /steam:\/\/(?:run|rungameid)\/(\d+)/i,
+                /[?&](?:app|appid|gameid)=(\d+)/i,
+                /\/app\/(\d+)(?:[/?#]|$)/i
+            ];
+            for (const pattern of patterns) {
+                const match = decoded.match(pattern);
+                if (match && match[1]) {
+                    return match[1];
+                }
+            }
+            return "";
+        }
+
+        function parseJsonText(text, contextLabel) {
+            try {
+                return JSON.parse(text);
+            } catch {
+                throw new Error(`${contextLabel} returned non-JSON data.`);
+            }
+        }
+
+        async function fetchJsonGetWithProxyFallback(endpoint, contextLabel) {
+            const requestJson = async (url) => {
+                const response = await fetch(url, {
+                    method: "GET",
+                    cache: "no-store",
+                    headers: {
+                        Accept: "application/json"
+                    }
+                });
+                if (!response.ok) {
+                    throw new Error(`${contextLabel} failed (${response.status})`);
+                }
+                const raw = await response.text();
+                return parseJsonText(raw, contextLabel);
+            };
+            try {
+                return await requestJson(endpoint);
+            } catch {
+                return requestJson(
+                    `https://api.codetabs.com/v1/proxy/?quest=${encodeURIComponent(endpoint)}`
+                );
+            }
+        }
+
+        async function fetchLuaManifestFromKernelOS(appId) {
+            const endpoint = `https://kernelos.org/games/download.php?gen=1&id=${encodeURIComponent(appId)}`;
+            const payload = await fetchJsonGetWithProxyFallback(endpoint, "KernelOS");
+
+            const rawUrl =
+                payload && typeof payload.url === "string" ?
+                    payload.url.trim() :
+                    "";
+            if (!rawUrl) {
+                throw new Error("No signed URL returned for this AppID.");
+            }
+
+            const baseUrl =
+                rawUrl.startsWith("http") ?
+                    rawUrl :
+                    `https://kernelos.org${rawUrl.startsWith("/") ? "" : "/"}${rawUrl}`;
+            const nonce = Math.random().toString(36).slice(2, 10);
+            const sep = baseUrl.includes("?") ? "&" : "?";
+            return `${baseUrl}${sep}_=${nonce}`;
+        }
+
+        async function fetchLuaManifestFromFares(appId) {
+            const checkEndpoint = `https://www.fares.top/api/games/${encodeURIComponent(appId)}/check`;
+            const checkPayload = await fetchJsonGetWithProxyFallback(checkEndpoint, "fares.top check");
+            if (!checkPayload || checkPayload.exists !== true) {
+                throw new Error("fares.top does not list this AppID.");
+            }
+
+            const downloadEndpoint = `https://www.fares.top/api/games/${encodeURIComponent(appId)}/download`;
+            const readDownloadPayload = async (url, method = "GET") => {
+                const response = await fetch(url, {
+                    method,
+                    cache: "no-store",
+                    headers: {
+                        Accept: "application/json",
+                        "Content-Type": "application/json"
+                    }
+                });
+                if (!response.ok) {
+                    throw new Error(`fares.top download failed (${response.status})`);
+                }
+                const raw = await response.text();
+                return parseJsonText(raw, "fares.top download");
+            };
+
+            let payload;
+            try {
+                payload = await readDownloadPayload(downloadEndpoint, "POST");
+            } catch {
+                try {
+                    payload = await readDownloadPayload(downloadEndpoint, "GET");
+                } catch {
+                    payload = await readDownloadPayload(
+                        `https://api.codetabs.com/v1/proxy/?quest=${encodeURIComponent(downloadEndpoint)}`,
+                        "GET"
+                    );
+                }
+            }
+
+            const candidate =
+                typeof payload === "string" ?
+                    payload :
+                    payload?.downloadUrl || payload?.url || payload?.download_url || "";
+            const finalUrl = typeof candidate === "string" ? candidate.trim() : "";
+            if (!finalUrl) {
+                throw new Error("fares.top returned no usable download URL.");
+            }
+            return finalUrl;
+        }
+
+        async function fetchLuaManifestFromSteamML(appId) {
+            return `https://pub-5b6d3b7c03fd4ac1afb5bd3017850e20.r2.dev/${encodeURIComponent(appId)}.zip`;
+        }
+
+        function autoNormalizeManifestInput(announce = false) {
+            const inputEl = q("#lua-manifest-appid");
+            if (!inputEl) {
+                return "";
+            }
+            const extracted = extractSteamAppId(inputEl.value || "");
+            if (!extracted) {
+                return "";
+            }
+            if (inputEl.value.trim() !== extracted) {
+                inputEl.value = extracted;
+                if (announce) {
+                    setLuaManifestStatus(`Detected Steam AppID: ${extracted}`);
+                }
+            }
+            return extracted;
+        }
+
+        async function resolveLuaManifestById() {
+            const inputEl = q("#lua-manifest-appid");
+            const appId = autoNormalizeManifestInput(false);
+            if (!/^\d+$/.test(appId)) {
+                setLuaManifestResult("");
+                setLuaManifestStatus("Enter a valid numeric Steam AppID.", true);
+                return;
+            }
+            if (inputEl) {
+                inputEl.value = appId;
+            }
+
+            const providers = [
+                {
+                    key: "KernelOS",
+                    resolve: fetchLuaManifestFromKernelOS
+                },
+                {
+                    key: "fares.top",
+                    resolve: fetchLuaManifestFromFares
+                },
+                {
+                    key: "steamml.xyz",
+                    resolve: fetchLuaManifestFromSteamML
+                }
+            ];
+            const errors = [];
+            for (const provider of providers) {
+                try {
+                    setLuaManifestStatus(`Trying ${provider.key}...`);
+                    const finalUrl = await provider.resolve(appId);
+                    if (!finalUrl) {
+                        throw new Error("No URL returned.");
+                    }
+                    setLuaManifestResult(finalUrl, provider.key);
+                    setLuaManifestStatus(`Resolved via ${provider.key}.`);
+                    return;
+                } catch (error) {
+                    const message =
+                        error && typeof error.message === "string" ?
+                            error.message :
+                            "Unknown resolver error.";
+                    errors.push(`${provider.key}: ${message}`);
+                }
+            }
+            throw new Error(errors.join(" | "));
+        }
+
         const htmlVoidTags = new Set([
             "area",
             "base",
@@ -7027,6 +7349,87 @@
                     } finally {
                         bBF.disabled = false;
                         bBF.textContent = previousLabel;
+                    }
+                });
+            }
+
+            const luaManifestInput = q("#lua-manifest-appid");
+            const luaManifestGo = q("#lua-manifest-go");
+            const luaManifestOpen = q("#lua-manifest-open");
+            const luaManifestCopy = q("#lua-manifest-copy");
+            setLuaManifestResult("");
+            setLuaManifestStatus("Enter a Steam AppID, then resolve.");
+
+            if (luaManifestGo) {
+                const defaultLabel = luaManifestGo.textContent || "Resolve";
+                luaManifestGo.addEventListener("click", async (event) => {
+                    ripple(luaManifestGo, event);
+                    luaManifestGo.disabled = true;
+                    luaManifestGo.textContent = "Resolving...";
+                    try {
+                        await resolveLuaManifestById();
+                    } catch (error) {
+                        console.error(error);
+                        setLuaManifestResult("");
+                        setLuaManifestStatus(
+                            "Unable to resolve this AppID from any provider right now.",
+                            true
+                        );
+                    } finally {
+                        luaManifestGo.disabled = false;
+                        luaManifestGo.textContent = defaultLabel;
+                    }
+                });
+            }
+
+            if (luaManifestInput && luaManifestGo) {
+                luaManifestInput.addEventListener("paste", () => {
+                    window.setTimeout(() => {
+                        autoNormalizeManifestInput(true);
+                    }, 0);
+                });
+                luaManifestInput.addEventListener("blur", () => {
+                    autoNormalizeManifestInput(false);
+                });
+                luaManifestInput.addEventListener("keydown", (event) => {
+                    if (event.key === "Enter") {
+                        event.preventDefault();
+                        luaManifestGo.click();
+                    }
+                });
+            }
+
+            if (luaManifestOpen) {
+                luaManifestOpen.addEventListener("click", (event) => {
+                    ripple(luaManifestOpen, event);
+                    if (!luaManifestFinalUrl) {
+                        return;
+                    }
+                    window.open(luaManifestFinalUrl, "_blank", "noopener,noreferrer");
+                    setLuaManifestStatus(
+                        luaManifestProvider ?
+                            `Opened ${luaManifestProvider} link in a new tab.` :
+                            "Opened link in a new tab."
+                    );
+                });
+            }
+
+            if (luaManifestCopy) {
+                luaManifestCopy.addEventListener("click", async (event) => {
+                    ripple(luaManifestCopy, event);
+                    if (!luaManifestFinalUrl) {
+                        return;
+                    }
+                    try {
+                        await navigator.clipboard.writeText(luaManifestFinalUrl);
+                        setLuaManifestStatus(
+                            luaManifestProvider ?
+                                `${luaManifestProvider} URL copied.` :
+                                "URL copied."
+                        );
+                    } catch (error) {
+                        console.error(error);
+                        setLuaManifestStatus("Clipboard permission denied.", true);
                     }
                 });
             }
