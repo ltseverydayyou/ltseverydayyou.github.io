@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-02-28T20:21:41.540Z",
+  "fetchedAt": "2026-02-28T20:46:36.955Z",
   "data": [
     {
       "_id": "680eaddf8b44717c060fcf8d",
@@ -39,7 +39,9 @@
         "owner": "CG",
         "screenshots": [
           "https://cdn.weao.gg/slug/velocity/screenshot1.png",
-          "https://cdn.weao.gg/slug/velocity/screenshot2.png"
+          "https://cdn.weao.gg/slug/velocity/screenshot2.png",
+          "https://cdn.weao.gg/slug/velocity/screenshot3.png",
+          "https://cdn.weao.gg/slug/velocity/screenshot4.png"
         ]
       }
     },
@@ -387,7 +389,8 @@
         "logo": "https://cdn.weao.gg/slug/volcano/logo.png",
         "owner": "(Co)",
         "screenshots": [
-          "https://cdn.weao.gg/slug/volcano/screenshot1.png"
+          "https://cdn.weao.gg/slug/volcano/screenshot1.png",
+          "https://cdn.weao.gg/slug/volcano/screenshot2.png"
         ]
       }
     },
@@ -425,7 +428,9 @@
         "screenshots": [
           "https://cdn.weao.gg/slug/xeno/screenshot1.png",
           "https://cdn.weao.gg/slug/xeno/screenshot2.png",
-          "https://cdn.weao.gg/slug/xeno/screenshot3.png"
+          "https://cdn.weao.gg/slug/xeno/screenshot3.png",
+          "https://cdn.weao.gg/slug/xeno/screenshot4.png",
+          "https://cdn.weao.gg/slug/xeno/screenshot5.png"
         ]
       },
       "hidden": false
@@ -695,7 +700,8 @@
         "screenshots": [
           "https://cdn.weao.gg/slug/solara/screenshot1.png",
           "https://cdn.weao.gg/slug/solara/screenshot2.png",
-          "https://cdn.weao.gg/slug/solara/screenshot3.png"
+          "https://cdn.weao.gg/slug/solara/screenshot3.png",
+          "https://cdn.weao.gg/slug/solara/screenshot4.png"
         ]
       }
     },
