@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-03-01T21:19:53.241Z",
+  "fetchedAt": "2026-03-01T21:44:00.614Z",
   "data": [
     {
       "_id": "680eaddf8b44717c060fcf8d",
@@ -520,8 +520,8 @@
       "suncPercentage": 98,
       "uncPercentage": 99,
       "sunc": {
-        "suncScrap": "wZ77JKOJcSHShEX9",
-        "suncKey": "LbkqrUQyLSxjNo3LcUO7XQcEa0ama0as"
+        "suncScrap": "FeAcn1vkz6qSkFSD",
+        "suncKey": "bdbA94gH0eHL2VeSdKlFBgQYoff3NU6c"
       },
       "__v": 1,
       "recommendedReason": {
@@ -1457,14 +1457,14 @@
     {
       "_id": "69a4acadfa8a3af13c8930a9",
       "title": "Opiumware",
-      "version": "709.0870",
-      "updatedDate": "02/18/2026 at 8:15 PM UTC",
+      "version": "v2.2.2",
+      "updatedDate": "03/01/2026 at 9:24 PM UTC",
       "uncStatus": true,
       "free": true,
       "detected": false,
-      "rbxversion": "version-b29f0194bebd445b",
-      "updateStatus": false,
-      "websitelink": "",
+      "rbxversion": "version-99769ee4146d4ccf",
+      "updateStatus": true,
+      "websitelink": "https://discord.gg/opiumware",
       "discordlink": "https://discord.gg/opiumware",
       "beta": false,
       "platform": "Mac",
@@ -1485,20 +1485,16 @@
       },
       "purchaselink": "",
       "keysystem": false,
-      "trackerId": "",
+      "trackerId": "WEAO442fb725",
       "slug": {
         "fullDescription": "",
         "logo": "https://cdn.weao.gg/slug/opiumware/logo.png",
         "owner": "norby",
         "screenshots": [
-          "https://cdn.weao.gg/slug/opiumware/screenshot1.png",
-          "https://cdn.weao.gg/slug/opiumware/screenshot2.png",
-          "https://cdn.weao.gg/slug/opiumware/screenshot3.png",
-          "https://cdn.weao.gg/slug/opiumware/screenshot4.png",
-          "https://cdn.weao.gg/slug/opiumware/screenshot5.png"
+          "https://cdn.weao.gg/slug/opiumware/screenshot1.png"
         ]
       },
-      "hidden": true
+      "hidden": false
     }
   ]
 }
