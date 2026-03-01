@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-03-01T20:48:33.889Z",
+  "fetchedAt": "2026-03-01T21:19:53.241Z",
   "data": [
     {
       "_id": "680eaddf8b44717c060fcf8d",
@@ -34,7 +34,7 @@
       "clientmods": true,
       "trackerId": "WEAO4a1e0747",
       "slug": {
-        "fullDescription": "Velocity is a free keyless exploit with 94% sUNC, it is a great option for new users who do not want to deal with a key system but want a decent exploiting experience. Some users do report crashes, but Velocity does receive lots of updates with fixes.",
+        "fullDescription": "No description currently available. Check back soon!",
         "logo": "https://cdn.weao.gg/slug/velocity/logo.png",
         "owner": "CG",
         "screenshots": [
@@ -78,7 +78,7 @@
       },
       "suncPercentage": 96,
       "slug": {
-        "fullDescription": "",
+        "fullDescription": "No description currently available. Check back soon!",
         "logo": "https://cdn.weao.gg/slug/codex/logo.png",
         "owner": "Furky",
         "screenshots": [
@@ -121,7 +121,7 @@
       },
       "trackerId": "WEAO0ce4c1ac",
       "slug": {
-        "fullDescription": "",
+        "fullDescription": "No description currently available. Check back soon!",
         "logo": "https://cdn.weao.gg/slug/cryptic/logo.png",
         "owner": "Reaper",
         "screenshots": [
@@ -167,7 +167,10 @@
       },
       "trackerId": "22222",
       "clientmods": true,
-      "hidden": true
+      "hidden": true,
+      "slug": {
+        "fullDescription": "No description currently available. Check back soon!"
+      }
     },
     {
       "_id": "6756857399f246351c00743b",
@@ -202,7 +205,7 @@
       "keysystem": true,
       "trackerId": "WEAO0aab3ef0",
       "slug": {
-        "fullDescription": "Swift is a free exploit featuring 100% sUNC, multi-instance, and a great UI. It used to get fast updates (often right after Zenith, supposedly from the same module developers), but updates stopped soon after Zenith V2 introduced the client-modification bypass. Swift has not received any updates in a bit but is still regarded as one of the best free exploits.",
+        "fullDescription": "No description currently available. Check back soon!",
         "logo": "https://cdn.weao.gg/slug/swift/logo.png",
         "owner": "Bass",
         "screenshots": [
@@ -236,7 +239,10 @@
       "recommendedReason": {
         "features": []
       },
-      "trackerId": "WEAO1181f437"
+      "trackerId": "WEAO1181f437",
+      "slug": {
+        "fullDescription": "No description currently available. Check back soon!"
+      }
     },
     {
       "_id": "67d6005efa8c791236079278",
@@ -272,7 +278,7 @@
       "clientmods": true,
       "trackerId": "WEAO00393718",
       "slug": {
-        "fullDescription": "Potassium is a premium exploit that is only $22.99 for a lifetime subscription, a great deal compared to other exploits on the market. Features 100% sUNC, a working client-modification bypass, and a pretty nice UI. Great for new users who want a cheap option or script developers who just want an exploit for casual developing.",
+        "fullDescription": "No description currently available. Check back soon!",
         "logo": "https://cdn.weao.gg/slug/potassium/logo.png",
         "owner": "perm, v03",
         "screenshots": [
@@ -309,7 +315,10 @@
       "recommendedReason": {
         "features": []
       },
-      "trackerId": "WEAO6c35cab4"
+      "trackerId": "WEAO6c35cab4",
+      "slug": {
+        "fullDescription": "No description currently available. Check back soon!"
+      }
     },
     {
       "_id": "662ae7576238b7f2082f253b",
@@ -347,7 +356,10 @@
       "longestRunning": true,
       "clientmods": true,
       "trackerId": "WEAO2c8e5827",
-      "hidden": false
+      "hidden": false,
+      "slug": {
+        "fullDescription": "No description currently available. Check back soon!"
+      }
     },
     {
       "_id": "681baa53ab565e11d3feba0e",
@@ -385,7 +397,7 @@
       "trackerId": "WEAO57c866d0",
       "cost": "$5.97 Weekly",
       "slug": {
-        "fullDescription": "",
+        "fullDescription": "No description currently available. Check back soon!",
         "logo": "https://cdn.weao.gg/slug/volcano/logo.png",
         "owner": "(Co)",
         "screenshots": [
@@ -422,7 +434,7 @@
       "clientmods": true,
       "trackerId": "WEAO08b7927f",
       "slug": {
-        "fullDescription": "Xeno is a keyless external executor much like Solara, because it’s missing functions it lacks script support. It sports a slightly higher UNC percentage compared to Solara, but it’s basically the same and crashes on the sUNC test. Still a great option for beginners unfamiliar with other exploits.",
+        "fullDescription": "No description currently available. Check back soon!",
         "logo": "https://cdn.weao.gg/slug/xeno/logo.png",
         "owner": "Rizve",
         "screenshots": [
@@ -470,7 +482,7 @@
       "clientmods": false,
       "trackerId": "WEAO4916b797",
       "slug": {
-        "fullDescription": "Seliware is a cheap premium exploit that’s become popular for budget users, it’s only $3.99 a week, so it’s definitely one of the cheapest paid options. It updates fairly quickly and has a great-looking modern UI too. sits around 94% sUNC, unfortunately it is detected and can result in you getting banned. So always take normal precautions and use an alt account. Pretty good value for a paid exploit.",
+        "fullDescription": "No description currently available. Check back soon!",
         "logo": "https://cdn.weao.gg/slug/seliware/logo.png",
         "owner": "Dx",
         "screenshots": [
@@ -518,7 +530,7 @@
       "hidden": false,
       "trackerId": "WEAO0fc0936f",
       "slug": {
-        "fullDescription": "Volt (previously AWP.GG) is a premium Windows executor that features a working Hyperion emulator. Costs $5.99 per week (~$20 per month) and feels very premium compared to other options currently in the market.",
+        "fullDescription": "No description currently available. Check back soon!",
         "logo": "https://cdn.weao.gg/slug/volt/logo.png",
         "owner": "Volt Team",
         "screenshots": [
@@ -558,7 +570,10 @@
       "recommendedReason": {
         "features": []
       },
-      "trackerId": "WEAO6ee0e3b5"
+      "trackerId": "WEAO6ee0e3b5",
+      "slug": {
+        "fullDescription": "No description currently available. Check back soon!"
+      }
     },
     {
       "_id": "67e46208b0f3bdbd0d867c29",
@@ -585,7 +600,10 @@
         "features": []
       },
       "trackerId": "WEAO56ab34f1",
-      "hidden": true
+      "hidden": true,
+      "slug": {
+        "fullDescription": "No description currently available. Check back soon!"
+      }
     },
     {
       "_id": "684aebf0e9ebf7df970468ec",
@@ -612,7 +630,10 @@
         "features": []
       },
       "trackerId": "WEAO21394b59",
-      "hidden": true
+      "hidden": true,
+      "slug": {
+        "fullDescription": "No description currently available. Check back soon!"
+      }
     },
     {
       "_id": "67c8a2cb376f9e598b466705",
@@ -650,7 +671,7 @@
       "clientmods": true,
       "trackerId": "WEAO5caeb4a7",
       "slug": {
-        "fullDescription": "SirHurt is a premium exploit that has been around since 2015, it is the cheapest subscription option for a Windows exploit with it costing $2.80 per week. Users that owned a lifetime subscription pre-hyperion still have access to this exploit. Overall a solid option if you previously owned SirHurt. ",
+        "fullDescription": "No description currently available. Check back soon!",
         "logo": "https://cdn.weao.gg/slug/sirhurt/logo.png",
         "owner": "spook",
         "screenshots": [
@@ -696,7 +717,7 @@
       "slug": {
         "logo": "https://cdn.weao.gg/slug/solara/logo.png",
         "owner": "Quivings",
-        "fullDescription": "Solara is one of the first exploits to release Post-Hyperion. It does lack some script support due to its nature of being an \"External Executor\" but receives fast updates after Roblox updates and is a reliable option for exploiters unfamiliar with other exploits.",
+        "fullDescription": "No description currently available. Check back soon!",
         "screenshots": [
           "https://cdn.weao.gg/slug/solara/screenshot1.png",
           "https://cdn.weao.gg/slug/solara/screenshot2.png",
@@ -738,7 +759,7 @@
       "keysystem": true,
       "trackerId": "WEAO6f97651a",
       "slug": {
-        "fullDescription": "Hydrogen is a free Mac exploit featuring a keysystem. Known for its fast updates following Roblox updates, it includes a decompiler and an 94% sUNC environment. A trusted choice for Mac users, especially for being one of the first undetected Mac exploits, Hydrogen has established credibility through its long-standing presence on Android and Mac prior to Hyperion, with Android discontinuing shortly afterwards.  ",
+        "fullDescription": "No description currently available. Check back soon!",
         "logo": "https://cdn.weao.gg/slug/hydrogen/logo.png",
         "owner": "xgladius",
         "screenshots": [
@@ -776,7 +797,7 @@
       },
       "trackerId": "WEAO622afd8b",
       "slug": {
-        "fullDescription": "Ronin",
+        "fullDescription": "No description currently available. Check back soon!",
         "logo": "https://cdn.weao.gg/slug/ronin/logo.png",
         "owner": "Reaper",
         "screenshots": [
@@ -814,7 +835,10 @@
       "recommendedReason": {
         "features": []
       },
-      "trackerId": "WEAO7650fcf2"
+      "trackerId": "WEAO7650fcf2",
+      "slug": {
+        "fullDescription": "No description currently available. Check back soon!"
+      }
     },
     {
       "_id": "66ee1eafe70ddffe81ca0f0b",
@@ -848,7 +872,7 @@
       "keysystem": true,
       "trackerId": "WEAO74bee327",
       "slug": {
-        "fullDescription": "Delta",
+        "fullDescription": "No description currently available. Check back soon!",
         "logo": "https://cdn.weao.gg/slug/delta/logo.png",
         "owner": "lxnny, mlemix",
         "screenshots": [
@@ -895,7 +919,7 @@
       "clientmods": false,
       "trackerId": "WEAO5cb33bac",
       "slug": {
-        "fullDescription": "Bunni.fun started as Visual and was later rebranded. Some updates can take a bit longer after Roblox updates, but it otherwise performs well and feels polished. It includes a decompiler, 100% sUNC, and is a solid choice if you want a clean interface and a decompiler. Bunni.fun uses a key system (you can buy a key to bypass it if you want). Keep in mind that it is currently detected, and you should always take normal precautions and use an alt account.",
+        "fullDescription": "No description currently available. Check back soon!",
         "logo": "https://cdn.weao.gg/slug/bunnilol/logo.png",
         "owner": "Peyton",
         "screenshots": [
@@ -936,7 +960,7 @@
       "keysystem": true,
       "trackerId": "WEAO6ef12cfe",
       "slug": {
-        "fullDescription": "",
+        "fullDescription": "No description currently available. Check back soon!",
         "logo": "https://cdn.weao.gg/slug/krnl/logo.png",
         "owner": "valentino, Edit, blackdotgrid",
         "screenshots": [
@@ -979,7 +1003,7 @@
       "keysystem": true,
       "trackerId": "WEAO719ba76e",
       "slug": {
-        "fullDescription": "Delta",
+        "fullDescription": "No description currently available. Check back soon!",
         "logo": "https://cdn.weao.gg/slug/delta/logo.png",
         "owner": "lxnny, mlemix",
         "screenshots": [
@@ -1022,7 +1046,7 @@
       "keysystem": true,
       "trackerId": "WEAO6f0d5c00",
       "slug": {
-        "fullDescription": "",
+        "fullDescription": "No description currently available. Check back soon!",
         "logo": "https://cdn.weao.gg/slug/krnl/logo.png",
         "owner": "valentino, Edit, blackdotgrid",
         "screenshots": [
@@ -1059,7 +1083,7 @@
       },
       "trackerId": "WEAO30580ddb",
       "slug": {
-        "fullDescription": "",
+        "fullDescription": "No description currently available. Check back soon!",
         "logo": "https://cdn.weao.gg/slug/serotonin/logo.png",
         "owner": "fope, Auti",
         "screenshots": [
@@ -1093,7 +1117,10 @@
         "features": []
       },
       "trackerId": "WEAO4e37a618",
-      "hidden": true
+      "hidden": true,
+      "slug": {
+        "fullDescription": "No description currently available. Check back soon!"
+      }
     },
     {
       "_id": "68a8bd0d2ea31d0acaaf882e",
@@ -1127,7 +1154,7 @@
       "clientmods": false,
       "trackerId": "WEAO45881e8e",
       "slug": {
-        "fullDescription": "Nucleus is a free exploit that used to be owned by Dx (Seliware), ownership was given to Takuya but the module stayed the same, so the experience remains familiar to longtime users. It has a decompiler and 97% sUNC, making it a great pick for people who want a reliable decompiler and smooth scripting experience without paying for keys (Nucleus is keyless). Keep in mind there is no client-modification bypass as of now.",
+        "fullDescription": "No description currently available. Check back soon!",
         "logo": "https://cdn.weao.gg/slug/nucleus/logo.png",
         "owner": "Takuya",
         "screenshots": [
@@ -1165,7 +1192,7 @@
         "features": []
       },
       "slug": {
-        "fullDescription": "",
+        "fullDescription": "No description currently available. Check back soon!",
         "logo": "",
         "owner": "GRH",
         "screenshots": [
@@ -1202,7 +1229,7 @@
       },
       "trackerId": "WEAO0eb0e6ba",
       "slug": {
-        "fullDescription": "",
+        "fullDescription": "No description currently available. Check back soon!",
         "logo": "https://cdn.weao.gg/slug/yerba/logo.png",
         "owner": "slamfrag, KANKAN",
         "screenshots": [
@@ -1236,7 +1263,10 @@
       "recommendedReason": {
         "features": []
       },
-      "trackerId": "WEAO4ef92j18"
+      "trackerId": "WEAO4ef92j18",
+      "slug": {
+        "fullDescription": "No description currently available. Check back soon!"
+      }
     },
     {
       "_id": "69264e71687b45f8aa5bfc23",
@@ -1270,7 +1300,10 @@
       "recommendedReason": {
         "features": []
       },
-      "cost": "$10 Monthly (Private)"
+      "cost": "$10 Monthly (Private)",
+      "slug": {
+        "fullDescription": "No description currently available. Check back soon!"
+      }
     },
     {
       "_id": "692794d789eb1e034ad699c3",
@@ -1305,7 +1338,10 @@
         "features": []
       },
       "trackerId": "WEAO10179289",
-      "clientmods": true
+      "clientmods": true,
+      "slug": {
+        "fullDescription": "No description currently available. Check back soon!"
+      }
     },
     {
       "_id": "6949f6f40260ad9e36c736ff",
@@ -1338,7 +1374,10 @@
         "suncScrap": "",
         "suncKey": ""
       },
-      "suncPercentage": 98
+      "suncPercentage": 98,
+      "slug": {
+        "fullDescription": "No description currently available. Check back soon!"
+      }
     },
     {
       "_id": "6949f9ee0260ad9e36c73700",
@@ -1364,7 +1403,10 @@
         "features": []
       },
       "trackerId": "WEAO957nhh9s",
-      "websitelink": "https://discord.gg/RZgUP8UZQ3"
+      "websitelink": "https://discord.gg/RZgUP8UZQ3",
+      "slug": {
+        "fullDescription": "No description currently available. Check back soon!"
+      }
     },
     {
       "_id": "696e6eb415b7ec43591a186a",
@@ -1402,7 +1444,7 @@
       "clientmods": true,
       "trackerId": "WEAO10jteg89",
       "slug": {
-        "fullDescription": "",
+        "fullDescription": "No description currently available. Check back soon!",
         "logo": "https://cdn.weao.gg/slug/cryptic/logo.png",
         "owner": "Reaper",
         "screenshots": [
@@ -1411,6 +1453,52 @@
         ]
       },
       "cost": "$4.99 Weekly"
+    },
+    {
+      "_id": "69a4acadfa8a3af13c8930a9",
+      "title": "Opiumware",
+      "version": "709.0870",
+      "updatedDate": "02/18/2026 at 8:15 PM UTC",
+      "uncStatus": true,
+      "free": true,
+      "detected": false,
+      "rbxversion": "version-b29f0194bebd445b",
+      "updateStatus": false,
+      "websitelink": "",
+      "discordlink": "https://discord.gg/opiumware",
+      "beta": false,
+      "platform": "Mac",
+      "roleId": "1408520149325189140",
+      "index": 3,
+      "extype": "mexecutor",
+      "decompiler": true,
+      "multiInject": true,
+      "suncPercentage": 100,
+      "uncPercentage": 99,
+      "sunc": {
+        "suncScrap": "hrlt8JjLPAmJayV0",
+        "suncKey": "lGUNyE3H0T8blB9Z6Dph97Va8lnroHwi"
+      },
+      "__v": 1,
+      "recommendedReason": {
+        "features": []
+      },
+      "purchaselink": "",
+      "keysystem": false,
+      "trackerId": "",
+      "slug": {
+        "fullDescription": "",
+        "logo": "https://cdn.weao.gg/slug/opiumware/logo.png",
+        "owner": "norby",
+        "screenshots": [
+          "https://cdn.weao.gg/slug/opiumware/screenshot1.png",
+          "https://cdn.weao.gg/slug/opiumware/screenshot2.png",
+          "https://cdn.weao.gg/slug/opiumware/screenshot3.png",
+          "https://cdn.weao.gg/slug/opiumware/screenshot4.png",
+          "https://cdn.weao.gg/slug/opiumware/screenshot5.png"
+        ]
+      },
+      "hidden": true
     }
   ]
 }
