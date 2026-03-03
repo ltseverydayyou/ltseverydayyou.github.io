@@ -24,7 +24,6 @@
     <script defer src="https://blackmiaool.com/lua-beautify/lua5.1.5.min.js"></script>
     <script defer src="https://blackmiaool.com/lua-beautify/example.lua5.1.js"></script>
     <script src="https://js.hcaptcha.com/1/api.js?render=explicit" async defer></script>
-    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" async defer></script>
 
     <style>
         :root {
@@ -2855,10 +2854,6 @@
             padding: 10px;
         }
 
-        .bypass-hub__captcha--compact {
-            min-height: 66px;
-        }
-
         .bypass-hub__status {
             margin: 0;
             padding: 12px 14px;
@@ -4131,19 +4126,10 @@
                                 <strong>bypass.city</strong>
                                 <button class="pl" type="button" id="bypass-run-city">Run</button>
                             </div>
-                            <div class="bypass-hub__captcha-shell">
-                                <div class="bypass-hub__captcha-head">
-                                    <strong>Turnstile</strong>
-                                    <span>Solve this before running bypass.city.</span>
-                                </div>
-                                <div id="bypass-city-captcha" class="bypass-hub__captcha bypass-hub__captcha--compact">
-                                    Loading Turnstile...
-                                </div>
-                            </div>
                             <p class="bypass-hub__note">
-                                This provider currently uses
-                                <code>POST https://api2.bypass.city/bypass</code> with a Turnstile token header and no
-                                API key flow exposed on the public site.
+                                Cloudflare Turnstile on <code>bypass.city</code> is bound to their own domain, so it
+                                cannot be rendered reliably inside this page. This button opens the official
+                                <code>https://bypass.city/bypass?bypass=...</code> flow in a new tab instead.
                             </p>
                         </div>
                     </div>
@@ -4441,8 +4427,6 @@
             busy: false,
             izenWidgetId: null,
             izenToken: "",
-            cityWidgetId: null,
-            cityToken: "",
             resultLinks: {
                 bypassVip: "",
                 izen: "",
@@ -4479,8 +4463,7 @@
                         captcha: q("#bypass-izen-captcha")
                     },
                     city: {
-                        run: q("#bypass-run-city"),
-                        captcha: q("#bypass-city-captcha")
+                        run: q("#bypass-run-city")
                     }
                 },
                 results: {
@@ -4770,28 +4753,6 @@
             });
         }
 
-        async function ensureBypassHubTurnstile(timeoutMs = 20000) {
-            if (window.turnstile) {
-                return window.turnstile;
-            }
-
-            const started = Date.now();
-            return new Promise((resolve, reject) => {
-                const timer = window.setInterval(() => {
-                    if (window.turnstile) {
-                        window.clearInterval(timer);
-                        resolve(window.turnstile);
-                        return;
-                    }
-
-                    if (Date.now() - started >= timeoutMs) {
-                        window.clearInterval(timer);
-                        reject(new Error("Cloudflare Turnstile did not finish loading."));
-                    }
-                }, 120);
-            });
-        }
-
         async function ensureIzenCaptchaWidget() {
             if (Number.isInteger(bypassHubState.izenWidgetId)) {
                 return bypassHubState.izenWidgetId;
@@ -4823,38 +4784,6 @@
             return bypassHubState.izenWidgetId;
         }
 
-        async function ensureBypassCityTurnstileWidget() {
-            if (Number.isInteger(bypassHubState.cityWidgetId)) {
-                return bypassHubState.cityWidgetId;
-            }
-
-            const elements = getBypassHubElements();
-            const mount = elements?.providers?.city?.captcha;
-            if (!mount) {
-                throw new Error("bypass.city Turnstile mount is missing.");
-            }
-
-            const turnstile = await ensureBypassHubTurnstile();
-            mount.textContent = "";
-            bypassHubState.cityWidgetId = turnstile.render(mount, {
-                sitekey: "0x4AAAAAAAGzw6rXeQWJ_y2P",
-                theme: "auto",
-                callback: (token) => {
-                    bypassHubState.cityToken = token || "";
-                    setBypassHubStatus("bypass.city Turnstile solved. You can run it now.");
-                },
-                "expired-callback": () => {
-                    bypassHubState.cityToken = "";
-                    setBypassHubStatus("bypass.city Turnstile expired. Solve it again.", true);
-                },
-                "error-callback": () => {
-                    bypassHubState.cityToken = "";
-                    setBypassHubStatus("bypass.city Turnstile failed to render. Reload and try again.", true);
-                }
-            });
-            return bypassHubState.cityWidgetId;
-        }
-
         function resetIzenCaptcha() {
             if (!Number.isInteger(bypassHubState.izenWidgetId) || !window.hcaptcha) {
                 bypassHubState.izenToken = "";
@@ -4864,20 +4793,6 @@
             bypassHubState.izenToken = "";
             try {
                 window.hcaptcha.reset(bypassHubState.izenWidgetId);
-            } catch {
-                // Ignore reset failures.
-            }
-        }
-
-        function resetBypassCityTurnstile() {
-            if (!Number.isInteger(bypassHubState.cityWidgetId) || !window.turnstile) {
-                bypassHubState.cityToken = "";
-                return;
-            }
-
-            bypassHubState.cityToken = "";
-            try {
-                window.turnstile.reset(bypassHubState.cityWidgetId);
             } catch {
                 // Ignore reset failures.
             }
@@ -4958,42 +4873,21 @@
             );
         }
 
+        function buildBypassCityUrl(url) {
+            return `https://bypass.city/bypass?bypass=${encodeURIComponent(url)}`;
+        }
+
         async function requestBypassCity(url) {
-            await ensureBypassCityTurnstileWidget();
-            if (!bypassHubState.cityToken) {
-                throw new Error("Solve the bypass.city Turnstile first.");
-            }
-
-            const started = performance.now();
-            const response = await fetch("https://api2.bypass.city/bypass", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    token: bypassHubState.cityToken,
-                    "x-captcha-provider": "TURNSTILE"
-                },
-                body: JSON.stringify({
-                    url
-                })
-            });
-
-            const payload = await parseBypassHubResponse(response);
-            resetBypassCityTurnstile();
-            if (
-                payload &&
-                typeof payload === "object" &&
-                !Array.isArray(payload) &&
-                payload.message &&
-                payload.result == null &&
-                payload.data == null
-            ) {
-                throw new Error(String(payload.message));
-            }
-            return normalizeBypassHubResponse(
-                response,
-                payload,
-                formatBypassHubDuration(performance.now() - started)
-            );
+            const targetUrl = buildBypassCityUrl(url);
+            window.open(targetUrl, "_blank", "noopener,noreferrer");
+            return {
+                success: true,
+                text:
+                "Opened the official bypass.city flow in a new tab.\n" +
+                "Their Cloudflare Turnstile is tied to bypass.city, so it cannot be embedded on this domain.",
+                time: "External handoff",
+                openUrl: targetUrl
+            };
         }
 
         async function runBypassHubProvider(providerKey, url) {
@@ -5019,8 +4913,6 @@
             } catch (error) {
                 if (providerKey === "izen") {
                     resetIzenCaptcha();
-                } else if (providerKey === "city") {
-                    resetBypassCityTurnstile();
                 }
 
                 const message = error instanceof Error ? error.message : "Request failed.";
@@ -5233,14 +5125,6 @@
                     }
                 });
 
-            ensureBypassHubTurnstile(30000)
-                .then(() => Promise.allSettled([ensureBypassCityTurnstileWidget()]))
-                .catch(() => {
-                    const captchaMount = elements.providers.city.captcha;
-                    if (captchaMount) {
-                        captchaMount.textContent = "Turnstile failed to load.";
-                    }
-                });
         }
 
         function resetLuaBeautifier() {
