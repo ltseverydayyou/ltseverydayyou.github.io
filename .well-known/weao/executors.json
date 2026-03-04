@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-03-04T17:57:01.455Z",
+  "fetchedAt": "2026-03-04T18:54:32.859Z",
   "data": [
     {
       "_id": "680eaddf8b44717c060fcf8d",
@@ -424,7 +424,7 @@
       "index": 11,
       "decompiler": true,
       "multiInject": true,
-      "suncPercentage": 27,
+      "suncPercentage": 32,
       "uncPercentage": 82,
       "__v": 1,
       "recommendedReason": {
@@ -445,7 +445,11 @@
           "https://cdn.weao.gg/slug/xeno/screenshot5.png"
         ]
       },
-      "hidden": false
+      "hidden": false,
+      "sunc": {
+        "suncScrap": "LIQQmgTeonzdhfjH",
+        "suncKey": "WI3hPM0Ad7VWhOoeUUyGqFNwpDhKcuI3"
+      }
     },
     {
       "_id": "671411144ca6cb25603cc3b0",
