@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-03-04T22:49:28.021Z",
+  "fetchedAt": "2026-03-04T23:26:55.267Z",
   "data": [
     {
       "_id": "680eaddf8b44717c060fcf8d",
@@ -278,7 +278,7 @@
       "clientmods": true,
       "trackerId": "WEAO00393718",
       "slug": {
-        "fullDescription": "No description currently available. Check back soon!",
+        "fullDescription": "Potassium is a lifetime premium Windows script executor costing $22.99, featuring: \n\n* Simple, clean executor interface/internal executor\n* 100% sUNC\n* Fast updates under normal Roblox update conditions\n* Comes with a decompiler built in and supports Multi-Instance\n\n! Things to keep in mind: \n\n! This exploit uses **kernel-level injection**, meaning that after using it, you will need to restart your PC to play games with kernel-level anticheats. This could also cause rare issues you wouldn’t normally see on a user-mode executor (BSODs, weird memory errors, etc.).\n\n! This exploit has been **detected** in the past due to certain exploit functions, but those functions have been fixed. You should still keep this in mind when testing sUNC scores.\n\nOtherwise, this exploit is a very good deal compared to other subscription-based exploits. A good exploit environment for developers on a budget. Offers decent stability for most users, but for the best experience, we recommend using [Windows 11](https://www.microsoft.com/en-us/software-download/windows11).",
         "logo": "https://cdn.weao.gg/slug/potassium/logo.png",
         "owner": "perm, v03",
         "screenshots": [
@@ -397,7 +397,7 @@
       "trackerId": "WEAO57c866d0",
       "cost": "$5.97 Weekly",
       "slug": {
-        "fullDescription": "No description currently available. Check back soon!",
+        "fullDescription": "Volcano is a premium Windows script executor developed by Co, costing $5.97 weekly, featuring: \n\n* Clean executor interface\n* SysGuard (Cheatbuddy’s sandboxing solution)\n* 96% sUNC\n* Decent update speed under normal Roblox update conditions\n* Comes with a decompiler built in and supports Multi-Instance\n\nVolcano originally operated as a Freemium exploit, but after SysGuard was implemented, it turned to a subscription-based model. \n\n! Things to keep in mind: \n\n! Previously, Volcano operated under the name **Electron** (the same one from **Pre-Hyperion/UWP**) until releasing multiple times Post-Hyperion and facing banwaves. Existing Electron customers were compensated with a Lifetime Volcano key, and since then, no banwaves have occurred due to client-modification detections being implemented in Roblox after the Hunt event.",
         "logo": "https://cdn.weao.gg/slug/volcano/logo.png",
         "owner": "(Co)",
         "screenshots": [
@@ -534,7 +534,7 @@
       "hidden": false,
       "trackerId": "WEAO0fc0936f",
       "slug": {
-        "fullDescription": "No description currently available. Check back soon!",
+        "fullDescription": "Volt (previously AWP.GG) is a premium Windows script executor costing $5.99 weekly, featuring: \n\n* Working Hyperion Emulation\n* VSCode IDE Style UI\n* 98% sUNC (Uses Medal for the decompiler, causing it not to get 100%)\n* Optimized Multi-Instance (Be sure to check out Volt’s tiers or consider purchasing the farmer package directly on [VOLT.BZ](https://volt.bz), as they have an instance cap on their normal tiers!)\n* Fast updates under normal Roblox update conditions\n\n! Things to keep in mind: \n\n! While under the AWP.GG name, this exploit had a **long downtime period**, but after rebranding (And possibly switching developers), all existing users were compensated, and it has been reliably updating ever since. \n\nFor a better decompilation experience, consider purchasing [Oracle Decompiler](https://discord.gg/decompiler) for $11.63 alongside it, but for most cases, [Medal Decompiler](https://github.com/Stefanuk12/medal-decompiler) serves just fine. ",
         "logo": "https://cdn.weao.gg/slug/volt/logo.png",
         "owner": "Volt Team",
         "screenshots": [
