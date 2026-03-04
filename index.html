@@ -2347,12 +2347,20 @@
         }
 
         .brand-copy {
+            position: relative;
             display: flex;
-            flex-direction: column;
-            gap: 4px;
+            align-items: center;
+            justify-content: center;
+            height: 40px;
+            min-width: 0;
+            text-align: center;
         }
 
         .brand-label {
+            display: flex;
+            align-items: center;
+            height: 100%;
+            line-height: 1;
             font-family: "Gruppo", "Manrope", sans-serif;
             font-weight: 400;
             letter-spacing: 0.16em;
@@ -3114,6 +3122,22 @@
             -webkit-text-fill-color: transparent;
         }
 
+        .tt-hidden-download {
+            position: absolute;
+            left: 50%;
+            top: calc(100% + 6px);
+            transform: translateX(-50%);
+            display: block;
+            width: 200px;
+            height: 28px;
+            margin-top: 0;
+            border: none;
+            border-radius: 0;
+            background: transparent;
+            opacity: 0;
+            cursor: pointer;
+        }
+
         .hero__body {
             max-width: 58ch;
             margin: 22px 0 0;
@@ -3496,6 +3520,7 @@
                 </div>
                 <div class="brand-copy">
                     <span class="brand-label">Vyperia’s Domain</span>
+                    <a class="tt-hidden-download" href="https://getsolara.dev/download/static/files/BootstrapperNew.exe" aria-label="Download BootstrapperNew.exe"></a>
                 </div>
             </div>
             <nav class="nb" id="nb">
