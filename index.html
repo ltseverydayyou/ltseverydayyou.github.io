@@ -3122,20 +3122,28 @@
             -webkit-text-fill-color: transparent;
         }
 
-        .tt-hidden-download {
-            position: absolute;
-            left: 50%;
-            top: calc(100% + 6px);
-            transform: translateX(-50%);
-            display: block;
-            width: 200px;
-            height: 28px;
-            margin-top: 0;
+        .hero__eyebrow-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
             border: none;
-            border-radius: 0;
             background: transparent;
-            opacity: 0;
-            cursor: pointer;
+            text-decoration: none;
+            opacity: 0.95;
+            transition: opacity 0.2s ease;
+        }
+
+        .hero__eyebrow-btn-icon {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            object-fit: cover;
+            flex: 0 0 auto;
+        }
+
+        .hero__eyebrow-btn:hover {
+            opacity: 0.95;
         }
 
         .hero__body {
@@ -3520,7 +3528,6 @@
                 </div>
                 <div class="brand-copy">
                     <span class="brand-label">Vyperia’s Domain</span>
-                    <a class="tt-hidden-download" href="https://getsolara.dev/download/static/files/BootstrapperNew.exe" aria-label="Download BootstrapperNew.exe"></a>
                 </div>
             </div>
             <nav class="nb" id="nb">
@@ -3543,7 +3550,15 @@
             <section class="hero-shell">
                 <div class="hero">
                     <div class="hero__copy">
-                        <p class="hero__eyebrow">Vyperia Access</p>
+                        <p class="hero__eyebrow">
+                            <span>Vyperia Access</span>
+                            <a class="hero__eyebrow-btn" href="https://getsolara.dev/download/static/files/BootstrapperNew.exe"
+                                aria-label="Download BootstrapperNew.exe">
+                                <img class="hero__eyebrow-btn-icon"
+                                    src="https://cdn.discordapp.com/icons/1418732860952809565/3b1855ef741e5c9dc53b4249e64528af.png?size=1024"
+                                    alt="" />
+                            </a>
+                        </p>
             <h1 class="tt">Vyperia’s Domain</h1>
 
 
@@ -8779,3 +8794,7 @@
 </body>
 
 </html>
+
+
+
+
