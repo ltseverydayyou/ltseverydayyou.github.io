@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-03-04T23:26:55.267Z",
+  "fetchedAt": "2026-03-04T23:52:08.504Z",
   "data": [
     {
       "_id": "680eaddf8b44717c060fcf8d",
@@ -17,7 +17,7 @@
       "platform": "Windows",
       "extype": "wexecutor",
       "roleId": "1366164709996363988",
-      "index": 7,
+      "index": 6,
       "elementCertified": true,
       "decompiler": true,
       "multiInject": true,
@@ -1428,13 +1428,13 @@
       "platform": "Windows",
       "extype": "wexecutor",
       "roleId": "1463328899785031776",
-      "index": 6,
+      "index": 7,
       "elementCertified": true,
       "decompiler": true,
       "multiInject": true,
       "suncPercentage": 100,
       "uncPercentage": 99,
-      "hidden": false,
+      "hidden": true,
       "sunc": {
         "suncScrap": "bCuqmw9XAmYZJeTL",
         "suncKey": "Bn63yd3bHGAT5wbXRpzTlF4fm9hwqZ9z"
