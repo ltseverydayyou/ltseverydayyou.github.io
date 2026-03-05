@@ -1,16 +1,16 @@
 {
-  "fetchedAt": "2026-03-05T16:09:51.462Z",
+  "fetchedAt": "2026-03-05T18:20:56.902Z",
   "data": [
     {
       "_id": "680eaddf8b44717c060fcf8d",
       "title": "Velocity",
-      "version": "0.8.2",
-      "updatedDate": "02/26/2026 at 9:20 PM UTC",
+      "version": "0.8.3",
+      "updatedDate": "03/05/2026 at 4:56 PM UTC",
       "uncStatus": true,
       "free": true,
       "detected": true,
-      "rbxversion": "version-760d064d05424689",
-      "updateStatus": false,
+      "rbxversion": "version-d599f7fc52a8404c",
+      "updateStatus": true,
       "websitelink": "https://realvelocity.xyz/",
       "discordlink": "https://discord.com/invite/velocityide",
       "beta": false,
