@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-03-07T19:52:12.232Z",
+  "fetchedAt": "2026-03-07T20:21:12.034Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -1190,7 +1190,7 @@
       "cost": "$4 Weekly",
       "decompiler": true,
       "multiInject": true,
-      "suncPercentage": 100,
+      "suncPercentage": 97,
       "uncPercentage": 99,
       "__v": 1,
       "recommendedReason": {
@@ -1206,7 +1206,11 @@
       },
       "hidden": false,
       "trackerId": "WEAO228206d0",
-      "clientmods": true
+      "clientmods": true,
+      "sunc": {
+        "suncScrap": "MyOUpBJFDFjHPf2B",
+        "suncKey": "Ip7nZqxEdMXK0KMXJ43lInX016T7qztj"
+      }
     },
     {
       "_id": "68eebb4581d69687334ccbde",
