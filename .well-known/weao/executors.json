@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-03-07T19:01:20.154Z",
+  "fetchedAt": "2026-03-07T19:32:39.714Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -328,7 +328,7 @@
       "free": false,
       "detected": true,
       "rbxversion": "version-d599f7fc52a8404c",
-      "updateStatus": true,
+      "updateStatus": false,
       "websitelink": "https://volt.bz/",
       "discordlink": "https://discord.com/invite/voltbz",
       "beta": false,
