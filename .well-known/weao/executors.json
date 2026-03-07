@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-03-07T20:21:12.034Z",
+  "fetchedAt": "2026-03-07T20:47:14.764Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -197,7 +197,7 @@
       "platform": "Windows",
       "extype": "wexecutor",
       "roleId": "1316611609988300860",
-      "index": 10,
+      "index": 12,
       "unlinked": false,
       "elementCertified": true,
       "cost": "$2.80 Weekly",
@@ -287,7 +287,7 @@
       "platform": "Windows",
       "extype": "wexecutor",
       "roleId": "1297289530361249945",
-      "index": 5,
+      "index": 8,
       "unlinked": false,
       "elementCertified": true,
       "cost": "$3.99 Weekly",
@@ -387,7 +387,7 @@
       "platform": "Windows",
       "extype": "wexecutor",
       "roleId": "1366164709996363988",
-      "index": 6,
+      "index": 7,
       "elementCertified": true,
       "decompiler": true,
       "multiInject": true,
@@ -470,7 +470,7 @@
       "platform": "Windows",
       "extype": "wexecutor",
       "roleId": "1247914099866603611",
-      "index": 10,
+      "index": 13,
       "elementCertified": true,
       "decompiler": true,
       "multiInject": true,
@@ -904,7 +904,7 @@
       "platform": "Windows",
       "extype": "wexecutor",
       "roleId": "1364416300444549151",
-      "index": 8,
+      "index": 10,
       "elementCertified": true,
       "decompiler": true,
       "multiInject": false,
@@ -1185,7 +1185,7 @@
       "extype": "wexecutor",
       "roleId": "1267164077503811686",
       "purchaselink": "https://rapidkeys.net/product?id=synapse-z&ref=weao",
-      "index": 4,
+      "index": 6,
       "elementCertified": true,
       "cost": "$4 Weekly",
       "decompiler": true,
@@ -1292,7 +1292,7 @@
       "platform": "Windows",
       "extype": "wexecutor",
       "roleId": "1443039216102674472",
-      "index": 7,
+      "index": 9,
       "decompiler": true,
       "multiInject": false,
       "suncPercentage": 100,
@@ -1415,7 +1415,8 @@
       "websitelink": "https://discord.gg/RZgUP8UZQ3",
       "slug": {
         "fullDescription": "No description currently available. Check back soon!"
-      }
+      },
+      "hidden": false
     },
     {
       "_id": "696e6eb415b7ec43591a186a",
@@ -1504,6 +1505,42 @@
         ]
       },
       "hidden": false
+    },
+    {
+      "_id": "69ac8b5a65ef43372e396781",
+      "title": "Isaeva",
+      "version": "1.2.4",
+      "updatedDate": "03/07/2026 at 8:36 PM UTC",
+      "uncStatus": true,
+      "free": false,
+      "detected": true,
+      "rbxversion": "version-d599f7fc52a8404c",
+      "updateStatus": true,
+      "websitelink": "https://getisaeva.xyz/login",
+      "discordlink": "https://discord.gg/Bqzumw4ZFC",
+      "beta": false,
+      "platform": "Windows",
+      "extype": "wexecutor",
+      "roleId": "1479935012488085716",
+      "purchaselink": "https://robloxcheatz.com/product?id=isaeva-executor&ref=weao",
+      "index": 5,
+      "elementCertified": true,
+      "cost": "$4.99 Weekly",
+      "decompiler": true,
+      "multiInject": true,
+      "suncPercentage": 100,
+      "uncPercentage": 99,
+      "__v": 1,
+      "recommendedReason": {
+        "features": []
+      },
+      "hidden": false,
+      "trackerId": "WEAO28fj47ht",
+      "clientmods": true,
+      "sunc": {
+        "suncScrap": "PVuBLGuIAxToEuaI",
+        "suncKey": "ZcCtYcgxGimDL7Q9G9sXw5puKbBH27OX"
+      }
     }
   ]
 }
