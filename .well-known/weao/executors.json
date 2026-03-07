@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-03-07T16:33:24.767Z",
+  "fetchedAt": "2026-03-07T16:57:05.406Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -1177,14 +1177,14 @@
       "free": false,
       "detected": true,
       "rbxversion": "version-d34359a5577645e2",
-      "updateStatus": false,
+      "updateStatus": true,
       "websitelink": "https://z.synapse.do",
       "discordlink": "https://discord.gg/synz",
       "beta": false,
       "platform": "Windows",
       "extype": "wexecutor",
       "roleId": "1267164077503811686",
-      "purchaselink": "https://z.synapse.do/pricing",
+      "purchaselink": "https://rapidkeys.net/product?id=synapse-z",
       "index": 4,
       "elementCertified": true,
       "cost": "$4 Weekly",
@@ -1204,7 +1204,7 @@
           ""
         ]
       },
-      "hidden": true,
+      "hidden": false,
       "trackerId": "WEAO228206d0",
       "clientmods": true
     },
