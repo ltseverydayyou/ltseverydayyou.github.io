@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-03-07T01:44:39.509Z",
+  "fetchedAt": "2026-03-07T03:47:47.457Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -116,7 +116,7 @@
           "https://cdn.weao.gg/slug/xeno/screenshot5.png"
         ]
       },
-      "hidden": false,
+      "hidden": true,
       "sunc": {
         "suncScrap": "LIQQmgTeonzdhfjH",
         "suncKey": "WI3hPM0Ad7VWhOoeUUyGqFNwpDhKcuI3"
@@ -1313,13 +1313,13 @@
     {
       "_id": "692794d789eb1e034ad699c3",
       "title": "MacSploit",
-      "version": "1.9.8c",
-      "updatedDate": "02/17/2026 at 9:36 PM UTC",
+      "version": "1.9.9",
+      "updatedDate": "03/07/2026 at 1:49 AM UTC",
       "uncStatus": true,
       "free": false,
       "detected": false,
-      "rbxversion": "version-82324853106949ff",
-      "updateStatus": false,
+      "rbxversion": "version-f18963d432b94bd7",
+      "updateStatus": true,
       "websitelink": "https://www.raptor.fun/",
       "discordlink": "https://discord.gg/macsploit",
       "beta": false,
