@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-03-08T17:49:52.624Z",
+  "fetchedAt": "2026-03-08T18:29:14.995Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -92,7 +92,7 @@
       "platform": "Windows",
       "extype": "wexecutor",
       "roleId": "1332793088879497338",
-      "index": 11,
+      "index": 12,
       "decompiler": true,
       "multiInject": true,
       "suncPercentage": 32,
@@ -116,7 +116,7 @@
           "https://cdn.weao.gg/slug/xeno/screenshot5.png"
         ]
       },
-      "hidden": true,
+      "hidden": false,
       "sunc": {
         "suncScrap": "LIQQmgTeonzdhfjH",
         "suncKey": "WI3hPM0Ad7VWhOoeUUyGqFNwpDhKcuI3"
@@ -197,7 +197,7 @@
       "platform": "Windows",
       "extype": "wexecutor",
       "roleId": "1316611609988300860",
-      "index": 12,
+      "index": 13,
       "unlinked": false,
       "elementCertified": true,
       "cost": "$2.80 Weekly",
@@ -470,7 +470,7 @@
       "platform": "Windows",
       "extype": "wexecutor",
       "roleId": "1247914099866603611",
-      "index": 13,
+      "index": 11,
       "elementCertified": true,
       "decompiler": true,
       "multiInject": true,
