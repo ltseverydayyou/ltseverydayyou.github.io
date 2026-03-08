@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-03-08T19:30:12.919Z",
+  "fetchedAt": "2026-03-08T19:53:00.729Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -1551,6 +1551,22 @@
       "sunc": {
         "suncScrap": "PVuBLGuIAxToEuaI",
         "suncKey": "ZcCtYcgxGimDL7Q9G9sXw5puKbBH27OX"
+      },
+      "slug": {
+        "fullDescription": "Isaeva is a new product developed by Nihon's owner. Nihon was a decently popular product because of its clean executor interface, custom functions, and an in-depth executor environment. Around 2024, Nihon’s development team split into Zenith, and Nihon soon stopped receiving updates. Months later, after Zenith’s discontinuation, Isaeva was released.\n\n! Things to keep in mind:\n\n! Isaeva is still pretty new; buying long subscriptions is not recommended.\n\n! Isaeva offers reliable updates and a great interface, but it’s not **guaranteed** to keep up with new Hyperion updates/detections (as with any executor). ",
+        "logo": "https://cdn.weao.gg/slug/isaeva/logo.webp",
+        "owner": "Immune, Vaclav",
+        "screenshots": [
+          "https://cdn.weao.gg/slug/isaeva/screenshot1.png",
+          "https://cdn.weao.gg/slug/isaeva/screenshot2.png",
+          "https://cdn.weao.gg/slug/isaeva/screenshot3.png",
+          "https://cdn.weao.gg/slug/isaeva/screenshot4.png",
+          "https://cdn.weao.gg/slug/isaeva/screenshot5.png",
+          "https://cdn.weao.gg/slug/isaeva/screenshot6.png",
+          "https://cdn.weao.gg/slug/isaeva/screenshot7.png",
+          "https://cdn.weao.gg/slug/isaeva/screenshot8.png",
+          "https://cdn.weao.gg/slug/isaeva/screenshot9.png"
+        ]
       }
     }
   ]
