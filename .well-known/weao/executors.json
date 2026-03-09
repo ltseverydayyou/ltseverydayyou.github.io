@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-03-09T06:40:39.449Z",
+  "fetchedAt": "2026-03-09T07:38:02.821Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -322,13 +322,13 @@
     {
       "_id": "67576d22d9181811c292bb79",
       "title": "Volt",
-      "version": "1.1.11.0",
-      "updatedDate": "03/07/2026 at 6:58 PM UTC",
+      "version": "1.2.5.2",
+      "updatedDate": "03/09/2026 at 7:27 AM UTC",
       "uncStatus": true,
       "free": false,
       "detected": true,
       "rbxversion": "version-d599f7fc52a8404c",
-      "updateStatus": false,
+      "updateStatus": true,
       "websitelink": "https://volt.bz/",
       "discordlink": "https://discord.com/invite/voltbz",
       "beta": false,
