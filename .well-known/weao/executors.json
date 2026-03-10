@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-03-09T23:50:02.512Z",
+  "fetchedAt": "2026-03-10T01:46:37.365Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -367,9 +367,8 @@
           "https://cdn.weao.gg/slug/volt/screenshot7.png"
         ]
       },
-      "clientmods": false,
-      "hasIssues": false,
-      "detectionReason": "Numerous users report bans, this is not a Banwave but most likely client modification detections."
+      "clientmods": true,
+      "hasIssues": false
     },
     {
       "_id": "680eaddf8b44717c060fcf8d",
@@ -1308,7 +1307,7 @@
       "multiInject": false,
       "suncPercentage": 100,
       "uncPercentage": 99,
-      "hidden": false,
+      "hidden": true,
       "sunc": {
         "suncScrap": "W6oTrRJk1PsEmJqN",
         "suncKey": "MHCtixqQt1YBnsOELWtTU8hXBwqnJ36y"
