@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-03-11T19:50:31.360Z",
+  "fetchedAt": "2026-03-11T20:30:25.603Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -310,10 +310,7 @@
         "logo": "https://cdn.weao.gg/slug/seliware/logo.png",
         "owner": "Dx",
         "screenshots": [
-          "https://cdn.weao.gg/slug/seliware/screenshot1.png",
-          "https://cdn.weao.gg/slug/seliware/screenshot2.png",
-          "https://cdn.weao.gg/slug/seliware/screenshot3.png",
-          "https://cdn.weao.gg/slug/seliware/screenshot4.png"
+          "https://cdn.weao.gg/slug/seliware/screenshot.png"
         ]
       },
       "beta": false,
