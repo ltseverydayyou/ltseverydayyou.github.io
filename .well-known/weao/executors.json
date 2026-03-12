@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-03-12T19:52:29.319Z",
+  "fetchedAt": "2026-03-12T20:30:50.049Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -454,13 +454,13 @@
     {
       "_id": "66633ac4b29bacaa7a568fdc",
       "title": "Solara",
-      "version": "3.234",
-      "updatedDate": "03/04/2026 at 7:53 PM UTC",
+      "version": "3.235",
+      "updatedDate": "03/12/2026 at 8:01 PM UTC",
       "uncStatus": true,
       "free": true,
       "detected": true,
-      "rbxversion": "version-d599f7fc52a8404c",
-      "updateStatus": false,
+      "rbxversion": "version-b130242ed064436f",
+      "updateStatus": true,
       "websitelink": "https://getsolara.dev",
       "discordlink": "https://getsolara.dev/discord",
       "beta": false,
@@ -1179,8 +1179,8 @@
     {
       "_id": "66a679cc5b36b46c9327b0a7",
       "title": "Synapse Z",
-      "version": "1.0.1.4",
-      "updatedDate": "03/12/2026 at 6:50 PM UTC",
+      "version": "1.0.1.5",
+      "updatedDate": "03/12/2026 at 7:59 PM UTC",
       "uncStatus": true,
       "free": false,
       "detected": true,
