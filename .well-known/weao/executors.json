@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-03-11T23:48:22.767Z",
+  "fetchedAt": "2026-03-12T01:49:45.518Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -197,7 +197,7 @@
       "platform": "Windows",
       "extype": "wexecutor",
       "roleId": "1316611609988300860",
-      "index": 13,
+      "index": 11,
       "unlinked": false,
       "elementCertified": true,
       "cost": "$2.80 Weekly",
@@ -466,7 +466,7 @@
       "platform": "Windows",
       "extype": "wexecutor",
       "roleId": "1247914099866603611",
-      "index": 11,
+      "index": 12,
       "elementCertified": true,
       "decompiler": true,
       "multiInject": true,
