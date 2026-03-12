@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-03-12T23:24:29.088Z",
+  "fetchedAt": "2026-03-12T23:49:13.327Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -154,8 +154,8 @@
     {
       "_id": "66837bf003fe5828bec91bc5",
       "title": "DX9WARE V2",
-      "version": "1.1.176",
-      "updatedDate": "03/12/2026 at 6:47 PM UTC",
+      "version": "1.1.177",
+      "updatedDate": "03/12/2026 at 11:37 PM UTC",
       "uncStatus": false,
       "free": false,
       "detected": false,
@@ -527,13 +527,13 @@
     {
       "_id": "662ae7576238b7f2082f253b",
       "title": "Wave",
-      "version": "NEW-1.1.3",
-      "updatedDate": "03/05/2026 at 12:40 AM UTC",
+      "version": "NEW-1.1.4",
+      "updatedDate": "03/12/2026 at 11:31 PM UTC",
       "uncStatus": true,
       "free": false,
       "detected": true,
-      "rbxversion": "version-d599f7fc52a8404c",
-      "updateStatus": false,
+      "rbxversion": "version-b130242ed064436f",
+      "updateStatus": true,
       "websitelink": "https://getwave.gg",
       "discordlink": "https://discord.gg/rARhPpN7fY",
       "beta": false,
