@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-03-12T01:49:45.518Z",
+  "fetchedAt": "2026-03-12T04:11:26.695Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -364,8 +364,9 @@
           "https://cdn.weao.gg/slug/volt/screenshot7.png"
         ]
       },
-      "clientmods": true,
-      "hasIssues": false
+      "clientmods": false,
+      "hasIssues": false,
+      "detectionReason": "We are not 100% certain about Volt's detection status as of now, after we finish testing this will be updated, Some users have reported bans (seems like delayed bans)."
     },
     {
       "_id": "680eaddf8b44717c060fcf8d",
