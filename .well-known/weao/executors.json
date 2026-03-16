@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-03-16T11:56:49.317Z",
+  "fetchedAt": "2026-03-16T13:15:44.545Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -364,9 +364,8 @@
           "https://cdn.weao.gg/slug/volt/screenshot7.png"
         ]
       },
-      "clientmods": false,
-      "hasIssues": false,
-      "detectionReason": "We are not 100% certain about Volt's detection status as of now, after we finish testing this will be updated, Some users have reported bans (seems like delayed bans)."
+      "clientmods": true,
+      "hasIssues": false
     },
     {
       "_id": "680eaddf8b44717c060fcf8d",
@@ -1192,7 +1191,7 @@
       "platform": "Windows",
       "extype": "wexecutor",
       "roleId": "1267164077503811686",
-      "purchaselink": "https://rapidkeys.net/product?id=synapse-z&ref=weao",
+      "purchaselink": "https://bloxproducts.com/r/weao#SynapseZ",
       "index": 6,
       "elementCertified": true,
       "cost": "$4 Weekly",
