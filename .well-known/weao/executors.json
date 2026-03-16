@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-03-16T18:02:19.964Z",
+  "fetchedAt": "2026-03-16T19:44:49.774Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -231,12 +231,12 @@
       "_id": "6733c47fd9dd590769498131",
       "title": "Cryptic",
       "version": "Version-2.710.707",
-      "updatedDate": "03/07/2026 at 4:23 PM UTC",
+      "updatedDate": "03/16/2026 at 6:57 PM UTC",
       "uncStatus": true,
       "free": true,
       "detected": false,
       "rbxversion": "version-2.710.707",
-      "updateStatus": true,
+      "updateStatus": false,
       "websitelink": "https://getcryptic.net",
       "discordlink": "https://discord.com/invite/Qb6M2Tmge3",
       "beta": false,
