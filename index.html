@@ -2254,21 +2254,17 @@
             position: relative;
             overflow: hidden;
             background: rgba(10, 12, 22, 0.82);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(114, 243, 182, 0.5);
             border-radius: var(--rad);
             box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
         }
 
-        .executor-card::before {
-            content: "";
-            position: absolute;
-            inset: 0 auto 0 0;
-            width: 6px;
-            background: rgba(114, 243, 182, 0.86);
+        .executor-card[data-updated="true"] {
+            border-color: rgba(114, 243, 182, 0.5);
         }
 
-        .executor-card[data-updated="false"]::before {
-            background: rgba(255, 132, 132, 0.9);
+        .executor-card[data-updated="false"] {
+            border-color: rgba(255, 132, 132, 0.58);
         }
 
         .executor-card[open] {
@@ -3365,7 +3361,8 @@
 
         .codex-tabs__item--active,
         .executor-tab.act,
-        .executor-tab.active {
+        .executor-tab.active,
+        .executor-tab.executor-tab--active {
             background: linear-gradient(135deg, var(--ac), var(--ac2));
             color: #0a080c;
             border-color: transparent;
@@ -6779,13 +6776,18 @@
         }
 
         const executorPlatformOrder = ["Windows", "Android", "iOS", "Mac"];
+        const isHiddenExecutor = (entry) => entry?.hidden === true;
         const platformFilters = {
-            all: () => true,
-            windows: (platform) => (platform || "").toLowerCase() === "windows",
-            mac: (platform) => (platform || "").toLowerCase() === "mac",
-            android: (platform) => (platform || "").toLowerCase() === "android",
-            ios: (platform) => (platform || "").toLowerCase() === "ios",
-            hidden: (_, entry) => entry?.hidden === true
+            all: (_, entry) => !isHiddenExecutor(entry),
+            windows: (platform, entry) =>
+                (platform || "").toLowerCase() === "windows" && !isHiddenExecutor(entry),
+            mac: (platform, entry) =>
+                (platform || "").toLowerCase() === "mac" && !isHiddenExecutor(entry),
+            android: (platform, entry) =>
+                (platform || "").toLowerCase() === "android" && !isHiddenExecutor(entry),
+            ios: (platform, entry) =>
+                (platform || "").toLowerCase() === "ios" && !isHiddenExecutor(entry),
+            hidden: (_, entry) => isHiddenExecutor(entry)
         };
         let executorFilter = "all";
         let executorCache = [];
@@ -7131,7 +7133,7 @@
                 .sort((a, b) => {
                     const aIsExternal = isExternalExecutor(a);
                     const bIsExternal = isExternalExecutor(b);
-                    const typeRank = Number(!aIsExternal) - Number(!bIsExternal);
+                    const typeRank = Number(aIsExternal) - Number(bIsExternal);
                     if (typeRank !== 0) {
                         return typeRank;
                     }
@@ -7154,7 +7156,7 @@
             grid.innerHTML = "";
             const fragment = document.createDocumentFragment();
 
-            if (executorFilter === "windows") {
+            if (executorFilter === "windows" || executorFilter === "all") {
                 const internals = sorted.filter((entry) => !isExternalExecutor(entry));
                 const externals = sorted.filter(isExternalExecutor);
                 internals.forEach((executor) => fragment.appendChild(createExecutorCard(executor)));
@@ -7176,10 +7178,10 @@
         function setExecutorFilter(filter) {
             executorFilter = platformFilters[filter] ? filter : "all";
             qa(".executor-tab").forEach((tab) => {
-                tab.classList.toggle(
-                    "executor-tab--active",
-                    tab.dataset.filter === executorFilter
-                );
+                const isActive = tab.dataset.filter === executorFilter;
+                tab.classList.toggle("executor-tab--active", isActive);
+                tab.classList.toggle("active", isActive);
+                tab.setAttribute("aria-selected", isActive ? "true" : "false");
             });
             renderExecutorCards();
         }
