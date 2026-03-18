@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-03-18T19:50:45.032Z",
+  "fetchedAt": "2026-03-18T20:42:25.163Z",
   "data": [
     {
       "_id": "680eaddf8b44717c060fcf8d",
@@ -1516,13 +1516,13 @@
     {
       "_id": "69ac8b5a65ef43372e396781",
       "title": "Isaeva",
-      "version": "1.2.8",
-      "updatedDate": "03/13/2026 at 4:11 PM UTC",
+      "version": "1.2.9",
+      "updatedDate": "03/18/2026 at 8:35 PM UTC",
       "uncStatus": true,
       "free": false,
       "detected": true,
-      "rbxversion": "version-b130242ed064436f",
-      "updateStatus": false,
+      "rbxversion": "version-ae421f0582e54718",
+      "updateStatus": true,
       "websitelink": "https://getisaeva.xyz/login",
       "discordlink": "https://discord.gg/Bqzumw4ZFC",
       "beta": false,
