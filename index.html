@@ -173,23 +173,6 @@
             transform: scaleX(1);
         }
 
-        .top {
-            position: relative;
-            top: auto;
-            height: auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 12px;
-            padding: 12px 18px;
-            border-bottom: 1px solid rgba(255, 255, 255, var(--bdA));
-            backdrop-filter: saturate(140%) blur(8px);
-            background: linear-gradient(180deg,
-                    rgba(0, 0, 0, 0.15),
-                    rgba(0, 0, 0, 0.05));
-            z-index: 5;
-        }
-
         .tt {
             margin: 0;
             font-size: 18px;
@@ -202,23 +185,14 @@
             animation: sh 6s linear infinite;
         }
 
-        .top__spacer {
-            flex: 1;
-        }
-
-        .top__actions {
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-        }
-
         .top__theme-btn {
             appearance: none;
             width: 42px;
             height: 42px;
             padding: 0;
-            border: 0;
-            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.05);
             cursor: pointer;
             transition: transform 0.18s ease, filter 0.18s ease;
         }
@@ -1774,33 +1748,175 @@
         }
 
         .bootstrapper-card {
+            --bootstrapper-surface:
+                radial-gradient(circle at top right,
+                    rgba(255, 255, 255, 0.08),
+                    transparent 48%),
+                rgba(255, 255, 255, 0.04);
+            --bootstrapper-frame:
+                conic-gradient(from 0deg,
+                    rgba(255, 255, 255, 0.14),
+                    rgba(255, 255, 255, 0.4),
+                    rgba(255, 255, 255, 0.12),
+                    rgba(255, 255, 255, 0.36),
+                    rgba(255, 255, 255, 0.14));
             position: relative;
             overflow: hidden;
+            isolation: isolate;
             display: flex;
             flex-direction: column;
             gap: 12px;
             min-height: 230px;
             padding: 18px;
             border-radius: var(--rad);
-            border: 1px solid rgba(255, 255, 255, var(--bdA));
-            background:
-                radial-gradient(circle at top right,
-                    rgba(102, 227, 255, 0.1),
-                    transparent 48%),
-                rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            background: transparent;
+            transition:
+                transform 0.22s ease,
+                box-shadow 0.22s ease,
+                filter 0.22s ease;
+        }
+
+        .bootstrapper-card::before {
+            content: "";
+            position: absolute;
+            inset: -40%;
+            background: var(--bootstrapper-frame);
+            pointer-events: none;
+            opacity: 0.72;
+            filter: blur(18px);
+            animation:
+                bootstrapperFrameSpin 6s linear infinite,
+                bootstrapperFrameGlow 3.2s ease-in-out infinite;
+        }
+
+        .bootstrapper-card::after {
+            content: "";
+            position: absolute;
+            inset: 1px;
+            border-radius: calc(var(--rad) - 1px);
+            background: var(--bootstrapper-surface);
+            z-index: 0;
+        }
+
+        .bootstrapper-card>* {
+            position: relative;
+            z-index: 1;
+        }
+
+        .bootstrapper-card:hover {
+            transform: translateY(-6px) scale(1.01);
+            filter: saturate(1.08) brightness(1.04);
+        }
+
+        .bootstrapper-card:hover::before {
+            opacity: 1;
+            filter: blur(14px);
         }
 
         .bootstrapper-card--featured {
-            border-color: rgba(102, 227, 255, 0.45);
-            box-shadow: 0 18px 44px rgba(102, 227, 255, 0.12);
+            --bootstrapper-surface:
+                radial-gradient(circle at 50% 50%,
+                    rgba(2, 2, 5, 0.98) 0 14%,
+                    rgba(9, 9, 16, 0.98) 16% 26%,
+                    rgba(32, 23, 56, 0.88) 33%,
+                    rgba(14, 13, 24, 0.94) 50%,
+                    rgba(74, 58, 120, 0.18) 68%,
+                    transparent 74%),
+                radial-gradient(circle at 52% 46%,
+                    rgba(255, 255, 255, 0.06),
+                    transparent 18%),
+                linear-gradient(180deg,
+                    rgba(6, 6, 10, 0.98),
+                    rgba(12, 10, 19, 0.96));
+            --bootstrapper-frame:
+                repeating-conic-gradient(from 0deg,
+                    rgba(255, 255, 255, 0.18) 0deg 12deg,
+                    rgba(118, 89, 255, 0.72) 12deg 28deg,
+                    rgba(5, 5, 8, 0.2) 28deg 38deg,
+                    rgba(255, 255, 255, 0.12) 38deg 46deg,
+                    rgba(72, 50, 166, 0.66) 46deg 62deg,
+                    rgba(5, 5, 8, 0.22) 62deg 72deg);
+            box-shadow: 0 18px 44px rgba(0, 0, 0, 0.34);
+        }
+
+        .bootstrapper-card--featured::before {
+            animation:
+                bootstrapperFrameVortex 7.2s linear infinite,
+                bootstrapperFrameGlow 3.4s ease-in-out infinite;
         }
 
         .bootstrapper-card--secondary {
-            border-color: rgba(167, 139, 250, 0.35);
+            --bootstrapper-surface:
+                radial-gradient(circle at 18% 18%,
+                    rgba(118, 245, 255, 0.24),
+                    transparent 24%),
+                radial-gradient(circle at 82% 16%,
+                    rgba(84, 191, 255, 0.18),
+                    transparent 28%),
+                linear-gradient(160deg,
+                    rgba(5, 24, 42, 0.96),
+                    rgba(8, 43, 74, 0.94) 42%,
+                    rgba(7, 31, 58, 0.96)),
+                repeating-linear-gradient(168deg,
+                    rgba(126, 244, 255, 0.08) 0 12px,
+                    rgba(8, 43, 74, 0) 12px 28px),
+                repeating-linear-gradient(12deg,
+                    rgba(73, 169, 255, 0.05) 0 14px,
+                    rgba(5, 24, 42, 0) 14px 30px),
+                linear-gradient(180deg,
+                    rgba(7, 20, 33, 0.95),
+                    rgba(10, 28, 47, 0.94));
+            --bootstrapper-frame:
+                conic-gradient(from 0deg,
+                    rgba(88, 218, 255, 0.34),
+                    rgba(109, 243, 255, 0.94),
+                    rgba(40, 109, 255, 0.28),
+                    rgba(66, 170, 255, 0.88),
+                    rgba(88, 218, 255, 0.34));
+        }
+
+        .bootstrapper-card--secondary::before {
+            animation:
+                bootstrapperFrameDrift 10.4s ease-in-out infinite,
+                bootstrapperFrameGlow 4.6s ease-in-out infinite -0.9s;
         }
 
         .bootstrapper-card--legacy {
-            border-color: rgba(255, 255, 255, 0.14);
+            --bootstrapper-surface:
+                radial-gradient(circle at 20% 20%,
+                    rgba(255, 120, 214, 0.24),
+                    transparent 24%),
+                radial-gradient(circle at 82% 28%,
+                    rgba(132, 86, 255, 0.22),
+                    transparent 30%),
+                linear-gradient(135deg,
+                    rgba(43, 16, 56, 0.96) 0%,
+                    rgba(22, 18, 63, 0.94) 34%,
+                    rgba(54, 18, 74, 0.96) 65%,
+                    rgba(26, 14, 47, 0.96) 100%),
+                linear-gradient(22deg,
+                    rgba(255, 255, 255, 0.04) 0%,
+                    transparent 36%,
+                    rgba(255, 255, 255, 0.03) 55%,
+                    transparent 72%),
+                linear-gradient(180deg,
+                    rgba(24, 11, 33, 0.95),
+                    rgba(38, 15, 43, 0.94));
+            --bootstrapper-frame:
+                conic-gradient(from 0deg,
+                    rgba(255, 170, 236, 0.24),
+                    rgba(255, 125, 214, 0.88),
+                    rgba(121, 86, 255, 0.28),
+                    rgba(255, 205, 87, 0.34),
+                    rgba(210, 82, 255, 0.9),
+                    rgba(235, 104, 255, 0.32));
+        }
+
+        .bootstrapper-card--legacy::before {
+            animation:
+                bootstrapperFrameChaos 8.1s ease-in-out infinite,
+                bootstrapperFrameGlow 2.9s ease-in-out infinite -1.3s;
         }
 
         .bootstrapper-card__rank {
@@ -1816,18 +1932,18 @@
         }
 
         .bootstrapper-card--featured .bootstrapper-card__rank {
-            background: rgba(102, 227, 255, 0.2);
-            color: #dff9ff;
+            background: rgba(255, 255, 255, 0.12);
+            color: #ffffff;
         }
 
         .bootstrapper-card--secondary .bootstrapper-card__rank {
-            background: rgba(167, 139, 250, 0.18);
-            color: #f1ebff;
+            background: rgba(88, 218, 255, 0.2);
+            color: #dcfbff;
         }
 
         .bootstrapper-card--legacy .bootstrapper-card__rank {
-            background: rgba(255, 255, 255, 0.08);
-            color: var(--tx);
+            background: rgba(235, 104, 255, 0.18);
+            color: #ffe4ff;
         }
 
         .bootstrapper-card__name {
@@ -1843,11 +1959,60 @@
             min-width: 0;
         }
 
+        .bootstrapper-card__logo-cycle {
+            position: relative;
+            width: 44px;
+            height: 44px;
+            flex: 0 0 auto;
+        }
+
         .bootstrapper-card__logo {
             width: 44px;
             height: 44px;
             object-fit: contain;
             flex: 0 0 auto;
+        }
+
+        .bootstrapper-card__logo-cycle .bootstrapper-card__logo {
+            position: absolute;
+            inset: 0;
+            animation: bootstrapperLogoCycleA 4.8s ease-in-out infinite;
+        }
+
+        .bootstrapper-card__logo-cycle .bootstrapper-card__logo:nth-child(2) {
+            animation-name: bootstrapperLogoCycleB;
+        }
+
+        @keyframes bootstrapperLogoCycleA {
+            0%,
+            45% {
+                opacity: 1;
+            }
+
+            50%,
+            95% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes bootstrapperLogoCycleB {
+            0%,
+            45% {
+                opacity: 0;
+            }
+
+            50%,
+            95% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
         }
 
         .bootstrapper-card__links {
@@ -1881,9 +2046,91 @@
 
         .bootstrapper-card__links a:hover {
             transform: translateY(-2px);
-            border-color: rgba(102, 227, 255, 0.45);
-            background: rgba(102, 227, 255, 0.12);
             box-shadow: 0 10px 26px rgba(102, 227, 255, 0.14);
+        }
+
+        .bootstrapper-card--featured .bootstrapper-card__links a:hover {
+            border-color: rgba(198, 177, 255, 0.4);
+            background: rgba(145, 106, 255, 0.14);
+            box-shadow: 0 10px 26px rgba(145, 106, 255, 0.16);
+        }
+
+        .bootstrapper-card--secondary .bootstrapper-card__links a:hover {
+            border-color: rgba(88, 218, 255, 0.45);
+            background: rgba(88, 218, 255, 0.14);
+            box-shadow: 0 10px 26px rgba(88, 218, 255, 0.16);
+        }
+
+        .bootstrapper-card--legacy .bootstrapper-card__links a:hover {
+            border-color: rgba(235, 104, 255, 0.4);
+            background: rgba(235, 104, 255, 0.14);
+            box-shadow: 0 10px 26px rgba(235, 104, 255, 0.16);
+        }
+
+        @keyframes bootstrapperFrameSpin {
+            from {
+                transform: rotate(0deg) scale(1.02);
+            }
+
+            to {
+                transform: rotate(360deg) scale(1.1);
+            }
+        }
+
+        @keyframes bootstrapperFrameVortex {
+            0%,
+            100% {
+                transform: translate(0%, 0%) rotate(0deg) scale(1.02);
+            }
+
+            50% {
+                transform: translate(1.5%, -1%) rotate(180deg) scale(1.18);
+            }
+        }
+
+        @keyframes bootstrapperFrameDrift {
+            0%,
+            100% {
+                transform: translate(-2%, 1%) rotate(0deg) scale(1.07);
+            }
+
+            35% {
+                transform: translate(3%, -2%) rotate(110deg) scale(1.12);
+            }
+
+            70% {
+                transform: translate(-1%, 3%) rotate(245deg) scale(1.15);
+            }
+        }
+
+        @keyframes bootstrapperFrameChaos {
+            0%,
+            100% {
+                transform: translate(-2%, -1%) rotate(0deg) scale(1.04);
+            }
+
+            25% {
+                transform: translate(3%, -3%) rotate(95deg) scale(1.14);
+            }
+
+            55% {
+                transform: translate(-3%, 2%) rotate(210deg) scale(1.09);
+            }
+
+            78% {
+                transform: translate(2%, 3%) rotate(312deg) scale(1.17);
+            }
+        }
+
+        @keyframes bootstrapperFrameGlow {
+            0%,
+            100% {
+                opacity: 0.62;
+            }
+
+            50% {
+                opacity: 1;
+            }
         }
 
         .version-card {
@@ -3837,15 +4084,6 @@
         </aside>
 
         <main>
-            <div class="top">
-                <h2 class="tt">Vyperia's Domain</h2>
-                <div class="top__spacer"></div>
-                <div class="top__actions">
-                    <button class="top__theme-btn" id="top-theme-btn" type="button" aria-label="Open Theme page">
-                        <img src="/images/paint_brush_icon.png" alt="" />
-                    </button>
-                </div>
-            </div>
             <section class="hero-shell">
                 <div class="hero">
                     <div class="hero__copy">
@@ -3870,6 +4108,10 @@
                                     alt="" />
                                 <span>Nameless Admin Docs</span>
                             </a>
+                            <button class="top__theme-btn" id="top-theme-btn" type="button"
+                                aria-label="Open Theme page">
+                                <img src="/images/paint_brush_icon.png" alt="" />
+                            </button>
                         </div>
                     </div>
                     <div class="hero-side">
@@ -4100,9 +4342,14 @@
                         <article class="bootstrapper-card bootstrapper-card--featured">
                             <span class="bootstrapper-card__rank">Recommended</span>
                             <div class="bootstrapper-card__brand">
-                                <img class="bootstrapper-card__logo"
-                                    src="https://raw.githubusercontent.com/voidstrap/Voidstrap/refs/heads/main/Images/Voidstrap.png"
-                                    alt="Voidstrap logo" />
+                                <div class="bootstrapper-card__logo-cycle" aria-hidden="true">
+                                    <img class="bootstrapper-card__logo"
+                                        src="https://raw.githubusercontent.com/voidstrap/Voidstrap/refs/heads/main/Images/Voidstrap.png"
+                                        alt="" />
+                                    <img class="bootstrapper-card__logo"
+                                        src="https://voidstrapp.netlify.app/Image/Voidstrap.png"
+                                        alt="" />
+                                </div>
                                 <h4 class="bootstrapper-card__name">Voidstrap</h4>
                             </div>
                             <div class="bootstrapper-card__links">
@@ -4719,6 +4966,9 @@
         );
 
         const scriptItems = [];
+        const scriptGameIconCache = new Map();
+        const pendingScriptIconPlaceIds = new Set();
+        let scriptGameIconTimer = null;
 
         const scriptSearcherState = {
             query: "",
@@ -6790,19 +7040,114 @@
             initMotionFx();
         }
 
+        function extractPlaceIdFromGameLink(value) {
+            const raw = String(value || "").trim();
+            if (!raw) {
+                return "";
+            }
+            if (/^\d+$/.test(raw)) {
+                return raw;
+            }
+            const match = raw.match(/\/games\/(\d+)/i);
+            return match ? match[1] : "";
+        }
+
+        function normalizeScriptGameLink(value) {
+            const raw = String(value || "").trim();
+            if (!raw) {
+                return "";
+            }
+            const placeId = extractPlaceIdFromGameLink(raw);
+            return placeId ? `https://www.roblox.com/games/${placeId}` : raw;
+        }
+
+        async function fetchScriptGameIcons(placeIds) {
+            const endpoint =
+                `https://thumbnails.roblox.com/v1/places/gameicons?placeIds=${encodeURIComponent(placeIds.join(","))}&returnPolicy=PlaceHolder&size=256x256&format=Png&isCircular=false`;
+            const payload = await fetchJsonGetWithProxyFallback(endpoint, "Roblox game icons");
+            const data = Array.isArray(payload?.data) ? payload.data : [];
+
+            data.forEach((entry) => {
+                const placeId = String(entry?.targetId || "").trim();
+                const imageUrl = typeof entry?.imageUrl === "string" ? entry.imageUrl.trim() : "";
+                if (placeId && imageUrl) {
+                    scriptGameIconCache.set(placeId, imageUrl);
+                }
+            });
+        }
+
+        async function flushScriptGameIconQueue() {
+            scriptGameIconTimer = null;
+            const placeIds = Array.from(pendingScriptIconPlaceIds);
+            pendingScriptIconPlaceIds.clear();
+            if (!placeIds.length) {
+                return;
+            }
+
+            try {
+                const batchSize = 50;
+                for (let index = 0; index < placeIds.length; index += batchSize) {
+                    await fetchScriptGameIcons(placeIds.slice(index, index + batchSize));
+                }
+
+                let didUpdate = false;
+                scriptItems.forEach((item) => {
+                    if (item.image) {
+                        return;
+                    }
+                    const placeId = extractPlaceIdFromGameLink(item.game);
+                    const imageUrl = placeId ? scriptGameIconCache.get(placeId) : "";
+                    if (imageUrl) {
+                        item.image = imageUrl;
+                        didUpdate = true;
+                    }
+                });
+
+                if (didUpdate) {
+                    renderScripts();
+                }
+            } catch (error) {
+                console.error("Unable to hydrate script game icons.", error);
+            }
+        }
+
+        function queueScriptGameIconLookup(gameLink) {
+            const placeId = extractPlaceIdFromGameLink(gameLink);
+            if (!placeId || scriptGameIconCache.has(placeId)) {
+                return;
+            }
+            pendingScriptIconPlaceIds.add(placeId);
+            if (scriptGameIconTimer) {
+                return;
+            }
+            scriptGameIconTimer = window.setTimeout(() => {
+                flushScriptGameIconQueue();
+            }, 40);
+        }
+
         function ScriptAdd(name, url, imageUrl, featured = false, gameLink = "") {
             const flag =
                 typeof featured === "string" ?
                     featured.toLowerCase() === "true" :
                     Boolean(featured);
+            const normalizedGameLink = normalizeScriptGameLink(gameLink);
+            const normalizedImage =
+                typeof imageUrl === "string" ? imageUrl.trim() : "";
+            const useAutoGameIcon =
+                Boolean(normalizedGameLink) &&
+                (!normalizedImage || normalizedImage.includes("tr.rbxcdn.com/"));
 
             scriptItems.push({
                 name,
                 url,
-                image: imageUrl || "",
+                image: useAutoGameIcon ? "" : normalizedImage,
                 featured: flag,
-                game: gameLink || ""
+                game: normalizedGameLink
             });
+
+            if (useAutoGameIcon) {
+                queueScriptGameIconLookup(normalizedGameLink);
+            }
 
             renderScripts();
         }
@@ -6838,7 +7183,7 @@
             "Endless Doors",
             "https://raw.githubusercontent.com/ltseverydayyou/endless-doors/main/endless%20madness%20buster",
             "https://tr.rbxcdn.com/180DAY-57bc2bd7eba62e92b90b16d65c33ff71/256/256/Image/Webp/noFilter",
-            true,
+            null,
             "https://roblox.com/games/17324251852"
         );
         ScriptAdd(
