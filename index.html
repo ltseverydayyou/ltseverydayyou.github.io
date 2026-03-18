@@ -179,7 +179,9 @@
             height: auto;
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 12px 18px;
             border-bottom: 1px solid rgba(255, 255, 255, var(--bdA));
             backdrop-filter: saturate(140%) blur(8px);
             background: linear-gradient(180deg,
@@ -190,6 +192,7 @@
 
         .tt {
             margin: 0;
+            font-size: 18px;
             font-weight: 900;
             letter-spacing: 0.3px;
             background: linear-gradient(90deg, var(--ac), var(--ac2), var(--ac));
@@ -197,6 +200,39 @@
             background-clip: text;
             color: transparent;
             animation: sh 6s linear infinite;
+        }
+
+        .top__spacer {
+            flex: 1;
+        }
+
+        .top__actions {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+
+        .top__theme-btn {
+            appearance: none;
+            width: 42px;
+            height: 42px;
+            padding: 0;
+            border: 0;
+            background: transparent;
+            cursor: pointer;
+            transition: transform 0.18s ease, filter 0.18s ease;
+        }
+
+        .top__theme-btn:hover {
+            transform: translateY(-1px) scale(1.03);
+            filter: brightness(1.08);
+        }
+
+        .top__theme-btn img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
         }
 
         @keyframes sh {
@@ -1730,6 +1766,126 @@
             color: var(--mu);
         }
 
+        .bootstrappers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .bootstrapper-card {
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            min-height: 230px;
+            padding: 18px;
+            border-radius: var(--rad);
+            border: 1px solid rgba(255, 255, 255, var(--bdA));
+            background:
+                radial-gradient(circle at top right,
+                    rgba(102, 227, 255, 0.1),
+                    transparent 48%),
+                rgba(255, 255, 255, 0.04);
+        }
+
+        .bootstrapper-card--featured {
+            border-color: rgba(102, 227, 255, 0.45);
+            box-shadow: 0 18px 44px rgba(102, 227, 255, 0.12);
+        }
+
+        .bootstrapper-card--secondary {
+            border-color: rgba(167, 139, 250, 0.35);
+        }
+
+        .bootstrapper-card--legacy {
+            border-color: rgba(255, 255, 255, 0.14);
+        }
+
+        .bootstrapper-card__rank {
+            align-self: flex-start;
+            padding: 5px 10px;
+            border-radius: 999px;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--tx);
+        }
+
+        .bootstrapper-card--featured .bootstrapper-card__rank {
+            background: rgba(102, 227, 255, 0.2);
+            color: #dff9ff;
+        }
+
+        .bootstrapper-card--secondary .bootstrapper-card__rank {
+            background: rgba(167, 139, 250, 0.18);
+            color: #f1ebff;
+        }
+
+        .bootstrapper-card--legacy .bootstrapper-card__rank {
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--tx);
+        }
+
+        .bootstrapper-card__name {
+            margin: 0;
+            font-size: 22px;
+            font-weight: 800;
+        }
+
+        .bootstrapper-card__brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            min-width: 0;
+        }
+
+        .bootstrapper-card__logo {
+            width: 44px;
+            height: 44px;
+            object-fit: contain;
+            flex: 0 0 auto;
+        }
+
+        .bootstrapper-card__links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: auto;
+        }
+
+        .bootstrapper-card__links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 110px;
+            padding: 10px 14px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            background: rgba(255, 255, 255, 0.06);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--tx);
+            text-decoration: none;
+            transition:
+                transform 0.18s ease,
+                border-color 0.18s ease,
+                background 0.18s ease,
+                box-shadow 0.18s ease;
+        }
+
+        .bootstrapper-card__links a:hover {
+            transform: translateY(-2px);
+            border-color: rgba(102, 227, 255, 0.45);
+            background: rgba(102, 227, 255, 0.12);
+            box-shadow: 0 10px 26px rgba(102, 227, 255, 0.14);
+        }
+
         .version-card {
             background: rgba(255, 255, 255, 0.04);
             border: 1px solid rgba(255, 255, 255, var(--bdA));
@@ -1842,11 +1998,7 @@
         .executor-card__logo {
             width: 40px;
             height: 40px;
-            border-radius: 12px;
-            object-fit: cover;
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            background: rgba(255, 255, 255, 0.04);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.18);
+            object-fit: contain;
             flex: 0 0 auto;
         }
 
@@ -3676,8 +3828,8 @@
                 <button class="tb" data-t="l">Lua</button>
                 <button class="tb" data-t="m">Manifest Generator</button>
                 <button class="tb" data-t="w">HTML</button>
-                <button class="tb" data-t="t">Theme</button>
                 <button class="tb" data-t="v">Versions</button>
+                <button class="tb" data-t="u">Bootstrappers</button>
                 <button class="tb" data-t="e">Executors</button>
                 <button class="tb" data-t="r">RDD</button>
                 <button class="tb" data-t="b">Roblox BuilderIcons</button>
@@ -3685,6 +3837,15 @@
         </aside>
 
         <main>
+            <div class="top">
+                <h2 class="tt">Vyperia's Domain</h2>
+                <div class="top__spacer"></div>
+                <div class="top__actions">
+                    <button class="top__theme-btn" id="top-theme-btn" type="button" aria-label="Open Theme page">
+                        <img src="/images/paint_bruh_icon.png" alt="" />
+                    </button>
+                </div>
+            </div>
             <section class="hero-shell">
                 <div class="hero">
                     <div class="hero__copy">
@@ -3926,6 +4087,62 @@
                             <p class="versions-subsection__title">Roblox Studio</p>
                             <div id="studio-versions-grid" class="versions-grid"></div>
                         </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="pu" class="pp">
+                <div class="g ed">
+                    <div class="versions-panel__header">
+                        <h3>Roblox Bootstrappers</h3>
+                    </div>
+                    <div class="bootstrappers-grid">
+                        <article class="bootstrapper-card bootstrapper-card--featured">
+                            <span class="bootstrapper-card__rank">Recommended</span>
+                            <div class="bootstrapper-card__brand">
+                                <img class="bootstrapper-card__logo"
+                                    src="https://raw.githubusercontent.com/voidstrap/Voidstrap/refs/heads/main/Images/Voidstrap.png"
+                                    alt="Voidstrap logo" />
+                                <h4 class="bootstrapper-card__name">Voidstrap</h4>
+                            </div>
+                            <div class="bootstrapper-card__links">
+                                <a href="https://voidstrapp.netlify.app" target="_blank"
+                                    rel="noopener noreferrer">Website</a>
+                                <a href="https://github.com/voidstrap/Voidstrap" target="_blank"
+                                    rel="noopener noreferrer">GitHub</a>
+                            </div>
+                        </article>
+
+                        <article class="bootstrapper-card bootstrapper-card--secondary">
+                            <span class="bootstrapper-card__rank">Popular</span>
+                            <div class="bootstrapper-card__brand">
+                                <img class="bootstrapper-card__logo"
+                                    src="https://raw.githubusercontent.com/fishstrap/fishstrap/refs/heads/main/Images/Bloxstrap.png"
+                                    alt="Fishstrap logo" />
+                                <h4 class="bootstrapper-card__name">Fishstrap</h4>
+                            </div>
+                            <div class="bootstrapper-card__links">
+                                <a href="https://www.fishstrap.app" target="_blank"
+                                    rel="noopener noreferrer">Website</a>
+                                <a href="https://github.com/fishstrap/fishstrap" target="_blank"
+                                    rel="noopener noreferrer">GitHub</a>
+                            </div>
+                        </article>
+
+                        <article class="bootstrapper-card bootstrapper-card--legacy">
+                            <div class="bootstrapper-card__brand">
+                                <img class="bootstrapper-card__logo"
+                                    src="https://raw.githubusercontent.com/bloxstraplabs/bloxstrap/refs/heads/main/Images/Bloxstrap.png"
+                                    alt="Bloxstrap logo" />
+                                <h4 class="bootstrapper-card__name">Bloxstrap</h4>
+                            </div>
+                            <div class="bootstrapper-card__links">
+                                <a href="https://bloxstraplabs.com" target="_blank"
+                                    rel="noopener noreferrer">Website</a>
+                                <a href="https://github.com/bloxstraplabs/bloxstrap" target="_blank"
+                                    rel="noopener noreferrer">GitHub</a>
+                            </div>
+                        </article>
                     </div>
                 </div>
             </section>
@@ -8953,6 +9170,14 @@
             if (heroCardExecBtn) {
                 heroCardExecBtn.addEventListener("click", () => {
                     tab("e");
+                });
+            }
+
+            const topThemeBtn = q("#top-theme-btn");
+            if (topThemeBtn) {
+                topThemeBtn.addEventListener("click", (event) => {
+                    ripple(topThemeBtn, event);
+                    tab("t");
                 });
             }
 
