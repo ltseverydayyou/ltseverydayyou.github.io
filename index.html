@@ -1712,6 +1712,24 @@
             margin-top: 16px;
         }
 
+        .versions-stack {
+            display: grid;
+            gap: 22px;
+        }
+
+        .versions-subsection {
+            display: grid;
+            gap: 12px;
+        }
+
+        .versions-subsection__title {
+            margin: 0;
+            font-size: 12px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--mu);
+        }
+
         .version-card {
             background: rgba(255, 255, 255, 0.04);
             border: 1px solid rgba(255, 255, 255, var(--bdA));
@@ -3897,9 +3915,18 @@
                         </a>
                     </div>
                     <p class="versions-panel__intro">
-                        Roblox Studio version tracking powered by MaximumADHD's Roblox Client Tracker.
+                        Live Roblox client versions first, with a separate Studio tracker layer underneath.
                     </p>
-                    <div id="versions-grid" class="versions-grid"></div>
+                    <div class="versions-stack">
+                        <div class="versions-subsection">
+                            <p class="versions-subsection__title">Roblox Client</p>
+                            <div id="versions-grid" class="versions-grid"></div>
+                        </div>
+                        <div class="versions-subsection">
+                            <p class="versions-subsection__title">Roblox Studio</p>
+                            <div id="studio-versions-grid" class="versions-grid"></div>
+                        </div>
+                    </div>
                 </div>
             </section>
 
@@ -5646,7 +5673,93 @@
         let versionCacheFetchedAt = null;
         let trackedVersionCache = null;
         let trackedVersionCacheFetchedAt = null;
-        const versionSpecs = [{
+        const clientVersionSpecs = [{
+            type: "current",
+            title: "Current (Live)",
+            description: "Latest builds for Windows, Mac, Android, and iOS.",
+            endpoint: "current",
+            fields: [{
+                key: "Windows",
+                label: "Windows"
+            },
+            {
+                key: "WindowsDate",
+                label: "Windows date"
+            },
+            {
+                key: "Android",
+                label: "Android"
+            },
+            {
+                key: "AndroidDate",
+                label: "Android date"
+            },
+            {
+                key: "iOS",
+                label: "iOS"
+            },
+            {
+                key: "iOSDate",
+                label: "iOS date"
+            },
+            {
+                key: "Mac",
+                label: "Mac"
+            },
+            {
+                key: "MacDate",
+                label: "Mac date"
+            }
+            ]
+        },
+        {
+            type: "future",
+            title: "Future (Live)",
+            description: "Next builds that the live channel is tracking.",
+            endpoint: "future",
+            fields: [{
+                key: "Windows",
+                label: "Windows"
+            },
+            {
+                key: "WindowsDate",
+                label: "Windows date"
+            },
+            {
+                key: "Mac",
+                label: "Mac"
+            },
+            {
+                key: "MacDate",
+                label: "Mac date"
+            }
+            ]
+        },
+        {
+            type: "past",
+            title: "Past (Live)",
+            description: "Previous deployments that can still be referenced.",
+            endpoint: "past",
+            fields: [{
+                key: "Windows",
+                label: "Windows"
+            },
+            {
+                key: "WindowsDate",
+                label: "Windows date"
+            },
+            {
+                key: "Mac",
+                label: "Mac"
+            },
+            {
+                key: "MacDate",
+                label: "Mac date"
+            }
+            ]
+        }
+        ];
+        const studioVersionSpecs = [{
             type: "current",
             title: "Current (Tracker)",
             description: "Current Roblox Studio version tracked by MaximumADHD.",
@@ -5716,18 +5829,19 @@
             ]
         }
         ];
-        const versionElements = new Map();
+        const clientVersionElements = new Map();
+        const studioVersionElements = new Map();
 
-        function initVersionCards() {
-            const grid = q("#versions-grid");
+        function initVersionCardGrid(gridSelector, specs, elementMap, fetcher) {
+            const grid = q(gridSelector);
             if (!grid) {
                 return;
             }
 
-            versionElements.clear();
+            elementMap.clear();
             grid.innerHTML = "";
 
-            for (const spec of versionSpecs) {
+            for (const spec of specs) {
                 const card = document.createElement("article");
                 card.className = "version-card";
 
@@ -5747,7 +5861,7 @@
                 refresh.type = "button";
                 refresh.className = "version-card__refresh";
                 refresh.textContent = "Refresh";
-                refresh.addEventListener("click", () => fetchVersionData(spec, true));
+                refresh.addEventListener("click", () => fetcher(spec, true));
 
                 header.append(textStack, refresh);
 
@@ -5762,12 +5876,27 @@
                 card.append(header, body, status);
                 grid.appendChild(card);
 
-                versionElements.set(spec.type, {
+                elementMap.set(spec.type, {
                     body,
                     status
                 });
             }
             initMotionFx();
+        }
+
+        function initVersionCards() {
+            initVersionCardGrid(
+                "#versions-grid",
+                clientVersionSpecs,
+                clientVersionElements,
+                fetchClientVersionData
+            );
+            initVersionCardGrid(
+                "#studio-versions-grid",
+                studioVersionSpecs,
+                studioVersionElements,
+                fetchStudioVersionData
+            );
         }
 
         function formatCacheTimestamp(value) {
@@ -5984,8 +6113,36 @@
             return trackedVersionCache;
         }
 
-        async function fetchVersionData(spec, force = false) {
-            const elements = versionElements.get(spec.type);
+        async function fetchClientVersionData(spec, force = false) {
+            const elements = clientVersionElements.get(spec.type);
+            if (!elements) {
+                return;
+            }
+
+            const {
+                body,
+                status
+            } = elements;
+            status.textContent = "Fetching data...";
+            body.innerHTML = '<p class="version-card__placeholder">Loading...</p>';
+
+            try {
+                const versions = await loadVersionCache(force);
+                const payload = versions?.[spec.endpoint];
+                if (!payload) {
+                    throw new Error("No cached data available for this view.");
+                }
+                renderVersionData(body, payload, spec.fields);
+                const timestamp = formatCacheTimestamp(versionCacheFetchedAt);
+                status.textContent = timestamp ? `Cached ${timestamp}` : "Updated from cache";
+            } catch (error) {
+                body.innerHTML = `<p class="version-card__error">Unable to load data: ${error.message}</p>`;
+                status.textContent = "Failed to load";
+            }
+        }
+
+        async function fetchStudioVersionData(spec, force = false) {
+            const elements = studioVersionElements.get(spec.type);
             if (!elements) {
                 return;
             }
@@ -8724,7 +8881,8 @@
             renderScripts();
             initScriptSearcher();
             initVersionCards();
-            versionSpecs.forEach(fetchVersionData);
+            clientVersionSpecs.forEach(fetchClientVersionData);
+            studioVersionSpecs.forEach(fetchStudioVersionData);
             setExecutorFilter("all");
             loadExecutorStatuses();
 
