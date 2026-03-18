@@ -3897,7 +3897,7 @@
                         </a>
                     </div>
                     <p class="versions-panel__intro">
-                        Realtime release data for current, future, and past Roblox builds powered by the WEAO API.
+                        Roblox Studio version tracking powered by MaximumADHD's Roblox Client Tracker.
                     </p>
                     <div id="versions-grid" class="versions-grid"></div>
                 </div>
@@ -5636,91 +5636,82 @@
 
         const weaoCacheBase = "/.well-known/weao";
         const versionCacheUrl = `${weaoCacheBase}/versions.json`;
+        const trackerBaseUrl =
+            "https://raw.githubusercontent.com/MaximumADHD/Roblox-Client-Tracker/roblox";
+        const trackerVersionUrl = `${trackerBaseUrl}/version.txt`;
+        const trackerVersionGuidUrl = `${trackerBaseUrl}/version-guid.txt`;
+        const trackerVersionHistoryUrl = `${trackerBaseUrl}/version-history.json`;
         const executorCacheUrl = `${weaoCacheBase}/executors.json`;
         let versionCache = null;
         let versionCacheFetchedAt = null;
+        let trackedVersionCache = null;
+        let trackedVersionCacheFetchedAt = null;
         const versionSpecs = [{
             type: "current",
-            title: "Current (Live)",
-            description: "Latest builds for Windows, Mac, Android, and iOS.",
+            title: "Current (Tracker)",
+            description: "Current Roblox Studio version tracked by MaximumADHD.",
             endpoint: "current",
             fields: [{
-                key: "Windows",
-                label: "Windows"
+                key: "version",
+                label: "Version"
             },
             {
-                key: "WindowsDate",
-                label: "Windows date"
+                key: "guid",
+                label: "GUID"
             },
             {
-                key: "Android",
-                label: "Android"
+                key: "manifest",
+                label: "Manifest"
             },
             {
-                key: "AndroidDate",
-                label: "Android date"
-            },
-            {
-                key: "iOS",
-                label: "iOS"
-            },
-            {
-                key: "iOSDate",
-                label: "iOS date"
-            },
-            {
-                key: "Mac",
-                label: "Mac"
-            },
-            {
-                key: "MacDate",
-                label: "Mac date"
+                key: "packageManifest",
+                label: "Pkg manifest"
             }
             ]
         },
         {
             type: "future",
-            title: "Future (Live)",
-            description: "Next builds that the live channel is tracking.",
+            title: "Future (Tracker)",
+            description: "Next tracked Roblox Studio build in version-history.json.",
             endpoint: "future",
             fields: [{
-                key: "Windows",
-                label: "Windows"
+                key: "version",
+                label: "Version"
             },
             {
-                key: "WindowsDate",
-                label: "Windows date"
+                key: "guid",
+                label: "GUID"
             },
             {
-                key: "Mac",
-                label: "Mac"
+                key: "manifest",
+                label: "Manifest"
             },
             {
-                key: "MacDate",
-                label: "Mac date"
+                key: "packageManifest",
+                label: "Pkg manifest"
             }
             ]
         },
         {
             type: "past",
-            title: "Past (Live)",
-            description: "Previous deployments that can still be referenced.",
+            title: "Past (Tracker)",
+            description: "Previous tracked Roblox Studio build in version-history.json.",
             endpoint: "past",
             fields: [{
-                key: "Windows",
-                label: "Windows"
+                key: "version",
+                label: "Version"
             },
             {
-                key: "WindowsDate",
-                label: "Windows date"
+                key: "guid",
+                label: "GUID"
             },
             {
-                key: "Mac",
-                label: "Mac"
+                key: "manifest",
+                label: "Manifest"
             },
             {
-                key: "MacDate",
-                label: "Mac date"
+                key: "packageManifest",
+                label: "Pkg manifest"
             }
             ]
         }
@@ -5796,6 +5787,43 @@
             });
         }
 
+        function compareVersionStrings(a, b) {
+            const aParts = String(a || "")
+                .split(".")
+                .map((part) => Number.parseInt(part, 10) || 0);
+            const bParts = String(b || "")
+                .split(".")
+                .map((part) => Number.parseInt(part, 10) || 0);
+            const size = Math.max(aParts.length, bParts.length);
+
+            for (let index = 0; index < size; index += 1) {
+                const diff = (aParts[index] || 0) - (bParts[index] || 0);
+                if (diff !== 0) {
+                    return diff;
+                }
+            }
+
+            return 0;
+        }
+
+        function buildTrackerManifestUrl(guid, type) {
+            if (!guid) {
+                return null;
+            }
+            const suffix = type === "package" ? "rbxPkgManifest.txt" : "rbxManifest.txt";
+            return `https://setup.rbxcdn.com/${guid}-${suffix}`;
+        }
+
+        function formatVersionField(value) {
+            if (!value) {
+                return "N/A";
+            }
+            if (typeof value === "object" && value.href) {
+                return value;
+            }
+            return value;
+        }
+
         function renderVersionData(container, data, fields) {
             const dl = document.createElement("dl");
 
@@ -5807,7 +5835,17 @@
                     data && Object.prototype.hasOwnProperty.call(data, field.key) ?
                         data[field.key] :
                         null;
-                dd.textContent = value ?? "N/A";
+                const formattedValue = formatVersionField(value);
+                if (formattedValue && typeof formattedValue === "object" && formattedValue.href) {
+                    const link = document.createElement("a");
+                    link.href = formattedValue.href;
+                    link.target = "_blank";
+                    link.rel = "noopener noreferrer";
+                    link.textContent = formattedValue.text || formattedValue.href;
+                    dd.appendChild(link);
+                } else {
+                    dd.textContent = formattedValue ?? "N/A";
+                }
                 dl.append(dt, dd);
             }
 
@@ -5819,6 +5857,7 @@
             if (versionCache && !force) {
                 return versionCache;
             }
+
             const res = await fetch(`${versionCacheUrl}?t=${Date.now()}`);
             if (!res.ok) {
                 throw new Error(`${res.status} ${res.statusText || "Error"} (WEAO cache)`);
@@ -5827,6 +5866,122 @@
             versionCacheFetchedAt = payload.fetchedAt || payload.updatedAt || null;
             versionCache = payload.data || payload;
             return versionCache;
+        }
+
+        async function loadTrackedVersionCache(force = false) {
+            if (trackedVersionCache && !force) {
+                return trackedVersionCache;
+            }
+
+            const bust = `?t=${Date.now()}`;
+            const [versionRes, guidRes, historyRes] = await Promise.all([
+                fetch(`${trackerVersionUrl}${bust}`),
+                fetch(`${trackerVersionGuidUrl}${bust}`),
+                fetch(`${trackerVersionHistoryUrl}${bust}`)
+            ]);
+
+            if (!versionRes.ok) {
+                throw new Error(`${versionRes.status} ${versionRes.statusText || "Error"} (version.txt)`);
+            }
+            if (!guidRes.ok) {
+                throw new Error(`${guidRes.status} ${guidRes.statusText || "Error"} (version-guid.txt)`);
+            }
+            if (!historyRes.ok) {
+                throw new Error(`${historyRes.status} ${historyRes.statusText || "Error"} (version-history.json)`);
+            }
+
+            const [currentVersionRaw, currentGuidRaw, history] = await Promise.all([
+                versionRes.text(),
+                guidRes.text(),
+                historyRes.json()
+            ]);
+
+            const currentVersion = currentVersionRaw.trim();
+            const currentGuid = currentGuidRaw.trim();
+            const historyEntries = Object.entries(history || {})
+                .filter(([version, guid]) => version && guid)
+                .sort((a, b) => compareVersionStrings(a[0], b[0]));
+
+            let currentIndex = historyEntries.findIndex(([version]) => version === currentVersion);
+            if (currentIndex === -1) {
+                currentIndex = historyEntries.findIndex(
+                    ([version]) => compareVersionStrings(version, currentVersion) > 0
+                );
+            }
+
+            const previousEntry =
+                currentIndex === -1 ?
+                    historyEntries[historyEntries.length - 1] || null :
+                    currentIndex > 0 ?
+                        historyEntries[currentIndex - 1] :
+                        null;
+            const nextEntry =
+                currentIndex === -1 ?
+                    null :
+                    historyEntries[currentIndex]?.[0] === currentVersion ?
+                        historyEntries[currentIndex + 1] || null :
+                        historyEntries[currentIndex] || null;
+
+            const materializedCurrentGuid =
+                currentGuid ||
+                (historyEntries.find(([version]) => version === currentVersion)?.[1] || "") ||
+                "";
+            const timestampSource =
+                versionRes.headers.get("last-modified") ||
+                historyRes.headers.get("last-modified") ||
+                null;
+
+            trackedVersionCacheFetchedAt = timestampSource;
+            trackedVersionCache = {
+                current: {
+                    version: currentVersion || "N/A",
+                    guid: materializedCurrentGuid || "N/A",
+                    manifest: materializedCurrentGuid ? {
+                        text: "Open manifest",
+                        href: buildTrackerManifestUrl(materializedCurrentGuid)
+                    } : "N/A",
+                    packageManifest: materializedCurrentGuid ? {
+                        text: "Open package manifest",
+                        href: buildTrackerManifestUrl(materializedCurrentGuid, "package")
+                    } : "N/A"
+                },
+                future: nextEntry ? {
+                    version: nextEntry[0],
+                    guid: nextEntry[1],
+                    manifest: {
+                        text: "Open manifest",
+                        href: buildTrackerManifestUrl(nextEntry[1])
+                    },
+                    packageManifest: {
+                        text: "Open package manifest",
+                        href: buildTrackerManifestUrl(nextEntry[1], "package")
+                    }
+                } : {
+                    version: "None tracked",
+                    guid: "N/A",
+                    manifest: "N/A",
+                    packageManifest: "N/A"
+                },
+                past: previousEntry ? {
+                    version: previousEntry[0],
+                    guid: previousEntry[1],
+                    manifest: {
+                        text: "Open manifest",
+                        href: buildTrackerManifestUrl(previousEntry[1])
+                    },
+                    packageManifest: {
+                        text: "Open package manifest",
+                        href: buildTrackerManifestUrl(previousEntry[1], "package")
+                    }
+                } : {
+                    version: "None tracked",
+                    guid: "N/A",
+                    manifest: "N/A",
+                    packageManifest: "N/A"
+                }
+            };
+
+            return trackedVersionCache;
         }
 
         async function fetchVersionData(spec, force = false) {
@@ -5843,14 +5998,14 @@
             body.innerHTML = '<p class="version-card__placeholder">Loading...</p>';
 
             try {
-                const versions = await loadVersionCache(force);
+                const versions = await loadTrackedVersionCache(force);
                 const payload = versions?.[spec.endpoint];
                 if (!payload) {
-                    throw new Error("No cached data available for this view.");
+                    throw new Error("No tracker data available for this view.");
                 }
                 renderVersionData(body, payload, spec.fields);
-                const timestamp = formatCacheTimestamp(versionCacheFetchedAt);
-                status.textContent = timestamp ? `Cached ${timestamp}` : "Updated from cache";
+                const timestamp = formatCacheTimestamp(trackedVersionCacheFetchedAt);
+                status.textContent = timestamp ? `Tracker updated ${timestamp}` : "Updated from tracker";
             } catch (error) {
                 body.innerHTML = `<p class="version-card__error">Unable to load data: ${error.message}</p>`;
                 status.textContent = "Failed to load";
