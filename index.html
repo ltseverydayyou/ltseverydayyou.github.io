@@ -1167,6 +1167,8 @@
             padding: 32px 16px;
             background: rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(18px);
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
             opacity: 0;
             pointer-events: none;
             transform: translateY(6px) scale(1.01);
@@ -1184,6 +1186,7 @@
             width: min(900px, 92vw);
             max-height: 86vh;
             overflow: auto;
+            margin: auto 0;
             background: linear-gradient(180deg,
                     rgba(22, 28, 42, 0.95),
                     rgba(12, 16, 26, 0.95));
@@ -3384,6 +3387,17 @@
                 align-items: flex-start;
                 width: 100%;
             }
+
+            .md {
+                display: block;
+                padding: 12px;
+            }
+
+            .mc {
+                width: 100%;
+                max-height: none;
+                margin: 0 auto;
+            }
         }
 
         @keyframes codexTicker {
@@ -3505,9 +3519,8 @@
             overflow-x: auto;
             scrollbar-width: none;
             padding-bottom: 0;
-            overscroll-behavior-x: contain;
+            overscroll-behavior-x: auto;
             -webkit-overflow-scrolling: touch;
-            touch-action: pan-x;
             min-width: 0;
             white-space: nowrap;
         }
