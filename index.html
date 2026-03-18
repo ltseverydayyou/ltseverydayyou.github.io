@@ -2118,32 +2118,40 @@
             display: flex;
             gap: 10px;
             flex-wrap: wrap;
+            margin-top: auto;
         }
 
-        .executor-card__links a {
-            font-size: 12px;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            color: var(--ac);
-        }
-
+        .executor-card__links a,
         .executor-card__links button {
-            appearance: none;
-            border: 0;
-            padding: 0;
-            background: transparent;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 108px;
+            padding: 10px 14px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            background: rgba(255, 255, 255, 0.06);
             font: inherit;
             font-size: 12px;
-            font-weight: 600;
+            font-weight: 700;
             letter-spacing: 0.08em;
             text-transform: uppercase;
-            color: var(--ac);
+            color: var(--tx);
+            text-decoration: none;
             cursor: pointer;
+            transition:
+                transform 0.18s ease,
+                border-color 0.18s ease,
+                background 0.18s ease,
+                box-shadow 0.18s ease;
         }
 
         .executor-card__links a:hover,
         .executor-card__links button:hover {
-            color: #fff;
+            transform: translateY(-2px);
+            border-color: rgba(102, 227, 255, 0.45);
+            background: rgba(102, 227, 255, 0.12);
+            box-shadow: 0 10px 26px rgba(102, 227, 255, 0.14);
         }
 
         .executor-preview {
@@ -2180,19 +2188,26 @@
         }
 
         .executor-preview__thumbs {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
             gap: 10px;
         }
 
         .executor-preview__thumb {
             appearance: none;
-            padding: 0;
-            border-radius: 14px;
-            overflow: hidden;
+            min-width: 44px;
+            height: 44px;
+            padding: 0 14px;
+            border-radius: 12px;
             border: 1px solid rgba(255, 255, 255, 0.12);
             background: rgba(255, 255, 255, 0.03);
             cursor: pointer;
+            color: var(--tx);
+            font: inherit;
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
             transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
         }
 
@@ -2203,24 +2218,8 @@
 
         .executor-preview__thumb.is-active {
             border-color: rgba(102, 227, 255, 0.8);
+            background: rgba(102, 227, 255, 0.14);
             box-shadow: 0 0 0 1px rgba(102, 227, 255, 0.3);
-        }
-
-        .executor-preview__thumb img {
-            display: block;
-            width: 100%;
-            aspect-ratio: 16 / 10;
-            object-fit: cover;
-            background: rgba(8, 11, 20, 0.92);
-        }
-
-        .executor-preview__thumb span {
-            display: block;
-            padding: 8px 10px;
-            font-size: 11px;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            color: var(--mu);
         }
 
         .version-card__error,
@@ -3842,7 +3841,7 @@
                 <div class="top__spacer"></div>
                 <div class="top__actions">
                     <button class="top__theme-btn" id="top-theme-btn" type="button" aria-label="Open Theme page">
-                        <img src="/images/paint_bruh_icon.png" alt="" />
+                        <img src="/images/paint_brush_icon.png" alt="" />
                     </button>
                 </div>
             </div>
@@ -7259,24 +7258,17 @@
                 const thumbButton = document.createElement("button");
                 thumbButton.type = "button";
                 thumbButton.className = "executor-preview__thumb";
-
-                const thumbImage = document.createElement("img");
-                thumbImage.src = url;
-                thumbImage.loading = "lazy";
-                thumbImage.decoding = "async";
-                thumbImage.alt = `${executor.title || "Executor"} screenshot ${index + 1}`;
-
-                const thumbLabel = document.createElement("span");
-                thumbLabel.textContent = `Shot ${index + 1}`;
-
-                thumbButton.append(thumbImage, thumbLabel);
+                thumbButton.textContent = `${index + 1}`;
                 thumbButton.addEventListener("click", () => updateActiveScreenshot(index));
 
                 thumbButtons.push(thumbButton);
                 thumbs.appendChild(thumbButton);
             });
 
-            mb.append(hero, thumbs);
+            mb.appendChild(hero);
+            if (screenshots.length > 1) {
+                mb.appendChild(thumbs);
+            }
             updateActiveScreenshot(0);
         }
 
