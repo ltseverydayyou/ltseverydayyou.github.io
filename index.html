@@ -1219,6 +1219,10 @@
             background: rgba(255, 255, 255, 0.06);
         }
 
+        .is-hidden {
+            display: none !important;
+        }
+
         pre {
             margin: 0;
             padding: 16px;
@@ -1809,11 +1813,31 @@
             min-height: 220px;
         }
 
+        .executor-card__brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            min-width: 0;
+            flex: 1;
+        }
+
+        .executor-card__logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            object-fit: cover;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: rgba(255, 255, 255, 0.04);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.18);
+            flex: 0 0 auto;
+        }
+
         .executor-card__title {
             margin: 0;
             font-weight: 800;
             font-size: 16px;
             flex: 1;
+            min-width: 0;
         }
 
         .executor-card__meta {
@@ -1931,6 +1955,102 @@
             letter-spacing: 0.08em;
             text-transform: uppercase;
             color: var(--ac);
+        }
+
+        .executor-card__links button {
+            appearance: none;
+            border: 0;
+            padding: 0;
+            background: transparent;
+            font: inherit;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--ac);
+            cursor: pointer;
+        }
+
+        .executor-card__links a:hover,
+        .executor-card__links button:hover {
+            color: #fff;
+        }
+
+        .executor-preview {
+            display: grid;
+            gap: 14px;
+        }
+
+        .executor-preview__hero {
+            position: relative;
+            margin: 0;
+            overflow: hidden;
+            border-radius: 18px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .executor-preview__hero img {
+            display: block;
+            width: 100%;
+            max-height: 62vh;
+            object-fit: contain;
+            background:
+                radial-gradient(circle at top,
+                    rgba(102, 227, 255, 0.16),
+                    transparent 55%),
+                rgba(8, 11, 20, 0.92);
+        }
+
+        .executor-preview__hero figcaption {
+            padding: 10px 14px;
+            font-size: 12px;
+            color: var(--mu);
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .executor-preview__thumbs {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 10px;
+        }
+
+        .executor-preview__thumb {
+            appearance: none;
+            padding: 0;
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: rgba(255, 255, 255, 0.03);
+            cursor: pointer;
+            transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+        }
+
+        .executor-preview__thumb:hover {
+            transform: translateY(-2px);
+            border-color: rgba(102, 227, 255, 0.5);
+        }
+
+        .executor-preview__thumb.is-active {
+            border-color: rgba(102, 227, 255, 0.8);
+            box-shadow: 0 0 0 1px rgba(102, 227, 255, 0.3);
+        }
+
+        .executor-preview__thumb img {
+            display: block;
+            width: 100%;
+            aspect-ratio: 16 / 10;
+            object-fit: cover;
+            background: rgba(8, 11, 20, 0.92);
+        }
+
+        .executor-preview__thumb span {
+            display: block;
+            padding: 8px 10px;
+            font-size: 11px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--mu);
         }
 
         .version-card__error,
@@ -5813,9 +5933,28 @@
             const card = document.createElement("article");
             card.className = "executor-card";
 
+            const brand = document.createElement("div");
+            brand.className = "executor-card__brand";
+
+            if (executor.logo) {
+                const logo = document.createElement("img");
+                logo.className = "executor-card__logo";
+                logo.src = executor.logo;
+                logo.alt = `${executor.title || "Executor"} logo`;
+                logo.loading = "lazy";
+                logo.decoding = "async";
+                logo.addEventListener("error", () => {
+                    logo.remove();
+                }, {
+                    once: true
+                });
+                brand.appendChild(logo);
+            }
+
             const title = document.createElement("p");
             title.className = "executor-card__title";
             title.textContent = executor.title;
+            brand.appendChild(title);
 
             const meta = document.createElement("div");
             meta.className = "executor-card__meta";
@@ -5833,7 +5972,7 @@
             statusPill.textContent = executor.updateStatus ? "Up" : "Down";
 
             infoStack.append(type, statusPill);
-            meta.append(title, infoStack);
+            meta.append(brand, infoStack);
 
             const pills = document.createElement("div");
             pills.className = "executor-card__pills";
@@ -5909,6 +6048,15 @@
                 discordLink.rel = "noopener noreferrer";
                 discordLink.textContent = "Discord";
                 links.appendChild(discordLink);
+            }
+            if (normalizeExecutorScreenshots(executor).length) {
+                const previewButton = document.createElement("button");
+                previewButton.type = "button";
+                previewButton.textContent = "Preview";
+                previewButton.addEventListener("click", () => {
+                    openExecutorPreview(executor);
+                });
+                links.appendChild(previewButton);
             }
 
             card.append(meta, pills, body);
@@ -6484,10 +6632,21 @@
         const cache = new Map();
         let curCode = "";
 
-        function mOpen(title) {
+        function setModalCopyVisible(visible) {
+            const copyButton = q("#cp");
+            if (copyButton) {
+                copyButton.classList.toggle("is-hidden", !visible);
+            }
+        }
+
+        function mOpen(title, options = {}) {
+            const {
+                showCopy = true
+            } = options;
             q("#mt").textContent = title;
             q("#mb").className = "sk";
             q("#mb").innerHTML = "";
+            setModalCopyVisible(showCopy);
             q("#md").classList.add("sh");
             q("#md").setAttribute("aria-hidden", "false");
         }
@@ -6495,6 +6654,89 @@
         function mClose() {
             q("#md").classList.remove("sh");
             q("#md").setAttribute("aria-hidden", "true");
+            setModalCopyVisible(true);
+        }
+
+        function normalizeExecutorScreenshots(executor) {
+            return Array.isArray(executor?.screenshots) ?
+                executor.screenshots.filter((entry) => typeof entry === "string" && entry.trim()) :
+                [];
+        }
+
+        function openExecutorPreview(executor) {
+            const screenshots = normalizeExecutorScreenshots(executor);
+            if (!screenshots.length) {
+                toast("No screenshots available");
+                return;
+            }
+
+            curCode = "";
+            mOpen(`${executor.title || "Executor"} Preview`, {
+                showCopy: false
+            });
+
+            const mb = q("#mb");
+            if (!mb) {
+                return;
+            }
+
+            mb.className = "executor-preview";
+
+            const hero = document.createElement("figure");
+            hero.className = "executor-preview__hero";
+
+            const heroImage = document.createElement("img");
+            heroImage.loading = "eager";
+            heroImage.decoding = "async";
+            heroImage.alt = `${executor.title || "Executor"} screenshot preview`;
+            heroImage.onerror = () => {
+                mb.className = "";
+                mb.innerHTML =
+                    '<p class="executor-card__error">Unable to load executor screenshots.</p>';
+            };
+
+            const caption = document.createElement("figcaption");
+
+            hero.append(heroImage, caption);
+
+            const thumbs = document.createElement("div");
+            thumbs.className = "executor-preview__thumbs";
+
+            let activeIndex = 0;
+            const thumbButtons = [];
+
+            const updateActiveScreenshot = (index) => {
+                activeIndex = index;
+                heroImage.src = screenshots[index];
+                caption.textContent = `Screenshot ${index + 1} of ${screenshots.length}`;
+                thumbButtons.forEach((button, buttonIndex) => {
+                    button.classList.toggle("is-active", buttonIndex === index);
+                });
+            };
+
+            screenshots.forEach((url, index) => {
+                const thumbButton = document.createElement("button");
+                thumbButton.type = "button";
+                thumbButton.className = "executor-preview__thumb";
+
+                const thumbImage = document.createElement("img");
+                thumbImage.src = url;
+                thumbImage.loading = "lazy";
+                thumbImage.decoding = "async";
+                thumbImage.alt = `${executor.title || "Executor"} screenshot ${index + 1}`;
+
+                const thumbLabel = document.createElement("span");
+                thumbLabel.textContent = `Shot ${index + 1}`;
+
+                thumbButton.append(thumbImage, thumbLabel);
+                thumbButton.addEventListener("click", () => updateActiveScreenshot(index));
+
+                thumbButtons.push(thumbButton);
+                thumbs.appendChild(thumbButton);
+            });
+
+            mb.append(hero, thumbs);
+            updateActiveScreenshot(0);
         }
 
         async function view(btn) {
@@ -8794,7 +9036,3 @@
 </body>
 
 </html>
-
-
-
-
