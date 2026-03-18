@@ -24,6 +24,51 @@ async function fetchJson(url) {
     return response.json();
 }
 
+async function readExistingPayload(filePath) {
+    try {
+        const raw = await fs.readFile(filePath, "utf8");
+        return JSON.parse(raw);
+    } catch (error) {
+        if (error?.code === "ENOENT") {
+            return null;
+        }
+        throw error;
+    }
+}
+
+function normalizeForCompare(value) {
+    if (Array.isArray(value)) {
+        return value.map(normalizeForCompare);
+    }
+    if (value && typeof value === "object") {
+        return Object.fromEntries(
+            Object.keys(value)
+                .sort()
+                .map((key) => [key, normalizeForCompare(value[key])])
+        );
+    }
+    return value;
+}
+
+async function writeCacheFile(filePath, data, fetchedAt) {
+    const previousPayload = await readExistingPayload(filePath);
+    const previousData = previousPayload?.data;
+
+    if (
+        previousData &&
+        JSON.stringify(normalizeForCompare(previousData)) ===
+            JSON.stringify(normalizeForCompare(data))
+    ) {
+        console.log(`WEAO cache unchanged: ${path.basename(filePath)}`);
+        return false;
+    }
+
+    const payload = { fetchedAt, data };
+    await fs.writeFile(filePath, `${JSON.stringify(payload, null, 2)}\n`, "utf8");
+    console.log(`WEAO cache refreshed: ${path.basename(filePath)}`);
+    return true;
+}
+
 async function main() {
     const destDir = path.join(process.cwd(), ".well-known", "weao");
     await fs.mkdir(destDir, { recursive: true });
@@ -37,19 +82,24 @@ async function main() {
 
     const executors = await fetchJson(EXECUTOR_ENDPOINT);
 
-    await fs.writeFile(
+    const versionsChanged = await writeCacheFile(
         path.join(destDir, "versions.json"),
-        JSON.stringify({ fetchedAt, data: versions }, null, 2),
-        "utf8"
+        versions,
+        fetchedAt
     );
 
-    await fs.writeFile(
+    const executorsChanged = await writeCacheFile(
         path.join(destDir, "executors.json"),
-        JSON.stringify({ fetchedAt, data: executors }, null, 2),
-        "utf8"
+        executors,
+        fetchedAt
     );
 
-    console.log("WEAO cache refreshed at", fetchedAt);
+    if (!versionsChanged && !executorsChanged) {
+        console.log("WEAO cache already up to date.");
+        return;
+    }
+
+    console.log("WEAO cache checked at", fetchedAt);
 }
 
 main().catch((error) => {
