@@ -2221,20 +2221,75 @@
 
         .executor-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 16px;
+            gap: 12px;
             margin-top: 16px;
         }
 
+        .executor-hash-picker {
+            display: grid;
+            gap: 6px;
+            margin: 12px 0 6px;
+        }
+
+        .executor-hash-picker__label {
+            font-size: 11px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--mu);
+            white-space: nowrap;
+        }
+
+        .executor-hash-picker select {
+            width: 100%;
+            min-width: 0;
+        }
+
+        .executor-hash-picker__value {
+            font-size: 12px;
+            color: var(--mu);
+            word-break: break-word;
+        }
+
         .executor-card {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, var(--bdA));
+            position: relative;
+            overflow: hidden;
+            background: rgba(10, 12, 22, 0.82);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: var(--rad);
-            padding: 16px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            min-height: 220px;
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+        }
+
+        .executor-card::before {
+            content: "";
+            position: absolute;
+            inset: 0 auto 0 0;
+            width: 6px;
+            background: rgba(114, 243, 182, 0.86);
+        }
+
+        .executor-card[data-updated="false"]::before {
+            background: rgba(255, 132, 132, 0.9);
+        }
+
+        .executor-card[open] {
+            box-shadow: 0 18px 42px rgba(0, 0, 0, 0.28);
+        }
+
+        .executor-card summary {
+            list-style: none;
+        }
+
+        .executor-card summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .executor-card__summary {
+            cursor: pointer;
+            padding: 16px 18px 14px 18px;
+        }
+
+        .executor-card__summary:hover {
+            background: rgba(255, 255, 255, 0.02);
         }
 
         .executor-card__brand {
@@ -2260,11 +2315,18 @@
             min-width: 0;
         }
 
-        .executor-card__meta {
+        .executor-card__summary-line {
             display: flex;
             align-items: center;
             justify-content: space-between;
+            gap: 14px;
+        }
+
+        .executor-card__meta {
+            display: flex;
+            align-items: center;
             gap: 12px;
+            flex-wrap: wrap;
         }
 
         .executor-card__meta-info {
@@ -2277,6 +2339,12 @@
             font-size: 12px;
             color: var(--mu);
             text-transform: uppercase;
+        }
+
+        .executor-card__subtitle {
+            margin: 8px 0 0;
+            color: rgba(231, 233, 238, 0.76);
+            font-size: 13px;
         }
 
         .executor-card__pills {
@@ -2311,22 +2379,24 @@
             color: var(--mu);
         }
 
+        .executor-card__pill--price {
+            background: rgba(70, 119, 255, 0.92);
+            color: #ffffff;
+        }
+
         .executor-card__status-pill {
-            padding: 3px 10px;
+            padding: 6px 12px;
             border-radius: 999px;
-            font-size: 11px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: #0b1220;
-            background: rgba(114, 243, 182, 0.7);
-            box-shadow: 0 0 10px rgba(114, 243, 182, 0.5);
+            font-size: 12px;
+            font-weight: 800;
+            color: #ffffff;
+            background: rgba(33, 211, 102, 0.95);
+            white-space: nowrap;
         }
 
         .executor-card__status-pill--down {
-            background: rgba(255, 132, 132, 0.9);
-            color: #2d0808;
-            box-shadow: 0 0 10px rgba(255, 132, 132, 0.6);
+            background: rgba(255, 132, 132, 0.92);
+            color: #ffffff;
         }
 
         .executor-tabs {
@@ -2362,6 +2432,22 @@
             color: var(--mu);
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             padding-top: 10px;
+        }
+
+        .executor-card__details {
+            padding: 0 18px 16px 18px;
+            display: grid;
+            gap: 12px;
+        }
+
+        .executor-card__description {
+            margin: 0;
+            padding: 12px 14px;
+            border-radius: 12px;
+            background: rgba(123, 86, 255, 0.16);
+            border: 1px solid rgba(167, 139, 250, 0.24);
+            color: #c4a9ff;
+            white-space: pre-wrap;
         }
 
         .executor-card__links {
@@ -2402,6 +2488,35 @@
             border-color: rgba(102, 227, 255, 0.45);
             background: rgba(102, 227, 255, 0.12);
             box-shadow: 0 10px 26px rgba(102, 227, 255, 0.14);
+        }
+
+        .executor-card__stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            align-items: center;
+            font-size: 13px;
+            color: rgba(231, 233, 238, 0.84);
+        }
+
+        .executor-card__stat {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .executor-card__stat strong {
+            color: #ffffff;
+        }
+
+        .executor-card__check {
+            color: #46ea89;
+            font-weight: 800;
+        }
+
+        .executor-card__cross {
+            color: #ff8d8d;
+            font-weight: 800;
         }
 
         .executor-preview {
@@ -4443,6 +4558,9 @@
                         <button type="button" class="executor-tab" data-filter="ios">
                             iOS
                         </button>
+                        <button type="button" class="executor-tab" data-filter="hidden">
+                            Hidden
+                        </button>
                     </div>
                     <div id="executor-status" class="version-card__status">
                         Waiting for data...
@@ -4648,6 +4766,15 @@
                                 <span>Version hash (optional)</span>
                                 <input id="rdd-version" type="text" placeholder="version-xxxxxxxxxxxxxxxx" />
                             </div>
+                            <div class="rdd-field executor-hash-picker">
+                                <span class="executor-hash-picker__label">Windows executor hash</span>
+                                <select id="executor-hash-select" aria-label="Pick a Windows executor version hash">
+                                    <option value="">Loading Windows executor hashes...</option>
+                                </select>
+                                <div id="executor-hash-value" class="executor-hash-picker__value">
+                                    Pick a Windows executor to load its Roblox version hash.
+                                </div>
+                            </div>
                             <div class="rdd-field">
                                 <span>Compression level</span>
                                 <input id="rdd-compression" type="number" min="1" max="9" value="5" />
@@ -4665,6 +4792,7 @@
                             <div class="rdd-actions">
                                 <button class="pl sc" type="button" id="rdd-download-specific">Download version</button>
                                 <button class="pl" type="button" id="rdd-download-latest">Latest build</button>
+                                <button class="pl" type="button" id="rdd-download-future">Future build</button>
                                 <button class="pl" type="button" id="rdd-download-previous">Previous build</button>
                                 <button class="pl" type="button" id="rdd-copy-link">Copy permanent link</button>
                             </div>
@@ -6656,11 +6784,52 @@
             windows: (platform) => (platform || "").toLowerCase() === "windows",
             mac: (platform) => (platform || "").toLowerCase() === "mac",
             android: (platform) => (platform || "").toLowerCase() === "android",
-            ios: (platform) => (platform || "").toLowerCase() === "ios"
+            ios: (platform) => (platform || "").toLowerCase() === "ios",
+            hidden: (_, entry) => entry?.hidden === true
         };
         let executorFilter = "all";
         let executorCache = [];
         let executorCacheFetchedAt = null;
+
+        function isInternalWindowsExecutor(entry) {
+            return (entry?.extype || "").toLowerCase() === "wexecutor" && entry?.hidden !== true;
+        }
+
+        function renderExecutorHashPicker() {
+            const select = q("#executor-hash-select");
+            const valueNode = q("#executor-hash-value");
+            if (!select || !valueNode) {
+                return;
+            }
+
+            const options = executorCache
+                .filter((entry) => entry && entry.title && isInternalWindowsExecutor(entry) && entry.rbxversion)
+                .slice()
+                .sort((a, b) => (a.title || "").localeCompare(b.title || ""));
+
+            select.innerHTML = "";
+
+            if (!options.length) {
+                const option = document.createElement("option");
+                option.value = "";
+                option.textContent = "No Windows executor hashes available";
+                select.appendChild(option);
+                valueNode.textContent = "No internal Windows executor hashes found.";
+                return;
+            }
+
+            options.forEach((entry, index) => {
+                const option = document.createElement("option");
+                option.value = entry.rbxversion;
+                option.textContent = `${entry.title} - ${entry.rbxversion}`;
+                if (index === 0) {
+                    option.selected = true;
+                }
+                select.appendChild(option);
+            });
+
+            valueNode.textContent = select.value || "No hash selected.";
+        }
 
         function updateHeroStats(overrides = {}) {
             const scriptCount =
@@ -6730,9 +6899,49 @@
             return candidates.find((entry) => typeof entry === "string" && entry.trim()) || "";
         }
 
+        function formatExecutorVersionBadge(value) {
+            const raw = String(value || "").trim();
+            if (!raw) {
+                return "";
+            }
+            return raw.replace(/^version-/i, "");
+        }
+
+        function getExecutorDescription(executor) {
+            const raw = String(executor?.slug?.fullDescription || "").trim();
+            if (!raw || /^no description currently available/i.test(raw)) {
+                return "";
+            }
+            return raw;
+        }
+
+        function createExecutorStat(label, value, isBoolean = false) {
+            const stat = document.createElement("span");
+            stat.className = "executor-card__stat";
+
+            const labelNode = document.createElement("strong");
+            labelNode.textContent = `${label}:`;
+            stat.appendChild(labelNode);
+
+            const valueNode = document.createElement("span");
+            if (isBoolean) {
+                valueNode.className = value ? "executor-card__check" : "executor-card__cross";
+                valueNode.textContent = value ? "Yes" : "No";
+            } else {
+                valueNode.textContent = value ?? "-";
+            }
+            stat.appendChild(valueNode);
+
+            return stat;
+        }
+
         function createExecutorCard(executor) {
-            const card = document.createElement("article");
+            const card = document.createElement("details");
             card.className = "executor-card";
+            card.dataset.updated = executor.updateStatus ? "true" : "false";
+
+            const summary = document.createElement("summary");
+            summary.className = "executor-card__summary";
 
             const brand = document.createElement("div");
             brand.className = "executor-card__brand";
@@ -6771,10 +6980,35 @@
             const statusPill = document.createElement("span");
             statusPill.className = `executor-card__status-pill${executor.updateStatus ? "" : " executor-card__status-pill--down"
                 }`;
-            statusPill.textContent = executor.updateStatus ? "Up" : "Down";
+            statusPill.textContent = executor.updateStatus ? "Updated" : "Down";
 
-            infoStack.append(type, statusPill);
-            meta.append(brand, infoStack);
+            const versionBadge = formatExecutorVersionBadge(executor.version);
+            if (versionBadge) {
+                const versionPill = document.createElement("span");
+                versionPill.className = "executor-card__pill";
+                versionPill.textContent = versionBadge;
+                infoStack.appendChild(versionPill);
+            }
+
+            if (executor.uncStatus) {
+                const uncPill = document.createElement("span");
+                uncPill.className = "executor-card__pill executor-card__pill--info";
+                uncPill.textContent = "sUNC";
+                infoStack.appendChild(uncPill);
+            }
+
+            if (executor.cost) {
+                const costPill = document.createElement("span");
+                costPill.className = "executor-card__pill executor-card__pill--price";
+                costPill.textContent = executor.cost;
+                infoStack.appendChild(costPill);
+            }
+
+            const summaryLine = document.createElement("div");
+            summaryLine.className = "executor-card__summary-line";
+
+            meta.append(type, infoStack);
+            summaryLine.append(brand, statusPill);
 
             const pills = document.createElement("div");
             pills.className = "executor-card__pills";
@@ -6792,45 +7026,29 @@
 
             const categoryText = isExternalExecutor(executor) ? "External" : "Internal";
             addPill(categoryText, categoryText === "External" ? "info" : "good");
+            if (executor.hidden) {
+                addPill("Hidden", "warn");
+            }
             addPill(executor.uncStatus ? "UNC" : "No UNC", executor.uncStatus ? "good" : "warn");
             addPill(executor.detected ? "Detected" : "Undetected", executor.detected ? "warn" : "good");
             addPill(executor.free ? "Free" : "Paid", executor.free ? "good" : "info");
             addPill(executor.beta ? "Beta" : "Stable", executor.beta ? "info" : "good");
 
-            const body = document.createElement("div");
-            body.className = "executor-card__body";
-            const fields = [{
-                label: "Type",
-                value: executor.extype
-            },
-            {
-                label: "Version",
-                value: executor.version
-            },
-            {
-                label: "RBX version",
-                value: executor.rbxversion
-            },
-            {
-                label: "sUNC",
-                value: formatPercent(executor.suncPercentage)
-            },
-            {
-                label: "UNC",
-                value: formatPercent(executor.uncPercentage)
-            },
-            {
-                label: "Last updated",
-                value: executor.updatedDate
-            }
-            ];
+            const subtitle = document.createElement("p");
+            subtitle.className = "executor-card__subtitle";
+            subtitle.textContent = `Last updated: ${executor.updatedDate || "Unknown"}`;
 
-            for (const field of fields) {
-                const dt = document.createElement("dt");
-                dt.textContent = field.label;
-                const dd = document.createElement("dd");
-                dd.textContent = field.value ?? "-";
-                body.append(dt, dd);
+            summary.append(summaryLine, meta, subtitle);
+
+            const details = document.createElement("div");
+            details.className = "executor-card__details";
+
+            const description = getExecutorDescription(executor);
+            if (description) {
+                const descriptionNode = document.createElement("p");
+                descriptionNode.className = "executor-card__description";
+                descriptionNode.textContent = description;
+                details.appendChild(descriptionNode);
             }
 
             const links = document.createElement("div");
@@ -6861,10 +7079,36 @@
                 links.appendChild(previewButton);
             }
 
-            card.append(meta, pills, body);
             if (links.childElementCount) {
-                card.appendChild(links);
+                details.appendChild(links);
             }
+
+            const stats = document.createElement("div");
+            stats.className = "executor-card__stats";
+            stats.appendChild(createExecutorStat("sUNC", formatPercent(executor.suncPercentage)));
+            stats.appendChild(createExecutorStat("UNC", formatPercent(executor.uncPercentage)));
+            if (executor.decompiler !== undefined) {
+                stats.appendChild(createExecutorStat("Decompiler", !!executor.decompiler, true));
+            }
+            if (executor.multiInject !== undefined) {
+                stats.appendChild(createExecutorStat("Multi-Instance", !!executor.multiInject, true));
+            }
+            if (executor.keysystem !== undefined) {
+                stats.appendChild(createExecutorStat("Keysystem", !!executor.keysystem, true));
+            }
+            if (executor.clientmods !== undefined) {
+                stats.appendChild(createExecutorStat("Client Mods", !!executor.clientmods, true));
+            }
+            if (executor.rbxversion) {
+                stats.appendChild(createExecutorStat("RBX", executor.rbxversion));
+            }
+            details.appendChild(stats);
+
+            card.append(summary);
+            if (pills.childElementCount) {
+                details.appendChild(pills);
+            }
+            card.appendChild(details);
 
             return card;
         }
@@ -6899,7 +7143,7 @@
 
                     return (a.title || "").localeCompare(b.title || "");
                 })
-                .filter((entry) => platformFilters[executorFilter](entry.platform));
+                .filter((entry) => platformFilters[executorFilter](entry.platform, entry));
 
             if (!sorted.length) {
                 grid.innerHTML =
@@ -6959,6 +7203,7 @@
                 executorCacheFetchedAt = payload.fetchedAt || payload.updatedAt || null;
                 const data = payload.data ?? payload;
                 executorCache = Array.isArray(data) ? data : [];
+                renderExecutorHashPicker();
                 renderExecutorCards();
                 updateHeroStats({
                     executorCount: executorCache.length
@@ -8701,6 +8946,7 @@
             status: q("#rdd-status"),
             downloadSpecific: q("#rdd-download-specific"),
             downloadLatest: q("#rdd-download-latest"),
+            downloadFuture: q("#rdd-download-future"),
             downloadPrevious: q("#rdd-download-previous"),
             copyLink: q("#rdd-copy-link")
         };
@@ -9495,6 +9741,26 @@
                 });
             });
 
+            const executorHashSelect = q("#executor-hash-select");
+            const executorHashValue = q("#executor-hash-value");
+            if (executorHashSelect && executorHashValue) {
+                executorHashSelect.addEventListener("change", () => {
+                    executorHashValue.textContent =
+                        executorHashSelect.value || "No hash selected.";
+                    if (rddElements.version) {
+                        rddElements.version.value = executorHashSelect.value || "";
+                        updateRddPreview();
+                        if (executorHashSelect.value) {
+                            const selectedLabel =
+                                executorHashSelect.options[executorHashSelect.selectedIndex]?.textContent || "executor";
+                            setRddStatus(`Loaded ${selectedLabel} into the version hash field.`);
+                        } else {
+                            setRddStatus("Cleared the version hash field.");
+                        }
+                    }
+                });
+            }
+
             qa(".tb").forEach((button) => {
                 button.addEventListener("click", (event) => {
                     ripple(button, event);
@@ -9840,6 +10106,12 @@
             if (rddElements.downloadLatest) {
                 rddElements.downloadLatest.addEventListener("click", () => {
                     handleRddAutoDownload("current", rddElements.downloadLatest);
+                });
+            }
+
+            if (rddElements.downloadFuture) {
+                rddElements.downloadFuture.addEventListener("click", () => {
+                    handleRddAutoDownload("future", rddElements.downloadFuture);
                 });
             }
 
