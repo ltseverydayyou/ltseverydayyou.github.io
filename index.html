@@ -4763,13 +4763,13 @@
                                 <span>Version hash (optional)</span>
                                 <input id="rdd-version" type="text" placeholder="version-xxxxxxxxxxxxxxxx" />
                             </div>
-                            <div class="rdd-field executor-hash-picker">
-                                <span class="executor-hash-picker__label">Windows executor hash</span>
-                                <select id="executor-hash-select" aria-label="Pick a Windows executor version hash">
-                                    <option value="">Loading Windows executor hashes...</option>
+                            <div id="executor-hash-picker" class="rdd-field executor-hash-picker">
+                                <span id="executor-hash-label" class="executor-hash-picker__label">Compatible executor hash</span>
+                                <select id="executor-hash-select" aria-label="Pick a compatible executor version hash">
+                                    <option value="">Loading compatible executor hashes...</option>
                                 </select>
                                 <div id="executor-hash-value" class="executor-hash-picker__value">
-                                    Pick a Windows executor to load its Roblox version hash.
+                                    Pick a compatible executor to load its Roblox version hash.
                                 </div>
                             </div>
                             <div class="rdd-field">
@@ -6797,15 +6797,67 @@
             return (entry?.extype || "").toLowerCase() === "wexecutor" && entry?.hidden !== true;
         }
 
+        function getRddExecutorHashConfig(binaryType = rddElements.binary?.value || "WindowsPlayer") {
+            switch (binaryType) {
+                case "WindowsPlayer":
+                    return {
+                        label: "Windows executor hash",
+                        ariaLabel: "Pick a Windows executor version hash",
+                        loadingOption: "Loading Windows executor hashes...",
+                        emptyOption: "No Windows executor hashes available",
+                        emptyHint: "No compatible Windows executors with version hashes found.",
+                        pickerHint: "Pick a Windows executor to load its Roblox version hash.",
+                        matcher: (entry) =>
+                            (entry?.platform || "").toLowerCase() === "windows" &&
+                            !isHiddenExecutor(entry) &&
+                            !!entry?.rbxversion
+                    };
+                case "MacPlayer":
+                    return {
+                        label: "Mac executor hash",
+                        ariaLabel: "Pick a Mac executor version hash",
+                        loadingOption: "Loading Mac executor hashes...",
+                        emptyOption: "No Mac executor hashes available",
+                        emptyHint: "No compatible Mac executors with version hashes found.",
+                        pickerHint: "Pick a Mac executor to load its Roblox version hash.",
+                        matcher: (entry) =>
+                            (entry?.platform || "").toLowerCase() === "mac" &&
+                            (entry?.extype || "").toLowerCase() === "mexecutor" &&
+                            !isHiddenExecutor(entry) &&
+                            !!entry?.rbxversion
+                    };
+                default:
+                    return null;
+            }
+        }
+
         function renderExecutorHashPicker() {
+            const picker = q("#executor-hash-picker");
+            const labelNode = q("#executor-hash-label");
             const select = q("#executor-hash-select");
             const valueNode = q("#executor-hash-value");
-            if (!select || !valueNode) {
+            if (!picker || !labelNode || !select || !valueNode) {
                 return;
             }
 
+            const config = getRddExecutorHashConfig();
+            if (!config) {
+                picker.classList.add("is-hidden");
+                select.disabled = true;
+                select.innerHTML = '<option value="">No compatible executor hashes available</option>';
+                valueNode.textContent = "Executor hashes are only available for WindowsPlayer and MacPlayer.";
+                return;
+            }
+
+            picker.classList.remove("is-hidden");
+            labelNode.textContent = config.label;
+            select.setAttribute("aria-label", config.ariaLabel);
+
+            const selectedValue = sanitizeRddVersion(
+                rddElements.version?.value || select.value || ""
+            );
             const options = executorCache
-                .filter((entry) => entry && entry.title && isInternalWindowsExecutor(entry) && entry.rbxversion)
+                .filter((entry) => entry && entry.title && config.matcher(entry))
                 .slice()
                 .sort((a, b) => (a.title || "").localeCompare(b.title || ""));
 
@@ -6814,22 +6866,38 @@
             if (!options.length) {
                 const option = document.createElement("option");
                 option.value = "";
-                option.textContent = "No Windows executor hashes available";
+                option.textContent =
+                    executorCache.length || executorCacheFetchedAt ?
+                        config.emptyOption :
+                        config.loadingOption;
                 select.appendChild(option);
-                valueNode.textContent = "No internal Windows executor hashes found.";
+                select.disabled = true;
+                valueNode.textContent =
+                    executorCache.length || executorCacheFetchedAt ?
+                        config.emptyHint :
+                        config.pickerHint;
                 return;
             }
 
+            let hasSelectedValue = false;
             options.forEach((entry, index) => {
                 const option = document.createElement("option");
                 option.value = entry.rbxversion;
                 option.textContent = `${entry.title} - ${entry.rbxversion}`;
-                if (index === 0) {
+                if (option.value === selectedValue) {
+                    option.selected = true;
+                    hasSelectedValue = true;
+                } else if (index === 0) {
                     option.selected = true;
                 }
                 select.appendChild(option);
             });
 
+            if (!hasSelectedValue && select.options.length) {
+                select.options[0].selected = true;
+            }
+
+            select.disabled = false;
             valueNode.textContent = select.value || "No hash selected.";
         }
 
@@ -10086,9 +10154,18 @@
                     if (input === rddElements.compression) {
                         input.value = String(clampCompression(input.value));
                     }
+                    if (input === rddElements.binary) {
+                        renderExecutorHashPicker();
+                    }
                     updateRddPreview();
                 });
             });
+            if (rddElements.binary) {
+                rddElements.binary.addEventListener("change", () => {
+                    renderExecutorHashPicker();
+                    updateRddPreview();
+                });
+            }
             updateRddPreview();
             setRddStatus("Ready.");
 
