@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-03-18T20:42:25.163Z",
+  "fetchedAt": "2026-03-18T22:36:21.687Z",
   "data": [
     {
       "_id": "680eaddf8b44717c060fcf8d",
@@ -247,13 +247,13 @@
     {
       "_id": "67d6005efa8c791236079278",
       "title": "Potassium",
-      "version": "2.0.5",
-      "updatedDate": "03/12/2026 at 6:48 PM UTC",
+      "version": "2.0.6",
+      "updatedDate": "03/18/2026 at 10:25 PM UTC",
       "uncStatus": true,
       "free": false,
       "detected": true,
-      "rbxversion": "version-b130242ed064436f",
-      "updateStatus": false,
+      "rbxversion": "version-ae421f0582e54718",
+      "updateStatus": true,
       "websitelink": "https://potassium.pro",
       "discordlink": "https://discord.com/invite/potassium",
       "beta": false,
