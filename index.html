@@ -5929,6 +5929,14 @@
             return "-";
         }
 
+        function resolveExecutorLogo(executor) {
+            const candidates = [
+                executor?.logo,
+                executor?.slug?.logo
+            ];
+            return candidates.find((entry) => typeof entry === "string" && entry.trim()) || "";
+        }
+
         function createExecutorCard(executor) {
             const card = document.createElement("article");
             card.className = "executor-card";
@@ -5936,10 +5944,11 @@
             const brand = document.createElement("div");
             brand.className = "executor-card__brand";
 
-            if (executor.logo) {
+            const logoUrl = resolveExecutorLogo(executor);
+            if (logoUrl) {
                 const logo = document.createElement("img");
                 logo.className = "executor-card__logo";
-                logo.src = executor.logo;
+                logo.src = logoUrl;
                 logo.alt = `${executor.title || "Executor"} logo`;
                 logo.loading = "lazy";
                 logo.decoding = "async";
@@ -6658,9 +6667,12 @@
         }
 
         function normalizeExecutorScreenshots(executor) {
-            return Array.isArray(executor?.screenshots) ?
-                executor.screenshots.filter((entry) => typeof entry === "string" && entry.trim()) :
-                [];
+            const source = Array.isArray(executor?.screenshots) ?
+                executor.screenshots :
+                Array.isArray(executor?.slug?.screenshots) ?
+                    executor.slug.screenshots :
+                    [];
+            return source.filter((entry) => typeof entry === "string" && entry.trim());
         }
 
         function openExecutorPreview(executor) {
