@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-03-19T02:38:49.266Z",
+  "fetchedAt": "2026-03-19T07:31:39.642Z",
   "data": [
     {
       "_id": "680eaddf8b44717c060fcf8d",
@@ -555,8 +555,9 @@
           "https://cdn.weao.gg/slug/volt/screenshot7.png"
         ]
       },
-      "clientmods": true,
-      "hasIssues": false
+      "clientmods": false,
+      "hasIssues": false,
+      "detectionReason": "We are currently retesting this exploits detection status. Check back later!"
     },
     {
       "_id": "6705f74ed02338b4f68f9c62",
