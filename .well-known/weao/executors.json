@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-03-19T07:31:39.642Z",
+  "fetchedAt": "2026-03-19T16:33:39.460Z",
   "data": [
     {
       "_id": "680eaddf8b44717c060fcf8d",
@@ -556,7 +556,7 @@
         ]
       },
       "clientmods": false,
-      "hasIssues": false,
+      "hasIssues": true,
       "detectionReason": "We are currently retesting this exploits detection status. Check back later!"
     },
     {
