@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-03-19T16:33:39.460Z",
+  "fetchedAt": "2026-03-19T23:34:22.568Z",
   "data": [
     {
       "_id": "680eaddf8b44717c060fcf8d",
@@ -510,8 +510,8 @@
     {
       "_id": "67576d22d9181811c292bb79",
       "title": "Volt",
-      "version": "1.2.7.0",
-      "updatedDate": "03/19/2026 at 1:03 AM UTC",
+      "version": "1.2.8.0",
+      "updatedDate": "03/19/2026 at 11:00 PM UTC",
       "uncStatus": true,
       "free": false,
       "detected": true,
@@ -556,7 +556,7 @@
         ]
       },
       "clientmods": false,
-      "hasIssues": true,
+      "hasIssues": false,
       "detectionReason": "We are currently retesting this exploits detection status. Check back later!"
     },
     {
