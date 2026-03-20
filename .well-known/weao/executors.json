@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-03-20T04:50:23.413Z",
+  "fetchedAt": "2026-03-20T20:43:36.196Z",
   "data": [
     {
       "_id": "680eaddf8b44717c060fcf8d",
@@ -1517,8 +1517,8 @@
     {
       "_id": "69ac8b5a65ef43372e396781",
       "title": "Isaeva",
-      "version": "1.2.9",
-      "updatedDate": "03/18/2026 at 8:35 PM UTC",
+      "version": "1.3.0",
+      "updatedDate": "03/20/2026 at 7:57 PM UTC",
       "uncStatus": true,
       "free": false,
       "detected": true,
