@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-03-21T18:41:52.520Z",
+  "fetchedAt": "2026-03-22T04:55:59.403Z",
   "data": [
     {
       "_id": "680eaddf8b44717c060fcf8d",
@@ -1179,13 +1179,13 @@
     {
       "_id": "66a679cc5b36b46c9327b0a7",
       "title": "Synapse Z",
-      "version": "1.0.1.5",
-      "updatedDate": "03/12/2026 at 7:59 PM UTC",
+      "version": "1.0.1.6",
+      "updatedDate": "03/22/2026 at 3:43 AM UTC",
       "uncStatus": true,
       "free": false,
       "detected": true,
-      "rbxversion": "version-b130242ed064436f",
-      "updateStatus": false,
+      "rbxversion": "version-ae421f0582e54718",
+      "updateStatus": true,
       "websitelink": "https://z.synapse.do",
       "discordlink": "https://discord.gg/synz",
       "beta": false,
@@ -1475,12 +1475,12 @@
     {
       "_id": "69a4acadfa8a3af13c8930a9",
       "title": "Opiumware",
-      "version": "v2.2.3",
-      "updatedDate": "03/15/2026 at 4:14 AM UTC",
+      "version": "v2.2.4",
+      "updatedDate": "03/22/2026 at 3:36 AM UTC",
       "uncStatus": true,
       "free": true,
       "detected": false,
-      "rbxversion": "version-32eefca77f3c4d1f",
+      "rbxversion": "version-0b2afd6436e74a1f",
       "updateStatus": false,
       "websitelink": "https://discord.gg/opiumware",
       "discordlink": "https://discord.gg/opiumware",
