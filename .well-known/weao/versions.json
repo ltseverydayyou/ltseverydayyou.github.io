@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-03-21T21:29:31.132Z",
+  "fetchedAt": "2026-03-24T02:31:21.191Z",
   "data": {
     "current": {
       "Windows": "version-ae421f0582e54718",
@@ -13,9 +13,9 @@
     },
     "future": {
       "Windows": "version-hidden",
-      "WindowsDate": "3/20/2026, 12:00:52 PM UTC",
+      "WindowsDate": "3/23/2026, 6:27:55 PM UTC",
       "Mac": "version-hidden",
-      "MacDate": "3/20/2026, 11:59:54 AM UTC"
+      "MacDate": "3/23/2026, 6:27:23 PM UTC"
     },
     "past": {
       "Windows": "version-b130242ed064436f",
