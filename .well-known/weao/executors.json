@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-03-22T22:30:28.026Z",
+  "fetchedAt": "2026-03-24T21:05:57.709Z",
   "data": [
     {
       "_id": "680eaddf8b44717c060fcf8d",
@@ -1475,8 +1475,8 @@
     {
       "_id": "69a4acadfa8a3af13c8930a9",
       "title": "Opiumware",
-      "version": "v2.2.4",
-      "updatedDate": "03/22/2026 at 3:36 AM UTC",
+      "version": "v2.2.5",
+      "updatedDate": "03/24/2026 at 8:48 PM UTC",
       "uncStatus": true,
       "free": true,
       "detected": false,
