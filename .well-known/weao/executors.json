@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-03-26T21:01:17.377Z",
+  "fetchedAt": "2026-03-26T22:35:29.980Z",
   "data": [
     {
       "_id": "680eaddf8b44717c060fcf8d",
@@ -218,8 +218,8 @@
     {
       "_id": "66837bf003fe5828bec91bc5",
       "title": "DX9WARE V2",
-      "version": "1.1.179",
-      "updatedDate": "03/26/2026 at 5:54 PM UTC",
+      "version": "1.1.180",
+      "updatedDate": "03/26/2026 at 9:58 PM UTC",
       "uncStatus": false,
       "free": false,
       "detected": false,
