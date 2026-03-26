@@ -8711,6 +8711,20 @@
 
         let luaManifestFinalUrl = "";
         let luaManifestProvider = "";
+        let luaManifestResultMode = "url";
+        let luaManifestFilename = "";
+        let luaManifestCopyText = "";
+        let luaManifestObjectUrl = "";
+        let luaManifestDepotKeyCache = null;
+        let luaManifestDepotKeyPromise = null;
+
+        function revokeLuaManifestObjectUrl() {
+            if (!luaManifestObjectUrl) {
+                return;
+            }
+            URL.revokeObjectURL(luaManifestObjectUrl);
+            luaManifestObjectUrl = "";
+        }
 
         function setLuaManifestStatus(text, isError = false) {
             const statusEl = q("#lua-manifest-status");
@@ -8721,20 +8735,64 @@
             statusEl.classList.toggle("lua-manifest__status--error", Boolean(isError));
         }
 
-        function setLuaManifestResult(url, provider = "") {
-            luaManifestFinalUrl = url || "";
+        function setLuaManifestResult(result, provider = "") {
+            revokeLuaManifestObjectUrl();
+            luaManifestFinalUrl = "";
             luaManifestProvider = provider || "";
+            luaManifestResultMode = "url";
+            luaManifestFilename = "";
+            luaManifestCopyText = "";
 
             const openBtn = q("#lua-manifest-open");
             const copyBtn = q("#lua-manifest-copy");
             const linkEl = q("#lua-manifest-link");
+            const payload =
+                typeof result === "string" ?
+                    {
+                        kind: "url",
+                        url: result
+                    } :
+                    result && typeof result === "object" ?
+                        result :
+                        null;
+            if (payload) {
+                luaManifestFinalUrl =
+                    typeof payload.url === "string" ?
+                        payload.url :
+                        "";
+                luaManifestResultMode =
+                    payload.kind === "blob" ?
+                        "blob" :
+                        "url";
+                luaManifestFilename =
+                    typeof payload.filename === "string" ?
+                        payload.filename :
+                        "";
+                luaManifestCopyText =
+                    typeof payload.copyText === "string" ?
+                        payload.copyText :
+                        luaManifestFinalUrl;
+                if (luaManifestResultMode === "blob" && luaManifestFinalUrl) {
+                    luaManifestObjectUrl = luaManifestFinalUrl;
+                }
+            }
+
             const hasUrl = Boolean(luaManifestFinalUrl);
+            const hasCopyText = Boolean(luaManifestCopyText);
 
             if (openBtn) {
                 openBtn.disabled = !hasUrl;
+                openBtn.textContent =
+                    luaManifestResultMode === "blob" ?
+                        "Download .lua" :
+                        "Open file";
             }
             if (copyBtn) {
-                copyBtn.disabled = !hasUrl;
+                copyBtn.disabled = !hasCopyText;
+                copyBtn.textContent =
+                    luaManifestResultMode === "blob" ?
+                        "Copy .lua" :
+                        "Copy URL";
             }
             if (!linkEl) {
                 return;
@@ -8748,10 +8806,17 @@
             }
 
             linkEl.href = luaManifestFinalUrl;
+            if (typeof payload?.displayText === "string" && payload.displayText.trim()) {
+                linkEl.textContent = payload.displayText.trim();
+                return;
+            }
+
             linkEl.textContent =
-                luaManifestFinalUrl.length > 140 ?
-                    `${luaManifestFinalUrl.slice(0, 140)}...` :
-                    luaManifestFinalUrl;
+                luaManifestResultMode === "blob" ?
+                    luaManifestFilename || "Generated .lua file" :
+                    luaManifestFinalUrl.length > 140 ?
+                        `${luaManifestFinalUrl.slice(0, 140)}...` :
+                        luaManifestFinalUrl;
         }
 
         function extractSteamAppId(rawValue) {
@@ -9520,78 +9585,182 @@
             });
         }
 
-        async function fetchLuaManifestFromKernelOS(appId) {
-            const endpoint = `https://kernelos.org/games/download.php?gen=1&id=${encodeURIComponent(appId)}`;
-            const payload = await fetchJsonGetWithProxyFallback(endpoint, "KernelOS");
-
-            const rawUrl =
-                payload && typeof payload.url === "string" ?
-                    payload.url.trim() :
-                    "";
-            if (!rawUrl) {
-                throw new Error("No signed URL returned for this AppID.");
-            }
-
-            const baseUrl =
-                rawUrl.startsWith("http") ?
-                    rawUrl :
-                    `https://kernelos.org${rawUrl.startsWith("/") ? "" : "/"}${rawUrl}`;
-            const nonce = Math.random().toString(36).slice(2, 10);
-            const sep = baseUrl.includes("?") ? "&" : "?";
-            return `${baseUrl}${sep}_=${nonce}`;
-        }
-
-        async function fetchLuaManifestFromFares(appId) {
-            const checkEndpoint = `https://www.fares.top/api/games/${encodeURIComponent(appId)}/check`;
-            const checkPayload = await fetchJsonGetWithProxyFallback(checkEndpoint, "fares.top check");
-            if (!checkPayload || checkPayload.exists !== true) {
-                throw new Error("fares.top does not list this AppID.");
-            }
-
-            const downloadEndpoint = `https://www.fares.top/api/games/${encodeURIComponent(appId)}/download`;
-            const readDownloadPayload = async (url, method = "GET") => {
-                const response = await fetch(url, {
-                    method,
-                    cache: "no-store",
-                    headers: {
-                        Accept: "application/json",
-                        "Content-Type": "application/json"
-                    }
-                });
-                if (!response.ok) {
-                    throw new Error(`fares.top download failed (${response.status})`);
-                }
-                const raw = await response.text();
-                return parseJsonText(raw, "fares.top download");
-            };
-
-            let payload;
-            try {
-                payload = await readDownloadPayload(downloadEndpoint, "POST");
-            } catch {
-                try {
-                    payload = await readDownloadPayload(downloadEndpoint, "GET");
-                } catch {
-                    payload = await readDownloadPayload(
-                        `https://api.codetabs.com/v1/proxy/?quest=${encodeURIComponent(downloadEndpoint)}`,
-                        "GET"
-                    );
-                }
-            }
-
-            const candidate =
-                typeof payload === "string" ?
-                    payload :
-                    payload?.downloadUrl || payload?.url || payload?.download_url || "";
-            const finalUrl = typeof candidate === "string" ? candidate.trim() : "";
-            if (!finalUrl) {
-                throw new Error("fares.top returned no usable download URL.");
-            }
-            return finalUrl;
-        }
-
         async function fetchLuaManifestFromSteamML(appId) {
             return `https://pub-5b6d3b7c03fd4ac1afb5bd3017850e20.r2.dev/${encodeURIComponent(appId)}.zip`;
+        }
+
+        function normalizeLuaManifestLabel(value, fallback = "") {
+            const normalized =
+                typeof value === "string" ?
+                    value.replace(/\s+/g, " ").trim() :
+                    "";
+            return normalized || fallback;
+        }
+
+        function getLuaManifestPublicEntry(depotValue) {
+            const publicValue = depotValue?.manifests?.public;
+            if (typeof publicValue === "string") {
+                return {
+                    gid: publicValue.trim(),
+                    size: 0
+                };
+            }
+            const gidCandidate =
+                publicValue?.gid ??
+                publicValue?.manifestid ??
+                publicValue?.manifestId ??
+                "";
+            const sizeCandidate =
+                publicValue?.size ??
+                depotValue?.maxsize ??
+                0;
+            const gid =
+                gidCandidate === null || gidCandidate === undefined ?
+                    "" :
+                    String(gidCandidate).trim();
+            const parsedSize = Number.parseInt(String(sizeCandidate || 0), 10);
+            return {
+                gid,
+                size: Number.isFinite(parsedSize) && parsedSize > 0 ? parsedSize : 0
+            };
+        }
+
+        async function fetchLuaManifestDepotKeys() {
+            if (luaManifestDepotKeyCache && typeof luaManifestDepotKeyCache === "object") {
+                return luaManifestDepotKeyCache;
+            }
+            if (luaManifestDepotKeyPromise) {
+                return luaManifestDepotKeyPromise;
+            }
+            luaManifestDepotKeyPromise = fetchJsonGetWithProxyFallback(
+                "https://raw.githubusercontent.com/SteamAutoCracks/ManifestHub/main/depotkeys.json",
+                "ManifestHub depot keys"
+            )
+                .then((payload) => {
+                    if (!payload || typeof payload !== "object") {
+                        throw new Error("ManifestHub depot keys returned invalid data.");
+                    }
+                    luaManifestDepotKeyCache = payload;
+                    return payload;
+                })
+                .finally(() => {
+                    luaManifestDepotKeyPromise = null;
+                });
+            return luaManifestDepotKeyPromise;
+        }
+
+        async function fetchLuaManifestFromManifestHub(appId) {
+            const metadataUrl =
+                `https://www.fares.top/api/manifest?appId=${encodeURIComponent(appId)}&server=1`;
+            const [metadataPayload, depotKeys] = await Promise.all([
+                fetchJsonGetWithProxyFallback(metadataUrl, "fares.top manifest metadata"),
+                fetchLuaManifestDepotKeys()
+            ]);
+
+            const gameData = metadataPayload?.data?.[appId];
+            if (!gameData || typeof gameData !== "object") {
+                throw new Error("fares.top does not list this AppID anymore.");
+            }
+
+            const gameName = normalizeLuaManifestLabel(
+                gameData?.common?.name,
+                `App ${appId}`
+            );
+            const appKey = normalizeLuaManifestLabel(depotKeys?.[appId], "");
+            const depots = [];
+            let skippedWithoutKeys = 0;
+            let skippedWithoutManifest = 0;
+
+            Object.entries(gameData?.depots || {}).forEach(([depotId, depotValue]) => {
+                if (!/^\d+$/.test(depotId) || !depotValue || typeof depotValue !== "object") {
+                    return;
+                }
+
+                const publicEntry = getLuaManifestPublicEntry(depotValue);
+                if (!publicEntry.gid) {
+                    skippedWithoutManifest += 1;
+                    return;
+                }
+
+                const depotKey = normalizeLuaManifestLabel(depotKeys?.[depotId], "");
+                if (!depotKey) {
+                    skippedWithoutKeys += 1;
+                    return;
+                }
+
+                depots.push({
+                    depotId,
+                    depotKey,
+                    depotName: normalizeLuaManifestLabel(
+                        depotValue?.name,
+                        depotId === appId ? gameName : `Depot ${depotId}`
+                    ),
+                    manifestId: publicEntry.gid,
+                    size: publicEntry.size
+                });
+            });
+
+            depots.sort((left, right) => Number(left.depotId) - Number(right.depotId));
+
+            if (!depots.length && !appKey) {
+                throw new Error("No public depots with usable keys were found for this AppID.");
+            }
+
+            const totalDepots = depots.length;
+            const createdAt = new Date().toLocaleString();
+            const lines = [
+                `-- ${appId}.lua generated by ltseverydayyou.github.io`,
+                `-- ${gameName}`,
+                "-- Branch: PUBLIC",
+                `-- Created: ${createdAt}`,
+                "-- Source: fares.top metadata + ManifestHub depot keys",
+                `-- Total Depots: ${totalDepots}`
+            ];
+
+            if (skippedWithoutKeys) {
+                lines.push(`-- Skipped Without Key: ${skippedWithoutKeys}`);
+            }
+            if (skippedWithoutManifest) {
+                lines.push(`-- Skipped Without Public Manifest: ${skippedWithoutManifest}`);
+            }
+
+            lines.push("");
+            lines.push("-- MAIN APPLICATION");
+            lines.push(
+                appKey ?
+                    `addappid(${appId}, 1, "${appKey}") -- ${gameName}` :
+                    `addappid(${appId}) -- ${gameName}`
+            );
+
+            if (depots.length) {
+                lines.push("-- PUBLIC DEPOTS");
+                depots.forEach(({ depotId, depotKey, depotName, manifestId, size }) => {
+                    if (depotId !== appId || !appKey) {
+                        lines.push(
+                            `addappid(${depotId}, 1, "${depotKey}") -- ${depotName}`
+                        );
+                    }
+                    lines.push(`setManifestid(${depotId}, "${manifestId}", ${size})`);
+                });
+            }
+
+            const luaText = `${lines.join("\n")}\n`;
+            const blob = new Blob([luaText], {
+                type: "text/plain;charset=utf-8"
+            });
+            const blobUrl = URL.createObjectURL(blob);
+
+            return {
+                kind: "blob",
+                url: blobUrl,
+                filename: `${appId}.lua`,
+                copyText: luaText,
+                displayText: `${appId}.lua (${totalDepots} depot${totalDepots === 1 ? "" : "s"})`,
+                statusText:
+                    skippedWithoutKeys ?
+                        `Generated ${appId}.lua via fares.top + ManifestHub. ${skippedWithoutKeys} depot${skippedWithoutKeys === 1 ? "" : "s"} skipped because no public key was available.` :
+                        `Generated ${appId}.lua via fares.top + ManifestHub.`
+            };
         }
 
         function autoNormalizeManifestInput(announce = false) {
@@ -9626,12 +9795,8 @@
 
             const providers = [
                 {
-                    key: "KernelOS",
-                    resolve: fetchLuaManifestFromKernelOS
-                },
-                {
-                    key: "fares.top",
-                    resolve: fetchLuaManifestFromFares
+                    key: "fares.top + ManifestHub",
+                    resolve: fetchLuaManifestFromManifestHub
                 },
                 {
                     key: "steamml.xyz",
@@ -9647,7 +9812,11 @@
                         throw new Error("No URL returned.");
                     }
                     setLuaManifestResult(finalUrl, provider.key);
-                    setLuaManifestStatus(`Resolved via ${provider.key}.`);
+                    setLuaManifestStatus(
+                        finalUrl && typeof finalUrl === "object" && finalUrl.statusText ?
+                            finalUrl.statusText :
+                            `Resolved via ${provider.key}.`
+                    );
                     return;
                 } catch (error) {
                     const message =
@@ -11015,7 +11184,9 @@
                         console.error(error);
                         setLuaManifestResult("");
                         setLuaManifestStatus(
-                            "Unable to resolve this AppID from any provider right now.",
+                            error instanceof Error && error.message ?
+                                error.message :
+                                "Unable to resolve this AppID from any provider right now.",
                             true
                         );
                     } finally {
@@ -11048,6 +11219,21 @@
                     if (!luaManifestFinalUrl) {
                         return;
                     }
+                    if (luaManifestResultMode === "blob") {
+                        const a = document.createElement("a");
+                        a.href = luaManifestFinalUrl;
+                        a.download = luaManifestFilename || "manifest.lua";
+                        document.body.appendChild(a);
+                        a.click();
+                        a.remove();
+                        setLuaManifestStatus(
+                            luaManifestProvider ?
+                                `Downloaded ${luaManifestFilename || "manifest.lua"} via ${luaManifestProvider}.` :
+                                `Downloaded ${luaManifestFilename || "manifest.lua"}.`
+                        );
+                        return;
+                    }
+
                     window.open(luaManifestFinalUrl, "_blank", "noopener,noreferrer");
                     setLuaManifestStatus(
                         luaManifestProvider ?
@@ -11060,15 +11246,19 @@
             if (luaManifestCopy) {
                 luaManifestCopy.addEventListener("click", async (event) => {
                     ripple(luaManifestCopy, event);
-                    if (!luaManifestFinalUrl) {
+                    if (!luaManifestCopyText) {
                         return;
                     }
                     try {
-                        await navigator.clipboard.writeText(luaManifestFinalUrl);
+                        await navigator.clipboard.writeText(luaManifestCopyText);
                         setLuaManifestStatus(
-                            luaManifestProvider ?
-                                `${luaManifestProvider} URL copied.` :
-                                "URL copied."
+                            luaManifestResultMode === "blob" ?
+                                luaManifestProvider ?
+                                    `${luaManifestFilename || "manifest.lua"} copied from ${luaManifestProvider}.` :
+                                    `${luaManifestFilename || "manifest.lua"} copied.` :
+                                luaManifestProvider ?
+                                    `${luaManifestProvider} URL copied.` :
+                                    "URL copied."
                         );
                     } catch (error) {
                         console.error(error);
@@ -11076,6 +11266,10 @@
                     }
                 });
             }
+
+            window.addEventListener("beforeunload", () => {
+                revokeLuaManifestObjectUrl();
+            });
 
             if (builderIconsFullScreenButton) {
                 builderIconsFullScreenButton.addEventListener("click", (event) => {
