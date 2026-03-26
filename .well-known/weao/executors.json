@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-03-26T19:13:57.921Z",
+  "fetchedAt": "2026-03-26T20:01:51.449Z",
   "data": [
     {
       "_id": "680eaddf8b44717c060fcf8d",
@@ -698,13 +698,13 @@
     {
       "_id": "66633ac4b29bacaa7a568fdc",
       "title": "Solara",
-      "version": "3.237",
-      "updatedDate": "03/18/2026 at 6:32 PM UTC",
+      "version": "3.238",
+      "updatedDate": "03/26/2026 at 7:17 PM UTC",
       "uncStatus": true,
       "free": true,
       "detected": true,
-      "rbxversion": "version-ae421f0582e54718",
-      "updateStatus": false,
+      "rbxversion": "version-6776addb8fbc4d17",
+      "updateStatus": true,
       "websitelink": "https://getsolara.dev",
       "discordlink": "https://getsolara.dev/discord",
       "beta": false,
@@ -1399,8 +1399,8 @@
     {
       "_id": "6949f9ee0260ad9e36c73700",
       "title": "RbxCli",
-      "version": "1.6.9-1-alpha",
-      "updatedDate": "03/26/2026 at 6:33 PM UTC",
+      "version": "1.6.9-1-alpha ",
+      "updatedDate": "03/26/2026 at 7:20 PM UTC",
       "uncStatus": false,
       "free": false,
       "detected": false,
