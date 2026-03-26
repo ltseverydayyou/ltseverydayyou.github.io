@@ -390,10 +390,15 @@
             border: none;
             background: rgba(255, 255, 255, 0.08);
             color: var(--tx);
-            padding: 4px 10px;
+            width: 36px;
+            height: 32px;
+            padding: 0;
             border-radius: 999px;
             font-weight: 700;
             cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             transition:
                 transform 0.25s,
                 background 0.25s;
@@ -402,6 +407,20 @@
         .home-section__toggle:hover {
             transform: translateY(-1px);
             background: rgba(255, 255, 255, 0.15);
+        }
+
+        .home-section__toggle::before {
+            content: "";
+            width: 8px;
+            height: 8px;
+            border-right: 2px solid currentColor;
+            border-bottom: 2px solid currentColor;
+            transform: translateY(-1px) rotate(45deg);
+            transition: transform 0.25s ease;
+        }
+
+        .home-section__toggle[aria-expanded="true"]::before {
+            transform: translateY(1px) rotate(-135deg);
         }
 
         .home-section__toggle:focus-visible {
@@ -4021,7 +4040,7 @@
         }
 
         .hero-strip__track span::after {
-            content: " вЂў";
+            content: " \2022";
             color: rgba(226, 37, 81, 0.42);
         }
 
@@ -4186,7 +4205,7 @@
                     <div id="bb" class="bb"></div>
                 </div>
                 <div class="brand-copy">
-                    <span class="brand-label">VyperiaвЂ™s Domain</span>
+                    <span class="brand-label">Vyperia's Domain</span>
                 </div>
             </div>
             <nav class="nb" id="nb">
@@ -4218,7 +4237,7 @@
                                     alt="" />
                             </a>
                         </p>
-            <h1 class="tt">VyperiaвЂ™s Domain</h1>
+            <h1 class="tt">Vyperia's Domain</h1>
 
 
 
@@ -4639,7 +4658,7 @@
                     </div>
                     <div class="codex-convert__grid">
                         <div class="codex-convert__card">
-                            <h4>codexScriptCache.json в†’ files</h4>
+                            <h4>codexScriptCache.json &rarr; files</h4>
                             <label class="codex-convert__field">
                                 <span>Upload cache file</span>
                                 <input type="file" id="codex-json-input" accept=".json,application/json" />
@@ -4663,7 +4682,7 @@
                                 root; titles become file names (duplicates are numbered).</p>
                         </div>
                         <div class="codex-convert__card">
-                            <h4>Folder/files в†’ codexScriptCache.json</h4>
+                            <h4>Folder/files &rarr; codexScriptCache.json</h4>
                             <label class="codex-convert__field">
                                 <span>Select folder or files</span>
                                 <input type="file" id="codex-folder-input" multiple webkitdirectory
@@ -4845,10 +4864,10 @@
     <div id="md" class="md" aria-hidden="true">
         <div class="mc">
             <div class="mh">
-                <strong id="mt" class="br">LoadingРІР‚В¦</strong>
+                <strong id="mt" class="br">Loading...</strong>
                 <div>
                     <button class="bn cp" id="cp">Copy Script</button>
-                    <button class="x" id="x">вњ•</button>
+                    <button class="x" id="x">&times;</button>
                 </div>
             </div>
             <div id="mb" class="sk"></div>
@@ -4944,7 +4963,10 @@
                     "aria-expanded",
                     section.open ? "true" : "false"
                 );
-                toggle.innerHTML = section.open ? "в–І" : "в–ј";
+                toggle.setAttribute(
+                    "aria-label",
+                    section.open ? "Collapse section" : "Expand section"
+                );
 
                 headerWrap.append(header, toggle);
 
@@ -4981,7 +5003,10 @@
                         "aria-expanded",
                         section.open ? "true" : "false"
                     );
-                    toggle.innerHTML = section.open ? "в–І" : "в–ј";
+                    toggle.setAttribute(
+                        "aria-label",
+                        section.open ? "Collapse section" : "Expand section"
+                    );
                 });
 
                 block.append(headerWrap, content);
@@ -7918,7 +7943,7 @@
             await navigator.clipboard.writeText(
                 `loadstring(game:HttpGet('${url}'))();`
             );
-            toast("Copied РІСљвЂќРїС‘РЏ");
+            toast("Copied to clipboard");
         }
 
         function luaHl() {
@@ -7941,7 +7966,7 @@
                 warnings.push(`repeat/until (${r}/${u})`);
             }
             if (warnings.length) {
-                toast(`РІС™В РїС‘РЏ ${warnings.join(" РІР‚Сћ ")}`);
+                toast(`Warnings: ${warnings.join(" | ")}`);
             }
         }
 
@@ -8583,7 +8608,7 @@
                 return;
             }
             const stamp = new Date().toLocaleTimeString();
-            statusEl.textContent = `${message} вЂў ${stamp}`;
+            statusEl.textContent = `${message} - ${stamp}`;
         }
 
         function htmlR(reason = "manual") {
@@ -8640,7 +8665,7 @@
                 if (counts.comments) {
                     summaryParts.push(`${counts.comments} comments`);
                 }
-                summaryEl.textContent = summaryParts.join(" вЂў ");
+                summaryEl.textContent = summaryParts.join(" - ");
             }
         }
 
@@ -9820,7 +9845,7 @@
                     return;
                 }
                 await navigator.clipboard.writeText(curCode);
-                toast("Script copied РІСљвЂќРїС‘РЏ");
+                toast("Script copied to clipboard");
             });
 
             const bHL = q("#lhl");
