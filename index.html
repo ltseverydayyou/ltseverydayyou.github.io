@@ -542,76 +542,300 @@
             }
         }
 
-        .sc {
+        .scripts-showcase {
+            padding: clamp(22px, 3vw, 32px);
+        }
+
+        .scripts-showcase__hero {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 24px;
+            align-items: center;
+        }
+
+        .scripts-showcase__intro,
+        .scripts-showcase__summary {
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background:
+                radial-gradient(circle at top right, rgba(102, 227, 255, 0.12), transparent 36%),
+                linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+        }
+
+        .scripts-showcase__intro {
+            padding: 18px 20px;
+            min-height: 0;
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            gap: 12px;
-            background: rgba(255, 255, 255, var(--glA));
-            border: 1px solid rgba(255, 255, 255, var(--bdA));
-            border-radius: 16px;
-            padding: 14px 16px;
-            transition:
-                transform 0.35s,
-                box-shadow 0.35s,
-                background 0.35s;
+            justify-content: center;
+            width: fit-content;
+            min-width: 180px;
         }
 
-        .sc:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        .sc_info {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            flex: 1;
-            min-width: 0;
-        }
-
-        .sc_img {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
-            object-fit: cover;
-            border: 1px solid rgba(255, 255, 255, var(--bdA));
-            background: rgba(255, 255, 255, 0.08);
-        }
-
-        .sc_text {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            flex-wrap: wrap;
-            min-width: 0;
-        }
-
-        .sc.featured {
-            background: linear-gradient(135deg,
-                    rgba(102, 227, 255, 0.12),
-                    rgba(167, 139, 250, 0.08));
-            border-color: rgba(102, 227, 255, 0.45);
-            box-shadow: 0 18px 40px rgba(102, 227, 255, 0.35);
-        }
-
-        .sc_badge {
+        .scripts-showcase__eyebrow {
             display: inline-flex;
             align-items: center;
-            gap: 4px;
+            gap: 8px;
+            padding: 5px 12px;
+            margin-bottom: 12px;
             border-radius: 999px;
-            border: 1px solid rgba(102, 227, 255, 0.6);
-            padding: 2px 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: var(--mu);
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .scripts-showcase__intro h3 {
+            margin: 0;
+        }
+
+        .scripts-showcase__intro p {
+            margin: 0;
+            max-width: 60ch;
+            color: var(--mu);
+            font-size: 14px;
+        }
+
+        .scripts-showcase__summary {
+            padding: 22px;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 14px;
+            width: 100%;
+        }
+
+        .scripts-showcase__stat {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 8px;
+            min-height: 122px;
+            padding: 18px;
+            border-radius: 20px;
+            background: rgba(7, 10, 24, 0.55);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .scripts-showcase__stat strong {
+            font-size: clamp(2rem, 3.2vw, 2.6rem);
+            line-height: 1;
+            color: #fff;
+        }
+
+        .scripts-showcase__stat span {
+            font-size: 13px;
+            color: var(--mu);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .scripts-showcase__grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 18px;
+        }
+
+        .scripts-showcase__grid>.sc {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            min-height: 360px;
+            overflow: hidden;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background:
+                linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.015)),
+                rgba(9, 12, 24, 0.92);
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease,
+                border-color 0.3s ease;
+        }
+
+        .scripts-showcase__grid>.sc:hover {
+            transform: translateY(-4px);
+            border-color: rgba(102, 227, 255, 0.26);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.36);
+        }
+
+        .scripts-showcase__grid>.sc.featured {
+            border-color: rgba(102, 227, 255, 0.28);
+            background:
+                radial-gradient(circle at top right, rgba(102, 227, 255, 0.16), transparent 42%),
+                linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.015)),
+                rgba(8, 12, 24, 0.95);
+        }
+
+        .scripts-showcase .sc_media {
+            position: relative;
+            aspect-ratio: 16 / 10;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at top right, rgba(167, 139, 250, 0.22), transparent 28%),
+                linear-gradient(135deg, rgba(102, 227, 255, 0.18), rgba(167, 139, 250, 0.1));
+        }
+
+        .scripts-showcase .sc_media::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(5, 8, 18, 0.04), rgba(5, 8, 18, 0.78));
+            pointer-events: none;
+        }
+
+        .scripts-showcase .sc_img,
+        .scripts-showcase .sc_fallback {
+            width: 100%;
+            height: 100%;
+        }
+
+        .scripts-showcase .sc_img {
+            display: block;
+            object-fit: cover;
+            transition: transform 0.45s ease;
+        }
+
+        .scripts-showcase .sc:hover .sc_img {
+            transform: scale(1.04);
+        }
+
+        .scripts-showcase .sc_fallback {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.88);
+            font-size: clamp(2rem, 5vw, 3.4rem);
+            font-weight: 900;
+            letter-spacing: 0.08em;
+            background:
+                radial-gradient(circle at 30% 30%, rgba(102, 227, 255, 0.22), transparent 24%),
+                linear-gradient(135deg, rgba(18, 26, 42, 0.95), rgba(34, 24, 56, 0.95));
+        }
+
+        .scripts-showcase .sc_top {
+            position: absolute;
+            inset: 14px 14px auto;
+            z-index: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .scripts-showcase .sc_source,
+        .scripts-showcase .sc_hint,
+        .scripts-showcase .sc_badge {
+            display: inline-flex;
+            align-items: center;
+            border-radius: 999px;
+            backdrop-filter: blur(10px);
             font-size: 11px;
             font-weight: 700;
             letter-spacing: 0.08em;
             text-transform: uppercase;
-            color: var(--ac);
-            background: rgba(102, 227, 255, 0.18);
         }
 
-        .sc .nm {
+        .scripts-showcase .sc_source,
+        .scripts-showcase .sc_hint {
+            padding: 6px 10px;
+            color: rgba(255, 255, 255, 0.86);
+            background: rgba(7, 10, 24, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .scripts-showcase .sc_badge {
+            padding: 6px 12px;
+            color: #03131b;
+            background: linear-gradient(135deg, rgba(102, 227, 255, 0.95), rgba(167, 139, 250, 0.92));
+            box-shadow: 0 12px 30px rgba(102, 227, 255, 0.22);
+        }
+
+        .scripts-showcase .sc_body {
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            gap: 14px;
+            padding: 18px;
+        }
+
+        .scripts-showcase .sc_info {
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .scripts-showcase .sc_meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .scripts-showcase .sc_text {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            min-width: 0;
+        }
+
+        .scripts-showcase .sc .nm {
+            color: #fff;
+            font-size: 20px;
             font-weight: 800;
+            line-height: 1.1;
+        }
+
+        .scripts-showcase .sc_desc {
+            margin: 0;
+            color: var(--mu);
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .scripts-showcase .sc_footer {
+            margin-top: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .scripts-showcase .brw {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(96px, 1fr));
+            gap: 10px;
+            width: 100%;
+        }
+
+        .scripts-showcase .bn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .scripts-showcase .sc_link {
+            color: var(--ac);
+            font-size: 13px;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .scripts-showcase .sc_link:hover {
+            color: #fff;
+        }
+
+        .scripts-showcase__empty {
+            padding: 28px;
+            border-radius: 22px;
+            border: 1px dashed rgba(255, 255, 255, 0.12);
+            background: rgba(255, 255, 255, 0.03);
+            color: var(--mu);
+            text-align: center;
         }
 
         select {
@@ -3460,6 +3684,14 @@
                 flex-direction: column;
                 align-items: flex-start;
             }
+
+            .scripts-showcase__summary {
+                grid-template-columns: 1fr;
+            }
+
+            .scripts-showcase__grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 960px) {
@@ -4294,7 +4526,28 @@
             </section>
 
             <section id="ps" class="pp">
-                <div class="g" id="sc_list"></div>
+                <div class="g ed scripts-showcase">
+                    <div class="scripts-showcase__hero">
+                        <div class="scripts-showcase__intro">
+                            <h3>Scripts</h3>
+                        </div>
+                        <div class="scripts-showcase__summary" aria-label="Scripts summary">
+                            <div class="scripts-showcase__stat">
+                                <strong id="scripts-total">0</strong>
+                                <span>Total scripts</span>
+                            </div>
+                            <div class="scripts-showcase__stat">
+                                <strong id="scripts-featured">0</strong>
+                                <span>Featured picks</span>
+                            </div>
+                            <div class="scripts-showcase__stat">
+                                <strong id="scripts-games">0</strong>
+                                <span>Game-linked</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="scripts-showcase__grid" id="sc_list"></div>
+                </div>
             </section>
 
             <section id="pl" class="pp">
@@ -7243,6 +7496,28 @@
             }
         }
 
+        function scriptSourceLabel(url) {
+            const sourceHost = host(url);
+            if (!sourceHost) {
+                return "Direct source";
+            }
+            if (sourceHost === "raw.githubusercontent.com" || sourceHost === "gist.githubusercontent.com") {
+                return "GitHub Raw";
+            }
+            return sourceHost;
+        }
+
+        function scriptDescription(item) {
+            const sourceLabel = scriptSourceLabel(item.url);
+            if (item.featured) {
+                return `Pinned release hosted on ${sourceLabel}. Copy the loader instantly or inspect the source first.`;
+            }
+            if (item.game) {
+                return `Built for a Roblox experience with a direct source on ${sourceLabel}. Launch the game or review the script before running it.`;
+            }
+            return `Direct script source hosted on ${sourceLabel}. Open it in the viewer or copy the loader in one click.`;
+        }
+
         function renderScripts() {
             const list = q("#sc_list");
             if (!list) {
@@ -7253,26 +7528,99 @@
             const featuredList = scriptItems.filter((item) => item.featured);
             const regularList = scriptItems.filter((item) => !item.featured);
             const sorted = [...featuredList, ...regularList];
+            const totalEl = q("#scripts-total");
+            const featuredEl = q("#scripts-featured");
+            const gameLinkedEl = q("#scripts-games");
+
+            if (totalEl) {
+                totalEl.textContent = String(scriptItems.length);
+            }
+            if (featuredEl) {
+                featuredEl.textContent = String(featuredList.length);
+            }
+            if (gameLinkedEl) {
+                gameLinkedEl.textContent = String(
+                    scriptItems.filter((item) => Boolean(item.game)).length
+                );
+            }
+
+            if (!sorted.length) {
+                list.innerHTML =
+                    '<div class="scripts-showcase__empty">No scripts are available right now.</div>';
+                return;
+            }
+
             const fragment = document.createDocumentFragment();
 
             for (const item of sorted) {
-                const entry = document.createElement("div");
+                const entry = document.createElement("article");
                 entry.className = "sc";
                 if (item.featured) {
                     entry.classList.add("featured");
                 }
                 entry.dataset.u = item.url;
+                entry.dataset.h = host(item.url);
 
-                const info = document.createElement("div");
-                info.className = "sc_info";
+                const media = document.createElement("div");
+                media.className = "sc_media";
 
                 if (item.image) {
                     const img = document.createElement("img");
                     img.className = "sc_img";
                     img.src = item.image;
                     img.alt = item.name;
-                    info.appendChild(img);
+                    media.appendChild(img);
+                } else {
+                    const fallback = document.createElement("div");
+                    fallback.className = "sc_fallback";
+                    fallback.textContent = item.name
+                        .split(/\s+/)
+                        .slice(0, 2)
+                        .map((part) => part.charAt(0).toUpperCase())
+                        .join("") || "SC";
+                    media.appendChild(fallback);
                 }
+
+                const top = document.createElement("div");
+                top.className = "sc_top";
+
+                if (item.featured) {
+                    const badge = document.createElement("span");
+                    badge.className = "sc_badge";
+                    badge.textContent = "Featured";
+                    top.appendChild(badge);
+                } else {
+                    const hint = document.createElement("span");
+                    hint.className = "sc_hint";
+                    hint.textContent = item.game ? "Game script" : "Direct source";
+                    top.appendChild(hint);
+                }
+
+                const source = document.createElement("span");
+                source.className = "sc_source";
+                source.textContent = scriptSourceLabel(item.url);
+                top.appendChild(source);
+
+                media.appendChild(top);
+
+                const body = document.createElement("div");
+                body.className = "sc_body";
+
+                const info = document.createElement("div");
+                info.className = "sc_info";
+
+                const meta = document.createElement("div");
+                meta.className = "sc_meta";
+
+                const kind = document.createElement("span");
+                kind.className = "sc_hint";
+                kind.textContent = item.featured ? "Pinned release" : "Loader ready";
+                meta.appendChild(kind);
+
+                const access = document.createElement("span");
+                access.className = "sc_hint";
+                access.textContent = item.game ? "Includes game link" : "Raw source only";
+                meta.appendChild(access);
 
                 const text = document.createElement("div");
                 text.className = "sc_text";
@@ -7282,17 +7630,18 @@
                 title.textContent = item.name;
                 text.appendChild(title);
 
-                if (item.featured) {
-                    const badge = document.createElement("span");
-                    badge.className = "sc_badge";
-                    badge.textContent = "Featured";
-                    text.appendChild(badge);
-                }
+                const description = document.createElement("p");
+                description.className = "sc_desc";
+                description.textContent = scriptDescription(item);
+                text.appendChild(description);
 
-                info.appendChild(text);
+                info.append(meta, text);
 
                 const controls = document.createElement("div");
-                controls.className = "brw";
+                controls.className = "sc_footer";
+
+                const buttonRow = document.createElement("div");
+                buttonRow.className = "brw";
 
                 const copyBtn = document.createElement("button");
                 copyBtn.className = "bn cp";
@@ -7306,7 +7655,7 @@
                 viewBtn.type = "button";
                 viewBtn.textContent = "View";
 
-                controls.append(copyBtn, viewBtn);
+                buttonRow.append(copyBtn, viewBtn);
 
                 if (item.game) {
                     const gameBtn = document.createElement("button");
@@ -7314,10 +7663,19 @@
                     gameBtn.dataset.game = item.game;
                     gameBtn.type = "button";
                     gameBtn.textContent = "Play";
-                    controls.append(gameBtn);
+                    buttonRow.append(gameBtn);
                 }
 
-                entry.append(info, controls);
+                const rawLink = document.createElement("a");
+                rawLink.className = "sc_link";
+                rawLink.href = item.url;
+                rawLink.target = "_blank";
+                rawLink.rel = "noopener noreferrer";
+                rawLink.textContent = "Open raw source";
+
+                controls.append(buttonRow, rawLink);
+                body.append(info, controls);
+                entry.append(media, body);
                 fragment.appendChild(entry);
             }
 
