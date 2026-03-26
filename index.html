@@ -1606,320 +1606,6 @@
             background: rgba(255, 255, 255, 0.02);
         }
 
-        .outfit-loader {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .outfit-loader__header {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: space-between;
-            gap: 12px;
-        }
-
-        .outfit-loader__header p {
-            margin: 4px 0 0;
-            color: var(--mu);
-            max-width: 72ch;
-        }
-
-        .outfit-loader__layout {
-            display: grid;
-            gap: 16px;
-            grid-template-columns: minmax(280px, 340px) minmax(0, 1fr);
-        }
-
-        .outfit-loader__panel {
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 20px;
-            padding: 18px;
-            background: rgba(255, 255, 255, 0.02);
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-        }
-
-        .outfit-loader__field {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
-
-        .outfit-loader__field span {
-            font-size: 12px;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            color: var(--mu);
-        }
-
-        .outfit-loader__field input {
-            border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 10px 12px;
-            background: rgba(255, 255, 255, 0.02);
-            color: var(--tx);
-            font: 14px ui-sans-serif, system-ui, "Segoe UI", Roboto, Helvetica, Arial;
-        }
-
-        .outfit-loader__field small {
-            color: var(--mu);
-            font-size: 12px;
-        }
-
-        .outfit-loader__actions {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-
-        .outfit-loader__status {
-            min-height: 20px;
-            margin: 0;
-            font-size: 13px;
-            color: var(--mu);
-        }
-
-        .outfit-loader__status--error {
-            color: #ff8484;
-        }
-
-        .outfit-loader__user {
-            display: grid;
-            grid-template-columns: auto minmax(0, 1fr);
-            gap: 14px;
-            align-items: center;
-            border-radius: 18px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            background: rgba(255, 255, 255, 0.025);
-            padding: 14px;
-        }
-
-        .outfit-loader__avatar {
-            width: 76px;
-            height: 76px;
-            border-radius: 18px;
-            object-fit: cover;
-            background:
-                radial-gradient(circle at top, rgba(102, 227, 255, 0.14), transparent 60%),
-                rgba(9, 13, 22, 0.95);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .outfit-loader__user-copy h4 {
-            margin: 0;
-            font-size: 18px;
-        }
-
-        .outfit-loader__user-copy p {
-            margin: 4px 0 0;
-            color: var(--mu);
-            font-size: 13px;
-            word-break: break-word;
-        }
-
-        .outfit-loader__results {
-            display: grid;
-            gap: 14px;
-        }
-
-        .outfit-loader__details {
-            display: grid;
-            gap: 14px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 18px;
-            background: rgba(255, 255, 255, 0.025);
-            padding: 14px;
-        }
-
-        .outfit-loader__details-head {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: space-between;
-            gap: 8px;
-        }
-
-        .outfit-loader__details-head h4 {
-            margin: 0;
-            font-size: 17px;
-        }
-
-        .outfit-loader__details-head p {
-            margin: 4px 0 0;
-            color: var(--mu);
-            font-size: 13px;
-        }
-
-        .outfit-loader__pill {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 6px 10px;
-            border-radius: 999px;
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            background: rgba(255, 255, 255, 0.04);
-            color: var(--mu);
-            font-size: 12px;
-            letter-spacing: 0.04em;
-            text-transform: uppercase;
-        }
-
-        .outfit-loader__details-copy {
-            margin: 0;
-            color: var(--mu);
-            font-size: 13px;
-        }
-
-        .outfit-loader__items {
-            display: grid;
-            gap: 12px;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-        }
-
-        .outfit-loader__item {
-            border-radius: 14px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            background: rgba(255, 255, 255, 0.03);
-            padding: 12px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .outfit-loader__item-thumb {
-            width: 100%;
-            aspect-ratio: 1 / 1;
-            object-fit: cover;
-            border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            background:
-                radial-gradient(circle at top, rgba(102, 227, 255, 0.14), transparent 60%),
-                rgba(9, 13, 22, 0.95);
-        }
-
-        .outfit-loader__item-thumb--placeholder {
-            display: grid;
-            place-items: center;
-            text-align: center;
-            color: var(--mu);
-            font-size: 13px;
-            padding: 12px;
-        }
-
-        .outfit-loader__item h5 {
-            margin: 0;
-            font-size: 14px;
-            line-height: 1.35;
-            word-break: break-word;
-        }
-
-        .outfit-loader__item-meta {
-            display: grid;
-            gap: 4px;
-            color: var(--mu);
-            font-size: 12px;
-        }
-
-        .outfit-loader__item-link {
-            margin-top: auto;
-            align-self: flex-start;
-            text-decoration: none;
-        }
-
-        .outfit-loader__summary {
-            margin: 0;
-            font-size: 13px;
-            color: var(--mu);
-        }
-
-        .outfit-loader__empty {
-            border: 1px dashed rgba(255, 255, 255, 0.18);
-            border-radius: 14px;
-            padding: 28px 16px;
-            text-align: center;
-            color: var(--mu);
-            font-size: 14px;
-            background: rgba(255, 255, 255, 0.02);
-        }
-
-        .outfit-loader__cards {
-            display: grid;
-            gap: 14px;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-        }
-
-        .outfit-loader__card {
-            border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 14px;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            background: linear-gradient(220deg,
-                    rgba(255, 255, 255, 0.03),
-                    rgba(255, 255, 255, 0.01));
-        }
-
-        .outfit-loader__card--interactive {
-            appearance: none;
-            width: 100%;
-            text-align: left;
-            cursor: pointer;
-            color: inherit;
-            font: inherit;
-            transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
-        }
-
-        .outfit-loader__card--interactive:hover {
-            transform: translateY(-2px);
-            border-color: rgba(102, 227, 255, 0.42);
-        }
-
-        .outfit-loader__card--interactive.is-active {
-            border-color: rgba(102, 227, 255, 0.7);
-            box-shadow: 0 0 0 1px rgba(102, 227, 255, 0.25);
-            background: linear-gradient(220deg,
-                    rgba(102, 227, 255, 0.12),
-                    rgba(255, 255, 255, 0.02));
-        }
-
-        .outfit-loader__thumb {
-            width: 100%;
-            aspect-ratio: 1 / 1;
-            border-radius: 14px;
-            object-fit: cover;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            background:
-                radial-gradient(circle at top, rgba(102, 227, 255, 0.14), transparent 60%),
-                rgba(9, 13, 22, 0.95);
-        }
-
-        .outfit-loader__thumb--placeholder {
-            display: grid;
-            place-items: center;
-            text-align: center;
-            padding: 12px;
-            color: var(--mu);
-            font-size: 13px;
-        }
-
-        .outfit-loader__card h4 {
-            margin: 0;
-            font-size: 15px;
-            line-height: 1.3;
-            word-break: break-word;
-        }
-
-        .outfit-loader__meta {
-            display: grid;
-            gap: 4px;
-            font-size: 12px;
-            color: var(--mu);
-        }
-
         .pl {
             position: relative;
             overflow: hidden;
@@ -3727,10 +3413,6 @@
             .hero {
                 grid-template-columns: 1fr;
             }
-
-            .outfit-loader__layout {
-                grid-template-columns: 1fr;
-            }
         }
 
         @media (max-width: 780px) {
@@ -4343,7 +4025,7 @@
         }
 
         .hero-strip__track span::after {
-            content: " •";
+            content: " вЂў";
             color: rgba(226, 37, 81, 0.42);
         }
 
@@ -4508,7 +4190,7 @@
                     <div id="bb" class="bb"></div>
                 </div>
                 <div class="brand-copy">
-                    <span class="brand-label">Vyperia’s Domain</span>
+                    <span class="brand-label">VyperiaвЂ™s Domain</span>
                 </div>
             </div>
             <nav class="nb" id="nb">
@@ -4524,7 +4206,6 @@
                 <button class="tb" data-t="e">Executors</button>
                 <button class="tb" data-t="r">RDD</button>
                 <button class="tb" data-t="b">Roblox BuilderIcons</button>
-                <button class="tb" data-t="o">Outfit Loader</button>
             </nav>
         </aside>
 
@@ -4541,7 +4222,7 @@
                                     alt="" />
                             </a>
                         </p>
-            <h1 class="tt">Vyperia’s Domain</h1>
+            <h1 class="tt">VyperiaвЂ™s Domain</h1>
 
 
 
@@ -4962,7 +4643,7 @@
                     </div>
                     <div class="codex-convert__grid">
                         <div class="codex-convert__card">
-                            <h4>codexScriptCache.json → files</h4>
+                            <h4>codexScriptCache.json в†’ files</h4>
                             <label class="codex-convert__field">
                                 <span>Upload cache file</span>
                                 <input type="file" id="codex-json-input" accept=".json,application/json" />
@@ -4986,7 +4667,7 @@
                                 root; titles become file names (duplicates are numbered).</p>
                         </div>
                         <div class="codex-convert__card">
-                            <h4>Folder/files → codexScriptCache.json</h4>
+                            <h4>Folder/files в†’ codexScriptCache.json</h4>
                             <label class="codex-convert__field">
                                 <span>Select folder or files</span>
                                 <input type="file" id="codex-folder-input" multiple webkitdirectory
@@ -5154,49 +4835,6 @@
                 </div>
             </section>
 
-            <section id="po" class="pp">
-                <div class="g ed outfit-loader">
-                    <div class="outfit-loader__header">
-                        <div>
-                            <h3>Outfit Loader</h3>
-                            <p>Load a Roblox user's editable saved outfits by username or
-                                <code>id:123456</code>, using the request flow from the referenced outfit finder and
-                                this page's proxy fallback.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="outfit-loader__layout">
-                        <div class="outfit-loader__panel">
-                            <label class="outfit-loader__field">
-                                <span>Username or ID</span>
-                                <input id="outfit-loader-input" type="text"
-                                    placeholder="e.g. @builderman or id:156" autocomplete="off" spellcheck="false" />
-                                <small>Use the exact username, not the display name.</small>
-                            </label>
-                            <div class="outfit-loader__actions">
-                                <button class="pl sc" type="button" id="outfit-loader-search">Load outfits</button>
-                                <button class="pl" type="button" id="outfit-loader-clear">Clear</button>
-                            </div>
-                            <p id="outfit-loader-status" class="outfit-loader__status" aria-live="polite">Ready.</p>
-                        </div>
-                        <div class="outfit-loader__panel">
-                            <div id="outfit-loader-user" class="outfit-loader__user" hidden>
-                                <img id="outfit-loader-avatar" class="outfit-loader__avatar" src="" alt="" />
-                                <div class="outfit-loader__user-copy">
-                                    <h4 id="outfit-loader-user-title">No user loaded</h4>
-                                    <p id="outfit-loader-user-meta"></p>
-                                    <p id="outfit-loader-user-age"></p>
-                                </div>
-                            </div>
-                            <div id="outfit-loader-details" class="outfit-loader__details" hidden></div>
-                            <div id="outfit-loader-results" class="outfit-loader__results">
-                                <div class="outfit-loader__empty">Search for a Roblox account to load its saved outfit
-                                    list.</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
     </div>
     </main>
     </div>
@@ -5211,10 +4849,10 @@
     <div id="md" class="md" aria-hidden="true">
         <div class="mc">
             <div class="mh">
-                <strong id="mt" class="br">LoadingвЂ¦</strong>
+                <strong id="mt" class="br">LoadingРІР‚В¦</strong>
                 <div>
                     <button class="bn cp" id="cp">Copy Script</button>
-                    <button class="x" id="x">✕</button>
+                    <button class="x" id="x">вњ•</button>
                 </div>
             </div>
             <div id="mb" class="sk"></div>
@@ -5375,7 +5013,7 @@
                     "aria-expanded",
                     section.open ? "true" : "false"
                 );
-                toggle.innerHTML = section.open ? "▲" : "▼";
+                toggle.innerHTML = section.open ? "в–І" : "в–ј";
 
                 headerWrap.append(header, toggle);
 
@@ -5412,7 +5050,7 @@
                         "aria-expanded",
                         section.open ? "true" : "false"
                     );
-                    toggle.innerHTML = section.open ? "▲" : "▼";
+                    toggle.innerHTML = section.open ? "в–І" : "в–ј";
                 });
 
                 block.append(headerWrap, content);
@@ -8349,7 +7987,7 @@
             await navigator.clipboard.writeText(
                 `loadstring(game:HttpGet('${url}'))();`
             );
-            toast("Copied вњ”пёЏ");
+            toast("Copied РІСљвЂќРїС‘РЏ");
         }
 
         function luaHl() {
@@ -8372,7 +8010,7 @@
                 warnings.push(`repeat/until (${r}/${u})`);
             }
             if (warnings.length) {
-                toast(`вљ пёЏ ${warnings.join(" вЂў ")}`);
+                toast(`РІС™В РїС‘РЏ ${warnings.join(" РІР‚Сћ ")}`);
             }
         }
 
@@ -8858,731 +8496,138 @@
             }
         }
 
+        const robloxProxyFallbackRoots = ["roproxy.com"];
+        const jsonProxyFallbacks = [
+            {
+                label: "Codetabs",
+                buildUrl: (targetUrl) =>
+                    `https://api.codetabs.com/v1/proxy/?quest=${encodeURIComponent(targetUrl)}`
+            }
+        ];
+
+        function isRobloxApiUrl(value) {
+            try {
+                return /(^|\.)roblox\.com$/i.test(new URL(value).hostname);
+            } catch {
+                return false;
+            }
+        }
+
+        function buildRobloxProxyUrl(endpoint, proxyRoot) {
+            try {
+                const url = new URL(endpoint);
+                if (!/(^|\.)roblox\.com$/i.test(url.hostname)) {
+                    return "";
+                }
+
+                const parts = url.hostname.split(".");
+                if (parts.length < 2) {
+                    return "";
+                }
+
+                parts.splice(parts.length - 2, 2, ...proxyRoot.split("."));
+                url.hostname = parts.join(".");
+                return url.toString();
+            } catch {
+                return "";
+            }
+        }
+
+        function shouldRetryWithProxy(error) {
+            const status = Number(error?.status);
+            if (!Number.isFinite(status)) {
+                return true;
+            }
+            if (status === 408 || status === 425 || status === 429) {
+                return true;
+            }
+            return status >= 500;
+        }
+
+        function buildJsonFetchAttempts(endpoint) {
+            const attempts = [
+                {
+                    label: "primary",
+                    url: endpoint
+                }
+            ];
+            const seen = new Set([endpoint]);
+            const robloxProxyTargets = [];
+
+            if (isRobloxApiUrl(endpoint)) {
+                robloxProxyFallbackRoots.forEach((proxyRoot) => {
+                    const proxyUrl = buildRobloxProxyUrl(endpoint, proxyRoot);
+                    if (!proxyUrl || seen.has(proxyUrl)) {
+                        return;
+                    }
+                    seen.add(proxyUrl);
+                    robloxProxyTargets.push(proxyUrl);
+                    attempts.push({
+                        label: proxyRoot,
+                        url: proxyUrl
+                    });
+                });
+            }
+
+            jsonProxyFallbacks.forEach((proxy) => {
+                [endpoint, ...robloxProxyTargets].forEach((targetUrl) => {
+                    const proxyUrl = proxy.buildUrl(targetUrl);
+                    if (!proxyUrl || seen.has(proxyUrl)) {
+                        return;
+                    }
+                    seen.add(proxyUrl);
+                    attempts.push({
+                        label: `${proxy.label} -> ${targetUrl}`,
+                        url: proxyUrl
+                    });
+                });
+            });
+
+            return attempts;
+        }
+
         async function fetchJsonGetWithProxyFallback(endpoint, contextLabel) {
-            const requestJson = async (url) => {
-                const response = await fetch(url, {
-                    method: "GET",
-                    cache: "no-store",
-                    headers: {
-                        Accept: "application/json"
-                    }
-                });
-                if (!response.ok) {
-                    throw new Error(`${contextLabel} failed (${response.status})`);
-                }
-                const raw = await response.text();
-                return parseJsonText(raw, contextLabel);
-            };
-            try {
-                return await requestJson(endpoint);
-            } catch {
-                return requestJson(
-                    `https://api.codetabs.com/v1/proxy/?quest=${encodeURIComponent(endpoint)}`
-                );
-            }
-        }
+            const attempts = buildJsonFetchAttempts(endpoint);
+            let lastError = null;
 
-        const outfitLoaderState = {
-            requestId: 0,
-            loading: false,
-            outfits: [],
-            activeOutfitId: null,
-            outfitDetailsCache: new Map()
-        };
-
-        function chunkItems(items, size) {
-            const chunks = [];
-            for (let i = 0; i < items.length; i += size) {
-                chunks.push(items.slice(i, i + size));
-            }
-            return chunks;
-        }
-
-        function formatOutfitLoaderAge(createdAt) {
-            const createdDate = new Date(createdAt);
-            if (Number.isNaN(createdDate.getTime())) {
-                return "";
-            }
-
-            const now = new Date();
-            let years = now.getFullYear() - createdDate.getFullYear();
-            let months = now.getMonth() - createdDate.getMonth();
-            let days = now.getDate() - createdDate.getDate();
-
-            if (days < 0) {
-                months -= 1;
-                const previousMonth = new Date(now.getFullYear(), now.getMonth(), 0);
-                days += previousMonth.getDate();
-            }
-
-            if (months < 0) {
-                years -= 1;
-                months += 12;
-            }
-
-            return `${years} years, ${months} months, ${days} days old`;
-        }
-
-        function getOutfitLoaderAvatarFallback(name) {
-            const safeName =
-                typeof name === "string" && name.trim() ?
-                    name.trim().slice(0, 1).toUpperCase() :
-                    "?";
-            return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(
-                `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96"><defs><linearGradient id="g" x1="0" x2="1" y1="0" y2="1"><stop offset="0%" stop-color="#66e3ff"/><stop offset="100%" stop-color="#8e61ff"/></linearGradient></defs><rect width="96" height="96" rx="22" fill="#0b1220"/><rect x="2" y="2" width="92" height="92" rx="20" fill="url(#g)" opacity="0.2"/><text x="50%" y="54%" text-anchor="middle" dominant-baseline="middle" fill="#eaf8ff" font-family="Segoe UI, Arial, sans-serif" font-size="42" font-weight="700">${safeName}</text></svg>`
-            )}`;
-        }
-
-        function setOutfitLoaderStatus(message, isError = false) {
-            const statusEl = q("#outfit-loader-status");
-            if (!statusEl) {
-                return;
-            }
-            statusEl.textContent = message || "";
-            statusEl.classList.toggle("outfit-loader__status--error", Boolean(isError));
-        }
-
-        function resetOutfitLoaderResults(message) {
-            const resultsEl = q("#outfit-loader-results");
-            if (!resultsEl) {
-                return;
-            }
-            resultsEl.innerHTML = "";
-            const empty = document.createElement("div");
-            empty.className = "outfit-loader__empty";
-            empty.textContent = message;
-            resultsEl.appendChild(empty);
-        }
-
-        function resetOutfitLoaderDetails(message) {
-            const detailsEl = q("#outfit-loader-details");
-            if (!detailsEl) {
-                return;
-            }
-            detailsEl.innerHTML = "";
-            detailsEl.hidden = false;
-            const empty = document.createElement("div");
-            empty.className = "outfit-loader__empty";
-            empty.textContent = message;
-            detailsEl.appendChild(empty);
-        }
-
-        function clearOutfitLoaderUser() {
-            const userCard = q("#outfit-loader-user");
-            const avatarEl = q("#outfit-loader-avatar");
-            const titleEl = q("#outfit-loader-user-title");
-            const metaEl = q("#outfit-loader-user-meta");
-            const ageEl = q("#outfit-loader-user-age");
-
-            if (userCard) {
-                userCard.hidden = true;
-            }
-            if (avatarEl) {
-                avatarEl.src = "";
-                avatarEl.alt = "";
-            }
-            if (titleEl) {
-                titleEl.textContent = "No user loaded";
-            }
-            if (metaEl) {
-                metaEl.textContent = "";
-            }
-            if (ageEl) {
-                ageEl.textContent = "";
-            }
-        }
-
-        function renderOutfitLoaderUser(user, outfitCount) {
-            const userCard = q("#outfit-loader-user");
-            const avatarEl = q("#outfit-loader-avatar");
-            const titleEl = q("#outfit-loader-user-title");
-            const metaEl = q("#outfit-loader-user-meta");
-            const ageEl = q("#outfit-loader-user-age");
-            if (!userCard || !avatarEl || !titleEl || !metaEl || !ageEl) {
-                return;
-            }
-
-            const displayName = user.displayName || user.name || "Unknown user";
-            titleEl.textContent =
-                user.name && user.displayName && user.name !== user.displayName ?
-                    `@${user.name} (${user.displayName})` :
-                    `@${user.name || displayName}`;
-            ageEl.textContent = user.created ? `Account age: ${formatOutfitLoaderAge(user.created)}` : "";
-            metaEl.textContent = `User ID: ${user.id} | ${outfitCount} editable outfit${outfitCount === 1 ? "" : "s"}`;
-            avatarEl.src = user.headshotUrl || getOutfitLoaderAvatarFallback(displayName);
-            avatarEl.alt = `${displayName} avatar`;
-            userCard.hidden = false;
-        }
-
-        function getOutfitLoaderPlaceholderText(state) {
-            switch (state) {
-                case "Pending":
-                    return "Thumbnail pending";
-                case "Blocked":
-                    return "Thumbnail blocked";
-                case "Error":
-                    return "Thumbnail unavailable";
-                default:
-                    return "No thumbnail";
-            }
-        }
-
-        function updateOutfitLoaderActiveCard() {
-            qa("[data-outfit-loader-outfit-id]").forEach((card) => {
-                const isActive = card.dataset.outfitLoaderOutfitId === String(outfitLoaderState.activeOutfitId || "");
-                card.classList.toggle("is-active", isActive);
-                card.setAttribute("aria-pressed", isActive ? "true" : "false");
-            });
-        }
-
-        function getOutfitLoaderAssetPlaceholderText(state) {
-            switch (state) {
-                case "Pending":
-                    return "Thumbnail pending";
-                case "Blocked":
-                    return "Thumbnail blocked";
-                case "Error":
-                    return "Thumbnail unavailable";
-                default:
-                    return "No preview";
-            }
-        }
-
-        function getOutfitLoaderAssetUrl(asset) {
-            const assetId = asset?.id;
-            if (!assetId && assetId !== 0) {
-                return "";
-            }
-            return `https://www.roblox.com/catalog/${encodeURIComponent(assetId)}`;
-        }
-
-        function renderOutfitLoaderResults(outfits) {
-            const resultsEl = q("#outfit-loader-results");
-            if (!resultsEl) {
-                return;
-            }
-
-            resultsEl.innerHTML = "";
-            if (!Array.isArray(outfits) || outfits.length === 0) {
-                resetOutfitLoaderResults("No editable saved outfits were found for this account.");
-                return;
-            }
-
-            const summary = document.createElement("p");
-            summary.className = "outfit-loader__summary";
-            summary.textContent = `Loaded ${outfits.length} editable saved outfit${outfits.length === 1 ? "" : "s"}. Click one to inspect the items it uses.`;
-            resultsEl.appendChild(summary);
-
-            const grid = document.createElement("div");
-            grid.className = "outfit-loader__cards";
-
-            outfits.forEach((outfit) => {
-                const card = document.createElement("button");
-                card.type = "button";
-                card.className = "outfit-loader__card outfit-loader__card--interactive";
-                card.dataset.outfitLoaderOutfitId = String(outfit.id);
-                card.setAttribute("aria-pressed", "false");
-
-                if (outfit.thumbnailUrl) {
-                    const img = document.createElement("img");
-                    img.className = "outfit-loader__thumb";
-                    img.src = outfit.thumbnailUrl;
-                    img.alt = `${outfit.name || "Outfit"} thumbnail`;
-                    card.appendChild(img);
-                } else {
-                    const placeholder = document.createElement("div");
-                    placeholder.className = "outfit-loader__thumb outfit-loader__thumb--placeholder";
-                    placeholder.textContent = getOutfitLoaderPlaceholderText(outfit.thumbnailState);
-                    card.appendChild(placeholder);
-                }
-
-                const title = document.createElement("h4");
-                title.textContent = outfit.name || `Outfit ${outfit.id}`;
-                card.appendChild(title);
-
-                const meta = document.createElement("div");
-                meta.className = "outfit-loader__meta";
-
-                const idLine = document.createElement("span");
-                idLine.textContent = `Outfit ID: ${outfit.id}`;
-                meta.appendChild(idLine);
-
-                const typeLine = document.createElement("span");
-                typeLine.textContent =
-                    outfit.outfitType ? `Type: ${outfit.outfitType}` : "Type: Saved outfit";
-                meta.appendChild(typeLine);
-
-                const hintLine = document.createElement("span");
-                hintLine.textContent = "Click to show included items";
-                meta.appendChild(hintLine);
-
-                card.appendChild(meta);
-                grid.appendChild(card);
-            });
-
-            resultsEl.appendChild(grid);
-            updateOutfitLoaderActiveCard();
-        }
-
-        async function fetchOutfitLoaderAssetThumbnails(assets) {
-            const ids = assets
-                .map((asset) => asset?.id)
-                .filter((id) => id !== null && id !== undefined)
-                .map((id) => String(id));
-            const thumbnailMap = new Map();
-
-            const settledResults = await Promise.allSettled(
-                chunkItems(ids, 50).map((chunk) =>
-                    fetchJsonGetWithProxyFallback(
-                        `https://thumbnails.roblox.com/v1/assets?assetIds=${encodeURIComponent(chunk.join(","))}&size=150x150&format=Png&isCircular=false`,
-                        "Roblox asset thumbnails"
-                    )
-                )
-            );
-
-            settledResults.forEach((result) => {
-                if (result.status !== "fulfilled") {
-                    return;
-                }
-                const rows = Array.isArray(result.value?.data) ? result.value.data : [];
-                rows.forEach((row) => {
-                    if (row?.targetId !== undefined && row?.targetId !== null) {
-                        thumbnailMap.set(String(row.targetId), row);
-                    }
-                });
-            });
-
-            return assets.map((asset) => {
-                const thumbnail = thumbnailMap.get(String(asset.id));
-                return {
-                    ...asset,
-                    thumbnailUrl: thumbnail?.state === "Completed" ? thumbnail.imageUrl || "" : "",
-                    thumbnailState: thumbnail?.state || "NotFound"
-                };
-            });
-        }
-
-        async function fetchOutfitLoaderDetails(outfitId) {
-            const cacheKey = String(outfitId);
-            if (outfitLoaderState.outfitDetailsCache.has(cacheKey)) {
-                return outfitLoaderState.outfitDetailsCache.get(cacheKey);
-            }
-
-            const details = await fetchJsonGetWithProxyFallback(
-                `https://avatar.roblox.com/v3/outfits/${encodeURIComponent(outfitId)}/details`,
-                "Roblox outfit details"
-            );
-            const assets = Array.isArray(details?.assets) ? details.assets : [];
-            const withThumbnails = await fetchOutfitLoaderAssetThumbnails(assets);
-            const payload = {
-                ...details,
-                assets: withThumbnails
-            };
-            outfitLoaderState.outfitDetailsCache.set(cacheKey, payload);
-            return payload;
-        }
-
-        function renderOutfitLoaderDetails(details) {
-            const detailsEl = q("#outfit-loader-details");
-            if (!detailsEl) {
-                return;
-            }
-
-            detailsEl.innerHTML = "";
-            detailsEl.hidden = false;
-
-            const head = document.createElement("div");
-            head.className = "outfit-loader__details-head";
-
-            const headingCopy = document.createElement("div");
-            const heading = document.createElement("h4");
-            heading.textContent = details?.name || `Outfit ${details?.id || ""}`;
-            const subheading = document.createElement("p");
-            const assetCount = Array.isArray(details?.assets) ? details.assets.length : 0;
-            subheading.textContent = `Outfit ID: ${details?.id || "Unknown"} | ${assetCount} item${assetCount === 1 ? "" : "s"}`;
-            headingCopy.append(heading, subheading);
-
-            const typePill = document.createElement("div");
-            typePill.className = "outfit-loader__pill";
-            typePill.textContent = details?.outfitType || details?.playerAvatarType || "Outfit";
-
-            head.append(headingCopy, typePill);
-            detailsEl.appendChild(head);
-
-            const copy = document.createElement("p");
-            copy.className = "outfit-loader__details-copy";
-            copy.textContent = assetCount ?
-                "Items Roblox currently returns for this saved outfit." :
-                "This outfit returned no attached items.";
-            detailsEl.appendChild(copy);
-
-            if (!assetCount) {
-                const empty = document.createElement("div");
-                empty.className = "outfit-loader__empty";
-                empty.textContent = "No outfit items were returned by Roblox for this outfit.";
-                detailsEl.appendChild(empty);
-                return;
-            }
-
-            const grid = document.createElement("div");
-            grid.className = "outfit-loader__items";
-
-            details.assets.forEach((asset) => {
-                const card = document.createElement("article");
-                card.className = "outfit-loader__item";
-
-                if (asset.thumbnailUrl) {
-                    const img = document.createElement("img");
-                    img.className = "outfit-loader__item-thumb";
-                    img.src = asset.thumbnailUrl;
-                    img.alt = `${asset.name || "Asset"} thumbnail`;
-                    card.appendChild(img);
-                } else {
-                    const placeholder = document.createElement("div");
-                    placeholder.className = "outfit-loader__item-thumb outfit-loader__item-thumb--placeholder";
-                    placeholder.textContent = getOutfitLoaderAssetPlaceholderText(asset.thumbnailState);
-                    card.appendChild(placeholder);
-                }
-
-                const title = document.createElement("h5");
-                title.textContent = asset.name || `Asset ${asset.id}`;
-                card.appendChild(title);
-
-                const meta = document.createElement("div");
-                meta.className = "outfit-loader__item-meta";
-
-                const typeLine = document.createElement("span");
-                typeLine.textContent = `Type: ${asset.assetType?.name || "Unknown"}`;
-                meta.appendChild(typeLine);
-
-                const idLine = document.createElement("span");
-                idLine.textContent = `Asset ID: ${asset.id}`;
-                meta.appendChild(idLine);
-
-                card.appendChild(meta);
-
-                const itemUrl = getOutfitLoaderAssetUrl(asset);
-                if (itemUrl) {
-                    const openLink = document.createElement("a");
-                    openLink.className = "pl outfit-loader__item-link";
-                    openLink.href = itemUrl;
-                    openLink.target = "_blank";
-                    openLink.rel = "noopener";
-                    openLink.textContent = "Open Item";
-                    card.appendChild(openLink);
-                }
-
-                grid.appendChild(card);
-            });
-
-            detailsEl.appendChild(grid);
-        }
-
-        async function showOutfitLoaderDetails(outfitId) {
-            const outfit = outfitLoaderState.outfits.find(
-                (entry) => String(entry?.id) === String(outfitId)
-            );
-            if (!outfit) {
-                return;
-            }
-
-            outfitLoaderState.activeOutfitId = String(outfitId);
-            updateOutfitLoaderActiveCard();
-            resetOutfitLoaderDetails(`Loading items for ${outfit.name || `outfit ${outfitId}`}...`);
-
-            try {
-                const details = await fetchOutfitLoaderDetails(outfitId);
-                if (String(outfitLoaderState.activeOutfitId) !== String(outfitId)) {
-                    return;
-                }
-                renderOutfitLoaderDetails(details);
-            } catch (error) {
-                if (String(outfitLoaderState.activeOutfitId) !== String(outfitId)) {
-                    return;
-                }
-                resetOutfitLoaderDetails(
-                    error instanceof Error && error.message ?
-                        error.message :
-                        "Failed to load outfit items."
-                );
-            }
-        }
-
-        async function resolveOutfitLoaderUser(rawValue) {
-            const normalized = (rawValue || "").replace(/@/g, "").trim();
-            if (!normalized) {
-                throw new Error("Enter a Roblox username or id:123456.");
-            }
-
-            if (/^id:\d+$/i.test(normalized)) {
-                const userId = normalized.slice(3);
+            for (let index = 0; index < attempts.length; index += 1) {
+                const attempt = attempts[index];
                 try {
-                    return await fetchJsonGetWithProxyFallback(
-                        `https://users.roblox.com/v1/users/${encodeURIComponent(userId)}`,
-                        "Roblox user"
-                    );
-                } catch {
-                    throw new Error("That Roblox user ID could not be found.");
-                }
-            }
-
-            const searchPayload = await fetchJsonGetWithProxyFallback(
-                `https://users.roblox.com/v1/users/search?keyword=${encodeURIComponent(normalized)}&limit=10`,
-                "Roblox user search"
-            );
-            const candidates = Array.isArray(searchPayload?.data) ? searchPayload.data : [];
-            const match = candidates.find(
-                (candidate) =>
-                    typeof candidate?.name === "string" &&
-                    candidate.name.toLowerCase() === normalized.toLowerCase()
-            );
-            if (!match?.id) {
-                throw new Error("User not found. Use the exact username, not the display name.");
-            }
-
-            try {
-                return await fetchJsonGetWithProxyFallback(
-                    `https://users.roblox.com/v1/users/${encodeURIComponent(match.id)}`,
-                    "Roblox user"
-                );
-            } catch {
-                throw new Error("That Roblox account could not be loaded.");
-            }
-        }
-
-        async function fetchOutfitLoaderHeadshot(userId) {
-            try {
-                const payload = await fetchJsonGetWithProxyFallback(
-                    `https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds=${encodeURIComponent(userId)}&size=150x150&format=Png&isCircular=false`,
-                    "Roblox headshot"
-                );
-                return payload?.data?.[0]?.imageUrl || "";
-            } catch {
-                return "";
-            }
-        }
-
-        async function fetchOutfitLoaderOutfits(userId) {
-            const outfits = [];
-            const itemsPerPage = 100;
-            let rawCount = 0;
-
-            for (let page = 1; page <= 10; page += 1) {
-                const payload = await fetchJsonGetWithProxyFallback(
-                    `https://avatar.roblox.com/v1/users/${encodeURIComponent(userId)}/outfits?page=${page}&itemsPerPage=${itemsPerPage}`,
-                    `Roblox outfits page ${page}`
-                );
-                const pageItems = Array.isArray(payload?.data) ? payload.data : [];
-                const total = Number(payload?.total);
-
-                rawCount += pageItems.length;
-                outfits.push(...pageItems.filter((entry) => entry && entry.isEditable));
-
-                if (!pageItems.length || pageItems.length < itemsPerPage) {
-                    break;
-                }
-
-                if (Number.isFinite(total) && rawCount >= total) {
-                    break;
-                }
-            }
-
-            return outfits;
-        }
-
-        async function attachOutfitLoaderThumbnails(outfits) {
-            const thumbnailMap = new Map();
-            const ids = outfits
-                .map((outfit) => outfit?.id)
-                .filter((id) => id !== null && id !== undefined)
-                .map((id) => String(id));
-            const chunks = chunkItems(ids, 25);
-
-            const settledResults = await Promise.allSettled(
-                chunks.map((chunk) =>
-                    fetchJsonGetWithProxyFallback(
-                        `https://thumbnails.roblox.com/v1/users/outfits?userOutfitIds=${encodeURIComponent(chunk.join(","))}&size=150x150&format=Png&isCircular=false`,
-                        "Roblox outfit thumbnails"
-                    )
-                )
-            );
-
-            settledResults.forEach((result) => {
-                if (result.status !== "fulfilled") {
-                    return;
-                }
-                const rows = Array.isArray(result.value?.data) ? result.value.data : [];
-                rows.forEach((row) => {
-                    if (row?.targetId !== undefined && row?.targetId !== null) {
-                        thumbnailMap.set(String(row.targetId), row);
+                    const response = await fetch(attempt.url, {
+                        method: "GET",
+                        cache: "no-store",
+                        headers: {
+                            Accept: "application/json"
+                        }
+                    });
+                    if (!response.ok) {
+                        const error = new Error(`${contextLabel} failed (${response.status})`);
+                        error.status = response.status;
+                        error.attemptLabel = attempt.label;
+                        error.url = attempt.url;
+                        throw error;
                     }
-                });
-            });
+                    const raw = await response.text();
+                    return parseJsonText(raw, contextLabel);
+                } catch (error) {
+                    lastError = error;
 
-            return outfits.map((outfit) => {
-                const thumbnail = thumbnailMap.get(String(outfit.id));
-                return {
-                    ...outfit,
-                    thumbnailUrl: thumbnail?.state === "Completed" ? thumbnail.imageUrl || "" : "",
-                    thumbnailState: thumbnail?.state || "NotFound"
-                };
-            });
-        }
+                    if (index < attempts.length - 1) {
+                        console.warn(
+                            `[Proxy fallback] ${contextLabel} failed via ${attempt.label}. Trying next route.`,
+                            error
+                        );
+                    }
 
-        async function loadOutfitLoaderResults() {
-            const inputEl = q("#outfit-loader-input");
-            const searchBtn = q("#outfit-loader-search");
-            const clearBtn = q("#outfit-loader-clear");
-            if (!inputEl || !searchBtn || !clearBtn) {
-                return;
-            }
-
-            const rawValue = inputEl.value;
-            const normalized = rawValue.replace(/@/g, "").trim();
-            if (!normalized) {
-                outfitLoaderState.outfits = [];
-                outfitLoaderState.activeOutfitId = null;
-                clearOutfitLoaderUser();
-                resetOutfitLoaderDetails("Load outfits to inspect the items used in a saved look.");
-                resetOutfitLoaderResults("Search for a Roblox account to load its saved outfit list.");
-                setOutfitLoaderStatus("Enter a Roblox username or id:123456.", true);
-                inputEl.focus();
-                return;
-            }
-
-            const requestId = ++outfitLoaderState.requestId;
-            outfitLoaderState.loading = true;
-            inputEl.disabled = true;
-            searchBtn.disabled = true;
-            clearBtn.disabled = true;
-            inputEl.value = normalized;
-            setOutfitLoaderStatus("Loading outfits...");
-            outfitLoaderState.outfits = [];
-            outfitLoaderState.activeOutfitId = null;
-            outfitLoaderState.outfitDetailsCache.clear();
-            resetOutfitLoaderResults("Loading outfits...");
-            resetOutfitLoaderDetails("Loading outfit item details...");
-            clearOutfitLoaderUser();
-
-            try {
-                const user = await resolveOutfitLoaderUser(normalized);
-                const [headshotUrl, outfits] = await Promise.all([
-                    fetchOutfitLoaderHeadshot(user.id),
-                    fetchOutfitLoaderOutfits(user.id)
-                ]);
-                const outfitsWithThumbnails = await attachOutfitLoaderThumbnails(outfits);
-
-                if (requestId !== outfitLoaderState.requestId) {
-                    return;
-                }
-
-                renderOutfitLoaderUser(
-                    {
-                        ...user,
-                        headshotUrl
-                    },
-                    outfitsWithThumbnails.length
-                );
-                outfitLoaderState.outfits = outfitsWithThumbnails;
-                renderOutfitLoaderResults(outfitsWithThumbnails);
-                if (outfitsWithThumbnails.length) {
-                    resetOutfitLoaderDetails("Click any outfit card below to load the items used for that outfit.");
-                } else {
-                    resetOutfitLoaderDetails("This account has no editable saved outfits to inspect.");
-                }
-                setOutfitLoaderStatus(
-                    `Loaded ${outfitsWithThumbnails.length} editable outfit${outfitsWithThumbnails.length === 1 ? "" : "s"} for @${user.name || normalized}.`
-                );
-            } catch (error) {
-                if (requestId !== outfitLoaderState.requestId) {
-                    return;
-                }
-                outfitLoaderState.outfits = [];
-                outfitLoaderState.activeOutfitId = null;
-                clearOutfitLoaderUser();
-                resetOutfitLoaderDetails("No outfit items loaded.");
-                resetOutfitLoaderResults("No outfit data loaded.");
-                setOutfitLoaderStatus(
-                    error instanceof Error && error.message ?
-                        error.message :
-                        "Failed to load Roblox outfits.",
-                    true
-                );
-            } finally {
-                if (requestId === outfitLoaderState.requestId) {
-                    outfitLoaderState.loading = false;
-                    inputEl.disabled = false;
-                    searchBtn.disabled = false;
-                    clearBtn.disabled = false;
+                    if (!shouldRetryWithProxy(error)) {
+                        break;
+                    }
                 }
             }
-        }
 
-        function clearOutfitLoader() {
-            const inputEl = q("#outfit-loader-input");
-            const searchBtn = q("#outfit-loader-search");
-            const clearBtn = q("#outfit-loader-clear");
-            if (inputEl) {
-                inputEl.value = "";
-                inputEl.disabled = false;
-            }
-            if (searchBtn) {
-                searchBtn.disabled = false;
-            }
-            if (clearBtn) {
-                clearBtn.disabled = false;
-            }
-            outfitLoaderState.requestId += 1;
-            outfitLoaderState.loading = false;
-            outfitLoaderState.outfits = [];
-            outfitLoaderState.activeOutfitId = null;
-            outfitLoaderState.outfitDetailsCache.clear();
-            clearOutfitLoaderUser();
-            const detailsEl = q("#outfit-loader-details");
-            if (detailsEl) {
-                detailsEl.innerHTML = "";
-                detailsEl.hidden = true;
-            }
-            resetOutfitLoaderResults("Search for a Roblox account to load its saved outfit list.");
-            setOutfitLoaderStatus("Ready.");
-        }
-
-        function initOutfitLoader() {
-            const inputEl = q("#outfit-loader-input");
-            const searchBtn = q("#outfit-loader-search");
-            const clearBtn = q("#outfit-loader-clear");
-            const resultsEl = q("#outfit-loader-results");
-            if (!inputEl || !searchBtn || !clearBtn || !resultsEl) {
-                return;
-            }
-
-            searchBtn.addEventListener("click", (event) => {
-                ripple(searchBtn, event);
-                loadOutfitLoaderResults();
-            });
-
-            clearBtn.addEventListener("click", (event) => {
-                ripple(clearBtn, event);
-                clearOutfitLoader();
-                inputEl.focus();
-            });
-
-            inputEl.addEventListener("keydown", (event) => {
-                if (event.key !== "Enter") {
-                    return;
-                }
-                event.preventDefault();
-                loadOutfitLoaderResults();
-            });
-
-            resultsEl.addEventListener("click", (event) => {
-                const card = event.target.closest("[data-outfit-loader-outfit-id]");
-                if (!card) {
-                    return;
-                }
-                ripple(card, event);
-                showOutfitLoaderDetails(card.dataset.outfitLoaderOutfitId);
-            });
+            throw lastError instanceof Error ?
+                lastError :
+                new Error(`${contextLabel} failed.`);
         }
 
         async function fetchLuaManifestFromSteamML(appId) {
@@ -9901,7 +8946,7 @@
                 return;
             }
             const stamp = new Date().toLocaleTimeString();
-            statusEl.textContent = `${message} • ${stamp}`;
+            statusEl.textContent = `${message} вЂў ${stamp}`;
         }
 
         function htmlR(reason = "manual") {
@@ -9958,7 +9003,7 @@
                 if (counts.comments) {
                     summaryParts.push(`${counts.comments} comments`);
                 }
-                summaryEl.textContent = summaryParts.join(" • ");
+                summaryEl.textContent = summaryParts.join(" вЂў ");
             }
         }
 
@@ -11037,7 +10082,6 @@
             }
 
             initCodexTabsEditor();
-            initOutfitLoader();
 
             const executorTabs = qa(".executor-tab");
             executorTabs.forEach((tab) => {
@@ -11139,7 +10183,7 @@
                     return;
                 }
                 await navigator.clipboard.writeText(curCode);
-                toast("Script copied вњ”пёЏ");
+                toast("Script copied РІСљвЂќРїС‘РЏ");
             });
 
             const bHL = q("#lhl");
