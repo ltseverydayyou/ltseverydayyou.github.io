@@ -4305,7 +4305,8 @@
 
             .as {
                 display: flex;
-                position: static;
+                position: sticky;
+                top: 10px;
                 left: auto;
                 right: auto;
                 transform: none;
@@ -4361,16 +4362,20 @@
                 text-align: center;
             }
 
+            .brand-icon {
+                margin-bottom: 34px;
+            }
+
             .bb {
-                top: auto;
-                bottom: calc(100% + 8px);
+                top: calc(100% + 8px);
+                bottom: auto;
                 left: 50%;
                 right: auto;
                 max-width: min(220px, calc(100vw - 48px));
                 white-space: normal;
                 text-align: center;
                 transform: translate(-50%, 6px) scale(0.98);
-                transform-origin: bottom center;
+                transform-origin: top center;
             }
 
             .bb.sh {
