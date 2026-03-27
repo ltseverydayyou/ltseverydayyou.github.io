@@ -8932,6 +8932,8 @@
                 lines.push("-- App Key: Available");
             } else {
                 lines.push("-- App Key: Not publicly listed");
+                lines.push("-- Warning: This file only contains public manifest IDs.");
+                lines.push("-- Without a public depot key or legitimate access, content may remain encrypted.");
             }
             if (depotsWithKeys) {
                 lines.push(`-- Depots With Public Keys: ${depotsWithKeys}`);
@@ -8977,9 +8979,13 @@
                 filename: `${appId}.lua`,
                 copyText: luaText,
                 displayText:
-                    `${appId}.lua - ${gameName} (${totalDepots} depot${totalDepots === 1 ? "" : "s"})`,
-                statusText: depotsWithoutKeys ?
-                    `Generated ${appId}.lua for ${gameName}. ${depotsWithoutKeys} depot${depotsWithoutKeys === 1 ? "" : "s"} used public manifests without public keys.` :
+                    !appKey && depotsWithoutKeys === totalDepots ?
+                        `${appId}.lua - ${gameName} (manifest only)` :
+                        `${appId}.lua - ${gameName} (${totalDepots} depot${totalDepots === 1 ? "" : "s"})`,
+                statusText: !appKey && depotsWithoutKeys === totalDepots ?
+                    `Generated manifest IDs for ${gameName}, but no public depot key is listed. Content may remain encrypted.` :
+                    depotsWithoutKeys ?
+                        `Generated ${appId}.lua for ${gameName}. ${depotsWithoutKeys} depot${depotsWithoutKeys === 1 ? "" : "s"} used public manifests without public keys.` :
                     `Generated ${appId}.lua for ${gameName}.`
             };
         }
