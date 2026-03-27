@@ -885,6 +885,41 @@
             color: var(--mu);
         }
 
+        .script-searcher__tabs {
+            display: none;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .script-searcher__tab {
+            border: 1px solid rgba(255, 255, 255, var(--bdA));
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--mu);
+            border-radius: 999px;
+            padding: 8px 14px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition:
+                color 0.2s ease,
+                background 0.2s ease,
+                border-color 0.2s ease,
+                transform 0.2s ease;
+        }
+
+        .script-searcher__tab:hover {
+            color: #fff;
+            transform: translateY(-1px);
+        }
+
+        .script-searcher__tab.is-active {
+            color: #0a080c;
+            border-color: transparent;
+            background: linear-gradient(135deg, var(--ac), var(--ac2));
+        }
+
         .script-searcher__panels {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -1105,6 +1140,30 @@
             border-radius: 10px;
             border: 1px dashed rgba(255, 255, 255, var(--bdA));
             background: rgba(255, 255, 255, 0.02);
+        }
+
+        @media (max-width: 820px) {
+            .script-searcher__tabs {
+                display: flex;
+            }
+
+            .script-searcher__tab {
+                flex: 1 1 0;
+                justify-content: center;
+                text-align: center;
+            }
+
+            .script-searcher__panels {
+                grid-template-columns: 1fr;
+            }
+
+            .script-searcher__panel {
+                display: none;
+            }
+
+            .script-searcher__panel.is-active {
+                display: block;
+            }
         }
 
         .codex-convert {
@@ -4875,32 +4934,22 @@
                         <p class="script-searcher__hint">
                             Results powered by Rscripts and ScriptBlox APIs.
                         </p>
+                        <div class="script-searcher__tabs" role="tablist" aria-label="Script search engines">
+                            <button class="script-searcher__tab is-active" id="script-search-tab-scriptblox"
+                                type="button" role="tab" aria-selected="true"
+                                aria-controls="script-search-panel-scriptblox" data-script-search-tab="scriptblox">
+                                ScriptBlox
+                            </button>
+                            <button class="script-searcher__tab" id="script-search-tab-rscripts" type="button"
+                                role="tab" aria-selected="false" aria-controls="script-search-panel-rscripts"
+                                data-script-search-tab="rscripts">
+                                Rscripts
+                            </button>
+                        </div>
                         <div class="script-searcher__panels">
-                            <div class="script-searcher__panel">
-                                <div class="script-searcher__panel-head">
-                                    <div class="script-searcher__panel-head-group">
-                                        <h3>Rscripts</h3>
-                                        <span id="script-search-rscripts-meta"></span>
-                                    </div>
-                                    <div class="script-searcher__panel-controls">
-                                        <button type="button" id="script-search-rscripts-prev"
-                                            aria-label="Previous Rscripts page">
-                                            Prev
-                                        </button>
-                                        <span id="script-search-rscripts-page" class="script-searcher__panel-page">
-                                            Page 1
-                                        </span>
-                                        <button type="button" id="script-search-rscripts-next"
-                                            aria-label="Next Rscripts page">
-                                            Next
-                                        </button>
-                                    </div>
-                                </div>
-                                <div id="script-search-rscripts-error" class="script-searcher__error"
-                                    aria-live="polite"></div>
-                                <div id="script-search-rscripts" class="script-searcher__grid"></div>
-                            </div>
-                            <div class="script-searcher__panel">
+                            <div class="script-searcher__panel is-active" id="script-search-panel-scriptblox"
+                                role="tabpanel" aria-labelledby="script-search-tab-scriptblox"
+                                data-script-search-panel="scriptblox">
                                 <div class="script-searcher__panel-head">
                                     <div class="script-searcher__panel-head-group">
                                         <h3>ScriptBlox</h3>
@@ -4923,6 +4972,31 @@
                                 <div id="script-search-scriptblox-error" class="script-searcher__error"
                                     aria-live="polite"></div>
                                 <div id="script-search-scriptblox" class="script-searcher__grid"></div>
+                            </div>
+                            <div class="script-searcher__panel" id="script-search-panel-rscripts" role="tabpanel"
+                                aria-labelledby="script-search-tab-rscripts" data-script-search-panel="rscripts">
+                                <div class="script-searcher__panel-head">
+                                    <div class="script-searcher__panel-head-group">
+                                        <h3>Rscripts</h3>
+                                        <span id="script-search-rscripts-meta"></span>
+                                    </div>
+                                    <div class="script-searcher__panel-controls">
+                                        <button type="button" id="script-search-rscripts-prev"
+                                            aria-label="Previous Rscripts page">
+                                            Prev
+                                        </button>
+                                        <span id="script-search-rscripts-page" class="script-searcher__panel-page">
+                                            Page 1
+                                        </span>
+                                        <button type="button" id="script-search-rscripts-next"
+                                            aria-label="Next Rscripts page">
+                                            Next
+                                        </button>
+                                    </div>
+                                </div>
+                                <div id="script-search-rscripts-error" class="script-searcher__error"
+                                    aria-live="polite"></div>
+                                <div id="script-search-rscripts" class="script-searcher__grid"></div>
                             </div>
                         </div>
                     </div>
@@ -5357,9 +5431,14 @@
                 maxPages: 1
             }
         };
+        const scriptSearcherUiState = {
+            activePanel: "scriptblox"
+        };
 
         const scriptSearchPanels = {
             rscripts: {
+                panelEl: q("#script-search-panel-rscripts"),
+                tab: q("#script-search-tab-rscripts"),
                 container: q("#script-search-rscripts"),
                 meta: q("#script-search-rscripts-meta"),
                 error: q("#script-search-rscripts-error"),
@@ -5369,6 +5448,8 @@
                 next: q("#script-search-rscripts-next")
             },
             scriptblox: {
+                panelEl: q("#script-search-panel-scriptblox"),
+                tab: q("#script-search-tab-scriptblox"),
                 container: q("#script-search-scriptblox"),
                 meta: q("#script-search-scriptblox-meta"),
                 error: q("#script-search-scriptblox-error"),
@@ -5379,6 +5460,20 @@
             }
         };
         const MAX_SCRIPT_RESULTS = 8;
+
+        function setScriptSearcherActivePanel(panelKey) {
+            if (!scriptSearchPanels[panelKey]) {
+                return;
+            }
+            scriptSearcherUiState.activePanel = panelKey;
+            Object.entries(scriptSearchPanels).forEach(([key, panel]) => {
+                const isActive = key === panelKey;
+                panel.panelEl?.classList.toggle("is-active", isActive);
+                panel.tab?.classList.toggle("is-active", isActive);
+                panel.tab?.setAttribute("aria-selected", isActive ? "true" : "false");
+                panel.tab?.setAttribute("tabindex", isActive ? "0" : "-1");
+            });
+        }
 
         function updatePanelControls(panelKey) {
             const panel = scriptSearchPanels[panelKey];
@@ -5966,6 +6061,9 @@
             }
 
             Object.entries(scriptSearchPanels).forEach(([key, panel]) => {
+                if (panel.tab) {
+                    panel.tab.addEventListener("click", () => setScriptSearcherActivePanel(key));
+                }
                 if (panel.prev) {
                     panel.prev.addEventListener("click", () => changePanelPage(key, -1));
                 }
@@ -5974,6 +6072,7 @@
                 }
                 updatePanelControls(key);
             });
+            setScriptSearcherActivePanel(scriptSearcherUiState.activePanel);
 
             const runSearch = () => performScriptSearch(input.value, button);
             button.addEventListener("click", runSearch);
@@ -7982,6 +8081,8 @@
         ];
         let avLocked = false;
         let avTimestamp = 0;
+        let avHideTimer = null;
+        let avUnlockTimer = null;
         let collapseTimer = null;
         let themeFlashTimer = null;
         let themeFlashBackup = null;
@@ -8048,12 +8149,17 @@
         }
 
         function tp(el, txt, spd = 18) {
+            if (el._tpInterval) {
+                clearInterval(el._tpInterval);
+                el._tpInterval = null;
+            }
             el.textContent = "";
             let index = 0;
-            const iv = setInterval(() => {
+            el._tpInterval = setInterval(() => {
                 el.textContent += txt.charAt(index++);
                 if (index >= txt.length) {
-                    clearInterval(iv);
+                    clearInterval(el._tpInterval);
+                    el._tpInterval = null;
                 }
             }, spd);
         }
@@ -8164,6 +8270,8 @@
 
             const message = avTxt[Math.floor(Math.random() * avTxt.length)];
             const badge = q("#bb");
+            clearTimeout(avHideTimer);
+            clearTimeout(avUnlockTimer);
             badge.classList.add("sh");
             tp(badge, message, 16);
 
@@ -8177,8 +8285,10 @@
                 setTimeout(() => q("#av").classList.remove("ouch"), 700);
             }
 
-            setTimeout(() => badge.classList.remove("sh"), 1400);
-            setTimeout(() => {
+            avHideTimer = setTimeout(() => {
+                badge.classList.remove("sh");
+            }, 1400);
+            avUnlockTimer = setTimeout(() => {
                 avLocked = false;
             }, 720);
         }
