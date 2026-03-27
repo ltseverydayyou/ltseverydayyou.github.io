@@ -3755,7 +3755,6 @@
             }
 
             .md {
-                display: block;
                 padding: 12px;
             }
 
@@ -4360,6 +4359,22 @@
                 flex-direction: column;
                 align-items: center;
                 text-align: center;
+            }
+
+            .bb {
+                top: auto;
+                bottom: calc(100% + 8px);
+                left: 50%;
+                right: auto;
+                max-width: min(220px, calc(100vw - 48px));
+                white-space: normal;
+                text-align: center;
+                transform: translate(-50%, 6px) scale(0.98);
+                transform-origin: bottom center;
+            }
+
+            .bb.sh {
+                transform: translate(-50%, 0) scale(1);
             }
 
             .tb {
