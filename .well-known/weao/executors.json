@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-03-30T16:33:16.286Z",
+  "fetchedAt": "2026-03-30T20:05:51.092Z",
   "data": [
     {
       "_id": "680eaddf8b44717c060fcf8d",
@@ -17,7 +17,7 @@
       "platform": "Windows",
       "extype": "wexecutor",
       "roleId": "1366164709996363988",
-      "index": 7,
+      "index": 8,
       "elementCertified": true,
       "decompiler": true,
       "multiInject": true,
@@ -336,7 +336,7 @@
       "platform": "Windows",
       "extype": "wexecutor",
       "roleId": "1229897920673746974",
-      "index": 4,
+      "index": 3,
       "unlinked": false,
       "purchaselink": "https://bloxproducts.com/?affiliate_key=weao#Wave",
       "elementCertified": false,
@@ -388,7 +388,7 @@
       "platform": "Windows",
       "extype": "wexecutor",
       "roleId": "1361806029255348224",
-      "index": 3,
+      "index": 5,
       "unlinked": false,
       "decompiler": true,
       "multiInject": true,
@@ -432,7 +432,7 @@
       "platform": "Windows",
       "extype": "wexecutor",
       "roleId": "1332793088879497338",
-      "index": 12,
+      "index": 13,
       "decompiler": true,
       "multiInject": true,
       "suncPercentage": 32,
@@ -478,7 +478,7 @@
       "platform": "Windows",
       "extype": "wexecutor",
       "roleId": "1297289530361249945",
-      "index": 8,
+      "index": 9,
       "unlinked": false,
       "elementCertified": true,
       "cost": "$3.99 Weekly",
@@ -1193,7 +1193,7 @@
       "extype": "wexecutor",
       "roleId": "1267164077503811686",
       "purchaselink": "https://rapidkeys.net/product?id=synapse-z&ref=weao",
-      "index": 6,
+      "index": 7,
       "elementCertified": true,
       "cost": "$3.99 Weekly",
       "decompiler": true,
@@ -1531,7 +1531,7 @@
       "extype": "wexecutor",
       "roleId": "1479935012488085716",
       "purchaselink": "https://robloxcheatz.com/product?id=isaeva-executor&ref=weao",
-      "index": 5,
+      "index": 6,
       "elementCertified": true,
       "cost": "$4.99 Weekly",
       "decompiler": true,
@@ -1564,6 +1564,49 @@
           "https://cdn.weao.gg/slug/isaeva/screenshot8.png",
           "https://cdn.weao.gg/slug/isaeva/screenshot9.png"
         ]
+      }
+    },
+    {
+      "_id": "69cace8670a25244103ea819",
+      "title": "Cosmic",
+      "version": "1.1.9.2",
+      "updatedDate": "03/30/2026 at 7:45 PM UTC",
+      "uncStatus": true,
+      "free": false,
+      "detected": true,
+      "rbxversion": "version-6776addb8fbc4d17",
+      "updateStatus": true,
+      "websitelink": "https://www.cosmic.best/",
+      "discordlink": "https://discord.gg/getcosmic",
+      "beta": false,
+      "platform": "Windows",
+      "extype": "wexecutor",
+      "roleId": "1484755192141578321",
+      "index": 4,
+      "unlinked": false,
+      "purchaselink": "https://discord.gg/getcosmic",
+      "elementCertified": false,
+      "cost": "$10 Lifetime",
+      "decompiler": true,
+      "multiInject": true,
+      "suncPercentage": 97,
+      "uncPercentage": 99,
+      "sunc": {
+        "suncScrap": "8WwzjIyEjMTCBGw8",
+        "suncKey": "sPY91SjE6lbf3jJHrCZPGtpKWb9BfuaA"
+      },
+      "__v": 1,
+      "recommendedReason": {
+        "features": []
+      },
+      "longestRunning": true,
+      "clientmods": true,
+      "trackerId": "WEAOmhg67xtg",
+      "hidden": false,
+      "slug": {
+        "fullDescription": "Cosmic is a budget-friendly premium Windows script executor priced at $10.00 lifetime, featuring:\n\n* Working Multi-Instance\n* Decompiler\n* 97% sUNC\n* Custom UI Support\n* Fast updates under normal Roblox update conditions\n\n! Things to keep in mind:\n! Cosmic has quickly gained attention in the exploiting community, with some users claiming it performs better than Potassium while being $10 cheaper, making it an obvious great choice for newer exploiters on a budget and experienced script developers, thanks to its good environment. However, it is still a relatively new executor, so its long-term reliability and lifespan are not yet fully proven.",
+        "logo": "https://cdn.weao.gg/slug/cosmic/cosmic-transparent.png",
+        "owner": "Savage"
       }
     }
   ]
