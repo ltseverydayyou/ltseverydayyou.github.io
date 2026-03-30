@@ -4639,9 +4639,12 @@
             <section id="pl" class="pp">
                 <div class="g ed">
                     <h3>Lua</h3>
-                    <textarea id="li" placeholder="Paste Lua code here..."></textarea>
+                    <textarea id="li" placeholder="Paste Lua code here..." spellcheck="false" autocapitalize="off"
+                        autocomplete="off" autocorrect="off"></textarea>
                     <div class="cs">
                         <button class="pl" id="lhl">Highlight</button>
+                        <button class="pl" id="lcp">Copy</button>
+                        <button class="pl" id="lcl">Clear</button>
                         <button class="pl sc" id="lbf">Format</button>
                     </div>
                     <pre>
@@ -8441,12 +8444,98 @@
             toast("Copied to clipboard");
         }
 
-        function luaHl() {
-            const text = q("#li").value;
+        const LUA_HIGHLIGHT_MAX_CHARS = 120000;
+        const LUA_HIGHLIGHT_MAX_LINES = 6000;
+        const LUA_PREVIEW_MAX_CHARS = 80000;
+        const LUA_PREVIEW_MAX_LINES = 4000;
+        function getLuaTextStats(text) {
+            const value = (text || "").replace(/\r\n/g, "\n");
+            const newlineMatches = value.match(/\n/g);
+            return {
+                text: value,
+                charCount: value.length,
+                lineCount: value ? (newlineMatches ? newlineMatches.length + 1 : 1) : 0
+            };
+        }
+
+        function getLuaSizeWarning(stats, maxChars, maxLines) {
+            if (stats.charCount > maxChars) {
+                return `${stats.charCount.toLocaleString()} characters`;
+            }
+            if (stats.lineCount > maxLines) {
+                return `${stats.lineCount.toLocaleString()} lines`;
+            }
+            return "";
+        }
+
+        function buildLuaSafePreview(text, maxChars = LUA_PREVIEW_MAX_CHARS, maxLines = LUA_PREVIEW_MAX_LINES) {
+            let preview = text.slice(0, maxChars);
+            const lines = preview.split("\n");
+            if (lines.length > maxLines) {
+                preview = lines.slice(0, maxLines).join("\n");
+            }
+            return preview.replace(/\s+$/, "");
+        }
+
+        function setLuaOutputText(text) {
             const output = q("#lo");
             output.textContent = text || "-- Highlighted code will appear here";
+        }
+
+        async function copyLuaInput() {
+            const input = q("#li");
+            const value = input?.value || "";
+            if (!value) {
+                toast("Nothing to copy");
+                return;
+            }
+            try {
+                await navigator.clipboard.writeText(value);
+                toast("Lua copied to clipboard");
+            } catch {
+                toast("Clipboard permissions denied");
+            }
+        }
+
+        function clearLuaInput() {
+            const input = q("#li");
+            if (!input) {
+                return;
+            }
+            input.value = "";
+            setLuaOutputText("");
+            toast("Lua cleared");
+        }
+
+        function luaHl() {
+            const stats = getLuaTextStats(q("#li").value);
+            const output = q("#lo");
+            const sizeWarning = getLuaSizeWarning(
+                stats,
+                LUA_HIGHLIGHT_MAX_CHARS,
+                LUA_HIGHLIGHT_MAX_LINES
+            );
+            if (sizeWarning) {
+                const preview = buildLuaSafePreview(stats.text);
+                const omittedLineCount = Math.max(stats.lineCount - LUA_PREVIEW_MAX_LINES, 0);
+                const omittedCharCount = Math.max(stats.charCount - preview.length, 0);
+                const noticeParts = [
+                    `-- Preview limited for stability (${stats.lineCount.toLocaleString()} lines, ${stats.charCount.toLocaleString()} chars)`
+                ];
+                if (omittedLineCount > 0) {
+                    noticeParts.push(`-- Omitted ${omittedLineCount.toLocaleString()} lines from preview`);
+                } else if (omittedCharCount > 0) {
+                    noticeParts.push(`-- Omitted ${omittedCharCount.toLocaleString()} characters from preview`);
+                }
+                setLuaOutputText(`${noticeParts.join("\n")}\n\n${preview}`);
+                toast(`Highlight skipped for large input (${sizeWarning})`);
+                return;
+            }
+
+            setLuaOutputText(stats.text);
             Prism.highlightElement(output);
 
+            const text = stats.text;
             const count = (pattern) => (text.match(pattern) || []).length;
             const f = count(/\bfunction\b/g);
             const e = count(/\bend\b/g);
@@ -8478,21 +8567,165 @@
             );
         }
 
+        let luaFormatWorkerClientPromise = null;
+        let luaFormatWorkerRequestId = 0;
+
+        function createLuaFormatWorkerClient() {
+            const workerSource = `
+import styluaInit, * as stylua from ${JSON.stringify(STYLUA_WEB_MODULE_URL)};
+
+let initPromise = null;
+
+async function ensureStyLua() {
+    if (!initPromise) {
+        initPromise = styluaInit();
+    }
+    await initPromise;
+    return stylua;
+}
+
+self.addEventListener("message", async (event) => {
+    const payload = event.data || {};
+    if (!payload.id) {
+        return;
+    }
+    try {
+        const api = await ensureStyLua();
+        const config = api.Config.new();
+        config.syntax = api.LuaVersion.All;
+        config.line_endings = api.LineEndings.Unix;
+        const formatted = api.formatCode(
+            payload.source || "",
+            config,
+            undefined,
+            api.OutputVerification.Full
+        );
+        self.postMessage({ id: payload.id, ok: true, formatted });
+    } catch (error) {
+        self.postMessage({
+            id: payload.id,
+            ok: false,
+            error:
+                error && typeof error.message === "string" && error.message ?
+                    error.message :
+                    "StyLua failed to format this code."
+        });
+    }
+});
+`;
+
+            const workerBlob = new Blob([workerSource], {
+                type: "text/javascript"
+            });
+            const workerUrl = URL.createObjectURL(workerBlob);
+            const worker = new Worker(workerUrl, { type: "module" });
+            const pending = new Map();
+
+            const resetWorker = (errorMessage) => {
+                const failure = new Error(errorMessage);
+                pending.forEach((job) => job.reject(failure));
+                pending.clear();
+                worker.terminate();
+                URL.revokeObjectURL(workerUrl);
+                luaFormatWorkerClientPromise = null;
+            };
+
+            worker.addEventListener("message", (event) => {
+                const payload = event.data || {};
+                const job = pending.get(payload.id);
+                if (!job) {
+                    return;
+                }
+                pending.delete(payload.id);
+                if (payload.ok) {
+                    job.resolve(payload.formatted || "");
+                    return;
+                }
+                job.reject(
+                    new Error(payload.error || "StyLua failed to format this code.")
+                );
+            });
+
+            worker.addEventListener("error", (event) => {
+                resetWorker(event?.message || "Lua formatter worker crashed.");
+            });
+
+            return {
+                format(source) {
+                    return new Promise((resolve, reject) => {
+                        const id = ++luaFormatWorkerRequestId;
+                        pending.set(id, {
+                            resolve,
+                            reject
+                        });
+                        worker.postMessage({
+                            id,
+                            source
+                        });
+                    });
+                }
+            };
+        }
+
+        async function getLuaFormatWorkerClient() {
+            if (!luaFormatWorkerClientPromise) {
+                luaFormatWorkerClientPromise = Promise.resolve(
+                    createLuaFormatWorkerClient()
+                );
+            }
+            return luaFormatWorkerClientPromise;
+        }
+
+        function warmLuaFormatWorker() {
+            if (!window.Worker || !window.Blob || !window.URL?.createObjectURL) {
+                return;
+            }
+            void getLuaFormatWorkerClient().catch(() => {
+                luaFormatWorkerClientPromise = null;
+            });
+        }
+
+        async function formatLuaWithStyLuaWorker(source) {
+            if (!window.Worker || !window.Blob || !window.URL?.createObjectURL) {
+                return formatLuaWithStyLua(source);
+            }
+            const workerClient = await getLuaFormatWorkerClient();
+            return workerClient.format(source);
+        }
+
         async function formatLuaInput() {
             const input = q("#li");
             if (!input) {
                 return;
             }
-            const value = input.value || "";
-            if (!value.trim()) {
+            const stats = getLuaTextStats(input.value);
+            if (!stats.text.trim()) {
                 toast("Nothing to format");
                 return;
             }
 
             try {
-                const formatted = await formatLuaWithStyLua(value);
-                input.value = formatted.replace(/\r\n/g, "\n").replace(/\s+$/, "");
-                luaHl();
+                const sizeWarning = getLuaSizeWarning(
+                    stats,
+                    LUA_HIGHLIGHT_MAX_CHARS,
+                    LUA_HIGHLIGHT_MAX_LINES
+                );
+                if (sizeWarning) {
+                    toast(`Formatting large input in background (${sizeWarning})`);
+                }
+                const formatted = await formatLuaWithStyLuaWorker(stats.text);
+                const normalizedFormatted = formatted.replace(/\r\n/g, "\n");
+                input.value =
+                    sizeWarning ?
+                        normalizedFormatted :
+                        normalizedFormatted.replace(/\s+$/, "");
+                if (sizeWarning) {
+                    setLuaOutputText(
+                        `${buildLuaSafePreview(normalizedFormatted)}\n\n-- Full preview skipped after large format`
+                    );
+                } else {
+                    luaHl();
+                }
                 toast("Formatted with StyLua");
             } catch (error) {
                 console.error("StyLua formatting failed", error);
@@ -10369,6 +10602,32 @@
                 ripple(bHL, event);
                 luaHl();
             });
+
+            const luaInput = q("#li");
+            if (luaInput) {
+                luaInput.addEventListener("focus", warmLuaFormatWorker, {
+                    once: true
+                });
+                luaInput.addEventListener("paste", warmLuaFormatWorker, {
+                    once: true
+                });
+            }
+
+            const bCP = q("#lcp");
+            if (bCP) {
+                bCP.addEventListener("click", async (event) => {
+                    ripple(bCP, event);
+                    await copyLuaInput();
+                });
+            }
+
+            const bCL = q("#lcl");
+            if (bCL) {
+                bCL.addEventListener("click", (event) => {
+                    ripple(bCL, event);
+                    clearLuaInput();
+                });
+            }
 
             const bBF = q("#lbf");
             if (bBF) {
