@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-03-31T17:03:07.713Z",
+  "fetchedAt": "2026-03-31T20:49:30.676Z",
   "data": [
     {
       "_id": "680eaddf8b44717c060fcf8d",
@@ -1259,12 +1259,12 @@
       "_id": "6907cafc4b9bde193883d902",
       "title": "Severe",
       "version": "v2",
-      "updatedDate": "03/21/2026 at 1:16 AM UTC",
+      "updatedDate": "03/31/2026 at 7:58 PM UTC",
       "uncStatus": false,
       "free": false,
       "detected": false,
-      "rbxversion": "version-ae421f0582e54718",
-      "updateStatus": false,
+      "rbxversion": "version-6776addb8fbc4d17",
+      "updateStatus": true,
       "websitelink": "https://discord.gg/QaheZpKzsX",
       "discordlink": "https://discord.gg/QaheZpKzsX",
       "purchaselink": "https://bloxproducts.com/r/weao#Severe",
