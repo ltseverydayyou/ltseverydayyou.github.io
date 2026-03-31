@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-03-30T21:09:26.956Z",
+  "fetchedAt": "2026-03-31T00:00:14.387Z",
   "data": [
     {
       "_id": "680eaddf8b44717c060fcf8d",
@@ -510,8 +510,8 @@
     {
       "_id": "67576d22d9181811c292bb79",
       "title": "Volt",
-      "version": "1.2.9.6",
-      "updatedDate": "03/30/2026 at 4:21 AM UTC",
+      "version": "1.2.9.7",
+      "updatedDate": "03/30/2026 at 11:29 PM UTC",
       "uncStatus": true,
       "free": false,
       "detected": true,
