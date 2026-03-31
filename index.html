@@ -1166,6 +1166,427 @@
             }
         }
 
+        .roblox-user-search {
+            display: grid;
+            gap: 18px;
+        }
+
+        .roblox-user-search__head {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .roblox-user-search__head h3,
+        .roblox-user-search__section h4 {
+            margin: 0;
+        }
+
+        .roblox-user-search__intro {
+            margin: 6px 0 0;
+            color: var(--mu);
+        }
+
+        .roblox-user-search__status {
+            min-height: 22px;
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--mu);
+        }
+
+        .roblox-user-search__status.is-error,
+        .roblox-user-search__error {
+            color: #ff8f9f;
+        }
+
+        .roblox-user-search__controls {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .roblox-user-search__controls input {
+            flex: 1;
+            min-width: 240px;
+            padding: 12px 14px;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, var(--bdA));
+            background: rgba(255, 255, 255, 0.04);
+            color: var(--tx);
+            font: 14px ui-sans-serif, system-ui, "Segoe UI", Roboto, Helvetica, Arial;
+        }
+
+        .roblox-user-search__hint {
+            margin: -4px 0 0;
+            font-size: 12px;
+            color: var(--mu);
+        }
+
+        .roblox-user-search__layout {
+            display: grid;
+            grid-template-columns: minmax(280px, 340px) minmax(0, 1fr);
+            gap: 18px;
+            align-items: start;
+        }
+
+        .roblox-user-search__results-panel,
+        .roblox-user-search__detail-panel,
+        .roblox-user-search__section,
+        .roblox-user-search__hero-card {
+            border: 1px solid rgba(255, 255, 255, var(--bdA));
+            border-radius: 18px;
+            background: rgba(255, 255, 255, var(--glA));
+            backdrop-filter: blur(12px);
+        }
+
+        .roblox-user-search__results-panel,
+        .roblox-user-search__detail-panel {
+            padding: 16px;
+        }
+
+        .roblox-user-search__results-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .roblox-user-search__results-head strong {
+            display: block;
+            font-size: 15px;
+        }
+
+        .roblox-user-search__results-meta {
+            display: block;
+            margin-top: 4px;
+            font-size: 12px;
+            color: var(--mu);
+        }
+
+        .roblox-user-search__results,
+        .roblox-user-search__detail {
+            display: grid;
+            gap: 12px;
+        }
+
+        .roblox-user-search__detail {
+            min-height: 240px;
+        }
+
+        .roblox-user-search__result-card {
+            width: 100%;
+            border: 1px solid rgba(255, 255, 255, var(--bdA));
+            border-radius: 16px;
+            background: rgba(8, 12, 20, 0.46);
+            color: inherit;
+            text-align: left;
+            padding: 12px;
+            display: grid;
+            grid-template-columns: 58px minmax(0, 1fr);
+            gap: 12px;
+            cursor: pointer;
+            transition:
+                transform 0.2s ease,
+                border-color 0.2s ease,
+                background 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+        .roblox-user-search__result-card:hover,
+        .roblox-user-search__result-card.is-active {
+            transform: translateY(-1px);
+            border-color: rgba(102, 227, 255, 0.4);
+            background: rgba(20, 28, 42, 0.78);
+            box-shadow: 0 14px 32px rgba(0, 0, 0, 0.24);
+        }
+
+        .roblox-user-search__result-card--banned,
+        .roblox-user-search__hero-card--banned {
+            border-color: rgba(255, 98, 128, 0.34);
+            background:
+                linear-gradient(180deg, rgba(255, 98, 128, 0.12), rgba(8, 12, 20, 0.6)),
+                rgba(8, 12, 20, 0.6);
+        }
+
+        .roblox-user-search__result-card--verified,
+        .roblox-user-search__hero-card--verified {
+            border-color: rgba(102, 227, 255, 0.34);
+            background:
+                linear-gradient(180deg, rgba(102, 227, 255, 0.1), rgba(8, 12, 20, 0.6)),
+                rgba(8, 12, 20, 0.6);
+        }
+
+        .roblox-user-search__thumb {
+            width: 58px;
+            height: 58px;
+            border-radius: 14px;
+            object-fit: cover;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .roblox-user-search__result-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin: 0 0 4px;
+            font-size: 15px;
+            font-weight: 700;
+        }
+
+        .roblox-user-search__result-subtitle,
+        .roblox-user-search__history-date,
+        .roblox-user-search__asset-type,
+        .roblox-user-search__asset-id,
+        .roblox-user-search__key {
+            color: var(--mu);
+        }
+
+        .roblox-user-search__result-subtitle,
+        .roblox-user-search__asset-type,
+        .roblox-user-search__asset-id {
+            font-size: 12px;
+        }
+
+        .roblox-user-search__pills,
+        .roblox-user-search__actions,
+        .roblox-user-search__links {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .roblox-user-search__pill {
+            border-radius: 999px;
+            padding: 4px 10px;
+            border: 1px solid rgba(255, 255, 255, var(--bdA));
+            background: rgba(255, 255, 255, 0.06);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .roblox-user-search__pill--banned {
+            border-color: rgba(255, 98, 128, 0.42);
+            color: #ffb6c3;
+        }
+
+        .roblox-user-search__pill--verified {
+            border-color: rgba(102, 227, 255, 0.42);
+            color: #9ff0ff;
+        }
+
+        .roblox-user-search__pill--exact {
+            border-color: rgba(114, 243, 182, 0.42);
+            color: #96f5ca;
+        }
+
+        .roblox-user-search__empty {
+            padding: 18px;
+            border-radius: 14px;
+            border: 1px dashed rgba(255, 255, 255, var(--bdA));
+            background: rgba(255, 255, 255, 0.02);
+            color: var(--mu);
+        }
+
+        .roblox-user-search__hero-card {
+            padding: 18px;
+            display: grid;
+            gap: 16px;
+        }
+
+        .roblox-user-search__hero {
+            display: grid;
+            grid-template-columns: 132px minmax(0, 1fr);
+            gap: 16px;
+            align-items: start;
+        }
+
+        .roblox-user-search__hero-image {
+            width: 132px;
+            height: 132px;
+            border-radius: 20px;
+            object-fit: cover;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .roblox-user-search__hero-name {
+            margin: 0;
+            font-size: 28px;
+            line-height: 1.1;
+        }
+
+        .roblox-user-search__hero-subtitle {
+            margin: 6px 0 0;
+            font-size: 14px;
+        }
+
+        .roblox-user-search__hero-description {
+            margin: 14px 0 0;
+            font-size: 14px;
+            color: var(--tx);
+            white-space: pre-wrap;
+        }
+
+        .roblox-user-search__stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 10px;
+        }
+
+        .roblox-user-search__stat {
+            padding: 12px;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, var(--bdA));
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .roblox-user-search__stat strong {
+            display: block;
+            font-size: 12px;
+            color: var(--mu);
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .roblox-user-search__stat span {
+            font-size: 15px;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .roblox-user-search__section {
+            padding: 16px;
+            display: grid;
+            gap: 12px;
+        }
+
+        .roblox-user-search__section-grid {
+            display: grid;
+            gap: 10px;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        }
+
+        .roblox-user-search__kv {
+            padding: 12px;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, var(--bdA));
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .roblox-user-search__key {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .roblox-user-search__value {
+            font-size: 14px;
+            font-weight: 600;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+
+        .roblox-user-search__history {
+            display: grid;
+            gap: 8px;
+        }
+
+        .roblox-user-search__history-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 12px;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, var(--bdA));
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .roblox-user-search__history-name {
+            font-weight: 700;
+        }
+
+        .roblox-user-search__history-date {
+            font-size: 12px;
+            text-align: right;
+        }
+
+        .roblox-user-search__asset-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+        }
+
+        .roblox-user-search__asset {
+            padding: 12px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, var(--bdA));
+            background: rgba(255, 255, 255, 0.03);
+            display: grid;
+            gap: 8px;
+        }
+
+        .roblox-user-search__asset img {
+            width: 100%;
+            aspect-ratio: 1;
+            border-radius: 12px;
+            object-fit: cover;
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .roblox-user-search__asset-name {
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .roblox-user-search__link,
+        .roblox-user-search__copy {
+            border: 1px solid rgba(255, 255, 255, var(--bdA));
+            background: rgba(255, 255, 255, 0.06);
+            color: var(--tx);
+            border-radius: 999px;
+            padding: 6px 12px;
+            font-size: 12px;
+            font-weight: 700;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        @media (max-width: 980px) {
+            .roblox-user-search__layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .roblox-user-search__hero {
+                grid-template-columns: 1fr;
+            }
+
+            .roblox-user-search__hero-image {
+                width: 108px;
+                height: 108px;
+            }
+
+            .roblox-user-search__history-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .roblox-user-search__history-date {
+                text-align: left;
+            }
+        }
+
         .codex-convert {
             display: grid;
             gap: 18px;
@@ -4530,6 +4951,7 @@
                 <button class="tb act" data-t="h">Home</button>
                 <button class="tb" data-t="s">Scripts</button>
                 <button class="tb" data-t="x">Script Searcher</button>
+                <button class="tb" data-t="y">Roblox Users</button>
                 <button class="tb" data-t="c">Codex Editor</button>
                 <button class="tb" data-t="l">Lua</button>
                 <button class="tb" data-t="m">Manifest Generator</button>
@@ -5001,6 +5423,57 @@
                                     aria-live="polite"></div>
                                 <div id="script-search-rscripts" class="script-searcher__grid"></div>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="py" class="pp">
+                <div class="g ed">
+                    <div class="roblox-user-search" id="roblox-user-search">
+                        <div class="roblox-user-search__head">
+                            <div>
+                                <h3>Roblox user search</h3>
+                                <p class="roblox-user-search__intro">
+                                    Search by username or numeric ID and inspect profile details, banned state,
+                                    username history, avatar data, and other public Roblox metadata.
+                                </p>
+                            </div>
+                            <div id="roblox-user-status" class="roblox-user-search__status" aria-live="polite"></div>
+                        </div>
+                        <div class="roblox-user-search__controls">
+                            <input id="roblox-user-query" type="search" autocomplete="off" spellcheck="false"
+                                placeholder="Search Roblox username or user ID" />
+                            <button class="pl sc" id="roblox-user-search-btn" type="button">Search</button>
+                        </div>
+                        <p class="roblox-user-search__hint">
+                            Uses Roblox Users, Avatar, and Thumbnails APIs. Exact username checks include banned users
+                            when Roblox exposes them.
+                        </p>
+                        <div class="roblox-user-search__layout">
+                            <aside class="roblox-user-search__results-panel">
+                                <div class="roblox-user-search__results-head">
+                                    <div>
+                                        <strong>Matches</strong>
+                                        <span id="roblox-user-results-meta"
+                                            class="roblox-user-search__results-meta">Ready to search.</span>
+                                    </div>
+                                </div>
+                                <div id="roblox-user-results-error" class="roblox-user-search__error"
+                                    aria-live="polite"></div>
+                                <div id="roblox-user-results" class="roblox-user-search__results">
+                                    <div class="roblox-user-search__empty">
+                                        Search for a username or user ID to list matching accounts.
+                                    </div>
+                                </div>
+                            </aside>
+                            <section class="roblox-user-search__detail-panel">
+                                <div id="roblox-user-detail" class="roblox-user-search__detail">
+                                    <div class="roblox-user-search__empty">
+                                        Select a result to view the Roblox profile details here.
+                                    </div>
+                                </div>
+                            </section>
                         </div>
                     </div>
                 </div>
@@ -6087,6 +6560,958 @@
             });
 
             performScriptSearch("", null);
+        }
+
+        const ROBLOX_USER_RESULT_LIMIT = 10;
+        const ROBLOX_USER_PROXY_ROOT = "roproxy.com";
+        const robloxUserSearchState = {
+            searchToken: 0,
+            profileToken: 0,
+            selectedUserId: null,
+            results: []
+        };
+        const robloxUserSearchElements = {
+            root: q("#roblox-user-search"),
+            input: q("#roblox-user-query"),
+            button: q("#roblox-user-search-btn"),
+            status: q("#roblox-user-status"),
+            results: q("#roblox-user-results"),
+            resultsMeta: q("#roblox-user-results-meta"),
+            error: q("#roblox-user-results-error"),
+            detail: q("#roblox-user-detail")
+        };
+
+        function setRobloxUserStatus(message = "", isError = false) {
+            const element = robloxUserSearchElements.status;
+            if (!element) {
+                return;
+            }
+            element.textContent = message || "";
+            element.classList.toggle("is-error", Boolean(isError));
+        }
+
+        function setRobloxUserResultsMeta(message = "") {
+            if (robloxUserSearchElements.resultsMeta) {
+                robloxUserSearchElements.resultsMeta.textContent = message || "";
+            }
+        }
+
+        function setRobloxUserResultsError(message = "") {
+            if (robloxUserSearchElements.error) {
+                robloxUserSearchElements.error.textContent = message || "";
+            }
+        }
+
+        function createRobloxUserMessage(text) {
+            const message = document.createElement("div");
+            message.className = "roblox-user-search__empty";
+            message.textContent = text;
+            return message;
+        }
+
+        function renderRobloxUserResultsMessage(text) {
+            const container = robloxUserSearchElements.results;
+            if (!container) {
+                return;
+            }
+            container.innerHTML = "";
+            container.appendChild(createRobloxUserMessage(text));
+        }
+
+        function renderRobloxUserDetailMessage(text) {
+            const container = robloxUserSearchElements.detail;
+            if (!container) {
+                return;
+            }
+            container.innerHTML = "";
+            container.appendChild(createRobloxUserMessage(text));
+        }
+
+        function normalizeRobloxUserValue(value) {
+            if (value === null || value === undefined) {
+                return "";
+            }
+            if (typeof value === "boolean") {
+                return value ? "Yes" : "No";
+            }
+            if (Array.isArray(value)) {
+                return value
+                    .map((entry) => normalizeRobloxUserValue(entry))
+                    .filter(Boolean)
+                    .join(", ");
+            }
+            if (typeof value === "object") {
+                try {
+                    return JSON.stringify(value);
+                } catch {
+                    return "";
+                }
+            }
+            return String(value).trim();
+        }
+
+        function formatRobloxUserDate(value, includeTime = false) {
+            if (!value) {
+                return "";
+            }
+            const date = new Date(value);
+            if (Number.isNaN(date.getTime())) {
+                return "";
+            }
+            return includeTime ?
+                date.toLocaleString(undefined, {
+                    month: "short",
+                    day: "numeric",
+                    year: "numeric",
+                    hour: "numeric",
+                    minute: "2-digit"
+                }) :
+                date.toLocaleDateString(undefined, {
+                    month: "short",
+                    day: "numeric",
+                    year: "numeric"
+                });
+        }
+
+        function formatRobloxUserKey(key) {
+            return String(key || "")
+                .replace(/([a-z0-9])([A-Z])/g, "$1 $2")
+                .replace(/[_-]+/g, " ")
+                .replace(/\b\w/g, (char) => char.toUpperCase());
+        }
+
+        function createRobloxUserPill(text, tone = "") {
+            const pill = document.createElement("span");
+            pill.className =
+                "roblox-user-search__pill" +
+                (tone ? ` roblox-user-search__pill--${tone}` : "");
+            pill.textContent = text;
+            return pill;
+        }
+
+        function createRobloxUserStat(label, value) {
+            const stat = document.createElement("div");
+            stat.className = "roblox-user-search__stat";
+            const title = document.createElement("strong");
+            title.textContent = label;
+            const content = document.createElement("span");
+            content.textContent = normalizeRobloxUserValue(value) || "Unknown";
+            stat.append(title, content);
+            return stat;
+        }
+
+        function createRobloxUserSection(title) {
+            const section = document.createElement("section");
+            section.className = "roblox-user-search__section";
+            const heading = document.createElement("h4");
+            heading.textContent = title;
+            const body = document.createElement("div");
+            section.append(heading, body);
+            return {
+                section,
+                body
+            };
+        }
+
+        function appendRobloxUserKv(parent, key, value) {
+            const normalized = normalizeRobloxUserValue(value);
+            if (!normalized) {
+                return;
+            }
+            const card = document.createElement("div");
+            card.className = "roblox-user-search__kv";
+            const label = document.createElement("span");
+            label.className = "roblox-user-search__key";
+            label.textContent = formatRobloxUserKey(key);
+            const content = document.createElement("div");
+            content.className = "roblox-user-search__value";
+            content.textContent = normalized;
+            card.append(label, content);
+            parent.appendChild(card);
+        }
+
+        function resolveRobloxSettledValue(result) {
+            return result && result.status === "fulfilled" ? result.value : null;
+        }
+
+        function getRobloxUserProxyFirstEndpoints(endpoint) {
+            const proxyEndpoint = buildRobloxProxyUrl(endpoint, ROBLOX_USER_PROXY_ROOT);
+            return proxyEndpoint && proxyEndpoint !== endpoint ?
+                [proxyEndpoint, endpoint] :
+                [endpoint];
+        }
+
+        async function fetchRobloxJsonSafe(endpoint, contextLabel, options = {}) {
+            const attempts = isRobloxApiUrl(endpoint) ?
+                getRobloxUserProxyFirstEndpoints(endpoint) :
+                [endpoint];
+
+            for (const candidate of attempts) {
+                try {
+                    return await fetchJsonWithProxyFallback(candidate, contextLabel, options);
+                } catch (error) {
+                    console.warn(
+                        `[Roblox user search] ${contextLabel} failed via ${candidate}.`,
+                        error
+                    );
+                }
+            }
+
+            return null;
+        }
+
+        async function fetchRobloxUserThumbnailMap(
+            userIds,
+            type = "avatar-headshot",
+            size = "150x150"
+        ) {
+            const ids = [...new Set((userIds || []).map((id) => Number(id)).filter(Number.isFinite))];
+            if (!ids.length) {
+                return new Map();
+            }
+            const path = type === "avatar" ? "avatar" : "avatar-headshot";
+            const payload = await fetchRobloxJsonSafe(
+                `https://thumbnails.roblox.com/v1/users/${path}?userIds=${ids.join(",")}&size=${size}&format=Png&isCircular=false`,
+                `Roblox ${path} thumbnails`
+            );
+            const map = new Map();
+            (payload?.data || []).forEach((entry) => {
+                if (Number.isFinite(Number(entry?.targetId)) && entry?.imageUrl) {
+                    map.set(Number(entry.targetId), entry.imageUrl);
+                }
+            });
+            return map;
+        }
+
+        async function fetchRobloxAssetThumbnailMap(assetIds, size = "150x150") {
+            const ids = [...new Set((assetIds || []).map((id) => Number(id)).filter(Number.isFinite))];
+            if (!ids.length) {
+                return new Map();
+            }
+            const payload = await fetchRobloxJsonSafe(
+                `https://thumbnails.roblox.com/v1/assets?assetIds=${ids.join(",")}&size=${size}&format=Png&isCircular=false`,
+                "Roblox asset thumbnails"
+            );
+            const map = new Map();
+            (payload?.data || []).forEach((entry) => {
+                if (Number.isFinite(Number(entry?.targetId)) && entry?.imageUrl) {
+                    map.set(Number(entry.targetId), entry.imageUrl);
+                }
+            });
+            return map;
+        }
+
+        function syncRobloxUserSelection() {
+            const selectedId = robloxUserSearchState.selectedUserId;
+            robloxUserSearchElements.results
+                ?.querySelectorAll(".roblox-user-search__result-card")
+                .forEach((button) => {
+                    button.classList.toggle(
+                        "is-active",
+                        Number(button.dataset.userId) === selectedId
+                    );
+                });
+        }
+
+        function buildRobloxUserSearchCandidates(query, searchPayload, exactPayload) {
+            const results = [];
+            const seen = new Set();
+            const addCandidate = (user, exactMatch = false) => {
+                const id = Number(user?.id);
+                if (!Number.isFinite(id) || seen.has(id)) {
+                    return;
+                }
+                seen.add(id);
+                const username = normalizeRobloxUserValue(
+                    user?.name || user?.requestedUsername || query
+                );
+                results.push({
+                    id,
+                    name: username,
+                    displayName:
+                        normalizeRobloxUserValue(user?.displayName) || username,
+                    hasVerifiedBadge: Boolean(user?.hasVerifiedBadge),
+                    exactMatch
+                });
+            };
+
+            const exactMatch = exactPayload?.data?.[0];
+            if (exactMatch) {
+                addCandidate(exactMatch, true);
+            }
+
+            (searchPayload?.data || []).forEach((entry) => addCandidate(entry, false));
+            return results.slice(0, ROBLOX_USER_RESULT_LIMIT);
+        }
+
+        async function enrichRobloxUserSearchCandidates(candidates) {
+            const userIds = candidates.map((candidate) => candidate.id);
+            const [profileResults, headshots] = await Promise.all([
+                Promise.allSettled(
+                    candidates.map((candidate) =>
+                        fetchRobloxJsonSafe(
+                            `https://users.roblox.com/v1/users/${candidate.id}`,
+                            `Roblox profile ${candidate.id}`
+                        )
+                    )
+                ),
+                fetchRobloxUserThumbnailMap(userIds, "avatar-headshot", "150x150")
+            ]);
+
+            return candidates.map((candidate, index) => {
+                const profile = resolveRobloxSettledValue(profileResults[index]);
+                return {
+                    ...candidate,
+                    name:
+                        normalizeRobloxUserValue(profile?.name) || candidate.name,
+                    displayName:
+                        normalizeRobloxUserValue(profile?.displayName) ||
+                        candidate.displayName ||
+                        candidate.name,
+                    hasVerifiedBadge:
+                        Boolean(profile?.hasVerifiedBadge) || candidate.hasVerifiedBadge,
+                    isBanned: Boolean(profile?.isBanned),
+                    created: profile?.created || "",
+                    headshotUrl: headshots.get(candidate.id) || "",
+                    profile
+                };
+            });
+        }
+
+        function renderRobloxUserResults(users) {
+            const container = robloxUserSearchElements.results;
+            if (!container) {
+                return;
+            }
+            container.innerHTML = "";
+
+            if (!Array.isArray(users) || !users.length) {
+                renderRobloxUserResultsMessage("No Roblox users matched that search.");
+                return;
+            }
+
+            users.forEach((entry) => {
+                const button = document.createElement("button");
+                button.type = "button";
+                button.className =
+                    "roblox-user-search__result-card" +
+                    (entry.isBanned ?
+                        " roblox-user-search__result-card--banned" :
+                        entry.hasVerifiedBadge ?
+                            " roblox-user-search__result-card--verified" :
+                            "");
+                button.dataset.userId = String(entry.id);
+
+                const image = document.createElement("img");
+                image.className = "roblox-user-search__thumb";
+                image.src =
+                    entry.headshotUrl ||
+                    "https://images.rbxcdn.com/d2b9e2b55f3e6d9541f1774d4e0fbe7a.png";
+                image.alt = "";
+
+                const copy = document.createElement("div");
+
+                const title = document.createElement("div");
+                title.className = "roblox-user-search__result-title";
+                title.textContent = entry.displayName || entry.name || "Unknown user";
+                if (entry.exactMatch) {
+                    title.appendChild(createRobloxUserPill("Exact", "exact"));
+                }
+                if (entry.isBanned) {
+                    title.appendChild(createRobloxUserPill("Banned", "banned"));
+                } else if (entry.hasVerifiedBadge) {
+                    title.appendChild(createRobloxUserPill("Verified", "verified"));
+                }
+
+                const subtitle = document.createElement("div");
+                subtitle.className = "roblox-user-search__result-subtitle";
+                const subtitleParts = [
+                    `@${entry.name || "unknown"}`,
+                    `ID ${entry.id}`
+                ];
+                const createdLabel = formatRobloxUserDate(entry.created);
+                if (createdLabel) {
+                    subtitleParts.push(`Joined ${createdLabel}`);
+                }
+                subtitle.textContent = subtitleParts.join(" • ");
+
+                copy.append(title, subtitle);
+                button.append(image, copy);
+                button.addEventListener("click", () => {
+                    robloxUserSearchState.selectedUserId = entry.id;
+                    syncRobloxUserSelection();
+                    loadRobloxUserProfile(entry.id, entry);
+                });
+                container.appendChild(button);
+            });
+
+            syncRobloxUserSelection();
+        }
+
+        function buildRobloxUsernameHistory(...payloads) {
+            const history = [];
+            const seen = new Set();
+            payloads.forEach((payload) => {
+                (payload?.data || []).forEach((entry) => {
+                    const name = normalizeRobloxUserValue(entry?.name || entry?.username);
+                    if (!name) {
+                        return;
+                    }
+                    const key = name.toLowerCase();
+                    if (seen.has(key)) {
+                        return;
+                    }
+                    seen.add(key);
+                    history.push({
+                        name,
+                        created: entry?.created || ""
+                    });
+                });
+            });
+            history.sort((left, right) => {
+                const leftTime = new Date(left.created || 0).getTime();
+                const rightTime = new Date(right.created || 0).getTime();
+                return leftTime - rightTime;
+            });
+            return history;
+        }
+
+        function appendRobloxUserTextSection(root, title, text) {
+            const normalized = normalizeRobloxUserValue(text);
+            if (!normalized) {
+                return;
+            }
+            const {
+                section,
+                body
+            } = createRobloxUserSection(title);
+            const copy = document.createElement("div");
+            copy.className = "roblox-user-search__value";
+            copy.textContent = normalized;
+            body.appendChild(copy);
+            root.appendChild(section);
+        }
+
+        function appendRobloxUserMapSection(root, title, payload) {
+            const entries = Object.entries(payload || {}).filter(([, value]) =>
+                Boolean(normalizeRobloxUserValue(value))
+            );
+            if (!entries.length) {
+                return;
+            }
+            const {
+                section,
+                body
+            } = createRobloxUserSection(title);
+            body.className = "roblox-user-search__section-grid";
+            entries.forEach(([key, value]) => appendRobloxUserKv(body, key, value));
+            root.appendChild(section);
+        }
+
+        function appendRobloxUserHistorySection(root, history) {
+            if (!Array.isArray(history) || !history.length) {
+                return;
+            }
+            const {
+                section,
+                body
+            } = createRobloxUserSection("Previous Usernames");
+            body.className = "roblox-user-search__history";
+            history.forEach((entry) => {
+                const row = document.createElement("div");
+                row.className = "roblox-user-search__history-item";
+
+                const name = document.createElement("div");
+                name.className = "roblox-user-search__history-name";
+                name.textContent = entry.name;
+
+                const date = document.createElement("div");
+                date.className = "roblox-user-search__history-date";
+                date.textContent =
+                    formatRobloxUserDate(entry.created, true) || "Date unavailable";
+
+                row.append(name, date);
+                body.appendChild(row);
+            });
+            root.appendChild(section);
+        }
+
+        function appendRobloxUserAssetsSection(root, title, assets, thumbnails) {
+            const entries = (assets || []).filter((asset) =>
+                Number.isFinite(Number(asset?.id || asset?.assetId))
+            );
+            if (!entries.length) {
+                return;
+            }
+            const {
+                section,
+                body
+            } = createRobloxUserSection(title);
+            body.className = "roblox-user-search__asset-grid";
+            entries.forEach((asset) => {
+                const assetId = Number(asset?.id || asset?.assetId);
+                const card = document.createElement("article");
+                card.className = "roblox-user-search__asset";
+
+                const image = document.createElement("img");
+                image.alt = "";
+                image.src =
+                    thumbnails.get(assetId) ||
+                    "https://images.rbxcdn.com/d2b9e2b55f3e6d9541f1774d4e0fbe7a.png";
+
+                const name = document.createElement("div");
+                name.className = "roblox-user-search__asset-name";
+                name.textContent =
+                    normalizeRobloxUserValue(asset?.name || asset?.assetName) ||
+                    `Asset ${assetId}`;
+
+                const type = document.createElement("div");
+                type.className = "roblox-user-search__asset-type";
+                type.textContent =
+                    normalizeRobloxUserValue(asset?.assetType?.name || "Asset");
+
+                const id = document.createElement("div");
+                id.className = "roblox-user-search__asset-id";
+                id.textContent = `ID ${assetId}`;
+
+                const links = document.createElement("div");
+                links.className = "roblox-user-search__links";
+
+                const openLink = document.createElement("a");
+                openLink.className = "roblox-user-search__link";
+                openLink.href = `https://www.roblox.com/catalog/${assetId}`;
+                openLink.target = "_blank";
+                openLink.rel = "noopener noreferrer";
+                openLink.textContent = "Open";
+
+                const copyButton = document.createElement("button");
+                copyButton.type = "button";
+                copyButton.className = "roblox-user-search__copy";
+                copyButton.textContent = "Copy ID";
+                copyButton.addEventListener("click", async () => {
+                    try {
+                        await navigator.clipboard.writeText(String(assetId));
+                        toast(`Copied asset ID ${assetId}`);
+                    } catch (error) {
+                        console.error(error);
+                        toast("Clipboard permissions denied");
+                    }
+                });
+
+                links.append(openLink, copyButton);
+                card.append(image, name, type, id, links);
+                body.appendChild(card);
+            });
+            root.appendChild(section);
+        }
+
+        async function renderRobloxUserDetail(detailData) {
+            const container = robloxUserSearchElements.detail;
+            if (!container) {
+                return;
+            }
+            const profile = detailData?.profile;
+            if (!profile?.id) {
+                renderRobloxUserDetailMessage("That Roblox profile could not be loaded.");
+                return;
+            }
+
+            container.innerHTML = "";
+
+            const hero = document.createElement("article");
+            hero.className =
+                "roblox-user-search__hero-card" +
+                (profile.isBanned ?
+                    " roblox-user-search__hero-card--banned" :
+                    profile.hasVerifiedBadge ?
+                        " roblox-user-search__hero-card--verified" :
+                        "");
+
+            const heroTop = document.createElement("div");
+            heroTop.className = "roblox-user-search__hero";
+
+            const image = document.createElement("img");
+            image.className = "roblox-user-search__hero-image";
+            image.alt = "";
+            image.src =
+                detailData.avatarImageUrl ||
+                detailData.headshotUrl ||
+                "https://images.rbxcdn.com/d2b9e2b55f3e6d9541f1774d4e0fbe7a.png";
+
+            const copy = document.createElement("div");
+
+            const name = document.createElement("h3");
+            name.className = "roblox-user-search__hero-name";
+            name.textContent = profile.displayName || profile.name || "Unknown user";
+
+            const subtitle = document.createElement("p");
+            subtitle.className = "roblox-user-search__hero-subtitle";
+            subtitle.textContent = `@${profile.name || "unknown"} • ID ${profile.id}`;
+
+            const pills = document.createElement("div");
+            pills.className = "roblox-user-search__pills";
+            if (profile.isBanned) {
+                pills.appendChild(createRobloxUserPill("Banned", "banned"));
+            } else {
+                pills.appendChild(createRobloxUserPill("Active"));
+            }
+            if (profile.hasVerifiedBadge) {
+                pills.appendChild(createRobloxUserPill("Verified", "verified"));
+            }
+
+            const actions = document.createElement("div");
+            actions.className = "roblox-user-search__actions";
+
+            const openProfile = document.createElement("a");
+            openProfile.className = "roblox-user-search__link";
+            openProfile.href = `https://www.roblox.com/users/${profile.id}/profile`;
+            openProfile.target = "_blank";
+            openProfile.rel = "noopener noreferrer";
+            openProfile.textContent = "Open profile";
+
+            const copyDisplayName = document.createElement("button");
+            copyDisplayName.type = "button";
+            copyDisplayName.className = "roblox-user-search__copy";
+            copyDisplayName.textContent = "Copy DisplayName";
+            copyDisplayName.addEventListener("click", async () => {
+                try {
+                    await navigator.clipboard.writeText(
+                        profile.displayName || profile.name || ""
+                    );
+                    toast(
+                        `Copied ${profile.displayName || profile.name || "display name"}`
+                    );
+                } catch (error) {
+                    console.error(error);
+                    toast("Clipboard permissions denied");
+                }
+            });
+
+            const copyUsername = document.createElement("button");
+            copyUsername.type = "button";
+            copyUsername.className = "roblox-user-search__copy";
+            copyUsername.textContent = "Copy Username";
+            copyUsername.addEventListener("click", async () => {
+                try {
+                    await navigator.clipboard.writeText(profile.name || "");
+                    toast(`Copied @${profile.name || "user"}`);
+                } catch (error) {
+                    console.error(error);
+                    toast("Clipboard permissions denied");
+                }
+            });
+
+            const copyId = document.createElement("button");
+            copyId.type = "button";
+            copyId.className = "roblox-user-search__copy";
+            copyId.textContent = "Copy UserId";
+            copyId.addEventListener("click", async () => {
+                try {
+                    await navigator.clipboard.writeText(String(profile.id));
+                    toast(`Copied user ID ${profile.id}`);
+                } catch (error) {
+                    console.error(error);
+                    toast("Clipboard permissions denied");
+                }
+            });
+
+            actions.append(openProfile, copyDisplayName, copyUsername, copyId);
+            copy.append(name, subtitle, pills, actions);
+
+            const description = normalizeRobloxUserValue(profile.description);
+            if (description) {
+                const descriptionElement = document.createElement("p");
+                descriptionElement.className = "roblox-user-search__hero-description";
+                descriptionElement.textContent = description;
+                copy.appendChild(descriptionElement);
+            }
+
+            heroTop.append(image, copy);
+
+            const stats = document.createElement("div");
+            stats.className = "roblox-user-search__stats";
+            stats.append(
+                createRobloxUserStat(
+                    "Joined",
+                    formatRobloxUserDate(profile.created, true) || "Unknown"
+                ),
+                createRobloxUserStat("Banned", profile.isBanned),
+                createRobloxUserStat("Verified", profile.hasVerifiedBadge),
+                createRobloxUserStat(
+                    "Avatar Type",
+                    detailData.avatar?.playerAvatarType || "Unknown"
+                )
+            );
+
+            hero.append(heroTop, stats);
+            container.appendChild(hero);
+
+            appendRobloxUserTextSection(container, "Status", detailData.statusText);
+            appendRobloxUserHistorySection(container, detailData.usernameHistory);
+
+            if (detailData.avatar) {
+                appendRobloxUserMapSection(container, "Avatar Overview", {
+                    playerAvatarType: detailData.avatar.playerAvatarType,
+                    defaultShirtApplied: detailData.avatar.defaultShirtApplied,
+                    defaultPantsApplied: detailData.avatar.defaultPantsApplied
+                });
+                appendRobloxUserMapSection(container, "Body Scales", detailData.avatar.scales);
+                appendRobloxUserMapSection(container, "Body Colors", detailData.avatar.bodyColors);
+                appendRobloxUserAssetsSection(
+                    container,
+                    "Avatar Assets",
+                    detailData.avatar.assets,
+                    detailData.assetThumbnails
+                );
+                appendRobloxUserAssetsSection(
+                    container,
+                    "Emotes",
+                    detailData.avatar.emotes,
+                    detailData.assetThumbnails
+                );
+            }
+
+            appendRobloxUserMapSection(
+                container,
+                "Promotion Channels",
+                detailData.promotionChannels
+            );
+            appendRobloxUserMapSection(container, "User Metadata", detailData.metadata);
+            initMotionFx();
+        }
+
+        async function loadRobloxUserProfile(userId, fallbackEntry = null) {
+            const id = Number(userId);
+            if (!Number.isFinite(id)) {
+                return;
+            }
+
+            robloxUserSearchState.profileToken += 1;
+            const token = robloxUserSearchState.profileToken;
+            robloxUserSearchState.selectedUserId = id;
+            syncRobloxUserSelection();
+            setRobloxUserStatus(`Loading profile ${id}...`);
+            renderRobloxUserDetailMessage("Loading Roblox user profile...");
+
+            const requests = await Promise.allSettled([
+                fetchRobloxJsonSafe(`https://users.roblox.com/v1/users/${id}`, `Roblox profile ${id}`),
+                fetchRobloxJsonSafe(`https://users.roblox.com/v1/users/${id}/status`, `Roblox status ${id}`),
+                fetchRobloxJsonSafe(
+                    `https://users.roblox.com/v1/users/${id}/username-history?limit=100&sortOrder=Asc`,
+                    `Roblox username history asc ${id}`
+                ),
+                fetchRobloxJsonSafe(
+                    `https://users.roblox.com/v1/users/${id}/username-history?limit=100&sortOrder=Desc`,
+                    `Roblox username history desc ${id}`
+                ),
+                fetchRobloxJsonSafe(`https://avatar.roblox.com/v1/users/${id}/avatar`, `Roblox avatar ${id}`),
+                fetchRobloxUserThumbnailMap([id], "avatar-headshot", "420x420"),
+                fetchRobloxUserThumbnailMap([id], "avatar", "420x420"),
+                fetchRobloxJsonSafe(
+                    `https://users.roblox.com/v1/users/${id}/promotion-channels`,
+                    `Roblox promotion channels ${id}`
+                ),
+                fetchRobloxJsonSafe(`https://users.roblox.com/v1/users/${id}/metadata`, `Roblox metadata ${id}`)
+            ]);
+
+            if (robloxUserSearchState.profileToken !== token) {
+                return;
+            }
+
+            const profile =
+                resolveRobloxSettledValue(requests[0]) ||
+                fallbackEntry?.profile ||
+                fallbackEntry;
+            if (!profile?.id) {
+                setRobloxUserStatus("Profile lookup failed.", true);
+                renderRobloxUserDetailMessage("That Roblox profile could not be loaded.");
+                return;
+            }
+
+            const avatar = resolveRobloxSettledValue(requests[4]);
+            const assetIds = [
+                ...(avatar?.assets || []).map((asset) => asset?.id),
+                ...(avatar?.emotes || []).map((emote) => emote?.assetId || emote?.id)
+            ]
+                .map((entry) => Number(entry))
+                .filter(Number.isFinite);
+            const assetThumbnails = await fetchRobloxAssetThumbnailMap(assetIds, "150x150");
+
+            if (robloxUserSearchState.profileToken !== token) {
+                return;
+            }
+
+            const headshotMap = resolveRobloxSettledValue(requests[5]) || new Map();
+            const avatarMap = resolveRobloxSettledValue(requests[6]) || new Map();
+            await renderRobloxUserDetail({
+                profile,
+                statusText: normalizeRobloxUserValue(resolveRobloxSettledValue(requests[1])?.status),
+                usernameHistory: buildRobloxUsernameHistory(
+                    resolveRobloxSettledValue(requests[2]),
+                    resolveRobloxSettledValue(requests[3])
+                ),
+                avatar,
+                headshotUrl: headshotMap.get(id) || "",
+                avatarImageUrl: avatarMap.get(id) || headshotMap.get(id) || "",
+                promotionChannels: resolveRobloxSettledValue(requests[7]),
+                metadata: resolveRobloxSettledValue(requests[8]),
+                assetThumbnails
+            });
+            setRobloxUserStatus(
+                `Loaded ${profile.displayName || profile.name || `user ${id}`}.`
+            );
+        }
+
+        async function performRobloxUserSearch(term, button = null) {
+            const query = normalizeRobloxUserValue(term);
+            robloxUserSearchState.searchToken += 1;
+            const token = robloxUserSearchState.searchToken;
+            robloxUserSearchState.profileToken += 1;
+            robloxUserSearchState.selectedUserId = null;
+            robloxUserSearchState.results = [];
+            syncRobloxUserSelection();
+            setRobloxUserResultsError("");
+
+            if (!query) {
+                setRobloxUserStatus("");
+                setRobloxUserResultsMeta("Ready to search.");
+                renderRobloxUserResultsMessage(
+                    "Search for a username or user ID to list matching accounts."
+                );
+                renderRobloxUserDetailMessage(
+                    "Select a result to view the Roblox profile details here."
+                );
+                return;
+            }
+
+            setRobloxUserStatus("Searching Roblox users...");
+            setRobloxUserResultsMeta("Loading...");
+            renderRobloxUserResultsMessage("Searching Roblox users...");
+            renderRobloxUserDetailMessage(
+                "Select a result to view the Roblox profile details here."
+            );
+
+            if (button) {
+                button.disabled = true;
+                button.textContent = "Searching...";
+            }
+
+            try {
+                let candidates = [];
+
+                if (/^\d+$/.test(query)) {
+                    const profile = await fetchRobloxJsonSafe(
+                        `https://users.roblox.com/v1/users/${query}`,
+                        `Roblox profile ${query}`
+                    );
+                    if (profile?.id) {
+                        candidates = [
+                            {
+                                id: Number(profile.id),
+                                name: normalizeRobloxUserValue(profile.name),
+                                displayName:
+                                    normalizeRobloxUserValue(profile.displayName) ||
+                                    normalizeRobloxUserValue(profile.name),
+                                hasVerifiedBadge: Boolean(profile.hasVerifiedBadge),
+                                exactMatch: true,
+                                profile
+                            }
+                        ];
+                    }
+                } else {
+                    const [searchResult, exactResult] = await Promise.allSettled([
+                        fetchRobloxJsonSafe(
+                            `https://users.roblox.com/v1/users/search?keyword=${encodeURIComponent(query)}&limit=${ROBLOX_USER_RESULT_LIMIT}`,
+                            `Roblox user search ${query}`
+                        ),
+                        fetchRobloxJsonSafe(
+                            "https://users.roblox.com/v1/usernames/users",
+                            `Roblox exact username ${query}`,
+                            {
+                                method: "POST",
+                                headers: {
+                                    "Content-Type": "text/plain;charset=UTF-8"
+                                },
+                                body: JSON.stringify({
+                                    usernames: [query],
+                                    excludeBannedUsers: false
+                                })
+                            }
+                        )
+                    ]);
+
+                    candidates = buildRobloxUserSearchCandidates(
+                        query,
+                        resolveRobloxSettledValue(searchResult),
+                        resolveRobloxSettledValue(exactResult)
+                    );
+                }
+
+                if (robloxUserSearchState.searchToken !== token) {
+                    return;
+                }
+
+                if (!candidates.length) {
+                    setRobloxUserStatus("No Roblox users found.");
+                    setRobloxUserResultsMeta("No matches");
+                    renderRobloxUserResultsMessage("No Roblox users matched that search.");
+                    return;
+                }
+
+                const results = await enrichRobloxUserSearchCandidates(candidates);
+                if (robloxUserSearchState.searchToken !== token) {
+                    return;
+                }
+
+                robloxUserSearchState.results = results;
+                setRobloxUserResultsMeta(
+                    `${results.length} match${results.length === 1 ? "" : "es"}`
+                );
+                renderRobloxUserResults(results);
+                setRobloxUserStatus(
+                    `Found ${results.length} Roblox user${results.length === 1 ? "" : "s"}.`
+                );
+
+                if (results[0]?.id) {
+                    robloxUserSearchState.selectedUserId = results[0].id;
+                    syncRobloxUserSelection();
+                    void loadRobloxUserProfile(results[0].id, results[0]);
+                }
+            } catch (error) {
+                console.error(error);
+                setRobloxUserStatus("Search failed.", true);
+                setRobloxUserResultsMeta("Unavailable");
+                setRobloxUserResultsError(
+                    "Roblox user data could not be loaded right now."
+                );
+                renderRobloxUserResultsMessage("Results could not be loaded.");
+            } finally {
+                if (button) {
+                    button.disabled = false;
+                    button.textContent = "Search";
+                }
+            }
+        }
+
+        function initRobloxUserSearch() {
+            const {
+                root,
+                input,
+                button
+            } = robloxUserSearchElements;
+            if (!root || !input || !button) {
+                return;
+            }
+
+            button.addEventListener("click", () =>
+                performRobloxUserSearch(input.value, button)
+            );
+            input.addEventListener("keydown", (event) => {
+                if (event.key === "Enter") {
+                    event.preventDefault();
+                    performRobloxUserSearch(input.value, button);
+                }
+            });
         }
 
         function codexStatus(element, text, isError) {
@@ -8934,7 +10359,7 @@ self.addEventListener("message", async (event) => {
             return status >= 500;
         }
 
-        function buildJsonFetchAttempts(endpoint) {
+        function buildJsonFetchAttempts(endpoint, method = "GET") {
             const attempts = [
                 {
                     label: "primary",
@@ -8943,6 +10368,8 @@ self.addEventListener("message", async (event) => {
             ];
             const seen = new Set([endpoint]);
             const robloxProxyTargets = [];
+            const normalizedMethod =
+                typeof method === "string" ? method.toUpperCase() : "GET";
 
             if (isRobloxApiUrl(endpoint)) {
                 robloxProxyFallbackRoots.forEach((proxyRoot) => {
@@ -8959,35 +10386,43 @@ self.addEventListener("message", async (event) => {
                 });
             }
 
-            jsonProxyFallbacks.forEach((proxy) => {
-                [endpoint, ...robloxProxyTargets].forEach((targetUrl) => {
-                    const proxyUrl = proxy.buildUrl(targetUrl);
-                    if (!proxyUrl || seen.has(proxyUrl)) {
-                        return;
-                    }
-                    seen.add(proxyUrl);
-                    attempts.push({
-                        label: `${proxy.label} -> ${targetUrl}`,
-                        url: proxyUrl
+            if (normalizedMethod === "GET") {
+                jsonProxyFallbacks.forEach((proxy) => {
+                    [endpoint, ...robloxProxyTargets].forEach((targetUrl) => {
+                        const proxyUrl = proxy.buildUrl(targetUrl);
+                        if (!proxyUrl || seen.has(proxyUrl)) {
+                            return;
+                        }
+                        seen.add(proxyUrl);
+                        attempts.push({
+                            label: `${proxy.label} -> ${targetUrl}`,
+                            url: proxyUrl
+                        });
                     });
                 });
-            });
+            }
 
             return attempts;
         }
 
-        async function fetchJsonGetWithProxyFallback(endpoint, contextLabel) {
-            const attempts = buildJsonFetchAttempts(endpoint);
+        async function fetchJsonWithProxyFallback(endpoint, contextLabel, options = {}) {
+            const method =
+                typeof options.method === "string" && options.method ?
+                    options.method.toUpperCase() :
+                    "GET";
+            const attempts = buildJsonFetchAttempts(endpoint, method);
             let lastError = null;
 
             for (let index = 0; index < attempts.length; index += 1) {
                 const attempt = attempts[index];
                 try {
                     const response = await fetch(attempt.url, {
-                        method: "GET",
+                        ...options,
+                        method,
                         cache: "no-store",
                         headers: {
-                            Accept: "application/json"
+                            Accept: "application/json",
+                            ...(options.headers || {})
                         }
                     });
                     if (!response.ok) {
@@ -9018,6 +10453,12 @@ self.addEventListener("message", async (event) => {
             throw lastError instanceof Error ?
                 lastError :
                 new Error(`${contextLabel} failed.`);
+        }
+
+        async function fetchJsonGetWithProxyFallback(endpoint, contextLabel) {
+            return fetchJsonWithProxyFallback(endpoint, contextLabel, {
+                method: "GET"
+            });
         }
 
         function normalizeLuaManifestLabel(value, fallback = "") {
@@ -10456,6 +11897,7 @@ self.addEventListener("message", async (event) => {
             renderHome();
             renderScripts();
             initScriptSearcher();
+            initRobloxUserSearch();
             initVersionCards();
             clientVersionSpecs.forEach(fetchClientVersionData);
             studioVersionSpecs.forEach(fetchStudioVersionData);
