@@ -2050,6 +2050,15 @@
             align-items: center;
         }
 
+        .lua-manifest__search {
+            position: relative;
+            flex: 1;
+            min-width: 260px;
+            display: grid;
+            gap: 8px;
+        }
+
+        .lua-manifest__search input,
         .lua-manifest__controls input {
             flex: 1;
             min-width: 180px;
@@ -2059,6 +2068,109 @@
             background: rgba(255, 255, 255, 0.05);
             color: var(--tx);
             font: 14px ui-sans-serif, system-ui, "Segoe UI", Roboto, Helvetica, Arial;
+        }
+
+        .lua-manifest__results {
+            position: absolute;
+            top: calc(100% + 8px);
+            left: 0;
+            right: 0;
+            z-index: 20;
+            display: grid;
+            gap: 10px;
+            padding: 10px;
+            border-radius: 20px;
+            border: 1px solid rgba(122, 110, 255, 0.28);
+            background:
+                linear-gradient(180deg, rgba(18, 23, 40, 0.98), rgba(12, 16, 29, 0.96));
+            box-shadow: 0 24px 50px rgba(0, 0, 0, 0.38);
+            max-height: 320px;
+            overflow: auto;
+        }
+
+        .lua-manifest__results[hidden] {
+            display: none !important;
+        }
+
+        .lua-manifest__result {
+            width: 100%;
+            display: grid;
+            grid-template-columns: 108px minmax(0, 1fr);
+            gap: 14px;
+            align-items: center;
+            min-height: 92px;
+            padding: 14px 16px;
+            text-align: left;
+            border-radius: 16px;
+            border: 1px solid rgba(114, 94, 255, 0.22);
+            background: linear-gradient(180deg, rgba(19, 27, 46, 0.92), rgba(15, 22, 39, 0.92));
+            color: var(--tx);
+            cursor: pointer;
+            transition: border-color 140ms ease, background 140ms ease, transform 140ms ease;
+        }
+
+        .lua-manifest__result:hover,
+        .lua-manifest__result.is-active {
+            border-color: rgba(132, 101, 255, 0.45);
+            background: linear-gradient(180deg, rgba(26, 37, 63, 0.95), rgba(18, 26, 46, 0.95));
+            transform: translateY(-1px);
+        }
+
+        .lua-manifest__result-thumb {
+            width: 108px;
+            height: 44px;
+            object-fit: contain;
+            object-position: center;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .lua-manifest__result-copy {
+            min-width: 0;
+            display: grid;
+            gap: 6px;
+        }
+
+        .lua-manifest__result-title {
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .lua-manifest__result-meta {
+            font-size: 13px;
+            color: var(--mu);
+        }
+
+        .lua-manifest__result-pills,
+        .lua-manifest__detail-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .lua-manifest__pill {
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, var(--bdA));
+            padding: 2px 10px;
+            background: rgba(255, 255, 255, 0.06);
+            color: var(--tx);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .lua-manifest__pill--warn {
+            border-color: rgba(255, 183, 77, 0.35);
+            background: rgba(255, 183, 77, 0.12);
+            color: #ffd28f;
+        }
+
+        .lua-manifest__pill--ok {
+            border-color: rgba(114, 243, 182, 0.28);
+            background: rgba(114, 243, 182, 0.1);
+            color: #9af8ce;
         }
 
         .lua-manifest__actions {
@@ -5078,17 +5190,24 @@
             <section id="pm" class="pp">
                 <div class="g ed lua-manifest">
                     <h3>LUA by ID Manifest</h3>
-                    <p>Use a Steam AppID or store URL. SteamTools is required for manifest usage:
+                    <p>Use a Steam AppID or store URL. Generates a fares.top-style zip package for SteamTools usage:
                         <a href="https://steamtools.net" target="_blank" rel="noopener noreferrer">steamtools.net</a>.
                     </p>
                     <div class="lua-manifest__controls">
-                        <input id="lua-manifest-appid" type="text" inputmode="numeric"
-                            placeholder="Enter Steam AppID or Steam store URL (e.g. 730)" />
+                        <div class="lua-manifest__search">
+                            <input id="lua-manifest-appid" type="search" autocomplete="off" spellcheck="false"
+                                placeholder="Search Steam, paste a Steam URL, or enter an AppID" role="combobox"
+                                aria-autocomplete="list" aria-expanded="false"
+                                aria-controls="lua-manifest-search-results" />
+                            <div id="lua-manifest-search-results" class="lua-manifest__results" role="listbox"
+                                aria-label="Steam manifest search results" hidden></div>
+                        </div>
                         <button class="pl sc" type="button" id="lua-manifest-go">Generate</button>
                     </div>
                     <div class="lua-manifest__actions">
-                        <button class="pl" type="button" id="lua-manifest-open" disabled>Open file</button>
-                        <button class="pl" type="button" id="lua-manifest-copy" disabled>Copy URL</button>
+                        <button class="pl" type="button" id="lua-manifest-open" disabled>Download file</button>
+                        <button class="pl" type="button" id="lua-manifest-open-lua" disabled>Download .lua</button>
+                        <button class="pl" type="button" id="lua-manifest-copy" disabled>Copy output</button>
                     </div>
                     <a id="lua-manifest-link" class="lua-manifest__link" target="_blank" rel="noopener noreferrer"
                         hidden></a>
@@ -10167,9 +10286,185 @@ self.addEventListener("message", async (event) => {
         let luaManifestResultMode = "url";
         let luaManifestFilename = "";
         let luaManifestCopyText = "";
+        let luaManifestCopyLabel = "";
         let luaManifestObjectUrl = "";
         let luaManifestDepotKeyCache = null;
         let luaManifestDepotKeyPromise = null;
+        let luaManifestSearchResults = [];
+        let luaManifestSearchActiveIndex = -1;
+        let luaManifestSearchResultsOpen = false;
+        let luaManifestSearchToken = 0;
+        let luaManifestSearchSelectedAppId = "";
+        const luaManifestModelCache = new Map();
+        const luaManifestModelPromiseCache = new Map();
+
+        function getLuaManifestDownloadLabel(filename) {
+            const normalized =
+                typeof filename === "string" ?
+                    filename.trim().toLowerCase() :
+                    "";
+            if (normalized.endsWith(".zip")) {
+                return "Download ZIP";
+            }
+            if (normalized.endsWith(".lua")) {
+                return "Download .lua";
+            }
+            return "Download file";
+        }
+
+        function getLuaManifestCopyLabelText(label) {
+            const normalized =
+                typeof label === "string" ?
+                    label.trim() :
+                    "";
+            return normalized ?
+                `Copy ${normalized}` :
+                "Copy output";
+        }
+
+        function downloadTextFile(text, filename, mimeType = "text/plain;charset=utf-8") {
+            const blob = new Blob([text], {
+                type: mimeType
+            });
+            downloadBlob(blob, filename);
+        }
+
+        function createLuaManifestPill(text, tone = "") {
+            const pill = document.createElement("span");
+            pill.className =
+                "lua-manifest__pill" +
+                (tone ? ` lua-manifest__pill--${tone}` : "");
+            pill.textContent = text;
+            return pill;
+        }
+
+        function setLuaManifestSearchResultsExpanded(isExpanded) {
+            const inputEl = q("#lua-manifest-appid");
+            if (!inputEl) {
+                return;
+            }
+            inputEl.setAttribute("aria-expanded", isExpanded ? "true" : "false");
+        }
+
+        function hideLuaManifestSearchResults() {
+            luaManifestSearchResultsOpen = false;
+            const resultsEl = q("#lua-manifest-search-results");
+            if (!resultsEl) {
+                return;
+            }
+            resultsEl.hidden = true;
+            setLuaManifestSearchResultsExpanded(false);
+        }
+
+        function clearLuaManifestSearchResults() {
+            luaManifestSearchResults = [];
+            luaManifestSearchActiveIndex = -1;
+            luaManifestSearchResultsOpen = false;
+            const resultsEl = q("#lua-manifest-search-results");
+            if (resultsEl) {
+                resultsEl.innerHTML = "";
+                resultsEl.hidden = true;
+            }
+            setLuaManifestSearchResultsExpanded(false);
+        }
+
+        function renderLuaManifestSearchResults() {
+            const resultsEl = q("#lua-manifest-search-results");
+            if (!resultsEl) {
+                return;
+            }
+            resultsEl.innerHTML = "";
+            if (!luaManifestSearchResults.length) {
+                resultsEl.hidden = true;
+                setLuaManifestSearchResultsExpanded(false);
+                return;
+            }
+
+            luaManifestSearchResults.forEach((entry, index) => {
+                const button = document.createElement("button");
+                button.type = "button";
+                button.className =
+                    "lua-manifest__result" +
+                    (index === luaManifestSearchActiveIndex ? " is-active" : "");
+                button.setAttribute("role", "option");
+                button.setAttribute("aria-selected", index === luaManifestSearchActiveIndex ? "true" : "false");
+                button.addEventListener("mousedown", (event) => {
+                    event.preventDefault();
+                    selectLuaManifestSearchResult(index);
+                });
+
+                const title = document.createElement("div");
+                title.className = "lua-manifest__result-title";
+                title.textContent = entry.name;
+
+                const copy = document.createElement("div");
+                copy.className = "lua-manifest__result-copy";
+
+                const thumb = document.createElement(
+                    entry.thumbnail ? "img" : "div"
+                );
+                thumb.className = "lua-manifest__result-thumb";
+                if (entry.thumbnail) {
+                    thumb.src = entry.thumbnail;
+                    thumb.alt = `${entry.name} cover art`;
+                    thumb.loading = "lazy";
+                } else {
+                    thumb.setAttribute("aria-hidden", "true");
+                }
+                button.appendChild(thumb);
+
+                const meta = document.createElement("div");
+                meta.className = "lua-manifest__result-meta";
+                const metaParts = [`ID: ${entry.appId}`];
+                if (typeof entry.manifestCount === "number") {
+                    metaParts.push(`${entry.manifestCount} manifest${entry.manifestCount === 1 ? "" : "s"}`);
+                }
+                if (typeof entry.hashCount === "number") {
+                    metaParts.push(`${entry.hashCount} hash${entry.hashCount === 1 ? "" : "es"}`);
+                } else if (entry.hashLoading) {
+                    metaParts.push("Loading hashes...");
+                }
+                meta.textContent = metaParts.join(" | ");
+
+                copy.append(title, meta);
+
+                const pills = document.createElement("div");
+                pills.className = "lua-manifest__result-pills";
+                if (typeof entry.hashCount === "number") {
+                    pills.appendChild(
+                        createLuaManifestPill(
+                            entry.hashCount ?
+                                "Hashes ready" :
+                                "No hashes",
+                            entry.hashCount ? "ok" : "warn"
+                        )
+                    );
+                }
+                if (entry.depotsWithoutKeys) {
+                    pills.appendChild(
+                        createLuaManifestPill(
+                            `${entry.depotsWithoutKeys} missing`,
+                            "warn"
+                        )
+                    );
+                }
+                if (entry.hashPreview) {
+                    pills.appendChild(
+                        createLuaManifestPill(
+                            `Hash ${entry.hashPreview.slice(0, 8)}...${entry.hashPreview.slice(-6)}`,
+                            "ok"
+                        )
+                    );
+                }
+                copy.appendChild(pills);
+                button.appendChild(copy);
+                resultsEl.appendChild(button);
+            });
+
+            const shouldShow = luaManifestSearchResultsOpen && luaManifestSearchResults.length > 0;
+            resultsEl.hidden = !shouldShow;
+            setLuaManifestSearchResultsExpanded(shouldShow);
+        }
 
         function revokeLuaManifestObjectUrl() {
             if (!luaManifestObjectUrl) {
@@ -10195,8 +10490,10 @@ self.addEventListener("message", async (event) => {
             luaManifestResultMode = "url";
             luaManifestFilename = "";
             luaManifestCopyText = "";
+            luaManifestCopyLabel = "";
 
             const openBtn = q("#lua-manifest-open");
+            const openLuaBtn = q("#lua-manifest-open-lua");
             const copyBtn = q("#lua-manifest-copy");
             const linkEl = q("#lua-manifest-link");
             const payload =
@@ -10225,6 +10522,10 @@ self.addEventListener("message", async (event) => {
                     typeof payload.copyText === "string" ?
                         payload.copyText :
                         luaManifestFinalUrl;
+                luaManifestCopyLabel =
+                    typeof payload.copyLabel === "string" ?
+                        payload.copyLabel.trim() :
+                        "";
                 if (luaManifestResultMode === "blob" && luaManifestFinalUrl) {
                     luaManifestObjectUrl = luaManifestFinalUrl;
                 }
@@ -10232,19 +10533,25 @@ self.addEventListener("message", async (event) => {
 
             const hasUrl = Boolean(luaManifestFinalUrl);
             const hasCopyText = Boolean(luaManifestCopyText);
+            const hasLuaDownload =
+                luaManifestResultMode === "blob" &&
+                hasCopyText;
 
             if (openBtn) {
                 openBtn.disabled = !hasUrl;
                 openBtn.textContent =
                     luaManifestResultMode === "blob" ?
-                        "Download .lua" :
+                        getLuaManifestDownloadLabel(luaManifestFilename) :
                         "Open file";
+            }
+            if (openLuaBtn) {
+                openLuaBtn.disabled = !hasLuaDownload;
             }
             if (copyBtn) {
                 copyBtn.disabled = !hasCopyText;
                 copyBtn.textContent =
                     luaManifestResultMode === "blob" ?
-                        "Copy .lua" :
+                        getLuaManifestCopyLabelText(luaManifestCopyLabel) :
                         "Copy URL";
             }
             if (!linkEl) {
@@ -10497,6 +10804,82 @@ self.addEventListener("message", async (event) => {
             };
         }
 
+        function buildLuaManifestModel(appId, metadataPayload, depotKeys = {}) {
+            const gameData = metadataPayload?.data?.[appId];
+            if (!gameData || typeof gameData !== "object") {
+                throw new Error("fares.top does not list this AppID anymore.");
+            }
+
+            const gameName = normalizeLuaManifestLabel(
+                gameData?.common?.name,
+                `App ${appId}`
+            );
+            const appKey = normalizeLuaManifestLabel(depotKeys?.[appId], "");
+            const depots = [];
+            let skippedWithoutManifest = 0;
+
+            Object.entries(gameData?.depots || {}).forEach(([depotId, depotValue]) => {
+                if (!/^\d+$/.test(depotId) || !depotValue || typeof depotValue !== "object") {
+                    return;
+                }
+
+                const publicEntry = getLuaManifestPublicEntry(depotValue);
+                if (!publicEntry.gid) {
+                    skippedWithoutManifest += 1;
+                    return;
+                }
+
+                const depotKey = normalizeLuaManifestLabel(depotKeys?.[depotId], "");
+                depots.push({
+                    depotId,
+                    depotKey,
+                    hasKey: Boolean(depotKey),
+                    manifestId: publicEntry.gid,
+                    size: publicEntry.size
+                });
+            });
+
+            depots.sort((left, right) => Number(left.depotId) - Number(right.depotId));
+
+            if (!depots.length) {
+                throw new Error("No public depot manifests were found for this AppID.");
+            }
+
+            const packageDepots = depots.filter(({ depotId }) => depotId !== appId);
+            const depotsWithoutKeys = packageDepots.filter(({ hasKey }) => !hasKey).length;
+            const hashEntries = [];
+
+            if (appKey) {
+                hashEntries.push({
+                    depotId: appId,
+                    hash: appKey,
+                    kind: "app"
+                });
+            }
+
+            packageDepots.forEach(({ depotId, depotKey, hasKey }) => {
+                if (!hasKey) {
+                    return;
+                }
+                hashEntries.push({
+                    depotId,
+                    hash: depotKey,
+                    kind: "depot"
+                });
+            });
+
+            return {
+                appId,
+                gameName,
+                appKey,
+                depots,
+                packageDepots,
+                depotsWithoutKeys,
+                skippedWithoutManifest,
+                hashEntries
+            };
+        }
+
         async function fetchLuaManifestDepotKeys() {
             if (luaManifestDepotKeyCache && typeof luaManifestDepotKeyCache === "object") {
                 return luaManifestDepotKeyCache;
@@ -10530,137 +10913,241 @@ self.addEventListener("message", async (event) => {
             }
         }
 
-        async function fetchLuaManifestFromManifestHub(appId) {
+        async function fetchLuaManifestModel(appId) {
+            if (luaManifestModelCache.has(appId)) {
+                return luaManifestModelCache.get(appId);
+            }
+            if (luaManifestModelPromiseCache.has(appId)) {
+                return luaManifestModelPromiseCache.get(appId);
+            }
+
             const metadataUrl =
                 `https://www.fares.top/api/manifest?appId=${encodeURIComponent(appId)}&server=1`;
-            const [metadataPayload, depotKeys] = await Promise.all([
+            const promise = Promise.all([
                 fetchJsonGetWithProxyFallback(metadataUrl, "fares.top manifest metadata"),
                 fetchLuaManifestDepotKeysSafe()
-            ]);
-
-            const gameData = metadataPayload?.data?.[appId];
-            if (!gameData || typeof gameData !== "object") {
-                throw new Error("fares.top does not list this AppID anymore.");
-            }
-
-            const gameName = normalizeLuaManifestLabel(
-                gameData?.common?.name,
-                `App ${appId}`
-            );
-            const appKey = normalizeLuaManifestLabel(depotKeys?.[appId], "");
-            const depots = [];
-            let skippedWithoutManifest = 0;
-            let depotsWithKeys = 0;
-            let depotsWithoutKeys = 0;
-
-            Object.entries(gameData?.depots || {}).forEach(([depotId, depotValue]) => {
-                if (!/^\d+$/.test(depotId) || !depotValue || typeof depotValue !== "object") {
-                    return;
-                }
-
-                const publicEntry = getLuaManifestPublicEntry(depotValue);
-                if (!publicEntry.gid) {
-                    skippedWithoutManifest += 1;
-                    return;
-                }
-
-                const depotKey = normalizeLuaManifestLabel(depotKeys?.[depotId], "");
-                const hasKey = Boolean(depotKey);
-                if (hasKey) {
-                    depotsWithKeys += 1;
-                } else {
-                    depotsWithoutKeys += 1;
-                }
-
-                depots.push({
-                    depotId,
-                    depotKey,
-                    hasKey,
-                    depotName: normalizeLuaManifestLabel(
-                        depotValue?.name,
-                        depotId === appId ? gameName : `Depot ${depotId}`
-                    ),
-                    manifestId: publicEntry.gid,
-                    size: publicEntry.size
+            ])
+                .then(([metadataPayload, depotKeys]) => {
+                    const model = buildLuaManifestModel(appId, metadataPayload, depotKeys);
+                    luaManifestModelCache.set(appId, model);
+                    return model;
+                })
+                .finally(() => {
+                    luaManifestModelPromiseCache.delete(appId);
                 });
-            });
 
-            depots.sort((left, right) => Number(left.depotId) - Number(right.depotId));
+            luaManifestModelPromiseCache.set(appId, promise);
+            return promise;
+        }
 
-            if (!depots.length) {
-                throw new Error("No public depot manifests were found for this AppID.");
+        async function searchLuaManifestGames(query) {
+            const normalizedQuery = (query || "").trim();
+            if (normalizedQuery.length < 2) {
+                return [];
+            }
+            const searchUrl =
+                `https://store.steampowered.com/api/storesearch/?term=${encodeURIComponent(normalizedQuery)}&l=english&cc=us`;
+            const payload = await fetchJsonGetWithProxyFallback(searchUrl, "Steam store search");
+            const items = Array.isArray(payload?.items) ? payload.items : [];
+            return items
+                .filter((entry) => entry && entry.type === "app" && /^\d+$/.test(String(entry.id || "")))
+                .slice(0, 8)
+                .map((entry) => ({
+                    appId: String(entry.id),
+                    name: normalizeLuaManifestLabel(entry.name, `App ${entry.id}`),
+                    thumbnail:
+                        typeof entry.tiny_image === "string" ?
+                            entry.tiny_image :
+                            "",
+                    hashLoading: true
+                }));
+        }
+
+        async function enrichLuaManifestSearchResult(appId, token) {
+            try {
+                const model = await fetchLuaManifestModel(appId);
+                if (token !== luaManifestSearchToken) {
+                    return;
+                }
+                const entry = luaManifestSearchResults.find((candidate) => candidate.appId === appId);
+                if (!entry) {
+                    return;
+                }
+                entry.hashLoading = false;
+                entry.hashCount = model.hashEntries.length;
+                entry.manifestCount = model.depots.length;
+                entry.depotsWithoutKeys = model.depotsWithoutKeys;
+                entry.hashPreview = model.hashEntries[0]?.hash || "";
+                renderLuaManifestSearchResults();
+            } catch (error) {
+                if (token !== luaManifestSearchToken) {
+                    return;
+                }
+                const entry = luaManifestSearchResults.find((candidate) => candidate.appId === appId);
+                if (!entry) {
+                    return;
+                }
+                entry.hashLoading = false;
+                entry.hashCount = 0;
+                entry.manifestCount = 0;
+                entry.depotsWithoutKeys = 0;
+                entry.hashPreview = "";
+                renderLuaManifestSearchResults();
+            }
+        }
+
+        async function performLuaManifestSearch(rawQuery) {
+            const query = (rawQuery || "").trim();
+            luaManifestSearchToken += 1;
+            const token = luaManifestSearchToken;
+            const directAppId = extractSteamAppId(query);
+
+            if (directAppId || query.length < 2) {
+                clearLuaManifestSearchResults();
+                if (!query.length && !luaManifestSearchSelectedAppId && !luaManifestFinalUrl) {
+                    setLuaManifestStatus("Search Steam, enter an AppID, or paste a Steam URL, then generate.");
+                }
+                return;
             }
 
-            const totalDepots = depots.length;
-            const createdAt = new Date().toLocaleString();
+            try {
+                const results = await searchLuaManifestGames(query);
+                if (token !== luaManifestSearchToken) {
+                    return;
+                }
+                luaManifestSearchResults = results;
+                luaManifestSearchActiveIndex = results.length ? 0 : -1;
+                luaManifestSearchResultsOpen = results.length > 0;
+                renderLuaManifestSearchResults();
+
+                if (!results.length) {
+                    setLuaManifestStatus(`No Steam matches found for "${query}".`, true);
+                    return;
+                }
+
+                setLuaManifestStatus("Pick a game from the dropdown or press Generate with an AppID/URL.");
+                results.forEach(({ appId }) => {
+                    enrichLuaManifestSearchResult(appId, token);
+                });
+            } catch (error) {
+                if (token !== luaManifestSearchToken) {
+                    return;
+                }
+                clearLuaManifestSearchResults();
+                setLuaManifestStatus(
+                    error instanceof Error && error.message ?
+                        error.message :
+                        "Unable to search Steam right now.",
+                    true
+                );
+            }
+        }
+
+        async function selectLuaManifestSearchResult(index) {
+            const entry = luaManifestSearchResults[index];
+            if (!entry) {
+                return;
+            }
+
+            luaManifestSearchActiveIndex = index;
+            luaManifestSearchSelectedAppId = entry.appId;
+
+            const inputEl = q("#lua-manifest-appid");
+            if (inputEl) {
+                inputEl.value = entry.name;
+            }
+
+            hideLuaManifestSearchResults();
+            renderLuaManifestSearchResults();
+            setLuaManifestStatus(`Loading hashes for ${entry.name}...`);
+
+            try {
+                const model = await fetchLuaManifestModel(entry.appId);
+                if (luaManifestSearchSelectedAppId !== entry.appId) {
+                    return;
+                }
+                setLuaManifestStatus(
+                    `Selected ${model.gameName} (${model.appId}). ${model.hashEntries.length} public hash${model.hashEntries.length === 1 ? "" : "es"} ready.`
+                );
+            } catch (error) {
+                if (luaManifestSearchSelectedAppId !== entry.appId) {
+                    return;
+                }
+                setLuaManifestStatus(
+                    error instanceof Error && error.message ?
+                        error.message :
+                        "Unable to load manifest details for this AppID.",
+                    true
+                );
+            }
+        }
+
+        const luaManifestPackageReadme = `Thanks for Using fares.top Manifest and lua Generator ❤️
+
+🎮Discord server : https://discord.gg/vzdhWC7svP
+
+🌐Our Website : https://fares.top
+`;
+        const luaManifestPackageFooter = [
+            "--[[",
+            "This file Generated using fares.top Website ",
+            "-----> join discord Server : https://discord.gg/steamgames ",
+            "]]"
+        ];
+
+        async function buildLuaManifestPackageBlob(appId, luaText) {
+            if (!window.JSZip) {
+                throw new Error("JSZip failed to load. Check your connection and retry.");
+            }
+            const zip = new JSZip();
+            zip.file(`${appId}.lua`, luaText);
+            zip.file("README.txt", luaManifestPackageReadme);
+            return zip.generateAsync({
+                type: "blob"
+            });
+        }
+
+        async function fetchLuaManifestFromManifestHub(appId) {
+            const model = await fetchLuaManifestModel(appId);
+            const {
+                appKey,
+                gameName,
+                packageDepots,
+                depotsWithoutKeys,
+                skippedWithoutManifest
+            } = model;
             const lines = [
-                `-- ${appId}.lua generated by ltseverydayyou.github.io`,
-                `-- ${gameName}`,
-                "-- Branch: PUBLIC",
-                `-- Created: ${createdAt}`,
-                "-- Source: fares.top public depot metadata + optional ManifestHub depot keys",
-                `-- Total Depots: ${totalDepots}`
-            ];
-
-            if (appKey) {
-                lines.push("-- App Key: Available");
-            } else {
-                lines.push("-- App Key: Not publicly listed");
-                lines.push("-- Warning: This file only contains public manifest IDs.");
-                lines.push("-- Without a public depot key or legitimate access, content may remain encrypted.");
-            }
-            if (depotsWithKeys) {
-                lines.push(`-- Depots With Public Keys: ${depotsWithKeys}`);
-            }
-            if (depotsWithoutKeys) {
-                lines.push(`-- Depots Without Public Keys: ${depotsWithoutKeys}`);
-            }
-            if (skippedWithoutManifest) {
-                lines.push(`-- Skipped Without Public Manifest: ${skippedWithoutManifest}`);
-            }
-
-            lines.push("");
-            lines.push("-- MAIN APPLICATION");
-            lines.push(
                 appKey ?
-                    `addappid(${appId}, 1, "${appKey}") -- ${gameName}` :
-                    `addappid(${appId}) -- ${gameName}`
-            );
-
-            if (depots.length) {
-                lines.push("-- PUBLIC DEPOTS");
-                depots.forEach(({ depotId, depotKey, hasKey, depotName, manifestId, size }) => {
-                    if (depotId !== appId) {
-                        lines.push(
-                            hasKey ?
-                                `addappid(${depotId}, 1, "${depotKey}") -- ${depotName}` :
-                                `addappid(${depotId}) -- ${depotName}`
-                        );
-                    }
-                    lines.push(`setManifestid(${depotId}, "${manifestId}", ${size})`);
-                });
-            }
-
-            const luaText = `${lines.join("\n")}\n`;
-            const blob = new Blob([luaText], {
-                type: "text/plain;charset=utf-8"
+                    `addappid(${appId},1,"${appKey}")` :
+                    `addappid(${appId})`
+            ];
+            packageDepots.forEach(({ depotId, depotKey, hasKey }) => {
+                lines.push(
+                    hasKey ?
+                        `addappid(${depotId},0,"${depotKey}")` :
+                        `addappid(${depotId})`
+                );
             });
+            lines.push(...luaManifestPackageFooter);
+            const luaText = `${lines.join("\n")}\n`;
+            const blob = await buildLuaManifestPackageBlob(appId, luaText);
             const blobUrl = URL.createObjectURL(blob);
+            const totalEntries = lines.filter((line) => /^addappid\(/.test(line)).length;
 
             return {
                 kind: "blob",
                 url: blobUrl,
-                filename: `${appId}.lua`,
+                filename: `${appId}.zip`,
                 copyText: luaText,
-                displayText:
-                    !appKey && depotsWithoutKeys === totalDepots ?
-                        `${appId}.lua - ${gameName} (manifest only)` :
-                        `${appId}.lua - ${gameName} (${totalDepots} depot${totalDepots === 1 ? "" : "s"})`,
-                statusText: !appKey && depotsWithoutKeys === totalDepots ?
-                    `Generated manifest IDs for ${gameName}, but no public depot key is listed. Content may remain encrypted.` :
+                copyLabel: `${appId}.lua`,
+                model,
+                displayText: `${appId}.zip - ${gameName} (${totalEntries} addappid entr${totalEntries === 1 ? "y" : "ies"})`,
+                statusText:
                     depotsWithoutKeys ?
-                        `Generated ${appId}.lua for ${gameName}. ${depotsWithoutKeys} depot${depotsWithoutKeys === 1 ? "" : "s"} used public manifests without public keys.` :
-                    `Generated ${appId}.lua for ${gameName}.`
+                        `Generated ${appId}.zip for ${gameName} in fares.top format. ${depotsWithoutKeys} depot${depotsWithoutKeys === 1 ? "" : "s"} had no public key listed.` :
+                        skippedWithoutManifest ?
+                            `Generated ${appId}.zip for ${gameName} in fares.top format. Skipped ${skippedWithoutManifest} depot${skippedWithoutManifest === 1 ? "" : "s"} without a public manifest.` :
+                            `Generated ${appId}.zip for ${gameName} in fares.top format.`
             };
         }
 
@@ -10682,21 +11169,34 @@ self.addEventListener("message", async (event) => {
             return extracted;
         }
 
+        function resolveLuaManifestAppIdFromInput() {
+            const inputEl = q("#lua-manifest-appid");
+            const rawValue = inputEl?.value || "";
+            const extracted = extractSteamAppId(rawValue);
+            if (extracted) {
+                return extracted;
+            }
+            return /^\d+$/.test(luaManifestSearchSelectedAppId) ?
+                luaManifestSearchSelectedAppId :
+                "";
+        }
+
         async function resolveLuaManifestById() {
             const inputEl = q("#lua-manifest-appid");
-            const appId = autoNormalizeManifestInput(false);
+            const normalizedFromInput = autoNormalizeManifestInput(false);
+            const appId = normalizedFromInput || resolveLuaManifestAppIdFromInput();
             if (!/^\d+$/.test(appId)) {
                 setLuaManifestResult("");
-                setLuaManifestStatus("Enter a valid numeric Steam AppID.", true);
+                setLuaManifestStatus("Enter a Steam AppID, Steam URL, or pick a game from the dropdown.", true);
                 return;
             }
-            if (inputEl) {
+            if (inputEl && normalizedFromInput) {
                 inputEl.value = appId;
             }
 
             const providers = [
                 {
-                    key: "fares.top public depot builder",
+                    key: "fares.top style package builder",
                     resolve: fetchLuaManifestFromManifestHub
                 }
             ];
@@ -10709,6 +11209,12 @@ self.addEventListener("message", async (event) => {
                         throw new Error("No URL returned.");
                     }
                     setLuaManifestResult(finalUrl, provider.key);
+                    if (finalUrl && typeof finalUrl === "object" && finalUrl.model) {
+                        luaManifestSearchSelectedAppId = appId;
+                        if (inputEl && !normalizedFromInput) {
+                            inputEl.value = finalUrl.model.gameName || appId;
+                        }
+                    }
                     setLuaManifestStatus(
                         finalUrl && typeof finalUrl === "object" && finalUrl.statusText ?
                             finalUrl.statusText :
@@ -12091,9 +12597,10 @@ self.addEventListener("message", async (event) => {
             const luaManifestInput = q("#lua-manifest-appid");
             const luaManifestGo = q("#lua-manifest-go");
             const luaManifestOpen = q("#lua-manifest-open");
+            const luaManifestOpenLua = q("#lua-manifest-open-lua");
             const luaManifestCopy = q("#lua-manifest-copy");
             setLuaManifestResult("");
-            setLuaManifestStatus("Enter a Steam AppID or store URL, then generate.");
+            setLuaManifestStatus("Search Steam, enter an AppID, or paste a Steam URL, then generate.");
 
             if (luaManifestGo) {
                 const defaultLabel = luaManifestGo.textContent || "Resolve";
@@ -12119,20 +12626,85 @@ self.addEventListener("message", async (event) => {
                 });
             }
 
+            if (luaManifestInput) {
+                const queueLuaManifestSearch = debounce((value) => {
+                    performLuaManifestSearch(value);
+                }, 300);
+
+                luaManifestInput.addEventListener("input", () => {
+                    luaManifestSearchSelectedAppId = "";
+                    queueLuaManifestSearch(luaManifestInput.value || "");
+                });
+                luaManifestInput.addEventListener("search", () => {
+                    luaManifestSearchSelectedAppId = "";
+                    queueLuaManifestSearch(luaManifestInput.value || "");
+                });
+                luaManifestInput.addEventListener("focus", () => {
+                    if (!luaManifestSearchResults.length) {
+                        return;
+                    }
+                    luaManifestSearchResultsOpen = true;
+                    renderLuaManifestSearchResults();
+                });
+                luaManifestInput.addEventListener("blur", () => {
+                    window.setTimeout(() => {
+                        hideLuaManifestSearchResults();
+                        autoNormalizeManifestInput(false);
+                    }, 120);
+                });
+                luaManifestInput.addEventListener("keydown", (event) => {
+                    if (event.key === "ArrowDown") {
+                        if (!luaManifestSearchResults.length) {
+                            return;
+                        }
+                        event.preventDefault();
+                        luaManifestSearchResultsOpen = true;
+                        luaManifestSearchActiveIndex =
+                            luaManifestSearchActiveIndex < luaManifestSearchResults.length - 1 ?
+                                luaManifestSearchActiveIndex + 1 :
+                                0;
+                        renderLuaManifestSearchResults();
+                        return;
+                    }
+
+                    if (event.key === "ArrowUp") {
+                        if (!luaManifestSearchResults.length) {
+                            return;
+                        }
+                        event.preventDefault();
+                        luaManifestSearchResultsOpen = true;
+                        luaManifestSearchActiveIndex =
+                            luaManifestSearchActiveIndex > 0 ?
+                                luaManifestSearchActiveIndex - 1 :
+                                luaManifestSearchResults.length - 1;
+                        renderLuaManifestSearchResults();
+                        return;
+                    }
+
+                    if (event.key === "Enter" && luaManifestSearchResults.length && luaManifestSearchActiveIndex >= 0) {
+                        event.preventDefault();
+                        selectLuaManifestSearchResult(luaManifestSearchActiveIndex);
+                        return;
+                    }
+
+                    if (event.key === "Escape") {
+                        event.preventDefault();
+                        hideLuaManifestSearchResults();
+                        return;
+                    }
+
+                    if (event.key === "Enter" && luaManifestGo) {
+                        event.preventDefault();
+                        luaManifestGo.click();
+                    }
+                });
+            }
+
             if (luaManifestInput && luaManifestGo) {
                 luaManifestInput.addEventListener("paste", () => {
                     window.setTimeout(() => {
                         autoNormalizeManifestInput(true);
                     }, 0);
-                });
-                luaManifestInput.addEventListener("blur", () => {
-                    autoNormalizeManifestInput(false);
-                });
-                luaManifestInput.addEventListener("keydown", (event) => {
-                    if (event.key === "Enter") {
-                        event.preventDefault();
-                        luaManifestGo.click();
-                    }
                 });
             }
 
@@ -12166,6 +12738,22 @@ self.addEventListener("message", async (event) => {
                 });
             }
 
+            if (luaManifestOpenLua) {
+                luaManifestOpenLua.addEventListener("click", (event) => {
+                    ripple(luaManifestOpenLua, event);
+                    if (luaManifestResultMode !== "blob" || !luaManifestCopyText) {
+                        return;
+                    }
+                    const luaFilename = luaManifestCopyLabel || "manifest.lua";
+                    downloadTextFile(luaManifestCopyText, luaFilename);
+                    setLuaManifestStatus(
+                        luaManifestProvider ?
+                            `Downloaded ${luaFilename} via ${luaManifestProvider}.` :
+                            `Downloaded ${luaFilename}.`
+                    );
+                });
+            }
+
             if (luaManifestCopy) {
                 luaManifestCopy.addEventListener("click", async (event) => {
                     ripple(luaManifestCopy, event);
@@ -12174,11 +12762,15 @@ self.addEventListener("message", async (event) => {
                     }
                     try {
                         await navigator.clipboard.writeText(luaManifestCopyText);
+                        const copiedLabel =
+                            luaManifestResultMode === "blob" ?
+                                (luaManifestCopyLabel || luaManifestFilename || "output") :
+                                "URL";
                         setLuaManifestStatus(
                             luaManifestResultMode === "blob" ?
                                 luaManifestProvider ?
-                                    `${luaManifestFilename || "manifest.lua"} copied from ${luaManifestProvider}.` :
-                                    `${luaManifestFilename || "manifest.lua"} copied.` :
+                                    `${copiedLabel} copied from ${luaManifestProvider}.` :
+                                    `${copiedLabel} copied.` :
                                 luaManifestProvider ?
                                     `${luaManifestProvider} URL copied.` :
                                     "URL copied."
