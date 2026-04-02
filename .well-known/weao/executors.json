@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-04-02T05:20:06.570Z",
+  "fetchedAt": "2026-04-02T08:08:56.747Z",
   "data": [
     {
       "_id": "680eaddf8b44717c060fcf8d",
@@ -43,7 +43,8 @@
           "https://cdn.weao.gg/slug/velocity/screenshot3.png",
           "https://cdn.weao.gg/slug/velocity/screenshot4.png"
         ]
-      }
+      },
+      "hasIssues": true
     },
     {
       "_id": "66ee1fcae70ddffe81ca0f0c",
@@ -510,8 +511,8 @@
     {
       "_id": "67576d22d9181811c292bb79",
       "title": "Volt",
-      "version": "1.2.9.9",
-      "updatedDate": "04/01/2026 at 3:53 AM UTC",
+      "version": "1.2.9.10",
+      "updatedDate": "04/02/2026 at 7:14 AM UTC",
       "uncStatus": true,
       "free": false,
       "detected": true,
@@ -555,9 +556,8 @@
           "https://cdn.weao.gg/slug/volt/screenshot7.png"
         ]
       },
-      "clientmods": false,
-      "hasIssues": false,
-      "detectionReason": "We are currently retesting this exploits detection status. Check back later!"
+      "clientmods": true,
+      "hasIssues": false
     },
     {
       "_id": "6705f74ed02338b4f68f9c62",
@@ -1214,7 +1214,7 @@
       },
       "hidden": false,
       "trackerId": "WEAO228206d0",
-      "clientmods": false,
+      "clientmods": true,
       "sunc": {
         "suncScrap": "MyOUpBJFDFjHPf2B",
         "suncKey": "Ip7nZqxEdMXK0KMXJ43lInX016T7qztj"
