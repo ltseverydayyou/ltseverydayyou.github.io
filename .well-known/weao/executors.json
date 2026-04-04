@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-04-04T04:54:14.619Z",
+  "fetchedAt": "2026-04-04T06:00:17.490Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -366,7 +366,8 @@
       },
       "clientmods": true,
       "hasIssues": false,
-      "detectionReason": "Last banwave: March 6-18th"
+      "detectionReason": "Last banwave: March 6-18th",
+      "raknet": true
     },
     {
       "_id": "680eaddf8b44717c060fcf8d",
@@ -581,12 +582,12 @@
       "_id": "66ee1eafe70ddffe81ca0f0b",
       "title": "Delta",
       "version": "2.710.707",
-      "updatedDate": "03/02/2026 at 11:21 PM UTC",
+      "updatedDate": "04/04/2026 at 5:55 AM UTC",
       "uncStatus": true,
       "free": true,
       "detected": false,
-      "rbxversion": "2.704.1060",
-      "updateStatus": true,
+      "rbxversion": "2.710.707",
+      "updateStatus": false,
       "websitelink": "https://deltaexploits.gg/",
       "discordlink": "https://discord.gg/deltax",
       "beta": false,
@@ -618,18 +619,19 @@
           "https://cdn.weao.gg/slug/delta/screenshot3.png",
           "https://cdn.weao.gg/slug/delta/screenshot4.png"
         ]
-      }
+      },
+      "raknet": true
     },
     {
       "_id": "66ee1fcae70ddffe81ca0f0c",
       "title": "Codex",
-      "version": "2.705.924",
-      "updatedDate": "01/30/2026 at 4:10 PM UTC",
+      "version": "2.706.750",
+      "updatedDate": "04/04/2026 at 5:55 AM UTC",
       "uncStatus": true,
       "free": true,
       "detected": false,
-      "rbxversion": "2.703.1353",
-      "updateStatus": true,
+      "rbxversion": "2.706.750",
+      "updateStatus": false,
       "websitelink": "https://codex.lol",
       "discordlink": "https://discord.gg/codexlol",
       "beta": false,
@@ -989,12 +991,12 @@
       "_id": "68899ac3e376f58c849e0e68",
       "title": "Delta",
       "version": "2.710.706",
-      "updatedDate": "03/02/2026 at 7:44 PM UTC",
+      "updatedDate": "04/04/2026 at 5:55 AM UTC",
       "uncStatus": true,
       "free": true,
       "detected": false,
-      "rbxversion": "2.704.1059",
-      "updateStatus": true,
+      "rbxversion": "2.710.706",
+      "updateStatus": false,
       "websitelink": "https://deltaexploits.gg/",
       "discordlink": "https://discord.gg/deltax",
       "beta": false,
@@ -1026,7 +1028,8 @@
           "https://cdn.weao.gg/slug/delta/screenshot3.png",
           "https://cdn.weao.gg/slug/delta/screenshot4.png"
         ]
-      }
+      },
+      "raknet": true
     },
     {
       "_id": "68899ad9e376f58c849e0e69",
@@ -1219,7 +1222,8 @@
       "sunc": {
         "suncScrap": "MyOUpBJFDFjHPf2B",
         "suncKey": "Ip7nZqxEdMXK0KMXJ43lInX016T7qztj"
-      }
+      },
+      "raknet": true
     },
     {
       "_id": "68eebb4581d69687334ccbde",
@@ -1565,7 +1569,8 @@
           "https://cdn.weao.gg/slug/isaeva/screenshot8.png",
           "https://cdn.weao.gg/slug/isaeva/screenshot9.png"
         ]
-      }
+      },
+      "raknet": true
     },
     {
       "_id": "69cace8670a25244103ea819",
@@ -1609,7 +1614,8 @@
         "logo": "https://cdn.weao.gg/slug/cosmic/cosmic-transparent.png",
         "owner": "Savage"
       },
-      "hasIssues": false
+      "hasIssues": false,
+      "raknet": true
     }
   ]
 }
