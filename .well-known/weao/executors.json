@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-04-04T06:00:17.490Z",
+  "fetchedAt": "2026-04-04T07:32:45.346Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -1570,7 +1570,7 @@
           "https://cdn.weao.gg/slug/isaeva/screenshot9.png"
         ]
       },
-      "raknet": true
+      "raknet": false
     },
     {
       "_id": "69cace8670a25244103ea819",
@@ -1615,7 +1615,7 @@
         "owner": "Savage"
       },
       "hasIssues": false,
-      "raknet": true
+      "raknet": false
     }
   ]
 }
