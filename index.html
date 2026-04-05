@@ -2441,6 +2441,251 @@
             background: rgba(255, 255, 255, 0.02);
         }
 
+        .assets-downloader {
+            display: grid;
+            gap: 18px;
+        }
+
+        .assets-downloader__head {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        .assets-downloader__head h3 {
+            margin: 0;
+        }
+
+        .assets-downloader__intro {
+            margin: 8px 0 0;
+            max-width: 760px;
+            color: var(--mu);
+            font-size: 14px;
+        }
+
+        .assets-downloader__out {
+            flex-shrink: 0;
+            align-self: center;
+            padding: 10px 14px;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            color: var(--tx);
+            text-decoration: none;
+            font-weight: 800;
+            background: rgba(255, 255, 255, 0.04);
+            transition:
+                transform 0.2s ease,
+                border-color 0.2s ease,
+                background 0.2s ease;
+        }
+
+        .assets-downloader__out:hover {
+            transform: translateY(-1px);
+            border-color: rgba(255, 255, 255, 0.26);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .assets-downloader__controls {
+            display: grid;
+            gap: 10px;
+            grid-template-columns: minmax(0, 1fr) auto auto;
+        }
+
+        .assets-downloader__controls input {
+            width: 100%;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 12px 14px;
+            background: rgba(255, 255, 255, 0.02);
+            color: var(--tx);
+            font: 14px ui-sans-serif, system-ui, "Segoe UI", Roboto, Helvetica, Arial;
+        }
+
+        .assets-downloader__hint {
+            margin: -4px 0 0;
+            color: var(--mu);
+            font-size: 13px;
+        }
+
+        .assets-downloader__status {
+            min-height: 20px;
+            font-size: 13px;
+            color: var(--mu);
+        }
+
+        .assets-downloader__status.is-loading {
+            color: var(--ac);
+        }
+
+        .assets-downloader__status.is-success {
+            color: var(--ok);
+        }
+
+        .assets-downloader__status.is-error {
+            color: #ff9fb1;
+        }
+
+        .assets-downloader__result {
+            display: grid;
+            gap: 18px;
+            grid-template-columns: minmax(220px, 280px) minmax(0, 1fr);
+            padding: 18px;
+            border-radius: 18px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background:
+                radial-gradient(circle at top right,
+                    rgba(102, 227, 255, 0.08),
+                    transparent 42%),
+                rgba(255, 255, 255, 0.03);
+        }
+
+        .assets-downloader__thumb {
+            position: relative;
+            overflow: hidden;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background:
+                linear-gradient(145deg,
+                    rgba(255, 255, 255, 0.08),
+                    rgba(255, 255, 255, 0.03)),
+                rgba(255, 255, 255, 0.03);
+            min-height: 240px;
+            display: grid;
+            place-items: center;
+        }
+
+        .assets-downloader__thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .assets-downloader__thumb-empty {
+            padding: 20px;
+            text-align: center;
+            color: var(--mu);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .assets-downloader__summary {
+            display: grid;
+            gap: 14px;
+            min-width: 0;
+        }
+
+        .assets-downloader__summary h4 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        .assets-downloader__subtitle {
+            margin: 6px 0 0;
+            color: var(--mu);
+            font-size: 14px;
+        }
+
+        .assets-downloader__description {
+            margin: 0;
+            padding: 12px 14px;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.03);
+            color: var(--tx);
+            font-size: 14px;
+            line-height: 1.55;
+        }
+
+        .assets-downloader__chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .assets-downloader__chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 7px 10px;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: rgba(255, 255, 255, 0.04);
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--tx);
+        }
+
+        .assets-downloader__chip--accent {
+            border-color: rgba(102, 227, 255, 0.26);
+            color: var(--ac);
+        }
+
+        .assets-downloader__chip--good {
+            border-color: rgba(114, 243, 182, 0.22);
+            color: var(--ok);
+        }
+
+        .assets-downloader__meta {
+            display: grid;
+            gap: 10px;
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+        }
+
+        .assets-downloader__meta-card {
+            display: grid;
+            gap: 6px;
+            padding: 12px 14px;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .assets-downloader__meta-card span {
+            font-size: 11px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--mu);
+        }
+
+        .assets-downloader__meta-card strong {
+            font-size: 14px;
+            line-height: 1.4;
+            word-break: break-word;
+        }
+
+        .assets-downloader__actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        @media (max-width: 960px) {
+            .assets-downloader__result {
+                grid-template-columns: 1fr;
+            }
+
+            .assets-downloader__thumb {
+                min-height: 200px;
+            }
+        }
+
+        @media (max-width: 720px) {
+            .assets-downloader__head {
+                flex-direction: column;
+            }
+
+            .assets-downloader__out {
+                align-self: flex-start;
+            }
+
+            .assets-downloader__controls {
+                grid-template-columns: 1fr;
+            }
+        }
+
         .pl {
             position: relative;
             overflow: hidden;
@@ -5064,6 +5309,7 @@
                 <button class="tb" data-t="s">Scripts</button>
                 <button class="tb" data-t="x">Script Searcher</button>
                 <button class="tb" data-t="y">Roblox Users</button>
+                <button class="tb" data-t="a">Assets Downloader</button>
                 <button class="tb" data-t="c">Codex Editor</button>
                 <button class="tb" data-t="l">Lua</button>
                 <button class="tb" data-t="m">Manifest Generator</button>
@@ -5593,6 +5839,62 @@
                                     </div>
                                 </div>
                             </section>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="pa" class="pp">
+                <div class="g ed">
+                    <div class="assets-downloader" id="assets-downloader">
+                        <div class="assets-downloader__head">
+                            <div>
+                                <h3>Assets Downloader</h3>
+                                <p class="assets-downloader__intro">
+                                    Paste a Roblox asset ID or URL to inspect metadata, preview the thumbnail, and
+                                    download the file without leaving your domain.
+                                </p>
+                            </div>
+                            <a class="assets-downloader__out" href="https://rbxdl.johnmarctumulak.com"
+                                target="_blank" rel="noopener noreferrer">Open RBXDL</a>
+                        </div>
+                        <div class="assets-downloader__controls">
+                            <input id="assets-downloader-input" type="search" autocomplete="off" spellcheck="false"
+                                placeholder="Asset ID or Roblox asset URL" />
+                            <button class="pl sc" id="assets-downloader-inspect" type="button">Inspect</button>
+                            <button class="pl" id="assets-downloader-download" type="button"
+                                disabled>Download</button>
+                        </div>
+                        <p class="assets-downloader__hint">
+                            RBXDL uses a protected same-origin backend. This tab recreates the workflow with
+                            roproxy-backed Roblox endpoints that work from GitHub Pages. If Roblox says the user is
+                            not authorized, the asset itself is permission-gated.
+                        </p>
+                        <div id="assets-downloader-status" class="assets-downloader__status" aria-live="polite">
+                            Paste an asset ID to get started.
+                        </div>
+                        <div id="assets-downloader-result" class="assets-downloader__result" hidden>
+                            <div class="assets-downloader__thumb">
+                                <img id="assets-downloader-thumb-image" alt="" hidden />
+                                <div id="assets-downloader-thumb-empty" class="assets-downloader__thumb-empty">No
+                                    preview yet</div>
+                            </div>
+                            <div class="assets-downloader__summary">
+                                <div>
+                                    <h4 id="assets-downloader-title">Ready</h4>
+                                    <p id="assets-downloader-subtitle" class="assets-downloader__subtitle">
+                                        Inspect an asset to see its metadata and download details here.
+                                    </p>
+                                </div>
+                                <p id="assets-downloader-description" class="assets-downloader__description"
+                                    hidden></p>
+                                <div id="assets-downloader-chips" class="assets-downloader__chips"></div>
+                                <div id="assets-downloader-meta" class="assets-downloader__meta"></div>
+                                <div class="assets-downloader__actions">
+                                    <button class="pl" id="assets-downloader-copy" type="button" disabled>Copy proxy
+                                        URL</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -6683,6 +6985,176 @@
 
         const ROBLOX_USER_RESULT_LIMIT = 10;
         const ROBLOX_USER_PROXY_ROOT = "roproxy.com";
+        const ROBLOX_ASSET_TYPE_META = {
+            1: {
+                label: "Image",
+                extension: "png"
+            },
+            2: {
+                label: "T-Shirt",
+                extension: "png"
+            },
+            3: {
+                label: "Audio",
+                extension: "mp3"
+            },
+            4: {
+                label: "Mesh",
+                extension: "mesh"
+            },
+            5: {
+                label: "Lua",
+                extension: "lua"
+            },
+            6: {
+                label: "HTML",
+                extension: "html"
+            },
+            7: {
+                label: "Text",
+                extension: "txt"
+            },
+            8: {
+                label: "Hat",
+                extension: "rbxm"
+            },
+            9: {
+                label: "Place",
+                extension: "rbxl"
+            },
+            10: {
+                label: "Model",
+                extension: "rbxm"
+            },
+            11: {
+                label: "Shirt",
+                extension: "png"
+            },
+            12: {
+                label: "Pants",
+                extension: "png"
+            },
+            13: {
+                label: "Decal",
+                extension: "png"
+            },
+            17: {
+                label: "Head",
+                extension: "rbxm"
+            },
+            18: {
+                label: "Face",
+                extension: "png"
+            },
+            19: {
+                label: "Gear",
+                extension: "rbxm"
+            },
+            21: {
+                label: "Badge",
+                extension: "png"
+            },
+            24: {
+                label: "Animation",
+                extension: "rbxm"
+            },
+            32: {
+                label: "Package",
+                extension: "rbxm"
+            },
+            34: {
+                label: "Game Pass",
+                extension: "bin"
+            },
+            38: {
+                label: "Plugin",
+                extension: "rbxm"
+            },
+            40: {
+                label: "MeshPart",
+                extension: "rbxm"
+            },
+            41: {
+                label: "Hair Accessory",
+                extension: "rbxm"
+            },
+            42: {
+                label: "Face Accessory",
+                extension: "rbxm"
+            },
+            43: {
+                label: "Neck Accessory",
+                extension: "rbxm"
+            },
+            44: {
+                label: "Shoulder Accessory",
+                extension: "rbxm"
+            },
+            45: {
+                label: "Front Accessory",
+                extension: "rbxm"
+            },
+            46: {
+                label: "Back Accessory",
+                extension: "rbxm"
+            },
+            47: {
+                label: "Waist Accessory",
+                extension: "rbxm"
+            },
+            61: {
+                label: "Emote Animation",
+                extension: "rbxm"
+            },
+            62: {
+                label: "Video",
+                extension: "mp4"
+            },
+            64: {
+                label: "T-Shirt Accessory",
+                extension: "rbxm"
+            },
+            65: {
+                label: "Shirt Accessory",
+                extension: "rbxm"
+            },
+            66: {
+                label: "Pants Accessory",
+                extension: "rbxm"
+            },
+            67: {
+                label: "Jacket Accessory",
+                extension: "rbxm"
+            },
+            68: {
+                label: "Sweater Accessory",
+                extension: "rbxm"
+            },
+            69: {
+                label: "Shorts Accessory",
+                extension: "rbxm"
+            },
+            72: {
+                label: "Dress Skirt Accessory",
+                extension: "rbxm"
+            },
+            73: {
+                label: "Font Family",
+                extension: "json"
+            },
+            76: {
+                label: "Eyebrow Accessory",
+                extension: "rbxm"
+            },
+            77: {
+                label: "Eyelash Accessory",
+                extension: "rbxm"
+            },
+            79: {
+                label: "Dynamic Head",
+                extension: "rbxm"
+            }
+        };
         const robloxUserSearchState = {
             searchToken: 0,
             profileToken: 0,
@@ -6698,6 +7170,31 @@
             resultsMeta: q("#roblox-user-results-meta"),
             error: q("#roblox-user-results-error"),
             detail: q("#roblox-user-detail")
+        };
+        const assetsDownloaderState = {
+            assetId: "",
+            details: null,
+            thumbnailUrl: "",
+            lastDownload: null,
+            isInspecting: false,
+            isDownloading: false,
+            inspectToken: 0
+        };
+        const assetsDownloaderElements = {
+            root: q("#assets-downloader"),
+            input: q("#assets-downloader-input"),
+            inspect: q("#assets-downloader-inspect"),
+            download: q("#assets-downloader-download"),
+            copy: q("#assets-downloader-copy"),
+            status: q("#assets-downloader-status"),
+            result: q("#assets-downloader-result"),
+            thumbImage: q("#assets-downloader-thumb-image"),
+            thumbEmpty: q("#assets-downloader-thumb-empty"),
+            title: q("#assets-downloader-title"),
+            subtitle: q("#assets-downloader-subtitle"),
+            description: q("#assets-downloader-description"),
+            chips: q("#assets-downloader-chips"),
+            meta: q("#assets-downloader-meta")
         };
 
         function setRobloxUserStatus(message = "", isError = false) {
@@ -7631,6 +8128,577 @@
                     performRobloxUserSearch(input.value, button);
                 }
             });
+        }
+
+        function formatAssetDownloadBytes(value) {
+            const size = Number(value);
+            if (!Number.isFinite(size) || size <= 0) {
+                return "";
+            }
+            const units = ["B", "KB", "MB", "GB"];
+            const index = Math.min(
+                units.length - 1,
+                Math.floor(Math.log(size) / Math.log(1024))
+            );
+            const normalized = size / Math.pow(1024, index);
+            return `${normalized.toFixed(normalized >= 10 || index === 0 ? 0 : 1)} ${units[index]}`;
+        }
+
+        function getRobloxAssetTypeMeta(assetTypeId) {
+            const normalizedId = Number.parseInt(String(assetTypeId || ""), 10);
+            const entry = ROBLOX_ASSET_TYPE_META[normalizedId];
+            return {
+                id: normalizedId,
+                label: entry?.label || (normalizedId ? `Type ${normalizedId}` : "Unknown type"),
+                extension: entry?.extension || "bin"
+            };
+        }
+
+        function extractRobloxAssetId(rawValue) {
+            const raw = String(rawValue || "").trim();
+            if (!raw) {
+                return "";
+            }
+            if (/^\d+$/.test(raw)) {
+                return raw;
+            }
+            try {
+                const url = new URL(raw);
+                const directParam =
+                    url.searchParams.get("id") ||
+                    url.searchParams.get("assetId") ||
+                    url.searchParams.get("assetid");
+                if (directParam && /^\d+$/.test(directParam)) {
+                    return directParam;
+                }
+                const segments = url.pathname.split("/").filter(Boolean);
+                for (let index = segments.length - 1; index >= 0; index -= 1) {
+                    if (/^\d+$/.test(segments[index])) {
+                        return segments[index];
+                    }
+                }
+            } catch {
+                // Ignore parsing issues and fall back to inline extraction.
+            }
+            const match = raw.match(/\b(\d{2,})\b/);
+            return match ? match[1] : "";
+        }
+
+        function sanitizeAssetsDownloaderFilenameBase(name, assetId) {
+            const fallback = `roblox-asset-${assetId}`;
+            return String(name || fallback)
+                .replace(/[\\/:*?"<>|]+/g, " ")
+                .replace(/\s+/g, " ")
+                .trim()
+                .replace(/\.+$/, "")
+                .slice(0, 80) || fallback;
+        }
+
+        function buildAssetsDownloaderMetadataUrl(assetId) {
+            return `https://economy.roproxy.com/v2/assets/${encodeURIComponent(assetId)}/details`;
+        }
+
+        function buildAssetsDownloaderThumbnailUrl(assetId) {
+            return `https://thumbnails.roproxy.com/v1/assets?assetIds=${encodeURIComponent(assetId)}&returnPolicy=PlaceHolder&size=420x420&format=Png&isCircular=false`;
+        }
+
+        function buildAssetsDownloaderProxyUrl(assetId) {
+            return `https://assetdelivery.roproxy.com/v1/asset/?id=${encodeURIComponent(assetId)}`;
+        }
+
+        function setAssetsDownloaderStatus(text, tone = "") {
+            const statusEl = assetsDownloaderElements.status;
+            if (!statusEl) {
+                return;
+            }
+            statusEl.textContent = text || "";
+            statusEl.classList.toggle("is-loading", tone === "loading");
+            statusEl.classList.toggle("is-success", tone === "success");
+            statusEl.classList.toggle("is-error", tone === "error");
+        }
+
+        function syncAssetsDownloaderControls() {
+            const rawInput = String(assetsDownloaderElements.input?.value || "").trim();
+            const parsedInputId = extractRobloxAssetId(rawInput);
+            const hasTypedInvalid = Boolean(rawInput) && !parsedInputId;
+            const hasTarget = Boolean(parsedInputId || (!rawInput && assetsDownloaderState.assetId));
+            if (assetsDownloaderElements.inspect) {
+                assetsDownloaderElements.inspect.disabled =
+                    assetsDownloaderState.isInspecting || assetsDownloaderState.isDownloading;
+            }
+            if (assetsDownloaderElements.download) {
+                assetsDownloaderElements.download.disabled =
+                    hasTypedInvalid ||
+                    !hasTarget ||
+                    assetsDownloaderState.isInspecting ||
+                    assetsDownloaderState.isDownloading;
+            }
+            if (assetsDownloaderElements.copy) {
+                assetsDownloaderElements.copy.disabled =
+                    !assetsDownloaderState.assetId ||
+                    assetsDownloaderState.isInspecting ||
+                    assetsDownloaderState.isDownloading;
+            }
+        }
+
+        function setAssetsDownloaderThumbnail(url, label) {
+            const imageEl = assetsDownloaderElements.thumbImage;
+            const emptyEl = assetsDownloaderElements.thumbEmpty;
+            if (!imageEl || !emptyEl) {
+                return;
+            }
+            if (url) {
+                imageEl.src = url;
+                imageEl.alt = label ? `${label} thumbnail` : "Asset thumbnail";
+                imageEl.hidden = false;
+                emptyEl.hidden = true;
+                return;
+            }
+            imageEl.hidden = true;
+            imageEl.removeAttribute("src");
+            imageEl.alt = "";
+            emptyEl.hidden = false;
+            emptyEl.textContent = label || "No preview available";
+        }
+
+        function createAssetsDownloaderChip(text, accentClass = "") {
+            const chip = document.createElement("span");
+            chip.className = `assets-downloader__chip${accentClass ? ` ${accentClass}` : ""}`;
+            chip.textContent = text;
+            return chip;
+        }
+
+        function createAssetsDownloaderMetaCard(label, value) {
+            const card = document.createElement("div");
+            card.className = "assets-downloader__meta-card";
+            const labelEl = document.createElement("span");
+            labelEl.textContent = label;
+            const valueEl = document.createElement("strong");
+            valueEl.textContent = value;
+            card.append(labelEl, valueEl);
+            return card;
+        }
+
+        function renderAssetsDownloaderResult() {
+            const {
+                result,
+                title,
+                subtitle,
+                description,
+                chips,
+                meta
+            } = assetsDownloaderElements;
+            if (!result || !title || !subtitle || !description || !chips || !meta) {
+                return;
+            }
+            const details = assetsDownloaderState.details;
+            if (!details) {
+                result.hidden = true;
+                return;
+            }
+
+            const assetType = getRobloxAssetTypeMeta(details.AssetTypeId);
+            const creatorName = normalizeRobloxUserValue(details.Creator?.Name) || "Unknown creator";
+            const creatorType = normalizeRobloxUserValue(details.Creator?.CreatorType) || "Creator";
+            const saleStatus = details.IsForSale ? "For sale" : "Offsale";
+
+            title.textContent = normalizeRobloxUserValue(details.Name) || `Asset ${assetsDownloaderState.assetId}`;
+            subtitle.textContent = `${assetType.label} · ${creatorName} · ${normalizeRobloxUserValue(details.ProductType) || "Unknown product type"}`;
+
+            const assetDescription = normalizeRobloxUserValue(details.Description);
+            description.hidden = !assetDescription;
+            description.textContent = assetDescription;
+
+            chips.innerHTML = "";
+            chips.appendChild(createAssetsDownloaderChip(assetType.label, "assets-downloader__chip--accent"));
+            chips.appendChild(createAssetsDownloaderChip(`ID ${assetsDownloaderState.assetId}`));
+            chips.appendChild(createAssetsDownloaderChip(saleStatus));
+            chips.appendChild(createAssetsDownloaderChip(creatorType));
+            if (details.Creator?.HasVerifiedBadge) {
+                chips.appendChild(createAssetsDownloaderChip("Verified creator", "assets-downloader__chip--good"));
+            }
+            if (details.IsPublicDomain) {
+                chips.appendChild(createAssetsDownloaderChip("Public domain", "assets-downloader__chip--good"));
+            }
+
+            meta.innerHTML = "";
+            const entries = [
+                ["Creator", creatorName],
+                ["Asset type", `${assetType.label} (${assetType.id || "?"})`],
+                ["Product type", normalizeRobloxUserValue(details.ProductType) || "Unknown"],
+                ["Created", formatRobloxUserDate(details.Created, true) || "Unknown"],
+                ["Updated", formatRobloxUserDate(details.Updated, true) || "Unknown"]
+            ];
+
+            if (assetsDownloaderState.lastDownload?.size) {
+                entries.push([
+                    "Last download",
+                    `${assetsDownloaderState.lastDownload.filename} · ${formatAssetDownloadBytes(assetsDownloaderState.lastDownload.size)}`
+                ]);
+            }
+
+            entries.forEach(([label, value]) => {
+                meta.appendChild(createAssetsDownloaderMetaCard(label, value));
+            });
+
+            setAssetsDownloaderThumbnail(
+                assetsDownloaderState.thumbnailUrl,
+                assetType.label
+            );
+            result.hidden = false;
+            syncAssetsDownloaderControls();
+        }
+
+        function extractAssetsDownloaderErrorMessage(payload, fallbackLabel, status) {
+            const explicitMessage =
+                payload?.errors?.[0]?.message ||
+                payload?.title ||
+                payload?.message ||
+                payload?.Message;
+            const normalized = String(explicitMessage || "").toLowerCase();
+            if (
+                status === 401 ||
+                normalized.includes("authentication required to access asset") ||
+                normalized.includes("user is not authorized to access asset")
+            ) {
+                return "Roblox blocked the file download for this asset. It is permission-gated, so a static GitHub Pages tool cannot access the raw file.";
+            }
+            if (
+                status === 403 ||
+                normalized.includes("access denied") ||
+                normalized.includes("forbidden")
+            ) {
+                return "Roblox denied access to this asset file. Try a public asset or open the asset in Roblox/RBXDL to confirm its permissions.";
+            }
+            if (explicitMessage) {
+                return explicitMessage;
+            }
+            return `${fallbackLabel} failed${status ? ` (${status})` : ""}.`;
+        }
+
+        async function fetchAssetsDownloaderJson(url, contextLabel) {
+            const response = await fetch(url, {
+                cache: "no-store",
+                headers: {
+                    Accept: "application/json"
+                }
+            });
+            const raw = await response.text();
+            let payload = null;
+            try {
+                payload = raw ? JSON.parse(raw) : null;
+            } catch {
+                payload = null;
+            }
+            if (!response.ok) {
+                throw new Error(
+                    extractAssetsDownloaderErrorMessage(payload, contextLabel, response.status)
+                );
+            }
+            return payload;
+        }
+
+        async function inspectRobloxAsset(rawValue) {
+            const inputEl = assetsDownloaderElements.input;
+            const assetId = extractRobloxAssetId(
+                rawValue === undefined ? inputEl?.value : rawValue
+            );
+            if (!assetId) {
+                setAssetsDownloaderStatus(
+                    "Enter a numeric asset ID or a Roblox asset URL.",
+                    "error"
+                );
+                inputEl?.focus();
+                return null;
+            }
+
+            assetsDownloaderState.inspectToken += 1;
+            const token = assetsDownloaderState.inspectToken;
+            assetsDownloaderState.isInspecting = true;
+            assetsDownloaderState.lastDownload = null;
+            syncAssetsDownloaderControls();
+            setAssetsDownloaderStatus("Fetching asset metadata...", "loading");
+
+            try {
+                const [details, thumbnailPayload] = await Promise.all([
+                    fetchAssetsDownloaderJson(
+                        buildAssetsDownloaderMetadataUrl(assetId),
+                        "Asset details"
+                    ),
+                    fetchAssetsDownloaderJson(
+                        buildAssetsDownloaderThumbnailUrl(assetId),
+                        "Asset thumbnail"
+                    ).catch(() => null)
+                ]);
+
+                if (token !== assetsDownloaderState.inspectToken) {
+                    return null;
+                }
+
+                assetsDownloaderState.assetId = String(details?.AssetId || assetId);
+                assetsDownloaderState.details = details;
+                assetsDownloaderState.thumbnailUrl =
+                    thumbnailPayload?.data?.[0]?.imageUrl || "";
+
+                if (inputEl) {
+                    inputEl.value = assetsDownloaderState.assetId;
+                }
+
+                renderAssetsDownloaderResult();
+                setAssetsDownloaderStatus(
+                    `Loaded ${normalizeRobloxUserValue(details?.Name) || `asset ${assetsDownloaderState.assetId}`}.`,
+                    "success"
+                );
+                return details;
+            } catch (error) {
+                console.error(error);
+                setAssetsDownloaderStatus(
+                    error instanceof Error && error.message ?
+                        error.message :
+                        "Asset metadata could not be loaded.",
+                    "error"
+                );
+                return null;
+            } finally {
+                if (token === assetsDownloaderState.inspectToken) {
+                    assetsDownloaderState.isInspecting = false;
+                    syncAssetsDownloaderControls();
+                }
+            }
+        }
+
+        function looksMostlyText(bytes) {
+            if (!bytes?.length) {
+                return false;
+            }
+            let printable = 0;
+            for (let index = 0; index < bytes.length; index += 1) {
+                const value = bytes[index];
+                if (
+                    value === 9 ||
+                    value === 10 ||
+                    value === 13 ||
+                    (value >= 32 && value <= 126)
+                ) {
+                    printable += 1;
+                }
+            }
+            return printable / bytes.length >= 0.85;
+        }
+
+        async function inferRobloxAssetExtension(blob, details) {
+            const assetType = getRobloxAssetTypeMeta(details?.AssetTypeId);
+            const header = new Uint8Array(await blob.slice(0, 64).arrayBuffer());
+            const ascii = Array.from(header, (value) => String.fromCharCode(value)).join("");
+            const textSample = new TextDecoder().decode(header).trimStart();
+
+            if (
+                header[0] === 0x89 &&
+                header[1] === 0x50 &&
+                header[2] === 0x4e &&
+                header[3] === 0x47
+            ) {
+                return "png";
+            }
+            if (header[0] === 0xff && header[1] === 0xd8 && header[2] === 0xff) {
+                return "jpg";
+            }
+            if (ascii.startsWith("GIF87a") || ascii.startsWith("GIF89a")) {
+                return "gif";
+            }
+            if (ascii.startsWith("RIFF") && ascii.slice(8, 12) === "WEBP") {
+                return "webp";
+            }
+            if (ascii.startsWith("RIFF") && ascii.slice(8, 12) === "WAVE") {
+                return "wav";
+            }
+            if (ascii.startsWith("OggS")) {
+                return "ogg";
+            }
+            if (ascii.startsWith("fLaC")) {
+                return "flac";
+            }
+            if (ascii.startsWith("ID3")) {
+                return "mp3";
+            }
+            if (header[0] === 0xff && (header[1] & 0xe0) === 0xe0 && details?.AssetTypeId === 3) {
+                return "mp3";
+            }
+            if (ascii.startsWith("<roblox!")) {
+                return details?.AssetTypeId === 9 ? "rbxl" : "rbxm";
+            }
+            if (textSample.startsWith("<roblox")) {
+                return details?.AssetTypeId === 9 ? "rbxlx" : "rbxmx";
+            }
+            if (textSample.startsWith("{") || textSample.startsWith("[")) {
+                return "json";
+            }
+            if (/^<!doctype html/i.test(textSample) || /^<html/i.test(textSample)) {
+                return "html";
+            }
+            if (
+                details?.AssetTypeId === 4 &&
+                (textSample.startsWith("version ") || textSample.startsWith("version\t"))
+            ) {
+                return "mesh";
+            }
+            if (looksMostlyText(header) && details?.AssetTypeId === 5) {
+                return "lua";
+            }
+            return assetType.extension || "bin";
+        }
+
+        async function downloadRobloxAsset() {
+            const inputEl = assetsDownloaderElements.input;
+            const rawInput = String(inputEl?.value || "").trim();
+            const parsedInputId = extractRobloxAssetId(rawInput);
+            if (rawInput && !parsedInputId) {
+                setAssetsDownloaderStatus(
+                    "Enter a numeric asset ID or a Roblox asset URL.",
+                    "error"
+                );
+                inputEl?.focus();
+                return;
+            }
+
+            let assetId = parsedInputId || (!rawInput ? assetsDownloaderState.assetId : "");
+            if (!assetId) {
+                setAssetsDownloaderStatus(
+                    "Enter a numeric asset ID or a Roblox asset URL.",
+                    "error"
+                );
+                inputEl?.focus();
+                return;
+            }
+
+            if (!assetsDownloaderState.details || assetsDownloaderState.assetId !== assetId) {
+                const details = await inspectRobloxAsset(assetId);
+                if (!details) {
+                    return;
+                }
+                assetId = assetsDownloaderState.assetId;
+            }
+
+            assetsDownloaderState.isDownloading = true;
+            syncAssetsDownloaderControls();
+            setAssetsDownloaderStatus("Downloading asset...", "loading");
+
+            try {
+                const proxyUrl = buildAssetsDownloaderProxyUrl(assetId);
+                const response = await fetch(proxyUrl, {
+                    cache: "no-store"
+                });
+                if (!response.ok) {
+                    const raw = await response.text();
+                    let payload = null;
+                    try {
+                        payload = raw ? JSON.parse(raw) : null;
+                    } catch {
+                        payload = null;
+                    }
+                    throw new Error(
+                        extractAssetsDownloaderErrorMessage(payload, "Asset download", response.status)
+                    );
+                }
+
+                const blob = await response.blob();
+                if (!blob.size) {
+                    throw new Error("The asset download returned an empty file.");
+                }
+
+                const extension = await inferRobloxAssetExtension(
+                    blob,
+                    assetsDownloaderState.details
+                );
+                const baseName = sanitizeAssetsDownloaderFilenameBase(
+                    assetsDownloaderState.details?.Name,
+                    assetId
+                );
+                const filename = `${baseName}.${extension}`;
+
+                downloadBlob(blob, filename);
+                assetsDownloaderState.lastDownload = {
+                    filename,
+                    size: blob.size,
+                    url: proxyUrl
+                };
+                renderAssetsDownloaderResult();
+                setAssetsDownloaderStatus(`Downloaded ${filename}.`, "success");
+                toast(`Downloaded ${filename}`);
+            } catch (error) {
+                console.error(error);
+                const message =
+                    error instanceof Error && error.message ?
+                        error.message :
+                        "Asset download failed.";
+                setAssetsDownloaderStatus(message, "error");
+                if (
+                    /permission-gated|denied access|not authorized|authentication required/i.test(
+                        message
+                    )
+                ) {
+                    toast("Roblox blocked this asset download");
+                }
+            } finally {
+                assetsDownloaderState.isDownloading = false;
+                syncAssetsDownloaderControls();
+            }
+        }
+
+        async function copyAssetsDownloaderUrl() {
+            const assetId =
+                assetsDownloaderState.assetId ||
+                extractRobloxAssetId(assetsDownloaderElements.input?.value);
+            if (!assetId) {
+                setAssetsDownloaderStatus("Load an asset first.", "error");
+                return;
+            }
+            try {
+                await navigator.clipboard.writeText(buildAssetsDownloaderProxyUrl(assetId));
+                setAssetsDownloaderStatus("Proxy URL copied to clipboard.", "success");
+                toast("Proxy URL copied");
+            } catch (error) {
+                console.error(error);
+                setAssetsDownloaderStatus("Clipboard write failed.", "error");
+            }
+        }
+
+        function initAssetsDownloader() {
+            const {
+                root,
+                input,
+                inspect,
+                download,
+                copy
+            } = assetsDownloaderElements;
+            if (!root || !input || !inspect || !download || !copy) {
+                return;
+            }
+
+            inspect.addEventListener("click", (event) => {
+                ripple(inspect, event);
+                void inspectRobloxAsset();
+            });
+            download.addEventListener("click", (event) => {
+                ripple(download, event);
+                void downloadRobloxAsset();
+            });
+            copy.addEventListener("click", (event) => {
+                ripple(copy, event);
+                void copyAssetsDownloaderUrl();
+            });
+            input.addEventListener("keydown", (event) => {
+                if (event.key === "Enter") {
+                    event.preventDefault();
+                    void inspectRobloxAsset();
+                }
+            });
+            input.addEventListener("input", () => {
+                setAssetsDownloaderStatus("Ready to inspect.", "");
+                syncAssetsDownloaderControls();
+            });
+
+            syncAssetsDownloaderControls();
         }
 
         function codexStatus(element, text, isError) {
@@ -12404,6 +13472,7 @@ self.addEventListener("message", async (event) => {
             renderScripts();
             initScriptSearcher();
             initRobloxUserSearch();
+            initAssetsDownloader();
             initVersionCards();
             clientVersionSpecs.forEach(fetchClientVersionData);
             studioVersionSpecs.forEach(fetchStudioVersionData);
