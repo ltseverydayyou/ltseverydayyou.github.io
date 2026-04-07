@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-04-06T23:04:39.424Z",
+  "fetchedAt": "2026-04-07T00:00:31.459Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -1363,7 +1363,8 @@
       "clientmods": true,
       "slug": {
         "fullDescription": "No description currently available. Check back soon!"
-      }
+      },
+      "raknet": true
     },
     {
       "_id": "6949f6f40260ad9e36c736ff",
