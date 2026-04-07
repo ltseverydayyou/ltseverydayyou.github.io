@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-04-07T00:00:31.459Z",
+  "fetchedAt": "2026-04-07T03:37:55.880Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -320,7 +320,7 @@
       "_id": "67576d22d9181811c292bb79",
       "title": "Volt",
       "version": "1.2.10.5",
-      "updatedDate": "04/06/2026 at 10:13 PM UTC",
+      "updatedDate": "04/07/2026 at 3:31 AM UTC",
       "uncStatus": true,
       "free": false,
       "detected": true,
@@ -1591,7 +1591,7 @@
       "roleId": "1484755192141578321",
       "index": 4,
       "unlinked": false,
-      "purchaselink": "https://rapidkeys.net/product?id=cosmic&ref=weao",
+      "purchaselink": "https://wyv.gg/product/cosmic-executor/ref/weao",
       "elementCertified": false,
       "cost": "$9.99 Lifetime",
       "decompiler": true,
