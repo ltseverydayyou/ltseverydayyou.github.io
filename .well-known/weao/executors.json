@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-04-07T03:37:55.880Z",
+  "fetchedAt": "2026-04-07T05:48:24.576Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -319,8 +319,8 @@
     {
       "_id": "67576d22d9181811c292bb79",
       "title": "Volt",
-      "version": "1.2.10.5",
-      "updatedDate": "04/07/2026 at 3:31 AM UTC",
+      "version": "1.2.10.7",
+      "updatedDate": "04/07/2026 at 3:41 AM UTC",
       "uncStatus": true,
       "free": false,
       "detected": true,
@@ -930,7 +930,7 @@
       "recommendedReason": {
         "features": []
       },
-      "purchaselink": "https://jjblox.cc/products?id=24081574-0b47-4ecc-ad6d-7a3c614fe396&ref=weao",
+      "purchaselink": "https://wyv.gg/product/bunni-executor/ref/weao",
       "keysystem": true,
       "clientmods": false,
       "trackerId": "WEAO5cb33bac",
