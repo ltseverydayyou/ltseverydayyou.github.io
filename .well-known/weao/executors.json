@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-04-08T20:11:25.883Z",
+  "fetchedAt": "2026-04-08T21:11:36.923Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -457,13 +457,13 @@
     {
       "_id": "66633ac4b29bacaa7a568fdc",
       "title": "Solara",
-      "version": "3.239",
-      "updatedDate": "04/02/2026 at 9:59 PM UTC",
+      "version": "3.240",
+      "updatedDate": "04/08/2026 at 8:37 PM UTC",
       "uncStatus": true,
       "free": true,
       "detected": true,
-      "rbxversion": "version-689e359b09ad43b0",
-      "updateStatus": false,
+      "rbxversion": "version-695a88dd8425491f",
+      "updateStatus": true,
       "websitelink": "https://getsolara.dev",
       "discordlink": "https://getsolara.dev/discord",
       "beta": false,
@@ -1406,13 +1406,13 @@
     {
       "_id": "6949f9ee0260ad9e36c73700",
       "title": "RbxCli",
-      "version": "1.6.9-4-alpha",
-      "updatedDate": "04/02/2026 at 11:20 PM UTC",
+      "version": "1.6.9-5-alpha",
+      "updatedDate": "04/08/2026 at 8:59 PM UTC",
       "uncStatus": false,
       "free": false,
       "detected": false,
-      "rbxversion": "version-689e359b09ad43b0",
-      "updateStatus": false,
+      "rbxversion": "version-695a88dd8425491f",
+      "updateStatus": true,
       "discordlink": "https://discord.gg/RZgUP8UZQ3",
       "purchaselink": "https://bloxproducts.com/r/weao#RbxCli",
       "beta": false,
