@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-04-09T09:14:23.891Z",
+  "fetchedAt": "2026-04-09T10:41:11.459Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -380,7 +380,6 @@
       "detected": true,
       "rbxversion": "version-689e359b09ad43b0",
       "updateStatus": true,
-      "websitelink": "https://realvelocity.xyz/",
       "discordlink": "https://discord.com/invite/velocityide",
       "beta": false,
       "platform": "Windows",
@@ -1406,12 +1405,12 @@
     {
       "_id": "6949f9ee0260ad9e36c73700",
       "title": "RbxCli",
-      "version": "1.6.9-5-alpha",
-      "updatedDate": "04/08/2026 at 8:59 PM UTC",
+      "version": "1.6.9-4-alpha",
+      "updatedDate": "04/09/2026 at 9:37 AM UTC",
       "uncStatus": false,
       "free": false,
       "detected": false,
-      "rbxversion": "version-695a88dd8425491f",
+      "rbxversion": "version-689e359b09ad43b0",
       "updateStatus": true,
       "discordlink": "https://discord.gg/RZgUP8UZQ3",
       "purchaselink": "https://bloxproducts.com/r/weao#RbxCli",
@@ -1584,7 +1583,6 @@
       "detected": true,
       "rbxversion": "version-6776addb8fbc4d17",
       "updateStatus": false,
-      "websitelink": "https://www.cosmic.best/",
       "discordlink": "https://discord.gg/getcosmic",
       "beta": false,
       "platform": "Windows",
