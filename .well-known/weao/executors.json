@@ -1,16 +1,16 @@
 {
-  "fetchedAt": "2026-04-09T05:50:27.613Z",
+  "fetchedAt": "2026-04-09T09:14:23.891Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
       "title": "Potassium",
       "version": "2.0.9",
-      "updatedDate": "04/08/2026 at 7:37 PM UTC",
+      "updatedDate": "04/09/2026 at 8:58 AM UTC",
       "uncStatus": true,
       "free": false,
       "detected": true,
-      "rbxversion": "version-695a88dd8425491f",
-      "updateStatus": false,
+      "rbxversion": "version-689e359b09ad43b0",
+      "updateStatus": true,
       "websitelink": "https://potassium.pro",
       "discordlink": "https://discord.com/invite/potassium",
       "beta": false,
@@ -155,8 +155,8 @@
     {
       "_id": "66837bf003fe5828bec91bc5",
       "title": "DX9WARE V2",
-      "version": "1.1.182",
-      "updatedDate": "04/09/2026 at 12:52 AM UTC",
+      "version": "1.1.183",
+      "updatedDate": "04/09/2026 at 8:53 AM UTC",
       "uncStatus": false,
       "free": false,
       "detected": false,
