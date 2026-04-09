@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-04-09T03:35:33.305Z",
+  "fetchedAt": "2026-04-09T05:50:27.613Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -10,7 +10,7 @@
       "free": false,
       "detected": true,
       "rbxversion": "version-695a88dd8425491f",
-      "updateStatus": true,
+      "updateStatus": false,
       "websitelink": "https://potassium.pro",
       "discordlink": "https://discord.com/invite/potassium",
       "beta": false,
@@ -326,7 +326,7 @@
       "free": false,
       "detected": true,
       "rbxversion": "version-689e359b09ad43b0",
-      "updateStatus": false,
+      "updateStatus": true,
       "websitelink": "https://volt.bz/",
       "discordlink": "https://discord.com/invite/voltbz",
       "beta": false,
@@ -379,7 +379,7 @@
       "free": true,
       "detected": true,
       "rbxversion": "version-689e359b09ad43b0",
-      "updateStatus": false,
+      "updateStatus": true,
       "websitelink": "https://realvelocity.xyz/",
       "discordlink": "https://discord.com/invite/velocityide",
       "beta": false,
@@ -536,7 +536,7 @@
       "free": false,
       "detected": true,
       "rbxversion": "version-689e359b09ad43b0",
-      "updateStatus": false,
+      "updateStatus": true,
       "websitelink": "https://getwave.gg",
       "discordlink": "https://discord.gg/rARhPpN7fY",
       "beta": false,
