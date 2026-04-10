@@ -5436,7 +5436,7 @@
             <section id="pm" class="pp">
                 <div class="g ed lua-manifest">
                     <h3>LUA by ID Manifest</h3>
-                    <p>Use a Steam AppID or store URL. Generates a fares.top-style zip package for SteamTools usage:
+                    <p>Use a Steam AppID or store URL. Generates a SteamML-style zip package for SteamTools usage:
                         <a href="https://steamtools.net" target="_blank" rel="noopener noreferrer">steamtools.net</a>.
                     </p>
                     <div class="lua-manifest__controls">
@@ -11356,15 +11356,14 @@ self.addEventListener("message", async (event) => {
         let luaManifestCopyText = "";
         let luaManifestCopyLabel = "";
         let luaManifestObjectUrl = "";
-        let luaManifestDepotKeyCache = null;
-        let luaManifestDepotKeyPromise = null;
         let luaManifestSearchResults = [];
         let luaManifestSearchActiveIndex = -1;
         let luaManifestSearchResultsOpen = false;
         let luaManifestSearchToken = 0;
         let luaManifestSearchSelectedAppId = "";
-        const luaManifestModelCache = new Map();
-        const luaManifestModelPromiseCache = new Map();
+        let luaManifestSelectedGameName = "";
+        const luaManifestPackageCache = new Map();
+        const luaManifestPackagePromiseCache = new Map();
 
         function getLuaManifestDownloadLabel(filename) {
             const normalized =
@@ -11483,47 +11482,13 @@ self.addEventListener("message", async (event) => {
 
                 const meta = document.createElement("div");
                 meta.className = "lua-manifest__result-meta";
-                const metaParts = [`ID: ${entry.appId}`];
-                if (typeof entry.manifestCount === "number") {
-                    metaParts.push(`${entry.manifestCount} manifest${entry.manifestCount === 1 ? "" : "s"}`);
-                }
-                if (typeof entry.hashCount === "number") {
-                    metaParts.push(`${entry.hashCount} hash${entry.hashCount === 1 ? "" : "es"}`);
-                } else if (entry.hashLoading) {
-                    metaParts.push("Loading hashes...");
-                }
-                meta.textContent = metaParts.join(" | ");
+                meta.textContent = `ID: ${entry.appId}`;
 
                 copy.append(title, meta);
 
                 const pills = document.createElement("div");
                 pills.className = "lua-manifest__result-pills";
-                if (typeof entry.hashCount === "number") {
-                    pills.appendChild(
-                        createLuaManifestPill(
-                            entry.hashCount ?
-                                "Hashes ready" :
-                                "No hashes",
-                            entry.hashCount ? "ok" : "warn"
-                        )
-                    );
-                }
-                if (entry.depotsWithoutKeys) {
-                    pills.appendChild(
-                        createLuaManifestPill(
-                            `${entry.depotsWithoutKeys} missing`,
-                            "warn"
-                        )
-                    );
-                }
-                if (entry.hashPreview) {
-                    pills.appendChild(
-                        createLuaManifestPill(
-                            `Hash ${entry.hashPreview.slice(0, 8)}...${entry.hashPreview.slice(-6)}`,
-                            "ok"
-                        )
-                    );
-                }
+                pills.appendChild(createLuaManifestPill("Steam app", "ok"));
                 copy.appendChild(pills);
                 button.appendChild(copy);
                 resultsEl.appendChild(button);
@@ -11844,167 +11809,182 @@ self.addEventListener("message", async (event) => {
             return normalized || fallback;
         }
 
-        function getLuaManifestPublicEntry(depotValue) {
-            const publicValue = depotValue?.manifests?.public;
-            if (typeof publicValue === "string") {
-                return {
-                    gid: publicValue.trim(),
-                    size: 0
-                };
-            }
-            const gidCandidate =
-                publicValue?.gid ??
-                publicValue?.manifestid ??
-                publicValue?.manifestId ??
+        const steamMlManifestPackageBaseUrl =
+            "https://pub-5b6d3b7c03fd4ac1afb5bd3017850e20.r2.dev";
+
+        function normalizeLuaManifestPathname(value) {
+            return typeof value === "string" ?
+                value.replace(/\\/g, "/").replace(/^\/+/, "").trim() :
                 "";
-            const sizeCandidate =
-                publicValue?.size ??
-                depotValue?.maxsize ??
-                0;
-            const gid =
-                gidCandidate === null || gidCandidate === undefined ?
-                    "" :
-                    String(gidCandidate).trim();
-            const parsedSize = Number.parseInt(String(sizeCandidate || 0), 10);
-            return {
-                gid,
-                size: Number.isFinite(parsedSize) && parsedSize > 0 ? parsedSize : 0
-            };
         }
 
-        function buildLuaManifestModel(appId, metadataPayload, depotKeys = {}) {
-            const gameData = metadataPayload?.data?.[appId];
-            if (!gameData || typeof gameData !== "object") {
-                throw new Error("fares.top does not list this AppID anymore.");
+        function buildSteamMlManifestZipUrl(appId) {
+            return `${steamMlManifestPackageBaseUrl}/${encodeURIComponent(appId)}.zip`;
+        }
+
+        async function fetchArrayBufferWithProxyFallback(endpoint, contextLabel) {
+            const attempts = buildJsonFetchAttempts(endpoint, "GET");
+            let lastError = null;
+
+            for (let index = 0; index < attempts.length; index += 1) {
+                const attempt = attempts[index];
+                try {
+                    const response = await fetch(attempt.url, {
+                        method: "GET",
+                        cache: "no-store",
+                        headers: {
+                            Accept: "application/zip, application/octet-stream, */*"
+                        }
+                    });
+                    if (!response.ok) {
+                        const error = new Error(`${contextLabel} failed (${response.status})`);
+                        error.status = response.status;
+                        error.attemptLabel = attempt.label;
+                        error.url = attempt.url;
+                        throw error;
+                    }
+                    return await response.arrayBuffer();
+                } catch (error) {
+                    lastError = error;
+
+                    if (index < attempts.length - 1) {
+                        console.warn(
+                            `[Proxy fallback] ${contextLabel} failed via ${attempt.label}. Trying next route.`,
+                            error
+                        );
+                    }
+
+                    if (!shouldRetryWithProxy(error)) {
+                        break;
+                    }
+                }
             }
 
-            const gameName = normalizeLuaManifestLabel(
-                gameData?.common?.name,
-                `App ${appId}`
+            throw lastError instanceof Error ?
+                lastError :
+                new Error(`${contextLabel} failed.`);
+        }
+
+        function sanitizeSteamMlLuaText(rawLuaText) {
+            const normalized = String(rawLuaText || "").replace(/\r\n/g, "\n");
+            const withoutFooter = normalized.replace(
+                /\n*--\[\[[\s\S]*?fares\.top[\s\S]*?\]\]\s*$/i,
+                "\n"
             );
-            const appKey = normalizeLuaManifestLabel(depotKeys?.[appId], "");
-            const depots = [];
-            let skippedWithoutManifest = 0;
+            return `${withoutFooter.trimEnd()}\n`;
+        }
 
-            Object.entries(gameData?.depots || {}).forEach(([depotId, depotValue]) => {
-                if (!/^\d+$/.test(depotId) || !depotValue || typeof depotValue !== "object") {
-                    return;
-                }
+        const luaManifestPackageReadme = [
+            "Generated by the LTSEverydayYou Manifest Generator.",
+            "",
+            "Package layout mirrors the SteamML manifest ZIP format for SteamTools usage.",
+            "Included files are the cleaned Lua script plus the bundled depot manifest files."
+        ].join("\r\n");
 
-                const publicEntry = getLuaManifestPublicEntry(depotValue);
-                if (!publicEntry.gid) {
-                    skippedWithoutManifest += 1;
-                    return;
-                }
-
-                const depotKey = normalizeLuaManifestLabel(depotKeys?.[depotId], "");
-                depots.push({
-                    depotId,
-                    depotKey,
-                    hasKey: Boolean(depotKey),
-                    manifestId: publicEntry.gid,
-                    size: publicEntry.size
-                });
-            });
-
-            depots.sort((left, right) => Number(left.depotId) - Number(right.depotId));
-
-            if (!depots.length) {
-                throw new Error("No public depot manifests were found for this AppID.");
+        async function parseSteamMlManifestPackage(appId, arrayBuffer, fallbackGameName = "") {
+            if (!window.JSZip) {
+                throw new Error("JSZip failed to load. Check your connection and retry.");
             }
 
-            const packageDepots = depots.filter(({ depotId }) => depotId !== appId);
-            const depotsWithoutKeys = packageDepots.filter(({ hasKey }) => !hasKey).length;
-            const hashEntries = [];
+            let sourceZip;
+            try {
+                sourceZip = await window.JSZip.loadAsync(arrayBuffer);
+            } catch (error) {
+                throw new Error("SteamML returned an invalid ZIP package.");
+            }
 
-            if (appKey) {
-                hashEntries.push({
-                    depotId: appId,
-                    hash: appKey,
-                    kind: "app"
+            const files = Object.values(sourceZip.files).filter((entry) => !entry.dir);
+            const luaEntry =
+                files.find((entry) =>
+                    normalizeLuaManifestPathname(entry.name).toLowerCase() === `${appId}.lua`
+                ) ||
+                files.find((entry) =>
+                    normalizeLuaManifestPathname(entry.name).toLowerCase().endsWith(".lua")
+                );
+
+            if (!luaEntry) {
+                throw new Error("SteamML package did not include a Lua file.");
+            }
+
+            const rawLuaText = await luaEntry.async("string");
+            const luaText = sanitizeSteamMlLuaText(rawLuaText);
+            const luaFilename = normalizeLuaManifestPathname(luaEntry.name).split("/").pop() || `${appId}.lua`;
+            const manifestFiles = [];
+            const extraFiles = [];
+
+            for (const entry of files) {
+                const normalizedName = normalizeLuaManifestPathname(entry.name);
+                const lowerName = normalizedName.toLowerCase();
+
+                if (!normalizedName || normalizedName === normalizeLuaManifestPathname(luaEntry.name)) {
+                    continue;
+                }
+
+                if (lowerName === "readme" || lowerName === "readme.txt") {
+                    continue;
+                }
+
+                const data = await entry.async("uint8array");
+                if (lowerName.endsWith(".manifest")) {
+                    manifestFiles.push({
+                        name: normalizedName.split("/").pop() || normalizedName,
+                        data
+                    });
+                    continue;
+                }
+
+                extraFiles.push({
+                    name: normalizedName,
+                    data
                 });
             }
 
-            packageDepots.forEach(({ depotId, depotKey, hasKey }) => {
-                if (!hasKey) {
-                    return;
-                }
-                hashEntries.push({
-                    depotId,
-                    hash: depotKey,
-                    kind: "depot"
-                });
-            });
+            manifestFiles.sort((left, right) => left.name.localeCompare(right.name, undefined, {
+                numeric: true,
+                sensitivity: "base"
+            }));
 
             return {
                 appId,
-                gameName,
-                appKey,
-                depots,
-                packageDepots,
-                depotsWithoutKeys,
-                skippedWithoutManifest,
-                hashEntries
+                gameName: normalizeLuaManifestLabel(fallbackGameName, `App ${appId}`),
+                zipUrl: buildSteamMlManifestZipUrl(appId),
+                luaFilename,
+                luaText,
+                manifestFiles,
+                extraFiles
             };
         }
 
-        async function fetchLuaManifestDepotKeys() {
-            if (luaManifestDepotKeyCache && typeof luaManifestDepotKeyCache === "object") {
-                return luaManifestDepotKeyCache;
+        async function fetchLuaManifestModel(appId, fallbackGameName = "") {
+            if (luaManifestPackageCache.has(appId)) {
+                const cachedPackage = luaManifestPackageCache.get(appId);
+                if (
+                    fallbackGameName &&
+                    cachedPackage &&
+                    /^App \d+$/i.test(cachedPackage.gameName || "")
+                ) {
+                    cachedPackage.gameName = normalizeLuaManifestLabel(fallbackGameName, cachedPackage.gameName);
+                }
+                return cachedPackage;
             }
-            if (luaManifestDepotKeyPromise) {
-                return luaManifestDepotKeyPromise;
+            if (luaManifestPackagePromiseCache.has(appId)) {
+                return luaManifestPackagePromiseCache.get(appId);
             }
-            luaManifestDepotKeyPromise = fetchJsonGetWithProxyFallback(
-                "https://raw.githubusercontent.com/SteamAutoCracks/ManifestHub/main/depotkeys.json",
-                "ManifestHub depot keys"
+
+            const promise = fetchArrayBufferWithProxyFallback(
+                buildSteamMlManifestZipUrl(appId),
+                "SteamML manifest package"
             )
-                .then((payload) => {
-                    if (!payload || typeof payload !== "object") {
-                        throw new Error("ManifestHub depot keys returned invalid data.");
-                    }
-                    luaManifestDepotKeyCache = payload;
-                    return payload;
+                .then((arrayBuffer) => parseSteamMlManifestPackage(appId, arrayBuffer, fallbackGameName))
+                .then((manifestPackage) => {
+                    luaManifestPackageCache.set(appId, manifestPackage);
+                    return manifestPackage;
                 })
                 .finally(() => {
-                    luaManifestDepotKeyPromise = null;
-                });
-            return luaManifestDepotKeyPromise;
-        }
-
-        async function fetchLuaManifestDepotKeysSafe() {
-            try {
-                return await fetchLuaManifestDepotKeys();
-            } catch (error) {
-                console.warn("ManifestHub depot keys are unavailable. Continuing without keys.", error);
-                return {};
-            }
-        }
-
-        async function fetchLuaManifestModel(appId) {
-            if (luaManifestModelCache.has(appId)) {
-                return luaManifestModelCache.get(appId);
-            }
-            if (luaManifestModelPromiseCache.has(appId)) {
-                return luaManifestModelPromiseCache.get(appId);
-            }
-
-            const metadataUrl =
-                `https://www.fares.top/api/manifest?appId=${encodeURIComponent(appId)}&server=1`;
-            const promise = Promise.all([
-                fetchJsonGetWithProxyFallback(metadataUrl, "fares.top manifest metadata"),
-                fetchLuaManifestDepotKeysSafe()
-            ])
-                .then(([metadataPayload, depotKeys]) => {
-                    const model = buildLuaManifestModel(appId, metadataPayload, depotKeys);
-                    luaManifestModelCache.set(appId, model);
-                    return model;
-                })
-                .finally(() => {
-                    luaManifestModelPromiseCache.delete(appId);
+                    luaManifestPackagePromiseCache.delete(appId);
                 });
 
-            luaManifestModelPromiseCache.set(appId, promise);
+            luaManifestPackagePromiseCache.set(appId, promise);
             return promise;
         }
 
@@ -12026,42 +12006,8 @@ self.addEventListener("message", async (event) => {
                     thumbnail:
                         typeof entry.tiny_image === "string" ?
                             entry.tiny_image :
-                            "",
-                    hashLoading: true
+                            ""
                 }));
-        }
-
-        async function enrichLuaManifestSearchResult(appId, token) {
-            try {
-                const model = await fetchLuaManifestModel(appId);
-                if (token !== luaManifestSearchToken) {
-                    return;
-                }
-                const entry = luaManifestSearchResults.find((candidate) => candidate.appId === appId);
-                if (!entry) {
-                    return;
-                }
-                entry.hashLoading = false;
-                entry.hashCount = model.hashEntries.length;
-                entry.manifestCount = model.depots.length;
-                entry.depotsWithoutKeys = model.depotsWithoutKeys;
-                entry.hashPreview = model.hashEntries[0]?.hash || "";
-                renderLuaManifestSearchResults();
-            } catch (error) {
-                if (token !== luaManifestSearchToken) {
-                    return;
-                }
-                const entry = luaManifestSearchResults.find((candidate) => candidate.appId === appId);
-                if (!entry) {
-                    return;
-                }
-                entry.hashLoading = false;
-                entry.hashCount = 0;
-                entry.manifestCount = 0;
-                entry.depotsWithoutKeys = 0;
-                entry.hashPreview = "";
-                renderLuaManifestSearchResults();
-            }
         }
 
         async function performLuaManifestSearch(rawQuery) {
@@ -12094,9 +12040,6 @@ self.addEventListener("message", async (event) => {
                 }
 
                 setLuaManifestStatus("Pick a game from the dropdown or press Generate with an AppID/URL.");
-                results.forEach(({ appId }) => {
-                    enrichLuaManifestSearchResult(appId, token);
-                });
             } catch (error) {
                 if (token !== luaManifestSearchToken) {
                     return;
@@ -12119,6 +12062,7 @@ self.addEventListener("message", async (event) => {
 
             luaManifestSearchActiveIndex = index;
             luaManifestSearchSelectedAppId = entry.appId;
+            luaManifestSelectedGameName = entry.name;
 
             const inputEl = q("#lua-manifest-appid");
             if (inputEl) {
@@ -12127,95 +12071,59 @@ self.addEventListener("message", async (event) => {
 
             hideLuaManifestSearchResults();
             renderLuaManifestSearchResults();
-            setLuaManifestStatus(`Loading hashes for ${entry.name}...`);
-
-            try {
-                const model = await fetchLuaManifestModel(entry.appId);
-                if (luaManifestSearchSelectedAppId !== entry.appId) {
-                    return;
-                }
-                setLuaManifestStatus(
-                    `Selected ${model.gameName} (${model.appId}). ${model.hashEntries.length} public hash${model.hashEntries.length === 1 ? "" : "es"} ready.`
-                );
-            } catch (error) {
-                if (luaManifestSearchSelectedAppId !== entry.appId) {
-                    return;
-                }
-                setLuaManifestStatus(
-                    error instanceof Error && error.message ?
-                        error.message :
-                        "Unable to load manifest details for this AppID.",
-                    true
-                );
-            }
+            setLuaManifestStatus(
+                `Selected ${entry.name} (${entry.appId}). Generate to build the SteamML-style package.`
+            );
         }
 
-        const luaManifestPackageReadme = `Thanks for Using fares.top Manifest and lua Generator ❤️
-
-🎮Discord server : https://discord.gg/vzdhWC7svP
-
-🌐Our Website : https://fares.top
-`;
-        const luaManifestPackageFooter = [
-            "--[[",
-            "This file Generated using fares.top Website ",
-            "-----> join discord Server : https://discord.gg/steamgames ",
-            "]]"
-        ];
-
-        async function buildLuaManifestPackageBlob(appId, luaText) {
+        async function buildLuaManifestPackageBlob(appId, manifestPackage) {
             if (!window.JSZip) {
                 throw new Error("JSZip failed to load. Check your connection and retry.");
             }
             const zip = new JSZip();
-            zip.file(`${appId}.lua`, luaText);
+            zip.file(manifestPackage.luaFilename || `${appId}.lua`, manifestPackage.luaText);
+            manifestPackage.manifestFiles.forEach((file) => {
+                zip.file(file.name, file.data);
+            });
+            manifestPackage.extraFiles.forEach((file) => {
+                zip.file(file.name, file.data);
+            });
+            zip.file("README", luaManifestPackageReadme);
             zip.file("README.txt", luaManifestPackageReadme);
             return zip.generateAsync({
                 type: "blob"
             });
         }
 
-        async function fetchLuaManifestFromManifestHub(appId) {
-            const model = await fetchLuaManifestModel(appId);
-            const {
-                appKey,
-                gameName,
-                packageDepots,
-                depotsWithoutKeys,
-                skippedWithoutManifest
-            } = model;
-            const lines = [
-                appKey ?
-                    `addappid(${appId},1,"${appKey}")` :
-                    `addappid(${appId})`
-            ];
-            packageDepots.forEach(({ depotId, depotKey, hasKey }) => {
-                lines.push(
-                    hasKey ?
-                        `addappid(${depotId},0,"${depotKey}")` :
-                        `addappid(${depotId})`
-                );
-            });
-            lines.push(...luaManifestPackageFooter);
-            const luaText = `${lines.join("\n")}\n`;
-            const blob = await buildLuaManifestPackageBlob(appId, luaText);
+        async function fetchLuaManifestFromSteamMl(appId, fallbackGameName = "") {
+            let model;
+            try {
+                model = await fetchLuaManifestModel(appId, fallbackGameName);
+            } catch (error) {
+                const status = Number(error?.status);
+                if (status === 404) {
+                    throw new Error("SteamML does not have a manifest package for this AppID.");
+                }
+                throw error instanceof Error ?
+                    error :
+                    new Error("Unable to load the SteamML package right now.");
+            }
+
+            const blob = await buildLuaManifestPackageBlob(appId, model);
             const blobUrl = URL.createObjectURL(blob);
-            const totalEntries = lines.filter((line) => /^addappid\(/.test(line)).length;
+            const manifestCount = model.manifestFiles.length;
 
             return {
                 kind: "blob",
                 url: blobUrl,
                 filename: `${appId}.zip`,
-                copyText: luaText,
-                copyLabel: `${appId}.lua`,
+                copyText: model.luaText,
+                copyLabel: model.luaFilename,
                 model,
-                displayText: `${appId}.zip - ${gameName} (${totalEntries} addappid entr${totalEntries === 1 ? "y" : "ies"})`,
+                displayText:
+                    `${appId}.zip - ${model.gameName} (${manifestCount} manifest${manifestCount === 1 ? "" : "s"})`,
                 statusText:
-                    depotsWithoutKeys ?
-                        `Generated ${appId}.zip for ${gameName} in fares.top format. ${depotsWithoutKeys} depot${depotsWithoutKeys === 1 ? "" : "s"} had no public key listed.` :
-                        skippedWithoutManifest ?
-                            `Generated ${appId}.zip for ${gameName} in fares.top format. Skipped ${skippedWithoutManifest} depot${skippedWithoutManifest === 1 ? "" : "s"} without a public manifest.` :
-                            `Generated ${appId}.zip for ${gameName} in fares.top format.`
+                    `Generated ${appId}.zip for ${model.gameName} in SteamML format with ${manifestCount} bundled manifest${manifestCount === 1 ? "" : "s"}.`
             };
         }
 
@@ -12253,6 +12161,7 @@ self.addEventListener("message", async (event) => {
             const inputEl = q("#lua-manifest-appid");
             const normalizedFromInput = autoNormalizeManifestInput(false);
             const appId = normalizedFromInput || resolveLuaManifestAppIdFromInput();
+            const fallbackGameName = normalizeLuaManifestLabel(luaManifestSelectedGameName, "");
             if (!/^\d+$/.test(appId)) {
                 setLuaManifestResult("");
                 setLuaManifestStatus("Enter a Steam AppID, Steam URL, or pick a game from the dropdown.", true);
@@ -12264,8 +12173,8 @@ self.addEventListener("message", async (event) => {
 
             const providers = [
                 {
-                    key: "fares.top style package builder",
-                    resolve: fetchLuaManifestFromManifestHub
+                    key: "SteamML package builder",
+                    resolve: () => fetchLuaManifestFromSteamMl(appId, fallbackGameName)
                 }
             ];
             const errors = [];
@@ -12279,8 +12188,9 @@ self.addEventListener("message", async (event) => {
                     setLuaManifestResult(finalUrl, provider.key);
                     if (finalUrl && typeof finalUrl === "object" && finalUrl.model) {
                         luaManifestSearchSelectedAppId = appId;
-                        if (inputEl && !normalizedFromInput) {
-                            inputEl.value = finalUrl.model.gameName || appId;
+                        luaManifestSelectedGameName = finalUrl.model.gameName || fallbackGameName;
+                        if (inputEl && !normalizedFromInput && finalUrl.model.gameName) {
+                            inputEl.value = finalUrl.model.gameName;
                         }
                     }
                     setLuaManifestStatus(
@@ -13702,10 +13612,12 @@ self.addEventListener("message", async (event) => {
 
                 luaManifestInput.addEventListener("input", () => {
                     luaManifestSearchSelectedAppId = "";
+                    luaManifestSelectedGameName = "";
                     queueLuaManifestSearch(luaManifestInput.value || "");
                 });
                 luaManifestInput.addEventListener("search", () => {
                     luaManifestSearchSelectedAppId = "";
+                    luaManifestSelectedGameName = "";
                     queueLuaManifestSearch(luaManifestInput.value || "");
                 });
                 luaManifestInput.addEventListener("focus", () => {
