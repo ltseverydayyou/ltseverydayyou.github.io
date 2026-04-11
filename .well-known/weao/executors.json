@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-04-11T18:52:42.135Z",
+  "fetchedAt": "2026-04-11T19:37:46.724Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -88,7 +88,7 @@
       "detected": true,
       "rbxversion": "version-26c90be22e0d4758",
       "updateStatus": true,
-      "websitelink": "https://xeno.now/",
+      "websitelink": "https://xeno.onl/",
       "discordlink": "https://discord.gg/xe-no",
       "platform": "Windows",
       "extype": "wexecutor",
@@ -1264,12 +1264,12 @@
       "_id": "6907cafc4b9bde193883d902",
       "title": "Severe",
       "version": "v2",
-      "updatedDate": "03/31/2026 at 7:58 PM UTC",
+      "updatedDate": "04/11/2026 at 7:16 PM UTC",
       "uncStatus": false,
       "free": false,
       "detected": false,
-      "rbxversion": "version-6776addb8fbc4d17",
-      "updateStatus": false,
+      "rbxversion": "version-26c90be22e0d4758",
+      "updateStatus": true,
       "websitelink": "https://discord.gg/QaheZpKzsX",
       "discordlink": "https://discord.gg/QaheZpKzsX",
       "purchaselink": "https://bloxproducts.com/r/weao#Severe",
