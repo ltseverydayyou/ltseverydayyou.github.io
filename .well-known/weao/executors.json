@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-04-10T08:07:40.752Z",
+  "fetchedAt": "2026-04-11T18:52:42.135Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -11,7 +11,7 @@
       "detected": true,
       "rbxversion": "version-26c90be22e0d4758",
       "updateStatus": true,
-      "websitelink": "https://potassium.pro",
+      "websitelink": "https://www.potassium.pro/",
       "discordlink": "https://discord.com/invite/potassium",
       "beta": false,
       "platform": "Windows",
