@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-04-11T23:39:41.552Z",
+  "fetchedAt": "2026-04-12T02:57:46.821Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -320,8 +320,8 @@
     {
       "_id": "67576d22d9181811c292bb79",
       "title": "Volt",
-      "version": "1.2.11.0",
-      "updatedDate": "04/10/2026 at 7:00 AM UTC",
+      "version": "1.2.11.1",
+      "updatedDate": "04/12/2026 at 1:52 AM UTC",
       "uncStatus": true,
       "free": false,
       "detected": true,
@@ -800,7 +800,7 @@
       "platform": "Windows",
       "extype": "wexecutor",
       "roleId": "1361806029255348224",
-      "index": 5,
+      "index": 7,
       "unlinked": false,
       "decompiler": true,
       "multiInject": true,
@@ -1196,8 +1196,8 @@
       "platform": "Windows",
       "extype": "wexecutor",
       "roleId": "1267164077503811686",
-      "purchaselink": "https://rapidkeys.net/product?id=synapse-z&ref=weao",
-      "index": 7,
+      "purchaselink": "https://robloxcheatz.com/product?id=synapsez&ref=weao",
+      "index": 4,
       "elementCertified": true,
       "cost": "$3.99 Weekly",
       "decompiler": true,
@@ -1588,7 +1588,7 @@
       "platform": "Windows",
       "extype": "wexecutor",
       "roleId": "1484755192141578321",
-      "index": 4,
+      "index": 5,
       "unlinked": false,
       "purchaselink": "https://wyv.gg/product/cosmic-executor/ref/weao",
       "elementCertified": false,
