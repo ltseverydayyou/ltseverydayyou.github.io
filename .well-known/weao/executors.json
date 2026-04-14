@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-04-14T17:15:36.527Z",
+  "fetchedAt": "2026-04-14T18:44:37.674Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -47,7 +47,8 @@
       },
       "hasIssues": false,
       "detectionReason": "",
-      "raknet": true
+      "raknet": true,
+      "unknown": false
     },
     {
       "_id": "67e0d0d87d091e8f8b6d2a35",
@@ -315,7 +316,8 @@
         ]
       },
       "beta": false,
-      "detectionReason": "Many users are currently reporting bans. Take normal precautions and use an alt account!"
+      "detectionReason": "Many users are currently reporting bans. Take normal precautions and use an alt account!",
+      "unknown": true
     },
     {
       "_id": "67576d22d9181811c292bb79",
