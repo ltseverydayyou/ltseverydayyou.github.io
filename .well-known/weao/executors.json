@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-04-14T23:24:14.229Z",
+  "fetchedAt": "2026-04-15T06:02:19.733Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -276,8 +276,8 @@
     {
       "_id": "671411144ca6cb25603cc3b0",
       "title": "Seliware",
-      "version": "2.3.0",
-      "updatedDate": "04/14/2026 at 4:29 PM UTC",
+      "version": "2.3.1",
+      "updatedDate": "04/15/2026 at 4:23 AM UTC",
       "uncStatus": true,
       "free": false,
       "detected": true,
