@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-04-17T22:46:23.233Z",
+  "fetchedAt": "2026-04-18T08:00:56.698Z",
   "data": [
     {
       "_id": "680eaddf8b44717c060fcf8d",
@@ -1592,7 +1592,7 @@
       "roleId": "1484755192141578321",
       "index": 5,
       "unlinked": false,
-      "purchaselink": "https://wyv.gg/product/cosmic-executor/ref/weao",
+      "purchaselink": "http://rapidkeys.net/product?id=cosmic&ref=weao",
       "elementCertified": false,
       "cost": "$9.99 Lifetime",
       "decompiler": true,
