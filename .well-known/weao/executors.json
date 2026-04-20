@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-04-20T21:12:06.977Z",
+  "fetchedAt": "2026-04-20T22:09:45.156Z",
   "data": [
     {
       "_id": "680eaddf8b44717c060fcf8d",
@@ -508,7 +508,8 @@
         ]
       },
       "beta": false,
-      "unknownDetection": true
+      "unknownDetection": true,
+      "raknet": true
     },
     {
       "_id": "67576d22d9181811c292bb79",
