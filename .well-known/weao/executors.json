@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-04-21T10:00:54.863Z",
+  "fetchedAt": "2026-04-21T13:52:26.093Z",
   "data": [
     {
       "_id": "680eaddf8b44717c060fcf8d",
@@ -235,7 +235,7 @@
       "roleId": "1257546124844208208",
       "index": 11,
       "elementCertified": true,
-      "cost": "$3.25 Weekly",
+      "cost": "$15 Lifetime",
       "__v": 1,
       "recommendedReason": {
         "features": []
