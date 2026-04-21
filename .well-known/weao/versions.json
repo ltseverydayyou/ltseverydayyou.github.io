@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-04-21T20:57:42.775Z",
+  "fetchedAt": "2026-04-21T21:54:24.899Z",
   "data": {
     "current": {
       "Windows": "version-9d412f44a6fe4081",
@@ -34,19 +34,19 @@
       }
     },
     "future": {
-      "Windows": "version-hidden",
+      "Windows": "version-2e6461290a3541f5",
       "WindowsDate": "4/21/2026, 1:43:59 PM UTC",
       "WindowsResponse": {
         "version": "0.718.0.7181104",
-        "clientVersionUpload": "version-hidden",
+        "clientVersionUpload": "version-2e6461290a3541f5",
         "bootstrapperVersion": "0, 718, 0, 7181104",
         "timestamp": 1776779039
       },
-      "Mac": "version-hidden",
+      "Mac": "version-f0d1b413481b4d96",
       "MacDate": "4/21/2026, 1:43:45 PM UTC",
       "MacResponse": {
         "version": "0.718.0.7181104",
-        "clientVersionUpload": "version-hidden",
+        "clientVersionUpload": "version-f0d1b413481b4d96",
         "bootstrapperVersion": "0,718,0,7181104",
         "timestamp": 1776779025
       }
