@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-04-20T22:09:45.156Z",
+  "fetchedAt": "2026-04-21T03:52:02.268Z",
   "data": [
     {
       "_id": "680eaddf8b44717c060fcf8d",
@@ -514,8 +514,8 @@
     {
       "_id": "67576d22d9181811c292bb79",
       "title": "Volt",
-      "version": "1.2.12.5",
-      "updatedDate": "04/18/2026 at 10:17 PM UTC",
+      "version": "1.2.12.6",
+      "updatedDate": "04/21/2026 at 1:23 AM UTC",
       "uncStatus": true,
       "free": false,
       "detected": true,
@@ -1205,7 +1205,7 @@
       "cost": "$3.99 Weekly",
       "decompiler": true,
       "multiInject": true,
-      "suncPercentage": 97,
+      "suncPercentage": 98,
       "uncPercentage": 99,
       "__v": 1,
       "recommendedReason": {
@@ -1223,8 +1223,8 @@
       "trackerId": "WEAO228206d0",
       "clientmods": true,
       "sunc": {
-        "suncScrap": "MyOUpBJFDFjHPf2B",
-        "suncKey": "Ip7nZqxEdMXK0KMXJ43lInX016T7qztj"
+        "suncScrap": "8JTQe9A4s8f8h62r",
+        "suncKey": "MURIaZyu8xxsYhmVdK4i1kmnfTQofi3x"
       },
       "raknet": true,
       "hasIssues": false
