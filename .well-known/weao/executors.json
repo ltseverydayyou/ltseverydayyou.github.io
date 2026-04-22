@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-04-21T21:54:24.899Z",
+  "fetchedAt": "2026-04-22T12:00:08.467Z",
   "data": [
     {
       "_id": "680eaddf8b44717c060fcf8d",
@@ -430,7 +430,7 @@
       "detected": true,
       "rbxversion": "version-9d412f44a6fe4081",
       "updateStatus": true,
-      "websitelink": "https://www.xeno.onl/",
+      "websitelink": "https://www.xeno.now/",
       "discordlink": "https://discord.gg/xe-no",
       "platform": "Windows",
       "extype": "wexecutor",
