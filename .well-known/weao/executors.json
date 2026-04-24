@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-04-24T03:19:27.865Z",
+  "fetchedAt": "2026-04-24T20:59:11.764Z",
   "data": [
     {
       "_id": "680eaddf8b44717c060fcf8d",
@@ -1540,7 +1540,6 @@
       "platform": "Windows",
       "extype": "wexecutor",
       "roleId": "1479935012488085716",
-      "purchaselink": "https://wyv.gg/product/isaeva-executor/",
       "index": 6,
       "elementCertified": true,
       "cost": "$4.99 Weekly",
@@ -1594,7 +1593,7 @@
       "roleId": "1484755192141578321",
       "index": 5,
       "unlinked": false,
-      "purchaselink": "http://rapidkeys.net/product?id=cosmic&ref=weao",
+      "purchaselink": "",
       "elementCertified": false,
       "cost": "$9.99 Lifetime",
       "decompiler": true,
