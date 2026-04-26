@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-04-26T21:05:37.247Z",
+  "fetchedAt": "2026-04-26T22:04:00.431Z",
   "data": [
     {
       "_id": "680eaddf8b44717c060fcf8d",
@@ -49,13 +49,13 @@
     {
       "_id": "66ee1fcae70ddffe81ca0f0c",
       "title": "Codex",
-      "version": "2.706.750",
-      "updatedDate": "04/04/2026 at 5:55 AM UTC",
+      "version": "2.716.875",
+      "updatedDate": "04/26/2026 at 9:49 PM UTC",
       "uncStatus": true,
       "free": true,
       "detected": false,
-      "rbxversion": "2.706.750",
-      "updateStatus": false,
+      "rbxversion": "2.716.875",
+      "updateStatus": true,
       "websitelink": "https://codex.lol",
       "discordlink": "https://discord.gg/codexlol",
       "beta": false,
@@ -656,13 +656,13 @@
     {
       "_id": "67c8a2cb376f9e598b466705",
       "title": "SirHurt",
-      "version": "V5.426",
-      "updatedDate": "04/22/2026 at 7:33 PM UTC",
+      "version": "V5.427",
+      "updatedDate": "04/26/2026 at 9:37 PM UTC",
       "uncStatus": true,
       "free": false,
       "detected": true,
-      "rbxversion": "version-2e6461290a3541f5",
-      "updateStatus": false,
+      "rbxversion": "version-390ba09e7e944154",
+      "updateStatus": true,
       "websitelink": "https://sirhurt.net",
       "discordlink": "https://discord.gg/CPKvWTgFdV",
       "purchaselink": "https://sirhurt.net/#purchase",
