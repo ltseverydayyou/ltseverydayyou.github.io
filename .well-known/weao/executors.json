@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-04-25T19:50:27.516Z",
+  "fetchedAt": "2026-04-26T14:50:24.305Z",
   "data": [
     {
       "_id": "680eaddf8b44717c060fcf8d",
@@ -468,8 +468,8 @@
     {
       "_id": "671411144ca6cb25603cc3b0",
       "title": "Seliware",
-      "version": "2.3.8",
-      "updatedDate": "04/25/2026 at 8:32 AM UTC",
+      "version": "2.3.9",
+      "updatedDate": "04/26/2026 at 2:21 PM UTC",
       "uncStatus": true,
       "free": false,
       "detected": true,
@@ -487,11 +487,11 @@
       "cost": "$3.99 Weekly",
       "decompiler": true,
       "multiInject": true,
-      "suncPercentage": 98,
+      "suncPercentage": 100,
       "uncPercentage": 99,
       "sunc": {
-        "suncScrap": "TX7rECUBKsLfb58Y",
-        "suncKey": "UA4rurnwMWdFFnhb3oyAgzXjTq8Jtl2x"
+        "suncScrap": "xp0Bkq0p5udEX6Gr",
+        "suncKey": "sgj37rOugLaLg2Nqp1IHmdP2QYDZSW98"
       },
       "__v": 1,
       "recommendedReason": {
