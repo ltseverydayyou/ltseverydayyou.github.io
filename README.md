@@ -1,4 +1,5 @@
 ```lua
+-- ltseverydayyou's autoexec shit lol
 local urls = {
 	"https://raw.githubusercontent.com/ltseverydayyou/ltseverydayyou.github.io/refs/heads/main/stuffs.luau",
 	"https://raw.githubusercontent.com/ltseverydayyou/ltseverydayyou.github.io/refs/heads/main/game_checker.luau",
