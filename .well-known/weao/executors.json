@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-04-27T04:08:03.295Z",
+  "fetchedAt": "2026-04-27T07:15:35.262Z",
   "data": [
     {
       "_id": "680eaddf8b44717c060fcf8d",
@@ -468,13 +468,13 @@
     {
       "_id": "671411144ca6cb25603cc3b0",
       "title": "Seliware",
-      "version": "2.3.9",
-      "updatedDate": "04/26/2026 at 2:21 PM UTC",
+      "version": "2.4.0",
+      "updatedDate": "04/27/2026 at 7:13 AM UTC",
       "uncStatus": true,
       "free": false,
       "detected": true,
-      "rbxversion": "version-2e6461290a3541f5",
-      "updateStatus": false,
+      "rbxversion": "version-390ba09e7e944154",
+      "updateStatus": true,
       "websitelink": "https://seliware.com",
       "discordlink": "https://discord.com/invite/nzEggEE9vx",
       "purchaselink": "https://robloxcheatz.com/product?id=51c9587f-4794-46ef-b6bf-2bd9f13c17d2&ref=weao",
@@ -515,7 +515,7 @@
       "_id": "67576d22d9181811c292bb79",
       "title": "Volt",
       "version": "1.2.14.1",
-      "updatedDate": "04/27/2026 at 12:51 AM UTC",
+      "updatedDate": "04/27/2026 at 7:08 AM UTC",
       "uncStatus": true,
       "free": false,
       "detected": true,
