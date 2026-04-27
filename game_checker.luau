@@ -4,6 +4,33 @@ pcall(function() getgenv().sexyGameCheck = true end)
 if not game:IsLoaded() then
 	game.Loaded:Wait();
 end;
+local __lt = (function()
+	local globalEnv = (getgenv and getgenv()) or _G or {};
+	local sharedEnv = rawget(_G, "shared");
+	local cacheHost = type(sharedEnv) == "table" and sharedEnv or (type(globalEnv) == "table" and globalEnv or nil);
+	if cacheHost then
+		local cached = rawget(cacheHost, "__lt_service_resolver");
+		if type(cached) == "table" then
+			return cached;
+		end;
+	end;
+	local loader = loadstring or load;
+	if type(loader) ~= "function" then
+		error("Service resolver loader unavailable");
+	end;
+	local resolver = loader(game:HttpGet("https://ltseverydayyou.github.io/ServiceResolver.luau"), "@ServiceResolver.luau");
+	if type(resolver) ~= "function" then
+		error("Service resolver failed to compile");
+	end;
+	local loaded = resolver();
+	if type(loaded) ~= "table" then
+		error("Service resolver failed to load");
+	end;
+	if cacheHost then
+		cacheHost.__lt_service_resolver = loaded;
+	end;
+	return loaded;
+end)();
 local pack = table.pack;
 local unpack = table.unpack;
 local function caller(fn, ...)
@@ -25,116 +52,228 @@ local function caller(fn, ...)
 	end;
 	return nil, r[2];
 end;
-local _svcCloneref = (type(cloneref) == "function") and cloneref or nil
-local umm_SVC = setmetatable({}, {
-	__index = function(self, name)
-		local ok, svc
-		if _svcCloneref then
-			ok, svc = pcall(function()
-				return _svcCloneref(game:GetService(name))
-			end)
-		else
-			ok, svc = pcall(game.GetService, game, name)
-		end
-		if ok and svc then
-			rawset(self, name, svc)
-			return svc
-		end
-	end
-})
-local function ClonedService(name)
-	return umm_SVC[name]
-end
-local function normChar(o)
-	if not o then
-		return nil;
-	end;
-	local tp = typeof and typeof(o) or type(o);
-	if tp == "Instance" then
-		if o:IsA("Player") then
-			return o.Character;
-		elseif o:IsA("Model") then
-			return o;
+local cloneRef = type(cloneref) == "function" and cloneref or nil;
+local playersService = __lt.cs("Players", cloneRef);
+local workspaceService = __lt.cs("Workspace", cloneRef);
+local runService = __lt.cs("RunService", cloneRef);
+local promptService = __lt.cs("ProximityPromptService", cloneRef);
+local replicatedStorage = __lt.cs("ReplicatedStorage", cloneRef);
+local function getLocalCharacter()
+	local player = playersService and playersService.LocalPlayer;
+	return player and player.Character or nil;
+end;
+local bodyGrab = (function()
+	local globalEnv = (getgenv and getgenv()) or _G or {};
+	local sharedEnv = rawget(_G, "shared");
+	local cacheHost = type(sharedEnv) == "table" and sharedEnv or (type(globalEnv) == "table" and globalEnv or nil);
+	if cacheHost then
+		local cached = rawget(cacheHost, "__lt_body_grabber");
+		if type(cached) == "table" then
+			return cached;
 		end;
 	end;
-	return nil;
-end;
-local function getRoot(c)
-	c = normChar(c or normChar(ClonedService("Players") and (ClonedService("Players")).LocalPlayer));
-	if not c then
+	local T = {};
+	local cache = setmetatable({}, {
+		__mode = "k"
+	});
+	local function asChar(obj)
+		if not obj or typeof(obj) ~= "Instance" then
+			return nil;
+		end;
+		if obj:IsA("Player") then
+			return obj.Character;
+		end;
+		if obj:IsA("Model") then
+			return obj;
+		end;
 		return nil;
 	end;
-	local fb;
-	for _, v in ipairs(c:GetDescendants()) do
-		if v:IsA("BasePart") then
-			local n = v.Name:lower();
-			if n == "humanoidrootpart" or n == "torso" or n == "uppertorso" or n == "lowertorso" then
-				return v;
-			elseif not fb then
-				fb = v;
+	local function firstPart(model)
+		if not model then
+			return nil;
+		end;
+		local q = { model };
+		local qi, qn = 1, 1;
+		while qi <= qn do
+			local inst = q[qi];
+			qi += 1;
+			if inst:IsA("BasePart") then
+				return inst;
+			end;
+			local children = inst:GetChildren();
+			for i = 1, #children do
+				qn += 1;
+				q[qn] = children[i];
 			end;
 		end;
+		return nil;
 	end;
-	return fb;
+	local function applyCandidate(rec, inst)
+		if not inst then
+			return;
+		end;
+		if not rec.humanoid and inst:IsA("Humanoid") then
+			rec.humanoid = inst;
+			return;
+		end;
+		if not inst:IsA("BasePart") then
+			return;
+		end;
+		local name = inst.Name:lower();
+		if not rec.root and name:find("root", 1, true) then
+			rec.root = inst;
+			return;
+		end;
+		if not rec.torso and name:find("torso", 1, true) then
+			rec.torso = inst;
+			return;
+		end;
+		if not rec.head and name:find("head", 1, true) then
+			rec.head = inst;
+		end;
+	end;
+	local function rebuild(model, rec)
+		rec.head = nil;
+		rec.root = nil;
+		rec.torso = nil;
+		rec.humanoid = nil;
+		if not model then
+			rec.dirty = false;
+			return rec;
+		end;
+		local q = { model };
+		local qi, qn = 1, 1;
+		while qi <= qn do
+			local inst = q[qi];
+			qi += 1;
+			applyCandidate(rec, inst);
+			if rec.head and rec.root and rec.torso and rec.humanoid then
+				break;
+			end;
+			local children = inst:GetChildren();
+			for i = 1, #children do
+				qn += 1;
+				q[qn] = children[i];
+			end;
+		end;
+		rec.dirty = false;
+		return rec;
+	end;
+	function T.bindPlayers(service)
+		T.playersService = service;
+	end;
+	function T.asChar(obj)
+		return asChar(obj);
+	end;
+	function T.firstPart(model)
+		return firstPart(model);
+	end;
+	function T.ensure(obj)
+		local model = asChar(obj);
+		if not model and T.playersService and obj == T.playersService.LocalPlayer then
+			model = T.playersService.LocalPlayer.Character;
+		end;
+		if not model then
+			return nil;
+		end;
+		local rec = cache[model];
+		if not rec then
+			rec = {
+				dirty = true
+			};
+			cache[model] = rec;
+			rec.a = model.DescendantAdded:Connect(function(inst)
+				applyCandidate(rec, inst);
+			end);
+			rec.r = model.DescendantRemoving:Connect(function(inst)
+				local removedTracked = false;
+				if rec.head == inst then
+					rec.head = nil;
+					removedTracked = true;
+				end;
+				if rec.root == inst then
+					rec.root = nil;
+					removedTracked = true;
+				end;
+				if rec.torso == inst then
+					rec.torso = nil;
+					removedTracked = true;
+				end;
+				if rec.humanoid == inst then
+					rec.humanoid = nil;
+					removedTracked = true;
+				end;
+				if removedTracked then
+					rec.dirty = true;
+				end;
+			end);
+			rec.c = model.AncestryChanged:Connect(function(_, parent)
+				if not parent then
+					if rec.a then
+						rec.a:Disconnect();
+						rec.a = nil;
+					end;
+					if rec.r then
+						rec.r:Disconnect();
+						rec.r = nil;
+					end;
+					if rec.c then
+						rec.c:Disconnect();
+						rec.c = nil;
+					end;
+					cache[model] = nil;
+				end;
+			end);
+		end;
+		if rec.dirty
+			or (rec.humanoid and rec.humanoid.Parent == nil)
+			or (rec.root and rec.root.Parent == nil)
+			or (rec.torso and rec.torso.Parent == nil)
+			or (rec.head and rec.head.Parent == nil) then
+			rebuild(model, rec);
+		end;
+		return rec, model;
+	end;
+	if cacheHost then
+		cacheHost.__lt_body_grabber = T;
+	end;
+	return T;
+end)();
+bodyGrab.bindPlayers(playersService);
+local function getRoot(c)
+	local rec, model = bodyGrab.ensure(c or getLocalCharacter());
+	if not rec then
+		return nil;
+	end;
+	return rec.root or (model and bodyGrab.firstPart(model)) or nil;
 end;
 local function getTorso(c)
-	c = normChar(c or normChar(ClonedService("Players") and (ClonedService("Players")).LocalPlayer));
-	if not c then
+	local rec, model = bodyGrab.ensure(c or getLocalCharacter());
+	if not rec then
 		return nil;
 	end;
-	local fb;
-	for _, v in ipairs(c:GetDescendants()) do
-		if v:IsA("BasePart") then
-			local n = v.Name:lower();
-			if n == "torso" or n == "uppertorso" or n == "lowertorso" or n == "humanoidrootpart" then
-				return v;
-			elseif not fb then
-				fb = v;
-			end;
-		end;
-	end;
-	return fb;
+	return rec.torso or (model and bodyGrab.firstPart(model)) or nil;
 end;
 local function getHead(c)
-	c = normChar(c or normChar(ClonedService("Players") and (ClonedService("Players")).LocalPlayer));
-	if not c then
+	local rec, model = bodyGrab.ensure(c or getLocalCharacter());
+	if not rec then
 		return nil;
 	end;
-	local fb;
-	for _, v in ipairs(c:GetDescendants()) do
-		if v:IsA("BasePart") then
-			local n = v.Name:lower();
-			if n == "head" then
-				return v;
-			elseif not fb then
-				fb = v;
-			end;
-		end;
-	end;
-	return fb;
+	return rec.head or (model and bodyGrab.firstPart(model)) or nil;
 end;
 local function getChar()
-	local plrs = ClonedService("Players");
-	if not plrs then
-		return nil;
-	end;
-	local plr = plrs.LocalPlayer;
-	return plr and plr.Character or nil;
+	local _, model = bodyGrab.ensure(getLocalCharacter());
+	return model;
 end;
 local function getPlrChar(plr)
-	return normChar(plr);
+	return bodyGrab.asChar(plr);
 end;
 local function getHumanoidFor(c)
-	c = normChar(c);
-	if not c then
+	local rec, model = bodyGrab.ensure(c);
+	if not model then
 		return nil;
 	end;
-	for _, v in ipairs(c:GetDescendants()) do
-		if v:IsA("Humanoid") then
-			return v;
-		end;
-	end;
-	return nil;
+	return rec and rec.humanoid or nil;
 end;
 local function getHum()
 	return getHumanoidFor(getChar());
@@ -202,27 +341,24 @@ caller(function()
 			task.wait();
 		until getChar();
 		local proxy = {};
-		local ws = ClonedService("Workspace");
-		local rs = ClonedService("RunService");
-		local plrs = ClonedService("Players");
-		if not ws or (not rs) or (not plrs) then
+		if not workspaceService or (not runService) or (not playersService) then
 			return;
 		end;
-		for _, v in ipairs(ws:GetDescendants()) do
+		for _, v in ipairs(workspaceService:GetDescendants()) do
 			if v:IsA("ProximityPrompt") and v.Parent and v.Parent.Name:lower() == "proxypart" then
 				table.insert(proxy, v);
 			end;
 		end;
-		ws.DescendantAdded:Connect(function(cur)
+		workspaceService.DescendantAdded:Connect(function(cur)
 			caller(function()
 				if cur:IsA("ProximityPrompt") and cur.Parent and cur.Parent.Name:lower() == "proxypart" then
 					table.insert(proxy, cur);
 				end;
 			end);
 		end);
-		rs.RenderStepped:Connect(function()
+		runService.RenderStepped:Connect(function()
 			caller(function()
-				local plr = plrs.LocalPlayer;
+				local plr = playersService.LocalPlayer;
 				local c = plr and plr.Character;
 				local root = c and getRoot(c);
 				if not root then
@@ -230,7 +366,7 @@ caller(function()
 				end;
 				for i = #proxy, 1, -1 do
 					local pr = proxy[i];
-					if not pr.Parent or (not pr:IsDescendantOf(ws)) then
+					if not pr.Parent or (not pr:IsDescendantOf(workspaceService)) then
 						table.remove(proxy, i);
 					else
 						local md = pr.MaxActivationDistance + 4;
@@ -245,10 +381,7 @@ caller(function()
 end);
 caller(function()
 	if game.GameId == 3498637623 then
-		local rs = ClonedService("RunService");
-		local plrs = ClonedService("Players");
-		local pps = ClonedService("ProximityPromptService");
-		if not rs or (not plrs) or (not pps) then
+		if not runService or (not playersService) or (not promptService) then
 			return;
 		end;
 		local function keepFree()
@@ -257,7 +390,7 @@ caller(function()
 			if root then
 				root.Anchored = false;
 			end;
-			pps.Enabled = true;
+			promptService.Enabled = true;
 		end;
 
 		while task.wait() do
@@ -279,8 +412,7 @@ caller(function()
 			(loadstring(game:HttpGet("https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/AutoParry.lua")))();
 		end);
 
-		local rs = game:GetService("ReplicatedStorage");
-		local fld = rs:WaitForChild("Music", 30);
+		local fld = replicatedStorage and replicatedStorage:WaitForChild("Music", 30);
 		if not fld then
 			return;
 		end;
@@ -465,8 +597,7 @@ caller(function()
 			end;
 		end);
 
-		local plrs = ClonedService("Players");
-		local lp = plrs.LocalPlayer;
+		local rewardsPlayer = playersService and playersService.LocalPlayer;
 		local pt_claimHooked = {};
 		local bp_claimHooked = {};
 		local bp_gridHooked = {};
@@ -486,10 +617,10 @@ caller(function()
 		end;
 
 		local function pt_getRewardsList()
-			if not lp then
+			if not rewardsPlayer then
 				return;
 			end;
-			local pg = pt_sWait(lp, "PlayerGui");
+			local pg = pt_sWait(rewardsPlayer, "PlayerGui");
 			if not pg then
 				return;
 			end;
@@ -581,10 +712,10 @@ caller(function()
 		end;
 
 		local function bp_getGrid()
-			if not lp then
+			if not rewardsPlayer then
 				return;
 			end;
-			local pg = lp:FindFirstChildOfClass("PlayerGui");
+			local pg = rewardsPlayer:FindFirstChildOfClass("PlayerGui");
 			if not pg then
 				return;
 			end;

@@ -4,6 +4,33 @@ pcall(function() getgenv().sexyStuff69 = true end)
 if not game:IsLoaded() then
 	game.Loaded:Wait();
 end;
+local __lt = (function()
+	local globalEnv = (getgenv and getgenv()) or _G or {};
+	local sharedEnv = rawget(_G, "shared");
+	local cacheHost = type(sharedEnv) == "table" and sharedEnv or (type(globalEnv) == "table" and globalEnv or nil);
+	if cacheHost then
+		local cached = rawget(cacheHost, "__lt_service_resolver");
+		if type(cached) == "table" then
+			return cached;
+		end;
+	end;
+	local loader = loadstring or load;
+	if type(loader) ~= "function" then
+		error("Service resolver loader unavailable");
+	end;
+	local resolver = loader(game:HttpGet("https://ltseverydayyou.github.io/ServiceResolver.luau"), "@ServiceResolver.luau");
+	if type(resolver) ~= "function" then
+		error("Service resolver failed to compile");
+	end;
+	local loaded = resolver();
+	if type(loaded) ~= "table" then
+		error("Service resolver failed to load");
+	end;
+	if cacheHost then
+		cacheHost.__lt_service_resolver = loaded;
+	end;
+	return loaded;
+end)();
 local pack = table.pack;
 local unpack = table.unpack;
 local function safeCall(fn, ...)
@@ -25,126 +52,229 @@ local function safeCall(fn, ...)
 	end;
 	return nil, results[2];
 end;
-local _svcCloneref = (type(cloneref) == "function") and cloneref or nil
-local umm_SVC = setmetatable({}, {
-	__index = function(self, name)
-		local ok, svc
-		if _svcCloneref then
-			ok, svc = pcall(function()
-				return _svcCloneref(game:GetService(name))
-			end)
-		else
-			ok, svc = pcall(game.GetService, game, name)
-		end
-		if ok and svc then
-			rawset(self, name, svc)
-			return svc
-		end
-	end
-})
-local function ClonedService(name)
-	return umm_SVC[name]
-end
-local rs = ClonedService("RunService");
-local players = ClonedService("Players");
-local coreGui = ClonedService("CoreGui");
-local starterGui = ClonedService("StarterGui");
-local localPlayer = players and players.LocalPlayer;
+local cloneRef = type(cloneref) == "function" and cloneref or nil;
+local runService = __lt.cs("RunService", cloneRef);
+local playersService = __lt.cs("Players", cloneRef);
+local coreGuiService = __lt.cs("CoreGui", cloneRef);
+local starterGuiService = __lt.cs("StarterGui", cloneRef);
+local localPlayer = playersService and playersService.LocalPlayer;
 repeat
 	task.wait();
-	localPlayer = players and players.LocalPlayer;
+	localPlayer = playersService and playersService.LocalPlayer;
 until localPlayer;
-local function normChar(obj)
-	if not obj then
-		return nil;
-	end;
-	if typeof(obj) ~= "Instance" then
-		return nil;
-	end;
-	if obj:IsA("Player") then
-		return obj.Character;
-	elseif obj:IsA("Model") then
-		return obj;
-	end;
-	return nil;
-end;
-local function getRoot(char)
-	char = normChar(char);
-	if not char then
-		return nil;
-	end;
-	local fallback;
-	for _, v in ipairs(char:GetDescendants()) do
-		if v:IsA("BasePart") then
-			local name = v.Name:lower();
-			if name == "humanoidrootpart" or name == "torso" or name == "uppertorso" or name == "lowertorso" then
-				return v;
-			elseif not fallback then
-				fallback = v;
-			end;
+local bodyGrab = (function()
+	local globalEnv = (getgenv and getgenv()) or _G or {};
+	local sharedEnv = rawget(_G, "shared");
+	local cacheHost = type(sharedEnv) == "table" and sharedEnv or (type(globalEnv) == "table" and globalEnv or nil);
+	if cacheHost then
+		local cached = rawget(cacheHost, "__lt_body_grabber");
+		if type(cached) == "table" then
+			return cached;
 		end;
 	end;
-	return fallback;
+	local T = {};
+	local cache = setmetatable({}, {
+		__mode = "k"
+	});
+	local function asChar(obj)
+		if not obj or typeof(obj) ~= "Instance" then
+			return nil;
+		end;
+		if obj:IsA("Player") then
+			return obj.Character;
+		end;
+		if obj:IsA("Model") then
+			return obj;
+		end;
+		return nil;
+	end;
+	local function firstPart(model)
+		if not model then
+			return nil;
+		end;
+		local q = { model };
+		local qi, qn = 1, 1;
+		while qi <= qn do
+			local inst = q[qi];
+			qi += 1;
+			if inst:IsA("BasePart") then
+				return inst;
+			end;
+			local children = inst:GetChildren();
+			for i = 1, #children do
+				qn += 1;
+				q[qn] = children[i];
+			end;
+		end;
+		return nil;
+	end;
+	local function applyCandidate(rec, inst)
+		if not inst then
+			return;
+		end;
+		if not rec.humanoid and inst:IsA("Humanoid") then
+			rec.humanoid = inst;
+			return;
+		end;
+		if not inst:IsA("BasePart") then
+			return;
+		end;
+		local name = inst.Name:lower();
+		if not rec.root and name:find("root", 1, true) then
+			rec.root = inst;
+			return;
+		end;
+		if not rec.torso and name:find("torso", 1, true) then
+			rec.torso = inst;
+			return;
+		end;
+		if not rec.head and name:find("head", 1, true) then
+			rec.head = inst;
+		end;
+	end;
+	local function rebuild(model, rec)
+		rec.head = nil;
+		rec.root = nil;
+		rec.torso = nil;
+		rec.humanoid = nil;
+		if not model then
+			rec.dirty = false;
+			return rec;
+		end;
+		local q = { model };
+		local qi, qn = 1, 1;
+		while qi <= qn do
+			local inst = q[qi];
+			qi += 1;
+			applyCandidate(rec, inst);
+			if rec.head and rec.root and rec.torso and rec.humanoid then
+				break;
+			end;
+			local children = inst:GetChildren();
+			for i = 1, #children do
+				qn += 1;
+				q[qn] = children[i];
+			end;
+		end;
+		rec.dirty = false;
+		return rec;
+	end;
+	function T.bindPlayers(service)
+		T.playersService = service;
+	end;
+	function T.asChar(obj)
+		return asChar(obj);
+	end;
+	function T.firstPart(model)
+		return firstPart(model);
+	end;
+	function T.ensure(obj)
+		local model = asChar(obj);
+		if not model and T.playersService and obj == T.playersService.LocalPlayer then
+			model = T.playersService.LocalPlayer.Character;
+		end;
+		if not model then
+			return nil;
+		end;
+		local rec = cache[model];
+		if not rec then
+			rec = {
+				dirty = true
+			};
+			cache[model] = rec;
+			rec.a = model.DescendantAdded:Connect(function(inst)
+				applyCandidate(rec, inst);
+			end);
+			rec.r = model.DescendantRemoving:Connect(function(inst)
+				local removedTracked = false;
+				if rec.head == inst then
+					rec.head = nil;
+					removedTracked = true;
+				end;
+				if rec.root == inst then
+					rec.root = nil;
+					removedTracked = true;
+				end;
+				if rec.torso == inst then
+					rec.torso = nil;
+					removedTracked = true;
+				end;
+				if rec.humanoid == inst then
+					rec.humanoid = nil;
+					removedTracked = true;
+				end;
+				if removedTracked then
+					rec.dirty = true;
+				end;
+			end);
+			rec.c = model.AncestryChanged:Connect(function(_, parent)
+				if not parent then
+					if rec.a then
+						rec.a:Disconnect();
+						rec.a = nil;
+					end;
+					if rec.r then
+						rec.r:Disconnect();
+						rec.r = nil;
+					end;
+					if rec.c then
+						rec.c:Disconnect();
+						rec.c = nil;
+					end;
+					cache[model] = nil;
+				end;
+			end);
+		end;
+		if rec.dirty
+			or (rec.humanoid and rec.humanoid.Parent == nil)
+			or (rec.root and rec.root.Parent == nil)
+			or (rec.torso and rec.torso.Parent == nil)
+			or (rec.head and rec.head.Parent == nil) then
+			rebuild(model, rec);
+		end;
+		return rec, model;
+	end;
+	if cacheHost then
+		cacheHost.__lt_body_grabber = T;
+	end;
+	return T;
+end)();
+bodyGrab.bindPlayers(playersService);
+local function getRoot(char)
+	local rec, model = bodyGrab.ensure(char);
+	if not rec then
+		return nil;
+	end;
+	return rec.root or (model and bodyGrab.firstPart(model)) or nil;
 end;
 local function getTorso(char)
-	char = normChar(char);
-	if not char then
+	local rec, model = bodyGrab.ensure(char);
+	if not rec then
 		return nil;
 	end;
-	local fallback;
-	for _, v in ipairs(char:GetDescendants()) do
-		if v:IsA("BasePart") then
-			local name = v.Name:lower();
-			if name == "torso" or name == "uppertorso" or name == "lowertorso" or name == "humanoidrootpart" then
-				return v;
-			elseif not fallback then
-				fallback = v;
-			end;
-		end;
-	end;
-	return fallback;
+	return rec.torso or (model and bodyGrab.firstPart(model)) or nil;
 end;
 local function getHead(char)
-	char = normChar(char);
-	if not char then
+	local rec, model = bodyGrab.ensure(char);
+	if not rec then
 		return nil;
 	end;
-	local fallback;
-	for _, v in ipairs(char:GetDescendants()) do
-		if v:IsA("BasePart") then
-			local name = v.Name:lower();
-			if name == "head" then
-				return v;
-			elseif not fallback then
-				fallback = v;
-			end;
-		end;
-	end;
-	return fallback;
+	return rec.head or (model and bodyGrab.firstPart(model)) or nil;
 end;
 local function getChar()
-	local plrs = players or ClonedService("Players");
-	if not plrs then
-		return nil;
-	end;
-	local plr = plrs.LocalPlayer;
-	return plr and plr.Character or nil;
+	local plr = playersService and playersService.LocalPlayer;
+	local _, model = bodyGrab.ensure(plr);
+	return model;
 end;
 local function getPlrChar(plr)
-	local fix = normChar(plr) or plr or nil;
-	return fix;
+	return bodyGrab.asChar(plr) or plr or nil;
 end;
 local function getHumanoid(char)
-	char = normChar(char) or getChar();
-	if not char then
+	local rec, model = bodyGrab.ensure(char or getChar());
+	if not model then
 		return nil;
 	end;
-	for _, v in ipairs(char:GetDescendants()) do
-		if v:IsA("Humanoid") then
-			return v;
-		end;
-	end;
-	return nil;
+	return rec and rec.humanoid or nil;
 end;
 local function getHum()
 	return getHumanoid(getChar());
@@ -200,19 +330,19 @@ end);]]
 local coreTypes = Enum.CoreGuiType:GetEnumItems()
 
 local function enableCoreGui()
-	if not starterGui then
+	if not starterGuiService then
 		return
 	end
 	for _, t in ipairs(coreTypes) do
 		if t ~= Enum.CoreGuiType.Backpack and t ~= Enum.CoreGuiType.All and t ~= Enum.CoreGuiType.EmotesMenu and t ~= Enum.CoreGuiType.Chat then
-			starterGui:SetCoreGuiEnabled(t, true)
+			starterGuiService:SetCoreGuiEnabled(t, true)
 		end
 	end
 end
 
 safeCall(function()
-	if rs and starterGui then
-		rs.RenderStepped:Connect(function()
+	if runService and starterGuiService then
+		runService.RenderStepped:Connect(function()
 			safeCall(enableCoreGui)
 		end)
 	end
@@ -238,8 +368,8 @@ local function applyLpProps(lp)
 	end
 end
 
-if rs then
-	rs.RenderStepped:Connect(function()
+if runService then
+	runService.RenderStepped:Connect(function()
 		safeCall(function()
 			applyLpProps(localPlayer)
 		end)
@@ -275,8 +405,8 @@ end
 	end);
 end);]]
 --[[safeCall(function()
-	if coreGui and coreGui:FindFirstChild("RobloxGui") then
-		local nf = coreGui.RobloxGui:FindFirstChild("NotificationFrame");
+	if coreGuiService and coreGuiService:FindFirstChild("RobloxGui") then
+		local nf = coreGuiService.RobloxGui:FindFirstChild("NotificationFrame");
 		if nf then
 			nf.ChildAdded:Connect(function(f)
 				safeCall(function()
@@ -344,8 +474,8 @@ safeCall(function()
 	end;
 end);
 safeCall(function()
-	if rs then
-		rs.RenderStepped:Connect(function()
+	if runService then
+		runService.RenderStepped:Connect(function()
 			safeCall(function()
 				local c = getChar()
 				local h = c and getHumanoid(c)
