@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-04-28T17:12:06.505Z",
+  "fetchedAt": "2026-04-28T20:47:45.487Z",
   "data": [
     {
       "_id": "680eaddf8b44717c060fcf8d",
@@ -468,8 +468,8 @@
     {
       "_id": "671411144ca6cb25603cc3b0",
       "title": "Seliware",
-      "version": "2.4.2",
-      "updatedDate": "04/28/2026 at 2:06 PM UTC",
+      "version": "2.4.3",
+      "updatedDate": "04/28/2026 at 7:46 PM UTC",
       "uncStatus": true,
       "free": false,
       "detected": true,
@@ -481,7 +481,7 @@
       "platform": "Windows",
       "extype": "wexecutor",
       "roleId": "1297289530361249945",
-      "index": 5,
+      "index": 3,
       "unlinked": false,
       "elementCertified": true,
       "cost": "$3.99 Weekly",
