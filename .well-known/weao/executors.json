@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-04-29T04:54:39.874Z",
+  "fetchedAt": "2026-04-29T16:14:26.791Z",
   "data": [
     {
       "_id": "680eaddf8b44717c060fcf8d",
@@ -49,13 +49,13 @@
     {
       "_id": "66ee1fcae70ddffe81ca0f0c",
       "title": "Codex",
-      "version": "2.716.875",
-      "updatedDate": "04/27/2026 at 8:09 PM UTC",
+      "version": "2.717.985",
+      "updatedDate": "04/29/2026 at 2:13 PM UTC",
       "uncStatus": true,
       "free": true,
       "detected": false,
-      "rbxversion": "2.716.875",
-      "updateStatus": false,
+      "rbxversion": "2.717.985",
+      "updateStatus": true,
       "websitelink": "https://codex.lol",
       "discordlink": "https://discord.gg/codexlol",
       "beta": false,
