@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-04-29T19:47:30.790Z",
+  "fetchedAt": "2026-04-29T21:09:56.681Z",
   "data": [
     {
       "_id": "680eaddf8b44717c060fcf8d",
@@ -248,13 +248,13 @@
     {
       "_id": "67d6005efa8c791236079278",
       "title": "Potassium",
-      "version": "2.1.3",
-      "updatedDate": "04/26/2026 at 10:06 PM UTC",
+      "version": "2.1.4",
+      "updatedDate": "04/29/2026 at 9:03 PM UTC",
       "uncStatus": true,
       "free": false,
       "detected": true,
-      "rbxversion": "version-390ba09e7e944154",
-      "updateStatus": false,
+      "rbxversion": "version-acc4b74f79e743b9",
+      "updateStatus": true,
       "websitelink": "https://www.potassium.pro/",
       "discordlink": "https://discord.com/invite/potassium",
       "beta": false,
@@ -423,8 +423,8 @@
     {
       "_id": "679553cd2eea89d30d0dae57",
       "title": "Xeno",
-      "version": "1.3.30",
-      "updatedDate": "04/29/2026 at 6:17 PM UTC",
+      "version": "1.3.35",
+      "updatedDate": "04/29/2026 at 9:02 PM UTC",
       "uncStatus": true,
       "free": true,
       "detected": true,
@@ -463,7 +463,8 @@
       "sunc": {
         "suncScrap": "bHuVFBkI6jJaT0aX",
         "suncKey": "c8yD77H6bDgnptRG0cX0kkVvNePVMBGO"
-      }
+      },
+      "hasIssues": false
     },
     {
       "_id": "671411144ca6cb25603cc3b0",
