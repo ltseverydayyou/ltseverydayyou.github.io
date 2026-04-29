@@ -1,16 +1,16 @@
 {
-  "fetchedAt": "2026-04-29T21:09:56.681Z",
+  "fetchedAt": "2026-04-29T22:32:17.393Z",
   "data": [
     {
       "_id": "680eaddf8b44717c060fcf8d",
       "title": "Velocity",
-      "version": "0.9.3",
-      "updatedDate": "04/22/2026 at 11:16 PM UTC",
+      "version": "0.9.4",
+      "updatedDate": "04/29/2026 at 9:41 PM UTC",
       "uncStatus": true,
       "free": true,
       "detected": true,
-      "rbxversion": "version-2e6461290a3541f5",
-      "updateStatus": false,
+      "rbxversion": "version-acc4b74f79e743b9",
+      "updateStatus": true,
       "discordlink": "https://discord.com/invite/velocityide",
       "beta": false,
       "platform": "Windows",
@@ -515,13 +515,13 @@
     {
       "_id": "67576d22d9181811c292bb79",
       "title": "Volt",
-      "version": "1.2.14.12",
-      "updatedDate": "04/27/2026 at 1:41 PM UTC",
+      "version": "1.2.15.1",
+      "updatedDate": "04/29/2026 at 10:30 PM UTC",
       "uncStatus": true,
       "free": false,
       "detected": true,
-      "rbxversion": "version-390ba09e7e944154",
-      "updateStatus": false,
+      "rbxversion": "version-acc4b74f79e743b9",
+      "updateStatus": true,
       "websitelink": "https://volt.bz/",
       "discordlink": "https://discord.com/invite/voltbz",
       "beta": false,
@@ -1653,7 +1653,7 @@
       "clientmods": true,
       "trackerId": "WEAO4a1j38nv",
       "hasIssues": false,
-      "hidden": false,
+      "hidden": true,
       "websitelink": "https://work.ink/2nLR/madium-install/"
     }
   ]
