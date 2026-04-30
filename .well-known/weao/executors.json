@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-04-30T03:56:10.216Z",
+  "fetchedAt": "2026-04-30T06:33:03.742Z",
   "data": [
     {
       "_id": "680eaddf8b44717c060fcf8d",
@@ -1488,13 +1488,13 @@
     {
       "_id": "69a4acadfa8a3af13c8930a9",
       "title": "Opiumware",
-      "version": "v2.3.1",
-      "updatedDate": "04/26/2026 at 4:37 PM UTC",
+      "version": "v2.3.2",
+      "updatedDate": "04/30/2026 at 4:22 AM UTC",
       "uncStatus": true,
       "free": true,
       "detected": false,
-      "rbxversion": "version-f0d1b413481b4d96",
-      "updateStatus": false,
+      "rbxversion": "version-1d604bb8b63849b4",
+      "updateStatus": true,
       "websitelink": "https://discord.gg/opiumware",
       "discordlink": "https://discord.gg/opiumware",
       "beta": false,
