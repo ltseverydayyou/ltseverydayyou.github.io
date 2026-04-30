@@ -1,250 +1,6 @@
 {
-  "fetchedAt": "2026-04-30T20:11:34.176Z",
+  "fetchedAt": "2026-04-30T23:56:18.173Z",
   "data": [
-    {
-      "_id": "680eaddf8b44717c060fcf8d",
-      "title": "Velocity",
-      "version": "0.9.4",
-      "updatedDate": "04/29/2026 at 9:41 PM UTC",
-      "uncStatus": true,
-      "free": true,
-      "detected": true,
-      "rbxversion": "version-acc4b74f79e743b9",
-      "updateStatus": true,
-      "discordlink": "https://discord.com/invite/velocityide",
-      "beta": false,
-      "platform": "Windows",
-      "extype": "wexecutor",
-      "roleId": "1366164709996363988",
-      "index": 10,
-      "elementCertified": true,
-      "decompiler": true,
-      "multiInject": true,
-      "suncPercentage": 94,
-      "uncPercentage": 99,
-      "sunc": {
-        "suncScrap": "Rz2fo7fxhdneY9d9",
-        "suncKey": "bQLGtQ5Zln68D9AwzPk52hnYxOtBbcbS"
-      },
-      "__v": 1,
-      "recommendedReason": {
-        "features": []
-      },
-      "clientmods": true,
-      "trackerId": "WEAO4a1e0747",
-      "slug": {
-        "fullDescription": "No description currently available. Check back soon!",
-        "logo": "https://cdn.weao.gg/slug/velocity/logo.png",
-        "owner": "CG",
-        "screenshots": [
-          "https://cdn.weao.gg/slug/velocity/screenshot1.png",
-          "https://cdn.weao.gg/slug/velocity/screenshot2.png",
-          "https://cdn.weao.gg/slug/velocity/screenshot3.png",
-          "https://cdn.weao.gg/slug/velocity/screenshot4.png"
-        ]
-      },
-      "hasIssues": false,
-      "websitelink": "https://realvelocity.xyz/"
-    },
-    {
-      "_id": "66ee1fcae70ddffe81ca0f0c",
-      "title": "Codex",
-      "version": "2.717.985",
-      "updatedDate": "04/30/2026 at 6:16 PM UTC",
-      "uncStatus": true,
-      "free": true,
-      "detected": false,
-      "rbxversion": "2.717.985",
-      "updateStatus": false,
-      "websitelink": "https://codex.lol",
-      "discordlink": "https://discord.gg/codexlol",
-      "beta": false,
-      "platform": "Android",
-      "extype": "aexecutor",
-      "roleId": "1247918434419871826",
-      "index": 4,
-      "unlinked": false,
-      "purchaselink": "https://robloxcheatz.com/affiliate/weao",
-      "uncPercentage": 98,
-      "decompiler": true,
-      "__v": 1,
-      "recommendedReason": {
-        "features": []
-      },
-      "keysystem": false,
-      "trackerId": "WEAO765cd973",
-      "sunc": {
-        "suncScrap": "U1qoiWmhnXU4xX8K",
-        "suncKey": "CJOxliNasyotGtl1QWl2ydRASGmvybqo"
-      },
-      "suncPercentage": 96,
-      "slug": {
-        "fullDescription": "No description currently available. Check back soon!",
-        "logo": "https://cdn.weao.gg/slug/codex/logo.png",
-        "owner": "Furky",
-        "screenshots": [
-          "https://cdn.weao.gg/slug/codex/screenshot1.png",
-          "https://cdn.weao.gg/slug/codex/screenshot2.png",
-          "https://cdn.weao.gg/slug/codex/screenshot3.png",
-          "https://cdn.weao.gg/slug/codex/screenshot4.png"
-        ]
-      }
-    },
-    {
-      "_id": "6733c47fd9dd590769498131",
-      "title": "Cryptic",
-      "version": "Version-2.710.707",
-      "updatedDate": "03/16/2026 at 6:57 PM UTC",
-      "uncStatus": true,
-      "free": true,
-      "detected": false,
-      "rbxversion": "version-2.710.707",
-      "updateStatus": false,
-      "websitelink": "https://getcryptic.net",
-      "discordlink": "https://discord.com/invite/Qb6M2Tmge3",
-      "beta": false,
-      "platform": "Android",
-      "extype": "aexecutor",
-      "roleId": "1311856135455772712",
-      "index": 3,
-      "purchaselink": "https://bloxproducts.com/?affiliate_key=weao#Cryptic",
-      "suncPercentage": 97,
-      "uncPercentage": 98,
-      "sunc": {
-        "suncScrap": "pTqBpY0oIxJBpcMV",
-        "suncKey": "V7fuG4KxZVbyApRXoMZr3OyO34r6LK0I"
-      },
-      "decompiler": true,
-      "keysystem": true,
-      "__v": 1,
-      "recommendedReason": {
-        "features": []
-      },
-      "trackerId": "WEAO0ce4c1ac",
-      "slug": {
-        "fullDescription": "No description currently available. Check back soon!",
-        "logo": "https://cdn.weao.gg/slug/cryptic/logo.png",
-        "owner": "Reaper",
-        "screenshots": [
-          "https://cdn.weao.gg/slug/cryptic/screenshot1.png",
-          "https://cdn.weao.gg/slug/cryptic/screenshot2.png",
-          "https://cdn.weao.gg/slug/cryptic/screenshot3.png",
-          "https://cdn.weao.gg/slug/cryptic/screenshot4.png"
-        ]
-      },
-      "hidden": false
-    },
-    {
-      "_id": "662d08a3cfca23ab88d4bc16",
-      "title": "Cryptic",
-      "version": "Version-2.2.1",
-      "updatedDate": "12/22/2025 at 10:12 PM UTC",
-      "uncStatus": true,
-      "free": false,
-      "detected": false,
-      "rbxversion": "version-41500f7f59744a37",
-      "updateStatus": false,
-      "websitelink": "https://getcryptic.net/",
-      "discordlink": "https://discord.gg/Qb6M2Tmge3",
-      "beta": false,
-      "platform": "Mac",
-      "purchaselink": "https://reapstore.mysellauth.com/product/cryptic-mac",
-      "extype": "mexecutor",
-      "roleId": "1443382340595224717",
-      "index": 3,
-      "elementCertified": true,
-      "cost": "$6.77 Monthly",
-      "decompiler": true,
-      "multiInject": false,
-      "suncPercentage": 100,
-      "uncPercentage": 99,
-      "sunc": {
-        "suncScrap": "kke0fPNwp0XnjAcp",
-        "suncKey": "8owOR1RsWm6R1I0l7VYaMWHXcQeg2c3D"
-      },
-      "__v": 1,
-      "recommendedReason": {
-        "features": []
-      },
-      "trackerId": "22222",
-      "clientmods": true,
-      "hidden": true,
-      "slug": {
-        "fullDescription": "No description currently available. Check back soon!"
-      }
-    },
-    {
-      "_id": "6756857399f246351c00743b",
-      "title": "Swift",
-      "version": "v1.6.3",
-      "updatedDate": "08/20/2025 at 10:49 PM UTC",
-      "uncStatus": true,
-      "free": true,
-      "detected": true,
-      "rbxversion": "version-89b6c70d8f7f42ac",
-      "updateStatus": false,
-      "websitelink": "https://getswift.vip/",
-      "discordlink": "https://discord.gg/getswiftgg",
-      "beta": false,
-      "platform": "Windows",
-      "extype": "wexecutor",
-      "roleId": "1249430146419789905",
-      "index": 6,
-      "elementCertified": true,
-      "decompiler": true,
-      "multiInject": true,
-      "suncPercentage": 100,
-      "uncPercentage": 99,
-      "sunc": {
-        "suncScrap": "bCk5AxUZFsSYBmwI",
-        "suncKey": "r73TNPitmQeh47913JTKeuSNzCD9Lcmz"
-      },
-      "__v": 1,
-      "recommendedReason": {
-        "features": []
-      },
-      "keysystem": true,
-      "trackerId": "WEAO0aab3ef0",
-      "slug": {
-        "fullDescription": "No description currently available. Check back soon!",
-        "logo": "https://cdn.weao.gg/slug/swift/logo.png",
-        "owner": "Bass",
-        "screenshots": [
-          "https://cdn.weao.gg/slug/swift/screenshot1.png"
-        ],
-        "hidden": true
-      },
-      "hidden": true
-    },
-    {
-      "_id": "66837bf003fe5828bec91bc5",
-      "title": "DX9WARE V2",
-      "version": "1.1.189",
-      "updatedDate": "04/29/2026 at 7:05 PM UTC",
-      "uncStatus": false,
-      "free": false,
-      "detected": false,
-      "rbxversion": "version-acc4b74f79e743b9",
-      "updateStatus": true,
-      "websitelink": "https://cultofintellect.com/",
-      "discordlink": "https://discord.gg/coi",
-      "purchaselink": "https://cultofintellect.com/dx9ware#pricing",
-      "beta": false,
-      "platform": "Windows",
-      "extype": "wexternal",
-      "roleId": "1257546124844208208",
-      "index": 11,
-      "elementCertified": true,
-      "cost": "$15 Lifetime",
-      "__v": 1,
-      "recommendedReason": {
-        "features": []
-      },
-      "trackerId": "WEAO1181f437",
-      "slug": {
-        "fullDescription": "No description currently available. Check back soon!"
-      }
-    },
     {
       "_id": "67d6005efa8c791236079278",
       "title": "Potassium",
@@ -295,131 +51,33 @@
       "unknown": false
     },
     {
-      "_id": "680ab721b50548f01fd62715",
-      "title": "Photon",
-      "version": "6.3",
-      "updatedDate": "04/29/2026 at 6:26 PM UTC",
+      "_id": "67e0d0d87d091e8f8b6d2a35",
+      "title": "Matcha",
+      "version": "v2",
+      "updatedDate": "04/29/2026 at 6:21 PM UTC",
       "uncStatus": false,
       "free": false,
       "detected": false,
       "rbxversion": "version-acc4b74f79e743b9",
       "updateStatus": true,
-      "websitelink": "https://photonsys.sellpass.io/",
-      "discordlink": "https://discord.gg/vro",
-      "purchaselink": "https://photonsys.sellpass.io/products/Photon-Lifetime",
+      "websitelink": "https://matcha-latte.win/",
+      "discordlink": "https://discord.gg/VbJXKZmEw5",
+      "purchaselink": "https://bloxproducts.com/r/weao#Matcha",
       "beta": false,
       "platform": "Windows",
       "extype": "wexternal",
-      "roleId": "1365085484455428147",
-      "index": 9,
+      "roleId": "1353570443461660693",
+      "index": 6,
       "elementCertified": true,
-      "cost": "$20 Lifetime",
+      "cost": "$9.99 Lifetime",
       "__v": 1,
       "recommendedReason": {
         "features": []
       },
-      "trackerId": "WEAO6c35cab4",
+      "trackerId": "WEAO7650fcf2",
       "slug": {
         "fullDescription": "No description currently available. Check back soon!"
       }
-    },
-    {
-      "_id": "662ae7576238b7f2082f253b",
-      "title": "Wave",
-      "version": "NEW-1.2.5",
-      "updatedDate": "04/30/2026 at 5:24 PM UTC",
-      "uncStatus": true,
-      "free": false,
-      "detected": true,
-      "rbxversion": "version-acc4b74f79e743b9",
-      "updateStatus": true,
-      "websitelink": "https://getwave.gg",
-      "discordlink": "https://discord.gg/rARhPpN7fY",
-      "beta": false,
-      "platform": "Windows",
-      "extype": "wexecutor",
-      "roleId": "1229897920673746974",
-      "index": 3,
-      "unlinked": false,
-      "purchaselink": "https://bloxproducts.com/?affiliate_key=weao#Wave",
-      "elementCertified": false,
-      "cost": "$5.99 Weekly",
-      "decompiler": true,
-      "multiInject": true,
-      "suncPercentage": 100,
-      "uncPercentage": 99,
-      "sunc": {
-        "suncScrap": "sUSMILer2W4h6cEv",
-        "suncKey": "H4zy64gtK8cyHnjxH3sZUPLBfNHaGC4A"
-      },
-      "__v": 1,
-      "recommendedReason": {
-        "features": []
-      },
-      "longestRunning": true,
-      "clientmods": true,
-      "trackerId": "WEAO2c8e5827",
-      "hidden": false,
-      "slug": {
-        "fullDescription": "Wave is a premium Windows script executor, costing $5.99 weekly, featuring: \n\n* Nice executor interface \n* 100% sUNC, Decompiler, Multi-Instance support\n* Decent reputation\n\nWave is one of the oldest premium exploits still available on the market (dating back to KRAMPUS.GG), although a different team now develops Wave.\n\n! Things to keep in mind: \n\n! The experience of using this executor is not as great due to the **new developers** working on it (not the same developers from 2025), but they have at least proven they are able to keep updating\n\n! The executor interface is the same as [Fusion](https://www.youtube.com/live/6yLGExPnRHY), though it is said that it was **sold** to them\n\n! **For the price, there are other options that might perform better**",
-        "logo": "https://cdn.weao.gg/slug/wave/logo.png",
-        "owner": "Wave Team",
-        "screenshots": [
-          "https://cdn.weao.gg/slug/wave/screenshot1.png",
-          "https://cdn.weao.gg/slug/wave/screenshot2.png",
-          "https://cdn.weao.gg/slug/wave/screenshot3.png",
-          "https://cdn.weao.gg/slug/wave/screenshot4.png",
-          "https://cdn.weao.gg/slug/wave/screenshot5.png",
-          "https://cdn.weao.gg/slug/wave/screenshot6.png",
-          "https://cdn.weao.gg/slug/wave/screenshot7.png"
-        ]
-      }
-    },
-    {
-      "_id": "681baa53ab565e11d3feba0e",
-      "title": "Volcano",
-      "version": "v3.2.5.1",
-      "updatedDate": "03/01/2026 at 8:42 PM UTC",
-      "uncStatus": true,
-      "free": false,
-      "detected": true,
-      "rbxversion": "version-760d064d05424689",
-      "updateStatus": false,
-      "websitelink": "https://volcano.wtf",
-      "discordlink": "https://volcano.wtf/discord.html",
-      "beta": false,
-      "platform": "Windows",
-      "extype": "wexecutor",
-      "roleId": "1361806029255348224",
-      "index": 9,
-      "unlinked": false,
-      "decompiler": true,
-      "multiInject": true,
-      "suncPercentage": 96,
-      "uncPercentage": 99,
-      "sunc": {
-        "suncScrap": "Hi3PrRpwKCKQfSRI",
-        "suncKey": "zqg8jFsm4mqESnp6hvgSHw1MIrj2vOcT"
-      },
-      "__v": 1,
-      "recommendedReason": {
-        "features": []
-      },
-      "purchaselink": "https://gckeys.cc/product?slug=volcano-executor&ref=weao",
-      "keysystem": false,
-      "clientmods": true,
-      "trackerId": "WEAO57c866d0",
-      "cost": "$5.97 Weekly",
-      "slug": {
-        "fullDescription": "Volcano is a premium Windows script executor developed by Co, costing $5.97 weekly, featuring: \n\n* Clean executor interface\n* SysGuard (Cheatbuddy’s sandboxing solution)\n* 96% sUNC\n* Decent update speed under normal Roblox update conditions\n* Comes with a decompiler built in and supports Multi-Instance\n\nVolcano originally operated as a Freemium exploit, but after SysGuard was implemented, it turned to a subscription-based model. \n\n! Things to keep in mind: \n\n! Previously, Volcano operated under the name **Electron** (the same one from **Pre-Hyperion/UWP**) until releasing multiple times Post-Hyperion and facing banwaves. Existing Electron customers were compensated with a Lifetime Volcano key, and since then, no banwaves have occurred due to client-modification detections being implemented in Roblox after the Hunt event.",
-        "logo": "https://cdn.weao.gg/slug/volcano/logo.png",
-        "owner": "(Co)",
-        "screenshots": [
-          "https://cdn.weao.gg/slug/volcano/screenshot1.png",
-          "https://cdn.weao.gg/slug/volcano/screenshot2.png"
-        ]
-      },
-      "hidden": true
     },
     {
       "_id": "679553cd2eea89d30d0dae57",
@@ -466,6 +124,155 @@
         "suncKey": "c8yD77H6bDgnptRG0cX0kkVvNePVMBGO"
       },
       "hasIssues": false
+    },
+    {
+      "_id": "680ab721b50548f01fd62715",
+      "title": "Photon",
+      "version": "6.3",
+      "updatedDate": "04/29/2026 at 6:26 PM UTC",
+      "uncStatus": false,
+      "free": false,
+      "detected": false,
+      "rbxversion": "version-acc4b74f79e743b9",
+      "updateStatus": true,
+      "websitelink": "https://photonsys.sellpass.io/",
+      "discordlink": "https://discord.gg/vro",
+      "purchaselink": "https://photonsys.sellpass.io/products/Photon-Lifetime",
+      "beta": false,
+      "platform": "Windows",
+      "extype": "wexternal",
+      "roleId": "1365085484455428147",
+      "index": 9,
+      "elementCertified": true,
+      "cost": "$20 Lifetime",
+      "__v": 1,
+      "recommendedReason": {
+        "features": []
+      },
+      "trackerId": "WEAO6c35cab4",
+      "slug": {
+        "fullDescription": "No description currently available. Check back soon!"
+      }
+    },
+    {
+      "_id": "66837bf003fe5828bec91bc5",
+      "title": "DX9WARE V2",
+      "version": "1.1.189",
+      "updatedDate": "04/29/2026 at 7:05 PM UTC",
+      "uncStatus": false,
+      "free": false,
+      "detected": false,
+      "rbxversion": "version-acc4b74f79e743b9",
+      "updateStatus": true,
+      "websitelink": "https://cultofintellect.com/",
+      "discordlink": "https://discord.gg/coi",
+      "purchaselink": "https://cultofintellect.com/dx9ware#pricing",
+      "beta": false,
+      "platform": "Windows",
+      "extype": "wexternal",
+      "roleId": "1257546124844208208",
+      "index": 11,
+      "elementCertified": true,
+      "cost": "$15 Lifetime",
+      "__v": 1,
+      "recommendedReason": {
+        "features": []
+      },
+      "trackerId": "WEAO1181f437",
+      "slug": {
+        "fullDescription": "No description currently available. Check back soon!"
+      }
+    },
+    {
+      "_id": "67c8a2cb376f9e598b466705",
+      "title": "SirHurt",
+      "version": "V5.428",
+      "updatedDate": "04/29/2026 at 6:16 PM UTC",
+      "uncStatus": true,
+      "free": false,
+      "detected": true,
+      "rbxversion": "version-acc4b74f79e743b9",
+      "updateStatus": true,
+      "websitelink": "https://sirhurt.net",
+      "discordlink": "https://discord.gg/CPKvWTgFdV",
+      "purchaselink": "https://sirhurt.net/#purchase",
+      "beta": false,
+      "platform": "Windows",
+      "extype": "wexecutor",
+      "roleId": "1316611609988300860",
+      "index": 11,
+      "unlinked": false,
+      "elementCertified": true,
+      "cost": "$2.80 Weekly",
+      "decompiler": true,
+      "multiInject": false,
+      "suncPercentage": 94,
+      "uncPercentage": 99,
+      "sunc": {
+        "suncScrap": "IZ2ozXNNm5IkW94m",
+        "suncKey": "KGgWvHlfq08uaeB9yHt2eSKDBLraYAqO"
+      },
+      "__v": 1,
+      "recommendedReason": {
+        "features": []
+      },
+      "clientmods": true,
+      "trackerId": "WEAO5caeb4a7",
+      "slug": {
+        "fullDescription": "No description currently available. Check back soon!",
+        "logo": "https://cdn.weao.gg/slug/sirhurt/logo.png",
+        "owner": "spook",
+        "screenshots": [
+          "https://cdn.weao.gg/slug/sirhurt/screenshot1.png",
+          "https://cdn.weao.gg/slug/sirhurt/screenshot2.png",
+          "https://cdn.weao.gg/slug/sirhurt/screenshot3.png",
+          "https://cdn.weao.gg/slug/sirhurt/screenshot4.png"
+        ]
+      }
+    },
+    {
+      "_id": "6733c47fd9dd590769498131",
+      "title": "Cryptic",
+      "version": "Version-2.710.707",
+      "updatedDate": "03/16/2026 at 6:57 PM UTC",
+      "uncStatus": true,
+      "free": true,
+      "detected": false,
+      "rbxversion": "version-2.710.707",
+      "updateStatus": false,
+      "websitelink": "https://getcryptic.net",
+      "discordlink": "https://discord.com/invite/Qb6M2Tmge3",
+      "beta": false,
+      "platform": "Android",
+      "extype": "aexecutor",
+      "roleId": "1311856135455772712",
+      "index": 3,
+      "purchaselink": "https://bloxproducts.com/?affiliate_key=weao#Cryptic",
+      "suncPercentage": 97,
+      "uncPercentage": 98,
+      "sunc": {
+        "suncScrap": "pTqBpY0oIxJBpcMV",
+        "suncKey": "V7fuG4KxZVbyApRXoMZr3OyO34r6LK0I"
+      },
+      "decompiler": true,
+      "keysystem": true,
+      "__v": 1,
+      "recommendedReason": {
+        "features": []
+      },
+      "trackerId": "WEAO0ce4c1ac",
+      "slug": {
+        "fullDescription": "No description currently available. Check back soon!",
+        "logo": "https://cdn.weao.gg/slug/cryptic/logo.png",
+        "owner": "Reaper",
+        "screenshots": [
+          "https://cdn.weao.gg/slug/cryptic/screenshot1.png",
+          "https://cdn.weao.gg/slug/cryptic/screenshot2.png",
+          "https://cdn.weao.gg/slug/cryptic/screenshot3.png",
+          "https://cdn.weao.gg/slug/cryptic/screenshot4.png"
+        ]
+      },
+      "hidden": false
     },
     {
       "_id": "671411144ca6cb25603cc3b0",
@@ -567,139 +374,87 @@
       "raknet": true
     },
     {
-      "_id": "6705f74ed02338b4f68f9c62",
-      "title": "Matrix Hub",
-      "version": "v2",
-      "updatedDate": "04/29/2026 at 7:03 PM UTC",
-      "uncStatus": false,
-      "free": false,
-      "detected": false,
-      "rbxversion": "version-acc4b74f79e743b9",
-      "updateStatus": true,
-      "websitelink": "https://matrixhubs.shop/",
-      "discordlink": "https://matrixhub.xyz/discord.html",
-      "beta": false,
-      "platform": "Windows",
-      "extype": "wexternal",
-      "roleId": "1293413270388215879",
-      "index": 8,
-      "purchaselink": "https://matrixhubs.shop/",
-      "elementCertified": false,
-      "cost": "$4.99 Lifetime",
-      "__v": 1,
-      "recommendedReason": {
-        "features": []
-      },
-      "trackerId": "WEAO6ee0e3b5",
-      "slug": {
-        "fullDescription": "No description currently available. Check back soon!"
-      }
-    },
-    {
-      "_id": "67e46208b0f3bdbd0d867c29",
-      "title": "Isabelle",
-      "version": "1.3.5",
-      "updatedDate": "12/03/2025 at 9:04 PM UTC",
-      "uncStatus": false,
-      "free": false,
-      "detected": false,
-      "rbxversion": "version-1849ecbff0824113",
-      "updateStatus": false,
-      "websitelink": "https://discord.gg/isabelle",
-      "discordlink": "https://discord.gg/isabelle",
-      "purchaselink": "https://ext.mysellauth.com",
-      "beta": false,
-      "platform": "Windows",
-      "extype": "wexternal",
-      "roleId": "1354550383283929108",
-      "index": 7,
-      "elementCertified": true,
-      "cost": "$7.99 Monthly",
-      "__v": 1,
-      "recommendedReason": {
-        "features": []
-      },
-      "trackerId": "WEAO56ab34f1",
-      "hidden": true,
-      "slug": {
-        "fullDescription": "No description currently available. Check back soon!"
-      }
-    },
-    {
-      "_id": "684aebf0e9ebf7df970468ec",
-      "title": "Assembly",
-      "version": "2.23",
-      "updatedDate": "08/07/2025 at 11:28 AM UTC",
-      "uncStatus": false,
-      "free": false,
-      "detected": false,
-      "rbxversion": "version-3f74e22590714de4",
-      "updateStatus": false,
-      "websitelink": "https://assembly.lol/",
-      "discordlink": "https://discord.gg/asmlol",
-      "purchaselink": "https://robloxcheatz.com/?ref=weao",
-      "beta": false,
-      "platform": "Windows",
-      "extype": "wexternal",
-      "roleId": "1382734679555178648",
-      "index": 5,
-      "elementCertified": true,
-      "cost": "$9.99 Lifetime",
-      "__v": 1,
-      "recommendedReason": {
-        "features": []
-      },
-      "trackerId": "WEAO21394b59",
-      "hidden": true,
-      "slug": {
-        "fullDescription": "No description currently available. Check back soon!"
-      }
-    },
-    {
-      "_id": "67c8a2cb376f9e598b466705",
-      "title": "SirHurt",
-      "version": "V5.428",
-      "updatedDate": "04/29/2026 at 6:16 PM UTC",
+      "_id": "680eaddf8b44717c060fcf8d",
+      "title": "Velocity",
+      "version": "0.9.4",
+      "updatedDate": "04/29/2026 at 9:41 PM UTC",
       "uncStatus": true,
-      "free": false,
+      "free": true,
       "detected": true,
       "rbxversion": "version-acc4b74f79e743b9",
       "updateStatus": true,
-      "websitelink": "https://sirhurt.net",
-      "discordlink": "https://discord.gg/CPKvWTgFdV",
-      "purchaselink": "https://sirhurt.net/#purchase",
+      "discordlink": "https://discord.com/invite/velocityide",
       "beta": false,
       "platform": "Windows",
       "extype": "wexecutor",
-      "roleId": "1316611609988300860",
-      "index": 11,
-      "unlinked": false,
+      "roleId": "1366164709996363988",
+      "index": 10,
       "elementCertified": true,
-      "cost": "$2.80 Weekly",
       "decompiler": true,
-      "multiInject": false,
+      "multiInject": true,
       "suncPercentage": 94,
       "uncPercentage": 99,
       "sunc": {
-        "suncScrap": "IZ2ozXNNm5IkW94m",
-        "suncKey": "KGgWvHlfq08uaeB9yHt2eSKDBLraYAqO"
+        "suncScrap": "Rz2fo7fxhdneY9d9",
+        "suncKey": "bQLGtQ5Zln68D9AwzPk52hnYxOtBbcbS"
       },
       "__v": 1,
       "recommendedReason": {
         "features": []
       },
       "clientmods": true,
-      "trackerId": "WEAO5caeb4a7",
+      "trackerId": "WEAO4a1e0747",
       "slug": {
         "fullDescription": "No description currently available. Check back soon!",
-        "logo": "https://cdn.weao.gg/slug/sirhurt/logo.png",
-        "owner": "spook",
+        "logo": "https://cdn.weao.gg/slug/velocity/logo.png",
+        "owner": "CG",
         "screenshots": [
-          "https://cdn.weao.gg/slug/sirhurt/screenshot1.png",
-          "https://cdn.weao.gg/slug/sirhurt/screenshot2.png",
-          "https://cdn.weao.gg/slug/sirhurt/screenshot3.png",
-          "https://cdn.weao.gg/slug/sirhurt/screenshot4.png"
+          "https://cdn.weao.gg/slug/velocity/screenshot1.png",
+          "https://cdn.weao.gg/slug/velocity/screenshot2.png",
+          "https://cdn.weao.gg/slug/velocity/screenshot3.png",
+          "https://cdn.weao.gg/slug/velocity/screenshot4.png"
         ]
+      },
+      "hasIssues": false,
+      "websitelink": "https://realvelocity.xyz/"
+    },
+    {
+      "_id": "662d08a3cfca23ab88d4bc16",
+      "title": "Cryptic",
+      "version": "Version-2.2.1",
+      "updatedDate": "12/22/2025 at 10:12 PM UTC",
+      "uncStatus": true,
+      "free": false,
+      "detected": false,
+      "rbxversion": "version-41500f7f59744a37",
+      "updateStatus": false,
+      "websitelink": "https://getcryptic.net/",
+      "discordlink": "https://discord.gg/Qb6M2Tmge3",
+      "beta": false,
+      "platform": "Mac",
+      "purchaselink": "https://reapstore.mysellauth.com/product/cryptic-mac",
+      "extype": "mexecutor",
+      "roleId": "1443382340595224717",
+      "index": 3,
+      "elementCertified": true,
+      "cost": "$6.77 Monthly",
+      "decompiler": true,
+      "multiInject": false,
+      "suncPercentage": 100,
+      "uncPercentage": 99,
+      "sunc": {
+        "suncScrap": "kke0fPNwp0XnjAcp",
+        "suncKey": "8owOR1RsWm6R1I0l7VYaMWHXcQeg2c3D"
+      },
+      "__v": 1,
+      "recommendedReason": {
+        "features": []
+      },
+      "trackerId": "22222",
+      "clientmods": true,
+      "hidden": true,
+      "slug": {
+        "fullDescription": "No description currently available. Check back soon!"
       }
     },
     {
@@ -744,6 +499,205 @@
           "https://cdn.weao.gg/slug/solara/screenshot3.png",
           "https://cdn.weao.gg/slug/solara/screenshot4.png"
         ]
+      }
+    },
+    {
+      "_id": "6705f74ed02338b4f68f9c62",
+      "title": "Matrix Hub",
+      "version": "v2",
+      "updatedDate": "04/29/2026 at 7:03 PM UTC",
+      "uncStatus": false,
+      "free": false,
+      "detected": false,
+      "rbxversion": "version-acc4b74f79e743b9",
+      "updateStatus": true,
+      "websitelink": "https://matrixhubs.shop/",
+      "discordlink": "https://matrixhub.xyz/discord.html",
+      "beta": false,
+      "platform": "Windows",
+      "extype": "wexternal",
+      "roleId": "1293413270388215879",
+      "index": 8,
+      "purchaselink": "https://matrixhubs.shop/",
+      "elementCertified": false,
+      "cost": "$4.99 Lifetime",
+      "__v": 1,
+      "recommendedReason": {
+        "features": []
+      },
+      "trackerId": "WEAO6ee0e3b5",
+      "slug": {
+        "fullDescription": "No description currently available. Check back soon!"
+      }
+    },
+    {
+      "_id": "662ae7576238b7f2082f253b",
+      "title": "Wave",
+      "version": "NEW-1.2.5",
+      "updatedDate": "04/30/2026 at 5:24 PM UTC",
+      "uncStatus": true,
+      "free": false,
+      "detected": true,
+      "rbxversion": "version-acc4b74f79e743b9",
+      "updateStatus": true,
+      "websitelink": "https://getwave.gg",
+      "discordlink": "https://discord.gg/rARhPpN7fY",
+      "beta": false,
+      "platform": "Windows",
+      "extype": "wexecutor",
+      "roleId": "1229897920673746974",
+      "index": 3,
+      "unlinked": false,
+      "purchaselink": "https://bloxproducts.com/?affiliate_key=weao#Wave",
+      "elementCertified": false,
+      "cost": "$5.99 Weekly",
+      "decompiler": true,
+      "multiInject": true,
+      "suncPercentage": 100,
+      "uncPercentage": 99,
+      "sunc": {
+        "suncScrap": "sUSMILer2W4h6cEv",
+        "suncKey": "H4zy64gtK8cyHnjxH3sZUPLBfNHaGC4A"
+      },
+      "__v": 1,
+      "recommendedReason": {
+        "features": []
+      },
+      "longestRunning": true,
+      "clientmods": true,
+      "trackerId": "WEAO2c8e5827",
+      "hidden": false,
+      "slug": {
+        "fullDescription": "Wave is a premium Windows script executor, costing $5.99 weekly, featuring: \n\n* Nice executor interface \n* 100% sUNC, Decompiler, Multi-Instance support\n* Decent reputation\n\nWave is one of the oldest premium exploits still available on the market (dating back to KRAMPUS.GG), although a different team now develops Wave.\n\n! Things to keep in mind: \n\n! The experience of using this executor is not as great due to the **new developers** working on it (not the same developers from 2025), but they have at least proven they are able to keep updating\n\n! The executor interface is the same as [Fusion](https://www.youtube.com/live/6yLGExPnRHY), though it is said that it was **sold** to them\n\n! **For the price, there are other options that might perform better**",
+        "logo": "https://cdn.weao.gg/slug/wave/logo.png",
+        "owner": "Wave Team",
+        "screenshots": [
+          "https://cdn.weao.gg/slug/wave/screenshot1.png",
+          "https://cdn.weao.gg/slug/wave/screenshot2.png",
+          "https://cdn.weao.gg/slug/wave/screenshot3.png",
+          "https://cdn.weao.gg/slug/wave/screenshot4.png",
+          "https://cdn.weao.gg/slug/wave/screenshot5.png",
+          "https://cdn.weao.gg/slug/wave/screenshot6.png",
+          "https://cdn.weao.gg/slug/wave/screenshot7.png"
+        ]
+      }
+    },
+    {
+      "_id": "66ee1eafe70ddffe81ca0f0b",
+      "title": "Delta",
+      "version": "2.718.1110",
+      "updatedDate": "04/30/2026 at 11:08 PM UTC",
+      "uncStatus": true,
+      "free": true,
+      "detected": false,
+      "rbxversion": "2.718.1110",
+      "updateStatus": true,
+      "websitelink": "https://deltaexploits.gg/",
+      "discordlink": "https://discord.gg/deltax",
+      "beta": false,
+      "platform": "Android",
+      "extype": "aexecutor",
+      "roleId": "1233149769677930546",
+      "index": 1,
+      "unlinked": false,
+      "decompiler": true,
+      "suncPercentage": 100,
+      "uncPercentage": 99,
+      "sunc": {
+        "suncKey": "9BRz1IBo7t8vVBaHgnaOZ1xRDNNtdAF9",
+        "suncScrap": "ju715lqo46qpiR1c"
+      },
+      "__v": 1,
+      "recommendedReason": {
+        "features": []
+      },
+      "keysystem": true,
+      "trackerId": "WEAO74bee327",
+      "slug": {
+        "fullDescription": "No description currently available. Check back soon!",
+        "logo": "https://cdn.weao.gg/slug/delta/logo.png",
+        "owner": "lxnny, mlemix",
+        "screenshots": [
+          "https://cdn.weao.gg/slug/delta/screenshot1.png",
+          "https://cdn.weao.gg/slug/delta/screenshot2.png",
+          "https://cdn.weao.gg/slug/delta/screenshot3.png",
+          "https://cdn.weao.gg/slug/delta/screenshot4.png"
+        ]
+      },
+      "raknet": true
+    },
+    {
+      "_id": "66ee1fcae70ddffe81ca0f0c",
+      "title": "Codex",
+      "version": "2.717.985",
+      "updatedDate": "04/30/2026 at 6:16 PM UTC",
+      "uncStatus": true,
+      "free": true,
+      "detected": false,
+      "rbxversion": "2.717.985",
+      "updateStatus": false,
+      "websitelink": "https://codex.lol",
+      "discordlink": "https://discord.gg/codexlol",
+      "beta": false,
+      "platform": "Android",
+      "extype": "aexecutor",
+      "roleId": "1247918434419871826",
+      "index": 4,
+      "unlinked": false,
+      "purchaselink": "https://robloxcheatz.com/affiliate/weao",
+      "uncPercentage": 98,
+      "decompiler": true,
+      "__v": 1,
+      "recommendedReason": {
+        "features": []
+      },
+      "keysystem": false,
+      "trackerId": "WEAO765cd973",
+      "sunc": {
+        "suncScrap": "U1qoiWmhnXU4xX8K",
+        "suncKey": "CJOxliNasyotGtl1QWl2ydRASGmvybqo"
+      },
+      "suncPercentage": 96,
+      "slug": {
+        "fullDescription": "No description currently available. Check back soon!",
+        "logo": "https://cdn.weao.gg/slug/codex/logo.png",
+        "owner": "Furky",
+        "screenshots": [
+          "https://cdn.weao.gg/slug/codex/screenshot1.png",
+          "https://cdn.weao.gg/slug/codex/screenshot2.png",
+          "https://cdn.weao.gg/slug/codex/screenshot3.png",
+          "https://cdn.weao.gg/slug/codex/screenshot4.png"
+        ]
+      }
+    },
+    {
+      "_id": "67e46208b0f3bdbd0d867c29",
+      "title": "Isabelle",
+      "version": "1.3.5",
+      "updatedDate": "12/03/2025 at 9:04 PM UTC",
+      "uncStatus": false,
+      "free": false,
+      "detected": false,
+      "rbxversion": "version-1849ecbff0824113",
+      "updateStatus": false,
+      "websitelink": "https://discord.gg/isabelle",
+      "discordlink": "https://discord.gg/isabelle",
+      "purchaselink": "https://ext.mysellauth.com",
+      "beta": false,
+      "platform": "Windows",
+      "extype": "wexternal",
+      "roleId": "1354550383283929108",
+      "index": 7,
+      "elementCertified": true,
+      "cost": "$7.99 Monthly",
+      "__v": 1,
+      "recommendedReason": {
+        "features": []
+      },
+      "trackerId": "WEAO56ab34f1",
+      "hidden": true,
+      "slug": {
+        "fullDescription": "No description currently available. Check back soon!"
       }
     },
     {
@@ -793,6 +747,95 @@
       "hidden": true
     },
     {
+      "_id": "6756857399f246351c00743b",
+      "title": "Swift",
+      "version": "v1.6.3",
+      "updatedDate": "08/20/2025 at 10:49 PM UTC",
+      "uncStatus": true,
+      "free": true,
+      "detected": true,
+      "rbxversion": "version-89b6c70d8f7f42ac",
+      "updateStatus": false,
+      "websitelink": "https://getswift.vip/",
+      "discordlink": "https://discord.gg/getswiftgg",
+      "beta": false,
+      "platform": "Windows",
+      "extype": "wexecutor",
+      "roleId": "1249430146419789905",
+      "index": 6,
+      "elementCertified": true,
+      "decompiler": true,
+      "multiInject": true,
+      "suncPercentage": 100,
+      "uncPercentage": 99,
+      "sunc": {
+        "suncScrap": "bCk5AxUZFsSYBmwI",
+        "suncKey": "r73TNPitmQeh47913JTKeuSNzCD9Lcmz"
+      },
+      "__v": 1,
+      "recommendedReason": {
+        "features": []
+      },
+      "keysystem": true,
+      "trackerId": "WEAO0aab3ef0",
+      "slug": {
+        "fullDescription": "No description currently available. Check back soon!",
+        "logo": "https://cdn.weao.gg/slug/swift/logo.png",
+        "owner": "Bass",
+        "screenshots": [
+          "https://cdn.weao.gg/slug/swift/screenshot1.png"
+        ],
+        "hidden": true
+      },
+      "hidden": true
+    },
+    {
+      "_id": "681baa53ab565e11d3feba0e",
+      "title": "Volcano",
+      "version": "v3.2.5.1",
+      "updatedDate": "03/01/2026 at 8:42 PM UTC",
+      "uncStatus": true,
+      "free": false,
+      "detected": true,
+      "rbxversion": "version-760d064d05424689",
+      "updateStatus": false,
+      "websitelink": "https://volcano.wtf",
+      "discordlink": "https://volcano.wtf/discord.html",
+      "beta": false,
+      "platform": "Windows",
+      "extype": "wexecutor",
+      "roleId": "1361806029255348224",
+      "index": 9,
+      "unlinked": false,
+      "decompiler": true,
+      "multiInject": true,
+      "suncPercentage": 96,
+      "uncPercentage": 99,
+      "sunc": {
+        "suncScrap": "Hi3PrRpwKCKQfSRI",
+        "suncKey": "zqg8jFsm4mqESnp6hvgSHw1MIrj2vOcT"
+      },
+      "__v": 1,
+      "recommendedReason": {
+        "features": []
+      },
+      "purchaselink": "https://gckeys.cc/product?slug=volcano-executor&ref=weao",
+      "keysystem": false,
+      "clientmods": true,
+      "trackerId": "WEAO57c866d0",
+      "cost": "$5.97 Weekly",
+      "slug": {
+        "fullDescription": "Volcano is a premium Windows script executor developed by Co, costing $5.97 weekly, featuring: \n\n* Clean executor interface\n* SysGuard (Cheatbuddy’s sandboxing solution)\n* 96% sUNC\n* Decent update speed under normal Roblox update conditions\n* Comes with a decompiler built in and supports Multi-Instance\n\nVolcano originally operated as a Freemium exploit, but after SysGuard was implemented, it turned to a subscription-based model. \n\n! Things to keep in mind: \n\n! Previously, Volcano operated under the name **Electron** (the same one from **Pre-Hyperion/UWP**) until releasing multiple times Post-Hyperion and facing banwaves. Existing Electron customers were compensated with a Lifetime Volcano key, and since then, no banwaves have occurred due to client-modification detections being implemented in Roblox after the Hunt event.",
+        "logo": "https://cdn.weao.gg/slug/volcano/logo.png",
+        "owner": "(Co)",
+        "screenshots": [
+          "https://cdn.weao.gg/slug/volcano/screenshot1.png",
+          "https://cdn.weao.gg/slug/volcano/screenshot2.png"
+        ]
+      },
+      "hidden": true
+    },
+    {
       "_id": "6837e1ca5f37edc7f4ff0197",
       "title": "Ronin",
       "version": "Version-3.9.1",
@@ -833,77 +876,34 @@
       }
     },
     {
-      "_id": "67e0d0d87d091e8f8b6d2a35",
-      "title": "Matcha",
-      "version": "v2",
-      "updatedDate": "04/29/2026 at 6:21 PM UTC",
+      "_id": "684aebf0e9ebf7df970468ec",
+      "title": "Assembly",
+      "version": "2.23",
+      "updatedDate": "08/07/2025 at 11:28 AM UTC",
       "uncStatus": false,
       "free": false,
       "detected": false,
-      "rbxversion": "version-acc4b74f79e743b9",
-      "updateStatus": true,
-      "websitelink": "https://matcha-latte.win/",
-      "discordlink": "https://discord.gg/VbJXKZmEw5",
-      "purchaselink": "https://bloxproducts.com/r/weao#Matcha",
+      "rbxversion": "version-3f74e22590714de4",
+      "updateStatus": false,
+      "websitelink": "https://assembly.lol/",
+      "discordlink": "https://discord.gg/asmlol",
+      "purchaselink": "https://robloxcheatz.com/?ref=weao",
       "beta": false,
       "platform": "Windows",
       "extype": "wexternal",
-      "roleId": "1353570443461660693",
-      "index": 6,
+      "roleId": "1382734679555178648",
+      "index": 5,
       "elementCertified": true,
       "cost": "$9.99 Lifetime",
       "__v": 1,
       "recommendedReason": {
         "features": []
       },
-      "trackerId": "WEAO7650fcf2",
+      "trackerId": "WEAO21394b59",
+      "hidden": true,
       "slug": {
         "fullDescription": "No description currently available. Check back soon!"
       }
-    },
-    {
-      "_id": "66ee1eafe70ddffe81ca0f0b",
-      "title": "Delta",
-      "version": "2.716.875",
-      "updatedDate": "04/27/2026 at 8:09 PM UTC",
-      "uncStatus": true,
-      "free": true,
-      "detected": false,
-      "rbxversion": "2.716.875",
-      "updateStatus": false,
-      "websitelink": "https://deltaexploits.gg/",
-      "discordlink": "https://discord.gg/deltax",
-      "beta": false,
-      "platform": "Android",
-      "extype": "aexecutor",
-      "roleId": "1233149769677930546",
-      "index": 1,
-      "unlinked": false,
-      "decompiler": true,
-      "suncPercentage": 100,
-      "uncPercentage": 99,
-      "sunc": {
-        "suncKey": "9BRz1IBo7t8vVBaHgnaOZ1xRDNNtdAF9",
-        "suncScrap": "ju715lqo46qpiR1c"
-      },
-      "__v": 1,
-      "recommendedReason": {
-        "features": []
-      },
-      "keysystem": true,
-      "trackerId": "WEAO74bee327",
-      "slug": {
-        "fullDescription": "No description currently available. Check back soon!",
-        "logo": "https://cdn.weao.gg/slug/delta/logo.png",
-        "owner": "lxnny, mlemix",
-        "screenshots": [
-          "https://cdn.weao.gg/slug/delta/screenshot1.png",
-          "https://cdn.weao.gg/slug/delta/screenshot2.png",
-          "https://cdn.weao.gg/slug/delta/screenshot3.png",
-          "https://cdn.weao.gg/slug/delta/screenshot4.png"
-        ]
-      },
-      "raknet": true
     },
     {
       "_id": "68084641b50548f01fd62713",
