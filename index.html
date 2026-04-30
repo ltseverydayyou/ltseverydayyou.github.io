@@ -6023,7 +6023,7 @@
                             </div>
                             <div class="rdd-field">
                                 <span>Channel</span>
-                                <input id="rdd-channel" type="text" placeholder="LIVE" />
+                                <input id="rdd-channel" type="text" placeholder="production" />
                             </div>
                             <div class="rdd-field">
                                 <span>Version hash (optional)</span>
@@ -12695,7 +12695,7 @@ self.addEventListener("message", async (event) => {
 
         function sanitizeRddChannel(value) {
             const trimmed = value.trim();
-            return trimmed || "LIVE";
+            return trimmed || "production";
         }
 
         function sanitizeRddVersion(value) {
