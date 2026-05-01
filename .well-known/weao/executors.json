@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-05-01T18:01:45.992Z",
+  "fetchedAt": "2026-05-01T23:58:56.685Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -323,14 +323,14 @@
     {
       "_id": "67576d22d9181811c292bb79",
       "title": "Volt",
-      "version": "1.2.15.1",
-      "updatedDate": "04/29/2026 at 10:30 PM UTC",
+      "version": "1.2.15.2",
+      "updatedDate": "05/01/2026 at 11:33 PM UTC",
       "uncStatus": true,
       "free": false,
       "detected": true,
       "rbxversion": "version-acc4b74f79e743b9",
       "updateStatus": true,
-      "websitelink": "https://volt.bz/",
+      "websitelink": "https://voltbz.net/",
       "discordlink": "https://discord.com/invite/voltbz",
       "beta": false,
       "platform": "Windows",
@@ -369,7 +369,7 @@
         ]
       },
       "clientmods": true,
-      "hasIssues": true,
+      "hasIssues": false,
       "detectionReason": "Last banwave: March 6-18th",
       "raknet": true
     },
