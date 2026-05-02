@@ -8,6 +8,15 @@ do
 	local realGetreg = type(getreg) == "function" and getreg or nil
 	local realLoadstring = type(loadstring) == "function" and loadstring or nil
 	local realLoad = type(load) == "function" and load or nil
+	local hostGlobalEnv
+	local okHost, resolvedHost = pcall(function()
+		return realGetgenv and realGetgenv() or realG
+	end)
+	if okHost and type(resolvedHost) == "table" then
+		hostGlobalEnv = resolvedHost
+	else
+		hostGlobalEnv = realG
+	end
 	local root
 	local ok, reg = pcall(function()
 		if realGetreg then
@@ -37,10 +46,10 @@ do
 			rawset(host, "__nameless_admin_private", root)
 		end
 	end
-	local env = rawget(root, "runtime")
+	local env = rawget(root, "stuffs_runtime")
 	if type(env) ~= "table" then
 		env = {}
-		rawset(root, "runtime", env)
+		rawset(root, "stuffs_runtime", env)
 	end
 	local function idx(_, k)
 		if k == "_G" or k == "shared" then
@@ -110,6 +119,7 @@ do
 	rawset(env, "getgenv", protectedGetgenv)
 	rawset(env, "getfenv", protectedGetfenv)
 	rawset(env, "setfenv", protectedSetfenv)
+	rawset(env, "__host_global_env", hostGlobalEnv)
 	if realLoadstring then
 		rawset(env, "loadstring", protectLoader(realLoadstring))
 	end
@@ -408,7 +418,7 @@ end;
 local function validBtn(b)
 	return typeof(b) == "Instance" and b:IsA("GuiButton")
 end
-getgenv().firebtnclick = function(b)
+local function firebtnclick(b)
 	if not (validBtn(b) and firesignal) then
 		return
 	end
@@ -419,7 +429,7 @@ getgenv().firebtnclick = function(b)
 		firesignal(b.Activated)
 	end
 end
-getgenv().firebtnhold = function(b)
+local function firebtnhold(b)
 	if not (validBtn(b) and firesignal) then
 		return
 	end
@@ -427,7 +437,7 @@ getgenv().firebtnhold = function(b)
 		firesignal(b.MouseButton1Down)
 	end
 end
-getgenv().firebtnlift = function(b)
+local function firebtnlift(b)
 	if not (validBtn(b) and firesignal) then
 		return
 	end
@@ -435,13 +445,43 @@ getgenv().firebtnlift = function(b)
 		firesignal(b.MouseButton1Up)
 	end
 end
-getgenv().firebtnall = function(b)
+local function firebtnall(b)
 	if not (validBtn(b) and firesignal) then
 		return
 	end
-	getgenv().firebtnhold(b)
-	getgenv().firebtnclick(b)
-	getgenv().firebtnlift(b)
+	firebtnhold(b)
+	firebtnclick(b)
+	firebtnlift(b)
+end
+local publicEnv = rawget(getgenv(), "__host_global_env")
+local function canUsePublicFireBtn()
+	return type(checkcaller) ~= "function" or checkcaller()
+end
+if type(publicEnv) == "table" then
+	publicEnv.firebtnclick = function(b)
+		if not canUsePublicFireBtn() then
+			return
+		end
+		return firebtnclick(b)
+	end
+	publicEnv.firebtnhold = function(b)
+		if not canUsePublicFireBtn() then
+			return
+		end
+		return firebtnhold(b)
+	end
+	publicEnv.firebtnlift = function(b)
+		if not canUsePublicFireBtn() then
+			return
+		end
+		return firebtnlift(b)
+	end
+	publicEnv.firebtnall = function(b)
+		if not canUsePublicFireBtn() then
+			return
+		end
+		return firebtnall(b)
+	end
 end
 --[[safeCall(function()
 	if setfpscap and rs then
@@ -675,7 +715,35 @@ safeCall(function()
 end);
 safeCall(function()
 	if (identifyexecutor()):lower() == "codex" then
-		_G.CodexUiCustomSettings = {
+		local host = (getgenv and getgenv()) or _G or {}
+		local dbg = rawget(host, "debug") or debug
+		local registry
+		if type(getreg) == "function" then
+			pcall(function()
+				registry = getreg()
+			end)
+		end
+		if type(registry) ~= "table" and type(dbg) == "table" and type(dbg.getregistry) == "function" then
+			pcall(function()
+				registry = dbg.getregistry()
+			end)
+		end
+		if type(registry) ~= "table" then
+			registry = host
+		end
+		local privateRoot = type(registry) == "table" and rawget(registry, "__nameless_admin_private") or nil
+		if type(privateRoot) ~= "table" then
+			privateRoot = {}
+			if type(registry) == "table" then
+				rawset(registry, "__nameless_admin_private", privateRoot)
+			end
+		end
+		local clickbaitState = rawget(privateRoot, "codex_clickbait")
+		if type(clickbaitState) ~= "table" then
+			clickbaitState = {}
+			rawset(privateRoot, "codex_clickbait", clickbaitState)
+		end
+		clickbaitState.settings = {
 			CodexSpooferImage = 9524079125,
 			CodexSpooferText = "Synapse X",
 			CodexSpooferPoweredBy = "x.synapse.to",
@@ -684,7 +752,7 @@ safeCall(function()
 			IconsOn = Color3.fromRGB(7, 103, 179),
 			IconsOff = Color3.fromRGB(100, 100, 100),
 			Fade = false
-		};
+		}
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/CodexClickbait.lua"))();
 	end;
 end);

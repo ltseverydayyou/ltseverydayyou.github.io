@@ -37,10 +37,10 @@ do
 			rawset(host, "__nameless_admin_private", root)
 		end
 	end
-	local env = rawget(root, "runtime")
+	local env = rawget(root, "game_checker_runtime")
 	if type(env) ~= "table" then
 		env = {}
-		rawset(root, "runtime", env)
+		rawset(root, "game_checker_runtime", env)
 	end
 	local function idx(_, k)
 		if k == "_G" or k == "shared" then
