@@ -1,3 +1,126 @@
+do
+	local realGetfenv = getfenv
+	local realSetfenv = setfenv
+	local realEnv = type(realGetfenv) == "function" and realGetfenv(0) or _G
+	local realG = _G
+	local realDebug = debug
+	local realGetgenv = type(getgenv) == "function" and getgenv or nil
+	local realGetreg = type(getreg) == "function" and getreg or nil
+	local realLoadstring = type(loadstring) == "function" and loadstring or nil
+	local realLoad = type(load) == "function" and load or nil
+	local root
+	local ok, reg = pcall(function()
+		if realGetreg then
+			return realGetreg()
+		end
+		if type(realDebug) == "table" and type(realDebug.getregistry) == "function" then
+			return realDebug.getregistry()
+		end
+	end)
+	if ok and type(reg) == "table" then
+		root = rawget(reg, "__nameless_admin_private")
+		if type(root) ~= "table" then
+			root = {}
+			rawset(reg, "__nameless_admin_private", root)
+		end
+	else
+		local host
+		ok, host = pcall(function()
+			return realGetgenv and realGetgenv() or realG
+		end)
+		if not ok or type(host) ~= "table" then
+			host = realG
+		end
+		root = rawget(host, "__nameless_admin_private")
+		if type(root) ~= "table" then
+			root = {}
+			rawset(host, "__nameless_admin_private", root)
+		end
+	end
+	local env = rawget(root, "runtime")
+	if type(env) ~= "table" then
+		env = {}
+		rawset(root, "runtime", env)
+	end
+	local function idx(_, k)
+		if k == "_G" or k == "shared" then
+			return env
+		end
+		if k == "getgenv" then
+			return function()
+				return env
+			end
+		end
+		if type(realEnv) == "table" then
+			return realEnv[k]
+		end
+	end
+	if rawget(env, "__env_ready") ~= true then
+		rawset(env, "__env_ready", true)
+		setmetatable(env, {
+			__index = idx,
+			__newindex = function(_, k, v)
+				rawset(env, k, v)
+			end,
+			__metatable = "protected"
+		})
+	end
+	local function protectedGetgenv()
+		return env
+	end
+	local function protectedGetfenv(target)
+		if type(realGetfenv) ~= "function" then
+			return env
+		end
+		if target == nil then
+			return env
+		end
+		if type(target) == "number" then
+			return env
+		end
+		local good, got = pcall(realGetfenv, target)
+		if good then
+			if got == realEnv or got == realG then
+				return env
+			end
+			return got
+		end
+		return env
+	end
+	local function protectedSetfenv(target, newEnv)
+		if type(realSetfenv) ~= "function" then
+			return target
+		end
+		if newEnv == nil or newEnv == realEnv or newEnv == realG then
+			newEnv = env
+		end
+		return realSetfenv(target, newEnv)
+	end
+	local function protectLoader(loader)
+		return function(src, chunk, ...)
+			local fn, err = loader(src, chunk, ...)
+			if type(fn) == "function" and type(realSetfenv) == "function" then
+				pcall(realSetfenv, fn, env)
+			end
+			return fn, err
+		end
+	end
+	rawset(env, "_G", env)
+	rawset(env, "shared", env)
+	rawset(env, "getgenv", protectedGetgenv)
+	rawset(env, "getfenv", protectedGetfenv)
+	rawset(env, "setfenv", protectedSetfenv)
+	if realLoadstring then
+		rawset(env, "loadstring", protectLoader(realLoadstring))
+	end
+	if realLoad then
+		rawset(env, "load", protectLoader(realLoad))
+	end
+	if type(realSetfenv) == "function" then
+		realSetfenv(1, env)
+	end
+end
+
 if getgenv().sexyStuff69 then return end
 pcall(function() getgenv().sexyStuff69 = true end)
 
