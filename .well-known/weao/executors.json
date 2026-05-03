@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-05-03T07:06:21.713Z",
+  "fetchedAt": "2026-05-03T09:04:31.903Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -1337,13 +1337,13 @@
     {
       "_id": "692794d789eb1e034ad699c3",
       "title": "MacSploit",
-      "version": "716.142",
-      "updatedDate": "04/13/2026 at 6:28 AM UTC",
+      "version": "719.142",
+      "updatedDate": "05/03/2026 at 7:24 AM UTC",
       "uncStatus": true,
       "free": false,
       "detected": false,
-      "rbxversion": "version-cf482a12325c4ed4",
-      "updateStatus": false,
+      "rbxversion": "version-1d604bb8b63849b4",
+      "updateStatus": true,
       "websitelink": "https://www.raptor.fun/",
       "discordlink": "https://discord.gg/macsploit",
       "beta": false,
