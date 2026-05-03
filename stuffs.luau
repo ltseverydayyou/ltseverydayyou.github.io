@@ -515,9 +515,6 @@ local desiredLpProps = {
 	DevTouchCameraMode = Enum.DevTouchCameraMovementMode.UserChoice,
 	DevComputerMovementMode = Enum.DevComputerMovementMode.UserChoice,
 	DevComputerCameraMode = Enum.DevComputerCameraMovementMode.UserChoice,
-	--CameraMode = Enum.CameraMode.Classic,
-	--CameraMaxZoomDistance = math.huge,
-	--CameraMinZoomDistance = 0
 }
 
 local function applyLpProps(lp)
