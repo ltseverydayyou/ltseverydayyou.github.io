@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-05-02T17:49:32.128Z",
+  "fetchedAt": "2026-05-03T07:06:21.713Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -1412,13 +1412,13 @@
     {
       "_id": "6949f9ee0260ad9e36c73700",
       "title": "RbxCli",
-      "version": "undefined",
-      "updatedDate": "05/02/2026 at 5:06 PM UTC",
+      "version": "1.6.13-alpha",
+      "updatedDate": "05/03/2026 at 4:28 AM UTC",
       "uncStatus": false,
       "free": false,
       "detected": false,
       "rbxversion": "version-acc4b74f79e743b9",
-      "updateStatus": false,
+      "updateStatus": true,
       "discordlink": "https://discord.gg/RZgUP8UZQ3",
       "purchaselink": "https://bloxproducts.com/r/weao#RbxCli",
       "beta": false,
@@ -1488,8 +1488,8 @@
     {
       "_id": "69a4acadfa8a3af13c8930a9",
       "title": "Opiumware",
-      "version": "v2.3.2",
-      "updatedDate": "04/30/2026 at 4:22 AM UTC",
+      "version": "v2.3.3",
+      "updatedDate": "05/03/2026 at 6:39 AM UTC",
       "uncStatus": true,
       "free": true,
       "detected": false,
