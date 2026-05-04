@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-05-03T22:49:37.745Z",
+  "fetchedAt": "2026-05-04T13:09:05.518Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -277,8 +277,8 @@
     {
       "_id": "671411144ca6cb25603cc3b0",
       "title": "Seliware",
-      "version": "2.4.6",
-      "updatedDate": "05/01/2026 at 5:15 PM UTC",
+      "version": "2.4.7",
+      "updatedDate": "05/04/2026 at 12:17 PM UTC",
       "uncStatus": true,
       "free": false,
       "detected": true,
@@ -629,13 +629,13 @@
     {
       "_id": "66ee1fcae70ddffe81ca0f0c",
       "title": "Codex",
-      "version": "2.717.985",
-      "updatedDate": "04/30/2026 at 6:16 PM UTC",
+      "version": "2.718.1110",
+      "updatedDate": "05/04/2026 at 12:57 PM UTC",
       "uncStatus": true,
       "free": true,
       "detected": false,
-      "rbxversion": "2.717.985",
-      "updateStatus": false,
+      "rbxversion": "2.718.1110",
+      "updateStatus": true,
       "websitelink": "https://codex.lol",
       "discordlink": "https://discord.gg/codexlol",
       "beta": false,
