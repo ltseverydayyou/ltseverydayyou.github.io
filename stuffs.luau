@@ -497,9 +497,11 @@ local skippedCoreGuiTypes = {
 	[Enum.CoreGuiType.EmotesMenu] = true,
 	[Enum.CoreGuiType.Chat] = true,
 }
-local experienceShopType = Enum.CoreGuiType.ExperienceShop
-if experienceShopType ~= nil then
-	skippedCoreGuiTypes[experienceShopType] = true
+for _, coreType in ipairs(coreTypes) do
+	if tostring(coreType.Name) == "ExperienceShop" then
+		skippedCoreGuiTypes[coreType] = true
+		break
+	end
 end
 
 local function enableCoreGui()
