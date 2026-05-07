@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-05-07T07:48:19.316Z",
+  "fetchedAt": "2026-05-07T19:15:11.817Z",
   "data": [
     {
       "_id": "680eaddf8b44717c060fcf8d",
@@ -1494,7 +1494,7 @@
       "free": true,
       "detected": false,
       "rbxversion": "version-4a858a3a05c64f79",
-      "updateStatus": true,
+      "updateStatus": false,
       "websitelink": "https://discord.gg/opiumware",
       "discordlink": "https://discord.gg/opiumware",
       "beta": false,
