@@ -491,14 +491,25 @@ end
 	end;
 end);]]
 local coreTypes = Enum.CoreGuiType:GetEnumItems()
+local skippedCoreGuiTypes = {
+	[Enum.CoreGuiType.Backpack] = true,
+	[Enum.CoreGuiType.All] = true,
+	[Enum.CoreGuiType.EmotesMenu] = true,
+	[Enum.CoreGuiType.Chat] = true,
+}
 
 local function enableCoreGui()
 	if not starterGuiService then
 		return
 	end
 	for _, t in ipairs(coreTypes) do
-		if t ~= Enum.CoreGuiType.Backpack and t ~= Enum.CoreGuiType.All and t ~= Enum.CoreGuiType.EmotesMenu and t ~= Enum.CoreGuiType.Chat then
-			starterGuiService:SetCoreGuiEnabled(t, true)
+		if not skippedCoreGuiTypes[t] then
+			local ok = pcall(function()
+				starterGuiService:SetCoreGuiEnabled(t, true)
+			end)
+			if not ok then
+				skippedCoreGuiTypes[t] = true
+			end
 		end
 	end
 end
