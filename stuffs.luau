@@ -497,6 +497,10 @@ local skippedCoreGuiTypes = {
 	[Enum.CoreGuiType.EmotesMenu] = true,
 	[Enum.CoreGuiType.Chat] = true,
 }
+local experienceShopType = Enum.CoreGuiType.ExperienceShop
+if experienceShopType ~= nil then
+	skippedCoreGuiTypes[experienceShopType] = true
+end
 
 local function enableCoreGui()
 	if not starterGuiService then
