@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-05-06T22:25:15.329Z",
+  "fetchedAt": "2026-05-07T01:17:41.834Z",
   "data": [
     {
       "_id": "680eaddf8b44717c060fcf8d",
@@ -705,13 +705,13 @@
     {
       "_id": "66633ac4b29bacaa7a568fdc",
       "title": "Solara",
-      "version": "3.246",
-      "updatedDate": "05/06/2026 at 3:29 AM UTC",
+      "version": "3.247",
+      "updatedDate": "05/07/2026 at 1:02 AM UTC",
       "uncStatus": true,
       "free": true,
       "detected": true,
-      "rbxversion": "version-acc4b74f79e743b9",
-      "updateStatus": false,
+      "rbxversion": "version-bf6344c9c23446bf",
+      "updateStatus": true,
       "websitelink": "https://getsolara.dev",
       "discordlink": "https://getsolara.dev/discord",
       "beta": false,
