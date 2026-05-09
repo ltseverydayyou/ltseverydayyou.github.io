@@ -6984,7 +6984,7 @@
         }
 
         const ROBLOX_USER_RESULT_LIMIT = 10;
-        const ROBLOX_USER_PROXY_ROOT = "roproxy.com";
+        const ROBLOX_USER_PROXY_ROOTS = ["roproxy.com", "rotunnel.com"];
         const ROBLOX_ASSET_TYPE_META = {
             1: {
                 label: "Image",
@@ -7351,10 +7351,11 @@
         }
 
         function getRobloxUserProxyFirstEndpoints(endpoint) {
-            const proxyEndpoint = buildRobloxProxyUrl(endpoint, ROBLOX_USER_PROXY_ROOT);
-            return proxyEndpoint && proxyEndpoint !== endpoint ?
-                [proxyEndpoint, endpoint] :
-                [endpoint];
+            const endpoints = ROBLOX_USER_PROXY_ROOTS
+                .map((proxyRoot) => buildRobloxProxyUrl(endpoint, proxyRoot))
+                .filter(Boolean);
+            endpoints.push(buildRobloxProxyUrl(endpoint, "roblox.com") || endpoint);
+            return [...new Set(endpoints)];
         }
 
         async function fetchRobloxJsonSafe(endpoint, contextLabel, options = {}) {
@@ -8377,25 +8378,39 @@
         }
 
         async function fetchAssetsDownloaderJson(url, contextLabel) {
-            const response = await fetch(url, {
-                cache: "no-store",
-                headers: {
-                    Accept: "application/json"
+            const attempts = buildJsonFetchAttempts(url, "GET");
+            let lastError = null;
+            for (const attempt of attempts) {
+                try {
+                    const response = await fetch(attempt.url, {
+                        cache: "no-store",
+                        headers: {
+                            Accept: "application/json"
+                        }
+                    });
+                    const raw = await response.text();
+                    let payload = null;
+                    try {
+                        payload = raw ? JSON.parse(raw) : null;
+                    } catch {
+                        payload = null;
+                    }
+                    if (!response.ok) {
+                        const error = new Error(
+                            extractAssetsDownloaderErrorMessage(payload, contextLabel, response.status)
+                        );
+                        error.status = response.status;
+                        throw error;
+                    }
+                    return payload;
+                } catch (error) {
+                    lastError = error;
+                    if (!shouldRetryWithProxy(error)) {
+                        break;
+                    }
                 }
-            });
-            const raw = await response.text();
-            let payload = null;
-            try {
-                payload = raw ? JSON.parse(raw) : null;
-            } catch {
-                payload = null;
             }
-            if (!response.ok) {
-                throw new Error(
-                    extractAssetsDownloaderErrorMessage(payload, contextLabel, response.status)
-                );
-            }
-            return payload;
+            throw lastError instanceof Error ? lastError : new Error(`${contextLabel} failed.`);
         }
 
         async function inspectRobloxAsset(rawValue) {
@@ -8585,20 +8600,39 @@
 
             try {
                 const proxyUrl = buildAssetsDownloaderProxyUrl(assetId);
-                const response = await fetch(proxyUrl, {
-                    cache: "no-store"
-                });
-                if (!response.ok) {
-                    const raw = await response.text();
-                    let payload = null;
+                const attempts = buildJsonFetchAttempts(proxyUrl, "GET");
+                let response = null;
+                let lastError = null;
+                for (const attempt of attempts) {
                     try {
-                        payload = raw ? JSON.parse(raw) : null;
-                    } catch {
-                        payload = null;
+                        response = await fetch(attempt.url, {
+                            cache: "no-store"
+                        });
+                        if (!response.ok) {
+                            const raw = await response.text();
+                            let payload = null;
+                            try {
+                                payload = raw ? JSON.parse(raw) : null;
+                            } catch {
+                                payload = null;
+                            }
+                            const error = new Error(
+                                extractAssetsDownloaderErrorMessage(payload, "Asset download", response.status)
+                            );
+                            error.status = response.status;
+                            throw error;
+                        }
+                        break;
+                    } catch (error) {
+                        lastError = error;
+                        response = null;
+                        if (!shouldRetryWithProxy(error)) {
+                            break;
+                        }
                     }
-                    throw new Error(
-                        extractAssetsDownloaderErrorMessage(payload, "Asset download", response.status)
-                    );
+                }
+                if (!response) {
+                    throw lastError instanceof Error ? lastError : new Error("Asset download failed.");
                 }
 
                 const blob = await response.blob();
@@ -11707,7 +11741,7 @@ self.addEventListener("message", async (event) => {
             }
         }
 
-        const robloxProxyFallbackRoots = ["roproxy.com"];
+        const robloxProxyFallbackRoots = ["roproxy.com", "rotunnel.com"];
         const jsonProxyFallbacks = [
             {
                 label: "Codetabs",
@@ -11718,26 +11752,31 @@ self.addEventListener("message", async (event) => {
 
         function isRobloxApiUrl(value) {
             try {
-                return /(^|\.)roblox\.com$/i.test(new URL(value).hostname);
+                return /(^|\.)(roblox|roproxy|rotunnel)\.com$/i.test(new URL(value).hostname);
             } catch {
                 return false;
+            }
+        }
+
+        function getRobloxApiSubdomain(endpoint) {
+            try {
+                const url = new URL(endpoint);
+                const match = url.hostname.match(/^(.+)\.(?:roblox|roproxy|rotunnel)\.com$/i);
+                return match ? match[1] : "";
+            } catch {
+                return "";
             }
         }
 
         function buildRobloxProxyUrl(endpoint, proxyRoot) {
             try {
                 const url = new URL(endpoint);
-                if (!/(^|\.)roblox\.com$/i.test(url.hostname)) {
+                const subdomain = getRobloxApiSubdomain(endpoint);
+                if (!subdomain) {
                     return "";
                 }
 
-                const parts = url.hostname.split(".");
-                if (parts.length < 2) {
-                    return "";
-                }
-
-                parts.splice(parts.length - 2, 2, ...proxyRoot.split("."));
-                url.hostname = parts.join(".");
+                url.hostname = `${subdomain}.${proxyRoot}`;
                 return url.toString();
             } catch {
                 return "";
@@ -11756,14 +11795,9 @@ self.addEventListener("message", async (event) => {
         }
 
         function buildJsonFetchAttempts(endpoint, method = "GET") {
-            const attempts = [
-                {
-                    label: "primary",
-                    url: endpoint
-                }
-            ];
-            const seen = new Set([endpoint]);
-            const robloxProxyTargets = [];
+            const attempts = [];
+            const seen = new Set();
+            const robloxTargets = [];
             const normalizedMethod =
                 typeof method === "string" ? method.toUpperCase() : "GET";
 
@@ -11774,17 +11808,32 @@ self.addEventListener("message", async (event) => {
                         return;
                     }
                     seen.add(proxyUrl);
-                    robloxProxyTargets.push(proxyUrl);
+                    robloxTargets.push(proxyUrl);
                     attempts.push({
                         label: proxyRoot,
                         url: proxyUrl
                     });
                 });
+                const robloxUrl = buildRobloxProxyUrl(endpoint, "roblox.com") || endpoint;
+                if (robloxUrl && !seen.has(robloxUrl)) {
+                    seen.add(robloxUrl);
+                    robloxTargets.push(robloxUrl);
+                    attempts.push({
+                        label: "roblox.com",
+                        url: robloxUrl
+                    });
+                }
+            } else {
+                seen.add(endpoint);
+                attempts.push({
+                    label: "primary",
+                    url: endpoint
+                });
             }
 
             if (normalizedMethod === "GET") {
                 jsonProxyFallbacks.forEach((proxy) => {
-                    [endpoint, ...robloxProxyTargets].forEach((targetUrl) => {
+                    (robloxTargets.length ? robloxTargets : [endpoint]).forEach((targetUrl) => {
                         const proxyUrl = proxy.buildUrl(targetUrl);
                         if (!proxyUrl || seen.has(proxyUrl)) {
                             return;
