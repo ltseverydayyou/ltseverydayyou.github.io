@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-05-10T10:46:13.658Z",
+  "fetchedAt": "2026-05-10T23:27:21.776Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -355,7 +355,7 @@
       "hidden": false,
       "trackerId": "WEAO0fc0936f",
       "slug": {
-        "fullDescription": "Volt (previously AWP.GG) is a premium Windows script executor costing $5.99 weekly, featuring: \n\n* Working Hyperion Emulation\n* VSCode IDE Style UI\n* 98% sUNC (Uses Medal for the decompiler, causing it not to get 100%)\n* Optimized Multi-Instance (Be sure to check out Volt’s tiers or consider purchasing the farmer package directly on [VOLT.BZ](https://volt.bz), as they have an instance cap on their normal tiers!)\n* Fast updates under normal Roblox update conditions\n\n! Things to keep in mind: \n\n! While under the AWP.GG name, this exploit had a **long downtime period**, but after rebranding (And possibly switching developers), all existing users were compensated, and it has been reliably updating ever since. \n\nFor a better decompilation experience, consider purchasing [Oracle Decompiler](https://discord.gg/decompiler) for $11.63 alongside it, but for most cases, [Medal Decompiler](https://github.com/Stefanuk12/medal-decompiler) serves just fine. ",
+        "fullDescription": "Volt (previously AWP.GG) is a premium Windows script executor costing $5.99 weekly, featuring: \n\n* Working Hyperion Emulation\n* VSCode IDE Style UI\n* 98% sUNC (Uses Medal for the decompiler, causing it not to get 100%)\n* Optimized Multi-Instance (Be sure to check out Volt’s tiers or consider purchasing the farmer package directly on [VOLTBZ.NET](https://voltbz.net), as they have an instance cap on their normal tiers!)\n* Fast updates under normal Roblox update conditions\n\n! Things to keep in mind: \n\n! While under the AWP.GG name, this exploit had a **long downtime period**, but after rebranding (And possibly switching developers), all existing users were compensated, and it has been reliably updating ever since. \n\nFor a better decompilation experience, consider purchasing [Oracle Decompiler](https://discord.gg/decompiler) for $11.63 alongside it, but for most cases, [Medal Decompiler](https://github.com/Stefanuk12/medal-decompiler) serves just fine. ",
         "logo": "https://cdn.weao.gg/slug/volt/logo.png",
         "owner": "Volt Team",
         "screenshots": [
@@ -533,13 +533,13 @@
     {
       "_id": "662ae7576238b7f2082f253b",
       "title": "Wave",
-      "version": "NEW-1.2.5",
-      "updatedDate": "04/30/2026 at 5:24 PM UTC",
+      "version": "NEW-1.2.6",
+      "updatedDate": "05/10/2026 at 10:23 PM UTC",
       "uncStatus": true,
       "free": false,
       "detected": true,
-      "rbxversion": "version-acc4b74f79e743b9",
-      "updateStatus": false,
+      "rbxversion": "version-bf6344c9c23446bf",
+      "updateStatus": true,
       "websitelink": "https://getwave.gg",
       "discordlink": "https://discord.gg/rARhPpN7fY",
       "beta": false,
@@ -1654,7 +1654,7 @@
       },
       "clientmods": true,
       "trackerId": "WEAO4a1j38nv",
-      "hasIssues": false,
+      "hasIssues": true,
       "hidden": false,
       "websitelink": "https://getmadium.net/"
     }
