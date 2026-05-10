@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-05-09T19:08:37.626Z",
+  "fetchedAt": "2026-05-10T04:32:22.067Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -186,13 +186,13 @@
     {
       "_id": "67c8a2cb376f9e598b466705",
       "title": "SirHurt",
-      "version": "V5.428",
-      "updatedDate": "05/08/2026 at 11:45 PM UTC",
+      "version": "V5.429",
+      "updatedDate": "05/10/2026 at 12:14 AM UTC",
       "uncStatus": true,
       "free": false,
       "detected": true,
       "rbxversion": "version-bf6344c9c23446bf",
-      "updateStatus": false,
+      "updateStatus": true,
       "websitelink": "https://sirhurt.net",
       "discordlink": "https://discord.gg/CPKvWTgFdV",
       "purchaselink": "https://sirhurt.net/#purchase",
