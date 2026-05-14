@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-05-14T01:26:16.069Z",
+  "fetchedAt": "2026-05-14T08:09:15.448Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -589,7 +589,7 @@
       "updatedDate": "05/12/2026 at 12:23 AM UTC",
       "uncStatus": true,
       "free": true,
-      "detected": false,
+      "detected": true,
       "rbxversion": "2.720.1167",
       "updateStatus": true,
       "websitelink": "https://deltaexploits.gg/",
@@ -1000,7 +1000,7 @@
       "updatedDate": "05/11/2026 at 8:48 PM UTC",
       "uncStatus": true,
       "free": true,
-      "detected": false,
+      "detected": true,
       "rbxversion": "2.720.1164",
       "updateStatus": true,
       "websitelink": "https://deltaexploits.gg/",
