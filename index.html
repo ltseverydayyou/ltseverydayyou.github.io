@@ -6446,7 +6446,7 @@
                             <h3>File Converter</h3>
                             <p class="image-converter__intro">
                                 Convert uploaded images, GIFs, music, and videos into common web-ready formats.
-                                Powered by open-source FFmpeg.wasm with a fast browser canvas path for PNG, JPG, and WebP.
+                                Uses browser-native Canvas, Web Audio, and MediaRecorder APIs with no server upload.
                             </p>
                         </div>
                     </div>
@@ -7860,13 +7860,6 @@
             outputName: "",
             busy: false
         };
-        const imageConverterFfmpegState = {
-            instance: null,
-            loading: null,
-            FFmpegClass: null,
-            fetchFile: null,
-            toBlobURL: null
-        };
         const imageConverterImageExtensions = [
             "png", "jpg", "jpeg", "jfif", "pjpeg", "pjp", "webp", "gif", "svg", "svgz",
             "bmp", "dib", "ico", "cur", "tif", "tiff", "avif", "heic", "heif", "apng",
@@ -7892,60 +7885,27 @@
                 { key: "jpg", label: ".jpg", mime: "image/jpeg", ext: "jpg", lossy: true, canvas: true },
                 { key: "jpeg", label: ".jpeg", mime: "image/jpeg", ext: "jpeg", lossy: true, canvas: true },
                 { key: "webp", label: ".webp", mime: "image/webp", ext: "webp", lossy: true, canvas: true },
-                { key: "gif", label: ".gif", mime: "image/gif", ext: "gif", ffmpeg: true },
-                { key: "svg", label: ".svg", mime: "image/svg+xml", ext: "svg", ffmpeg: true },
-                { key: "bmp", label: ".bmp", mime: "image/bmp", ext: "bmp", ffmpeg: true },
-                { key: "ico", label: ".ico", mime: "image/x-icon", ext: "ico", ffmpeg: true },
-                { key: "tif", label: ".tif", mime: "image/tiff", ext: "tif", ffmpeg: true },
-                { key: "tiff", label: ".tiff", mime: "image/tiff", ext: "tiff", ffmpeg: true },
-                { key: "avif", label: ".avif", mime: "image/avif", ext: "avif", ffmpeg: true },
-                { key: "heic", label: ".heic", mime: "image/heic", ext: "heic", ffmpeg: true },
-                { key: "heif", label: ".heif", mime: "image/heif", ext: "heif", ffmpeg: true },
-                { key: "apng", label: ".apng", mime: "image/apng", ext: "apng", ffmpeg: true },
-                { key: "jxl", label: ".jxl", mime: "image/jxl", ext: "jxl", ffmpeg: true },
-                { key: "jp2", label: ".jp2", mime: "image/jp2", ext: "jp2", ffmpeg: true },
-                { key: "tga", label: ".tga", mime: "image/x-tga", ext: "tga", ffmpeg: true },
-                { key: "dds", label: ".dds", mime: "image/vnd-ms.dds", ext: "dds", ffmpeg: true },
-                { key: "exr", label: ".exr", mime: "image/aces", ext: "exr", ffmpeg: true },
-                { key: "hdr", label: ".hdr", mime: "image/vnd.radiance", ext: "hdr", ffmpeg: true },
-                { key: "psd", label: ".psd", mime: "image/vnd.adobe.photoshop", ext: "psd", ffmpeg: true },
-                { key: "ppm", label: ".ppm", mime: "image/x-portable-pixmap", ext: "ppm", ffmpeg: true },
-                { key: "pgm", label: ".pgm", mime: "image/x-portable-graymap", ext: "pgm", ffmpeg: true },
-                { key: "pbm", label: ".pbm", mime: "image/x-portable-bitmap", ext: "pbm", ffmpeg: true },
-                { key: "pnm", label: ".pnm", mime: "image/x-portable-anymap", ext: "pnm", ffmpeg: true },
-                { key: "raw", label: ".raw", mime: "application/octet-stream", ext: "raw", ffmpeg: true }
+                { key: "gif", label: ".gif", mime: "image/gif", ext: "gif" },
+                { key: "bmp", label: ".bmp", mime: "image/bmp", ext: "bmp" },
+                { key: "svg", label: ".svg", mime: "image/svg+xml", ext: "svg" }
             ],
             audio: [
-                { key: "mp3", label: ".mp3", mime: "audio/mpeg", ext: "mp3", ffmpeg: true, args: ["-vn", "-codec:a", "libmp3lame", "-q:a", "2"] },
-                { key: "ogg", label: ".ogg", mime: "audio/ogg", ext: "ogg", ffmpeg: true, args: ["-vn", "-codec:a", "libvorbis", "-q:a", "5"] },
-                { key: "opus", label: ".opus", mime: "audio/ogg", ext: "opus", ffmpeg: true, args: ["-vn", "-codec:a", "libopus", "-b:a", "128k"] },
-                { key: "wav", label: ".wav", mime: "audio/wav", ext: "wav", ffmpeg: true, args: ["-vn", "-codec:a", "pcm_s16le"] },
-                { key: "flac", label: ".flac", mime: "audio/flac", ext: "flac", ffmpeg: true, args: ["-vn", "-codec:a", "flac"] },
-                { key: "m4a", label: ".m4a", mime: "audio/mp4", ext: "m4a", ffmpeg: true, args: ["-vn", "-codec:a", "aac", "-b:a", "192k"] },
-                { key: "aac", label: ".aac", mime: "audio/aac", ext: "aac", ffmpeg: true, args: ["-vn", "-codec:a", "aac", "-b:a", "192k"] },
-                { key: "alac", label: ".alac", mime: "audio/mp4", ext: "alac", ffmpeg: true, args: ["-vn", "-codec:a", "alac"] },
-                { key: "aiff", label: ".aiff", mime: "audio/aiff", ext: "aiff", ffmpeg: true, args: ["-vn", "-codec:a", "pcm_s16be"] },
-                { key: "aif", label: ".aif", mime: "audio/aiff", ext: "aif", ffmpeg: true, args: ["-vn", "-codec:a", "pcm_s16be"] },
-                { key: "wma", label: ".wma", mime: "audio/x-ms-wma", ext: "wma", ffmpeg: true, args: ["-vn", "-codec:a", "wmav2", "-b:a", "192k"] },
-                { key: "amr", label: ".amr", mime: "audio/amr", ext: "amr", ffmpeg: true, args: ["-vn", "-ar", "8000", "-ac", "1"] },
-                { key: "weba", label: ".weba", mime: "audio/webm", ext: "weba", ffmpeg: true, args: ["-vn", "-codec:a", "libopus", "-b:a", "128k"] }
+                { key: "wav", label: ".wav", mime: "audio/wav", ext: "wav", native: "wav" },
+                { key: "weba", label: ".weba", mime: "audio/webm", ext: "weba", native: "record", mimeCandidates: ["audio/webm;codecs=opus", "audio/webm"] },
+                { key: "ogg", label: ".ogg", mime: "audio/ogg", ext: "ogg", native: "record", mimeCandidates: ["audio/ogg;codecs=opus", "audio/ogg"] },
+                { key: "opus", label: ".opus", mime: "audio/ogg", ext: "opus", native: "record", mimeCandidates: ["audio/ogg;codecs=opus", "audio/webm;codecs=opus"] },
+                { key: "mp3", label: ".mp3", mime: "audio/mpeg", ext: "mp3" },
+                { key: "flac", label: ".flac", mime: "audio/flac", ext: "flac" },
+                { key: "m4a", label: ".m4a", mime: "audio/mp4", ext: "m4a" },
+                { key: "aac", label: ".aac", mime: "audio/aac", ext: "aac" }
             ],
             video: [
-                { key: "mp4", label: ".mp4", mime: "video/mp4", ext: "mp4", ffmpeg: true, args: ["-codec:v", "libx264", "-preset", "veryfast", "-crf", "24", "-codec:a", "aac", "-movflags", "+faststart"] },
-                { key: "webm", label: ".webm", mime: "video/webm", ext: "webm", ffmpeg: true, args: ["-codec:v", "libvpx-vp9", "-b:v", "0", "-crf", "34", "-codec:a", "libopus"] },
-                { key: "mov", label: ".mov", mime: "video/quicktime", ext: "mov", ffmpeg: true, args: ["-codec:v", "libx264", "-preset", "veryfast", "-crf", "24", "-codec:a", "aac"] },
-                { key: "mkv", label: ".mkv", mime: "video/x-matroska", ext: "mkv", ffmpeg: true, args: ["-codec:v", "libx264", "-preset", "veryfast", "-crf", "24", "-codec:a", "aac"] },
-                { key: "avi", label: ".avi", mime: "video/x-msvideo", ext: "avi", ffmpeg: true, args: ["-codec:v", "mpeg4", "-q:v", "5", "-codec:a", "libmp3lame", "-q:a", "4"] },
-                { key: "m4v", label: ".m4v", mime: "video/x-m4v", ext: "m4v", ffmpeg: true, args: ["-codec:v", "libx264", "-preset", "veryfast", "-crf", "24", "-codec:a", "aac"] },
-                { key: "3gp", label: ".3gp", mime: "video/3gpp", ext: "3gp", ffmpeg: true, args: ["-codec:v", "mpeg4", "-q:v", "7", "-codec:a", "aac", "-b:a", "96k"] },
-                { key: "ogv", label: ".ogv", mime: "video/ogg", ext: "ogv", ffmpeg: true, args: ["-codec:v", "libtheora", "-q:v", "7", "-codec:a", "libvorbis", "-q:a", "4"] },
-                { key: "mpeg", label: ".mpeg", mime: "video/mpeg", ext: "mpeg", ffmpeg: true, args: ["-codec:v", "mpeg2video", "-q:v", "5", "-codec:a", "mp2"] },
-                { key: "mpg", label: ".mpg", mime: "video/mpeg", ext: "mpg", ffmpeg: true, args: ["-codec:v", "mpeg2video", "-q:v", "5", "-codec:a", "mp2"] },
-                { key: "wmv", label: ".wmv", mime: "video/x-ms-wmv", ext: "wmv", ffmpeg: true, args: ["-codec:v", "wmv2", "-codec:a", "wmav2"] },
-                { key: "flv", label: ".flv", mime: "video/x-flv", ext: "flv", ffmpeg: true, args: ["-codec:v", "flv", "-codec:a", "libmp3lame"] },
-                { key: "ts", label: ".ts", mime: "video/mp2t", ext: "ts", ffmpeg: true, args: ["-codec:v", "libx264", "-preset", "veryfast", "-crf", "24", "-codec:a", "aac", "-f", "mpegts"] },
-                { key: "m2ts", label: ".m2ts", mime: "video/mp2t", ext: "m2ts", ffmpeg: true, args: ["-codec:v", "libx264", "-preset", "veryfast", "-crf", "24", "-codec:a", "aac", "-f", "mpegts"] },
-                { key: "gif", label: ".gif", mime: "image/gif", ext: "gif", ffmpeg: true, args: ["-vf", "fps=12,scale=640:-1:flags=lanczos", "-loop", "0"] }
+                { key: "webm", label: ".webm", mime: "video/webm", ext: "webm", native: "record", mimeCandidates: ["video/webm;codecs=vp9,opus", "video/webm;codecs=vp8,opus", "video/webm"] },
+                { key: "mp4", label: ".mp4", mime: "video/mp4", ext: "mp4", native: "record", mimeCandidates: ["video/mp4;codecs=avc1.42E01E,mp4a.40.2", "video/mp4"] },
+                { key: "mov", label: ".mov", mime: "video/quicktime", ext: "mov" },
+                { key: "mkv", label: ".mkv", mime: "video/x-matroska", ext: "mkv" },
+                { key: "avi", label: ".avi", mime: "video/x-msvideo", ext: "avi" },
+                { key: "gif", label: ".gif", mime: "image/gif", ext: "gif" }
             ]
         };
         const imageConverterElements = {
@@ -9582,13 +9542,15 @@
                 const available = isImageConverterFormatAvailable(kind, format);
                 option.value = format.key;
                 option.textContent = available ?
-                    `${format.label || `.${format.ext}`} (fast)` :
-                    `${format.label || `.${format.ext}`} (FFmpeg.wasm)`;
+                    `${format.label || `.${format.ext}`} (browser)` :
+                    `${format.label || `.${format.ext}`} (not browser-supported)`;
+                option.disabled = !available;
                 select.appendChild(option);
             });
-            const preferred = preferredKey && formats.some((format) => format.key === preferredKey) ?
+            const availableFormats = formats.filter((format) => isImageConverterFormatAvailable(kind, format));
+            const preferred = preferredKey && availableFormats.some((format) => format.key === preferredKey) ?
                 preferredKey :
-                formats[0]?.key;
+                availableFormats[0]?.key;
             if (preferred) {
                 select.value = preferred;
             }
@@ -9607,10 +9569,10 @@
             });
             if (imageConverterElements.hint) {
                 imageConverterElements.hint.textContent = isImage ?
-                    "PNG, JPG, and WebP use the fast browser path. Other image outputs use open-source FFmpeg.wasm and may take longer." :
+                    "Image conversion uses Canvas. Animated GIF output and rare formats need a real transcoder, so they are shown but disabled." :
                     nextKind === "audio" ?
-                        "Music conversion uses open-source FFmpeg.wasm in your browser. Files stay local." :
-                        "Video conversion uses open-source FFmpeg.wasm in your browser. Large videos can take a while.";
+                        "Audio conversion uses Web Audio and MediaRecorder. WAV is most reliable; OGG/OPUS/WEBA depend on your browser." :
+                        "Video conversion uses MediaRecorder. WebM is most reliable; MP4 only works in browsers that support recording it.";
             }
         }
 
@@ -9693,7 +9655,7 @@
             const supportsBrowser = Boolean(format && isImageConverterFormatAvailable(imageConverterState.kind, format));
             const busy = imageConverterState.busy;
             if (imageConverterElements.convert) {
-                imageConverterElements.convert.disabled = !hasFile || !hasFormat || (!supportsBrowser && !format?.ffmpeg) || busy;
+                imageConverterElements.convert.disabled = !hasFile || !hasFormat || !supportsBrowser || busy;
             }
             if (imageConverterElements.download) {
                 imageConverterElements.download.disabled = !imageConverterState.outputBlob || busy;
@@ -9840,169 +9802,226 @@
         }
 
         function isImageConverterFormatAvailable(kind, format) {
-            return kind === "image" && Boolean(format?.canvas);
+            if (kind === "image") {
+                return Boolean(format?.canvas);
+            }
+            if (format?.native === "wav") {
+                return Boolean(window.AudioContext || window.webkitAudioContext);
+            }
+            if (format?.native === "record") {
+                return Boolean(getImageConverterRecorderMime(format));
+            }
+            return false;
         }
 
-        function loadImageConverterScript(src) {
+        function getImageConverterAudioContext() {
+            const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+            if (!AudioContextClass) {
+                throw new Error("Audio conversion is not supported in this browser.");
+            }
+            return new AudioContextClass();
+        }
+
+        function getImageConverterRecorderMime(format) {
+            if (!window.MediaRecorder) {
+                return "";
+            }
+            return (format?.mimeCandidates || [])
+                .find((candidate) => MediaRecorder.isTypeSupported(candidate)) || "";
+        }
+
+        function writeImageConverterAscii(view, offset, value) {
+            for (let index = 0; index < value.length; index += 1) {
+                view.setUint8(offset + index, value.charCodeAt(index));
+            }
+        }
+
+        function encodeImageConverterWav(audioBuffer) {
+            const channels = Math.min(2, audioBuffer.numberOfChannels || 1);
+            const sampleRate = audioBuffer.sampleRate;
+            const sampleCount = audioBuffer.length;
+            const dataSize = sampleCount * channels * 2;
+            const buffer = new ArrayBuffer(44 + dataSize);
+            const view = new DataView(buffer);
+
+            writeImageConverterAscii(view, 0, "RIFF");
+            view.setUint32(4, 36 + dataSize, true);
+            writeImageConverterAscii(view, 8, "WAVE");
+            writeImageConverterAscii(view, 12, "fmt ");
+            view.setUint32(16, 16, true);
+            view.setUint16(20, 1, true);
+            view.setUint16(22, channels, true);
+            view.setUint32(24, sampleRate, true);
+            view.setUint32(28, sampleRate * channels * 2, true);
+            view.setUint16(32, channels * 2, true);
+            view.setUint16(34, 16, true);
+            writeImageConverterAscii(view, 36, "data");
+            view.setUint32(40, dataSize, true);
+
+            const channelData = Array.from({ length: channels }, (_, index) =>
+                audioBuffer.getChannelData(index)
+            );
+            let offset = 44;
+            for (let sample = 0; sample < sampleCount; sample += 1) {
+                for (let channel = 0; channel < channels; channel += 1) {
+                    const value = Math.max(-1, Math.min(1, channelData[channel][sample] || 0));
+                    view.setInt16(offset, value < 0 ? value * 0x8000 : value * 0x7fff, true);
+                    offset += 2;
+                }
+            }
+
+            return new Blob([buffer], { type: "audio/wav" });
+        }
+
+        async function decodeImageConverterAudio(file) {
+            const context = getImageConverterAudioContext();
+            try {
+                const buffer = await file.arrayBuffer();
+                return await context.decodeAudioData(buffer);
+            } finally {
+                await context.close?.();
+            }
+        }
+
+        async function recordImageConverterAudio(file, format) {
+            const mimeType = getImageConverterRecorderMime(format);
+            if (!mimeType) {
+                throw new Error(`Your browser cannot encode .${format.ext}. Try .wav or .weba.`);
+            }
+            const audioBuffer = await decodeImageConverterAudio(file);
+            const context = getImageConverterAudioContext();
+            const destination = context.createMediaStreamDestination();
+            const source = context.createBufferSource();
+            source.buffer = audioBuffer;
+            source.connect(destination);
+
             return new Promise((resolve, reject) => {
-                const url = new URL(src, document.baseURI).href;
-                const existing = document.querySelector(`script[data-image-converter-src="${url}"]`);
-                if (existing) {
-                    existing.addEventListener("load", resolve, { once: true });
-                    existing.addEventListener("error", reject, { once: true });
-                    if (existing.dataset.loaded === "true") {
-                        resolve();
-                    }
+                const chunks = [];
+                let recorder;
+                try {
+                    recorder = new MediaRecorder(destination.stream, { mimeType });
+                } catch (error) {
+                    context.close?.();
+                    reject(error);
                     return;
                 }
-                const script = document.createElement("script");
-                script.src = url;
-                script.async = true;
-                script.dataset.imageConverterSrc = url;
-                script.addEventListener("load", () => {
-                    script.dataset.loaded = "true";
-                    resolve();
+                recorder.addEventListener("dataavailable", (event) => {
+                    if (event.data?.size) {
+                        chunks.push(event.data);
+                    }
+                });
+                recorder.addEventListener("error", (event) => {
+                    context.close?.();
+                    reject(event.error || new Error("Audio recording failed."));
+                });
+                recorder.addEventListener("stop", async () => {
+                    await context.close?.();
+                    resolve({
+                        blob: new Blob(chunks, { type: mimeType }),
+                        detail: "MediaRecorder"
+                    });
                 }, { once: true });
-                script.addEventListener("error", () => reject(new Error(`Failed to load ${url}`)), { once: true });
-                document.head.appendChild(script);
+                source.addEventListener("ended", () => {
+                    if (recorder.state !== "inactive") {
+                        recorder.stop();
+                    }
+                }, { once: true });
+                recorder.start();
+                source.start();
             });
         }
 
-        function getImageConverterAssetUrl(path) {
-            return new URL(path, document.baseURI).href;
+        async function encodeImageConverterAudio(file, format) {
+            if (format.native === "wav") {
+                const audioBuffer = await decodeImageConverterAudio(file);
+                return {
+                    blob: encodeImageConverterWav(audioBuffer),
+                    detail: `${Math.round(audioBuffer.duration)}s WAV`
+                };
+            }
+            return recordImageConverterAudio(file, format);
         }
 
-        async function ensureImageConverterFfmpegGlobals() {
-            if (imageConverterFfmpegState.FFmpegClass && imageConverterFfmpegState.fetchFile && imageConverterFfmpegState.toBlobURL) {
-                return;
+        function loadImageConverterVideo(file) {
+            return new Promise((resolve, reject) => {
+                const url = URL.createObjectURL(file);
+                const video = document.createElement("video");
+                video.preload = "auto";
+                video.muted = true;
+                video.playsInline = true;
+                video.src = url;
+                video.addEventListener("loadedmetadata", () => resolve({ video, url }), { once: true });
+                video.addEventListener("error", () => {
+                    URL.revokeObjectURL(url);
+                    reject(new Error("This browser cannot read that video file."));
+                }, { once: true });
+            });
+        }
+
+        async function recordImageConverterVideo(file, format) {
+            const mimeType = getImageConverterRecorderMime(format);
+            if (!mimeType) {
+                throw new Error(`Your browser cannot encode .${format.ext}. Try .webm.`);
             }
-            if ((window.FFmpegWASM || window.FFmpeg)?.FFmpeg && window.FFmpegUtil?.toBlobURL) {
-                imageConverterFfmpegState.FFmpegClass = (window.FFmpegWASM || window.FFmpeg).FFmpeg;
-                imageConverterFfmpegState.fetchFile = window.FFmpegUtil.fetchFile;
-                imageConverterFfmpegState.toBlobURL = window.FFmpegUtil.toBlobURL;
-                return;
+            const { video, url } = await loadImageConverterVideo(file);
+            const stream = video.captureStream?.() || video.mozCaptureStream?.();
+            if (!stream) {
+                URL.revokeObjectURL(url);
+                throw new Error("Video recording is not supported in this browser.");
             }
-            const librarySets = [
-                [
-                    "libs/ffmpeg/ffmpeg.js",
-                    "libs/ffmpeg/util.js"
-                ],
-                [
-                    "https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.12.15/dist/umd/ffmpeg.js",
-                    "https://cdn.jsdelivr.net/npm/@ffmpeg/util@0.12.2/dist/umd/index.js"
-                ],
-                [
-                    "https://unpkg.com/@ffmpeg/ffmpeg@0.12.15/dist/umd/ffmpeg.js",
-                    "https://unpkg.com/@ffmpeg/util@0.12.2/dist/umd/index.js"
-                ]
-            ];
-            let lastError = null;
-            for (const [ffmpegUrl, utilUrl] of librarySets) {
+
+            return new Promise((resolve, reject) => {
+                const chunks = [];
+                let recorder;
                 try {
-                    await loadImageConverterScript(ffmpegUrl);
-                    await loadImageConverterScript(utilUrl);
-                    if ((window.FFmpegWASM || window.FFmpeg)?.FFmpeg && window.FFmpegUtil?.toBlobURL) {
-                        imageConverterFfmpegState.FFmpegClass = (window.FFmpegWASM || window.FFmpeg).FFmpeg;
-                        imageConverterFfmpegState.fetchFile = window.FFmpegUtil.fetchFile;
-                        imageConverterFfmpegState.toBlobURL = window.FFmpegUtil.toBlobURL;
-                        return;
-                    }
+                    recorder = new MediaRecorder(stream, { mimeType });
                 } catch (error) {
-                    lastError = error;
+                    URL.revokeObjectURL(url);
+                    reject(error);
+                    return;
                 }
-            }
-
-            throw lastError || new Error("FFmpeg.wasm could not be loaded from local site files.");
-        }
-
-        async function getImageConverterFfmpeg() {
-            if (imageConverterFfmpegState.instance) {
-                return imageConverterFfmpegState;
-            }
-            if (imageConverterFfmpegState.loading) {
-                return imageConverterFfmpegState.loading;
-            }
-            imageConverterFfmpegState.loading = (async () => {
-                await ensureImageConverterFfmpegGlobals();
-                const ffmpeg = new imageConverterFfmpegState.FFmpegClass();
-                ffmpeg.on?.("log", ({ message }) => {
-                    if (/time=|size=|speed=|frame=/.test(message || "")) {
-                        setImageConverterStatus("Converting with FFmpeg.wasm...", "loading");
+                recorder.addEventListener("dataavailable", (event) => {
+                    if (event.data?.size) {
+                        chunks.push(event.data);
                     }
                 });
-                const coreRoots = [
-                    "libs/ffmpeg/core",
-                    "https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.12.10/dist/umd",
-                    "https://unpkg.com/@ffmpeg/core@0.12.10/dist/umd"
-                ];
-                let lastError = null;
-                const classWorkerURL = getImageConverterAssetUrl("libs/ffmpeg/814.ffmpeg.js");
-                for (const baseUrl of coreRoots) {
-                    try {
-                        const root = baseUrl.startsWith("http") ? baseUrl : getImageConverterAssetUrl(baseUrl);
-                        await ffmpeg.load({
-                            coreURL: await imageConverterFfmpegState.toBlobURL(`${root}/ffmpeg-core.js`, "text/javascript"),
-                            wasmURL: await imageConverterFfmpegState.toBlobURL(`${root}/ffmpeg-core.wasm`, "application/wasm"),
-                            classWorkerURL
-                        });
-                        imageConverterFfmpegState.instance = ffmpeg;
-                        return imageConverterFfmpegState;
-                    } catch (error) {
-                        lastError = error;
+                recorder.addEventListener("error", (event) => {
+                    URL.revokeObjectURL(url);
+                    reject(event.error || new Error("Video recording failed."));
+                });
+                recorder.addEventListener("stop", () => {
+                    URL.revokeObjectURL(url);
+                    resolve({
+                        blob: new Blob(chunks, { type: mimeType }),
+                        detail: `${Math.round(video.duration || 0)}s recording`
+                    });
+                }, { once: true });
+                video.addEventListener("ended", () => {
+                    if (recorder.state !== "inactive") {
+                        recorder.stop();
                     }
-                }
-                throw lastError || new Error("FFmpeg.wasm core could not be loaded.");
-            })();
-            try {
-                return await imageConverterFfmpegState.loading;
-            } finally {
-                imageConverterFfmpegState.loading = null;
-            }
+                }, { once: true });
+                recorder.start();
+                video.currentTime = 0;
+                video.play().catch((error) => {
+                    if (recorder.state !== "inactive") {
+                        recorder.stop();
+                    }
+                    reject(error);
+                });
+            });
         }
 
-        function getImageConverterFfmpegArgs(kind, format, inputName, outputName) {
-            if (kind === "image") {
-                const args = ["-i", inputName];
-                if (format.ext !== "gif" && format.ext !== "apng") {
-                    args.push("-frames:v", "1");
-                }
-                args.push(outputName);
-                return args;
+        async function encodeImageConverterNative(file, kind, format) {
+            if (kind === "audio") {
+                setImageConverterStatus("Converting audio in browser...", "loading");
+                return encodeImageConverterAudio(file, format);
             }
-            return ["-i", inputName, ...(format.args || []), outputName];
-        }
-
-        async function encodeImageConverterWithFfmpeg(file, kind, format) {
-            setImageConverterStatus("Loading open-source FFmpeg.wasm...", "loading");
-            const { instance: ffmpeg, fetchFile } = await getImageConverterFfmpeg();
-            const sourceExt = getImageConverterExtension(file.name) || kind;
-            const stamp = `${Date.now()}-${Math.random().toString(16).slice(2)}`;
-            const inputName = `input-${stamp}.${sourceExt}`;
-            const outputName = `output-${stamp}.${format.ext}`;
-            const args = getImageConverterFfmpegArgs(kind, format, inputName, outputName);
-
-            try {
-                setImageConverterStatus("Preparing file for FFmpeg.wasm...", "loading");
-                await ffmpeg.writeFile(inputName, await fetchFile(file));
-                setImageConverterStatus("Converting with FFmpeg.wasm...", "loading");
-                await ffmpeg.exec(args);
-                const data = await ffmpeg.readFile(outputName);
-                const outputBuffer = data.buffer.slice(
-                    data.byteOffset,
-                    data.byteOffset + data.byteLength
-                );
-                return {
-                    blob: new Blob([outputBuffer], {
-                        type: format.mime || "application/octet-stream"
-                    }),
-                    detail: "FFmpeg.wasm"
-                };
-            } finally {
-                await Promise.allSettled([
-                    ffmpeg.deleteFile(inputName),
-                    ffmpeg.deleteFile(outputName)
-                ]);
+            if (kind === "video") {
+                setImageConverterStatus("Recording video in browser...", "loading");
+                return recordImageConverterVideo(file, format);
             }
+            throw new Error(`.${format.ext} output is not supported by this browser.`);
         }
 
         function renderImageConverterOutput(outputUrl, format) {
@@ -10102,7 +10121,7 @@
 
             const kind = imageConverterState.kind || getImageConverterKindForFile(file);
             const format = getImageConverterFormat();
-            if (!format || (!isImageConverterFormatAvailable(kind, format) && !format.ffmpeg)) {
+            if (!format || !isImageConverterFormatAvailable(kind, format)) {
                 setImageConverterStatus("No converter is available for that output.", "error");
                 return;
             }
@@ -10127,7 +10146,7 @@
                         targetBytes,
                         allowResize
                     ) :
-                    await encodeImageConverterWithFfmpeg(file, kind, format);
+                    await encodeImageConverterNative(file, kind, format);
                 const outputName = sanitizeImageConverterName(file.name, format.ext);
                 const outputUrl = URL.createObjectURL(encoded.blob);
                 imageConverterState.outputBlob = encoded.blob;
@@ -10150,7 +10169,7 @@
                         const qualityText = format.lossy ? `${Math.round(encoded.quality * 100)}% quality` : "lossless";
                         imageConverterElements.compressMeta.textContent = `${qualityText}${scaleText}${targetText}`;
                     } else {
-                        imageConverterElements.compressMeta.textContent = encoded.detail || "FFmpeg.wasm";
+                        imageConverterElements.compressMeta.textContent = encoded.detail || "browser-native";
                     }
                 }
 
