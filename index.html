@@ -9845,7 +9845,8 @@
 
         function loadImageConverterScript(src) {
             return new Promise((resolve, reject) => {
-                const existing = document.querySelector(`script[data-image-converter-src="${src}"]`);
+                const url = new URL(src, document.baseURI).href;
+                const existing = document.querySelector(`script[data-image-converter-src="${url}"]`);
                 if (existing) {
                     existing.addEventListener("load", resolve, { once: true });
                     existing.addEventListener("error", reject, { once: true });
@@ -9855,32 +9856,20 @@
                     return;
                 }
                 const script = document.createElement("script");
-                script.src = src;
+                script.src = url;
                 script.async = true;
-                script.dataset.imageConverterSrc = src;
+                script.dataset.imageConverterSrc = url;
                 script.addEventListener("load", () => {
                     script.dataset.loaded = "true";
                     resolve();
                 }, { once: true });
-                script.addEventListener("error", () => reject(new Error(`Failed to load ${src}`)), { once: true });
+                script.addEventListener("error", () => reject(new Error(`Failed to load ${url}`)), { once: true });
                 document.head.appendChild(script);
             });
         }
 
-        async function loadImageConverterModulePair(ffmpegUrl, utilUrl) {
-            const [ffmpegModule, utilModule] = await Promise.all([
-                import(ffmpegUrl),
-                import(utilUrl)
-            ]);
-            const FFmpegClass = ffmpegModule.FFmpeg || ffmpegModule.default?.FFmpeg;
-            const fetchFile = utilModule.fetchFile || utilModule.default?.fetchFile;
-            const toBlobURL = utilModule.toBlobURL || utilModule.default?.toBlobURL;
-            if (!FFmpegClass || !fetchFile || !toBlobURL) {
-                throw new Error("FFmpeg.wasm module exports were not found.");
-            }
-            imageConverterFfmpegState.FFmpegClass = FFmpegClass;
-            imageConverterFfmpegState.fetchFile = fetchFile;
-            imageConverterFfmpegState.toBlobURL = toBlobURL;
+        function getImageConverterAssetUrl(path) {
+            return new URL(path, document.baseURI).href;
         }
 
         async function ensureImageConverterFfmpegGlobals() {
@@ -9895,12 +9884,8 @@
             }
             const librarySets = [
                 [
-                    "https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.12.15/dist/umd/ffmpeg.js",
-                    "https://cdn.jsdelivr.net/npm/@ffmpeg/util@0.12.2/dist/umd/index.js"
-                ],
-                [
-                    "https://unpkg.com/@ffmpeg/ffmpeg@0.12.15/dist/umd/ffmpeg.js",
-                    "https://unpkg.com/@ffmpeg/util@0.12.2/dist/umd/index.js"
+                    "libs/ffmpeg/ffmpeg.js",
+                    "libs/ffmpeg/util.js"
                 ]
             ];
             let lastError = null;
@@ -9919,26 +9904,7 @@
                 }
             }
 
-            const moduleSets = [
-                [
-                    "https://esm.sh/@ffmpeg/ffmpeg@0.12.15",
-                    "https://esm.sh/@ffmpeg/util@0.12.2"
-                ],
-                [
-                    "https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.12.15/+esm",
-                    "https://cdn.jsdelivr.net/npm/@ffmpeg/util@0.12.2/+esm"
-                ]
-            ];
-            for (const [ffmpegUrl, utilUrl] of moduleSets) {
-                try {
-                    await loadImageConverterModulePair(ffmpegUrl, utilUrl);
-                    return;
-                } catch (error) {
-                    lastError = error;
-                }
-            }
-
-            throw lastError || new Error("FFmpeg.wasm could not be loaded. A browser extension or network policy may be blocking the converter library.");
+            throw lastError || new Error("FFmpeg.wasm could not be loaded from local site files.");
         }
 
         async function getImageConverterFfmpeg() {
@@ -9957,15 +9923,17 @@
                     }
                 });
                 const coreRoots = [
+                    "libs/ffmpeg/core",
                     "https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.12.10/dist/umd",
                     "https://unpkg.com/@ffmpeg/core@0.12.10/dist/umd"
                 ];
                 let lastError = null;
                 for (const baseUrl of coreRoots) {
                     try {
+                        const root = baseUrl.startsWith("http") ? baseUrl : getImageConverterAssetUrl(baseUrl);
                         await ffmpeg.load({
-                            coreURL: await imageConverterFfmpegState.toBlobURL(`${baseUrl}/ffmpeg-core.js`, "text/javascript"),
-                            wasmURL: await imageConverterFfmpegState.toBlobURL(`${baseUrl}/ffmpeg-core.wasm`, "application/wasm")
+                            coreURL: await imageConverterFfmpegState.toBlobURL(`${root}/ffmpeg-core.js`, "text/javascript"),
+                            wasmURL: await imageConverterFfmpegState.toBlobURL(`${root}/ffmpeg-core.wasm`, "application/wasm")
                         });
                         imageConverterFfmpegState.instance = ffmpeg;
                         return imageConverterFfmpegState;
