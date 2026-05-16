@@ -9886,6 +9886,14 @@
                 [
                     "libs/ffmpeg/ffmpeg.js",
                     "libs/ffmpeg/util.js"
+                ],
+                [
+                    "https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.12.15/dist/umd/ffmpeg.js",
+                    "https://cdn.jsdelivr.net/npm/@ffmpeg/util@0.12.2/dist/umd/index.js"
+                ],
+                [
+                    "https://unpkg.com/@ffmpeg/ffmpeg@0.12.15/dist/umd/ffmpeg.js",
+                    "https://unpkg.com/@ffmpeg/util@0.12.2/dist/umd/index.js"
                 ]
             ];
             let lastError = null;
@@ -9928,12 +9936,14 @@
                     "https://unpkg.com/@ffmpeg/core@0.12.10/dist/umd"
                 ];
                 let lastError = null;
+                const classWorkerURL = getImageConverterAssetUrl("libs/ffmpeg/814.ffmpeg.js");
                 for (const baseUrl of coreRoots) {
                     try {
                         const root = baseUrl.startsWith("http") ? baseUrl : getImageConverterAssetUrl(baseUrl);
                         await ffmpeg.load({
                             coreURL: await imageConverterFfmpegState.toBlobURL(`${root}/ffmpeg-core.js`, "text/javascript"),
-                            wasmURL: await imageConverterFfmpegState.toBlobURL(`${root}/ffmpeg-core.wasm`, "application/wasm")
+                            wasmURL: await imageConverterFfmpegState.toBlobURL(`${root}/ffmpeg-core.wasm`, "application/wasm"),
+                            classWorkerURL
                         });
                         imageConverterFfmpegState.instance = ffmpeg;
                         return imageConverterFfmpegState;
