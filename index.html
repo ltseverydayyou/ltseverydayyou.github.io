@@ -17023,6 +17023,16 @@
             "downloading ip...",
             "Ragebait Yield"
         ];
+        const avSafeTxt = [
+            "hai :3",
+            "combo saved",
+            "icon privileges active",
+            "no get out today",
+            "achievement braincell online",
+            "theme crimes department",
+            "7 clicks witnessed",
+            "certified clickable"
+        ];
         let avLocked = false;
         let avTimestamp = 0;
         let avHideTimer = null;
@@ -17205,10 +17215,14 @@
 
         function onAv() {
             unlockAchievement("avatarBother");
-            const unlockedCombo = handleLogoClickCombo();
-            const message = unlockedCombo ?
+            const combo = handleLogoClickCombo();
+            const messagePool =
+                combo.alreadyUnlocked || easterEggState.achievements.has("avatarBother") ?
+                    avSafeTxt :
+                    avTxt;
+            const message = combo.unlocked ?
                 "theme crimes unlocked" :
-                avTxt[Math.floor(Math.random() * avTxt.length)];
+                messagePool[Math.floor(Math.random() * messagePool.length)];
             const badge = q("#bb");
             clearTimeout(avHideTimer);
             clearTimeout(avUnlockTimer);
@@ -17227,8 +17241,10 @@
                 badge?.classList.remove("sh");
             }, 1400);
 
-            if (!unlockedCombo) {
-                toast(`Icon click ${easterEggState.logoClicks}/7`);
+            if (combo.unlocked) {
+                toast("Icon combo unlocked");
+            } else if (!combo.alreadyUnlocked) {
+                toast(`Icon click ${combo.progress}/7`);
             }
         }
 
@@ -18041,19 +18057,35 @@
         }
 
         function handleLogoClickCombo() {
+            if (easterEggState.achievements.has("logoClicks")) {
+                easterEggState.logoClicks = 7;
+                return {
+                    alreadyUnlocked: true,
+                    progress: 7,
+                    unlocked: false
+                };
+            }
             clearTimeout(easterEggState.logoTimer);
             easterEggState.logoClicks += 1;
             if (easterEggState.logoClicks >= 7) {
-                easterEggState.logoClicks = 0;
+                easterEggState.logoClicks = 7;
                 unlockAchievement("logoClicks");
                 unlockEggTheme("clickTax");
                 applyEggTheme("clickTax");
-                return true;
+                return {
+                    alreadyUnlocked: false,
+                    progress: 7,
+                    unlocked: true
+                };
             }
             easterEggState.logoTimer = setTimeout(() => {
                 easterEggState.logoClicks = 0;
             }, 1200);
-            return false;
+            return {
+                alreadyUnlocked: false,
+                progress: easterEggState.logoClicks,
+                unlocked: false
+            };
         }
 
         function handleSecretWordBuffer(key) {
