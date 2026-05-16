@@ -18,6 +18,8 @@
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-lua.min.js"></script>
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script defer src="https://unpkg.com/@ffmpeg/ffmpeg@0.12.15/dist/umd/ffmpeg.js"></script>
+    <script defer src="https://unpkg.com/@ffmpeg/util@0.12.2/dist/umd/index.js"></script>
     <!-- BuilderIcons font parser -->
     <script defer src="https://cdn.jsdelivr.net/npm/opentype.js@1.3.4/dist/opentype.min.js"></script>
     <style>
@@ -2664,6 +2666,253 @@
             border-radius: 12px;
             padding: 12px;
             background: rgba(255, 255, 255, 0.02);
+        }
+
+
+        .image-converter {
+            display: grid;
+            gap: 18px;
+        }
+
+        .image-converter__head {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .image-converter__head h3 {
+            margin: 0;
+        }
+
+        .image-converter__intro {
+            margin: 8px 0 0;
+            max-width: 760px;
+            color: var(--mu);
+            font-size: 14px;
+        }
+
+        .image-converter__drop {
+            display: grid;
+            place-items: center;
+            gap: 12px;
+            min-height: 170px;
+            padding: 22px;
+            border: 1px dashed rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            background:
+                radial-gradient(circle at top right, rgba(102, 227, 255, 0.1), transparent 42%),
+                rgba(255, 255, 255, 0.025);
+            text-align: center;
+            transition:
+                border-color 0.2s ease,
+                background 0.2s ease,
+                transform 0.2s ease;
+        }
+
+        .image-converter__drop.is-over {
+            transform: translateY(-1px);
+            border-color: rgba(102, 227, 255, 0.52);
+            background: rgba(102, 227, 255, 0.08);
+        }
+
+        .image-converter__drop strong {
+            display: block;
+            font-size: 18px;
+        }
+
+        .image-converter__drop span {
+            color: var(--mu);
+            font-size: 13px;
+        }
+
+        .image-converter__grid {
+            display: grid;
+            gap: 16px;
+            grid-template-columns: minmax(280px, 380px) minmax(0, 1fr);
+        }
+
+        .image-converter__card {
+            display: grid;
+            gap: 14px;
+            align-content: start;
+            padding: 18px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.025);
+        }
+
+        .image-converter__card h4 {
+            margin: 0;
+            font-weight: 800;
+        }
+
+        .image-converter__field {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .image-converter__field span,
+        .image-converter__label {
+            color: var(--mu);
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .image-converter__field input,
+        .image-converter__field select {
+            width: 100%;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 10px 12px;
+            background: rgba(255, 255, 255, 0.03);
+            color: var(--tx);
+            font: 14px ui-sans-serif, system-ui, "Segoe UI", Roboto, Helvetica, Arial;
+        }
+
+        .image-converter__image-only.is-hidden {
+            display: none;
+        }
+
+        .image-converter__target {
+            display: grid;
+            gap: 10px;
+            grid-template-columns: minmax(0, 1fr) 110px;
+        }
+
+        .image-converter__size-grid {
+            display: grid;
+            gap: 10px;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .image-converter__toggle {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 12px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.035);
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .image-converter__actions {
+            display: grid;
+            gap: 10px;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        }
+
+        .image-converter__status {
+            min-height: 20px;
+            color: var(--mu);
+            font-size: 13px;
+        }
+
+        .image-converter__status.is-loading {
+            color: var(--ac);
+        }
+
+        .image-converter__status.is-success {
+            color: var(--ok);
+        }
+
+        .image-converter__status.is-error {
+            color: #ff9fb1;
+        }
+
+        .image-converter__preview {
+            position: relative;
+            overflow: hidden;
+            min-height: 300px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background:
+                linear-gradient(45deg, rgba(255, 255, 255, 0.035) 25%, transparent 25%),
+                linear-gradient(-45deg, rgba(255, 255, 255, 0.035) 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, rgba(255, 255, 255, 0.035) 75%),
+                linear-gradient(-45deg, transparent 75%, rgba(255, 255, 255, 0.035) 75%),
+                rgba(255, 255, 255, 0.02);
+            background-position: 0 0, 0 10px, 10px -10px, -10px 0;
+            background-size: 20px 20px;
+            display: grid;
+            place-items: center;
+        }
+
+        .image-converter__preview img {
+            display: block;
+            width: 100%;
+            max-height: 460px;
+            object-fit: contain;
+        }
+
+        .image-converter__preview video,
+        .image-converter__preview audio {
+            display: block;
+            width: min(100%, 720px);
+            max-height: 460px;
+        }
+
+        .image-converter__empty {
+            padding: 22px;
+            text-align: center;
+            color: var(--mu);
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .image-converter__meta {
+            display: grid;
+            gap: 10px;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        }
+
+        .image-converter__meta-card {
+            display: grid;
+            gap: 6px;
+            padding: 12px 14px;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .image-converter__meta-card span {
+            color: var(--mu);
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .image-converter__meta-card strong {
+            font-size: 14px;
+            word-break: break-word;
+        }
+
+        .image-converter__hint {
+            margin: 0;
+            color: var(--mu);
+            font-size: 12px;
+        }
+
+        @media (max-width: 960px) {
+            .image-converter__grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .image-converter__target,
+            .image-converter__size-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         .assets-downloader {
@@ -5535,6 +5784,7 @@
                 <button class="tb" data-t="x">Script Searcher</button>
                 <button class="tb" data-t="y">Roblox Users</button>
                 <button class="tb" data-t="a">Assets Downloader</button>
+                <button class="tb" data-t="i">File Converter</button>
                 <button class="tb" data-t="c">Codex Editor</button>
                 <button class="tb" data-t="l">Lua</button>
                 <button class="tb" data-t="m">Manifest Generator</button>
@@ -6180,6 +6430,121 @@
                                 <div class="assets-downloader__actions">
                                     <button class="pl" id="assets-downloader-copy" type="button" disabled>Copy proxy
                                         URL</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="pi" class="pp">
+                <div class="g ed image-converter" id="image-converter">
+                    <div class="image-converter__head">
+                        <div>
+                            <h3>File Converter</h3>
+                            <p class="image-converter__intro">
+                                Convert uploaded images, GIFs, music, and videos into common web-ready formats.
+                                Image compression runs locally, and broader media conversions use FFmpeg in your browser.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="image-converter__drop" id="image-converter-drop" role="button" tabindex="0">
+                        <input id="image-converter-input" type="file" accept="image/*,audio/*,video/*,.png,.jpg,.jpeg,.jfif,.pjpeg,.pjp,.webp,.gif,.svg,.svgz,.bmp,.dib,.ico,.cur,.tif,.tiff,.avif,.heic,.heif,.apng,.jxl,.jp2,.j2k,.jpf,.jpm,.jpx,.jxr,.hdp,.wdp,.tga,.dds,.exr,.hdr,.psd,.xcf,.kra,.ppm,.pgm,.pbm,.pnm,.pam,.pcx,.sgi,.ras,.xbm,.xwd,.eps,.ai,.raw,.cr2,.cr3,.nef,.arw,.dng,.orf,.rw2,.raf,.pef,.srw,.x3f,.erf,.kdc,.mrw,.mos,.mef,.nrw,.dcr,.iiq,.3fr,.ari,.bay,.braw,.cap,.cin,.ciff,.dcs,.drf,.eip,.fff,.gpr,.mdc,.obm,.ptx,.pxn,.r3d,.rwl,.rwz,.sr2,.srf,.mp3,.ogg,.oga,.opus,.wav,.flac,.m4a,.aac,.alac,.aiff,.aif,.wma,.amr,.weba,.mp4,.webm,.mov,.mkv,.avi,.m4v,.3gp,.ogv,.mpeg,.mpg,.wmv,.flv,.ts,.m2ts" hidden />
+                        <div>
+                            <strong>Drop a file here</strong>
+                            <span id="image-converter-file-name">or choose image, GIF, music, or video files</span>
+                        </div>
+                        <button class="pl sc" type="button" id="image-converter-pick">Choose file</button>
+                    </div>
+
+                    <div class="image-converter__grid">
+                        <div class="image-converter__card">
+                            <h4>Output options</h4>
+                            <label class="image-converter__field">
+                                <span>File type</span>
+                                <select id="image-converter-kind">
+                                    <option value="image">Image / GIF</option>
+                                    <option value="audio">Music / Audio</option>
+                                    <option value="video">Video</option>
+                                </select>
+                            </label>
+                            <label class="image-converter__field">
+                                <span>Convert to</span>
+                                <select id="image-converter-format">
+                                    <option value="png">.png</option>
+                                    <option value="jpg">.jpg</option>
+                                    <option value="jpeg">.jpeg</option>
+                                    <option value="webp">.webp</option>
+                                </select>
+                            </label>
+                            <label class="image-converter__field image-converter__image-only">
+                                <span>Quality cap</span>
+                                <input id="image-converter-quality" type="range" min="10" max="100" value="92" />
+                                <small class="image-converter__hint" id="image-converter-quality-text">92% for JPG/WebP. PNG ignores quality.</small>
+                            </label>
+                            <div class="image-converter__image-only">
+                                <span class="image-converter__label">Target file size</span>
+                                <div class="image-converter__target">
+                                    <input id="image-converter-target" type="number" min="0" step="1" placeholder="900" />
+                                    <select id="image-converter-unit">
+                                        <option value="kb">KB</option>
+                                        <option value="mb">MB</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="image-converter__size-grid image-converter__image-only">
+                                <label class="image-converter__field">
+                                    <span>Max width</span>
+                                    <input id="image-converter-max-width" type="number" min="1" step="1" placeholder="Original" />
+                                </label>
+                                <label class="image-converter__field">
+                                    <span>Max height</span>
+                                    <input id="image-converter-max-height" type="number" min="1" step="1" placeholder="Original" />
+                                </label>
+                            </div>
+                            <label class="image-converter__toggle image-converter__image-only">
+                                <input id="image-converter-auto-resize" type="checkbox" checked />
+                                <span>Auto-resize only if needed to hit the target size</span>
+                            </label>
+                            <p class="image-converter__hint" id="image-converter-hint">
+                                PNG is lossless, so the target size may require downscaling. JPG/WebP use quality first,
+                                then resize if the target is still too small. GIF to still image saves the first frame.
+                            </p>
+                            <div class="image-converter__actions">
+                                <button class="pl sc" type="button" id="image-converter-convert" disabled>Convert</button>
+                                <button class="pl" type="button" id="image-converter-download" disabled>Download</button>
+                                <button class="pl" type="button" id="image-converter-reset">Reset</button>
+                            </div>
+                        </div>
+
+                        <div class="image-converter__card">
+                            <h4>Preview / Details</h4>
+                            <div class="image-converter__preview">
+                                <img id="image-converter-preview" alt="Converted image preview" hidden />
+                                <video id="image-converter-video" controls hidden></video>
+                                <audio id="image-converter-audio" controls hidden></audio>
+                                <div id="image-converter-empty" class="image-converter__empty">No converted file yet</div>
+                            </div>
+                            <div id="image-converter-status" class="image-converter__status" aria-live="polite">
+                                Choose a file to start.
+                            </div>
+                            <div class="image-converter__meta" aria-label="File conversion details">
+                                <div class="image-converter__meta-card">
+                                    <span>Original</span>
+                                    <strong id="image-converter-original-meta">--</strong>
+                                </div>
+                                <div class="image-converter__meta-card">
+                                    <span>Output</span>
+                                    <strong id="image-converter-output-meta">--</strong>
+                                </div>
+                                <div class="image-converter__meta-card">
+                                    <span>Details</span>
+                                    <strong id="image-converter-dim-meta">--</strong>
+                                </div>
+                                <div class="image-converter__meta-card">
+                                    <span>Settings</span>
+                                    <strong id="image-converter-compress-meta">--</strong>
                                 </div>
                             </div>
                         </div>
@@ -7483,6 +7848,115 @@
             chips: q("#assets-downloader-chips"),
             meta: q("#assets-downloader-meta")
         };
+        const imageConverterState = {
+            file: null,
+            kind: "image",
+            image: null,
+            sourceUrl: "",
+            outputBlob: null,
+            outputUrl: "",
+            outputName: "",
+            busy: false
+        };
+        const imageConverterFfmpegState = {
+            instance: null,
+            loading: null
+        };
+        const imageConverterImageExtensions = [
+            "png", "jpg", "jpeg", "jfif", "pjpeg", "pjp", "webp", "gif", "svg", "svgz",
+            "bmp", "dib", "ico", "cur", "tif", "tiff", "avif", "heic", "heif", "apng",
+            "jxl", "jp2", "j2k", "jpf", "jpm", "jpx", "jxr", "hdp", "wdp", "tga",
+            "dds", "exr", "hdr", "psd", "xcf", "kra", "ppm", "pgm", "pbm", "pnm",
+            "pam", "pcx", "sgi", "ras", "xbm", "xwd", "eps", "ai", "raw", "cr2", "cr3", "nef", "arw", "dng", "orf",
+            "rw2", "raf", "pef", "srw", "x3f", "erf", "kdc", "mrw", "mos", "mef",
+            "nrw", "dcr", "iiq", "3fr", "ari", "bay", "braw", "cap", "cin", "ciff",
+            "dcs", "drf", "eip", "fff", "gpr", "mdc", "obm", "ptx", "pxn", "r3d",
+            "rwl", "rwz", "sr2", "srf"
+        ];
+        const imageConverterAudioExtensions = [
+            "mp3", "ogg", "oga", "opus", "wav", "flac", "m4a", "aac", "alac", "aiff",
+            "aif", "wma", "amr", "weba"
+        ];
+        const imageConverterVideoExtensions = [
+            "mp4", "webm", "mov", "mkv", "avi", "m4v", "3gp", "ogv", "mpeg", "mpg",
+            "wmv", "flv", "ts", "m2ts"
+        ];
+        const imageConverterFormats = {
+            image: [
+                { key: "png", label: ".png", mime: "image/png", ext: "png", lossy: false, canvas: true },
+                { key: "jpg", label: ".jpg", mime: "image/jpeg", ext: "jpg", lossy: true, canvas: true },
+                { key: "jpeg", label: ".jpeg", mime: "image/jpeg", ext: "jpeg", lossy: true, canvas: true },
+                { key: "webp", label: ".webp", mime: "image/webp", ext: "webp", lossy: true, canvas: true },
+                { key: "gif", label: ".gif", mime: "image/gif", ext: "gif", lossy: false, ffmpeg: true },
+                { key: "avif", label: ".avif", mime: "image/avif", ext: "avif", lossy: true, ffmpeg: true },
+                { key: "bmp", label: ".bmp", mime: "image/bmp", ext: "bmp", lossy: false, ffmpeg: true },
+                { key: "tif", label: ".tif", mime: "image/tiff", ext: "tif", lossy: false, ffmpeg: true },
+                { key: "tiff", label: ".tiff", mime: "image/tiff", ext: "tiff", lossy: false, ffmpeg: true },
+                { key: "ico", label: ".ico", mime: "image/x-icon", ext: "ico", lossy: false, ffmpeg: true },
+                { key: "tga", label: ".tga", mime: "image/x-tga", ext: "tga", lossy: false, ffmpeg: true },
+                { key: "ppm", label: ".ppm", mime: "image/x-portable-pixmap", ext: "ppm", lossy: false, ffmpeg: true },
+                { key: "pgm", label: ".pgm", mime: "image/x-portable-graymap", ext: "pgm", lossy: false, ffmpeg: true },
+                { key: "pbm", label: ".pbm", mime: "image/x-portable-bitmap", ext: "pbm", lossy: false, ffmpeg: true },
+                { key: "pnm", label: ".pnm", mime: "image/x-portable-anymap", ext: "pnm", lossy: false, ffmpeg: true },
+                { key: "pam", label: ".pam", mime: "image/x-portable-arbitrarymap", ext: "pam", lossy: false, ffmpeg: true },
+                { key: "pcx", label: ".pcx", mime: "image/x-pcx", ext: "pcx", lossy: false, ffmpeg: true },
+                { key: "sgi", label: ".sgi", mime: "image/sgi", ext: "sgi", lossy: false, ffmpeg: true },
+                { key: "ras", label: ".ras", mime: "image/x-cmu-raster", ext: "ras", lossy: false, ffmpeg: true },
+                { key: "xbm", label: ".xbm", mime: "image/x-xbitmap", ext: "xbm", lossy: false, ffmpeg: true },
+                { key: "xwd", label: ".xwd", mime: "image/x-xwindowdump", ext: "xwd", lossy: false, ffmpeg: true }
+            ],
+            audio: [
+                { key: "mp3", label: ".mp3", mime: "audio/mpeg", ext: "mp3", args: ["-vn", "-codec:a", "libmp3lame", "-q:a", "2"] },
+                { key: "ogg", label: ".ogg", mime: "audio/ogg", ext: "ogg", args: ["-vn", "-codec:a", "libvorbis", "-q:a", "5"] },
+                { key: "opus", label: ".opus", mime: "audio/ogg", ext: "opus", args: ["-vn", "-codec:a", "libopus", "-b:a", "128k"] },
+                { key: "wav", label: ".wav", mime: "audio/wav", ext: "wav", args: ["-vn", "-codec:a", "pcm_s16le"] },
+                { key: "flac", label: ".flac", mime: "audio/flac", ext: "flac", args: ["-vn", "-codec:a", "flac"] },
+                { key: "m4a", label: ".m4a", mime: "audio/mp4", ext: "m4a", args: ["-vn", "-codec:a", "aac", "-b:a", "192k"] },
+                { key: "aac", label: ".aac", mime: "audio/aac", ext: "aac", args: ["-vn", "-codec:a", "aac", "-b:a", "192k"] },
+                { key: "weba", label: ".weba", mime: "audio/webm", ext: "weba", args: ["-vn", "-codec:a", "libopus", "-b:a", "128k"] }
+            ],
+            video: [
+                { key: "mp4", label: ".mp4", mime: "video/mp4", ext: "mp4", args: ["-codec:v", "libx264", "-preset", "veryfast", "-crf", "24", "-codec:a", "aac", "-movflags", "+faststart"] },
+                { key: "webm", label: ".webm", mime: "video/webm", ext: "webm", args: ["-codec:v", "libvpx-vp9", "-b:v", "0", "-crf", "34", "-codec:a", "libopus"] },
+                { key: "mov", label: ".mov", mime: "video/quicktime", ext: "mov", args: ["-codec:v", "libx264", "-preset", "veryfast", "-crf", "24", "-codec:a", "aac"] },
+                { key: "mkv", label: ".mkv", mime: "video/x-matroska", ext: "mkv", args: ["-codec:v", "libx264", "-preset", "veryfast", "-crf", "24", "-codec:a", "aac"] },
+                { key: "avi", label: ".avi", mime: "video/x-msvideo", ext: "avi", args: ["-codec:v", "mpeg4", "-q:v", "5", "-codec:a", "libmp3lame", "-q:a", "4"] },
+                { key: "m4v", label: ".m4v", mime: "video/x-m4v", ext: "m4v", args: ["-codec:v", "libx264", "-preset", "veryfast", "-crf", "24", "-codec:a", "aac"] },
+                { key: "3gp", label: ".3gp", mime: "video/3gpp", ext: "3gp", args: ["-codec:v", "mpeg4", "-q:v", "7", "-codec:a", "aac", "-b:a", "96k"] },
+                { key: "ogv", label: ".ogv", mime: "video/ogg", ext: "ogv", args: ["-codec:v", "libtheora", "-q:v", "7", "-codec:a", "libvorbis", "-q:a", "4"] },
+                { key: "gif", label: ".gif", mime: "image/gif", ext: "gif", args: ["-vf", "fps=12,scale=640:-1:flags=lanczos", "-loop", "0"] }
+            ]
+        };
+        const imageConverterElements = {
+            root: q("#image-converter"),
+            drop: q("#image-converter-drop"),
+            input: q("#image-converter-input"),
+            pick: q("#image-converter-pick"),
+            fileName: q("#image-converter-file-name"),
+            kind: q("#image-converter-kind"),
+            format: q("#image-converter-format"),
+            quality: q("#image-converter-quality"),
+            qualityText: q("#image-converter-quality-text"),
+            target: q("#image-converter-target"),
+            unit: q("#image-converter-unit"),
+            maxWidth: q("#image-converter-max-width"),
+            maxHeight: q("#image-converter-max-height"),
+            autoResize: q("#image-converter-auto-resize"),
+            hint: q("#image-converter-hint"),
+            convert: q("#image-converter-convert"),
+            download: q("#image-converter-download"),
+            reset: q("#image-converter-reset"),
+            preview: q("#image-converter-preview"),
+            video: q("#image-converter-video"),
+            audio: q("#image-converter-audio"),
+            empty: q("#image-converter-empty"),
+            status: q("#image-converter-status"),
+            originalMeta: q("#image-converter-original-meta"),
+            outputMeta: q("#image-converter-output-meta"),
+            dimMeta: q("#image-converter-dim-meta"),
+            compressMeta: q("#image-converter-compress-meta")
+        };
+
 
         function setRobloxUserStatus(message = "", isError = false) {
             const element = robloxUserSearchElements.status;
@@ -9020,6 +9494,663 @@
             });
 
             syncAssetsDownloaderControls();
+        }
+
+
+        function formatImageConverterBytes(bytes) {
+            if (!Number.isFinite(bytes) || bytes < 0) {
+                return "--";
+            }
+            const units = ["B", "KB", "MB", "GB"];
+            let value = bytes;
+            let index = 0;
+            while (value >= 1024 && index < units.length - 1) {
+                value /= 1024;
+                index += 1;
+            }
+            return `${value.toFixed(value >= 10 || index === 0 ? 0 : 1)} ${units[index]}`;
+        }
+
+        function setImageConverterStatus(text, mode = "") {
+            const status = imageConverterElements.status;
+            if (!status) {
+                return;
+            }
+            status.textContent = text || "";
+            status.classList.toggle("is-loading", mode === "loading");
+            status.classList.toggle("is-success", mode === "success");
+            status.classList.toggle("is-error", mode === "error");
+        }
+
+        function getImageConverterExtension(name) {
+            const match = String(name || "").toLowerCase().match(/\.([a-z0-9]+)$/);
+            return match ? match[1] : "";
+        }
+
+        function getImageConverterKindForFile(file) {
+            const type = String(file?.type || "").toLowerCase();
+            const ext = getImageConverterExtension(file?.name);
+            if (type.startsWith("audio/") || imageConverterAudioExtensions.includes(ext)) {
+                return "audio";
+            }
+            if (type.startsWith("video/") || imageConverterVideoExtensions.includes(ext)) {
+                return "video";
+            }
+            return "image";
+        }
+
+        function getImageConverterFormatsForKind(kind = imageConverterState.kind) {
+            return imageConverterFormats[kind] || imageConverterFormats.image;
+        }
+
+        function getImageConverterFormat() {
+            const formats = getImageConverterFormatsForKind();
+            const key = imageConverterElements.format?.value || formats[0]?.key || "png";
+            return formats.find((format) => format.key === key) || formats[0] || imageConverterFormats.image[0];
+        }
+
+        function renderImageConverterFormatOptions(kind = imageConverterState.kind, preferredKey = "") {
+            const select = imageConverterElements.format;
+            if (!select) {
+                return;
+            }
+            const formats = getImageConverterFormatsForKind(kind);
+            select.innerHTML = "";
+            formats.forEach((format) => {
+                const option = document.createElement("option");
+                option.value = format.key;
+                option.textContent = format.label || `.${format.ext}`;
+                select.appendChild(option);
+            });
+            const preferred = preferredKey && formats.some((format) => format.key === preferredKey) ?
+                preferredKey :
+                formats[0]?.key;
+            if (preferred) {
+                select.value = preferred;
+            }
+        }
+
+        function setImageConverterKind(kind, preferredFormat = "") {
+            const nextKind = imageConverterFormats[kind] ? kind : "image";
+            imageConverterState.kind = nextKind;
+            if (imageConverterElements.kind) {
+                imageConverterElements.kind.value = nextKind;
+            }
+            renderImageConverterFormatOptions(nextKind, preferredFormat);
+            const isImage = nextKind === "image";
+            qa(".image-converter__image-only").forEach((element) => {
+                element.classList.toggle("is-hidden", !isImage);
+            });
+            if (imageConverterElements.hint) {
+                imageConverterElements.hint.textContent = isImage ?
+                    "PNG is lossless, so the target size may require downscaling. JPG/WebP use quality first, then resize if the target is still too small. GIF to still image saves the first frame." :
+                    nextKind === "audio" ?
+                        "Music conversions use FFmpeg in your browser. MP3, OGG, OPUS, WAV, FLAC, M4A, AAC, and WEBA outputs are available." :
+                        "Video conversions use FFmpeg in your browser. Large files can take a while; video to GIF exports a web-sized animated GIF.";
+            }
+        }
+
+        function getImageConverterQuality() {
+            const raw = Number(imageConverterElements.quality?.value || 92);
+            return Math.min(1, Math.max(0.1, raw / 100));
+        }
+
+        function getImageConverterTargetBytes() {
+            const raw = Number(imageConverterElements.target?.value || 0);
+            if (!Number.isFinite(raw) || raw <= 0) {
+                return 0;
+            }
+            const unit = imageConverterElements.unit?.value === "mb" ? 1024 * 1024 : 1024;
+            return Math.max(1, Math.round(raw * unit));
+        }
+
+        function getImageConverterBaseScale(image) {
+            const maxWidth = Number(imageConverterElements.maxWidth?.value || 0);
+            const maxHeight = Number(imageConverterElements.maxHeight?.value || 0);
+            const widthScale = Number.isFinite(maxWidth) && maxWidth > 0 ? maxWidth / image.width : 1;
+            const heightScale = Number.isFinite(maxHeight) && maxHeight > 0 ? maxHeight / image.height : 1;
+            return Math.max(0.01, Math.min(1, widthScale, heightScale));
+        }
+
+        function sanitizeImageConverterName(name, ext) {
+            const base = String(name || "converted-image")
+                .replace(/\.[^.]+$/, "")
+                .replace(/[\\/:*?"<>|]+/g, " ")
+                .replace(/\s+/g, " ")
+                .trim()
+                .replace(/\.+$/, "")
+                .slice(0, 80) || "converted-image";
+            return `${base}.${ext}`;
+        }
+
+        function clearImageConverterOutput() {
+            if (imageConverterState.outputUrl) {
+                URL.revokeObjectURL(imageConverterState.outputUrl);
+            }
+            imageConverterState.outputBlob = null;
+            imageConverterState.outputUrl = "";
+            imageConverterState.outputName = "";
+            if (imageConverterElements.preview) {
+                imageConverterElements.preview.hidden = true;
+                imageConverterElements.preview.removeAttribute("src");
+            }
+            if (imageConverterElements.video) {
+                imageConverterElements.video.hidden = true;
+                imageConverterElements.video.removeAttribute("src");
+                imageConverterElements.video.load();
+            }
+            if (imageConverterElements.audio) {
+                imageConverterElements.audio.hidden = true;
+                imageConverterElements.audio.removeAttribute("src");
+                imageConverterElements.audio.load();
+            }
+            if (imageConverterElements.empty) {
+                imageConverterElements.empty.hidden = false;
+            }
+            if (imageConverterElements.download) {
+                imageConverterElements.download.disabled = true;
+            }
+            if (imageConverterElements.outputMeta) {
+                imageConverterElements.outputMeta.textContent = "--";
+            }
+            if (imageConverterElements.dimMeta) {
+                imageConverterElements.dimMeta.textContent = "--";
+            }
+            if (imageConverterElements.compressMeta) {
+                imageConverterElements.compressMeta.textContent = "--";
+            }
+        }
+
+        function syncImageConverterControls() {
+            const hasFile = Boolean(imageConverterState.file);
+            const busy = imageConverterState.busy;
+            if (imageConverterElements.convert) {
+                imageConverterElements.convert.disabled = !hasFile || busy;
+            }
+            if (imageConverterElements.download) {
+                imageConverterElements.download.disabled = !imageConverterState.outputBlob || busy;
+            }
+            if (imageConverterElements.qualityText) {
+                const format = getImageConverterFormat();
+                const quality = Math.round(getImageConverterQuality() * 100);
+                imageConverterElements.qualityText.textContent = imageConverterState.kind !== "image" ?
+                    "Quality controls apply only to browser image compression." :
+                    format.lossy ?
+                    `${quality}% max quality for ${format.ext.toUpperCase()}. Target size may lower it automatically.` :
+                    `${format.ext.toUpperCase()} ignores quality. Use target size with auto-resize for smaller files.`;
+            }
+        }
+
+        function readImageConverterImage(file) {
+            return new Promise((resolve, reject) => {
+                const url = URL.createObjectURL(file);
+                const img = new Image();
+                img.decoding = "async";
+                img.onload = () => resolve({
+                    image: img,
+                    url
+                });
+                img.onerror = () => {
+                    URL.revokeObjectURL(url);
+                    reject(new Error("Unable to read that image."));
+                };
+                img.src = url;
+            });
+        }
+
+        function makeImageConverterCanvas(image, scale, mime) {
+            const width = Math.max(1, Math.round(image.width * scale));
+            const height = Math.max(1, Math.round(image.height * scale));
+            const canvas = document.createElement("canvas");
+            canvas.width = width;
+            canvas.height = height;
+            const ctx = canvas.getContext("2d", {
+                alpha: mime !== "image/jpeg"
+            });
+            if (!ctx) {
+                throw new Error("Canvas is not available in this browser.");
+            }
+            ctx.imageSmoothingEnabled = true;
+            ctx.imageSmoothingQuality = "high";
+            if (mime === "image/jpeg") {
+                ctx.fillStyle = "#ffffff";
+                ctx.fillRect(0, 0, width, height);
+            }
+            ctx.drawImage(image, 0, 0, width, height);
+            return canvas;
+        }
+
+        function canvasToImageConverterBlob(canvas, mime, quality) {
+            return new Promise((resolve, reject) => {
+                canvas.toBlob((blob) => {
+                    if (!blob) {
+                        reject(new Error("The browser failed to encode the image."));
+                        return;
+                    }
+                    if (mime !== "image/png" && blob.type && blob.type !== mime) {
+                        reject(new Error(`${mime.replace("image/", ".")} output is not supported by this browser.`));
+                        return;
+                    }
+                    resolve(blob);
+                }, mime, quality);
+            });
+        }
+
+        async function encodeImageConverterBlob(image, format, scale, quality) {
+            const canvas = makeImageConverterCanvas(image, scale, format.mime);
+            const blob = await canvasToImageConverterBlob(
+                canvas,
+                format.mime,
+                format.lossy ? quality : undefined
+            );
+            return {
+                blob,
+                width: canvas.width,
+                height: canvas.height,
+                scale,
+                quality: format.lossy ? quality : 1
+            };
+        }
+
+        async function encodeImageConverterToTarget(image, format, startScale, maxQuality, targetBytes, allowResize) {
+            if (!targetBytes) {
+                return encodeImageConverterBlob(image, format, startScale, maxQuality);
+            }
+
+            let scale = startScale;
+            let last = null;
+            const minScale = 0.08;
+
+            if (!format.lossy) {
+                for (let pass = 0; pass < 18; pass += 1) {
+                    last = await encodeImageConverterBlob(image, format, scale, 1);
+                    if (last.blob.size <= targetBytes || !allowResize || scale <= minScale) {
+                        return {
+                            ...last,
+                            overTarget: last.blob.size > targetBytes
+                        };
+                    }
+                    scale *= 0.88;
+                }
+                return {
+                    ...last,
+                    overTarget: last?.blob.size > targetBytes
+                };
+            }
+
+            for (let pass = 0; pass < 12; pass += 1) {
+                let low = 0.1;
+                let high = maxQuality;
+                let fit = null;
+                for (let step = 0; step < 8; step += 1) {
+                    const nextQuality = (low + high) / 2;
+                    const encoded = await encodeImageConverterBlob(image, format, scale, nextQuality);
+                    last = encoded;
+                    if (encoded.blob.size <= targetBytes) {
+                        fit = encoded;
+                        low = nextQuality;
+                    } else {
+                        high = nextQuality;
+                    }
+                }
+                if (fit) {
+                    return fit;
+                }
+                if (!allowResize || scale <= minScale) {
+                    return {
+                        ...last,
+                        overTarget: last?.blob.size > targetBytes
+                    };
+                }
+                scale *= 0.86;
+            }
+
+            return {
+                ...last,
+                overTarget: last?.blob.size > targetBytes
+            };
+        }
+
+        async function getImageConverterFfmpeg() {
+            if (imageConverterFfmpegState.instance) {
+                return imageConverterFfmpegState.instance;
+            }
+            if (imageConverterFfmpegState.loading) {
+                return imageConverterFfmpegState.loading;
+            }
+            imageConverterFfmpegState.loading = (async () => {
+                const ffmpegApi = window.FFmpeg;
+                const utilApi = window.FFmpegUtil;
+                if (!ffmpegApi?.FFmpeg || !utilApi?.toBlobURL) {
+                    throw new Error("FFmpeg did not load. Check your connection and retry.");
+                }
+                const ffmpeg = new ffmpegApi.FFmpeg();
+                const baseUrl = "https://unpkg.com/@ffmpeg/core@0.12.10/dist/umd";
+                await ffmpeg.load({
+                    coreURL: await utilApi.toBlobURL(`${baseUrl}/ffmpeg-core.js`, "text/javascript"),
+                    wasmURL: await utilApi.toBlobURL(`${baseUrl}/ffmpeg-core.wasm`, "application/wasm")
+                });
+                imageConverterFfmpegState.instance = ffmpeg;
+                return ffmpeg;
+            })();
+            try {
+                return await imageConverterFfmpegState.loading;
+            } finally {
+                imageConverterFfmpegState.loading = null;
+            }
+        }
+
+        function getImageConverterFfmpegArgs(kind, format, inputName, outputName) {
+            if (kind === "image") {
+                const args = ["-i", inputName];
+                if (format.ext !== "gif") {
+                    args.push("-frames:v", "1");
+                }
+                args.push(outputName);
+                return args;
+            }
+            return ["-i", inputName, ...(format.args || []), outputName];
+        }
+
+        async function encodeImageConverterWithFfmpeg(file, kind, format) {
+            setImageConverterStatus("Loading FFmpeg...", "loading");
+            const ffmpeg = await getImageConverterFfmpeg();
+            const sourceExt = getImageConverterExtension(file.name) || kind;
+            const stamp = `${Date.now()}-${Math.random().toString(16).slice(2)}`;
+            const inputName = `input-${stamp}.${sourceExt}`;
+            const outputName = `output-${stamp}.${format.ext}`;
+            const args = getImageConverterFfmpegArgs(kind, format, inputName, outputName);
+            const utilApi = window.FFmpegUtil;
+
+            try {
+                setImageConverterStatus("Preparing file...", "loading");
+                await ffmpeg.writeFile(inputName, await utilApi.fetchFile(file));
+                setImageConverterStatus("Converting with FFmpeg...", "loading");
+                await ffmpeg.exec(args);
+                const data = await ffmpeg.readFile(outputName);
+                const outputBuffer = data.buffer.slice(
+                    data.byteOffset,
+                    data.byteOffset + data.byteLength
+                );
+                return {
+                    blob: new Blob([outputBuffer], {
+                        type: format.mime || "application/octet-stream"
+                    }),
+                    args
+                };
+            } finally {
+                await Promise.allSettled([
+                    ffmpeg.deleteFile(inputName),
+                    ffmpeg.deleteFile(outputName)
+                ]);
+            }
+        }
+
+        function renderImageConverterOutput(outputUrl, format) {
+            if (imageConverterElements.empty) {
+                imageConverterElements.empty.hidden = true;
+            }
+            if (format.mime?.startsWith("audio/") && imageConverterElements.audio) {
+                imageConverterElements.audio.src = outputUrl;
+                imageConverterElements.audio.hidden = false;
+                return;
+            }
+            if (format.mime?.startsWith("video/") && imageConverterElements.video) {
+                imageConverterElements.video.src = outputUrl;
+                imageConverterElements.video.hidden = false;
+                return;
+            }
+            if (format.mime?.startsWith("image/") && imageConverterElements.preview) {
+                imageConverterElements.preview.src = outputUrl;
+                imageConverterElements.preview.hidden = false;
+            }
+        }
+
+        async function handleImageConverterFile(file) {
+            if (!file) {
+                setImageConverterStatus("Pick a valid file first.", "error");
+                return;
+            }
+            const kind = getImageConverterKindForFile(file);
+            const ext = getImageConverterExtension(file.name);
+            const knownExtension = [
+                ...imageConverterImageExtensions,
+                ...imageConverterAudioExtensions,
+                ...imageConverterVideoExtensions
+            ].includes(ext);
+            const knownType = /^(image|audio|video)\//i.test(file.type || "");
+            if (!knownType && !knownExtension) {
+                setImageConverterStatus("Pick a valid image, music, or video file first.", "error");
+                return;
+            }
+            imageConverterState.busy = true;
+            setImageConverterKind(kind);
+            syncImageConverterControls();
+            setImageConverterStatus(`Loading ${kind}...`, "loading");
+            clearImageConverterOutput();
+
+            if (imageConverterState.sourceUrl) {
+                URL.revokeObjectURL(imageConverterState.sourceUrl);
+                imageConverterState.sourceUrl = "";
+            }
+
+            try {
+                imageConverterState.file = file;
+                imageConverterState.image = null;
+                if (kind === "image") {
+                    try {
+                        const loaded = await readImageConverterImage(file);
+                        imageConverterState.image = loaded.image;
+                        imageConverterState.sourceUrl = loaded.url;
+                    } catch (error) {
+                        console.warn("[File converter] Browser preview unavailable.", error);
+                    }
+                }
+                if (imageConverterElements.fileName) {
+                    imageConverterElements.fileName.textContent = file.name;
+                }
+                if (imageConverterElements.originalMeta) {
+                    imageConverterElements.originalMeta.textContent = `${file.name} · ${formatImageConverterBytes(file.size)}`;
+                }
+                if (imageConverterElements.dimMeta) {
+                    imageConverterElements.dimMeta.textContent = imageConverterState.image ?
+                        `${imageConverterState.image.width} × ${imageConverterState.image.height}` :
+                        kind.charAt(0).toUpperCase() + kind.slice(1);
+                }
+                setImageConverterStatus(`${kind.charAt(0).toUpperCase() + kind.slice(1)} ready. Pick output options and convert.`, "success");
+            } catch (error) {
+                console.error(error);
+                imageConverterState.file = null;
+                imageConverterState.image = null;
+                setImageConverterStatus(error.message || "Could not load that file.", "error");
+            } finally {
+                imageConverterState.busy = false;
+                syncImageConverterControls();
+            }
+        }
+
+        async function convertImageConverterImage() {
+            const file = imageConverterState.file;
+            const image = imageConverterState.image;
+            if (!file) {
+                setImageConverterStatus("Choose a file first.", "error");
+                return;
+            }
+
+            const kind = imageConverterState.kind || getImageConverterKindForFile(file);
+            const format = getImageConverterFormat();
+            const targetBytes = getImageConverterTargetBytes();
+            const allowResize = Boolean(imageConverterElements.autoResize?.checked);
+            const startScale = image ? getImageConverterBaseScale(image) : 1;
+            const maxQuality = getImageConverterQuality();
+
+            imageConverterState.busy = true;
+            clearImageConverterOutput();
+            syncImageConverterControls();
+            setImageConverterStatus(`Converting ${kind}...`, "loading");
+
+            try {
+                const useCanvas = kind === "image" && image && format.canvas;
+                const encoded = useCanvas ?
+                    await encodeImageConverterToTarget(
+                        image,
+                        format,
+                        startScale,
+                        maxQuality,
+                        targetBytes,
+                        allowResize
+                    ) :
+                    await encodeImageConverterWithFfmpeg(file, kind, format);
+                const outputName = sanitizeImageConverterName(file.name, format.ext);
+                const outputUrl = URL.createObjectURL(encoded.blob);
+                imageConverterState.outputBlob = encoded.blob;
+                imageConverterState.outputUrl = outputUrl;
+                imageConverterState.outputName = outputName;
+
+                renderImageConverterOutput(outputUrl, format);
+                if (imageConverterElements.outputMeta) {
+                    imageConverterElements.outputMeta.textContent = `${outputName} · ${formatImageConverterBytes(encoded.blob.size)}`;
+                }
+                if (imageConverterElements.dimMeta) {
+                    imageConverterElements.dimMeta.textContent = encoded.width && encoded.height ?
+                        `${encoded.width} × ${encoded.height}` :
+                        `${kind.charAt(0).toUpperCase() + kind.slice(1)} · .${format.ext}`;
+                }
+                if (imageConverterElements.compressMeta) {
+                    if (useCanvas) {
+                        const targetText = targetBytes ? ` · target ${formatImageConverterBytes(targetBytes)}` : "";
+                        const scaleText = encoded.scale < 0.999 ? ` · resized ${Math.round(encoded.scale * 100)}%` : "";
+                        const qualityText = format.lossy ? `${Math.round(encoded.quality * 100)}% quality` : "lossless";
+                        imageConverterElements.compressMeta.textContent = `${qualityText}${scaleText}${targetText}`;
+                    } else {
+                        imageConverterElements.compressMeta.textContent = "FFmpeg";
+                    }
+                }
+
+                const warning = useCanvas && encoded.overTarget && targetBytes ?
+                    `Converted, but the smallest safe output is still ${formatImageConverterBytes(encoded.blob.size)}.` :
+                    `Converted to .${format.ext} (${formatImageConverterBytes(encoded.blob.size)}).`;
+                setImageConverterStatus(warning, useCanvas && encoded.overTarget ? "error" : "success");
+            } catch (error) {
+                console.error(error);
+                setImageConverterStatus(error.message || "Conversion failed.", "error");
+            } finally {
+                imageConverterState.busy = false;
+                syncImageConverterControls();
+            }
+        }
+
+        function resetImageConverter() {
+            clearImageConverterOutput();
+            if (imageConverterState.sourceUrl) {
+                URL.revokeObjectURL(imageConverterState.sourceUrl);
+            }
+            imageConverterState.file = null;
+            imageConverterState.image = null;
+            imageConverterState.sourceUrl = "";
+            setImageConverterKind("image", "png");
+            if (imageConverterElements.input) {
+                imageConverterElements.input.value = "";
+            }
+            if (imageConverterElements.fileName) {
+                imageConverterElements.fileName.textContent = "or choose image, GIF, music, or video files";
+            }
+            if (imageConverterElements.originalMeta) {
+                imageConverterElements.originalMeta.textContent = "--";
+            }
+            setImageConverterStatus("Choose a file to start.");
+            syncImageConverterControls();
+        }
+
+        function downloadImageConverterOutput() {
+            if (!imageConverterState.outputBlob) {
+                setImageConverterStatus("Convert a file before downloading.", "error");
+                return;
+            }
+            downloadBlob(imageConverterState.outputBlob, imageConverterState.outputName || "converted-file");
+            setImageConverterStatus(`Downloading ${imageConverterState.outputName}.`, "success");
+        }
+
+        function initImageConverter() {
+            const els = imageConverterElements;
+            if (!els.root || !els.input || !els.pick || !els.convert || !els.download || !els.reset) {
+                return;
+            }
+
+            setImageConverterKind(els.kind?.value || "image", els.format?.value || "png");
+
+            els.pick.addEventListener("click", (event) => {
+                ripple(els.pick, event);
+                els.input.click();
+            });
+            els.input.addEventListener("change", () => {
+                const file = els.input.files && els.input.files[0];
+                void handleImageConverterFile(file);
+            });
+            els.convert.addEventListener("click", (event) => {
+                ripple(els.convert, event);
+                void convertImageConverterImage();
+            });
+            els.download.addEventListener("click", (event) => {
+                ripple(els.download, event);
+                downloadImageConverterOutput();
+            });
+            els.reset.addEventListener("click", (event) => {
+                ripple(els.reset, event);
+                resetImageConverter();
+            });
+
+            els.kind?.addEventListener("change", () => {
+                setImageConverterKind(els.kind.value);
+                clearImageConverterOutput();
+                syncImageConverterControls();
+            });
+
+            [els.format, els.quality, els.target, els.unit, els.maxWidth, els.maxHeight, els.autoResize]
+                .filter(Boolean)
+                .forEach((input) => {
+                    input.addEventListener("input", () => {
+                        clearImageConverterOutput();
+                        syncImageConverterControls();
+                    });
+                    input.addEventListener("change", () => {
+                        clearImageConverterOutput();
+                        syncImageConverterControls();
+                    });
+                });
+
+            if (els.drop) {
+                els.drop.addEventListener("click", (event) => {
+                    if (event.target === els.pick) {
+                        return;
+                    }
+                    els.input.click();
+                });
+                els.drop.addEventListener("keydown", (event) => {
+                    if (event.key === "Enter" || event.key === " ") {
+                        event.preventDefault();
+                        els.input.click();
+                    }
+                });
+                ["dragenter", "dragover"].forEach((type) => {
+                    els.drop.addEventListener(type, (event) => {
+                        event.preventDefault();
+                        els.drop.classList.add("is-over");
+                    });
+                });
+                ["dragleave", "drop"].forEach((type) => {
+                    els.drop.addEventListener(type, (event) => {
+                        event.preventDefault();
+                        els.drop.classList.remove("is-over");
+                    });
+                });
+                els.drop.addEventListener("drop", (event) => {
+                    const file = event.dataTransfer?.files?.[0];
+                    void handleImageConverterFile(file);
+                });
+            }
+
+            syncImageConverterControls();
         }
 
         function codexStatus(element, text, isError) {
@@ -13898,7 +15029,7 @@ self.addEventListener("message", async (event) => {
 
             const targets = Array.from(
                 document.querySelectorAll(
-                    ".home-section, .g.ed, .hero-card, .sc, .script-card, .version-card, .executor-card, .codex-convert__card, .script-searcher__panel, .rdd-card, .pz"
+                    ".home-section, .g.ed, .hero-card, .sc, .script-card, .version-card, .executor-card, .codex-convert__card, .script-searcher__panel, .rdd-card, .image-converter__card, .image-converter__drop, .pz"
                 )
             );
 
@@ -14267,6 +15398,7 @@ self.addEventListener("message", async (event) => {
             initScriptSearcher();
             initRobloxUserSearch();
             initAssetsDownloader();
+            initImageConverter();
             initVersionCards();
             clientVersionSpecs.forEach(fetchClientVersionData);
             studioVersionSpecs.forEach(fetchStudioVersionData);
