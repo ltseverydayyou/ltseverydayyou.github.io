@@ -1611,6 +1611,34 @@
             animation: robloxPanelIn 0.46s cubic-bezier(0.18, 0.84, 0.24, 1) both;
         }
 
+        .roblox-user-search__results-panel {
+            isolation: isolate;
+            overflow: visible;
+            background: transparent;
+            display: grid;
+            grid-template-rows: auto auto minmax(0, 1fr);
+            align-content: start;
+            gap: 12px;
+        }
+
+        .roblox-user-search__results-panel::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            border-radius: inherit;
+            background:
+                linear-gradient(180deg, rgba(255, 255, 255, 0.065), rgba(255, 255, 255, 0.02)),
+                rgba(8, 12, 20, 0.72);
+            backdrop-filter: blur(16px);
+            pointer-events: none;
+        }
+
+        .roblox-user-search__results-panel > * {
+            position: relative;
+            z-index: 2;
+        }
+
         .roblox-user-search__detail-panel {
             animation-delay: 0.08s;
         }
@@ -1621,11 +1649,13 @@
         }
 
         .roblox-user-search__results-head {
+            position: relative;
+            z-index: 2;
             display: flex;
             align-items: center;
             justify-content: space-between;
             gap: 10px;
-            margin-bottom: 12px;
+            margin-bottom: 0;
             padding-bottom: 12px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         }
@@ -1645,6 +1675,7 @@
 
         .roblox-user-search__results,
         .roblox-user-search__detail {
+            position: relative;
             display: grid;
             gap: 12px;
         }
@@ -1655,6 +1686,7 @@
 
         .roblox-user-search__result-card {
             position: relative;
+            z-index: 3;
             width: 100%;
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 18px;
@@ -1669,8 +1701,8 @@
             gap: 12px;
             cursor: pointer;
             overflow: hidden;
-            opacity: 0;
-            transform: translateY(10px) scale(0.985);
+            opacity: 1;
+            transform: none;
             animation: robloxCardIn 0.34s cubic-bezier(0.18, 0.84, 0.24, 1) forwards;
             transition:
                 transform 0.24s ease,
@@ -2083,6 +2115,11 @@
         }
 
         @keyframes robloxCardIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px) scale(0.985);
+            }
+
             to {
                 opacity: 1;
                 transform: translateY(0) scale(1);
@@ -2212,6 +2249,15 @@
             .roblox-user-search::after {
                 animation: none !important;
                 transition-duration: 0.01ms !important;
+            }
+
+            .roblox-user-search__result-card,
+            .roblox-user-search__hero-card,
+            .roblox-user-search__results-panel,
+            .roblox-user-search__detail-panel {
+                opacity: 1 !important;
+                transform: none !important;
+                filter: none !important;
             }
         }
 
@@ -2770,6 +2816,7 @@
             gap: 8px;
             flex-wrap: wrap;
             align-items: center;
+            z-index: 3;
         }
 
         .lua-manifest__search {
@@ -2899,6 +2946,7 @@
             display: flex;
             gap: 8px;
             flex-wrap: wrap;
+            z-index: 2;
         }
 
         .lua-manifest__link {
@@ -2956,6 +3004,32 @@
             letter-spacing: 0.02em;
             text-transform: none;
             justify-content: center;
+        }
+
+        .html-lab__meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .html-lab__meta span {
+            display: inline-flex;
+            align-items: center;
+            min-height: 30px;
+            padding: 6px 10px;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            background: rgba(255, 255, 255, 0.045);
+            color: var(--mu);
+            font-size: 12px;
+            font-weight: 800;
+        }
+
+        .html-lab__meta span.is-warn {
+            border-color: rgba(255, 214, 102, 0.28);
+            color: #ffd666;
+            background: rgba(255, 214, 102, 0.08);
         }
 
         .html-lab__panels {
@@ -3980,10 +4054,19 @@
         }
 
         .version-card__docs {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 72px;
+            min-height: 34px;
+            padding: 0 14px;
             font-size: 12px;
+            font-weight: 700;
             color: var(--ac2);
             text-decoration: none;
+            line-height: 1;
             letter-spacing: 0.08em;
+            text-transform: uppercase;
         }
 
         .version-card__docs:hover {
@@ -8590,6 +8673,16 @@
             padding: 10px;
         }
 
+        #pm .lua-manifest__controls {
+            --lua-manifest-dropdown-space: max(120px, min(320px, calc(100vh - 260px)));
+        }
+
+        #pm .lua-manifest__controls:has(.lua-manifest__results:not([hidden])),
+        #pm .lua-manifest__controls.lua-manifest__controls--expanded {
+            align-items: start;
+            padding-bottom: calc(18px + var(--lua-manifest-dropdown-space));
+        }
+
         #pm .lua-manifest__search input,
         #px .script-searcher__controls input,
         #pa .assets-downloader__controls input,
@@ -8857,7 +8950,18 @@
             padding: 8px 14px;
         }
 
+        #pm .lua-manifest__search {
+            position: relative;
+            z-index: 4;
+        }
+
         #pm .lua-manifest__results {
+            position: absolute;
+            top: calc(100% + 8px);
+            left: 0;
+            right: 0;
+            z-index: 30;
+            max-height: max(120px, min(320px, calc(100vh - 260px)));
             overflow: hidden auto;
             padding: 10px;
         }
@@ -9779,6 +9883,126 @@
             }
         }
 
+
+        /* Bootstrapper card animation restore */
+        #pu .bootstrappers-grid {
+            perspective: 900px;
+        }
+
+        #pu .g.ed .bootstrapper-card {
+            overflow: hidden;
+            isolation: isolate;
+            background: transparent;
+            border-radius: var(--rad);
+            transform-origin: center;
+            animation: bootstrapperCardRise 0.46s cubic-bezier(0.18, 0.84, 0.24, 1) both !important;
+            animation-delay: calc(var(--boot-i, 0) * 80ms) !important;
+            will-change: transform, filter;
+        }
+
+        #pu .bootstrapper-card:nth-child(1) {
+            --boot-i: 0;
+        }
+
+        #pu .bootstrapper-card:nth-child(2) {
+            --boot-i: 1;
+        }
+
+        #pu .bootstrapper-card:nth-child(3) {
+            --boot-i: 2;
+        }
+
+        #pu .bootstrapper-card:hover {
+            transform: translateY(-6px) scale(1.01);
+            filter: saturate(1.08) brightness(1.04);
+        }
+
+        #pu .bootstrapper-card::before {
+            content: "";
+            position: absolute;
+            inset: -40%;
+            background: var(--bootstrapper-frame);
+            pointer-events: none;
+            opacity: 0.72;
+            filter: blur(18px);
+            transition: opacity 0.24s ease, filter 0.24s ease;
+            animation:
+                bootstrapperFrameSpin 6s linear infinite,
+                bootstrapperFrameGlow 3.2s ease-in-out infinite !important;
+        }
+
+        #pu .bootstrapper-card:hover::before {
+            opacity: 1;
+            filter: blur(14px);
+        }
+
+        #pu .bootstrapper-card--featured::before {
+            animation:
+                bootstrapperFrameVortex 7.2s linear infinite,
+                bootstrapperFrameGlow 3.4s ease-in-out infinite !important;
+        }
+
+        #pu .bootstrapper-card--secondary::before {
+            animation:
+                bootstrapperFrameDrift 10.4s ease-in-out infinite,
+                bootstrapperFrameGlow 4.6s ease-in-out infinite -0.9s !important;
+        }
+
+        #pu .bootstrapper-card--legacy::before {
+            animation:
+                bootstrapperFrameChaos 8.1s ease-in-out infinite,
+                bootstrapperFrameGlow 2.9s ease-in-out infinite -1.3s !important;
+        }
+
+        #pu .bootstrapper-card__logo-cycle {
+            position: relative;
+            width: 44px;
+            height: 44px;
+            flex: 0 0 auto;
+            overflow: hidden;
+        }
+
+        #pu .g.ed .bootstrapper-card__logo-cycle .bootstrapper-card__logo {
+            position: absolute;
+            inset: 0;
+            display: block;
+            width: 44px;
+            height: 44px;
+            object-fit: contain;
+            opacity: 0;
+            transform-origin: center;
+            will-change: opacity, transform, filter;
+        }
+
+        #pu .g.ed .bootstrapper-card__logo-cycle .bootstrapper-card__logo:first-child {
+            opacity: 1;
+            animation: bootstrapperLogoCycleA 4.8s ease-in-out infinite !important;
+        }
+
+        #pu .g.ed .bootstrapper-card__logo-cycle .bootstrapper-card__logo:nth-child(2) {
+            opacity: 0;
+            animation: bootstrapperLogoCycleB 4.8s ease-in-out infinite !important;
+        }
+
+        #pu .bootstrapper-card:hover .bootstrapper-card__logo-cycle .bootstrapper-card__logo {
+            transform: scale(1.04) rotate(-1deg);
+            filter: saturate(1.12);
+        }
+
+        @keyframes bootstrapperCardRise {
+            from {
+                opacity: 0;
+                transform: translateY(16px) scale(0.985) rotateX(3deg);
+                filter: blur(6px);
+            }
+
+            to {
+                opacity: 1;
+                transform: none;
+                filter: blur(0);
+            }
+        }
+
         @media (prefers-reduced-motion: reduce) {
             #pc .codex-convert,
             #pc .codex-convert *,
@@ -9789,6 +10013,164 @@
             .as::before {
                 animation: none !important;
                 transition-duration: 0.01ms !important;
+            }
+        }
+
+        .egg-toast-stack {
+            position: fixed;
+            right: 18px;
+            bottom: 18px;
+            z-index: 95;
+            display: grid;
+            gap: 10px;
+            width: min(320px, calc(100vw - 28px));
+            pointer-events: none;
+        }
+
+        .egg-toast {
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            border-radius: 16px;
+            padding: 12px 14px;
+            background:
+                linear-gradient(135deg, rgba(102, 227, 255, 0.13), rgba(167, 139, 250, 0.14)),
+                rgba(10, 13, 23, 0.96);
+            box-shadow: 0 18px 46px rgba(0, 0, 0, 0.42);
+            transform: translateX(18px);
+            opacity: 0;
+            animation: eggToastIn 0.24s ease-out forwards;
+        }
+
+        .egg-toast strong {
+            display: block;
+            color: #fff;
+            font-size: 13px;
+        }
+
+        .egg-toast span {
+            display: block;
+            margin-top: 2px;
+            color: rgba(231, 233, 238, 0.74);
+            font-size: 12px;
+        }
+
+        .egg-panel,
+        .egg-game {
+            display: grid;
+            gap: 14px;
+        }
+
+        .egg-panel__lead {
+            margin: 0;
+            color: var(--mu);
+        }
+
+        .egg-panel__grid,
+        .egg-achievements {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 10px;
+        }
+
+        .egg-panel__button,
+        .egg-theme-button,
+        .egg-game__button {
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 14px;
+            padding: 10px 12px;
+            background: rgba(255, 255, 255, 0.055);
+            color: var(--tx);
+            font-weight: 800;
+            cursor: pointer;
+            text-align: left;
+        }
+
+        .egg-theme-button[disabled] {
+            cursor: not-allowed;
+            color: rgba(231, 233, 238, 0.42);
+            background: rgba(255, 255, 255, 0.025);
+        }
+
+        .egg-achievement {
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 14px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.035);
+        }
+
+        .egg-achievement strong,
+        .egg-game__hud strong {
+            display: block;
+            color: #fff;
+        }
+
+        .egg-achievement span,
+        .egg-game__hud span {
+            display: block;
+            color: var(--mu);
+            font-size: 12px;
+        }
+
+        .egg-game__hud {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 10px;
+        }
+
+        .egg-game__hud div {
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 14px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .egg-game__arena {
+            position: relative;
+            height: min(360px, 48vh);
+            min-height: 240px;
+            overflow: hidden;
+            border: 1px solid rgba(102, 227, 255, 0.22);
+            border-radius: 18px;
+            background:
+                linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+                linear-gradient(180deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+                rgba(4, 8, 18, 0.78);
+            background-size: 34px 34px;
+        }
+
+        .egg-game__target {
+            position: absolute;
+            width: 70px;
+            height: 70px;
+            border: 1px solid rgba(255, 255, 255, 0.32);
+            border-radius: 18px;
+            background:
+                radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.28), transparent 34%),
+                linear-gradient(135deg, var(--ac), var(--ac2));
+            color: #050507;
+            font-weight: 1000;
+            cursor: pointer;
+            box-shadow: 0 14px 34px rgba(102, 227, 255, 0.22);
+            transition: transform 0.12s ease;
+        }
+
+        .egg-game__target:hover {
+            transform: scale(1.06) rotate(-2deg);
+        }
+
+        .egg-game__target.is-hit {
+            animation: eggHit 0.18s ease-out both;
+        }
+
+        @keyframes eggToastIn {
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes eggHit {
+            50% {
+                transform: scale(0.78) rotate(5deg);
             }
         }
 
@@ -9825,6 +10207,7 @@
                 <button class="tb" data-t="e">Executors</button>
                 <button class="tb" data-t="r">RDD</button>
                 <button class="tb" data-t="b">Roblox BuilderIcons</button>
+                <button class="tb" type="button" id="egg-achievements-open">Achievements</button>
             </nav>
         </aside>
 
@@ -10014,6 +10397,7 @@
                     </div>
                     <div class="html-lab__actions" role="group" aria-label="HTML utilities">
                         <button class="pl sc" id="hr" type="button">Update preview</button>
+                        <button class="pl" id="html-auto-preview" type="button" aria-pressed="true">Auto preview: on</button>
                         <button class="pl" id="html-preview-window" type="button">Preview (Full page)</button>
                         <button class="pl" id="html-highlight-window" type="button">Highlight (Full page)</button>
                         <button class="pl" id="html-format" type="button">Format</button>
@@ -10024,6 +10408,11 @@
                         <button class="pl" id="html-import-trigger" type="button">Import</button>
                         <button class="pl" id="html-export" type="button">Export</button>
                         <input type="file" id="html-import" hidden accept=".html,.htm,text/*" />
+                    </div>
+                    <div id="html-meta" class="html-lab__meta" aria-live="polite">
+                        <span>0 lines</span>
+                        <span>0 chars</span>
+                        <span>Auto-safe</span>
                     </div>
                     <div class="html-lab__panels">
                         <label class="html-lab__panel">
@@ -10881,6 +11270,7 @@
         <source src="SFX/get-out.mp3" type="audio/mpeg" />
     </audio>
     <div id="ts" class="ts"></div>
+    <div id="egg-toast-stack" class="egg-toast-stack" aria-live="polite"></div>
 
     <div id="md" class="md" aria-hidden="true">
         <div class="mc">
@@ -16814,37 +17204,997 @@
         }
 
         function onAv() {
+            unlockAchievement("avatarBother");
+            if (!handleLogoClickCombo()) {
+                toast(`Icon click ${easterEggState.logoClicks}/7`);
+            }
+        }
+
+        const EASTER_EGG_STORAGE_KEY = "vyperiaEggs";
+        const EASTER_EGG_KONAMI = [
+            "ArrowUp",
+            "ArrowUp",
+            "ArrowDown",
+            "ArrowDown",
+            "ArrowLeft",
+            "ArrowRight",
+            "ArrowLeft",
+            "ArrowRight",
+            "b",
+            "a"
+        ];
+        const EASTER_EGG_THEMES = {
+            microwave: {
+                name: "Microwave Admin",
+                hint: "Unlocked by typing the ancient keyboard soup.",
+                theme: {
+                    ac: "#ffe45c",
+                    ac2: "#ff5c8a",
+                    g1: "#120b18",
+                    g2: "#241013",
+                    glA: "0.1",
+                    bdA: "0.16",
+                    rad: "18px",
+                    fs: 15,
+                    panelA: "0.9",
+                    blurAmt: 24,
+                    ambientA: "0.68",
+                    motion: "1",
+                    titleMax: "101px",
+                    cursorGlow: 220
+                }
+            },
+            clickTax: {
+                name: "Click Tax",
+                hint: "Unlocked by bothering the header enough.",
+                theme: {
+                    ac: "#72f3b6",
+                    ac2: "#66e3ff",
+                    g1: "#03110e",
+                    g2: "#121224",
+                    glA: "0.09",
+                    bdA: "0.18",
+                    rad: "12px",
+                    fs: 15,
+                    panelA: "0.92",
+                    blurAmt: 20,
+                    ambientA: "0.62",
+                    motion: "1",
+                    titleMax: "101px",
+                    cursorGlow: 240
+                }
+            },
+            notFound: {
+                name: "404 Sauce",
+                hint: "Unlocked by bullying the missing page button.",
+                theme: {
+                    ac: "#ff7a45",
+                    ac2: "#7dd3fc",
+                    g1: "#090706",
+                    g2: "#111827",
+                    glA: "0.11",
+                    bdA: "0.15",
+                    rad: "10px",
+                    fs: 15,
+                    panelA: "0.9",
+                    blurAmt: 26,
+                    ambientA: "0.72",
+                    motion: "1",
+                    titleMax: "101px",
+                    cursorGlow: 260
+                }
+            },
+            expiredGrape: {
+                name: "Expired Grape",
+                hint: "Unlocked after collecting three useless achievements.",
+                theme: {
+                    ac: "#d8b4fe",
+                    ac2: "#facc15",
+                    g1: "#10051d",
+                    g2: "#161b22",
+                    glA: "0.1",
+                    bdA: "0.18",
+                    rad: "22px",
+                    fs: 15,
+                    panelA: "0.9",
+                    blurAmt: 28,
+                    ambientA: "0.7",
+                    motion: "1",
+                    titleMax: "101px",
+                    cursorGlow: 210
+                }
+            },
+            blueScreen: {
+                name: "Blue Screen Deluxe",
+                hint: "Unlocked by typing panic while nothing important is selected.",
+                theme: {
+                    ac: "#7dd3fc",
+                    ac2: "#ffffff",
+                    g1: "#001b66",
+                    g2: "#030817",
+                    glA: "0.08",
+                    bdA: "0.2",
+                    rad: "2px",
+                    fs: 15,
+                    panelA: "0.86",
+                    blurAmt: 10,
+                    ambientA: "0.5",
+                    motion: "1",
+                    titleMax: "101px",
+                    cursorGlow: 280
+                }
+            },
+            limewire: {
+                name: "Limewire Receipt",
+                hint: "Unlocked by typing limewire. Legally distinct nostalgia.",
+                theme: {
+                    ac: "#bef264",
+                    ac2: "#22c55e",
+                    g1: "#06130a",
+                    g2: "#151407",
+                    glA: "0.1",
+                    bdA: "0.14",
+                    rad: "8px",
+                    fs: 15,
+                    panelA: "0.9",
+                    blurAmt: 18,
+                    ambientA: "0.66",
+                    motion: "1",
+                    titleMax: "101px",
+                    cursorGlow: 260
+                }
+            },
+            bubblegumTerminal: {
+                name: "Bubblegum Terminal",
+                hint: "Unlocked by typing vyperia like you meant it.",
+                theme: {
+                    ac: "#f0abfc",
+                    ac2: "#67e8f9",
+                    g1: "#16051a",
+                    g2: "#04131d",
+                    glA: "0.12",
+                    bdA: "0.16",
+                    rad: "20px",
+                    fs: 15,
+                    panelA: "0.88",
+                    blurAmt: 30,
+                    ambientA: "0.78",
+                    motion: "1",
+                    titleMax: "101px",
+                    cursorGlow: 300
+                }
+            },
+            burntToast: {
+                name: "Burnt Toast",
+                hint: "Unlocked by clicking the achievement button with nothing achieved.",
+                theme: {
+                    ac: "#f97316",
+                    ac2: "#fde68a",
+                    g1: "#120a06",
+                    g2: "#21130c",
+                    glA: "0.08",
+                    bdA: "0.13",
+                    rad: "6px",
+                    fs: 15,
+                    panelA: "0.92",
+                    blurAmt: 16,
+                    ambientA: "0.54",
+                    motion: "1",
+                    titleMax: "101px",
+                    cursorGlow: 190
+                }
+            },
+            paperwork: {
+                name: "Paperwork Dungeon",
+                hint: "Unlocked by applying too many secret themes.",
+                theme: {
+                    ac: "#38bdf8",
+                    ac2: "#c4b5fd",
+                    g1: "#0a0f1a",
+                    g2: "#1c1917",
+                    glA: "0.05",
+                    bdA: "0.2",
+                    rad: "4px",
+                    fs: 14,
+                    panelA: "0.95",
+                    blurAmt: 12,
+                    ambientA: "0.48",
+                    motion: "1",
+                    titleMax: "92px",
+                    cursorGlow: 160
+                }
+            },
+            ziplockNebula: {
+                name: "Ziplock Nebula",
+                hint: "Unlocked by holding the Manifest Generate button.",
+                theme: {
+                    ac: "#93c5fd",
+                    ac2: "#f9a8d4",
+                    g1: "#050816",
+                    g2: "#1e1026",
+                    glA: "0.11",
+                    bdA: "0.17",
+                    rad: "18px",
+                    fs: 15,
+                    panelA: "0.9",
+                    blurAmt: 26,
+                    ambientA: "0.74",
+                    motion: "1",
+                    titleMax: "101px",
+                    cursorGlow: 250
+                }
+            },
+            refreshBruise: {
+                name: "Refresh Bruise",
+                hint: "Unlocked by holding the executor refresh button.",
+                theme: {
+                    ac: "#c084fc",
+                    ac2: "#fb7185",
+                    g1: "#0b0614",
+                    g2: "#1f1020",
+                    glA: "0.1",
+                    bdA: "0.16",
+                    rad: "14px",
+                    fs: 15,
+                    panelA: "0.91",
+                    blurAmt: 22,
+                    ambientA: "0.64",
+                    motion: "1",
+                    titleMax: "101px",
+                    cursorGlow: 230
+                }
+            },
+            staticMint: {
+                name: "Static Mint",
+                hint: "Unlocked by bothering the Roblox Users match count.",
+                theme: {
+                    ac: "#5eead4",
+                    ac2: "#d9f99d",
+                    g1: "#031716",
+                    g2: "#101820",
+                    glA: "0.1",
+                    bdA: "0.15",
+                    rad: "16px",
+                    fs: 15,
+                    panelA: "0.9",
+                    blurAmt: 24,
+                    ambientA: "0.7",
+                    motion: "1",
+                    titleMax: "101px",
+                    cursorGlow: 260
+                }
+            },
+            diffHeat: {
+                name: "Diff Heat",
+                hint: "Unlocked by toggling edited-only like it owes you money.",
+                theme: {
+                    ac: "#fca5a5",
+                    ac2: "#fdba74",
+                    g1: "#160808",
+                    g2: "#241006",
+                    glA: "0.09",
+                    bdA: "0.16",
+                    rad: "11px",
+                    fs: 15,
+                    panelA: "0.91",
+                    blurAmt: 18,
+                    ambientA: "0.62",
+                    motion: "1",
+                    titleMax: "101px",
+                    cursorGlow: 240
+                }
+            },
+            iconRain: {
+                name: "Icon Rain",
+                hint: "Unlocked by tapping the BuilderIcons counter.",
+                theme: {
+                    ac: "#60a5fa",
+                    ac2: "#34d399",
+                    g1: "#04111f",
+                    g2: "#071411",
+                    glA: "0.1",
+                    bdA: "0.17",
+                    rad: "13px",
+                    fs: 15,
+                    panelA: "0.9",
+                    blurAmt: 24,
+                    ambientA: "0.68",
+                    motion: "1",
+                    titleMax: "101px",
+                    cursorGlow: 270
+                }
+            }
+        };
+        const EASTER_EGG_ACHIEVEMENTS = {
+            konami: {
+                title: "Keyboard Soup",
+                body: "You pressed the dusty gamer spell."
+            },
+            logoClicks: {
+                title: "Certified Button Harasser",
+                body: "The header has filed a tiny complaint."
+            },
+            notFoundOpen: {
+                title: "Opened Missing File",
+                body: "You found the thing that is not there. Impressive-ish."
+            },
+            firstBonk: {
+                title: "Professional Wall Clicker",
+                body: "One 404 tile successfully annoyed."
+            },
+            notFoundWin: {
+                title: "404 Foundn't",
+                body: "You solved nothing with confidence."
+            },
+            themeApply: {
+                title: "Theme Crimes Department",
+                body: "A color palette was legally questioned."
+            },
+            collector: {
+                title: "Achievement Debt",
+                body: "Three badges and still no practical benefit."
+            },
+            noAchievements: {
+                title: "Empty Shelf Speedrun",
+                body: "You opened achievements before owning a single crumb."
+            },
+            achievementPeek: {
+                title: "Looking At The Receipt",
+                body: "You checked your collection like it pays rent."
+            },
+            panic: {
+                title: "Panic Button Without Button",
+                body: "You typed panic and the page pretended to be dramatic."
+            },
+            limewire: {
+                title: "Totally Legit Download",
+                body: "You installed nostalgia directly into the wallpaper."
+            },
+            vyperiaSpell: {
+                title: "Name Dropped",
+                body: "You typed the site name and it acted important."
+            },
+            avatarBother: {
+                title: "Profile Picture Poked Back",
+                body: "The avatar noticed. This is now a workplace incident."
+            },
+            tabSampler: {
+                title: "Navigation Tax Fraud",
+                body: "You opened five tabs fast enough to worry the sidebar."
+            },
+            scrollBottom: {
+                title: "Footer Inspector",
+                body: "You reached the bottom. There was almost definitely floor there."
+            },
+            themeHoarder: {
+                title: "Palette Hoarder",
+                body: "You applied four secret themes. Your monitor is concerned."
+            },
+            modalEscape: {
+                title: "Escape Artist But Lazy",
+                body: "You closed a popup by pressing Escape. Revolutionary."
+            },
+            manifestHeld: {
+                title: "Zip Button Marinated",
+                body: "You held Generate until it started considering its choices."
+            },
+            robloxMatchesPoked: {
+                title: "Match Counter Interviewer",
+                body: "You asked Matches for comment. It declined."
+            },
+            executorRefreshHeld: {
+                title: "Refresh Button Pressure Test",
+                body: "The executor refresh button survived prolonged scrutiny."
+            },
+            pinnedFilterPoked: {
+                title: "Pinned And Confused",
+                body: "You tapped Pinned enough times to make it feel promoted."
+            },
+            scriptTabTapper: {
+                title: "Search Engine Negotiator",
+                body: "You poked the script search tabs like one owed you results."
+            },
+            diffToggleSpam: {
+                title: "Diff Light Switch",
+                body: "Edited-only is now spiritually exhausted."
+            },
+            futureHeld: {
+                title: "Future Build Fortune Teller",
+                body: "You held the future button and received absolutely no prophecy."
+            },
+            builderCounterPoked: {
+                title: "Icon Accountant",
+                body: "You audited the BuilderIcons total with your finger."
+            },
+            assetTitlePoked: {
+                title: "Asset Title Negotiator",
+                body: "The asset title had nothing else to add."
+            },
+            converterVoidPoked: {
+                title: "Empty Preview Enthusiast",
+                body: "You admired the converter preview before it had anything to show."
+            },
+            mobileEggHoarder: {
+                title: "Pocket Achievement Farm",
+                body: "Five touch secrets collected. Your thumb has tenure."
+            }
+        };
+        const easterEggState = {
+            konamiIndex: 0,
+            logoClicks: 0,
+            logoTimer: null,
+            gameScore: 0,
+            gameTime: 0,
+            gameTimer: null,
+            hashDigits: "",
+            wordBuffer: "",
+            tabClicks: [],
+            appliedThemes: new Set(),
+            scrollUnlocked: false,
+            unlockedThemes: new Set(),
+            achievements: new Set()
+        };
+
+        function loadEasterEggState() {
+            try {
+                const parsed = JSON.parse(localStorage.getItem(EASTER_EGG_STORAGE_KEY) || "{}");
+                easterEggState.unlockedThemes = new Set(
+                    Array.isArray(parsed.themes) ? parsed.themes : []
+                );
+                easterEggState.achievements = new Set(
+                    Array.isArray(parsed.achievements) ? parsed.achievements : []
+                );
+                easterEggState.appliedThemes = new Set(
+                    Array.isArray(parsed.appliedThemes) ? parsed.appliedThemes : []
+                );
+            } catch {
+                easterEggState.unlockedThemes = new Set();
+                easterEggState.achievements = new Set();
+                easterEggState.appliedThemes = new Set();
+            }
+        }
+
+        function saveEasterEggState() {
+            localStorage.setItem(
+                EASTER_EGG_STORAGE_KEY,
+                JSON.stringify({
+                    themes: [...easterEggState.unlockedThemes],
+                    achievements: [...easterEggState.achievements],
+                    appliedThemes: [...easterEggState.appliedThemes]
+                })
+            );
+        }
+
+        function eggToast(title, body = "") {
+            const stack = q("#egg-toast-stack");
+            if (!stack) {
+                toast(title);
+                return;
+            }
+            const item = document.createElement("div");
+            item.className = "egg-toast";
+            const label = document.createElement("strong");
+            label.textContent = title;
+            const copy = document.createElement("span");
+            copy.textContent = body;
+            item.append(label, copy);
+            stack.appendChild(item);
+            window.setTimeout(() => {
+                item.style.opacity = "0";
+                item.style.transform = "translateX(18px)";
+                window.setTimeout(() => item.remove(), 240);
+            }, 3600);
+        }
+
+        function maybeUnlockCollectorAchievement() {
+            if (
+                easterEggState.achievements.size >= 3 &&
+                !easterEggState.achievements.has("collector")
+            ) {
+                unlockAchievement("collector");
+                unlockEggTheme("expiredGrape");
+            }
+        }
+
+        function unlockAchievement(id) {
+            const achievement = EASTER_EGG_ACHIEVEMENTS[id];
+            if (!achievement || easterEggState.achievements.has(id)) {
+                return;
+            }
+            easterEggState.achievements.add(id);
+            saveEasterEggState();
+            eggToast(`Achievement unlocked: ${achievement.title}`, achievement.body);
+            maybeUnlockCollectorAchievement();
+        }
+
+        function unlockEggTheme(key) {
+            const preset = EASTER_EGG_THEMES[key];
+            if (!preset || easterEggState.unlockedThemes.has(key)) {
+                return;
+            }
+            easterEggState.unlockedThemes.add(key);
+            saveEasterEggState();
+            eggToast(`Theme unlocked: ${preset.name}`, preset.hint);
+        }
+
+        function maybeUnlockMobileEggHoarder() {
+            const touchAchievements = [
+                "manifestHeld",
+                "robloxMatchesPoked",
+                "executorRefreshHeld",
+                "pinnedFilterPoked",
+                "scriptTabTapper",
+                "diffToggleSpam",
+                "futureHeld",
+                "builderCounterPoked",
+                "assetTitlePoked",
+                "converterVoidPoked"
+            ];
+            const count = touchAchievements.filter((id) =>
+                easterEggState.achievements.has(id)
+            ).length;
+            if (count >= 5) {
+                unlockAchievement("mobileEggHoarder");
+            }
+        }
+
+        function completeTouchEasterEgg(achievementId, themeKey = "") {
+            unlockAchievement(achievementId);
+            if (themeKey) {
+                unlockEggTheme(themeKey);
+            }
+            maybeUnlockMobileEggHoarder();
+        }
+
+        function applyEggTheme(key) {
+            const preset = EASTER_EGG_THEMES[key];
+            if (!preset || !easterEggState.unlockedThemes.has(key)) {
+                toast("That theme is still locked");
+                return;
+            }
+            resetFlashThemeState();
+            themeApply(preset.theme);
+            themeSyncInputs(preset.theme);
+            easterEggState.appliedThemes.add(key);
+            saveEasterEggState();
+            if (easterEggState.appliedThemes.size >= 4) {
+                unlockAchievement("themeHoarder");
+                unlockEggTheme("paperwork");
+            }
+            unlockAchievement("themeApply");
+            toast(`${preset.name} applied`);
+        }
+
+        function renderCollectedAchievements() {
+            curCode = "";
+            mOpen("Collected Achievements", {
+                showCopy: false
+            });
+            const body = q("#mb");
+            if (!body) {
+                return;
+            }
+            body.className = "egg-panel";
+            body.innerHTML = "";
+
+            const collected = Object.entries(EASTER_EGG_ACHIEVEMENTS)
+                .filter(([id]) => easterEggState.achievements.has(id));
+            const lead = document.createElement("p");
+            lead.className = "egg-panel__lead";
+            lead.textContent = collected.length ?
+                `${collected.length} deeply unnecessary achievement${collected.length === 1 ? "" : "s"} collected.` :
+                "No achievements collected yet. Somehow this is also an achievement now.";
+
+            const grid = document.createElement("div");
+            grid.className = "egg-achievements";
+            collected.forEach(([, achievement]) => {
+                const card = document.createElement("div");
+                card.className = "egg-achievement";
+                const title = document.createElement("strong");
+                title.textContent = achievement.title;
+                const copy = document.createElement("span");
+                copy.textContent = achievement.body;
+                card.append(title, copy);
+                grid.appendChild(card);
+            });
+
+            if (!collected.length) {
+                const empty = document.createElement("div");
+                empty.className = "egg-achievement";
+                const title = document.createElement("strong");
+                title.textContent = "Shelf dust";
+                const copy = document.createElement("span");
+                copy.textContent = "Go discover something dumb first.";
+                empty.append(title, copy);
+                grid.appendChild(empty);
+            }
+
+            body.append(lead, grid);
+        }
+
+        function openCollectedAchievements() {
+            if (!easterEggState.achievements.size) {
+                unlockAchievement("noAchievements");
+                unlockEggTheme("burntToast");
+            } else {
+                unlockAchievement("achievementPeek");
+            }
+            renderCollectedAchievements();
+        }
+
+        function renderEasterEggPanel() {
+            curCode = "";
+            mOpen("Definitely Normal Settings", {
+                showCopy: false
+            });
+            const body = q("#mb");
+            if (!body) {
+                return;
+            }
+            body.className = "egg-panel";
+            body.innerHTML = "";
+
+            const lead = document.createElement("p");
+            lead.className = "egg-panel__lead";
+            lead.textContent = "Unlocked junk drawer. Buttons here do things. Some useful, most questionable.";
+
+            const controls = document.createElement("div");
+            controls.className = "egg-panel__grid";
+
+            const gameButton = document.createElement("button");
+            gameButton.type = "button";
+            gameButton.className = "egg-panel__button";
+            gameButton.textContent = "Open 404 mini-game";
+            gameButton.addEventListener("click", open404MiniGame);
+
+            const resetButton = document.createElement("button");
+            resetButton.type = "button";
+            resetButton.className = "egg-panel__button";
+            resetButton.textContent = "Reset to normal theme";
+            resetButton.addEventListener("click", () => {
+                themeDefaults();
+                toast("Normal-ish restored");
+            });
+
+            controls.append(gameButton, resetButton);
+
+            const themeGrid = document.createElement("div");
+            themeGrid.className = "egg-panel__grid";
+            Object.entries(EASTER_EGG_THEMES).forEach(([key, preset]) => {
+                const button = document.createElement("button");
+                button.type = "button";
+                button.className = "egg-theme-button";
+                const unlocked = easterEggState.unlockedThemes.has(key);
+                button.disabled = !unlocked;
+                button.textContent = unlocked ? preset.name : `Locked: ${preset.name}`;
+                button.title = preset.hint;
+                button.addEventListener("click", () => applyEggTheme(key));
+                themeGrid.appendChild(button);
+            });
+
+            const achievements = document.createElement("div");
+            achievements.className = "egg-achievements";
+            Object.entries(EASTER_EGG_ACHIEVEMENTS).forEach(([id, achievement]) => {
+                const card = document.createElement("div");
+                card.className = "egg-achievement";
+                const title = document.createElement("strong");
+                title.textContent = easterEggState.achievements.has(id) ?
+                    achievement.title :
+                    "???";
+                const copy = document.createElement("span");
+                copy.textContent = easterEggState.achievements.has(id) ?
+                    achievement.body :
+                    "Go do suspiciously specific nonsense.";
+                card.append(title, copy);
+                achievements.appendChild(card);
+            });
+
+            body.append(lead, controls, themeGrid, achievements);
+        }
+
+        function openEasterEggPanel() {
+            unlockAchievement("konami");
+            unlockEggTheme("microwave");
+            renderEasterEggPanel();
+        }
+
+        function update404GameHud() {
+            const score = q("#egg-404-score");
+            const time = q("#egg-404-time");
+            const status = q("#egg-404-status");
+            if (score) {
+                score.textContent = easterEggState.gameScore.toString();
+            }
+            if (time) {
+                time.textContent = `${easterEggState.gameTime}s`;
+            }
+            if (status) {
+                status.textContent =
+                    easterEggState.gameScore >= 10 ? "legally located" : "still missing";
+            }
+        }
+
+        function move404Target() {
+            const arena = q("#egg-404-arena");
+            const target = q("#egg-404-target");
+            if (!arena || !target) {
+                return;
+            }
+            const arenaRect = arena.getBoundingClientRect();
+            const maxX = Math.max(0, arenaRect.width - target.offsetWidth - 8);
+            const maxY = Math.max(0, arenaRect.height - target.offsetHeight - 8);
+            target.style.left = `${4 + Math.random() * maxX}px`;
+            target.style.top = `${4 + Math.random() * maxY}px`;
+        }
+
+        function finish404Game() {
+            clearInterval(easterEggState.gameTimer);
+            easterEggState.gameTimer = null;
+            const target = q("#egg-404-target");
+            const start = q("#egg-404-start");
+            if (target) {
+                target.hidden = true;
+            }
+            if (start) {
+                start.disabled = false;
+                start.textContent = "Start another bad idea";
+            }
+            if (easterEggState.gameScore >= 10) {
+                unlockAchievement("notFoundWin");
+                unlockEggTheme("notFound");
+                toast("404 beaten. Nothing was learned.");
+            } else {
+                toast("404 escaped. Skill issue documented.");
+            }
+            update404GameHud();
+        }
+
+        function start404Game() {
+            clearInterval(easterEggState.gameTimer);
+            easterEggState.gameScore = 0;
+            easterEggState.gameTime = 20;
+            const target = q("#egg-404-target");
+            const start = q("#egg-404-start");
+            if (target) {
+                target.hidden = false;
+            }
+            if (start) {
+                start.disabled = true;
+                start.textContent = "Locating nothing...";
+            }
+            update404GameHud();
+            move404Target();
+            easterEggState.gameTimer = setInterval(() => {
+                easterEggState.gameTime -= 1;
+                update404GameHud();
+                if (easterEggState.gameTime <= 0) {
+                    finish404Game();
+                }
+            }, 1000);
+        }
+
+        function hit404Target() {
+            const target = q("#egg-404-target");
+            easterEggState.gameScore += 1;
+            if (easterEggState.gameScore === 1) {
+                unlockAchievement("firstBonk");
+            }
+            if (target) {
+                target.classList.add("is-hit");
+                window.setTimeout(() => target.classList.remove("is-hit"), 180);
+            }
+            update404GameHud();
+            if (easterEggState.gameScore >= 10) {
+                finish404Game();
+                return;
+            }
+            move404Target();
+        }
+
+        function open404MiniGame() {
+            unlockAchievement("notFoundOpen");
+            curCode = "";
+            mOpen("404 Mini-Game", {
+                showCopy: false
+            });
+            const body = q("#mb");
+            if (!body) {
+                return;
+            }
+            body.className = "egg-game";
+            body.innerHTML = `
+                <div class="egg-game__hud">
+                    <div><span>Score</span><strong id="egg-404-score">0</strong></div>
+                    <div><span>Time</span><strong id="egg-404-time">20s</strong></div>
+                    <div><span>Status</span><strong id="egg-404-status">still missing</strong></div>
+                </div>
+                <div id="egg-404-arena" class="egg-game__arena">
+                    <button id="egg-404-target" class="egg-game__target" type="button" hidden>404</button>
+                </div>
+                <button id="egg-404-start" class="egg-game__button" type="button">Start bad idea</button>
+            `;
+            q("#egg-404-start")?.addEventListener("click", start404Game);
+            q("#egg-404-target")?.addEventListener("click", hit404Target);
+            update404GameHud();
+        }
+
+        function handleLogoClickCombo() {
+            clearTimeout(easterEggState.logoTimer);
+            easterEggState.logoClicks += 1;
+            if (easterEggState.logoClicks >= 7) {
+                easterEggState.logoClicks = 0;
+                unlockAchievement("logoClicks");
+                unlockEggTheme("clickTax");
+                applyEggTheme("clickTax");
+                return true;
+            }
+            easterEggState.logoTimer = setTimeout(() => {
+                easterEggState.logoClicks = 0;
+            }, 1200);
+            return false;
+        }
+
+        function handleSecretWordBuffer(key) {
+            if (!/^[a-z0-9]$/.test(key)) {
+                return;
+            }
+            easterEggState.wordBuffer = `${easterEggState.wordBuffer}${key}`.slice(-24);
+            if (easterEggState.wordBuffer.endsWith("panic")) {
+                easterEggState.wordBuffer = "";
+                unlockAchievement("panic");
+                unlockEggTheme("blueScreen");
+                applyEggTheme("blueScreen");
+                collapseEverything(1100);
+                return;
+            }
+            if (easterEggState.wordBuffer.endsWith("limewire")) {
+                easterEggState.wordBuffer = "";
+                unlockAchievement("limewire");
+                unlockEggTheme("limewire");
+                applyEggTheme("limewire");
+                return;
+            }
+            if (easterEggState.wordBuffer.endsWith("vyperia")) {
+                easterEggState.wordBuffer = "";
+                unlockAchievement("vyperiaSpell");
+                unlockEggTheme("bubblegumTerminal");
+                applyEggTheme("bubblegumTerminal");
+            }
+        }
+
+        function trackTabSampling() {
             const now = performance.now();
-            if (avLocked || now - avTimestamp < 700) {
+            easterEggState.tabClicks = easterEggState.tabClicks
+                .filter((stamp) => now - stamp < 4200);
+            easterEggState.tabClicks.push(now);
+            if (easterEggState.tabClicks.length >= 5) {
+                unlockAchievement("tabSampler");
+                easterEggState.tabClicks = [];
+            }
+        }
+
+        function handleEasterEggScroll() {
+            if (easterEggState.scrollUnlocked) {
+                return;
+            }
+            const bottomGap =
+                document.documentElement.scrollHeight -
+                (window.scrollY + window.innerHeight);
+            if (bottomGap < 80) {
+                easterEggState.scrollUnlocked = true;
+                unlockAchievement("scrollBottom");
+            }
+        }
+
+        function bindEggTapCombo(selector, taps, achievementId, themeKey = "") {
+            qa(selector).forEach((element) => {
+                let count = 0;
+                let timer = null;
+                element.addEventListener("click", () => {
+                    count += 1;
+                    clearTimeout(timer);
+                    if (count >= taps) {
+                        count = 0;
+                        completeTouchEasterEgg(achievementId, themeKey);
+                        return;
+                    }
+                    timer = setTimeout(() => {
+                        count = 0;
+                    }, 1400);
+                });
+            });
+        }
+
+        function bindEggLongPress(selector, achievementId, themeKey = "", duration = 850) {
+            qa(selector).forEach((element) => {
+                let timer = null;
+                const clear = () => {
+                    clearTimeout(timer);
+                    timer = null;
+                };
+                const start = () => {
+                    clear();
+                    timer = setTimeout(() => {
+                        timer = null;
+                        completeTouchEasterEgg(achievementId, themeKey);
+                    }, duration);
+                };
+                element.addEventListener("pointerdown", start);
+                element.addEventListener("pointerup", clear);
+                element.addEventListener("pointercancel", clear);
+                element.addEventListener("pointerleave", clear);
+            });
+        }
+
+        function initTouchEasterEggs() {
+            bindEggLongPress("#lua-manifest-go", "manifestHeld", "ziplockNebula");
+            bindEggTapCombo("#roblox-user-results-meta", 4, "robloxMatchesPoked", "staticMint");
+            bindEggLongPress("#executor-refresh", "executorRefreshHeld", "refreshBruise");
+            bindEggTapCombo('[data-script-filter="pinned"]', 4, "pinnedFilterPoked");
+            bindEggTapCombo("#script-search-tab-scriptblox, #script-search-tab-rscripts", 5, "scriptTabTapper");
+            bindEggTapCombo("#text-diff-edited-only", 6, "diffToggleSpam", "diffHeat");
+            bindEggLongPress("#rdd-download-future", "futureHeld");
+            bindEggTapCombo("#bi-total-stat", 5, "builderCounterPoked", "iconRain");
+            bindEggTapCombo("#assets-downloader-title", 4, "assetTitlePoked");
+            bindEggTapCombo("#image-converter-empty, #image-converter-preview", 4, "converterVoidPoked");
+        }
+
+        function handleEasterEggKeydown(event) {
+            const active = document.activeElement;
+            const isTyping =
+                active &&
+                ["INPUT", "TEXTAREA", "SELECT"].includes(active.tagName);
+            if (isTyping) {
                 return;
             }
 
-            avLocked = true;
-            avTimestamp = now;
-
-            const message = avTxt[Math.floor(Math.random() * avTxt.length)];
-            const badge = q("#bb");
-            clearTimeout(avHideTimer);
-            clearTimeout(avUnlockTimer);
-            badge.classList.add("sh");
-            tp(badge, message, 16);
-
-            if (message === "GET OUT") {
-                fx.currentTime = 0;
-                fx.play().catch(() => { });
-                collapseEverything();
-            } else if (message === "OUCH") {
-                flashOuchTheme();
-                q("#av").classList.add("ouch");
-                setTimeout(() => q("#av").classList.remove("ouch"), 700);
+            const expected = EASTER_EGG_KONAMI[easterEggState.konamiIndex];
+            const key = event.key.length === 1 ? event.key.toLowerCase() : event.key;
+            const normalizedExpected =
+                expected.length === 1 ? expected.toLowerCase() : expected;
+            if (key === normalizedExpected) {
+                easterEggState.konamiIndex += 1;
+                if (easterEggState.konamiIndex >= EASTER_EGG_KONAMI.length) {
+                    easterEggState.konamiIndex = 0;
+                    openEasterEggPanel();
+                }
+            } else {
+                easterEggState.konamiIndex = key === "ArrowUp" ? 1 : 0;
             }
 
-            avHideTimer = setTimeout(() => {
-                badge.classList.remove("sh");
-            }, 1400);
-            avUnlockTimer = setTimeout(() => {
-                avLocked = false;
-            }, 720);
+            if (/^[0-9]$/.test(event.key)) {
+                easterEggState.hashDigits = `${easterEggState.hashDigits}${event.key}`.slice(-3);
+                if (easterEggState.hashDigits === "404") {
+                    easterEggState.hashDigits = "";
+                    open404MiniGame();
+                }
+            }
+
+            handleSecretWordBuffer(key);
+            if (event.key === "Escape" && q("#md")?.classList.contains("sh")) {
+                unlockAchievement("modalEscape");
+                mClose();
+            }
+        }
+
+        function initEasterEggs() {
+            loadEasterEggState();
+            document.addEventListener("keydown", handleEasterEggKeydown);
+            window.addEventListener("scroll", handleEasterEggScroll, {
+                passive: true
+            });
+            [q(".brand-label"), q(".tt")].forEach((element) => {
+                if (!element) {
+                    return;
+                }
+                element.style.cursor = "pointer";
+                element.addEventListener("click", handleLogoClickCombo);
+            });
+            q("#egg-achievements-open")?.addEventListener("click", (event) => {
+                ripple(event.currentTarget, event);
+                openCollectedAchievements();
+            });
+            initTouchEasterEggs();
         }
 
         const cache = new Map();
@@ -16870,6 +18220,8 @@
         }
 
         function mClose() {
+            clearInterval(easterEggState.gameTimer);
+            easterEggState.gameTimer = null;
             q("#md").classList.remove("sh");
             q("#md").setAttribute("aria-hidden", "true");
             setModalCopyVisible(true);
@@ -17465,6 +18817,23 @@ self.addEventListener("message", async (event) => {
             inputEl.setAttribute("aria-expanded", isExpanded ? "true" : "false");
         }
 
+        function syncLuaManifestDropdownSpace() {
+            const resultsEl = q("#lua-manifest-search-results");
+            const controlsEl = resultsEl?.closest(".lua-manifest__controls");
+            if (!controlsEl) {
+                return;
+            }
+            if (!resultsEl || resultsEl.hidden) {
+                controlsEl.classList.remove("lua-manifest__controls--expanded");
+                controlsEl.style.removeProperty("--lua-manifest-dropdown-space");
+                return;
+            }
+            const maxHeight = Math.max(120, Math.min(320, window.innerHeight - 260));
+            const height = Math.min(resultsEl.scrollHeight, maxHeight);
+            controlsEl.classList.add("lua-manifest__controls--expanded");
+            controlsEl.style.setProperty("--lua-manifest-dropdown-space", `${Math.ceil(height)}px`);
+        }
+
         function hideLuaManifestSearchResults() {
             luaManifestSearchResultsOpen = false;
             const resultsEl = q("#lua-manifest-search-results");
@@ -17472,6 +18841,7 @@ self.addEventListener("message", async (event) => {
                 return;
             }
             resultsEl.hidden = true;
+            syncLuaManifestDropdownSpace();
             setLuaManifestSearchResultsExpanded(false);
         }
 
@@ -17483,6 +18853,7 @@ self.addEventListener("message", async (event) => {
             if (resultsEl) {
                 resultsEl.innerHTML = "";
                 resultsEl.hidden = true;
+                syncLuaManifestDropdownSpace();
             }
             setLuaManifestSearchResultsExpanded(false);
         }
@@ -17548,6 +18919,7 @@ self.addEventListener("message", async (event) => {
 
             const shouldShow = luaManifestSearchResultsOpen && luaManifestSearchResults.length > 0;
             resultsEl.hidden = !shouldShow;
+            syncLuaManifestDropdownSpace();
             setLuaManifestSearchResultsExpanded(shouldShow);
         }
 
@@ -18352,6 +19724,169 @@ self.addEventListener("message", async (event) => {
             statusEl.textContent = `${message} - ${stamp}`;
         }
 
+        const htmlPerfLimits = Object.freeze({
+            autoChars: 120000,
+            autoLines: 2500,
+            structureChars: 220000,
+            structureLines: 3500,
+            structureForceChars: 900000,
+            structureForceLines: 12000,
+            structureNodes: 900,
+            structureDepth: 9,
+            structureText: 220,
+            structureAttr: 180,
+            formatChars: 350000,
+            formatLines: 7000,
+            highlightChars: 350000,
+            highlightLines: 7000,
+            importBytes: 8 * 1024 * 1024
+        });
+
+        const htmlState = {
+            autoPreview: true,
+            autoPaused: false
+        };
+
+        function htmlCountLines(value) {
+            const text = String(value || "");
+            if (!text) {
+                return 0;
+            }
+            let lines = 1;
+            for (let i = 0; i < text.length; i += 1) {
+                if (text.charCodeAt(i) === 10) {
+                    lines += 1;
+                }
+            }
+            return lines;
+        }
+
+        function htmlSizeLabel(value) {
+            const size = Number(value) || 0;
+            if (size < 1024) {
+                return `${size} chars`;
+            }
+            if (size < 1024 * 1024) {
+                return `${(size / 1024).toFixed(1)}k chars`;
+            }
+            return `${(size / 1024 / 1024).toFixed(2)}m chars`;
+        }
+
+        function htmlMeta(value) {
+            const text = String(value || "");
+            return {
+                chars: text.length,
+                lines: htmlCountLines(text)
+            };
+        }
+
+        function htmlIsAutoHeavy(meta) {
+            return meta.chars > htmlPerfLimits.autoChars || meta.lines > htmlPerfLimits.autoLines;
+        }
+
+        function htmlIsStructureHeavy(meta) {
+            return meta.chars > htmlPerfLimits.structureChars || meta.lines > htmlPerfLimits.structureLines;
+        }
+
+        function htmlIsStructureHardLimit(meta) {
+            return meta.chars > htmlPerfLimits.structureForceChars || meta.lines > htmlPerfLimits.structureForceLines;
+        }
+
+        function htmlIsFormatHeavy(meta) {
+            return meta.chars > htmlPerfLimits.formatChars || meta.lines > htmlPerfLimits.formatLines;
+        }
+
+        function htmlTrunc(value, max) {
+            const text = String(value || "").replace(/\s+/g, " ").trim();
+            if (text.length <= max) {
+                return text;
+            }
+            return `${text.slice(0, Math.max(0, max - 1))}…`;
+        }
+
+        function htmlSetAutoPreview(enabled, silent = false) {
+            htmlState.autoPreview = Boolean(enabled);
+            const btn = q("#html-auto-preview");
+            if (btn) {
+                btn.setAttribute("aria-pressed", htmlState.autoPreview ? "true" : "false");
+                btn.textContent = htmlState.autoPreview ? "Auto preview: on" : "Auto preview: off";
+                btn.classList.toggle("sc", htmlState.autoPreview);
+            }
+            if (!silent) {
+                htmlState.autoPaused = false;
+                updateHtmlStatus(htmlState.autoPreview ? "Auto preview enabled" : "Auto preview disabled");
+            }
+        }
+
+        function htmlUpdateMeta(meta) {
+            const box = q("#html-meta");
+            if (!box) {
+                return;
+            }
+            const heavy = htmlIsAutoHeavy(meta);
+            box.innerHTML = "";
+            [
+                `${meta.lines.toLocaleString()} lines`,
+                htmlSizeLabel(meta.chars),
+                heavy ? "Large input - manual preview" : "Auto-safe"
+            ].forEach((label, index) => {
+                const pill = document.createElement("span");
+                pill.textContent = label;
+                if (heavy && index === 2) {
+                    pill.className = "is-warn";
+                }
+                box.appendChild(pill);
+            });
+        }
+
+        function htmlHandleEditorInput() {
+            const editor = q("#hi");
+            if (!editor) {
+                return false;
+            }
+            const meta = htmlMeta(editor.value);
+            htmlUpdateMeta(meta);
+            if (htmlIsAutoHeavy(meta)) {
+                htmlState.autoPaused = true;
+                htmlSetAutoPreview(false, true);
+                renderHtmlStructure(editor.value.trim(), { meta });
+                updateHtmlStatus(`Large HTML detected (${meta.lines.toLocaleString()} lines) - auto preview paused`);
+                return false;
+            }
+            if (htmlState.autoPaused) {
+                htmlState.autoPaused = false;
+                htmlSetAutoPreview(true, true);
+            }
+            if (!htmlState.autoPreview) {
+                updateHtmlStatus("Auto preview off - click Update preview");
+                return false;
+            }
+            updateHtmlStatus("Queued live preview...");
+            return true;
+        }
+
+        function htmlApplyEditorValue(value, reason = "manual") {
+            const editor = q("#hi");
+            if (!editor) {
+                return;
+            }
+            editor.value = String(value || "");
+            const meta = htmlMeta(editor.value);
+            htmlUpdateMeta(meta);
+            if (htmlIsAutoHeavy(meta)) {
+                htmlState.autoPaused = true;
+                htmlSetAutoPreview(false, true);
+                renderHtmlStructure(editor.value.trim(), { meta });
+                updateHtmlStatus(`Large HTML loaded (${meta.lines.toLocaleString()} lines) - preview paused`);
+                return;
+            }
+            if (htmlState.autoPaused) {
+                htmlState.autoPaused = false;
+                htmlSetAutoPreview(true, true);
+            }
+            htmlR(reason);
+        }
+
         function textDiffEscape(value) {
             return (value || "")
                 .replace(/&/g, "&amp;")
@@ -18843,26 +20378,53 @@ self.addEventListener("message", async (event) => {
             if (!editor || !frame) {
                 return;
             }
-            const html = editor.value.trim();
+            const raw = editor.value || "";
+            const html = raw.trim();
+            const meta = htmlMeta(raw);
+            const isAuto = reason === "auto";
+            htmlUpdateMeta(meta);
+
+            if (isAuto && (!htmlState.autoPreview || htmlIsAutoHeavy(meta))) {
+                updateHtmlStatus(htmlState.autoPreview ? "Large preview skipped" : "Auto preview off");
+                return;
+            }
+
             frame.srcdoc = html || htmlEmptyPreview;
-            renderHtmlStructure(html);
-            updateHtmlStatus(
-                reason === "auto" ? "Live preview updated" : "Preview refreshed"
-            );
+            renderHtmlStructure(html, { meta });
+            updateHtmlStatus(isAuto ? "Live preview updated" : "Preview refreshed");
         }
 
-        function renderHtmlStructure(html) {
+        function renderHtmlStructure(html, options = {}) {
             const treeEl = q("#html-structure");
             const summaryEl = q("#html-structure-summary");
             if (!treeEl) {
                 return;
             }
 
+            const meta = options.meta || htmlMeta(html);
             if (!html) {
                 treeEl.innerHTML =
                     '<p class="html-lab__structure-empty">Type HTML to inspect the DOM tree.</p>';
                 if (summaryEl) {
                     summaryEl.textContent = "";
+                }
+                return;
+            }
+
+            if (!options.force && htmlIsStructureHeavy(meta)) {
+                treeEl.innerHTML =
+                    '<p class="html-lab__structure-empty">Structure view paused for this large input. Click Sync view to inspect a limited tree.</p>';
+                if (summaryEl) {
+                    summaryEl.textContent = `${meta.lines.toLocaleString()} lines - ${htmlSizeLabel(meta.chars)}`;
+                }
+                return;
+            }
+
+            if (options.force && htmlIsStructureHardLimit(meta)) {
+                treeEl.innerHTML =
+                    '<p class="html-lab__structure-empty">Too large to build a safe DOM tree in-browser. Preview/export still works.</p>';
+                if (summaryEl) {
+                    summaryEl.textContent = `${meta.lines.toLocaleString()} lines - ${htmlSizeLabel(meta.chars)}`;
                 }
                 return;
             }
@@ -18874,30 +20436,49 @@ self.addEventListener("message", async (event) => {
                 text: 0,
                 comments: 0
             };
+            const budget = {
+                shown: 0,
+                cut: false,
+                max: htmlPerfLimits.structureNodes
+            };
             const fragment = document.createDocumentFragment();
-            template.content.childNodes.forEach((node) => {
-                const entry = buildHtmlTreeNode(node, 0, counts);
+            const nodes = template.content.childNodes;
+            for (let i = 0; i < nodes.length; i += 1) {
+                if (budget.shown >= budget.max) {
+                    budget.cut = true;
+                    break;
+                }
+                const entry = buildHtmlTreeNode(nodes[i], 0, counts, budget);
                 if (entry) {
                     fragment.appendChild(entry);
                 }
-            });
+            }
             treeEl.innerHTML = "";
             treeEl.appendChild(fragment);
             if (summaryEl) {
                 const summaryParts = [
-                    `${counts.elements} elements`,
-                    `${counts.text} text nodes`
+                    `${counts.elements.toLocaleString()} elements`,
+                    `${counts.text.toLocaleString()} text nodes`
                 ];
                 if (counts.comments) {
-                    summaryParts.push(`${counts.comments} comments`);
+                    summaryParts.push(`${counts.comments.toLocaleString()} comments`);
+                }
+                if (budget.cut) {
+                    summaryParts.push(`showing first ${budget.max.toLocaleString()} nodes`);
                 }
                 summaryEl.textContent = summaryParts.join(" - ");
             }
         }
 
-        function buildHtmlTreeNode(node, depth, counts) {
+        function buildHtmlTreeNode(node, depth, counts, budget) {
+            if (!node || budget.shown >= budget.max || depth > htmlPerfLimits.structureDepth) {
+                budget.cut = true;
+                return null;
+            }
+            budget.shown += 1;
+
             if (node.nodeType === Node.TEXT_NODE) {
-                const text = node.textContent.replace(/\s+/g, " ").trim();
+                const text = htmlTrunc(node.textContent, htmlPerfLimits.structureText);
                 if (!text) {
                     return null;
                 }
@@ -18911,7 +20492,7 @@ self.addEventListener("message", async (event) => {
             if (node.nodeType === Node.COMMENT_NODE) {
                 const commentEl = document.createElement("div");
                 commentEl.className = "html-tree__comment";
-                commentEl.textContent = `<!-- ${node.textContent.trim()} -->`;
+                commentEl.textContent = `<!-- ${htmlTrunc(node.textContent, htmlPerfLimits.structureText)} -->`;
                 counts.comments += 1;
                 return commentEl;
             }
@@ -18923,7 +20504,7 @@ self.addEventListener("message", async (event) => {
             counts.elements += 1;
             const tag = node.tagName.toLowerCase();
             const attrs = Array.from(node.attributes)
-                .map((attr) => `${attr.name}="${attr.value}"`)
+                .map((attr) => `${attr.name}="${htmlTrunc(attr.value, htmlPerfLimits.structureAttr)}"`)
                 .join(" ");
             const details = document.createElement("details");
             details.className = "html-tree__node";
@@ -18934,13 +20515,18 @@ self.addEventListener("message", async (event) => {
 
             const childrenWrapper = document.createElement("div");
             let hasChildren = false;
-            node.childNodes.forEach((child) => {
-                const childEntry = buildHtmlTreeNode(child, depth + 1, counts);
+            const children = node.childNodes;
+            for (let i = 0; i < children.length; i += 1) {
+                if (budget.shown >= budget.max) {
+                    budget.cut = true;
+                    break;
+                }
+                const childEntry = buildHtmlTreeNode(children[i], depth + 1, counts, budget);
                 if (childEntry) {
                     hasChildren = true;
                     childrenWrapper.appendChild(childEntry);
                 }
-            });
+            }
             if (hasChildren) {
                 details.appendChild(childrenWrapper);
             }
@@ -19026,6 +20612,13 @@ self.addEventListener("message", async (event) => {
             if (!editor) {
                 return;
             }
+            const meta = htmlMeta(editor.value);
+            htmlUpdateMeta(meta);
+            if (htmlIsFormatHeavy(meta)) {
+                toast("Too large to format safely");
+                updateHtmlStatus("Formatter skipped large HTML");
+                return;
+            }
             let formatted = "";
             try {
                 formatted = formatHtmlContent(editor.value);
@@ -19036,8 +20629,7 @@ self.addEventListener("message", async (event) => {
                 toast("Nothing to format");
                 return;
             }
-            editor.value = formatted;
-            htmlR("manual");
+            htmlApplyEditorValue(formatted, "manual");
             toast("HTML formatted");
         }
 
@@ -19067,9 +20659,17 @@ self.addEventListener("message", async (event) => {
             if (!editor) {
                 return;
             }
-            const highlighted = escapeHtmlLite(
-                editor.value || "<!-- Nothing to highlight -->"
-            );
+            const raw = editor.value || "<!-- Nothing to highlight -->";
+            const meta = htmlMeta(raw);
+            const usePrism = meta.chars <= htmlPerfLimits.highlightChars && meta.lines <= htmlPerfLimits.highlightLines;
+            const highlighted = escapeHtmlLite(raw);
+            const prismScripts = usePrism
+                ? '<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"><\/script><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"><\/script>'
+                : "";
+            const note = usePrism
+                ? ""
+                : '<div class="note">Large HTML opened as plain escaped text to avoid Prism freezing this tab.</div>';
+            const codeClass = usePrism ? ' class="language-markup"' : "";
             const highlightHtml = `<!doctype html>
 <html>
   <head>
@@ -19078,14 +20678,14 @@ self.addEventListener("message", async (event) => {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" />
     <style>
       body { margin: 0; background: #0b1220; color: #e7e9ee; font-family: ui-monospace, Consolas, monospace; }
-      pre { margin: 0; padding: 24px; overflow: auto; }
-    
-</style>
+      .note { position: sticky; top: 0; padding: 12px 18px; background: #111c2e; color: #ffd666; border-bottom: 1px solid rgba(255,255,255,.12); }
+      pre { margin: 0; padding: 24px; overflow: auto; white-space: pre-wrap; word-break: break-word; }
+    </style>
   </head>
   <body>
-    <pre><code class="language-markup">${highlighted}</code></pre>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"><\/script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"><\/script>
+    ${note}
+    <pre><code${codeClass}>${highlighted}</code></pre>
+    ${prismScripts}
   </body>
 </html>`;
             const blob = new Blob([highlightHtml], { type: "text/html" });
@@ -19110,22 +20710,14 @@ self.addEventListener("message", async (event) => {
         }
 
         function htmlInsertSample() {
-            const editor = q("#hi");
-            if (!editor) {
-                return;
-            }
-            editor.value = htmlSampleDocument;
-            htmlR("manual");
+            htmlSetAutoPreview(true, true);
+            htmlApplyEditorValue(htmlSampleDocument, "manual");
             toast("Sample inserted");
         }
 
         function htmlClearEditor() {
-            const editor = q("#hi");
-            if (!editor) {
-                return;
-            }
-            editor.value = "";
-            htmlR("manual");
+            htmlSetAutoPreview(true, true);
+            htmlApplyEditorValue("", "manual");
             toast("HTML cleared");
         }
 
@@ -19133,14 +20725,14 @@ self.addEventListener("message", async (event) => {
             if (!file) {
                 return;
             }
+            if (file.size > htmlPerfLimits.importBytes) {
+                toast("HTML file too large to import here");
+                updateHtmlStatus(`Import skipped: ${file.name}`);
+                return;
+            }
             const reader = new FileReader();
             reader.onload = () => {
-                const editor = q("#hi");
-                if (!editor) {
-                    return;
-                }
-                editor.value = reader.result;
-                htmlR("manual");
+                htmlApplyEditorValue(reader.result, "manual");
                 toast(`Imported ${file.name}`);
             };
             reader.onerror = () => toast("Import failed");
@@ -20025,8 +21617,14 @@ self.addEventListener("message", async (event) => {
 
             qa(".tb").forEach((button) => {
                 button.addEventListener("click", (event) => {
+                    if (button.id === "egg-achievements-open") {
+                        return;
+                    }
                     ripple(button, event);
-                    tab(button.dataset.t);
+                    if (button.dataset.t) {
+                        trackTabSampling();
+                        tab(button.dataset.t);
+                    }
                 });
             });
 
@@ -20034,8 +21632,16 @@ self.addEventListener("message", async (event) => {
                 panel.classList.remove("on", "in", "out");
             });
 
+            initEasterEggs();
             const init = location.hash.slice(1) || "h";
-            tab(init);
+            if (init === "404") {
+                tab("h");
+                window.setTimeout(open404MiniGame, 240);
+            } else if (/^[a-z]$/.test(init) && q(`#p${init}`)) {
+                tab(init);
+            } else {
+                tab("h");
+            }
 
             q("#av").addEventListener("click", onAv);
 
@@ -20463,8 +22069,9 @@ self.addEventListener("message", async (event) => {
             const queueHtmlPreview = debounce(() => htmlR("auto"), 450);
             if (htmlEditor) {
                 htmlEditor.addEventListener("input", () => {
-                    updateHtmlStatus("Queued live preview...");
-                    queueHtmlPreview();
+                    if (htmlHandleEditorInput()) {
+                        queueHtmlPreview();
+                    }
                 });
             }
 
@@ -20472,7 +22079,18 @@ self.addEventListener("message", async (event) => {
             if (bHR) {
                 bHR.addEventListener("click", (event) => {
                     ripple(bHR, event);
-                    htmlR();
+                    htmlR("manual");
+                });
+            }
+
+            const htmlAutoPreviewBtn = q("#html-auto-preview");
+            if (htmlAutoPreviewBtn) {
+                htmlAutoPreviewBtn.addEventListener("click", (event) => {
+                    ripple(htmlAutoPreviewBtn, event);
+                    htmlSetAutoPreview(!htmlState.autoPreview);
+                    if (htmlState.autoPreview) {
+                        htmlR("manual");
+                    }
                 });
             }
 
@@ -20558,12 +22176,17 @@ self.addEventListener("message", async (event) => {
             if (htmlStructureRefresh) {
                 htmlStructureRefresh.addEventListener("click", (event) => {
                     ripple(htmlStructureRefresh, event);
-                    renderHtmlStructure(((htmlEditor && htmlEditor.value) || "").trim());
+                    const raw = (htmlEditor && htmlEditor.value) || "";
+                    renderHtmlStructure(raw.trim(), { meta: htmlMeta(raw), force: true });
                     updateHtmlStatus("Structure synced");
                 });
             }
 
-            renderHtmlStructure(((htmlEditor && htmlEditor.value) || "").trim());
+            htmlSetAutoPreview(true, true);
+            htmlUpdateMeta(htmlMeta((htmlEditor && htmlEditor.value) || ""));
+            renderHtmlStructure(((htmlEditor && htmlEditor.value) || "").trim(), {
+                meta: htmlMeta((htmlEditor && htmlEditor.value) || "")
+            });
             htmlR("manual");
 
             const rddInputs = [
