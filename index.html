@@ -18,8 +18,6 @@
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-lua.min.js"></script>
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
-    <script defer src="https://unpkg.com/@ffmpeg/ffmpeg@0.12.15/dist/umd/ffmpeg.js"></script>
-    <script defer src="https://unpkg.com/@ffmpeg/util@0.12.2/dist/umd/index.js"></script>
     <!-- BuilderIcons font parser -->
     <script defer src="https://cdn.jsdelivr.net/npm/opentype.js@1.3.4/dist/opentype.min.js"></script>
     <style>
@@ -2856,6 +2854,10 @@
             display: block;
             width: min(100%, 720px);
             max-height: 460px;
+        }
+
+        .image-converter__preview [hidden] {
+            display: none !important;
         }
 
         .image-converter__empty {
@@ -6444,7 +6446,7 @@
                             <h3>File Converter</h3>
                             <p class="image-converter__intro">
                                 Convert uploaded images, GIFs, music, and videos into common web-ready formats.
-                                Image compression runs locally, and broader media conversions use FFmpeg in your browser.
+                                Powered by open-source FFmpeg.wasm with a fast browser canvas path for PNG, JPG, and WebP.
                             </p>
                         </div>
                     </div>
@@ -7860,7 +7862,10 @@
         };
         const imageConverterFfmpegState = {
             instance: null,
-            loading: null
+            loading: null,
+            FFmpegClass: null,
+            fetchFile: null,
+            toBlobURL: null
         };
         const imageConverterImageExtensions = [
             "png", "jpg", "jpeg", "jfif", "pjpeg", "pjp", "webp", "gif", "svg", "svgz",
@@ -7887,44 +7892,60 @@
                 { key: "jpg", label: ".jpg", mime: "image/jpeg", ext: "jpg", lossy: true, canvas: true },
                 { key: "jpeg", label: ".jpeg", mime: "image/jpeg", ext: "jpeg", lossy: true, canvas: true },
                 { key: "webp", label: ".webp", mime: "image/webp", ext: "webp", lossy: true, canvas: true },
-                { key: "gif", label: ".gif", mime: "image/gif", ext: "gif", lossy: false, ffmpeg: true },
-                { key: "avif", label: ".avif", mime: "image/avif", ext: "avif", lossy: true, ffmpeg: true },
-                { key: "bmp", label: ".bmp", mime: "image/bmp", ext: "bmp", lossy: false, ffmpeg: true },
-                { key: "tif", label: ".tif", mime: "image/tiff", ext: "tif", lossy: false, ffmpeg: true },
-                { key: "tiff", label: ".tiff", mime: "image/tiff", ext: "tiff", lossy: false, ffmpeg: true },
-                { key: "ico", label: ".ico", mime: "image/x-icon", ext: "ico", lossy: false, ffmpeg: true },
-                { key: "tga", label: ".tga", mime: "image/x-tga", ext: "tga", lossy: false, ffmpeg: true },
-                { key: "ppm", label: ".ppm", mime: "image/x-portable-pixmap", ext: "ppm", lossy: false, ffmpeg: true },
-                { key: "pgm", label: ".pgm", mime: "image/x-portable-graymap", ext: "pgm", lossy: false, ffmpeg: true },
-                { key: "pbm", label: ".pbm", mime: "image/x-portable-bitmap", ext: "pbm", lossy: false, ffmpeg: true },
-                { key: "pnm", label: ".pnm", mime: "image/x-portable-anymap", ext: "pnm", lossy: false, ffmpeg: true },
-                { key: "pam", label: ".pam", mime: "image/x-portable-arbitrarymap", ext: "pam", lossy: false, ffmpeg: true },
-                { key: "pcx", label: ".pcx", mime: "image/x-pcx", ext: "pcx", lossy: false, ffmpeg: true },
-                { key: "sgi", label: ".sgi", mime: "image/sgi", ext: "sgi", lossy: false, ffmpeg: true },
-                { key: "ras", label: ".ras", mime: "image/x-cmu-raster", ext: "ras", lossy: false, ffmpeg: true },
-                { key: "xbm", label: ".xbm", mime: "image/x-xbitmap", ext: "xbm", lossy: false, ffmpeg: true },
-                { key: "xwd", label: ".xwd", mime: "image/x-xwindowdump", ext: "xwd", lossy: false, ffmpeg: true }
+                { key: "gif", label: ".gif", mime: "image/gif", ext: "gif", ffmpeg: true },
+                { key: "svg", label: ".svg", mime: "image/svg+xml", ext: "svg", ffmpeg: true },
+                { key: "bmp", label: ".bmp", mime: "image/bmp", ext: "bmp", ffmpeg: true },
+                { key: "ico", label: ".ico", mime: "image/x-icon", ext: "ico", ffmpeg: true },
+                { key: "tif", label: ".tif", mime: "image/tiff", ext: "tif", ffmpeg: true },
+                { key: "tiff", label: ".tiff", mime: "image/tiff", ext: "tiff", ffmpeg: true },
+                { key: "avif", label: ".avif", mime: "image/avif", ext: "avif", ffmpeg: true },
+                { key: "heic", label: ".heic", mime: "image/heic", ext: "heic", ffmpeg: true },
+                { key: "heif", label: ".heif", mime: "image/heif", ext: "heif", ffmpeg: true },
+                { key: "apng", label: ".apng", mime: "image/apng", ext: "apng", ffmpeg: true },
+                { key: "jxl", label: ".jxl", mime: "image/jxl", ext: "jxl", ffmpeg: true },
+                { key: "jp2", label: ".jp2", mime: "image/jp2", ext: "jp2", ffmpeg: true },
+                { key: "tga", label: ".tga", mime: "image/x-tga", ext: "tga", ffmpeg: true },
+                { key: "dds", label: ".dds", mime: "image/vnd-ms.dds", ext: "dds", ffmpeg: true },
+                { key: "exr", label: ".exr", mime: "image/aces", ext: "exr", ffmpeg: true },
+                { key: "hdr", label: ".hdr", mime: "image/vnd.radiance", ext: "hdr", ffmpeg: true },
+                { key: "psd", label: ".psd", mime: "image/vnd.adobe.photoshop", ext: "psd", ffmpeg: true },
+                { key: "ppm", label: ".ppm", mime: "image/x-portable-pixmap", ext: "ppm", ffmpeg: true },
+                { key: "pgm", label: ".pgm", mime: "image/x-portable-graymap", ext: "pgm", ffmpeg: true },
+                { key: "pbm", label: ".pbm", mime: "image/x-portable-bitmap", ext: "pbm", ffmpeg: true },
+                { key: "pnm", label: ".pnm", mime: "image/x-portable-anymap", ext: "pnm", ffmpeg: true },
+                { key: "raw", label: ".raw", mime: "application/octet-stream", ext: "raw", ffmpeg: true }
             ],
             audio: [
-                { key: "mp3", label: ".mp3", mime: "audio/mpeg", ext: "mp3", args: ["-vn", "-codec:a", "libmp3lame", "-q:a", "2"] },
-                { key: "ogg", label: ".ogg", mime: "audio/ogg", ext: "ogg", args: ["-vn", "-codec:a", "libvorbis", "-q:a", "5"] },
-                { key: "opus", label: ".opus", mime: "audio/ogg", ext: "opus", args: ["-vn", "-codec:a", "libopus", "-b:a", "128k"] },
-                { key: "wav", label: ".wav", mime: "audio/wav", ext: "wav", args: ["-vn", "-codec:a", "pcm_s16le"] },
-                { key: "flac", label: ".flac", mime: "audio/flac", ext: "flac", args: ["-vn", "-codec:a", "flac"] },
-                { key: "m4a", label: ".m4a", mime: "audio/mp4", ext: "m4a", args: ["-vn", "-codec:a", "aac", "-b:a", "192k"] },
-                { key: "aac", label: ".aac", mime: "audio/aac", ext: "aac", args: ["-vn", "-codec:a", "aac", "-b:a", "192k"] },
-                { key: "weba", label: ".weba", mime: "audio/webm", ext: "weba", args: ["-vn", "-codec:a", "libopus", "-b:a", "128k"] }
+                { key: "mp3", label: ".mp3", mime: "audio/mpeg", ext: "mp3", ffmpeg: true, args: ["-vn", "-codec:a", "libmp3lame", "-q:a", "2"] },
+                { key: "ogg", label: ".ogg", mime: "audio/ogg", ext: "ogg", ffmpeg: true, args: ["-vn", "-codec:a", "libvorbis", "-q:a", "5"] },
+                { key: "opus", label: ".opus", mime: "audio/ogg", ext: "opus", ffmpeg: true, args: ["-vn", "-codec:a", "libopus", "-b:a", "128k"] },
+                { key: "wav", label: ".wav", mime: "audio/wav", ext: "wav", ffmpeg: true, args: ["-vn", "-codec:a", "pcm_s16le"] },
+                { key: "flac", label: ".flac", mime: "audio/flac", ext: "flac", ffmpeg: true, args: ["-vn", "-codec:a", "flac"] },
+                { key: "m4a", label: ".m4a", mime: "audio/mp4", ext: "m4a", ffmpeg: true, args: ["-vn", "-codec:a", "aac", "-b:a", "192k"] },
+                { key: "aac", label: ".aac", mime: "audio/aac", ext: "aac", ffmpeg: true, args: ["-vn", "-codec:a", "aac", "-b:a", "192k"] },
+                { key: "alac", label: ".alac", mime: "audio/mp4", ext: "alac", ffmpeg: true, args: ["-vn", "-codec:a", "alac"] },
+                { key: "aiff", label: ".aiff", mime: "audio/aiff", ext: "aiff", ffmpeg: true, args: ["-vn", "-codec:a", "pcm_s16be"] },
+                { key: "aif", label: ".aif", mime: "audio/aiff", ext: "aif", ffmpeg: true, args: ["-vn", "-codec:a", "pcm_s16be"] },
+                { key: "wma", label: ".wma", mime: "audio/x-ms-wma", ext: "wma", ffmpeg: true, args: ["-vn", "-codec:a", "wmav2", "-b:a", "192k"] },
+                { key: "amr", label: ".amr", mime: "audio/amr", ext: "amr", ffmpeg: true, args: ["-vn", "-ar", "8000", "-ac", "1"] },
+                { key: "weba", label: ".weba", mime: "audio/webm", ext: "weba", ffmpeg: true, args: ["-vn", "-codec:a", "libopus", "-b:a", "128k"] }
             ],
             video: [
-                { key: "mp4", label: ".mp4", mime: "video/mp4", ext: "mp4", args: ["-codec:v", "libx264", "-preset", "veryfast", "-crf", "24", "-codec:a", "aac", "-movflags", "+faststart"] },
-                { key: "webm", label: ".webm", mime: "video/webm", ext: "webm", args: ["-codec:v", "libvpx-vp9", "-b:v", "0", "-crf", "34", "-codec:a", "libopus"] },
-                { key: "mov", label: ".mov", mime: "video/quicktime", ext: "mov", args: ["-codec:v", "libx264", "-preset", "veryfast", "-crf", "24", "-codec:a", "aac"] },
-                { key: "mkv", label: ".mkv", mime: "video/x-matroska", ext: "mkv", args: ["-codec:v", "libx264", "-preset", "veryfast", "-crf", "24", "-codec:a", "aac"] },
-                { key: "avi", label: ".avi", mime: "video/x-msvideo", ext: "avi", args: ["-codec:v", "mpeg4", "-q:v", "5", "-codec:a", "libmp3lame", "-q:a", "4"] },
-                { key: "m4v", label: ".m4v", mime: "video/x-m4v", ext: "m4v", args: ["-codec:v", "libx264", "-preset", "veryfast", "-crf", "24", "-codec:a", "aac"] },
-                { key: "3gp", label: ".3gp", mime: "video/3gpp", ext: "3gp", args: ["-codec:v", "mpeg4", "-q:v", "7", "-codec:a", "aac", "-b:a", "96k"] },
-                { key: "ogv", label: ".ogv", mime: "video/ogg", ext: "ogv", args: ["-codec:v", "libtheora", "-q:v", "7", "-codec:a", "libvorbis", "-q:a", "4"] },
-                { key: "gif", label: ".gif", mime: "image/gif", ext: "gif", args: ["-vf", "fps=12,scale=640:-1:flags=lanczos", "-loop", "0"] }
+                { key: "mp4", label: ".mp4", mime: "video/mp4", ext: "mp4", ffmpeg: true, args: ["-codec:v", "libx264", "-preset", "veryfast", "-crf", "24", "-codec:a", "aac", "-movflags", "+faststart"] },
+                { key: "webm", label: ".webm", mime: "video/webm", ext: "webm", ffmpeg: true, args: ["-codec:v", "libvpx-vp9", "-b:v", "0", "-crf", "34", "-codec:a", "libopus"] },
+                { key: "mov", label: ".mov", mime: "video/quicktime", ext: "mov", ffmpeg: true, args: ["-codec:v", "libx264", "-preset", "veryfast", "-crf", "24", "-codec:a", "aac"] },
+                { key: "mkv", label: ".mkv", mime: "video/x-matroska", ext: "mkv", ffmpeg: true, args: ["-codec:v", "libx264", "-preset", "veryfast", "-crf", "24", "-codec:a", "aac"] },
+                { key: "avi", label: ".avi", mime: "video/x-msvideo", ext: "avi", ffmpeg: true, args: ["-codec:v", "mpeg4", "-q:v", "5", "-codec:a", "libmp3lame", "-q:a", "4"] },
+                { key: "m4v", label: ".m4v", mime: "video/x-m4v", ext: "m4v", ffmpeg: true, args: ["-codec:v", "libx264", "-preset", "veryfast", "-crf", "24", "-codec:a", "aac"] },
+                { key: "3gp", label: ".3gp", mime: "video/3gpp", ext: "3gp", ffmpeg: true, args: ["-codec:v", "mpeg4", "-q:v", "7", "-codec:a", "aac", "-b:a", "96k"] },
+                { key: "ogv", label: ".ogv", mime: "video/ogg", ext: "ogv", ffmpeg: true, args: ["-codec:v", "libtheora", "-q:v", "7", "-codec:a", "libvorbis", "-q:a", "4"] },
+                { key: "mpeg", label: ".mpeg", mime: "video/mpeg", ext: "mpeg", ffmpeg: true, args: ["-codec:v", "mpeg2video", "-q:v", "5", "-codec:a", "mp2"] },
+                { key: "mpg", label: ".mpg", mime: "video/mpeg", ext: "mpg", ffmpeg: true, args: ["-codec:v", "mpeg2video", "-q:v", "5", "-codec:a", "mp2"] },
+                { key: "wmv", label: ".wmv", mime: "video/x-ms-wmv", ext: "wmv", ffmpeg: true, args: ["-codec:v", "wmv2", "-codec:a", "wmav2"] },
+                { key: "flv", label: ".flv", mime: "video/x-flv", ext: "flv", ffmpeg: true, args: ["-codec:v", "flv", "-codec:a", "libmp3lame"] },
+                { key: "ts", label: ".ts", mime: "video/mp2t", ext: "ts", ffmpeg: true, args: ["-codec:v", "libx264", "-preset", "veryfast", "-crf", "24", "-codec:a", "aac", "-f", "mpegts"] },
+                { key: "m2ts", label: ".m2ts", mime: "video/mp2t", ext: "m2ts", ffmpeg: true, args: ["-codec:v", "libx264", "-preset", "veryfast", "-crf", "24", "-codec:a", "aac", "-f", "mpegts"] },
+                { key: "gif", label: ".gif", mime: "image/gif", ext: "gif", ffmpeg: true, args: ["-vf", "fps=12,scale=640:-1:flags=lanczos", "-loop", "0"] }
             ]
         };
         const imageConverterElements = {
@@ -9558,8 +9579,11 @@
             select.innerHTML = "";
             formats.forEach((format) => {
                 const option = document.createElement("option");
+                const available = isImageConverterFormatAvailable(kind, format);
                 option.value = format.key;
-                option.textContent = format.label || `.${format.ext}`;
+                option.textContent = available ?
+                    `${format.label || `.${format.ext}`} (fast)` :
+                    `${format.label || `.${format.ext}`} (FFmpeg.wasm)`;
                 select.appendChild(option);
             });
             const preferred = preferredKey && formats.some((format) => format.key === preferredKey) ?
@@ -9583,10 +9607,10 @@
             });
             if (imageConverterElements.hint) {
                 imageConverterElements.hint.textContent = isImage ?
-                    "PNG is lossless, so the target size may require downscaling. JPG/WebP use quality first, then resize if the target is still too small. GIF to still image saves the first frame." :
+                    "PNG, JPG, and WebP use the fast browser path. Other image outputs use open-source FFmpeg.wasm and may take longer." :
                     nextKind === "audio" ?
-                        "Music conversions use FFmpeg in your browser. MP3, OGG, OPUS, WAV, FLAC, M4A, AAC, and WEBA outputs are available." :
-                        "Video conversions use FFmpeg in your browser. Large files can take a while; video to GIF exports a web-sized animated GIF.";
+                        "Music conversion uses open-source FFmpeg.wasm in your browser. Files stay local." :
+                        "Video conversion uses open-source FFmpeg.wasm in your browser. Large videos can take a while.";
             }
         }
 
@@ -9663,9 +9687,13 @@
 
         function syncImageConverterControls() {
             const hasFile = Boolean(imageConverterState.file);
+            const hasUsableFile = imageConverterState.kind !== "image" || Boolean(imageConverterState.image);
+            const hasFormat = Boolean(imageConverterElements.format?.value);
+            const format = getImageConverterFormat();
+            const supportsBrowser = Boolean(format && isImageConverterFormatAvailable(imageConverterState.kind, format));
             const busy = imageConverterState.busy;
             if (imageConverterElements.convert) {
-                imageConverterElements.convert.disabled = !hasFile || busy;
+                imageConverterElements.convert.disabled = !hasFile || !hasFormat || (!supportsBrowser && !format?.ffmpeg) || busy;
             }
             if (imageConverterElements.download) {
                 imageConverterElements.download.disabled = !imageConverterState.outputBlob || busy;
@@ -9811,27 +9839,141 @@
             };
         }
 
+        function isImageConverterFormatAvailable(kind, format) {
+            return kind === "image" && Boolean(format?.canvas);
+        }
+
+        function loadImageConverterScript(src) {
+            return new Promise((resolve, reject) => {
+                const existing = document.querySelector(`script[data-image-converter-src="${src}"]`);
+                if (existing) {
+                    existing.addEventListener("load", resolve, { once: true });
+                    existing.addEventListener("error", reject, { once: true });
+                    if (existing.dataset.loaded === "true") {
+                        resolve();
+                    }
+                    return;
+                }
+                const script = document.createElement("script");
+                script.src = src;
+                script.async = true;
+                script.dataset.imageConverterSrc = src;
+                script.addEventListener("load", () => {
+                    script.dataset.loaded = "true";
+                    resolve();
+                }, { once: true });
+                script.addEventListener("error", () => reject(new Error(`Failed to load ${src}`)), { once: true });
+                document.head.appendChild(script);
+            });
+        }
+
+        async function loadImageConverterModulePair(ffmpegUrl, utilUrl) {
+            const [ffmpegModule, utilModule] = await Promise.all([
+                import(ffmpegUrl),
+                import(utilUrl)
+            ]);
+            const FFmpegClass = ffmpegModule.FFmpeg || ffmpegModule.default?.FFmpeg;
+            const fetchFile = utilModule.fetchFile || utilModule.default?.fetchFile;
+            const toBlobURL = utilModule.toBlobURL || utilModule.default?.toBlobURL;
+            if (!FFmpegClass || !fetchFile || !toBlobURL) {
+                throw new Error("FFmpeg.wasm module exports were not found.");
+            }
+            imageConverterFfmpegState.FFmpegClass = FFmpegClass;
+            imageConverterFfmpegState.fetchFile = fetchFile;
+            imageConverterFfmpegState.toBlobURL = toBlobURL;
+        }
+
+        async function ensureImageConverterFfmpegGlobals() {
+            if (imageConverterFfmpegState.FFmpegClass && imageConverterFfmpegState.fetchFile && imageConverterFfmpegState.toBlobURL) {
+                return;
+            }
+            if ((window.FFmpegWASM || window.FFmpeg)?.FFmpeg && window.FFmpegUtil?.toBlobURL) {
+                imageConverterFfmpegState.FFmpegClass = (window.FFmpegWASM || window.FFmpeg).FFmpeg;
+                imageConverterFfmpegState.fetchFile = window.FFmpegUtil.fetchFile;
+                imageConverterFfmpegState.toBlobURL = window.FFmpegUtil.toBlobURL;
+                return;
+            }
+            const librarySets = [
+                [
+                    "https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.12.15/dist/umd/ffmpeg.js",
+                    "https://cdn.jsdelivr.net/npm/@ffmpeg/util@0.12.2/dist/umd/index.js"
+                ],
+                [
+                    "https://unpkg.com/@ffmpeg/ffmpeg@0.12.15/dist/umd/ffmpeg.js",
+                    "https://unpkg.com/@ffmpeg/util@0.12.2/dist/umd/index.js"
+                ]
+            ];
+            let lastError = null;
+            for (const [ffmpegUrl, utilUrl] of librarySets) {
+                try {
+                    await loadImageConverterScript(ffmpegUrl);
+                    await loadImageConverterScript(utilUrl);
+                    if ((window.FFmpegWASM || window.FFmpeg)?.FFmpeg && window.FFmpegUtil?.toBlobURL) {
+                        imageConverterFfmpegState.FFmpegClass = (window.FFmpegWASM || window.FFmpeg).FFmpeg;
+                        imageConverterFfmpegState.fetchFile = window.FFmpegUtil.fetchFile;
+                        imageConverterFfmpegState.toBlobURL = window.FFmpegUtil.toBlobURL;
+                        return;
+                    }
+                } catch (error) {
+                    lastError = error;
+                }
+            }
+
+            const moduleSets = [
+                [
+                    "https://esm.sh/@ffmpeg/ffmpeg@0.12.15",
+                    "https://esm.sh/@ffmpeg/util@0.12.2"
+                ],
+                [
+                    "https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.12.15/+esm",
+                    "https://cdn.jsdelivr.net/npm/@ffmpeg/util@0.12.2/+esm"
+                ]
+            ];
+            for (const [ffmpegUrl, utilUrl] of moduleSets) {
+                try {
+                    await loadImageConverterModulePair(ffmpegUrl, utilUrl);
+                    return;
+                } catch (error) {
+                    lastError = error;
+                }
+            }
+
+            throw lastError || new Error("FFmpeg.wasm could not be loaded. A browser extension or network policy may be blocking the converter library.");
+        }
+
         async function getImageConverterFfmpeg() {
             if (imageConverterFfmpegState.instance) {
-                return imageConverterFfmpegState.instance;
+                return imageConverterFfmpegState;
             }
             if (imageConverterFfmpegState.loading) {
                 return imageConverterFfmpegState.loading;
             }
             imageConverterFfmpegState.loading = (async () => {
-                const ffmpegApi = window.FFmpeg;
-                const utilApi = window.FFmpegUtil;
-                if (!ffmpegApi?.FFmpeg || !utilApi?.toBlobURL) {
-                    throw new Error("FFmpeg did not load. Check your connection and retry.");
-                }
-                const ffmpeg = new ffmpegApi.FFmpeg();
-                const baseUrl = "https://unpkg.com/@ffmpeg/core@0.12.10/dist/umd";
-                await ffmpeg.load({
-                    coreURL: await utilApi.toBlobURL(`${baseUrl}/ffmpeg-core.js`, "text/javascript"),
-                    wasmURL: await utilApi.toBlobURL(`${baseUrl}/ffmpeg-core.wasm`, "application/wasm")
+                await ensureImageConverterFfmpegGlobals();
+                const ffmpeg = new imageConverterFfmpegState.FFmpegClass();
+                ffmpeg.on?.("log", ({ message }) => {
+                    if (/time=|size=|speed=|frame=/.test(message || "")) {
+                        setImageConverterStatus("Converting with FFmpeg.wasm...", "loading");
+                    }
                 });
-                imageConverterFfmpegState.instance = ffmpeg;
-                return ffmpeg;
+                const coreRoots = [
+                    "https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.12.10/dist/umd",
+                    "https://unpkg.com/@ffmpeg/core@0.12.10/dist/umd"
+                ];
+                let lastError = null;
+                for (const baseUrl of coreRoots) {
+                    try {
+                        await ffmpeg.load({
+                            coreURL: await imageConverterFfmpegState.toBlobURL(`${baseUrl}/ffmpeg-core.js`, "text/javascript"),
+                            wasmURL: await imageConverterFfmpegState.toBlobURL(`${baseUrl}/ffmpeg-core.wasm`, "application/wasm")
+                        });
+                        imageConverterFfmpegState.instance = ffmpeg;
+                        return imageConverterFfmpegState;
+                    } catch (error) {
+                        lastError = error;
+                    }
+                }
+                throw lastError || new Error("FFmpeg.wasm core could not be loaded.");
             })();
             try {
                 return await imageConverterFfmpegState.loading;
@@ -9843,7 +9985,7 @@
         function getImageConverterFfmpegArgs(kind, format, inputName, outputName) {
             if (kind === "image") {
                 const args = ["-i", inputName];
-                if (format.ext !== "gif") {
+                if (format.ext !== "gif" && format.ext !== "apng") {
                     args.push("-frames:v", "1");
                 }
                 args.push(outputName);
@@ -9853,19 +9995,18 @@
         }
 
         async function encodeImageConverterWithFfmpeg(file, kind, format) {
-            setImageConverterStatus("Loading FFmpeg...", "loading");
-            const ffmpeg = await getImageConverterFfmpeg();
+            setImageConverterStatus("Loading open-source FFmpeg.wasm...", "loading");
+            const { instance: ffmpeg, fetchFile } = await getImageConverterFfmpeg();
             const sourceExt = getImageConverterExtension(file.name) || kind;
             const stamp = `${Date.now()}-${Math.random().toString(16).slice(2)}`;
             const inputName = `input-${stamp}.${sourceExt}`;
             const outputName = `output-${stamp}.${format.ext}`;
             const args = getImageConverterFfmpegArgs(kind, format, inputName, outputName);
-            const utilApi = window.FFmpegUtil;
 
             try {
-                setImageConverterStatus("Preparing file...", "loading");
-                await ffmpeg.writeFile(inputName, await utilApi.fetchFile(file));
-                setImageConverterStatus("Converting with FFmpeg...", "loading");
+                setImageConverterStatus("Preparing file for FFmpeg.wasm...", "loading");
+                await ffmpeg.writeFile(inputName, await fetchFile(file));
+                setImageConverterStatus("Converting with FFmpeg.wasm...", "loading");
                 await ffmpeg.exec(args);
                 const data = await ffmpeg.readFile(outputName);
                 const outputBuffer = data.buffer.slice(
@@ -9876,7 +10017,7 @@
                     blob: new Blob([outputBuffer], {
                         type: format.mime || "application/octet-stream"
                     }),
-                    args
+                    detail: "FFmpeg.wasm"
                 };
             } finally {
                 await Promise.allSettled([
@@ -9957,7 +10098,11 @@
                         `${imageConverterState.image.width} × ${imageConverterState.image.height}` :
                         kind.charAt(0).toUpperCase() + kind.slice(1);
                 }
-                setImageConverterStatus(`${kind.charAt(0).toUpperCase() + kind.slice(1)} ready. Pick output options and convert.`, "success");
+                if (kind === "image" && !imageConverterState.image) {
+                    setImageConverterStatus("This browser cannot decode that image type. Try PNG, JPG, GIF, SVG, or WebP.", "error");
+                } else {
+                    setImageConverterStatus(`${kind.charAt(0).toUpperCase() + kind.slice(1)} ready. Pick output options and convert.`, "success");
+                }
             } catch (error) {
                 console.error(error);
                 imageConverterState.file = null;
@@ -9979,6 +10124,10 @@
 
             const kind = imageConverterState.kind || getImageConverterKindForFile(file);
             const format = getImageConverterFormat();
+            if (!format || (!isImageConverterFormatAvailable(kind, format) && !format.ffmpeg)) {
+                setImageConverterStatus("No converter is available for that output.", "error");
+                return;
+            }
             const targetBytes = getImageConverterTargetBytes();
             const allowResize = Boolean(imageConverterElements.autoResize?.checked);
             const startScale = image ? getImageConverterBaseScale(image) : 1;
@@ -10023,7 +10172,7 @@
                         const qualityText = format.lossy ? `${Math.round(encoded.quality * 100)}% quality` : "lossless";
                         imageConverterElements.compressMeta.textContent = `${qualityText}${scaleText}${targetText}`;
                     } else {
-                        imageConverterElements.compressMeta.textContent = "FFmpeg";
+                        imageConverterElements.compressMeta.textContent = encoded.detail || "FFmpeg.wasm";
                     }
                 }
 
