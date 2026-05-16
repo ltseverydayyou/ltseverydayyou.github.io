@@ -17205,7 +17205,29 @@
 
         function onAv() {
             unlockAchievement("avatarBother");
-            if (!handleLogoClickCombo()) {
+            const unlockedCombo = handleLogoClickCombo();
+            const message = unlockedCombo ?
+                "theme crimes unlocked" :
+                avTxt[Math.floor(Math.random() * avTxt.length)];
+            const badge = q("#bb");
+            clearTimeout(avHideTimer);
+            clearTimeout(avUnlockTimer);
+            if (badge) {
+                badge.classList.add("sh");
+                tp(badge, message, 16);
+            }
+
+            if (message === "OUCH") {
+                flashOuchTheme();
+                q("#av")?.classList.add("ouch");
+                setTimeout(() => q("#av")?.classList.remove("ouch"), 700);
+            }
+
+            avHideTimer = setTimeout(() => {
+                badge?.classList.remove("sh");
+            }, 1400);
+
+            if (!unlockedCombo) {
                 toast(`Icon click ${easterEggState.logoClicks}/7`);
             }
         }
