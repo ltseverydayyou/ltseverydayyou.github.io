@@ -543,114 +543,137 @@
         }
 
         .scripts-showcase {
-            padding: clamp(22px, 3vw, 32px);
+            padding: clamp(18px, 3vw, 28px);
         }
 
         .scripts-showcase__hero {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            margin-bottom: 24px;
-            align-items: center;
-        }
-
-        .scripts-showcase__intro,
-        .scripts-showcase__summary {
-            border-radius: 24px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            background:
-                radial-gradient(circle at top right, rgba(102, 227, 255, 0.12), transparent 36%),
-                linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+            display: grid;
+            grid-template-columns: minmax(160px, 0.8fr) minmax(260px, 1.2fr) auto;
+            align-items: end;
+            gap: 18px;
+            margin-bottom: 22px;
         }
 
         .scripts-showcase__intro {
-            padding: 18px 20px;
-            min-height: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: fit-content;
             min-width: 180px;
-        }
-
-        .scripts-showcase__eyebrow {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 5px 12px;
-            margin-bottom: 12px;
-            border-radius: 999px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            color: var(--mu);
-            font-size: 11px;
-            font-weight: 800;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
         }
 
         .scripts-showcase__intro h3 {
             margin: 0;
+            font-size: clamp(28px, 5vw, 54px);
+            line-height: 0.9;
+            letter-spacing: 0;
+            color: #fff;
         }
 
         .scripts-showcase__intro p {
-            margin: 0;
-            max-width: 60ch;
+            margin: 8px 0 0;
             color: var(--mu);
             font-size: 14px;
         }
 
         .scripts-showcase__summary {
-            padding: 22px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            gap: 8px;
+        }
+
+        .scripts-showcase__tools {
             display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 14px;
-            width: 100%;
+            gap: 10px;
+        }
+
+        .scripts-showcase__tools input {
+            min-height: 44px;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.055);
+            color: var(--tx);
+            padding: 0 14px;
+            outline: none;
+            transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .scripts-showcase__tools input:focus {
+            border-color: rgba(124, 92, 255, 0.55);
+            background: rgba(255, 255, 255, 0.075);
+            box-shadow: 0 0 0 3px rgba(124, 92, 255, 0.12);
+        }
+
+        .scripts-showcase__filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .scripts-showcase__filters button {
+            min-height: 34px;
+            padding: 0 12px;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.045);
+            color: var(--mu);
+            font: inherit;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.2s ease, border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+        }
+
+        .scripts-showcase__filters button:hover,
+        .scripts-showcase__filters button.is-active {
+            transform: translateY(-1px);
+            border-color: rgba(124, 92, 255, 0.42);
+            background: rgba(124, 92, 255, 0.16);
+            color: #fff;
         }
 
         .scripts-showcase__stat {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+            display: inline-flex;
+            align-items: center;
             gap: 8px;
-            min-height: 122px;
-            padding: 18px;
-            border-radius: 20px;
-            background: rgba(7, 10, 24, 0.55);
-            border: 1px solid rgba(255, 255, 255, 0.06);
+            min-height: 0;
+            padding: 8px 11px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.055);
+            border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
         .scripts-showcase__stat strong {
-            font-size: clamp(2rem, 3.2vw, 2.6rem);
+            font-size: 14px;
             line-height: 1;
             color: #fff;
         }
 
         .scripts-showcase__stat span {
-            font-size: 13px;
+            font-size: 12px;
             color: var(--mu);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
+            text-transform: none;
+            letter-spacing: 0;
         }
 
         .scripts-showcase__grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 18px;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 16px;
         }
 
         .scripts-showcase__grid>.sc {
             position: relative;
             display: flex;
             flex-direction: column;
-            min-height: 360px;
+            min-height: 330px;
             overflow: hidden;
-            border-radius: 24px;
+            border-radius: 18px;
             border: 1px solid rgba(255, 255, 255, 0.08);
             background:
-                linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.015)),
-                rgba(9, 12, 24, 0.92);
-            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
+                linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.014)),
+                rgba(8, 10, 18, 0.92);
+            box-shadow: 0 18px 48px rgba(0, 0, 0, 0.28);
+            opacity: 0;
+            transform: translateY(14px) scale(0.98);
+            animation: scriptCardIn 0.45s cubic-bezier(0.18, 0.84, 0.24, 1) forwards;
+            animation-delay: calc(var(--i, 0) * 35ms);
             transition:
                 transform 0.3s ease,
                 box-shadow 0.3s ease,
@@ -658,33 +681,43 @@
         }
 
         .scripts-showcase__grid>.sc:hover {
-            transform: translateY(-4px);
+            transform: translateY(-6px);
             border-color: rgba(102, 227, 255, 0.26);
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.36);
+            box-shadow: 0 28px 72px rgba(0, 0, 0, 0.4);
         }
 
         .scripts-showcase__grid>.sc.featured {
-            border-color: rgba(102, 227, 255, 0.28);
-            background:
-                radial-gradient(circle at top right, rgba(102, 227, 255, 0.16), transparent 42%),
-                linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.015)),
-                rgba(8, 12, 24, 0.95);
+            border-color: rgba(124, 92, 255, 0.38);
+        }
+
+        @media (min-width: 900px) {
+            .scripts-showcase__grid>.sc.featured {
+                grid-column: span 2;
+            }
+
+            .scripts-showcase__grid>.sc.featured .sc_media {
+                aspect-ratio: 21 / 9;
+            }
         }
 
         .scripts-showcase .sc_media {
             position: relative;
-            aspect-ratio: 16 / 10;
+            aspect-ratio: 16 / 9;
             overflow: hidden;
             background:
-                radial-gradient(circle at top right, rgba(167, 139, 250, 0.22), transparent 28%),
-                linear-gradient(135deg, rgba(102, 227, 255, 0.18), rgba(167, 139, 250, 0.1));
+                linear-gradient(135deg, rgba(102, 227, 255, 0.16), rgba(167, 139, 250, 0.12)),
+                rgba(255, 255, 255, 0.03);
         }
 
         .scripts-showcase .sc_media::after {
             content: "";
             position: absolute;
             inset: 0;
-            background: linear-gradient(180deg, rgba(5, 8, 18, 0.04), rgba(5, 8, 18, 0.78));
+            background:
+                linear-gradient(180deg, rgba(5, 8, 18, 0.02), rgba(5, 8, 18, 0.66)),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+            background-size: auto, 44px 100%;
+            opacity: 0.9;
             pointer-events: none;
         }
 
@@ -697,11 +730,13 @@
         .scripts-showcase .sc_img {
             display: block;
             object-fit: cover;
-            transition: transform 0.45s ease;
+            filter: saturate(1.05) contrast(1.04);
+            transition: transform 0.55s ease, filter 0.55s ease;
         }
 
         .scripts-showcase .sc:hover .sc_img {
-            transform: scale(1.04);
+            transform: scale(1.06);
+            filter: saturate(1.2) contrast(1.08);
         }
 
         .scripts-showcase .sc_fallback {
@@ -713,67 +748,51 @@
             font-weight: 900;
             letter-spacing: 0.08em;
             background:
-                radial-gradient(circle at 30% 30%, rgba(102, 227, 255, 0.22), transparent 24%),
                 linear-gradient(135deg, rgba(18, 26, 42, 0.95), rgba(34, 24, 56, 0.95));
         }
 
         .scripts-showcase .sc_top {
             position: absolute;
-            inset: 14px 14px auto;
+            inset: 12px 12px auto;
             z-index: 1;
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-end;
             align-items: flex-start;
             gap: 10px;
         }
 
-        .scripts-showcase .sc_source,
-        .scripts-showcase .sc_hint,
         .scripts-showcase .sc_badge {
             display: inline-flex;
             align-items: center;
             border-radius: 999px;
             backdrop-filter: blur(10px);
-            font-size: 11px;
+            font-size: 12px;
             font-weight: 700;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-        }
-
-        .scripts-showcase .sc_source,
-        .scripts-showcase .sc_hint {
-            padding: 6px 10px;
-            color: rgba(255, 255, 255, 0.86);
-            background: rgba(7, 10, 24, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            letter-spacing: 0;
+            text-transform: none;
         }
 
         .scripts-showcase .sc_badge {
-            padding: 6px 12px;
-            color: #03131b;
-            background: linear-gradient(135deg, rgba(102, 227, 255, 0.95), rgba(167, 139, 250, 0.92));
-            box-shadow: 0 12px 30px rgba(102, 227, 255, 0.22);
+            padding: 7px 11px;
+            color: #fff;
+            background: rgba(7, 10, 24, 0.48);
+            border: 1px solid rgba(255, 255, 255, 0.12);
         }
 
         .scripts-showcase .sc_body {
             display: flex;
             flex: 1;
             flex-direction: column;
-            gap: 14px;
-            padding: 18px;
+            gap: 16px;
+            padding: 16px;
         }
 
         .scripts-showcase .sc_info {
             display: flex;
             flex: 1;
             flex-direction: column;
-            gap: 12px;
-        }
-
-        .scripts-showcase .sc_meta {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
+            justify-content: flex-end;
+            gap: 10px;
         }
 
         .scripts-showcase .sc_text {
@@ -785,9 +804,9 @@
 
         .scripts-showcase .sc .nm {
             color: #fff;
-            font-size: 20px;
+            font-size: 19px;
             font-weight: 800;
-            line-height: 1.1;
+            line-height: 1.15;
         }
 
         .scripts-showcase .sc_desc {
@@ -801,13 +820,13 @@
             margin-top: auto;
             display: flex;
             flex-direction: column;
-            gap: 14px;
+            gap: 10px;
         }
 
         .scripts-showcase .brw {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(96px, 1fr));
-            gap: 10px;
+            gap: 8px;
             width: 100%;
         }
 
@@ -816,17 +835,235 @@
             align-items: center;
             justify-content: center;
             width: 100%;
+            min-height: 42px;
+            border-radius: 12px;
+            letter-spacing: 0;
+            text-transform: none;
+            transition: transform 0.2s ease, filter 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .scripts-showcase .bn:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.06);
         }
 
         .scripts-showcase .sc_link {
-            color: var(--ac);
-            font-size: 13px;
+            color: var(--mu);
+            font-size: 12px;
             font-weight: 700;
             text-decoration: none;
+            width: fit-content;
         }
 
         .scripts-showcase .sc_link:hover {
             color: #fff;
+        }
+
+        .sc_action-hint {
+            position: absolute;
+            inset: auto 12px 12px;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            padding: 9px 11px;
+            border-radius: 14px;
+            color: rgba(255, 255, 255, 0.88);
+            background: rgba(7, 10, 24, 0.54);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+            opacity: 0;
+            transform: translateY(8px);
+            transition: opacity 0.24s ease, transform 0.24s ease;
+        }
+
+        .sc:hover .sc_action-hint {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .sc_action-hint span {
+            font-size: 12px;
+            color: var(--mu);
+        }
+
+        .sc_action-hint strong {
+            font-size: 13px;
+            color: #fff;
+        }
+
+        @keyframes scriptCardIn {
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .home-dashboard {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            gap: 18px;
+            align-items: end;
+            padding: clamp(18px, 3vw, 28px);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background:
+                linear-gradient(135deg, rgba(124, 92, 255, 0.18), transparent 42%),
+                linear-gradient(180deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.02)),
+                rgba(8, 10, 18, 0.86);
+            box-shadow: 0 22px 70px rgba(0, 0, 0, 0.36);
+            overflow: hidden;
+        }
+
+        .home-dashboard__copy {
+            min-width: 0;
+        }
+
+        .home-dashboard__label {
+            display: inline-flex;
+            margin-bottom: 10px;
+            color: var(--mu);
+            font-size: 12px;
+            font-weight: 800;
+        }
+
+        .home-dashboard h3 {
+            margin: 0;
+            color: #fff;
+            font-size: clamp(30px, 5vw, 58px);
+            line-height: 0.95;
+        }
+
+        .home-dashboard p {
+            max-width: 54ch;
+            margin: 10px 0 0;
+            color: rgba(246, 247, 255, 0.72);
+            line-height: 1.55;
+        }
+
+        .home-dashboard__stats,
+        .home-dashboard__actions {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            gap: 8px;
+        }
+
+        .home-dashboard__stats {
+            grid-column: 1 / -1;
+            justify-content: flex-start;
+        }
+
+        .home-dashboard__stats div {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 9px 12px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .home-dashboard__stats strong {
+            color: #fff;
+            font-size: 15px;
+        }
+
+        .home-dashboard__stats span {
+            color: var(--mu);
+            font-size: 12px;
+        }
+
+        .home-dashboard__actions {
+            align-self: end;
+        }
+
+        #home_sections {
+            display: grid;
+            gap: 18px;
+            margin-top: 18px;
+        }
+
+        #home_sections .home-section {
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            border-radius: 22px;
+            background:
+                linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.015)),
+                rgba(8, 10, 18, 0.82);
+        }
+
+        #home_sections .home-section__header {
+            margin-bottom: 16px;
+        }
+
+        #home_sections .home-section__header h3 {
+            color: #fff;
+            background: none;
+            -webkit-text-fill-color: currentColor;
+            animation: none;
+            font-size: clamp(20px, 3vw, 28px);
+        }
+
+        #home_sections .home-section__content {
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 12px;
+        }
+
+        #home_sections .tl {
+            min-height: 118px;
+            align-items: flex-start;
+            justify-content: space-between;
+            padding: 14px;
+            border-radius: 16px;
+            background:
+                linear-gradient(180deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.02)),
+                rgba(255, 255, 255, 0.025);
+            transform: translateY(10px);
+            opacity: 0;
+            animation: homeTileIn 0.38s ease-out forwards;
+            animation-delay: calc(var(--i, 0) * 45ms);
+        }
+
+        #home_sections .tl img {
+            width: 34px;
+            height: 34px;
+        }
+
+        #home_sections .tl span {
+            font-size: 14px;
+            font-weight: 800;
+            color: #fff;
+        }
+
+        #home_sections .tl:hover {
+            transform: translateY(-4px);
+            border-color: rgba(124, 92, 255, 0.34);
+            background:
+                linear-gradient(180deg, rgba(124, 92, 255, 0.12), rgba(255, 255, 255, 0.025)),
+                rgba(255, 255, 255, 0.035);
+        }
+
+        #home_sections .tl::after {
+            bottom: 10px;
+            left: 14px;
+            transform: none;
+            max-width: calc(100% - 28px);
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        #home_sections .tl:hover::after {
+            transform: translateY(-2px);
+        }
+
+        @keyframes homeTileIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .scripts-showcase__empty {
@@ -1992,6 +2229,100 @@
 
             to {
                 transform: translateX(60%);
+            }
+        }
+
+        .script-preview-wrap {
+            position: relative;
+            background: rgba(5, 8, 14, 0.94);
+        }
+
+        .script-preview-wrap::before {
+            content: "";
+            position: sticky;
+            top: 0;
+            z-index: 2;
+            display: block;
+            height: 4px;
+            background: linear-gradient(90deg, var(--ac), var(--ac2), var(--ok), var(--ac));
+            background-size: 220% 100%;
+            animation: scriptPreviewBar 2.4s linear infinite;
+        }
+
+        .script-preview-head {
+            position: sticky;
+            top: 4px;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 12px 18px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(7, 10, 18, 0.84);
+            backdrop-filter: blur(14px);
+        }
+
+        .script-preview-head strong {
+            color: #fff;
+            font-size: 13px;
+        }
+
+        .script-preview-head span {
+            color: var(--mu);
+            font-size: 12px;
+        }
+
+        .script-preview {
+            position: relative;
+            max-height: 72vh;
+            padding: 22px;
+            background:
+                linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+                linear-gradient(180deg, rgba(255, 255, 255, 0.025), transparent 42px),
+                rgba(5, 8, 14, 0.96);
+            background-size: 56px 100%, 100% 42px, auto;
+            animation: scriptPreviewIn 0.28s ease-out both;
+        }
+
+        .script-preview code {
+            display: block;
+            animation: scriptCodeIn 0.42s ease-out both;
+        }
+
+        @keyframes scriptPreviewIn {
+            from {
+                opacity: 0;
+                transform: translateY(12px);
+                filter: blur(6px);
+            }
+
+            to {
+                opacity: 1;
+                transform: none;
+                filter: blur(0);
+            }
+        }
+
+        @keyframes scriptCodeIn {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+
+            to {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        @keyframes scriptPreviewBar {
+            from {
+                background-position: 0% 50%;
+            }
+
+            to {
+                background-position: 220% 50%;
             }
         }
 
@@ -5006,7 +5337,7 @@
             }
 
             .scripts-showcase__summary {
-                grid-template-columns: 1fr;
+                justify-content: flex-start;
             }
 
             .scripts-showcase__grid {
@@ -5059,6 +5390,21 @@
 
             .tt {
                 font-size: clamp(28px, 9vw, 40px);
+            }
+
+            .scripts-showcase__hero {
+                grid-template-columns: 1fr;
+                align-items: flex-start;
+            }
+
+            .scripts-showcase__summary,
+            .home-dashboard__actions,
+            .home-dashboard__stats {
+                justify-content: flex-start;
+            }
+
+            .home-dashboard {
+                grid-template-columns: 1fr;
             }
 
             .brand-block {
@@ -5836,7 +6182,7 @@
                 <div class="presence-card__meta">
                     <span class="presence-card__eyebrow">Live Discord presence</span>
                     <strong>@ltseverydayyou</strong>
-                    <p>Powered by Lanyard</p>
+                    <p>Live through Lanyard</p>
                 </div>
                 <a href="https://discord.com/users/641335879381680129" target="_blank" rel="noopener">
                     <img src="https://lanyard.cnrad.dev/api/641335879381680129?theme=dark&animated=true" height="150"
@@ -5866,6 +6212,33 @@
             </div>
 
             <section id="ph" class="pp on">
+                <div class="g home-dashboard">
+                    <div class="home-dashboard__copy">
+                        <span class="home-dashboard__label">Start here</span>
+                        <h3>Quick access</h3>
+                        <p>Jump into scripts, executor status, tools, or the links you use most.</p>
+                    </div>
+                    <div class="home-dashboard__stats" aria-label="Home summary">
+                        <div>
+                            <strong id="hero-script-count">0</strong>
+                            <span>scripts</span>
+                        </div>
+                        <div>
+                            <strong id="hero-executor-count">0</strong>
+                            <span>executors</span>
+                        </div>
+                        <div>
+                            <strong id="hero-link-count">0</strong>
+                            <span>links</span>
+                        </div>
+                    </div>
+                    <div class="home-dashboard__actions">
+                        <button class="pl sc" type="button" data-home-tab="s">Scripts</button>
+                        <button class="pl" type="button" data-home-tab="e">Executors</button>
+                        <button class="pl" type="button" data-home-tab="i">Converter</button>
+                        <button class="pl" type="button" data-home-tab="t">Theme</button>
+                    </div>
+                </div>
                 <div id="home_sections"></div>
             </section>
 
@@ -5875,18 +6248,27 @@
                         <div class="scripts-showcase__intro">
                             <h3>Scripts</h3>
                         </div>
+                        <div class="scripts-showcase__tools">
+                            <input id="scripts-filter-input" type="search" autocomplete="off" spellcheck="false"
+                                placeholder="Search scripts" />
+                            <div class="scripts-showcase__filters" aria-label="Script filters">
+                                <button class="is-active" type="button" data-script-filter="all">All</button>
+                                <button type="button" data-script-filter="pinned">Pinned</button>
+                                <button type="button" data-script-filter="games">Games</button>
+                            </div>
+                        </div>
                         <div class="scripts-showcase__summary" aria-label="Scripts summary">
                             <div class="scripts-showcase__stat">
                                 <strong id="scripts-total">0</strong>
-                                <span>Total scripts</span>
+                                <span>scripts</span>
                             </div>
                             <div class="scripts-showcase__stat">
                                 <strong id="scripts-featured">0</strong>
-                                <span>Featured picks</span>
+                                <span>pinned</span>
                             </div>
                             <div class="scripts-showcase__stat">
                                 <strong id="scripts-games">0</strong>
-                                <span>Game-linked</span>
+                                <span>games</span>
                             </div>
                         </div>
                     </div>
@@ -5914,7 +6296,7 @@
             <section id="pm" class="pp">
                 <div class="g ed lua-manifest">
                     <h3>LUA by ID Manifest</h3>
-                    <p>Use a Steam AppID or store URL. Generates a SteamML-style zip package for SteamTools usage:
+                    <p>Paste a Steam AppID or store URL. It builds the zip that SteamTools expects:
                         <a href="https://steamtools.net" target="_blank" rel="noopener noreferrer">steamtools.net</a>.
                     </p>
                     <div class="lua-manifest__controls">
@@ -5944,8 +6326,7 @@
                     <div class="html-lab__header">
                         <div>
                             <h3>HTML playground</h3>
-                            <p>Inspired by html.onlineviewer.net &mdash; live preview, formatting, highlighting, sample
-                                snippets, and import/export in one place.</p>
+                            <p>Type HTML, preview it, format it, highlight it, import it, or export it.</p>
                         </div>
                         <p id="html-lab-status" class="html-lab__status">Waiting for input</p>
                     </div>
@@ -6127,7 +6508,7 @@
                         </a>
                     </div>
                     <p class="versions-panel__intro">
-                        Live Roblox client versions first, with a separate Studio tracker layer underneath.
+                        Pulls current Roblox client builds, then Studio builds below.
                     </p>
                     <div class="versions-stack">
                         <div class="versions-subsection">
@@ -6209,7 +6590,7 @@
                         <div>
                             <h3>Executor statuses</h3>
                             <p class="versions-panel__intro">
-                                Live sUNC/UNC, detected, and platform details for every tracked executor.
+                                Pulls tracked executor status, support scores, and platform tags.
                             </p>
                         </div>
                         <div class="versions-panel__header-controls">
@@ -6261,7 +6642,7 @@
                             </button>
                         </div>
                         <p class="script-searcher__hint">
-                            Results powered by Rscripts and ScriptBlox APIs.
+                            Searches ScriptBlox and Rscripts.
                         </p>
                         <div class="script-searcher__tabs" role="tablist" aria-label="Script search engines">
                             <button class="script-searcher__tab is-active" id="script-search-tab-scriptblox"
@@ -6339,8 +6720,7 @@
                             <div>
                                 <h3>Roblox user search</h3>
                                 <p class="roblox-user-search__intro">
-                                    Search by username or numeric ID and inspect profile details, banned state,
-                                    username history, avatar data, and other public Roblox metadata.
+                                    Search a username or ID. Shows public profile info, avatars, and bans when Roblox exposes them.
                                 </p>
                             </div>
                             <div id="roblox-user-status" class="roblox-user-search__status" aria-live="polite"></div>
@@ -6351,8 +6731,7 @@
                             <button class="pl sc" id="roblox-user-search-btn" type="button">Search</button>
                         </div>
                         <p class="roblox-user-search__hint">
-                            Uses Roblox Users, Avatar, and Thumbnails APIs. Exact username checks include banned users
-                            when Roblox exposes them.
+                            Looks up Roblox user, avatar, and thumbnail endpoints.
                         </p>
                         <div class="roblox-user-search__layout">
                             <aside class="roblox-user-search__results-panel">
@@ -6374,7 +6753,7 @@
                             <section class="roblox-user-search__detail-panel">
                                 <div id="roblox-user-detail" class="roblox-user-search__detail">
                                     <div class="roblox-user-search__empty">
-                                        Select a result to view the Roblox profile details here.
+                                        Pick a result and the profile info shows here.
                                     </div>
                                 </div>
                             </section>
@@ -6390,8 +6769,7 @@
                             <div>
                                 <h3>Assets Downloader</h3>
                                 <p class="assets-downloader__intro">
-                                    Paste a Roblox asset ID or URL to inspect metadata, preview the thumbnail, and
-                                    download the file without leaving your domain.
+                                    Paste an asset ID or URL. It pulls asset info, preview, and a download link.
                                 </p>
                             </div>
                             <a class="assets-downloader__out" href="https://rbxdl.johnmarctumulak.com"
@@ -6405,9 +6783,7 @@
                                 disabled>Download</button>
                         </div>
                         <p class="assets-downloader__hint">
-                            RBXDL uses a protected same-origin backend. This tab recreates the workflow with
-                            roproxy-backed Roblox endpoints that work from GitHub Pages. If Roblox says the user is
-                            not authorized, the asset itself is permission-gated.
+                            Uses roproxy Roblox endpoints. Locked assets may still fail.
                         </p>
                         <div id="assets-downloader-status" class="assets-downloader__status" aria-live="polite">
                             Paste an asset ID to get started.
@@ -6422,7 +6798,7 @@
                                 <div>
                                     <h4 id="assets-downloader-title">Ready</h4>
                                     <p id="assets-downloader-subtitle" class="assets-downloader__subtitle">
-                                        Inspect an asset to see its metadata and download details here.
+                                        Asset info and download details show up here.
                                     </p>
                                 </div>
                                 <p id="assets-downloader-description" class="assets-downloader__description"
@@ -6445,8 +6821,7 @@
                         <div>
                             <h3>File Converter</h3>
                             <p class="image-converter__intro">
-                                Convert uploaded images, GIFs, music, and videos into common web-ready formats.
-                                Uses browser-native Canvas, Web Audio, and MediaRecorder APIs with no server upload.
+                                Runs in this browser. Images use Canvas; audio and video use MediaRecorder.
                             </p>
                         </div>
                     </div>
@@ -6455,7 +6830,7 @@
                         <input id="image-converter-input" type="file" accept="image/*,audio/*,video/*,.png,.jpg,.jpeg,.jfif,.pjpeg,.pjp,.webp,.gif,.svg,.svgz,.bmp,.dib,.ico,.cur,.tif,.tiff,.avif,.heic,.heif,.apng,.jxl,.jp2,.j2k,.jpf,.jpm,.jpx,.jxr,.hdp,.wdp,.tga,.dds,.exr,.hdr,.psd,.xcf,.kra,.ppm,.pgm,.pbm,.pnm,.pam,.pcx,.sgi,.ras,.xbm,.xwd,.eps,.ai,.raw,.cr2,.cr3,.nef,.arw,.dng,.orf,.rw2,.raf,.pef,.srw,.x3f,.erf,.kdc,.mrw,.mos,.mef,.nrw,.dcr,.iiq,.3fr,.ari,.bay,.braw,.cap,.cin,.ciff,.dcs,.drf,.eip,.fff,.gpr,.mdc,.obm,.ptx,.pxn,.r3d,.rwl,.rwz,.sr2,.srf,.mp3,.ogg,.oga,.opus,.wav,.flac,.m4a,.aac,.alac,.aiff,.aif,.wma,.amr,.weba,.mp4,.webm,.mov,.mkv,.avi,.m4v,.3gp,.ogv,.mpeg,.mpg,.wmv,.flv,.ts,.m2ts" hidden />
                         <div>
                             <strong>Drop a file here</strong>
-                            <span id="image-converter-file-name">or choose image, GIF, music, or video files</span>
+                            <span id="image-converter-file-name">choose a local file; it stays in this browser</span>
                         </div>
                         <button class="pl sc" type="button" id="image-converter-pick">Choose file</button>
                     </div>
@@ -6483,7 +6858,7 @@
                             <label class="image-converter__field image-converter__image-only">
                                 <span>Quality cap</span>
                                 <input id="image-converter-quality" type="range" min="10" max="100" value="92" />
-                                <small class="image-converter__hint" id="image-converter-quality-text">92% for JPG/WebP. PNG ignores quality.</small>
+                                <small class="image-converter__hint" id="image-converter-quality-text">Quality applies to JPG/WebP only.</small>
                             </label>
                             <div class="image-converter__image-only">
                                 <span class="image-converter__label">Target file size</span>
@@ -6510,8 +6885,7 @@
                                 <span>Auto-resize only if needed to hit the target size</span>
                             </label>
                             <p class="image-converter__hint" id="image-converter-hint">
-                                PNG is lossless, so the target size may require downscaling. JPG/WebP use quality first,
-                                then resize if the target is still too small. GIF to still image saves the first frame.
+                                If an output is disabled, this browser cannot write it.
                             </p>
                             <div class="image-converter__actions">
                                 <button class="pl sc" type="button" id="image-converter-convert" disabled>Convert</button>
@@ -6558,8 +6932,7 @@
                 <div class="g ed codex-convert">
                     <div class="codex-convert__intro">
                         <h3>Codex Editor</h3>
-                        <p>Flip between a single <code>codexScriptCache.json</code> and individual script files.
-                            Everything runs in your browser.</p>
+                        <p>Turns <code>codexScriptCache.json</code> into files, or files back into one cache.</p>
                     </div>
                     <div class="codex-convert__grid">
                         <div class="codex-convert__card">
@@ -6583,8 +6956,7 @@
                             <button class="pl sc" type="button" id="codex-json-convert">Download
                                 CodexScripts.zip</button>
                             <p id="codex-json-status" class="codex-convert__hint" aria-live="polite"></p>
-                            <p class="codex-convert__hint">Exports as <code>CodexScripts.zip</code> with scripts at the
-                                root; titles become file names (duplicates are numbered).</p>
+                            <p class="codex-convert__hint">Zip contains root scripts; duplicate names get numbers.</p>
                         </div>
                         <div class="codex-convert__card">
                             <h4>Folder/files &rarr; codexScriptCache.json</h4>
@@ -6592,21 +6964,19 @@
                                 <span>Select folder or files</span>
                                 <input type="file" id="codex-folder-input" multiple webkitdirectory
                                     accept=".lua,.luau,.txt,.log,.cfg,.script,.json" />
-                                <small>Pick a folder to pull everything inside (browser-supported).</small>
+                                <small>Reads the selected files in this browser.</small>
                             </label>
                             <button class="pl sc" type="button" id="codex-folder-convert">Download
                                 codexScriptCache.json</button>
                             <p id="codex-folder-status" class="codex-convert__hint" aria-live="polite"></p>
-                            <p class="codex-convert__hint">autoExecute is forced to false, description is empty, index
-                                is alphabetical by file name.</p>
+                            <p class="codex-convert__hint">Writes autoExecute as false, clears descriptions, and sorts by file name.</p>
                         </div>
                     </div>
                     <div class="codex-tabs">
                         <div class="codex-tabs__head">
                             <div>
                                 <h4>Tab editor (codexTabs.json)</h4>
-                                <p>Import your tabs file, keep <code>content</code> and <code>Src</code> aligned, then
-                                    edit scripts with live highlighting.</p>
+                                <p>Imports <code>codexTabs.json</code>, keeps <code>content</code> and <code>Src</code> matching, and highlights edits.</p>
                             </div>
                             <div class="codex-tabs__actions">
                                 <input type="file" id="codex-tabs-input" accept=".json,application/json" hidden />
@@ -6656,9 +7026,7 @@
                     <div class="rdd-header">
                         <div>
                             <h3>RDD versions downloader</h3>
-                            <p>Build download links for Roblox deployments without leaving this site. Buttons below open
-                                <strong>ltseverydayyou.github.io/rdd</strong> with the right query parameters so you
-                                still get the full experience from the official tool.
+                            <p>Builds RDD links from the fields below, then opens them with the right query params.
                             </p>
                         </div>
                         <a class="rdd-link-out" href="https://ltseverydayyou.github.io/rdd" target="_blank"
@@ -6716,8 +7084,7 @@
                         </div>
                         <div class="rdd-card">
                             <h4>Link preview</h4>
-                            <p>Fill in the fields to generate the same permanent link that RDD uses. Share it with
-                                teammates or bookmark it for later.</p>
+                            <p>Updates as you fill the fields. Use it for copy or bookmark links.</p>
                             <div class="rdd-link-preview" id="rdd-link-preview">Add a version hash or use one of the
                                 quick buttons to generate a link.</div>
                             <p id="rdd-status" class="rdd-link-preview" style="margin-top: 12px;" aria-live="polite">
@@ -6881,13 +7248,14 @@
                     content.classList.add("home-section__content--collapsed");
                 }
 
-                for (const item of section.links) {
+                section.links.forEach((item, index) => {
                     const tile = document.createElement("a");
                     tile.className = "tl";
                     tile.href = item.link;
                     tile.rel = "noopener";
                     tile.target = "_blank";
                     tile.dataset.h = host(item.link);
+                    tile.style.setProperty("--i", String(index));
 
                     const parts = [];
                     if (item.icon) {
@@ -6896,7 +7264,7 @@
                     parts.push(`<span>${item.title}</span>`);
                     tile.innerHTML = parts.join("");
                     content.appendChild(tile);
-                }
+                });
 
                 toggle.addEventListener("click", () => {
                     section.open = !section.open;
@@ -6970,6 +7338,10 @@
         const scriptGameIconCache = new Map();
         const pendingScriptIconPlaceIds = new Set();
         let scriptGameIconTimer = null;
+        const scriptShowcaseState = {
+            query: "",
+            filter: "all"
+        };
 
         const scriptSearcherState = {
             query: "",
@@ -8738,7 +9110,7 @@
                     "Search for a username or user ID to list matching accounts."
                 );
                 renderRobloxUserDetailMessage(
-                    "Select a result to view the Roblox profile details here."
+                    "Pick a result and the profile info shows here."
                 );
                 return;
             }
@@ -8747,7 +9119,7 @@
             setRobloxUserResultsMeta("Loading...");
             renderRobloxUserResultsMessage("Searching Roblox users...");
             renderRobloxUserDetailMessage(
-                "Select a result to view the Roblox profile details here."
+                "Pick a result and the profile info shows here."
             );
 
             if (button) {
@@ -9543,7 +9915,7 @@
                 option.value = format.key;
                 option.textContent = available ?
                     `${format.label || `.${format.ext}`} (browser)` :
-                    `${format.label || `.${format.ext}`} (not browser-supported)`;
+                    `${format.label || `.${format.ext}`} (not available here)`;
                 option.disabled = !available;
                 select.appendChild(option);
             });
@@ -9569,10 +9941,10 @@
             });
             if (imageConverterElements.hint) {
                 imageConverterElements.hint.textContent = isImage ?
-                    "Image conversion uses Canvas. Animated GIF output and rare formats need a real transcoder, so they are shown but disabled." :
+                    "Canvas encodes supported image outputs locally." :
                     nextKind === "audio" ?
-                        "Audio conversion uses Web Audio and MediaRecorder. WAV is most reliable; OGG/OPUS/WEBA depend on your browser." :
-                        "Video conversion uses MediaRecorder. WebM is most reliable; MP4 only works in browsers that support recording it.";
+                        "Web Audio decodes the source; MediaRecorder writes supported audio outputs locally." :
+                        "MediaRecorder writes supported video outputs locally.";
             }
         }
 
@@ -9666,8 +10038,8 @@
                 imageConverterElements.qualityText.textContent = imageConverterState.kind !== "image" ?
                     "Quality controls apply only to browser image compression." :
                     format.lossy ?
-                    `${quality}% max quality for ${format.ext.toUpperCase()}. Target size may lower it automatically.` :
-                    `${format.ext.toUpperCase()} ignores quality. Use target size with auto-resize for smaller files.`;
+                    `Canvas encodes ${format.ext.toUpperCase()} at up to ${quality}% quality.` :
+                    `Canvas encodes ${format.ext.toUpperCase()} losslessly; quality is ignored.`;
             }
         }
 
@@ -10058,7 +10430,7 @@
             ].includes(ext);
             const knownType = /^(image|audio|video)\//i.test(file.type || "");
             if (!knownType && !knownExtension) {
-                setImageConverterStatus("Pick a valid image, music, or video file first.", "error");
+                setImageConverterStatus("Pick a valid image, audio, or video file first.", "error");
                 return;
             }
             imageConverterState.busy = true;
@@ -10199,7 +10571,7 @@
                 imageConverterElements.input.value = "";
             }
             if (imageConverterElements.fileName) {
-                imageConverterElements.fileName.textContent = "or choose image, GIF, music, or video files";
+                imageConverterElements.fileName.textContent = "choose a local file; it stays in this browser";
             }
             if (imageConverterElements.originalMeta) {
                 imageConverterElements.originalMeta.textContent = "--";
@@ -11835,26 +12207,32 @@
             }
         }
 
-        function scriptSourceLabel(url) {
-            const sourceHost = host(url);
-            if (!sourceHost) {
-                return "Direct source";
-            }
-            if (sourceHost === "raw.githubusercontent.com" || sourceHost === "gist.githubusercontent.com") {
-                return "GitHub Raw";
-            }
-            return sourceHost;
-        }
-
         function scriptDescription(item) {
-            const sourceLabel = scriptSourceLabel(item.url);
             if (item.featured) {
-                return `Pinned release hosted on ${sourceLabel}. Copy the loader instantly or inspect the source first.`;
+                return "Pinned script. Copy it or open the code first.";
             }
             if (item.game) {
-                return `Built for a Roblox experience with a direct source on ${sourceLabel}. Launch the game or review the script before running it.`;
+                return "Made for a Roblox place. Copy it, preview it, or play.";
             }
-            return `Direct script source hosted on ${sourceLabel}. Open it in the viewer or copy the loader in one click.`;
+            return "Copy it or preview the code.";
+        }
+
+        function getFilteredScriptItems(items) {
+            const query = scriptShowcaseState.query.trim().toLowerCase();
+            return items.filter((item) => {
+                if (scriptShowcaseState.filter === "pinned" && !item.featured) {
+                    return false;
+                }
+                if (scriptShowcaseState.filter === "games" && !item.game) {
+                    return false;
+                }
+                if (!query) {
+                    return true;
+                }
+                return [item.name, item.url, item.game]
+                    .filter(Boolean)
+                    .some((value) => String(value).toLowerCase().includes(query));
+            });
         }
 
         function renderScripts() {
@@ -11866,7 +12244,7 @@
             list.innerHTML = "";
             const featuredList = scriptItems.filter((item) => item.featured);
             const regularList = scriptItems.filter((item) => !item.featured);
-            const sorted = [...featuredList, ...regularList];
+            const sorted = getFilteredScriptItems([...featuredList, ...regularList]);
             const totalEl = q("#scripts-total");
             const featuredEl = q("#scripts-featured");
             const gameLinkedEl = q("#scripts-games");
@@ -11885,15 +12263,16 @@
 
             if (!sorted.length) {
                 list.innerHTML =
-                    '<div class="scripts-showcase__empty">No scripts are available right now.</div>';
+                    '<div class="scripts-showcase__empty">Nothing matched.</div>';
                 return;
             }
 
             const fragment = document.createDocumentFragment();
 
-            for (const item of sorted) {
+            sorted.forEach((item, index) => {
                 const entry = document.createElement("article");
                 entry.className = "sc";
+                entry.style.setProperty("--i", String(index));
                 if (item.featured) {
                     entry.classList.add("featured");
                 }
@@ -11926,40 +12305,24 @@
                 if (item.featured) {
                     const badge = document.createElement("span");
                     badge.className = "sc_badge";
-                    badge.textContent = "Featured";
+                    badge.textContent = "Pinned";
                     top.appendChild(badge);
-                } else {
-                    const hint = document.createElement("span");
-                    hint.className = "sc_hint";
-                    hint.textContent = item.game ? "Game script" : "Direct source";
-                    top.appendChild(hint);
                 }
 
-                const source = document.createElement("span");
-                source.className = "sc_source";
-                source.textContent = scriptSourceLabel(item.url);
-                top.appendChild(source);
+                if (top.children.length) {
+                    media.appendChild(top);
+                }
 
-                media.appendChild(top);
+                const actionHint = document.createElement("div");
+                actionHint.className = "sc_action-hint";
+                actionHint.innerHTML = `<strong>Preview code</strong><span>${item.game ? "game" : "script"}</span>`;
+                media.appendChild(actionHint);
 
                 const body = document.createElement("div");
                 body.className = "sc_body";
 
                 const info = document.createElement("div");
                 info.className = "sc_info";
-
-                const meta = document.createElement("div");
-                meta.className = "sc_meta";
-
-                const kind = document.createElement("span");
-                kind.className = "sc_hint";
-                kind.textContent = item.featured ? "Pinned release" : "Loader ready";
-                meta.appendChild(kind);
-
-                const access = document.createElement("span");
-                access.className = "sc_hint";
-                access.textContent = item.game ? "Includes game link" : "Raw source only";
-                meta.appendChild(access);
 
                 const text = document.createElement("div");
                 text.className = "sc_text";
@@ -11974,7 +12337,7 @@
                 description.textContent = scriptDescription(item);
                 text.appendChild(description);
 
-                info.append(meta, text);
+                info.append(text);
 
                 const controls = document.createElement("div");
                 controls.className = "sc_footer";
@@ -12010,17 +12373,38 @@
                 rawLink.href = item.url;
                 rawLink.target = "_blank";
                 rawLink.rel = "noopener noreferrer";
-                rawLink.textContent = "Open raw source";
+                rawLink.textContent = "Open source";
 
                 controls.append(buttonRow, rawLink);
                 body.append(info, controls);
                 entry.append(media, body);
                 fragment.appendChild(entry);
-            }
+            });
 
             list.appendChild(fragment);
             updateHeroStats();
             initMotionFx();
+        }
+
+        function initScriptsShowcaseControls() {
+            const input = q("#scripts-filter-input");
+            const filterButtons = qa("[data-script-filter]");
+            if (input) {
+                input.addEventListener("input", () => {
+                    scriptShowcaseState.query = input.value || "";
+                    renderScripts();
+                });
+            }
+            filterButtons.forEach((button) => {
+                button.addEventListener("click", (event) => {
+                    ripple(button, event);
+                    scriptShowcaseState.filter = button.dataset.scriptFilter || "all";
+                    filterButtons.forEach((item) => {
+                        item.classList.toggle("is-active", item === button);
+                    });
+                    renderScripts();
+                });
+            });
         }
 
         function extractPlaceIdFromGameLink(value) {
@@ -12692,15 +13076,21 @@
                 cache.set(url, content);
                 curCode = `loadstring(game:HttpGet('${url}'))();\n\n${content}`;
 
+                const previewHead = document.createElement("div");
+                previewHead.className = "script-preview-head";
+                const lineCount = content.split(/\r\n|\r|\n/).length;
+                previewHead.innerHTML = `<strong>${lineCount.toLocaleString()} lines</strong><span>Lua preview</span>`;
+
                 const pre = document.createElement("pre");
+                pre.className = "script-preview";
                 const code = document.createElement("code");
                 code.className = "language-lua";
                 code.textContent = content;
                 pre.appendChild(code);
 
                 const mb = q("#mb");
-                mb.className = "";
-                mb.appendChild(pre);
+                mb.className = "script-preview-wrap";
+                mb.append(previewHead, pre);
                 Prism.highlightElement(code);
             } catch {
                 const mb = q("#mb");
@@ -13748,7 +14138,7 @@ self.addEventListener("message", async (event) => {
             hideLuaManifestSearchResults();
             renderLuaManifestSearchResults();
             setLuaManifestStatus(
-                `Selected ${entry.name} (${entry.appId}). Generate to build the SteamML-style package.`
+                `Selected ${entry.name} (${entry.appId}). Generate builds the SteamTools zip.`
             );
         }
 
@@ -13799,7 +14189,7 @@ self.addEventListener("message", async (event) => {
                 displayText:
                     `${appId}.zip - ${model.gameName} (${manifestCount} manifest${manifestCount === 1 ? "" : "s"})`,
                 statusText:
-                    `Generated ${appId}.zip for ${model.gameName} in SteamML format with ${manifestCount} bundled manifest${manifestCount === 1 ? "" : "s"}.`
+                    `Built ${appId}.zip for ${model.gameName} with ${manifestCount} manifest${manifestCount === 1 ? "" : "s"}.`
             };
         }
 
@@ -15541,6 +15931,7 @@ self.addEventListener("message", async (event) => {
 
             renderHome();
             renderScripts();
+            initScriptsShowcaseControls();
             initScriptSearcher();
             initRobloxUserSearch();
             initAssetsDownloader();
@@ -15640,6 +16031,13 @@ self.addEventListener("message", async (event) => {
                     tab("e");
                 });
             }
+
+            qa("[data-home-tab]").forEach((button) => {
+                button.addEventListener("click", (event) => {
+                    ripple(button, event);
+                    tab(button.dataset.homeTab || "h");
+                });
+            });
 
             const topThemeBtn = q("#top-theme-btn");
             if (topThemeBtn) {
