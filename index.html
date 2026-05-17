@@ -296,14 +296,6 @@
             transform: none;
         }
 
-        .pp.in {
-            animation: ain 0.35s both;
-        }
-
-        .pp.out {
-            animation: aout 0.32s both;
-        }
-
         @keyframes ain {
             from {
                 opacity: 0;
@@ -6519,14 +6511,6 @@
             will-change: opacity, transform, filter;
         }
 
-        .pp.in {
-            animation: ain 0.42s cubic-bezier(0.18, 0.84, 0.24, 1) both;
-        }
-
-        .pp.out {
-            animation: aout 0.3s cubic-bezier(0.55, 0.05, 0.68, 0.19) both;
-        }
-
         @keyframes ain {
             from {
                 opacity: 0;
@@ -10252,6 +10236,69 @@
             }
         }
 
+        html {
+            scroll-behavior: auto !important;
+        }
+
+        *,
+        *::before,
+        *::after {
+            animation: none !important;
+            transition-duration: 0s !important;
+            transition-delay: 0s !important;
+            content-visibility: visible !important;
+        }
+
+        :where(.pp.on,
+            .hero,
+            .hero-side,
+            .g.ed,
+            .home-dashboard,
+            .home-dashboard__copy,
+            .home-dashboard__visual,
+            .home-dashboard__stats > div,
+            .home-section,
+            .home-section > *,
+            .home-section__content:not(.home-section__content--collapsed),
+            #home_sections .tl,
+            .home-social-card,
+            .scripts-showcase,
+            .scripts-showcase__hero,
+            .scripts-showcase__intro,
+            .scripts-showcase__tools,
+            .scripts-showcase__summary,
+            .scripts-showcase__stat,
+            .scripts-showcase__grid > .sc,
+            .scripts-showcase .brw,
+            .script-searcher__panel,
+            .script-card,
+            .version-card,
+            .executor-card,
+            .bootstrapper-card,
+            .roblox-user-search__hero,
+            .roblox-user-search__panel,
+            .roblox-user-search__result-card,
+            .roblox-user-search__detail-card,
+            .roblox-user-search__section,
+            .codex-convert__intro,
+            .codex-convert__card,
+            .codex-tabs,
+            .codex-tabs__head,
+            .codex-tabs__list,
+            .codex-tabs__editor,
+            .codex-tabs__item,
+            .rdd-card,
+            .image-converter__card,
+            .image-converter__drop,
+            .bi-shell,
+            .bi-entry,
+            .script-preview,
+            .script-preview code) {
+            opacity: 1 !important;
+            transform: none !important;
+            filter: none !important;
+        }
+
 </style>
 </head>
 
@@ -11487,7 +11534,7 @@
                     const icon = document.createElement("img");
                     icon.alt = "";
                     icon.src = item.icon;
-                    icon.loading = "lazy";
+                    icon.loading = "eager";
                     iconWrap.appendChild(icon);
                 } else {
                     iconWrap.textContent = String(item.title || "?").charAt(0).toUpperCase();
@@ -11578,7 +11625,7 @@
                         const icon = document.createElement("img");
                         icon.alt = "";
                         icon.src = item.icon;
-                        icon.loading = "lazy";
+                        icon.loading = "eager";
                         iconWrap.appendChild(icon);
                     } else {
                         iconWrap.textContent = String(item.title || "?").charAt(0).toUpperCase();
@@ -16281,7 +16328,7 @@
                 logo.className = "executor-card__logo";
                 logo.src = logoUrl;
                 logo.alt = `${executor.title || "Executor"} logo`;
-                logo.loading = "lazy";
+                logo.loading = "eager";
                 logo.decoding = "async";
                 logo.addEventListener("error", () => {
                     logo.remove();
@@ -17231,7 +17278,7 @@
 
                     tabBar.scrollTo({
                         left: Math.max(0, Math.min(maxScroll, targetScroll)),
-                        behavior: "smooth"
+                        behavior: "auto"
                     });
                 }
             }
@@ -17239,9 +17286,6 @@
             if (current === next) {
                 return;
             }
-
-            clearTimeout(tab._swapTimer);
-            clearTimeout(tab._enterTimer);
 
             const showNext = () => {
                 qa(".pp").forEach((panel) => {
@@ -17254,20 +17298,12 @@
                 next.classList.add("on");
                 initMotionFx();
 
-                requestAnimationFrame(() => {
-                    next.classList.add("in");
-                    tab._enterTimer = setTimeout(() => {
-                        next.classList.remove("in");
-                    }, 420);
-                });
-
                 history.replaceState(null, "", `#${id}`);
             };
 
             if (current) {
-                current.classList.remove("in");
-                current.classList.add("out");
-                tab._swapTimer = setTimeout(showNext, 180);
+                current.classList.remove("on", "in", "out");
+                showNext();
                 return;
             }
 
@@ -19036,7 +19072,7 @@ self.addEventListener("message", async (event) => {
                 if (entry.thumbnail) {
                     thumb.src = entry.thumbnail;
                     thumb.alt = `${entry.name} cover art`;
-                    thumb.loading = "lazy";
+                    thumb.loading = "eager";
                 } else {
                     thumb.setAttribute("aria-hidden", "true");
                 }
