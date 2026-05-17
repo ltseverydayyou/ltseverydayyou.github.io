@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-05-17T18:35:00.305Z",
+  "fetchedAt": "2026-05-17T21:27:47.888Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -419,45 +419,6 @@
       "websitelink": "https://realvelocity.xyz/"
     },
     {
-      "_id": "662d08a3cfca23ab88d4bc16",
-      "title": "Cryptic",
-      "version": "Version-2.2.1",
-      "updatedDate": "12/22/2025 at 10:12 PM UTC",
-      "uncStatus": true,
-      "free": false,
-      "detected": false,
-      "rbxversion": "version-41500f7f59744a37",
-      "updateStatus": false,
-      "websitelink": "https://getcryptic.net/",
-      "discordlink": "https://discord.gg/Qb6M2Tmge3",
-      "beta": false,
-      "platform": "Mac",
-      "purchaselink": "https://reapstore.mysellauth.com/product/cryptic-mac",
-      "extype": "mexecutor",
-      "roleId": "1443382340595224717",
-      "index": 3,
-      "elementCertified": true,
-      "cost": "$6.77 Monthly",
-      "decompiler": true,
-      "multiInject": false,
-      "suncPercentage": 100,
-      "uncPercentage": 99,
-      "sunc": {
-        "suncScrap": "kke0fPNwp0XnjAcp",
-        "suncKey": "8owOR1RsWm6R1I0l7VYaMWHXcQeg2c3D"
-      },
-      "__v": 1,
-      "recommendedReason": {
-        "features": []
-      },
-      "trackerId": "22222",
-      "clientmods": true,
-      "hidden": true,
-      "slug": {
-        "fullDescription": "No description currently available. Check back soon!"
-      }
-    },
-    {
       "_id": "66633ac4b29bacaa7a568fdc",
       "title": "Solara",
       "version": "3.248",
@@ -701,52 +662,6 @@
       }
     },
     {
-      "_id": "67f9db8ae4b61d8d6421db6e",
-      "title": "Hydrogen",
-      "version": "709.0870",
-      "updatedDate": "02/18/2026 at 8:15 PM UTC",
-      "uncStatus": true,
-      "free": true,
-      "detected": false,
-      "rbxversion": "version-b29f0194bebd445b",
-      "updateStatus": false,
-      "websitelink": "https://www.hydrogen.lat/",
-      "discordlink": "https://discord.gg/2aKTJkwxdp",
-      "beta": false,
-      "platform": "Mac",
-      "roleId": "1231664585493450925",
-      "index": 1,
-      "extype": "mexecutor",
-      "decompiler": true,
-      "multiInject": false,
-      "suncPercentage": 90,
-      "uncPercentage": 99,
-      "sunc": {
-        "suncScrap": "X7GCSkIKbnnNP7wf",
-        "suncKey": "QULiNT51O2n882fxD7Ui0QJd2hglxO1G"
-      },
-      "__v": 1,
-      "recommendedReason": {
-        "features": []
-      },
-      "purchaselink": "https://hydrogenmacos.selly.store/",
-      "keysystem": true,
-      "trackerId": "WEAO6f97651a",
-      "slug": {
-        "fullDescription": "No description currently available. Check back soon!",
-        "logo": "https://cdn.weao.gg/slug/hydrogen/logo.png",
-        "owner": "xgladius",
-        "screenshots": [
-          "https://cdn.weao.gg/slug/hydrogen/screenshot1.png",
-          "https://cdn.weao.gg/slug/hydrogen/screenshot2.png",
-          "https://cdn.weao.gg/slug/hydrogen/screenshot3.png",
-          "https://cdn.weao.gg/slug/hydrogen/screenshot4.png",
-          "https://cdn.weao.gg/slug/hydrogen/screenshot5.png"
-        ]
-      },
-      "hidden": true
-    },
-    {
       "_id": "6756857399f246351c00743b",
       "title": "Swift",
       "version": "v1.6.3",
@@ -951,49 +866,6 @@
       }
     },
     {
-      "_id": "68899949e376f58c849e0e67",
-      "title": "Krnl",
-      "version": "2.695.956",
-      "updatedDate": "11/03/2025 at 9:10 PM UTC",
-      "uncStatus": true,
-      "free": true,
-      "detected": false,
-      "rbxversion": "2.695.956",
-      "updateStatus": false,
-      "websitelink": "https://krnl.cat/",
-      "discordlink": "https://discord.gg/quSW94vB7q",
-      "beta": false,
-      "platform": "Android",
-      "extype": "aexecutor",
-      "roleId": "1399964874137927831",
-      "index": 1,
-      "unlinked": false,
-      "decompiler": true,
-      "suncPercentage": 94,
-      "uncPercentage": 95,
-      "sunc": {
-        "suncKey": "FWlZjqMQRURngg1GjlIdMnGMAmGagYUI",
-        "suncScrap": "xhYNJrHdCPfTHskD"
-      },
-      "__v": 1,
-      "recommendedReason": {
-        "features": []
-      },
-      "keysystem": true,
-      "trackerId": "WEAO6ef12cfe",
-      "slug": {
-        "fullDescription": "No description currently available. Check back soon!",
-        "logo": "https://cdn.weao.gg/slug/krnl/logo.png",
-        "owner": "valentino, Edit, blackdotgrid",
-        "screenshots": [
-          "https://cdn.weao.gg/slug/krnl/screenshot1.png",
-          "https://cdn.weao.gg/slug/krnl/screenshot2.png",
-          "https://cdn.weao.gg/slug/krnl/screenshot3.png"
-        ]
-      },
-      "hidden": true
-    },
-    {
       "_id": "68899ac3e376f58c849e0e68",
       "title": "Delta",
       "version": "2.720.1164",
@@ -1036,49 +908,6 @@
         ]
       },
       "raknet": true
-    },
-    {
-      "_id": "68899ad9e376f58c849e0e69",
-      "title": "Krnl",
-      "version": "2.695.955",
-      "updatedDate": "11/03/2025 at 9:11 PM UTC",
-      "uncStatus": true,
-      "free": true,
-      "detected": false,
-      "rbxversion": "2.695.955",
-      "updateStatus": false,
-      "websitelink": "https://krnl.cat/",
-      "discordlink": "https://discord.gg/quSW94vB7q",
-      "beta": false,
-      "platform": "iOS",
-      "extype": "iexecutor",
-      "roleId": "1399967258973048842",
-      "index": 1,
-      "unlinked": false,
-      "decompiler": true,
-      "suncPercentage": 94,
-      "uncPercentage": 95,
-      "sunc": {
-        "suncKey": "FWlZjqMQRURngg1GjlIdMnGMAmGagYUI",
-        "suncScrap": "xhYNJrHdCPfTHskD"
-      },
-      "__v": 1,
-      "recommendedReason": {
-        "features": []
-      },
-      "keysystem": true,
-      "trackerId": "WEAO6f0d5c00",
-      "slug": {
-        "fullDescription": "No description currently available. Check back soon!",
-        "logo": "https://cdn.weao.gg/slug/krnl/logo.png",
-        "owner": "valentino, Edit, blackdotgrid",
-        "screenshots": [
-          "https://cdn.weao.gg/slug/krnl/screenshot1.png",
-          "https://cdn.weao.gg/slug/krnl/screenshot2.png",
-          "https://cdn.weao.gg/slug/krnl/screenshot3.png"
-        ]
-      },
-      "hidden": true
     },
     {
       "_id": "688c1b3ccc42af0ea95977e3",
@@ -1146,47 +975,6 @@
       }
     },
     {
-      "_id": "68a8bd0d2ea31d0acaaf882e",
-      "title": "Nucleus",
-      "version": "1.1.3",
-      "updatedDate": "09/16/2025 at 9:07 AM UTC",
-      "uncStatus": true,
-      "free": true,
-      "detected": true,
-      "rbxversion": "version-8afc5a7d5e894d22",
-      "updateStatus": false,
-      "websitelink": "https://nucleus.rip/",
-      "discordlink": "https://discord.com/invite/3PyQQtEGXw",
-      "beta": false,
-      "platform": "Windows",
-      "extype": "hidden",
-      "roleId": "1408524469143867484",
-      "index": 7,
-      "decompiler": true,
-      "multiInject": false,
-      "suncPercentage": 97,
-      "uncPercentage": 99,
-      "__v": 1,
-      "recommendedReason": {
-        "features": []
-      },
-      "sunc": {
-        "suncScrap": "WmBFtdJxzJRQ9Nph",
-        "suncKey": "IFn2a2eAbVzsna8mRExyrKkKDl4Qw4TW"
-      },
-      "clientmods": false,
-      "trackerId": "WEAO45881e8e",
-      "slug": {
-        "fullDescription": "No description currently available. Check back soon!",
-        "logo": "https://cdn.weao.gg/slug/nucleus/logo.png",
-        "owner": "Takuya",
-        "screenshots": [
-          "https://cdn.weao.gg/slug/nucleus/screenshot1.png"
-        ]
-      },
-      "hidden": true
-    },
-    {
       "_id": "66a679cc5b36b46c9327b0a7",
       "title": "Synapse Z",
       "version": "1.0.2.4",
@@ -1233,41 +1021,6 @@
       "hasIssues": false
     },
     {
-      "_id": "68eebb4581d69687334ccbde",
-      "title": "Yerba",
-      "version": "v2",
-      "updatedDate": "12/20/2025 at 10:29 PM UTC",
-      "uncStatus": false,
-      "free": false,
-      "detected": false,
-      "rbxversion": "version-5b077c09380f4fe6",
-      "updateStatus": false,
-      "websitelink": "https://yerba.wtf/",
-      "discordlink": "https://discord.com/invite/yerba",
-      "purchaselink": "https://yerba.wtf/product/Roblox-external/",
-      "beta": false,
-      "platform": "Windows",
-      "extype": "wexternal",
-      "roleId": "1427763275298508810",
-      "index": 11,
-      "elementCertified": true,
-      "cost": "$9.99 Lifetime",
-      "__v": 1,
-      "recommendedReason": {
-        "features": []
-      },
-      "trackerId": "WEAO0eb0e6ba",
-      "slug": {
-        "fullDescription": "No description currently available. Check back soon!",
-        "logo": "https://cdn.weao.gg/slug/yerba/logo.png",
-        "owner": "slamfrag, KANKAN",
-        "screenshots": [
-          ""
-        ]
-      },
-      "hidden": true
-    },
-    {
       "_id": "6907cafc4b9bde193883d902",
       "title": "Severe",
       "version": "v2",
@@ -1293,43 +1046,6 @@
         "features": []
       },
       "trackerId": "WEAO4ef92j18",
-      "slug": {
-        "fullDescription": "No description currently available. Check back soon!"
-      }
-    },
-    {
-      "_id": "69264e71687b45f8aa5bfc23",
-      "title": "ChocoSploit",
-      "version": "1.4.3",
-      "updatedDate": "03/04/2026 at 7:21 PM UTC",
-      "uncStatus": true,
-      "free": false,
-      "detected": true,
-      "rbxversion": "version-d599f7fc52a8404c",
-      "updateStatus": false,
-      "websitelink": "https://chocosploit.dev/",
-      "beta": false,
-      "platform": "Windows",
-      "extype": "wexecutor",
-      "roleId": "1443039216102674472",
-      "index": 9,
-      "decompiler": true,
-      "multiInject": false,
-      "suncPercentage": 100,
-      "uncPercentage": 99,
-      "hidden": true,
-      "sunc": {
-        "suncScrap": "W6oTrRJk1PsEmJqN",
-        "suncKey": "MHCtixqQt1YBnsOELWtTU8hXBwqnJ36y"
-      },
-      "__v": 2,
-      "keysystem": false,
-      "clientmods": true,
-      "trackerId": "WEAO5c83jngy",
-      "recommendedReason": {
-        "features": []
-      },
-      "cost": "$10 Monthly (Private)",
       "slug": {
         "fullDescription": "No description currently available. Check back soon!"
       }
@@ -1438,52 +1154,6 @@
         "fullDescription": "No description currently available. Check back soon!"
       },
       "hidden": false
-    },
-    {
-      "_id": "696e6eb415b7ec43591a186a",
-      "title": "Cryptic",
-      "version": "Version-1.2.9",
-      "updatedDate": "01/27/2026 at 9:23 PM UTC",
-      "uncStatus": true,
-      "free": false,
-      "detected": true,
-      "rbxversion": "version-f8734e043e1e40a2",
-      "updateStatus": false,
-      "websitelink": "https://getcryptic.net/",
-      "discordlink": "https://discord.gg/awupD8kry7",
-      "beta": false,
-      "platform": "Windows",
-      "extype": "wexecutor",
-      "roleId": "1463328899785031776",
-      "index": 7,
-      "elementCertified": true,
-      "decompiler": true,
-      "multiInject": true,
-      "suncPercentage": 100,
-      "uncPercentage": 99,
-      "hidden": true,
-      "sunc": {
-        "suncScrap": "bCuqmw9XAmYZJeTL",
-        "suncKey": "Bn63yd3bHGAT5wbXRpzTlF4fm9hwqZ9z"
-      },
-      "__v": 1,
-      "recommendedReason": {
-        "features": []
-      },
-      "purchaselink": "https://bloxproducts.com/?affiliate_key=weao#Cryptic",
-      "keysystem": true,
-      "clientmods": true,
-      "trackerId": "WEAO10jteg89",
-      "slug": {
-        "fullDescription": "No description currently available. Check back soon!",
-        "logo": "https://cdn.weao.gg/slug/cryptic/logo.png",
-        "owner": "Reaper",
-        "screenshots": [
-          "https://cdn.weao.gg/slug/cr/screenshot1.png",
-          "https://cdn.weao.gg/slug/cr/screenshot2.png"
-        ]
-      },
-      "cost": "$4.99 Weekly"
     },
     {
       "_id": "69a4acadfa8a3af13c8930a9",
