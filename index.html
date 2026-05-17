@@ -62,21 +62,6 @@
             font: 15px/1.45 ui-sans-serif, system-ui, "Segoe UI", Roboto, Helvetica,
                 Arial;
             overflow-x: hidden;
-            animation: bg 22s linear infinite;
-        }
-
-        @keyframes bg {
-            0% {
-                filter: brightness(1);
-            }
-
-            50% {
-                filter: brightness(1.08);
-            }
-
-            100% {
-                filter: brightness(1);
-            }
         }
 
         .l {
@@ -2557,7 +2542,8 @@
             position: fixed;
             inset: 0;
             display: none;
-            place-items: center;
+            align-items: flex-start;
+            justify-content: center;
             padding: 32px 16px;
             background: rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(18px);
@@ -2572,7 +2558,7 @@
         }
 
         .md.sh {
-            display: grid;
+            display: flex;
             opacity: 1;
             visibility: visible;
             pointer-events: auto;
@@ -2582,9 +2568,9 @@
 
         .mc {
             width: min(900px, 92vw);
-            max-height: 86vh;
+            max-height: min(86vh, calc(100dvh - 64px));
             overflow: auto;
-            margin: auto 0;
+            margin: 0;
             background: linear-gradient(180deg,
                     rgba(22, 28, 42, 0.95),
                     rgba(12, 16, 26, 0.95));
@@ -5894,7 +5880,7 @@
 
             .mc {
                 width: 100%;
-                max-height: none;
+                max-height: calc(100dvh - 24px);
                 margin: 0 auto;
             }
         }
@@ -6268,22 +6254,6 @@
                 width calc(0.25s * var(--motion)) ease,
                 height calc(0.25s * var(--motion)) ease,
                 opacity calc(0.25s * var(--motion)) ease;
-        }
-
-        .reveal-target {
-            opacity: 0;
-            transform: translateY(22px) scale(0.985);
-            filter: blur(8px);
-            transition:
-                opacity calc(0.55s * var(--motion)) cubic-bezier(0.2, 0.75, 0.2, 1),
-                transform calc(0.55s * var(--motion)) cubic-bezier(0.2, 0.75, 0.2, 1),
-                filter calc(0.55s * var(--motion)) cubic-bezier(0.2, 0.75, 0.2, 1);
-        }
-
-        .reveal-target.is-visible {
-            opacity: 1;
-            transform: none;
-            filter: blur(0);
         }
 
         .hero-card,
@@ -21327,23 +21297,6 @@ self.addEventListener("message", async (event) => {
                 }
             }
 
-            const targets = Array.from(
-                document.querySelectorAll(
-                    ".home-section, .g.ed, .hero-card, .sc, .script-card, .version-card, .executor-card, .codex-convert__intro, .codex-convert__card, .codex-tabs, .codex-tabs__head, .codex-tabs__list, .codex-tabs__editor, .script-searcher__panel, .rdd-card, .image-converter__card, .image-converter__drop, .pz"
-                )
-            );
-
-            targets.forEach((element, index) => {
-                if (!element.classList.contains("reveal-target")) {
-                    element.classList.add("reveal-target");
-                    element.style.transitionDelay = `${Math.min(index % 6, 4) * 40}ms`;
-                }
-                if (!element.classList.contains("is-visible")) {
-                    requestAnimationFrame(() => {
-                        element.classList.add("is-visible");
-                    });
-                }
-            });
         }
 
         function initBuilderIcons() {
