@@ -249,6 +249,7 @@
 
         .bb {
             position: absolute;
+            z-index: 80;
             bottom: calc(100% + 10px);
             right: 0;
             padding: 6px 10px;
@@ -9216,11 +9217,14 @@
         }
 
         .brand-block {
+            position: relative;
+            z-index: 4;
             min-width: 220px;
             width: auto;
             height: 100%;
             align-self: stretch;
             justify-content: flex-start;
+            overflow: visible;
             padding: 10px 12px;
             border-radius: 18px;
             background:
@@ -9230,6 +9234,7 @@
         }
 
         .brand-icon {
+            z-index: 5;
             width: 44px;
             height: 44px;
             border-radius: 15px;
@@ -9252,6 +9257,8 @@
         }
 
         .nb {
+            position: relative;
+            z-index: 1;
             display: flex;
             align-items: center;
             justify-content: flex-start;
@@ -10171,6 +10178,108 @@
         @keyframes eggHit {
             50% {
                 transform: scale(0.78) rotate(5deg);
+            }
+        }
+
+
+        @media (max-width: 960px) {
+            .as {
+                position: sticky;
+                top: max(8px, env(safe-area-inset-top));
+                display: grid;
+                grid-template-columns: minmax(0, 1fr);
+                gap: 10px;
+                padding: 10px;
+                max-height: none;
+                overflow: visible;
+            }
+
+            .brand-block {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: flex-start;
+                gap: 12px;
+                width: 100%;
+                min-height: 0;
+                padding: 10px 12px;
+                text-align: left;
+            }
+
+            .brand-icon {
+                flex: 0 0 40px;
+                width: 40px;
+                height: 40px;
+                margin-bottom: 0 !important;
+            }
+
+            .brand-copy {
+                justify-content: flex-start;
+                width: 100%;
+                min-width: 0;
+                height: auto;
+                text-align: left;
+            }
+
+            .brand-label {
+                max-width: 100%;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+
+            .nb {
+                display: flex !important;
+                flex-direction: row !important;
+                flex-wrap: nowrap !important;
+                align-items: stretch;
+                gap: 8px;
+                width: 100%;
+                min-width: 0;
+                overflow-x: auto !important;
+                overflow-y: hidden;
+                padding: 0 2px 4px;
+                white-space: nowrap;
+                scroll-padding-inline: 2px;
+                scroll-snap-type: x proximity;
+                overscroll-behavior-x: contain;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: thin;
+            }
+
+            .nb::-webkit-scrollbar {
+                display: block;
+                height: 3px;
+            }
+
+            .tb {
+                flex: 0 0 auto !important;
+                width: auto !important;
+                min-width: max-content;
+                min-height: 40px;
+                padding: 9px 12px;
+                scroll-snap-align: start;
+            }
+
+            main {
+                padding-top: 16px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .brand-block {
+                flex-direction: row !important;
+                align-items: center !important;
+                justify-content: flex-start !important;
+                text-align: left !important;
+            }
+
+            .brand-icon {
+                margin-bottom: 0 !important;
+            }
+
+            .nb {
+                grid-template-columns: none !important;
             }
         }
 
@@ -17137,18 +17246,25 @@
                 tabBar &&
                 tabBar.scrollWidth > tabBar.clientWidth
             ) {
-                const barRect = tabBar.getBoundingClientRect();
-                const buttonRect = activeButton.getBoundingClientRect();
-                const maxScroll = Math.max(0, tabBar.scrollWidth - tabBar.clientWidth);
-                const targetScroll =
-                    tabBar.scrollLeft +
-                    (buttonRect.left - barRect.left) -
-                    (tabBar.clientWidth - buttonRect.width) / 2;
+                if (id === "h") {
+                    tabBar.scrollTo({
+                        left: 0,
+                        behavior: "auto"
+                    });
+                } else {
+                    const barRect = tabBar.getBoundingClientRect();
+                    const buttonRect = activeButton.getBoundingClientRect();
+                    const maxScroll = Math.max(0, tabBar.scrollWidth - tabBar.clientWidth);
+                    const targetScroll =
+                        tabBar.scrollLeft +
+                        (buttonRect.left - barRect.left) -
+                        (tabBar.clientWidth - buttonRect.width) / 2;
 
-                tabBar.scrollTo({
-                    left: Math.max(0, Math.min(maxScroll, targetScroll)),
-                    behavior: "smooth"
-                });
+                    tabBar.scrollTo({
+                        left: Math.max(0, Math.min(maxScroll, targetScroll)),
+                        behavior: "smooth"
+                    });
+                }
             }
 
             if (current === next) {
@@ -21688,6 +21804,17 @@ self.addEventListener("message", async (event) => {
 
             initEasterEggs();
             const init = location.hash.slice(1) || "h";
+            const syncHomeNavScroll = () => {
+                const tabBar = q("#nb");
+                const route = location.hash.slice(1) || "h";
+                if (tabBar && route === "h") {
+                    tabBar.scrollTo({
+                        left: 0,
+                        behavior: "auto"
+                    });
+                }
+            };
+
             if (init === "404") {
                 tab("h");
                 window.setTimeout(open404MiniGame, 240);
@@ -21696,6 +21823,10 @@ self.addEventListener("message", async (event) => {
             } else {
                 tab("h");
             }
+
+            syncHomeNavScroll();
+            window.addEventListener("pageshow", syncHomeNavScroll);
+            window.addEventListener("resize", syncHomeNavScroll);
 
             q("#av").addEventListener("click", onAv);
 
