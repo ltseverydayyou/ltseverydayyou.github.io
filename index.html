@@ -2552,8 +2552,7 @@
             opacity: 0;
             visibility: hidden;
             pointer-events: none;
-            transform: translateY(6px) scale(1.01);
-            transition: opacity 0.18s ease-out, transform 0.2s ease-out;
+            transition: opacity 0.18s ease-out;
             z-index: 80;
         }
 
@@ -2563,7 +2562,6 @@
             visibility: visible;
             pointer-events: auto;
             overflow-y: auto;
-            transform: translateY(0) scale(1);
         }
 
         .mc {
@@ -6234,6 +6232,7 @@
         }
 
         #cursor-aura {
+            display: none;
             position: fixed;
             top: 0;
             left: 0;
@@ -21271,32 +21270,6 @@ self.addEventListener("message", async (event) => {
         }
 
         function initMotionFx() {
-            if (!initMotionFx._cursorBound) {
-                initMotionFx._cursorBound = true;
-                const aura = q("#cursor-aura");
-                if (aura) {
-                    let targetX = window.innerWidth * 0.5;
-                    let targetY = window.innerHeight * 0.35;
-                    let currentX = targetX;
-                    let currentY = targetY;
-
-                    const tick = () => {
-                        currentX += (targetX - currentX) * 0.16;
-                        currentY += (targetY - currentY) * 0.16;
-                        aura.style.left = `${currentX}px`;
-                        aura.style.top = `${currentY}px`;
-                        requestAnimationFrame(tick);
-                    };
-
-                    window.addEventListener("pointermove", (event) => {
-                        targetX = event.clientX;
-                        targetY = event.clientY;
-                    });
-
-                    requestAnimationFrame(tick);
-                }
-            }
-
         }
 
         function initBuilderIcons() {
