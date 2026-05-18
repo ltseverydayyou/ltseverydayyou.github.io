@@ -22,20 +22,33 @@ end
 local cacheHost = type(sharedEnv) == "table" and sharedEnv or globalEnv
 local cached = type(cacheHost) == "table" and rawget(cacheHost, "__lt_ui_protector")
 
-if type(cached) == "table" then
+if type(cached) == "table" and rawget(cached, "ready") == true then
 	if type(cached.installGetHuiOverride) == "function" then
 		pcall(cached.installGetHuiOverride)
 	end
 	return cached
 end
 
+if type(cached) == "table" then
+	pcall(function()
+		if type(cached.cleanup) == "function" then
+			cached.cleanup()
+		end
+	end)
+
+	pcall(function()
+		if type(cached.restore) == "function" then
+			cached.restore()
+		end
+	end)
+end
+
 local protector = {}
 
 local state = {
-	folder = nil,
-	screen = nil,
-	raw = nil,
-	mode = "folder",
+	customHui = nil,
+	screenGui = nil,
+	rawHui = nil,
 	heartbeat = nil,
 	installed = false,
 	last = 0,
@@ -74,6 +87,7 @@ local function safeCall(fn, ...)
 	if type(fn) ~= "function" then
 		return false, nil
 	end
+
 	return pcall(fn, ...)
 end
 
@@ -82,8 +96,42 @@ local function tryCall(fn, ...)
 	if ok then
 		return result
 	end
+
 	return nil
 end
+
+local function captureFunc(name)
+	local value = state.localFuncs[name]
+
+	if type(value) == "function" then
+		return value
+	end
+
+	if type(globalEnv) == "table" then
+		value = rawget(globalEnv, name)
+		if type(value) == "function" then
+			return value
+		end
+	end
+
+	pcall(function()
+		if type(_G) == "table" then
+			value = rawget(_G, name)
+		end
+	end)
+
+	if type(value) == "function" then
+		return value
+	end
+
+	return nil
+end
+
+state.nativeHuiFns.gethui = captureFunc("gethui")
+state.nativeHuiFns.gethiddenui = captureFunc("gethiddenui")
+state.nativeHuiFns.gethiddengui = captureFunc("gethiddengui")
+state.nativeHuiFns.get_hidden_ui = captureFunc("get_hidden_ui")
+state.nativeHuiFns.get_hidden_gui = captureFunc("get_hidden_gui")
 
 local function getFunc(name)
 	local value = state.localFuncs[name]
@@ -135,39 +183,6 @@ local function getFunc(name)
 	return nil
 end
 
-local function captureFunc(name)
-	local value = state.localFuncs[name]
-
-	if type(value) == "function" then
-		return value
-	end
-
-	if type(globalEnv) == "table" then
-		value = rawget(globalEnv, name)
-		if type(value) == "function" then
-			return value
-		end
-	end
-
-	pcall(function()
-		if type(_G) == "table" then
-			value = rawget(_G, name)
-		end
-	end)
-
-	if type(value) == "function" then
-		return value
-	end
-
-	return nil
-end
-
-state.nativeHuiFns.gethui = captureFunc("gethui")
-state.nativeHuiFns.gethiddenui = captureFunc("gethiddenui")
-state.nativeHuiFns.gethiddengui = captureFunc("gethiddengui")
-state.nativeHuiFns.get_hidden_ui = captureFunc("get_hidden_ui")
-state.nativeHuiFns.get_hidden_gui = captureFunc("get_hidden_gui")
-
 function protector.has(name)
 	return type(getFunc(name)) == "function"
 end
@@ -195,6 +210,7 @@ local function getService(name)
 		if type(fn) == "function" then
 			return fn(game:GetService(name))
 		end
+
 		return game:GetService(name)
 	end)
 
@@ -388,13 +404,13 @@ local function rawHui()
 
 	for i = 1, #funcs do
 		local result = cloneRef(tryCall(funcs[i]))
-		if isInstance(result) and not sameInstance(result, state.folder) and not sameInstance(result, state.screen) then
-			state.raw = result
+		if isInstance(result) and not sameInstance(result, state.customHui) and not sameInstance(result, state.screenGui) then
+			state.rawHui = result
 			return result
 		end
 	end
 
-	return state.raw
+	return state.rawHui
 end
 
 function protector.rawHuiGrabber()
@@ -406,16 +422,16 @@ local function huiKind(instance)
 		return nil
 	end
 
-	if isA(instance, "BasePlayerGui") then
-		return "root"
+	if isA(instance, "ScreenGui") then
+		return "screen"
 	end
 
 	if isA(instance, "Folder") then
 		return "folder"
 	end
 
-	if isA(instance, "ScreenGui") then
-		return "screen"
+	if isA(instance, "BasePlayerGui") then
+		return "root"
 	end
 
 	local className = instance.ClassName
@@ -424,7 +440,7 @@ local function huiKind(instance)
 		return "root"
 	end
 
-	return nil
+	return "other"
 end
 
 function protector.getRawHuiKind()
@@ -460,6 +476,58 @@ function protector.getBaseParent()
 	end
 
 	return nil
+end
+
+local function isCoreGuiAlias(root, coreGui)
+	if not isInstance(root) then
+		return false
+	end
+
+	coreGui = isInstance(coreGui) and coreGui or getService("CoreGui")
+
+	if isInstance(coreGui) and sameInstance(root, coreGui) then
+		return true
+	end
+
+	if not isInstance(coreGui) then
+		return false
+	end
+
+	local ok, inCore = pcall(function()
+		return root:IsDescendantOf(coreGui)
+	end)
+
+	if not (ok and inCore) then
+		return false
+	end
+
+	return tostring(root.Name or "") == "RobloxGui"
+end
+
+local function resolvePreferredHuiParent(aliasRoot, coreGui)
+	coreGui = isInstance(coreGui) and coreGui or getService("CoreGui")
+
+	if isInstance(aliasRoot) and isA(aliasRoot, "ScreenGui") then
+		return aliasRoot
+	end
+
+	if isInstance(aliasRoot) and tostring(aliasRoot.Name or "") == "RobloxGui" then
+		return aliasRoot
+	end
+
+	if isInstance(coreGui) then
+		local robloxGui = tryCall(function()
+			return coreGui:FindFirstChild("RobloxGui")
+		end)
+
+		if isInstance(robloxGui) then
+			return robloxGui
+		end
+
+		return coreGui
+	end
+
+	return protector.getBaseParent()
 end
 
 local function startWatchdog()
@@ -654,8 +722,9 @@ function protector.harden(instance, options)
 	return instance
 end
 
-local function configureScreen(screenGui, parent, name, lockName)
+local function configureOwnedScreen(screenGui, parent, name)
 	local properties = {
+		Name = type(name) == "string" and name ~= "" and name or protector.randomString(),
 		Parent = parent,
 		Archivable = false,
 		Enabled = true,
@@ -663,10 +732,6 @@ local function configureScreen(screenGui, parent, name, lockName)
 		IgnoreGuiInset = true,
 		DisplayOrder = 2147483647,
 	}
-
-	if lockName then
-		properties.Name = type(name) == "string" and name ~= "" and name or protector.randomString()
-	end
 
 	local zIndexBehavior = getEnum("ZIndexBehavior", "Global")
 	if zIndexBehavior then
@@ -697,175 +762,121 @@ local function configureScreen(screenGui, parent, name, lockName)
 	return screenGui
 end
 
-local function makeFolder(parent, name)
-	if not isInstance(parent) then
+local function configureNativeScreen(screenGui)
+	if not isInstance(screenGui) then
 		return nil
 	end
 
-	local folder = Instance.new("Folder")
-
-	protector.nativeProtect(folder)
-
-	protector.lockInstance(folder, {
-		Name = type(name) == "string" and name ~= "" and name or protector.randomString(),
-		Parent = parent,
+	local properties = {
 		Archivable = false,
-	})
+		Enabled = true,
+		ResetOnSpawn = false,
+		IgnoreGuiInset = true,
+		DisplayOrder = 2147483647,
+	}
 
-	return folder
-end
-
-function protector.getHui()
-	local raw = rawHui()
-	local kind = huiKind(raw)
-
-	if kind then
-		return raw
+	local zIndexBehavior = getEnum("ZIndexBehavior", "Global")
+	if zIndexBehavior then
+		properties.ZIndexBehavior = zIndexBehavior
 	end
 
-	local parent = protector.getBaseParent()
-	if isInstance(parent) then
-		return parent
+	local screenInsets = getEnum("ScreenInsets", "None")
+	if screenInsets then
+		properties.ScreenInsets = screenInsets
 	end
 
-	return nil
-end
-
-function protector.getScreenGui(name)
-	local hui = protector.getHui()
-	local kind = huiKind(hui)
-
-	if kind == "screen" then
-		state.screen = hui
-
-		local parent = getProperty(hui, "Parent")
-		if isInstance(parent) then
-			configureScreen(hui, parent, nil, false)
-		else
-			protector.nativeProtect(hui)
-			protector.harden(hui, {
-				deep = false,
-				watch = true,
-			})
-		end
-
-		return hui
+	local safeAreaCompatibility = getEnum("SafeAreaCompatibility", "None")
+	if safeAreaCompatibility then
+		properties.SafeAreaCompatibility = safeAreaCompatibility
 	end
 
-	if not isInstance(hui) then
-		return nil
-	end
+	pcall(function()
+		screenGui.ClipToDeviceSafeArea = false
+	end)
 
-	if isInstance(state.screen) and sameInstance(state.screen.Parent, hui) then
-		return state.screen
-	end
+	pcall(function()
+		screenGui.OnTopOfCoreBlur = true
+	end)
 
-	local screenGui = Instance.new("ScreenGui")
-	state.screen = screenGui
-
-	configureScreen(screenGui, hui, name, true)
-
-	protector.harden(screenGui, {
-		deep = false,
-		watch = true,
-	})
+	protector.nativeProtect(screenGui)
+	protector.lockInstance(screenGui, properties)
 
 	return screenGui
 end
 
-function protector.adoptScreenGui(sourceGui, options)
-	if not isInstance(sourceGui) or not isA(sourceGui, "ScreenGui") then
-		return nil
-	end
-
-	options = type(options) == "table" and options or {}
-
-	local targetGui = protector.getScreenGui()
-	if not isInstance(targetGui) then
-		return nil
-	end
-
-	local children = tryCall(function()
-		return sourceGui:GetChildren()
-	end)
-
-	if type(children) == "table" then
-		for i = 1, #children do
-			pcall(function()
-				children[i].Parent = targetGui
-			end)
-		end
-	end
-
-	if not state.descWatching[sourceGui] then
-		state.descWatching[sourceGui] = true
-
-		pcall(function()
-			addConnection(sourceGui, sourceGui.ChildAdded:Connect(function(child)
-				pcall(function()
-					child.Parent = targetGui
-				end)
-			end))
-		end)
-	end
-
-	protector.harden(sourceGui, {
-		deep = false,
-		watch = true,
-		rename = options.rename == true,
-	})
-
-	return targetGui
-end
-
-function protector.getCustomHui(name)
-	local hui = protector.getHui()
-	local kind = huiKind(hui)
-
-	if kind == "folder" then
-		return hui
-	end
-
-	if kind == "screen" then
-		if isInstance(state.folder) and sameInstance(state.folder.Parent, hui) then
-			return state.folder
-		end
-
-		state.folder = makeFolder(hui, name)
-
-		if isInstance(state.folder) then
-			pcall(function()
-				addConnection(state.folder, state.folder.ChildAdded:Connect(function(child)
-					if isInstance(child) and isA(child, "ScreenGui") then
-						protector.adoptScreenGui(child)
-					end
-				end))
-			end)
-		end
-
-		return state.folder
-	end
-
-	if kind == "root" then
-		if isInstance(state.folder) and sameInstance(state.folder.Parent, hui) then
-			return state.folder
-		end
-
-		state.folder = makeFolder(hui, name)
-		return state.folder
-	end
-
-	local parent = protector.getBaseParent()
+function protector.getCustomHui(aliasRoot, coreGui)
+	local parent = resolvePreferredHuiParent(aliasRoot, coreGui)
 	if not isInstance(parent) then
 		return nil
 	end
 
-	if isInstance(state.folder) and sameInstance(state.folder.Parent, parent) then
-		return state.folder
+	if isA(parent, "ScreenGui") then
+		state.screenGui = parent
+		return configureNativeScreen(parent)
 	end
 
-	state.folder = makeFolder(parent, name)
-	return state.folder
+	local cachedGui = state.customHui
+	if isInstance(cachedGui) and sameInstance(cachedGui.Parent, parent) then
+		return cachedGui
+	end
+
+	local gui = Instance.new("ScreenGui")
+	state.customHui = gui
+	state.screenGui = gui
+
+	return configureOwnedScreen(gui, parent)
+end
+
+function protector.huiGrabber()
+	local hidden = protector.rawHuiGrabber()
+	local coreGui = getService("CoreGui")
+
+	if isInstance(hidden) then
+		local kind = huiKind(hidden)
+
+		if kind == "screen" then
+			state.screenGui = hidden
+			return configureNativeScreen(hidden)
+		end
+
+		if kind == "folder" then
+			return hidden
+		end
+
+		if kind == "root" then
+			if isCoreGuiAlias(hidden, coreGui) then
+				return protector.getCustomHui(hidden, coreGui) or hidden
+			end
+
+			return hidden
+		end
+
+		return hidden
+	end
+
+	return protector.getCustomHui(nil, coreGui)
+end
+
+function protector.getScreenGui(name)
+	local hidden = protector.huiGrabber()
+
+	if isInstance(hidden) and isA(hidden, "ScreenGui") then
+		state.screenGui = hidden
+		return hidden
+	end
+
+	if not isInstance(hidden) then
+		return nil
+	end
+
+	if isInstance(state.screenGui) and sameInstance(state.screenGui.Parent, hidden) then
+		return state.screenGui
+	end
+
+	local gui = Instance.new("ScreenGui")
+	state.screenGui = gui
+
+	return configureOwnedScreen(gui, hidden, name)
 end
 
 function protector.resolveParent(options)
@@ -880,23 +891,47 @@ function protector.resolveParent(options)
 		return cloneRef(options.parent)
 	end
 
-	local mode = type(options.mode) == "string" and options.mode:lower() or state.mode
-
-	if mode == "screen" then
-		return protector.getScreenGui()
+	local hidden = protector.huiGrabber()
+	if isInstance(hidden) then
+		return hidden
 	end
 
-	return protector.getCustomHui() or protector.getBaseParent()
+	local coreGui = cloneRef(options.coreGui)
+	if not isInstance(coreGui) then
+		coreGui = getService("CoreGui")
+	end
+
+	if isInstance(coreGui) then
+		local screenGui = tryCall(function()
+			return coreGui:FindFirstChildWhichIsA("ScreenGui")
+		end)
+
+		if isInstance(screenGui) then
+			return screenGui
+		end
+
+		return coreGui
+	end
+
+	local players = cloneRef(options.players)
+	if not isInstance(players) then
+		players = getService("Players")
+	end
+
+	local localPlayer = isInstance(options.localPlayer) and cloneRef(options.localPlayer) or (isInstance(players) and cloneRef(players.LocalPlayer) or nil)
+	local playerGui = isInstance(localPlayer) and tryCall(function()
+		return localPlayer:FindFirstChildWhichIsA("PlayerGui")
+	end) or nil
+
+	if isInstance(playerGui) then
+		return playerGui
+	end
+
+	return nil
 end
 
-function protector.parent(mode)
-	mode = type(mode) == "string" and mode:lower() or state.mode
-
-	if mode == "screen" then
-		return protector.getScreenGui()
-	end
-
-	return protector.getCustomHui()
+function protector.parent()
+	return protector.huiGrabber()
 end
 
 function protector.protectUI(gui, options)
@@ -906,36 +941,31 @@ function protector.protectUI(gui, options)
 
 	options = type(options) == "table" and options or {}
 
-	local parent = isInstance(options.parent) and cloneRef(options.parent) or nil
-
-	if not isInstance(parent) then
-		if isA(gui, "ScreenGui") then
-			parent = protector.parent(options.mode or state.mode)
-		else
-			parent = protector.getScreenGui()
-		end
-	end
-
-	if not isInstance(parent) then
-		return nil
-	end
-
 	protector.nativeProtect(gui)
 
-	local properties = {
-		Parent = parent,
-		Archivable = false,
-	}
-
-	if not options.keepName then
-		properties.Name = type(options.name) == "string" and options.name ~= "" and options.name or protector.randomString()
-	end
-
 	if isA(gui, "ScreenGui") then
-		properties.Enabled = true
-		properties.ResetOnSpawn = false
-		properties.IgnoreGuiInset = true
-		properties.DisplayOrder = tonumber(options.displayOrder) or 2147483647
+		local target = protector.resolveParent(options)
+
+		if not isInstance(target) then
+			return nil
+		end
+
+		if sameInstance(gui, target) then
+			return configureNativeScreen(gui)
+		end
+
+		local properties = {
+			Parent = target,
+			Archivable = false,
+			Enabled = true,
+			ResetOnSpawn = false,
+			IgnoreGuiInset = true,
+			DisplayOrder = tonumber(options.displayOrder) or 2147483647,
+		}
+
+		if not options.keepName then
+			properties.Name = type(options.name) == "string" and options.name ~= "" and options.name or protector.randomString()
+		end
 
 		local zIndexBehavior = getEnum("ZIndexBehavior", "Global")
 		if zIndexBehavior then
@@ -959,6 +989,32 @@ function protector.protectUI(gui, options)
 		pcall(function()
 			gui.OnTopOfCoreBlur = true
 		end)
+
+		protector.lockInstance(gui, properties)
+
+		if options.harden ~= false then
+			protector.harden(gui, {
+				deep = options.deep == true,
+				watch = options.watch ~= false,
+				rename = options.rename == true,
+			})
+		end
+
+		return gui
+	end
+
+	local target = protector.getScreenGui()
+	if not isInstance(target) then
+		return nil
+	end
+
+	local properties = {
+		Parent = target,
+		Archivable = false,
+	}
+
+	if not options.keepName then
+		properties.Name = type(options.name) == "string" and options.name ~= "" and options.name or protector.randomString()
 	end
 
 	protector.lockInstance(gui, properties)
@@ -992,25 +1048,9 @@ function protector.protectName(instance, property)
 	return instance
 end
 
-function protector.huiGrabber()
-	return protector.parent()
-end
-
-function protector.installGetHuiOverride(mode)
-	if type(mode) == "table" then
-		mode = mode.mode
-	end
-
-	mode = type(mode) == "string" and mode:lower() or state.mode
-
-	if mode ~= "screen" then
-		mode = "folder"
-	end
-
-	state.mode = mode
-
+function protector.installGetHuiOverride()
 	local function customGetHui()
-		return protector.parent(state.mode)
+		return protector.huiGrabber()
 	end
 
 	local installed = false
@@ -1042,13 +1082,16 @@ function protector.installGetHuiOverride(mode)
 	local okG = pcall(applyToEnv, _G)
 
 	state.installed = installed or okGlobal or okG
-	protector.getHuiOverrideInstalled = state.installed
+
+	pcall(function()
+		protector.getHuiOverrideInstalled = state.installed
+	end)
 
 	return state.installed
 end
 
-function protector.install(mode)
-	return protector.installGetHuiOverride(mode)
+function protector.install()
+	return protector.installGetHuiOverride()
 end
 
 function protector.restore()
@@ -1078,7 +1121,10 @@ function protector.restore()
 	pcall(applyToEnv, _G)
 
 	state.installed = false
-	protector.getHuiOverrideInstalled = false
+
+	pcall(function()
+		protector.getHuiOverrideInstalled = false
+	end)
 end
 
 function protector.cleanup(instance)
@@ -1149,20 +1195,20 @@ function protector.destroy()
 	protector.restore()
 
 	pcall(function()
-		if isInstance(state.folder) then
-			state.folder:Destroy()
+		if isInstance(state.customHui) then
+			state.customHui:Destroy()
 		end
 	end)
 
 	pcall(function()
 		local raw = rawHui()
-		if isInstance(state.screen) and not sameInstance(state.screen, raw) then
-			state.screen:Destroy()
+		if isInstance(state.screenGui) and not sameInstance(state.screenGui, raw) then
+			state.screenGui:Destroy()
 		end
 	end)
 
-	state.folder = nil
-	state.screen = nil
+	state.customHui = nil
+	state.screenGui = nil
 end
 
 function protector.support()
@@ -1193,22 +1239,17 @@ end
 
 function protector.status()
 	local raw = rawHui()
-	local hui = protector.getHui()
-	local parent = protector.getCustomHui()
+	local parent = protector.huiGrabber()
 	local screen = protector.getScreenGui()
 
 	return {
-		mode = state.mode,
 		raw = raw,
 		rawClass = isInstance(raw) and raw.ClassName or nil,
 		rawKind = huiKind(raw),
 		rawPath = getPath(raw),
-		hui = hui,
-		huiClass = isInstance(hui) and hui.ClassName or nil,
-		huiKind = huiKind(hui),
-		huiPath = getPath(hui),
 		parent = parent,
 		parentClass = isInstance(parent) and parent.ClassName or nil,
+		parentKind = huiKind(parent),
 		parentPath = getPath(parent),
 		screen = screen,
 		screenClass = isInstance(screen) and screen.ClassName or nil,
@@ -1219,8 +1260,10 @@ function protector.status()
 	}
 end
 
+protector.ready = true
+
 pcall(function()
-	protector.installGetHuiOverride("folder")
+	protector.installGetHuiOverride()
 end)
 
 if type(cacheHost) == "table" then
