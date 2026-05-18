@@ -1,3 +1,5 @@
+local build = "fallback_order"
+
 local okEnv, globalEnv = pcall(function()
 	if type(getgenv) == "function" then
 		return getgenv()
@@ -22,7 +24,7 @@ end
 local cacheHost = type(sharedEnv) == "table" and sharedEnv or globalEnv
 local cached = type(cacheHost) == "table" and rawget(cacheHost, "__lt_ui_protector")
 
-if type(cached) == "table" and rawget(cached, "ready") == true then
+if type(cached) == "table" and rawget(cached, "ready") == true and rawget(cached, "build") == build then
 	if type(cached.installGetHuiOverride) == "function" then
 		pcall(cached.installGetHuiOverride)
 	end
@@ -413,9 +415,34 @@ function protector.rawHuiGrabber()
 	return rawHui()
 end
 
+local function getPlayerGuiContainer()
+	local players = getService("Players")
+	local lp = isInstance(players) and cloneRef(players.LocalPlayer) or nil
+
+	if isInstance(lp) then
+		local pg = tryCall(function()
+			return lp:FindFirstChildWhichIsA("PlayerGui")
+		end)
+
+		if isInstance(pg) then
+			return pg
+		end
+	end
+
+	return nil
+end
+
+local function isRobloxGuiName(obj)
+	return isInstance(obj) and tostring(obj.Name or "") == "RobloxGui"
+end
+
 local function isAliasRoot(obj, coreGui)
 	if not isInstance(obj) then
 		return false
+	end
+
+	if isRobloxGuiName(obj) then
+		return true
 	end
 
 	coreGui = isInstance(coreGui) and coreGui or getService("CoreGui")
@@ -424,12 +451,7 @@ local function isAliasRoot(obj, coreGui)
 		return true
 	end
 
-	local name = tostring(obj.Name or "")
 	local class = obj.ClassName
-
-	if name == "RobloxGui" then
-		return true
-	end
 
 	if class == "CoreGui" or class == "PlayerGui" or class == "StarterGui" then
 		return true
@@ -483,20 +505,37 @@ function protector.getBaseParent()
 		return coreGui
 	end
 
-	local players = getService("Players")
-	local lp = isInstance(players) and cloneRef(players.LocalPlayer) or nil
+	return getPlayerGuiContainer()
+end
 
-	if isInstance(lp) then
-		local pg = tryCall(function()
-			return lp:FindFirstChildWhichIsA("PlayerGui")
-		end)
+local function getFolderParent(parent)
+	if isInstance(parent) then
+		if isRobloxGuiName(parent) then
+			return parent
+		end
 
-		if isInstance(pg) then
-			return pg
+		if parent.ClassName == "CoreGui" then
+			local robloxGui = tryCall(function()
+				return parent:FindFirstChild("RobloxGui")
+			end)
+
+			if isInstance(robloxGui) then
+				return robloxGui
+			end
+
+			return parent
+		end
+
+		if parent.ClassName == "PlayerGui" or parent.ClassName == "StarterGui" then
+			return parent
+		end
+
+		if isA(parent, "BasePlayerGui") then
+			return parent
 		end
 	end
 
-	return nil
+	return protector.getBaseParent()
 end
 
 local function startWatchdog()
@@ -782,7 +821,7 @@ local function protectNativeScreen(gui)
 end
 
 function protector.getCustomHui(parent)
-	parent = isInstance(parent) and parent or protector.getBaseParent()
+	parent = getFolderParent(parent)
 
 	if not isInstance(parent) then
 		return nil
@@ -796,28 +835,6 @@ function protector.getCustomHui(parent)
 	state.customHui = folder
 
 	return protectFolder(folder, parent)
-end
-
-function protector.getScreenGui(name)
-	local hidden = protector.huiGrabber()
-
-	if isInstance(hidden) and isA(hidden, "ScreenGui") then
-		state.screenGui = hidden
-		return hidden
-	end
-
-	if not isInstance(hidden) then
-		return nil
-	end
-
-	if isInstance(state.screenGui) and sameInstance(state.screenGui.Parent, hidden) then
-		return state.screenGui
-	end
-
-	local gui = Instance.new("ScreenGui")
-	state.screenGui = gui
-
-	return protectScreen(gui, hidden, name)
 end
 
 function protector.huiGrabber()
@@ -846,6 +863,28 @@ function protector.huiGrabber()
 	end
 
 	return protector.getCustomHui()
+end
+
+function protector.getScreenGui(name)
+	local hidden = protector.huiGrabber()
+
+	if isInstance(hidden) and isA(hidden, "ScreenGui") then
+		state.screenGui = hidden
+		return hidden
+	end
+
+	if not isInstance(hidden) then
+		return nil
+	end
+
+	if isInstance(state.screenGui) and sameInstance(state.screenGui.Parent, hidden) then
+		return state.screenGui
+	end
+
+	local gui = Instance.new("ScreenGui")
+	state.screenGui = gui
+
+	return protectScreen(gui, hidden, name)
 end
 
 function protector.resolveParent(opts)
@@ -904,10 +943,10 @@ function protector.protectUI(gui, opts)
 
 		protector.lockInstance(gui, props)
 
-		if opts.harden ~= false then
+		if opts.harden == true then
 			protector.harden(gui, {
 				deep = opts.deep == true,
-				watch = opts.watch ~= false,
+				watch = opts.watch == true,
 				rename = opts.rename == true,
 			})
 		end
@@ -992,7 +1031,10 @@ function protector.installGetHuiOverride()
 	local okG = pcall(apply, _G)
 
 	state.installed = installed or okGlobal or okG
-	protector.getHuiOverrideInstalled = state.installed
+
+	pcall(function()
+		protector.getHuiOverrideInstalled = state.installed
+	end)
 
 	return state.installed
 end
@@ -1028,7 +1070,10 @@ function protector.restore()
 	pcall(apply, _G)
 
 	state.installed = false
-	protector.getHuiOverrideInstalled = false
+
+	pcall(function()
+		protector.getHuiOverrideInstalled = false
+	end)
 end
 
 function protector.cleanup(obj)
@@ -1149,6 +1194,7 @@ function protector.status()
 	local screen = protector.getScreenGui()
 
 	return {
+		build = build,
 		raw = raw,
 		rawClass = isInstance(raw) and raw.ClassName or nil,
 		rawKind = huiKind(raw),
@@ -1167,6 +1213,7 @@ function protector.status()
 end
 
 protector.ready = true
+protector.build = build
 
 pcall(function()
 	protector.installGetHuiOverride()
