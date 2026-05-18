@@ -1,5 +1,5 @@
 local build = "session_name_cursed_null_v1"
-local patch = "name_changed_deferred_v1"
+local patch = "name_changed_watchdog_v1"
 
 local okEnv, globalEnv = pcall(function()
 	if type(getgenv) == "function" then
@@ -350,26 +350,7 @@ local function scheduleTrackedProperty(obj, prop)
 	end
 
 	props[prop] = true
-
-	local deferred = false
-	pcall(function()
-		if type(task) == "table" and type(task.defer) == "function" then
-			task.defer(function()
-				clearPending(obj, prop)
-
-				local cfg = state.tracked[obj]
-				if cfg and not cfg.dead then
-					enforceTrackedProperty(obj, prop, cfg.properties[prop])
-				end
-			end)
-
-			deferred = true
-		end
-	end)
-
-	if not deferred then
-		clearPending(obj, prop)
-	end
+	state.last = 0
 end
 
 local function addConnection(obj, con)
@@ -757,6 +738,7 @@ local function startWatchdog()
 
 				for prop, val in pairs(cfg.properties) do
 					enforceTrackedProperty(obj, prop, val)
+					clearPending(obj, prop)
 				end
 			end
 		end
