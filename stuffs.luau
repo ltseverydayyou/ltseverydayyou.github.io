@@ -137,6 +137,38 @@ pcall(function() getgenv().sexyStuff69 = true end)
 if not game:IsLoaded() then
 	game.Loaded:Wait();
 end;
+local function cacheBustUrl(url)
+	local sep = string.find(url, "?", 1, true) and "&" or "?";
+	local stamp = tostring(os.clock()):gsub("%D", "");
+	return url .. sep .. "_lt_cache_bust=" .. stamp;
+end;
+local function httpGetText(url, noCache)
+	if type(url) ~= "string" or url == "" then
+		return nil, "invalid url";
+	end;
+	local target = noCache and cacheBustUrl(url) or url;
+	local ok, src = pcall(game.HttpGet, game, target);
+	if not ok then
+		return nil, tostring(src);
+	end;
+	if type(src) ~= "string" or #src == 0 then
+		return nil, "HttpGet returned " .. type(src);
+	end;
+	return src;
+end;
+local function runRemote(url, chunkName, noCache)
+	local src, fetchErr = httpGetText(url, noCache);
+	if not src then
+		warn("[remote] HttpGet failed for:", url, fetchErr);
+		return nil, fetchErr;
+	end;
+	local fn, compileErr = loadstring(src, chunkName or ("@" .. url));
+	if type(fn) ~= "function" then
+		warn("[remote] loadstring failed for:", url, compileErr);
+		return nil, compileErr;
+	end;
+	return fn();
+end;
 local __lt = (function()
 	local globalEnv = (getgenv and getgenv()) or _G or {};
 	local sharedEnv = rawget(_G, "shared");
@@ -151,7 +183,11 @@ local __lt = (function()
 	if type(loader) ~= "function" then
 		error("Service resolver loader unavailable");
 	end;
-	local resolver = loader(game:HttpGet("https://ltseverydayyou.github.io/ServiceResolver.luau"), "@ServiceResolver.luau");
+	local resolverSource, resolverFetchErr = httpGetText("https://ltseverydayyou.github.io/ServiceResolver.luau");
+	if not resolverSource then
+		error("Service resolver failed to fetch: " .. tostring(resolverFetchErr));
+	end;
+	local resolver = loader(resolverSource, "@ServiceResolver.luau");
 	if type(resolver) ~= "function" then
 		error("Service resolver failed to compile");
 	end;
@@ -603,13 +639,13 @@ end);]]
 	end;
 end);]]
 safeCall(function()
-	(loadstring(game:HttpGet("https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/DeltaCustomizationModule.luau")))();
+	runRemote("https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/DeltaCustomizationModule.luau");
 	--(loadstring(game:HttpGet("https://pastebin.com/raw/62ZF2Thh")))();
 end);
 safeCall(function()
 	--getgenv().ActivateAprilMode = true;
 	--(loadstring(game:HttpGet("https://raw.githubusercontent.com/ltseverydayyou/Nameless-Admin/main/Source.lua")))();
-	(loadstring(game:HttpGet("https://raw.githubusercontent.com/ltseverydayyou/Nameless-Admin/main/NA%20testing.lua")))();
+	runRemote("https://raw.githubusercontent.com/ltseverydayyou/Nameless-Admin/main/NA%20testing.lua");
 	--(loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/refs/heads/main/executor")))();
 	--(loadstring(game:HttpGet("https://raw.githubusercontent.com/ltseverydayyou/Nameless-Admin/refs/heads/main/NAVerPicker.luau")))();
 end);
@@ -767,6 +803,6 @@ safeCall(function()
 			IconsOff = Color3.fromRGB(100, 100, 100),
 			Fade = false
 		}
-		loadstring(game:HttpGet("https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/CodexClickbait.lua"))();
+		runRemote("https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/CodexClickbait.lua");
 	end;
 end);

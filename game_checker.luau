@@ -127,6 +127,38 @@ pcall(function() getgenv().sexyGameCheck = true end)
 if not game:IsLoaded() then
 	game.Loaded:Wait();
 end;
+local function cacheBustUrl(url)
+	local sep = string.find(url, "?", 1, true) and "&" or "?";
+	local stamp = tostring(os.clock()):gsub("%D", "");
+	return url .. sep .. "_lt_cache_bust=" .. stamp;
+end;
+local function httpGetText(url, noCache)
+	if type(url) ~= "string" or url == "" then
+		return nil, "invalid url";
+	end;
+	local target = noCache and cacheBustUrl(url) or url;
+	local ok, src = pcall(game.HttpGet, game, target);
+	if not ok then
+		return nil, tostring(src);
+	end;
+	if type(src) ~= "string" or #src == 0 then
+		return nil, "HttpGet returned " .. type(src);
+	end;
+	return src;
+end;
+local function runRemote(url, chunkName, noCache)
+	local src, fetchErr = httpGetText(url, noCache);
+	if not src then
+		warn("[remote] HttpGet failed for:", url, fetchErr);
+		return nil, fetchErr;
+	end;
+	local fn, compileErr = loadstring(src, chunkName or ("@" .. url));
+	if type(fn) ~= "function" then
+		warn("[remote] loadstring failed for:", url, compileErr);
+		return nil, compileErr;
+	end;
+	return fn();
+end;
 local __lt = (function()
 	local globalEnv = (getgenv and getgenv()) or _G or {};
 	local sharedEnv = rawget(_G, "shared");
@@ -141,7 +173,11 @@ local __lt = (function()
 	if type(loader) ~= "function" then
 		error("Service resolver loader unavailable");
 	end;
-	local resolver = loader(game:HttpGet("https://ltseverydayyou.github.io/ServiceResolver.luau"), "@ServiceResolver.luau");
+	local resolverSource, resolverFetchErr = httpGetText("https://ltseverydayyou.github.io/ServiceResolver.luau");
+	if not resolverSource then
+		error("Service resolver failed to fetch: " .. tostring(resolverFetchErr));
+	end;
+	local resolver = loader(resolverSource, "@ServiceResolver.luau");
 	if type(resolver) ~= "function" then
 		error("Service resolver failed to compile");
 	end;
@@ -448,7 +484,11 @@ for _, m in ipairs(mods) do
 			if m.id and m.id ~= game.GameId then
 				return;
 			end;
-			local src = game:HttpGet(m.u, m.nc);
+			local src, fetchErr = httpGetText(m.u, m.nc);
+			if not src then
+				warn("[loader] HttpGet failed for:", m.u, fetchErr);
+				return;
+			end;
 			local fn, err = loadstring(src);
 			if not fn then
 				warn("[loader] loadstring failed for:", m.u, err);
@@ -532,7 +572,7 @@ caller(function()
 				workspace:FindFirstChild("TrainingBalls", true)
 			};
 
-			(loadstring(game:HttpGet("https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/AutoParry.lua")))();
+			runRemote("https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/AutoParry.lua");
 		end);
 
 		local fld = replicatedStorage and replicatedStorage:WaitForChild("Music", 30);
