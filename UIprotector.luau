@@ -5,6 +5,9 @@ local cacheHost = type(sharedEnv) == "table" and sharedEnv or (type(globalEnv) =
 if cacheHost then
 	local cached = rawget(cacheHost, "__lt_ui_protector")
 	if type(cached) == "table" then
+		if type(cached.installGetHuiOverride) == "function" then
+			pcall(cached.installGetHuiOverride)
+		end
 		return cached
 	end
 end
@@ -12,6 +15,13 @@ end
 local protector = {}
 local serviceResolverUrl = "https://ltseverydayyou.github.io/ServiceResolver.luau"
 local __lt = nil
+local nativeHuiFns = {
+	gethui = gethui,
+	gethiddenui = gethiddenui,
+	gethiddengui = gethiddengui,
+	get_hidden_ui = get_hidden_ui,
+	get_hidden_gui = get_hidden_gui,
+}
 
 local function getCachedServiceResolver()
 	if type(globalEnv) == "table" then
@@ -121,14 +131,158 @@ local function tryCall(fn, ...)
 	return nil
 end
 
-function protector.huiGrabber()
-	local hidden = tryCall(gethui)
-		or tryCall(gethiddenui)
-		or tryCall(gethiddengui)
-		or tryCall(get_hidden_ui)
-		or tryCall(get_hidden_gui)
+local function isCoreGuiAlias(root, coreGui)
+	if not isInstance(root) then
+		return false
+	end
+	coreGui = isInstance(coreGui) and coreGui or getService("CoreGui")
+	if root == coreGui then
+		return true
+	end
+	if not isInstance(coreGui) then
+		return false
+	end
+	local ok, inCore = pcall(function()
+		return root:IsDescendantOf(coreGui)
+	end)
+	if not (ok and inCore) then
+		return false
+	end
+	return tostring(root.Name or "") == "RobloxGui"
+end
+
+local function getRobloxGuiContainer(aliasRoot, coreGui)
+	coreGui = isInstance(coreGui) and coreGui or getService("CoreGui")
+	if isInstance(aliasRoot) and tostring(aliasRoot.Name or "") == "RobloxGui" then
+		return aliasRoot
+	end
+	if isInstance(coreGui) then
+		local robloxGui = tryCall(function()
+			return coreGui:FindFirstChild("RobloxGui")
+		end)
+		if isInstance(robloxGui) then
+			return robloxGui
+		end
+	end
+	return coreGui
+end
+
+local protectedAliasHui = setmetatable({}, { __mode = "k" })
+
+local function protectCustomHui(gui, parent)
+	if not (isInstance(gui) and isInstance(parent)) then
+		return nil
+	end
+
+	local maxDisplayOrder = 0x7FFFFFFF
+	local props = {
+		Parent = parent,
+		Archivable = false,
+		ZIndexBehavior = Enum.ZIndexBehavior.Global,
+		DisplayOrder = maxDisplayOrder,
+		ResetOnSpawn = false,
+		IgnoreGuiInset = true,
+	}
+
+	for prop, value in pairs(props) do
+		pcall(function()
+			gui[prop] = value
+		end)
+	end
+
+	if not protectedAliasHui[gui] then
+		protectedAliasHui[gui] = true
+		for prop, value in pairs(props) do
+			pcall(function()
+				gui:GetPropertyChangedSignal(prop):Connect(function()
+					if gui[prop] ~= value then
+						pcall(function()
+							gui[prop] = value
+						end)
+					end
+				end)
+			end)
+		end
+		pcall(function()
+			gui.AncestryChanged:Connect(function()
+				if gui.Parent ~= parent then
+					pcall(function()
+						gui.Parent = parent
+					end)
+				end
+			end)
+		end)
+	end
+
+	return gui
+end
+
+function protector.getCustomHui(aliasRoot, coreGui)
+	coreGui = isInstance(coreGui) and coreGui or getService("CoreGui")
+	local parent = getRobloxGuiContainer(aliasRoot, coreGui)
+	if not isInstance(parent) then
+		return nil
+	end
+
+	local cached = protector.customHui
+	if isInstance(cached) and cached.Parent == parent then
+		return protectCustomHui(cached, parent)
+	end
+
+	local gui = Instance.new("ScreenGui")
+	gui.Name = protector.randomString and protector.randomString() or "\0"
+	protector.customHui = gui
+	return protectCustomHui(gui, parent)
+end
+
+function protector.rawHuiGrabber()
+	local hidden = tryCall(nativeHuiFns.gethui)
+		or tryCall(nativeHuiFns.gethiddenui)
+		or tryCall(nativeHuiFns.gethiddengui)
+		or tryCall(nativeHuiFns.get_hidden_ui)
+		or tryCall(nativeHuiFns.get_hidden_gui)
 		or nil
 	return cloneRef(hidden)
+end
+
+function protector.huiGrabber()
+	local hidden = protector.rawHuiGrabber()
+	local coreGui = getService("CoreGui")
+	if isCoreGuiAlias(hidden, coreGui) then
+		return protector.getCustomHui(hidden, coreGui) or hidden
+	end
+	return hidden
+end
+
+function protector.installGetHuiOverride()
+	if protector.getHuiOverrideInstalled then
+		return true
+	end
+
+	local function customGetHui()
+		return protector.huiGrabber()
+	end
+
+	local installed = false
+	pcall(function()
+		gethui = customGetHui
+		installed = true
+	end)
+	pcall(function()
+		if type(globalEnv) == "table" then
+			globalEnv.gethui = customGetHui
+			installed = true
+		end
+	end)
+	pcall(function()
+		if type(_G) == "table" then
+			_G.gethui = customGetHui
+			installed = true
+		end
+	end)
+
+	protector.getHuiOverrideInstalled = installed == true
+	return protector.getHuiOverrideInstalled
 end
 
 function protector.resolveParent(options)
@@ -314,6 +468,10 @@ function protector.protectUI(gui, options)
 
 	return gui
 end
+
+pcall(function()
+	protector.installGetHuiOverride()
+end)
 
 if cacheHost then
 	cacheHost.__lt_ui_protector = protector
