@@ -131,6 +131,9 @@ local function tryCall(fn, ...)
 	return nil
 end
 
+local taskLib = task
+local waitFn = (taskLib and taskLib.wait) or wait
+
 local function isCoreGuiAlias(root, coreGui)
 	if not isInstance(root) then
 		return false
@@ -151,7 +154,19 @@ local function isCoreGuiAlias(root, coreGui)
 	return tostring(root.Name or "") == "RobloxGui"
 end
 
-local function getRobloxGuiContainer(aliasRoot, coreGui)
+local function getPlayerGuiContainer()
+	local players = getService("Players")
+	local localPlayer = isInstance(players) and cloneRef(players.LocalPlayer) or nil
+	local playerGui = isInstance(localPlayer) and tryCall(function()
+		return localPlayer:FindFirstChildWhichIsA("PlayerGui")
+	end) or nil
+	if isInstance(playerGui) then
+		return playerGui
+	end
+	return nil
+end
+
+local function resolvePreferredHuiParent(aliasRoot, coreGui)
 	coreGui = isInstance(coreGui) and coreGui or getService("CoreGui")
 	if isInstance(aliasRoot) and tostring(aliasRoot.Name or "") == "RobloxGui" then
 		return aliasRoot
@@ -163,8 +178,26 @@ local function getRobloxGuiContainer(aliasRoot, coreGui)
 		if isInstance(robloxGui) then
 			return robloxGui
 		end
+		return coreGui
 	end
-	return coreGui
+	return getPlayerGuiContainer()
+end
+
+local function getRobloxGuiContainer(aliasRoot, coreGui)
+	local parent = resolvePreferredHuiParent(aliasRoot, coreGui)
+	if isInstance(parent) then
+		return parent
+	end
+	for _ = 1, 12 do
+		if type(waitFn) == "function" then
+			waitFn(0.1)
+		end
+		parent = resolvePreferredHuiParent(aliasRoot, coreGui)
+		if isInstance(parent) then
+			return parent
+		end
+	end
+	return nil
 end
 
 local protectedAliasHui = setmetatable({}, { __mode = "k" })
@@ -266,17 +299,29 @@ function protector.installGetHuiOverride()
 	local installed = false
 	pcall(function()
 		gethui = customGetHui
+		gethiddenui = customGetHui
+		gethiddengui = customGetHui
+		get_hidden_ui = customGetHui
+		get_hidden_gui = customGetHui
 		installed = true
 	end)
 	pcall(function()
 		if type(globalEnv) == "table" then
 			globalEnv.gethui = customGetHui
+			globalEnv.gethiddenui = customGetHui
+			globalEnv.gethiddengui = customGetHui
+			globalEnv.get_hidden_ui = customGetHui
+			globalEnv.get_hidden_gui = customGetHui
 			installed = true
 		end
 	end)
 	pcall(function()
 		if type(_G) == "table" then
 			_G.gethui = customGetHui
+			_G.gethiddenui = customGetHui
+			_G.gethiddengui = customGetHui
+			_G.get_hidden_ui = customGetHui
+			_G.get_hidden_gui = customGetHui
 			installed = true
 		end
 	end)
