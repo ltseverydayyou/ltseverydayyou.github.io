@@ -1,4 +1,5 @@
 local build = "session_name_cursed_null_v1"
+local patch = "name_changed_deferred_v1"
 
 local okEnv, globalEnv = pcall(function()
 	if type(getgenv) == "function" then
@@ -24,7 +25,7 @@ end
 local cacheHost = type(sharedEnv) == "table" and sharedEnv or globalEnv
 local cached = type(cacheHost) == "table" and rawget(cacheHost, "__lt_ui_protector")
 
-if type(cached) == "table" and rawget(cached, "ready") == true and rawget(cached, "build") == build then
+if type(cached) == "table" and rawget(cached, "ready") == true and rawget(cached, "build") == build and rawget(cached, "patch") == patch then
 	if type(cached.installGetHuiOverride) == "function" then
 		pcall(cached.installGetHuiOverride)
 	end
@@ -60,6 +61,7 @@ local state = {
 	locked = setmetatable({}, { __mode = "k" }),
 	descWatching = setmetatable({}, { __mode = "k" }),
 	applying = setmetatable({}, { __mode = "k" }),
+	pending = setmetatable({}, { __mode = "k" }),
 	funcCache = {},
 	localFuncs = {},
 	nativeHuiFns = {},
@@ -318,6 +320,56 @@ local function enforceTrackedProperty(obj, prop, val)
 	setApplying(obj, prop, true)
 	setProperty(obj, prop, val)
 	setApplying(obj, prop, false)
+end
+
+local function clearPending(obj, prop)
+	local props = state.pending[obj]
+
+	if props then
+		props[prop] = nil
+
+		if next(props) == nil then
+			state.pending[obj] = nil
+		end
+	end
+end
+
+local function scheduleTrackedProperty(obj, prop)
+	if isApplying(obj, prop) then
+		return
+	end
+
+	local props = state.pending[obj]
+	if not props then
+		props = {}
+		state.pending[obj] = props
+	end
+
+	if props[prop] then
+		return
+	end
+
+	props[prop] = true
+
+	local deferred = false
+	pcall(function()
+		if type(task) == "table" and type(task.defer) == "function" then
+			task.defer(function()
+				clearPending(obj, prop)
+
+				local cfg = state.tracked[obj]
+				if cfg and not cfg.dead then
+					enforceTrackedProperty(obj, prop, cfg.properties[prop])
+				end
+			end)
+
+			deferred = true
+		end
+	end)
+
+	if not deferred then
+		clearPending(obj, prop)
+	end
 end
 
 local function addConnection(obj, con)
@@ -699,6 +751,7 @@ local function startWatchdog()
 				state.locked[obj] = nil
 				state.descWatching[obj] = nil
 				state.applying[obj] = nil
+				state.pending[obj] = nil
 			else
 				active = true
 
@@ -749,7 +802,7 @@ function protector.lockInstance(obj, props)
 						return
 					end
 
-					enforceTrackedProperty(obj, prop, cfg.properties[prop])
+					scheduleTrackedProperty(obj, prop)
 				end))
 			end
 		end
@@ -761,7 +814,7 @@ function protector.lockInstance(obj, props)
 					return
 				end
 
-				enforceTrackedProperty(obj, "Parent", cfg.properties.Parent)
+				scheduleTrackedProperty(obj, "Parent")
 			end))
 		end)
 
@@ -776,6 +829,7 @@ function protector.lockInstance(obj, props)
 				state.locked[obj] = nil
 				state.descWatching[obj] = nil
 				state.applying[obj] = nil
+				state.pending[obj] = nil
 			end))
 		end)
 	end
@@ -1314,6 +1368,7 @@ function protector.status()
 
 	return {
 		build = build,
+		patch = patch,
 		raw = raw,
 		rawClass = isInstance(raw) and raw.ClassName or nil,
 		rawKind = huiKind(raw),
@@ -1333,6 +1388,7 @@ end
 
 protector.ready = true
 protector.build = build
+protector.patch = patch
 
 pcall(function()
 	protector.installGetHuiOverride()
