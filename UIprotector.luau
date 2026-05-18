@@ -1,4 +1,4 @@
-local build = "fallback_order"
+local build = "session_name_cursed_null_v1"
 
 local okEnv, globalEnv = pcall(function()
 	if type(getgenv) == "function" then
@@ -62,6 +62,8 @@ local state = {
 	funcCache = {},
 	localFuncs = {},
 	nativeHuiFns = {},
+	sessionNameProvider = nil,
+	sessionNameMap = {},
 }
 
 pcall(function()
@@ -320,22 +322,65 @@ local function trackedCount()
 	return n
 end
 
-function protector.randomString()
+local function getGuid()
 	local hs = getService("HttpService")
 
-	if isInstance(hs) and hs.GenerateGUID then
+	if isInstance(hs) then
 		local ok, ret = pcall(function()
 			return hs:GenerateGUID(false)
 		end)
 
 		if ok and type(ret) == "string" and ret ~= "" then
-			local pre = math.random(1, 3) == 1 and "\0" or ""
-			local suf = math.random(1, 3) == 1 and "​" or ""
-			return pre .. ret .. suf
+			return ret
 		end
 	end
 
-	local chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+	return nil
+end
+
+local function cursedString()
+	local len = math.random(10, 20)
+	local out = {}
+	local marks = {"̶", "̷", "̸", "̹", "̺", "̻", "͓", "͔", "͘", "͜", "͞", "͟", "͢"}
+
+	for i = 1, len do
+		out[#out + 1] = string.char(math.random(32, 126))
+		if math.random() < 0.5 then
+			for _ = 1, math.random(1, 4) do
+				out[#out + 1] = marks[math.random(#marks)]
+			end
+		end
+	end
+
+	if utf8 and type(utf8.char) == "function" and math.random() < 0.3 then
+		out[#out + 1] = utf8.char(math.random(0x0300, 0x036F))
+	end
+
+	if math.random() < 0.1 then
+		out[#out + 1] = string.rep("​", math.random(5, 20))
+	end
+
+	if utf8 and type(utf8.char) == "function" and math.random() < 0.2 then
+		out[#out + 1] = utf8.char(0x202E)
+	end
+
+	return table.concat(out)
+end
+
+local function localSessionName(key)
+	key = tostring(key or getGuid() or os.clock())
+	local map = state.sessionNameMap
+	if type(map) ~= "table" then
+		map = {}
+		state.sessionNameMap = map
+	end
+
+	local old = map[key]
+	if type(old) == "string" and old ~= "" then
+		return old
+	end
+
+	local chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789._-/__--"
 	local len = math.random(18, 32)
 	local out = {}
 
@@ -344,15 +389,53 @@ function protector.randomString()
 		out[i] = chars:sub(n, n)
 	end
 
-	if math.random(1, 3) == 1 then
-		out[#out + 1] = "\0"
+	local ret = table.concat(out)
+	map[key] = ret
+	return ret
+end
+
+function protector.setSessionNameProvider(fn)
+	state.sessionNameProvider = type(fn) == "function" and fn or nil
+	return state.sessionNameProvider ~= nil
+end
+
+function protector.getSessionInstanceName(key)
+	local fn = state.sessionNameProvider
+	if type(fn) == "function" then
+		local ok, ret = pcall(fn, key)
+		if ok and type(ret) == "string" and ret ~= "" then
+			return ret
+		end
 	end
 
-	if math.random(1, 3) == 1 then
-		out[#out + 1] = "​"
+	return localSessionName(key)
+end
+
+function protector.randomString(key)
+	local out = {}
+	local guid = getGuid()
+
+	if type(guid) == "string" and guid ~= "" then
+		out[#out + 1] = guid
 	end
 
-	return table.concat(out)
+	local sess = protector.getSessionInstanceName(key or guid)
+	if type(sess) == "string" and sess ~= "" then
+		out[#out + 1] = sess
+	end
+
+	local cursed = cursedString()
+	if type(cursed) == "string" and cursed ~= "" then
+		out[#out + 1] = cursed
+	end
+
+	out[#out + 1] = "\0"
+
+	local ret = table.concat(out)
+	if ret ~= "" then
+		return ret
+	end
+	return "\0"
 end
 
 function protector.nativeProtect(obj)
