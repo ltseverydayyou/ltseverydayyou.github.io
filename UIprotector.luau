@@ -59,6 +59,7 @@ local state = {
 	tracked = setmetatable({}, { __mode = "k" }),
 	locked = setmetatable({}, { __mode = "k" }),
 	descWatching = setmetatable({}, { __mode = "k" }),
+	applying = setmetatable({}, { __mode = "k" }),
 	funcCache = {},
 	localFuncs = {},
 	nativeHuiFns = {},
@@ -266,6 +267,57 @@ local function setProperty(obj, prop, val)
 	pcall(function()
 		obj[prop] = val
 	end)
+end
+
+local function samePropertyValue(prop, cur, val)
+	if prop == "Parent" then
+		return isInstance(val) and sameInstance(cur, val)
+	end
+
+	return cur == val
+end
+
+local function isApplying(obj, prop)
+	local props = state.applying[obj]
+	return type(props) == "table" and props[prop] == true
+end
+
+local function setApplying(obj, prop, active)
+	local props = state.applying[obj]
+
+	if active then
+		if not props then
+			props = {}
+			state.applying[obj] = props
+		end
+
+		props[prop] = true
+	elseif props then
+		props[prop] = nil
+
+		if next(props) == nil then
+			state.applying[obj] = nil
+		end
+	end
+end
+
+local function enforceTrackedProperty(obj, prop, val)
+	if isApplying(obj, prop) then
+		return
+	end
+
+	if prop == "Parent" and not isInstance(val) then
+		return
+	end
+
+	local cur = getProperty(obj, prop)
+	if samePropertyValue(prop, cur, val) then
+		return
+	end
+
+	setApplying(obj, prop, true)
+	setProperty(obj, prop, val)
+	setApplying(obj, prop, false)
 end
 
 local function addConnection(obj, con)
@@ -646,19 +698,12 @@ local function startWatchdog()
 				state.tracked[obj] = nil
 				state.locked[obj] = nil
 				state.descWatching[obj] = nil
+				state.applying[obj] = nil
 			else
 				active = true
 
 				for prop, val in pairs(cfg.properties) do
-					local cur = getProperty(obj, prop)
-
-					if prop == "Parent" then
-						if isInstance(val) and not sameInstance(cur, val) then
-							setProperty(obj, prop, val)
-						end
-					elseif cur ~= val then
-						setProperty(obj, prop, val)
-					end
+					enforceTrackedProperty(obj, prop, val)
 				end
 			end
 		end
@@ -678,14 +723,16 @@ function protector.lockInstance(obj, props)
 		return obj
 	end
 
-	for prop, val in pairs(props) do
-		setProperty(obj, prop, val)
-	end
-
 	state.tracked[obj] = {
 		properties = props,
 		dead = false,
 	}
+
+	for prop, val in pairs(props) do
+		setApplying(obj, prop, true)
+		setProperty(obj, prop, val)
+		setApplying(obj, prop, false)
+	end
 
 	if not state.locked[obj] then
 		state.locked[obj] = true
@@ -702,16 +749,7 @@ function protector.lockInstance(obj, props)
 						return
 					end
 
-					local val = cfg.properties[prop]
-					local cur = getProperty(obj, prop)
-
-					if prop == "Parent" then
-						if isInstance(val) and not sameInstance(cur, val) then
-							setProperty(obj, prop, val)
-						end
-					elseif cur ~= val then
-						setProperty(obj, prop, val)
-					end
+					enforceTrackedProperty(obj, prop, cfg.properties[prop])
 				end))
 			end
 		end
@@ -723,10 +761,7 @@ function protector.lockInstance(obj, props)
 					return
 				end
 
-				local par = cfg.properties.Parent
-				if isInstance(par) and not sameInstance(obj.Parent, par) then
-					setProperty(obj, "Parent", par)
-				end
+				enforceTrackedProperty(obj, "Parent", cfg.properties.Parent)
 			end))
 		end)
 
@@ -740,6 +775,7 @@ function protector.lockInstance(obj, props)
 				state.tracked[obj] = nil
 				state.locked[obj] = nil
 				state.descWatching[obj] = nil
+				state.applying[obj] = nil
 			end))
 		end)
 	end
