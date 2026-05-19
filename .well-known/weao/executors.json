@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-05-19T21:55:05.046Z",
+  "fetchedAt": "2026-05-19T23:06:26.413Z",
   "data": [
     {
       "_id": "680eaddf8b44717c060fcf8d",
@@ -523,7 +523,7 @@
         ]
       },
       "clientmods": true,
-      "hasIssues": false,
+      "hasIssues": true,
       "detectionReason": "Last banwave: March 6-18th",
       "raknet": true
     },
@@ -1129,8 +1129,8 @@
     {
       "_id": "6949f9ee0260ad9e36c73700",
       "title": "RbxCli",
-      "version": "1.7.2-alpha",
-      "updatedDate": "05/18/2026 at 5:19 PM UTC",
+      "version": "1.7.3-alpha",
+      "updatedDate": "05/19/2026 at 10:49 PM UTC",
       "uncStatus": false,
       "free": false,
       "detected": false,
