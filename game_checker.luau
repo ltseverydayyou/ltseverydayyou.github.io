@@ -547,15 +547,225 @@ caller(function()
 		if not runService or (not playersService) or (not promptService) then
 			return;
 		end;
+		local blockedFNAZ = {
+			Storage_Killzone = true,
+			Vent_Killzone = true,
+			Freezer_Killzone = true,
+			BloxBull_Killzone = true,
+			GasGuardian_Killzone = true,
+			Outside_Killzone = true,
+			Checkout_Killzone = true,
+			Office_Killzone = true,
+			Toilet_Killzone = true,
+			CarBomb = true,
+			MirrorDimention = true,
+			Sewer = true,
+			GasGuardian = true
+		};
+		local fNAZAttrs = {
+			"Storage_Killzone",
+			"Vent_Killzone",
+			"Freezer_Killzone",
+			"BloxBull_Killzone",
+			"GasGuardian_Killzone",
+			"Outside_Killzone",
+			"Checkout_Killzone",
+			"Office_Killzone",
+			"Toilet_Killzone"
+		};
+		local function installCallBypass()
+			local gv = getgenv and getgenv() or _G;
+			if type(gv) == "table" and gv.__lt_3498637623_call_bypass then
+				return;
+			end;
+			if type(hookmetamethod) == "function" and type(newcclosure) == "function" and type(getnamecallmethod) == "function" then
+				local old;
+				local ok = pcall(function()
+					old = hookmetamethod(game, "__namecall", newcclosure(function(self, ...)
+						local method = getnamecallmethod();
+						if self == playersService.LocalPlayer and (method == "Kick" or method == "kick") then
+							return nil;
+						end;
+						if method == "FireServer" then
+							local fz = replicatedStorage and replicatedStorage:FindFirstChild("FNAZ");
+							local first = (...);
+							if self == fz and type(first) == "string" and (blockedFNAZ[first] or first:lower():find("killzone", 1, true)) then
+								return nil;
+							end;
+						end;
+						return old(self, ...);
+					end));
+				end);
+				if ok and type(gv) == "table" then
+					gv.__lt_3498637623_call_bypass = true;
+				end;
+			end;
+		end;
+		local function installKickFunctionBypass()
+			local gv = getgenv and getgenv() or _G;
+			if type(gv) == "table" and gv.__lt_3498637623_kick_function_bypass then
+				return;
+			end;
+			local plr = playersService.LocalPlayer;
+			if not plr or type(hookfunction) ~= "function" or type(newcclosure) ~= "function" then
+				return;
+			end;
+			local old;
+			local ok = pcall(function()
+				old = hookfunction(plr.Kick, newcclosure(function(self, ...)
+					if self == plr then
+						return nil;
+					end;
+					if old then
+						return old(self, ...);
+					end;
+					return nil;
+				end));
+			end);
+			if ok and type(gv) == "table" then
+				gv.__lt_3498637623_kick_function_bypass = true;
+			end;
+		end;
+		local killParts = {};
+		local function neutralizeKillPart(inst)
+			if not inst or typeof(inst) ~= "Instance" or not inst:IsA("BasePart") then
+				return;
+			end;
+			local name = inst.Name:lower();
+			local parentName = inst.Parent and inst.Parent.Name:lower() or "";
+			if not (name:find("killbox", 1, true) or name:find("kickbox", 1, true) or parentName:find("killbox", 1, true) or parentName:find("kickbox", 1, true)) then
+				return;
+			end;
+			killParts[inst] = true;
+			pcall(function()
+				inst.CanTouch = false;
+			end);
+			pcall(function()
+				inst.CanCollide = false;
+			end);
+			pcall(function()
+				inst.CanQuery = false;
+			end);
+		end;
+		local killPartsHooked = false;
+		local function installKillPartBypass()
+			if not workspaceService or killPartsHooked then
+				return;
+			end;
+			killPartsHooked = true;
+			for _, inst in ipairs(workspaceService:GetDescendants()) do
+				neutralizeKillPart(inst);
+			end;
+			workspaceService.DescendantAdded:Connect(function(inst)
+				task.defer(function()
+					neutralizeKillPart(inst);
+				end);
+			end);
+		end;
+		local promptHooked = false;
+		local function installPromptBypass()
+			if promptHooked then
+				return;
+			end;
+			promptHooked = true;
+			local plr = playersService.LocalPlayer;
+			pcall(function()
+				plr:SetAttribute("PromptDuration", 0);
+			end);
+			promptService.PromptShown:Connect(function(prompt)
+				caller(function()
+					if prompt and prompt.Parent then
+						prompt.HoldDuration = 0;
+						prompt.Enabled = true;
+						if prompt.MaxActivationDistance < 12 then
+							prompt.MaxActivationDistance = 12;
+						end;
+					end;
+				end);
+			end);
+		end;
+		local function clearFNAZState()
+			local fz = workspaceService and workspaceService:FindFirstChild("FNAZ");
+			if not fz then
+				return;
+			end;
+			for _, attr in ipairs(fNAZAttrs) do
+				if fz:GetAttribute(attr) then
+					pcall(function()
+						fz:SetAttribute(attr, false);
+					end);
+				end;
+			end;
+		end;
+		local function restoreCamera(hum)
+			local cam = workspaceService and workspaceService.CurrentCamera;
+			if not cam then
+				return;
+			end;
+			for _, child in ipairs(cam:GetChildren()) do
+				if child.Name == "Black" or child:IsA("BlurEffect") or child:IsA("ColorCorrectionEffect") then
+					pcall(function()
+						child:Destroy();
+					end);
+				end;
+			end;
+			if cam.CameraType == Enum.CameraType.Scriptable then
+				cam.CameraType = Enum.CameraType.Custom;
+			end;
+			if hum and cam.CameraSubject ~= hum then
+				cam.CameraSubject = hum;
+			end;
+		end;
 		local function keepFree()
 			local c = getChar();
 			local root = c and getRoot(c);
+			local hum = c and getHumanoidFor(c);
 			if root then
 				root.Anchored = false;
 			end;
+			if c then
+				for _, inst in ipairs(c:GetDescendants()) do
+					if inst:IsA("BasePart") and inst.Anchored then
+						inst.Anchored = false;
+					end;
+				end;
+			end;
+			if hum then
+				hum.AutoRotate = true;
+				hum.PlatformStand = false;
+				hum.Sit = false;
+				if hum.Health <= 0 and hum.MaxHealth > 0 then
+					hum.Health = hum.MaxHealth;
+				end;
+				if hum.WalkSpeed <= 0 then
+					hum.WalkSpeed = 16;
+				end;
+				if hum.JumpPower <= 0 then
+					hum.JumpPower = 50;
+				end;
+			end;
 			promptService.Enabled = true;
+			clearFNAZState();
+			restoreCamera(hum);
 		end;
 
+		installCallBypass();
+		installKickFunctionBypass();
+		installKillPartBypass();
+		installPromptBypass();
+		task.spawn(function()
+			while task.wait(2) do
+				caller(function()
+					for inst in pairs(killParts) do
+						if inst.Parent then
+							neutralizeKillPart(inst);
+						else
+							killParts[inst] = nil;
+						end;
+					end;
+				end);
+			end;
+		end);
 		while task.wait() do
 			caller(keepFree);
 		end;
