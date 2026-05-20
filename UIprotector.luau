@@ -1,5 +1,5 @@
 local build = "session_name_cursed_null_v1"
-local patch = "name_changed_watchdog_v1"
+local patch = "name_changed_watchdog_descqueue_v1"
 
 local okEnv, globalEnv = pcall(function()
 	if type(getgenv) == "function" then
@@ -67,6 +67,11 @@ local state = {
 	nativeHuiFns = {},
 	sessionNameProvider = nil,
 	sessionNameMap = {},
+	descQueue = {},
+	descHead = 1,
+	descTail = 0,
+	descQueued = setmetatable({}, { __mode = "k" }),
+	descPump = false,
 }
 
 pcall(function()
@@ -365,6 +370,186 @@ local function addConnection(obj, con)
 	end
 
 	list[#list + 1] = con
+end
+
+local function naEnvList()
+	local list = {globalEnv, cacheHost}
+
+	pcall(function()
+		if type(shared) == "table" then
+			list[#list + 1] = shared
+		end
+	end)
+
+	pcall(function()
+		if type(_G) == "table" then
+			list[#list + 1] = _G
+			if type(rawget(_G, "shared")) == "table" then
+				list[#list + 1] = rawget(_G, "shared")
+			end
+		end
+	end)
+
+	return list
+end
+
+local function naManage()
+	local list = naEnvList()
+	for i = 1, #list do
+		local env = list[i]
+		if type(env) == "table" then
+			local direct = rawget(env, "NAmanage") or rawget(env, "__NAmanage")
+			if type(direct) == "table" then
+				return direct
+			end
+
+			local rootEnv = rawget(env, "__nameless_admin_private")
+			local testEnv = type(rootEnv) == "table" and rawget(rootEnv, "testing") or nil
+			local sharedState = type(testEnv) == "table" and rawget(testEnv, "shared") or nil
+			local nested = type(sharedState) == "table" and (rawget(sharedState, "NAmanage") or rawget(sharedState, "__NAmanage")) or nil
+			if type(nested) == "table" then
+				return nested
+			end
+		end
+	end
+
+	return nil
+end
+
+local function qDesc(obj)
+	if not isInstance(obj) then
+		return {}
+	end
+
+	local mgr = naManage()
+	if type(mgr) == "table" and type(mgr.qDesc) == "function" then
+		local ok, res = pcall(mgr.qDesc, obj)
+		if ok and type(res) == "table" then
+			return res
+		end
+	end
+
+	local desc = tryCall(function()
+		return obj:GetDescendants()
+	end)
+
+	if type(desc) == "table" then
+		return desc
+	end
+
+	return {}
+end
+
+local function bindDescAdd(obj, fn)
+	if not isInstance(obj) or type(fn) ~= "function" then
+		return false
+	end
+
+	local mgr = naManage()
+	if type(mgr) == "table" and type(mgr.descAdd) == "function" then
+		local ok, con = pcall(mgr.descAdd, obj, fn)
+		if ok and con then
+			addConnection(obj, con)
+			return true
+		end
+	end
+
+	local ok, con = pcall(function()
+		return obj.DescendantAdded:Connect(fn)
+	end)
+
+	if ok and con then
+		addConnection(obj, con)
+		return true
+	end
+
+	return false
+end
+
+local function applyHardenDescendant(d, rename)
+	if not isInstance(d) then
+		return
+	end
+
+	pcall(function()
+		d.Archivable = false
+	end)
+
+	if rename then
+		pcall(function()
+			d.Name = protector.randomString()
+		end)
+	end
+end
+
+local function packDescQueue()
+	local out = {}
+	local n = 0
+
+	for i = state.descHead, state.descTail do
+		local item = state.descQueue[i]
+		if item ~= nil then
+			n += 1
+			out[n] = item
+		end
+	end
+
+	state.descQueue = out
+	state.descHead = 1
+	state.descTail = n
+end
+
+local function processDescQueue()
+	state.descPump = false
+
+	local t0 = os.clock()
+	local n = 0
+
+	while state.descHead <= state.descTail and n < 32 and os.clock() - t0 < 0.0015 do
+		local item = state.descQueue[state.descHead]
+		state.descQueue[state.descHead] = nil
+		state.descHead += 1
+		n += 1
+
+		if type(item) == "table" then
+			local inst = item.inst
+			if isInstance(inst) then
+				state.descQueued[inst] = nil
+				applyHardenDescendant(inst, item.rename == true)
+			end
+		end
+	end
+
+	if state.descHead > 128 and state.descHead > state.descTail / 2 then
+		packDescQueue()
+	end
+
+	if state.descHead <= state.descTail then
+		state.descPump = true
+		task.defer(processDescQueue)
+	end
+end
+
+local function queueHardenDescendant(d, rename)
+	if not isInstance(d) then
+		return
+	end
+
+	if state.descQueued[d] then
+		return
+	end
+
+	state.descQueued[d] = true
+	state.descTail += 1
+	state.descQueue[state.descTail] = {
+		inst = d,
+		rename = rename == true,
+	}
+
+	if not state.descPump then
+		state.descPump = true
+		task.defer(processDescQueue)
+	end
 end
 
 local function getEnum(a, b)
@@ -838,47 +1023,17 @@ function protector.harden(obj, opts)
 	end
 
 	if opts.deep then
-		local desc = tryCall(function()
-			return obj:GetDescendants()
-		end)
-
-		if type(desc) == "table" then
-			for i = 1, #desc do
-				local d = desc[i]
-				if isInstance(d) then
-					pcall(function()
-						d.Archivable = false
-					end)
-
-					if opts.rename then
-						pcall(function()
-							d.Name = protector.randomString()
-						end)
-					end
-				end
-			end
+		local desc = qDesc(obj)
+		for i = 1, #desc do
+			queueHardenDescendant(desc[i], opts.rename == true)
 		end
 	end
 
 	if opts.watch and not state.descWatching[obj] then
 		state.descWatching[obj] = true
 
-		pcall(function()
-			addConnection(obj, obj.DescendantAdded:Connect(function(d)
-				if not isInstance(d) then
-					return
-				end
-
-				pcall(function()
-					d.Archivable = false
-				end)
-
-				if opts.rename then
-					pcall(function()
-						d.Name = protector.randomString()
-					end)
-				end
-			end))
+		bindDescAdd(obj, function(d)
+			queueHardenDescendant(d, opts.rename == true)
 		end)
 	end
 
@@ -1249,6 +1404,7 @@ function protector.cleanup(obj)
 		state.tracked[obj] = nil
 		state.locked[obj] = nil
 		state.descWatching[obj] = nil
+		state.descQueued[obj] = nil
 
 		if trackedCount() <= 0 and state.heartbeat then
 			pcall(function()
@@ -1284,6 +1440,12 @@ function protector.cleanup(obj)
 	for object in pairs(state.descWatching) do
 		state.descWatching[object] = nil
 	end
+
+	state.descQueue = {}
+	state.descHead = 1
+	state.descTail = 0
+	state.descQueued = setmetatable({}, { __mode = "k" })
+	state.descPump = false
 
 	if state.heartbeat then
 		pcall(function()
