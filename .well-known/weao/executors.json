@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-05-19T23:06:26.413Z",
+  "fetchedAt": "2026-05-20T01:31:15.907Z",
   "data": [
     {
       "_id": "680eaddf8b44717c060fcf8d",
@@ -1129,8 +1129,8 @@
     {
       "_id": "6949f9ee0260ad9e36c73700",
       "title": "RbxCli",
-      "version": "1.7.3-alpha",
-      "updatedDate": "05/19/2026 at 10:49 PM UTC",
+      "version": "1.7.3a-alpha",
+      "updatedDate": "05/20/2026 at 1:14 AM UTC",
       "uncStatus": false,
       "free": false,
       "detected": false,
