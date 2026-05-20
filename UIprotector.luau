@@ -1,5 +1,5 @@
 local build = "session_name_cursed_null_v1"
-local patch = "name_changed_watchdog_descqueue_v1"
+local patch = "global_gethui_override_v1"
 
 local okEnv, globalEnv = pcall(function()
 	if type(getgenv) == "function" then
@@ -22,7 +22,7 @@ if type(sharedEnv) ~= "table" then
 	end)
 end
 
-local cacheHost = type(sharedEnv) == "table" and sharedEnv or globalEnv
+local cacheHost = globalEnv
 local cached = type(cacheHost) == "table" and rawget(cacheHost, "__lt_ui_protector")
 
 if type(cached) == "table" and rawget(cached, "ready") == true and rawget(cached, "build") == build and rawget(cached, "patch") == patch then
@@ -1313,6 +1313,13 @@ function protector.installGetHuiOverride()
 	end
 
 	local installed = false
+	local names = {
+		"gethui",
+		"gethiddenui",
+		"gethiddengui",
+		"get_hidden_ui",
+		"get_hidden_gui",
+	}
 
 	pcall(function()
 		gethui = customGetHui
@@ -1328,19 +1335,30 @@ function protector.installGetHuiOverride()
 			return false
 		end
 
-		rawset(env, "gethui", customGetHui)
-		rawset(env, "gethiddenui", customGetHui)
-		rawset(env, "gethiddengui", customGetHui)
-		rawset(env, "get_hidden_ui", customGetHui)
-		rawset(env, "get_hidden_gui", customGetHui)
+		for i = 1, #names do
+			rawset(env, names[i], customGetHui)
+		end
 
 		return true
 	end
 
-	local okGlobal = pcall(apply, globalEnv)
-	local okG = pcall(apply, _G)
+	local okGenv = false
+	local okG = false
 
-	state.installed = installed or okGlobal or okG
+	pcall(function()
+		if type(getgenv) == "function" then
+			okGenv = apply(getgenv()) == true
+		end
+	end)
+
+	if not okGenv then
+		local okApply, applied = pcall(apply, _G)
+		okG = okApply and applied == true
+	else
+		pcall(apply, _G)
+	end
+
+	state.installed = installed or okGenv or okG
 
 	pcall(function()
 		protector.getHuiOverrideInstalled = state.installed
@@ -1355,6 +1373,13 @@ end
 
 function protector.restore()
 	local native = state.nativeHuiFns
+	local names = {
+		gethui = native.gethui,
+		gethiddenui = native.gethiddenui,
+		gethiddengui = native.gethiddengui,
+		get_hidden_ui = native.get_hidden_ui,
+		get_hidden_gui = native.get_hidden_gui,
+	}
 
 	pcall(function()
 		gethui = native.gethui
@@ -1369,14 +1394,18 @@ function protector.restore()
 			return
 		end
 
-		rawset(env, "gethui", native.gethui)
-		rawset(env, "gethiddenui", native.gethiddenui)
-		rawset(env, "gethiddengui", native.gethiddengui)
-		rawset(env, "get_hidden_ui", native.get_hidden_ui)
-		rawset(env, "get_hidden_gui", native.get_hidden_gui)
+		for name, fn in pairs(names) do
+			rawset(env, name, fn)
+		end
 	end
 
-	pcall(apply, globalEnv)
+	pcall(function()
+		if type(getgenv) == "function" then
+			apply(getgenv())
+		else
+			apply(_G)
+		end
+	end)
 	pcall(apply, _G)
 
 	state.installed = false
