@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-05-20T01:31:15.907Z",
+  "fetchedAt": "2026-05-20T06:12:39.555Z",
   "data": [
     {
       "_id": "680eaddf8b44717c060fcf8d",
@@ -523,7 +523,7 @@
         ]
       },
       "clientmods": true,
-      "hasIssues": true,
+      "hasIssues": false,
       "detectionReason": "Last banwave: March 6-18th",
       "raknet": true
     },
