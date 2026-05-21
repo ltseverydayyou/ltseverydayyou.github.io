@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-05-21T04:53:43.614Z",
+  "fetchedAt": "2026-05-21T08:34:48.017Z",
   "data": [
     {
       "_id": "680eaddf8b44717c060fcf8d",
@@ -1328,6 +1328,35 @@
       "hasIssues": false,
       "hidden": false,
       "websitelink": "https://getmadium.net/"
+    },
+    {
+      "_id": "6a0ea99cfd26ad90bea624eb",
+      "title": "Lumen",
+      "version": "1.0.3",
+      "updatedDate": "05/21/2026 at 12:06 AM UTC",
+      "uncStatus": false,
+      "free": false,
+      "detected": false,
+      "rbxversion": "version-9377ee10133e4be3",
+      "updateStatus": true,
+      "websitelink": "https://getlumen.net/",
+      "discordlink": "https://discord.gg/U6RKvuEBDv",
+      "purchaselink": "https://bloxproducts.com/r/weao#Lumen",
+      "beta": false,
+      "platform": "Windows",
+      "extype": "wexternal",
+      "roleId": "1506909341410656376",
+      "index": 5,
+      "hidden": false,
+      "cost": "$5.99 Monthly",
+      "__v": 1,
+      "recommendedReason": {
+        "features": []
+      },
+      "trackerId": "WEAO76ngr5y7",
+      "slug": {
+        "fullDescription": "No description currently available. Check back soon!"
+      }
     }
   ]
 }
