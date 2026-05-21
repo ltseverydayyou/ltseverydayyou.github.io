@@ -1,5 +1,5 @@
-local build = "session_name_cursed_null_v1"
-local patch = "global_gethui_override_v1"
+local build = "shared_hui_singleton_v2"
+local patch = "global_gethui_override_v2"
 
 local okEnv, globalEnv = pcall(function()
 	if type(getgenv) == "function" then
@@ -22,10 +22,50 @@ if type(sharedEnv) ~= "table" then
 	end)
 end
 
-local cacheHost = globalEnv
-local cached = type(cacheHost) == "table" and rawget(cacheHost, "__lt_ui_protector")
+local cacheKey = "__lt_ui_protector"
+local cacheHosts = {}
 
-if type(cached) == "table" and rawget(cached, "ready") == true and rawget(cached, "build") == build and rawget(cached, "patch") == patch then
+local function addCacheHost(t)
+	if type(t) ~= "table" then
+		return
+	end
+
+	for i = 1, #cacheHosts do
+		if cacheHosts[i] == t then
+			return
+		end
+	end
+
+	cacheHosts[#cacheHosts + 1] = t
+end
+
+addCacheHost(sharedEnv)
+addCacheHost(globalEnv)
+
+pcall(function()
+	addCacheHost(_G)
+
+	local gShared = rawget(_G, "shared")
+	addCacheHost(gShared)
+end)
+
+local cacheHost = cacheHosts[1] or globalEnv
+
+local function getCachedProtector()
+	for i = 1, #cacheHosts do
+		local env = cacheHosts[i]
+		local ok, ret = pcall(rawget, env, cacheKey)
+		if ok and type(ret) == "table" and rawget(ret, "ready") == true then
+			return ret
+		end
+	end
+
+	return nil
+end
+
+local cached = getCachedProtector()
+
+if type(cached) == "table" and rawget(cached, "build") == build and rawget(cached, "patch") == patch then
 	if type(cached.installGetHuiOverride) == "function" then
 		pcall(cached.installGetHuiOverride)
 	end
@@ -891,6 +931,75 @@ local function getFolderParent(parent)
 	return protector.getBaseParent()
 end
 
+local sharedRootKey = "lt-ui-protector-shared-root-v2"
+local roleAttr = "__lt_ui_protector_role"
+local keyAttr = "__lt_ui_protector_key"
+local roleHui = "hui"
+local roleScreen = "screen"
+
+local function markSharedContainer(obj, role)
+	if not isInstance(obj) then
+		return obj
+	end
+
+	pcall(function()
+		obj:SetAttribute(roleAttr, role)
+	end)
+
+	pcall(function()
+		obj:SetAttribute(keyAttr, sharedRootKey)
+	end)
+
+	return obj
+end
+
+local function isSharedContainer(obj, role)
+	if not isInstance(obj) then
+		return false
+	end
+
+	local okRole, gotRole = pcall(function()
+		return obj:GetAttribute(roleAttr)
+	end)
+
+	local okKey, gotKey = pcall(function()
+		return obj:GetAttribute(keyAttr)
+	end)
+
+	return okRole and okKey and gotRole == role and gotKey == sharedRootKey
+end
+
+local function findSharedContainer(parent, role, className)
+	if not isInstance(parent) then
+		return nil
+	end
+
+	local kids = tryCall(function()
+		return parent:GetChildren()
+	end)
+
+	if type(kids) ~= "table" then
+		return nil
+	end
+
+	local found
+
+	for i = 1, #kids do
+		local child = kids[i]
+		if isInstance(child) and isA(child, className) and isSharedContainer(child, role) then
+			if not found then
+				found = child
+			else
+				pcall(function()
+					child:Destroy()
+				end)
+			end
+		end
+	end
+
+	return found
+end
+
 local function startWatchdog()
 	if state.heartbeat then
 		return
@@ -1090,21 +1199,23 @@ local function applyScreenDefaults(gui)
 end
 
 local function protectFolder(folder, parent, name)
+	markSharedContainer(folder, roleHui)
 	protector.nativeProtect(folder)
 
 	return protector.lockInstance(folder, {
-		Name = type(name) == "string" and name ~= "" and name or protector.randomString(),
+		Name = type(name) == "string" and name ~= "" and name or protector.randomString("hui"),
 		Parent = parent,
 		Archivable = false,
 	})
 end
 
 local function protectScreen(gui, parent, name)
+	markSharedContainer(gui, roleScreen)
 	applyScreenDefaults(gui)
 	protector.nativeProtect(gui)
 
 	return protector.lockInstance(gui, {
-		Name = type(name) == "string" and name ~= "" and name or protector.randomString(),
+		Name = type(name) == "string" and name ~= "" and name or protector.randomString("screen"),
 		Parent = parent,
 		Archivable = false,
 	})
@@ -1138,10 +1249,18 @@ function protector.getCustomHui(parent)
 	end
 
 	if isInstance(state.customHui) and sameInstance(state.customHui.Parent, parent) then
+		markSharedContainer(state.customHui, roleHui)
 		return state.customHui
 	end
 
+	local existing = findSharedContainer(parent, roleHui, "Folder")
+	if isInstance(existing) then
+		state.customHui = existing
+		return protectFolder(existing, parent, existing.Name)
+	end
+
 	local folder = Instance.new("Folder")
+	markSharedContainer(folder, roleHui)
 	state.customHui = folder
 
 	return protectFolder(folder, parent)
@@ -1188,10 +1307,18 @@ function protector.getScreenGui(name)
 	end
 
 	if isInstance(state.screenGui) and sameInstance(state.screenGui.Parent, hidden) then
+		markSharedContainer(state.screenGui, roleScreen)
 		return state.screenGui
 	end
 
+	local existing = findSharedContainer(hidden, roleScreen, "ScreenGui")
+	if isInstance(existing) then
+		state.screenGui = existing
+		return protectScreen(existing, hidden, existing.Name)
+	end
+
 	local gui = Instance.new("ScreenGui")
+	markSharedContainer(gui, roleScreen)
 	state.screenGui = gui
 
 	return protectScreen(gui, hidden, name)
@@ -1567,8 +1694,8 @@ pcall(function()
 	protector.installGetHuiOverride()
 end)
 
-if type(cacheHost) == "table" then
-	rawset(cacheHost, "__lt_ui_protector", protector)
+for i = 1, #cacheHosts do
+	pcall(rawset, cacheHosts[i], cacheKey, protector)
 end
 
 protector.setTableReadonly(protector, true)
