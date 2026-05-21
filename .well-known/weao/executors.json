@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-05-21T20:20:31.338Z",
+  "fetchedAt": "2026-05-21T21:58:12.147Z",
   "data": [
     {
       "_id": "680eaddf8b44717c060fcf8d",
@@ -209,13 +209,13 @@
     {
       "_id": "67d6005efa8c791236079278",
       "title": "Potassium",
-      "version": "2.1.7",
-      "updatedDate": "05/18/2026 at 5:14 PM UTC",
+      "version": "2.1.8",
+      "updatedDate": "05/21/2026 at 9:09 PM UTC",
       "uncStatus": true,
       "free": false,
       "detected": true,
-      "rbxversion": "version-9377ee10133e4be3",
-      "updateStatus": false,
+      "rbxversion": "version-4b6315bf1f0a4dbb",
+      "updateStatus": true,
       "websitelink": "https://www.potassium.pro/",
       "discordlink": "https://discord.com/invite/potassium",
       "beta": false,
@@ -287,13 +287,13 @@
     {
       "_id": "662ae7576238b7f2082f253b",
       "title": "Wave",
-      "version": "NEW-1.2.8",
-      "updatedDate": "05/18/2026 at 5:28 PM UTC",
+      "version": "NEW-1.2.9",
+      "updatedDate": "05/21/2026 at 8:59 PM UTC",
       "uncStatus": true,
       "free": false,
       "detected": true,
-      "rbxversion": "version-9377ee10133e4be3",
-      "updateStatus": false,
+      "rbxversion": "version-4b6315bf1f0a4dbb",
+      "updateStatus": true,
       "websitelink": "https://getwave.gg",
       "discordlink": "https://discord.gg/rARhPpN7fY",
       "beta": false,
