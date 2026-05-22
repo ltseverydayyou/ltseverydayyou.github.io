@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-05-22T09:34:54.571Z",
+  "fetchedAt": "2026-05-22T12:24:00.433Z",
   "data": [
     {
       "_id": "680eaddf8b44717c060fcf8d",
@@ -209,8 +209,8 @@
     {
       "_id": "67d6005efa8c791236079278",
       "title": "Potassium",
-      "version": "2.1.8",
-      "updatedDate": "05/21/2026 at 9:09 PM UTC",
+      "version": "2.1.9",
+      "updatedDate": "05/22/2026 at 11:00 AM UTC",
       "uncStatus": true,
       "free": false,
       "detected": true,
