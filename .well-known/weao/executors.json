@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-05-22T19:56:33.449Z",
+  "fetchedAt": "2026-05-22T21:17:48.382Z",
   "data": [
     {
       "_id": "680eaddf8b44717c060fcf8d",
@@ -431,13 +431,13 @@
     {
       "_id": "671411144ca6cb25603cc3b0",
       "title": "Seliware",
-      "version": "2.4.7",
-      "updatedDate": "05/04/2026 at 12:17 PM UTC",
+      "version": "2.4.8",
+      "updatedDate": "05/22/2026 at 8:04 PM UTC",
       "uncStatus": true,
       "free": false,
       "detected": true,
-      "rbxversion": "version-acc4b74f79e743b9",
-      "updateStatus": false,
+      "rbxversion": "version-4b6315bf1f0a4dbb",
+      "updateStatus": true,
       "websitelink": "https://seliware.com",
       "discordlink": "https://discord.com/invite/nzEggEE9vx",
       "purchaselink": "https://robloxcheatz.com/product?id=51c9587f-4794-46ef-b6bf-2bd9f13c17d2&ref=weao",
