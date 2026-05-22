@@ -1825,6 +1825,47 @@
             color: #96f5ca;
         }
 
+        .roblox-user-search__pill--rotector-clear {
+            border-color: rgba(114, 243, 182, 0.42);
+            color: #96f5ca;
+        }
+
+        .roblox-user-search__pill--rotector-watch {
+            border-color: rgba(255, 207, 102, 0.48);
+            color: #ffe29a;
+        }
+
+        .roblox-user-search__pill--rotector-danger {
+            border-color: rgba(255, 98, 128, 0.48);
+            color: #ffb6c3;
+        }
+
+        .roblox-user-search__pill--rotector-muted {
+            border-color: rgba(166, 173, 187, 0.36);
+            color: var(--mu);
+        }
+
+        .roblox-user-search__section--rotector {
+            border-color: rgba(102, 227, 255, 0.18);
+        }
+
+        .roblox-user-search__section-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .roblox-user-search__note {
+            margin: 0;
+            color: rgba(231, 233, 238, 0.74);
+            font-size: 12px;
+            line-height: 1.55;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+
         .roblox-user-search__empty {
             padding: 20px;
             border-radius: 18px;
@@ -10916,7 +10957,7 @@
                             <div>
                                 <h3>Roblox user search</h3>
                                 <p class="roblox-user-search__intro">
-                                    Search a username or ID. Shows public profile info, avatars, and bans when Roblox exposes them.
+                                    Search a username or ID. Shows public profile info, avatars, Roblox bans, and Rotector flag status.
                                 </p>
                             </div>
                             <div id="roblox-user-status" class="roblox-user-search__status" aria-live="polite"></div>
@@ -10927,7 +10968,7 @@
                             <button class="pl sc" id="roblox-user-search-btn" type="button">Search</button>
                         </div>
                         <p class="roblox-user-search__hint">
-                            Looks up Roblox user, avatar, and thumbnail endpoints.
+                            Looks up Roblox user, avatar, thumbnail endpoints, and Rotector's public status API.
                         </p>
                         <div class="roblox-user-search__layout">
                             <aside class="roblox-user-search__results-panel">
@@ -12396,6 +12437,82 @@
 
         const ROBLOX_USER_RESULT_LIMIT = 10;
         const ROBLOX_USER_PROXY_ROOTS = ["roproxy.com", "rotunnel.com"];
+        const ROTECTOR_API_ROOT = "https://roscoe.rotector.com";
+        const ROTECTOR_STATUS_META = {
+            unflagged: {
+                label: "Unflagged",
+                tone: "rotector-clear",
+                action: "No violations detected yet",
+                note: "Not a Safe badge. It only means Rotector has no detected violations for this user ID right now."
+            },
+            safe: {
+                label: "No detected violations",
+                tone: "rotector-clear",
+                action: "No violations detected yet",
+                note: "Not a guarantee of safety. Treat this as the current Rotector lookup state only."
+            },
+            queued: {
+                label: "Queued",
+                tone: "rotector-watch",
+                action: "Waiting for Rotector analysis",
+                note: "This user is queued for review/scanning. Treat this as a queue state, not a safety verdict."
+            },
+            pending: {
+                label: "Pending",
+                tone: "rotector-watch",
+                action: "Pending Rotector review",
+                note: "This user has a pending Rotector state. Review the full fields below before deciding."
+            },
+            under_review: {
+                label: "Under Review",
+                tone: "rotector-watch",
+                action: "Review is in progress",
+                note: "Rotector indicates this user is still being reviewed."
+            },
+            processing: {
+                label: "Processing",
+                tone: "rotector-watch",
+                action: "Analysis in progress",
+                note: "Rotector is still processing this lookup."
+            },
+            flagged: {
+                label: "Flagged",
+                tone: "rotector-watch",
+                action: "Review before interacting",
+                note: "Currently flagged by Rotector and may still need review/verification."
+            },
+            confirmed: {
+                label: "Confirmed",
+                tone: "rotector-danger",
+                action: "Avoid or report if needed",
+                note: "Rotector marks this user as confirmed unsafe."
+            },
+            mixed: {
+                label: "Mixed",
+                tone: "rotector-watch",
+                action: "At your discretion",
+                note: "Rotector reports some inappropriate activity but not enough evidence for a stronger status."
+            },
+            past_offender: {
+                label: "Past Offender",
+                tone: "rotector-muted",
+                action: "No current restriction",
+                note: "Previously flagged by Rotector, but currently cleared."
+            },
+            unavailable: {
+                label: "Unavailable",
+                tone: "rotector-muted",
+                action: "Try again later",
+                note: "Rotector did not return a usable status for this lookup."
+            }
+        };
+        const ROTECTOR_STATUS_BY_NUMBER = {
+            0: "unflagged",
+            1: "flagged",
+            2: "confirmed",
+            5: "mixed",
+            6: "past_offender"
+        };
         const ROBLOX_ASSET_TYPE_META = {
             1: {
                 label: "Image",
@@ -12791,7 +12908,7 @@
         function formatRobloxUserKey(key) {
             return String(key || "")
                 .replace(/([a-z0-9])([A-Z])/g, "$1 $2")
-                .replace(/[_-]+/g, " ")
+                .replace(/[._-]+/g, " ")
                 .replace(/\b\w/g, (char) => char.toUpperCase());
         }
 
@@ -12874,6 +12991,450 @@
             }
 
             return null;
+        }
+
+        function normalizeRotectorStatusKey(value) {
+            if (typeof value === "number" && Number.isFinite(value)) {
+                return ROTECTOR_STATUS_BY_NUMBER[value] || `flag_type_${value}`;
+            }
+            const raw = normalizeRobloxUserValue(value).toLowerCase();
+            if (!raw) {
+                return "";
+            }
+            if (/^-?\d+$/.test(raw)) {
+                const numeric = Number(raw);
+                return ROTECTOR_STATUS_BY_NUMBER[numeric] || `flag_type_${numeric}`;
+            }
+            if (raw.includes("under") && raw.includes("review")) {
+                return "under_review";
+            }
+            if (raw.includes("pending")) {
+                return "pending";
+            }
+            if (raw.includes("queue") || raw.includes("queued")) {
+                return raw.includes("not queued") || raw.includes("not in queue") ? "unflagged" : "queued";
+            }
+            if (raw.includes("processing") || raw.includes("analyzing") || raw.includes("analysing") || raw.includes("scanning")) {
+                return "processing";
+            }
+            if (raw.includes("past") && raw.includes("offender")) {
+                return "past_offender";
+            }
+            if (raw.includes("mixed")) {
+                return "mixed";
+            }
+            if (raw.includes("confirm")) {
+                return "confirmed";
+            }
+            if (raw.includes("flag")) {
+                return raw.includes("unflag") ? "unflagged" : "flagged";
+            }
+            if (raw.includes("clear") || raw.includes("none") || raw.includes("no violation")) {
+                return "unflagged";
+            }
+            if (raw.includes("safe")) {
+                return "safe";
+            }
+            return raw.replace(/[^a-z0-9]+/g, "_").replace(/^_+|_+$/g, "");
+        }
+
+        function getRotectorNestedValue(payload, keys, depth = 0) {
+            if (!payload || depth > 4) {
+                return null;
+            }
+            if (typeof payload !== "object") {
+                return null;
+            }
+            for (const key of keys) {
+                if (Object.prototype.hasOwnProperty.call(payload, key)) {
+                    return payload[key];
+                }
+            }
+            for (const value of Object.values(payload)) {
+                if (value && typeof value === "object") {
+                    const found = getRotectorNestedValue(value, keys, depth + 1);
+                    if (found !== null && found !== undefined && found !== "") {
+                        return found;
+                    }
+                }
+            }
+            return null;
+        }
+
+        function getRotectorScalarValue(payload, keys, depth = 0) {
+            if (!payload || depth > 6 || typeof payload !== "object") {
+                return null;
+            }
+            for (const key of keys) {
+                if (Object.prototype.hasOwnProperty.call(payload, key)) {
+                    const value = payload[key];
+                    if (value === null || value === undefined || value === "") {
+                        continue;
+                    }
+                    if (typeof value !== "object" || Array.isArray(value)) {
+                        return value;
+                    }
+                    const nested = getRotectorScalarValue(value, keys, depth + 1);
+                    if (nested !== null && nested !== undefined && nested !== "") {
+                        return nested;
+                    }
+                }
+            }
+            for (const value of Object.values(payload)) {
+                if (value && typeof value === "object") {
+                    const found = getRotectorScalarValue(value, keys, depth + 1);
+                    if (found !== null && found !== undefined && found !== "") {
+                        return found;
+                    }
+                }
+            }
+            return null;
+        }
+
+        function tryParseRotectorJsonValue(value) {
+            if (typeof value !== "string") {
+                return value;
+            }
+            const text = value
+                .trim()
+                .replace(/^```(?:json)?\s*/i, "")
+                .replace(/```$/i, "")
+                .trim();
+            if (!/^[{\[]/.test(text)) {
+                return value;
+            }
+            try {
+                return JSON.parse(text);
+            } catch {
+                return value;
+            }
+        }
+
+        function normalizeRotectorDisplayValue(value, depth = 0) {
+            if (value === null || value === undefined || value === "") {
+                return "";
+            }
+            const parsed = tryParseRotectorJsonValue(value);
+            if (parsed !== value) {
+                return normalizeRotectorDisplayValue(parsed, depth);
+            }
+            if (typeof value === "boolean") {
+                return value ? "Yes" : "No";
+            }
+            if (typeof value === "number") {
+                return Number.isFinite(value) ? String(value) : "";
+            }
+            if (Array.isArray(value)) {
+                const items = value
+                    .map((entry) => normalizeRotectorDisplayValue(entry, depth + 1))
+                    .filter(Boolean);
+                return items.join(items.some((entry) => entry.includes("\n")) ? "\n" : ", ");
+            }
+            if (typeof value === "object") {
+                if (depth > 5) {
+                    return "";
+                }
+                return Object.entries(value)
+                    .map(([key, entry]) => {
+                        const normalized = normalizeRotectorDisplayValue(entry, depth + 1);
+                        return normalized ? `${formatRobloxUserKey(key)}: ${normalized}` : "";
+                    })
+                    .filter(Boolean)
+                    .join("\n");
+            }
+            return String(value)
+                .replace(/\\r\\n/g, "\n")
+                .replace(/\\n/g, "\n")
+                .replace(/\\r/g, "\r")
+                .replace(/\\"/g, '"')
+                .trim();
+        }
+
+        function collectRotectorValues(payload, keys, output = [], depth = 0) {
+            if (!payload || depth > 6 || typeof payload !== "object") {
+                return output;
+            }
+            if (Array.isArray(payload)) {
+                payload.forEach((entry) => collectRotectorValues(entry, keys, output, depth + 1));
+                return output;
+            }
+            Object.entries(payload).forEach(([key, value]) => {
+                if (keys.includes(key)) {
+                    const normalized = normalizeRotectorDisplayValue(value);
+                    if (normalized) {
+                        output.push(normalized);
+                    }
+                }
+                if (value && typeof value === "object") {
+                    collectRotectorValues(value, keys, output, depth + 1);
+                }
+            });
+            return output;
+        }
+
+        function flattenRotectorInfo(value, prefix = "", output = [], depth = 0) {
+            if (value === null || value === undefined || value === "" || depth > 6) {
+                return output;
+            }
+            const parsed = tryParseRotectorJsonValue(value);
+            if (parsed !== value) {
+                return flattenRotectorInfo(parsed, prefix, output, depth);
+            }
+            if (Array.isArray(value)) {
+                const allSimple = value.every((entry) =>
+                    entry === null ||
+                    entry === undefined ||
+                    ["string", "number", "boolean"].includes(typeof entry)
+                );
+                if (allSimple) {
+                    const normalized = normalizeRotectorDisplayValue(value);
+                    if (prefix && normalized) {
+                        output.push([prefix, normalized]);
+                    }
+                } else {
+                    value.forEach((entry, index) =>
+                        flattenRotectorInfo(entry, prefix ? `${prefix}.${index + 1}` : String(index + 1), output, depth + 1)
+                    );
+                }
+                return output;
+            }
+            if (typeof value === "object") {
+                Object.entries(value).forEach(([key, entry]) => {
+                    const nextPrefix = prefix ? `${prefix}.${key}` : key;
+                    flattenRotectorInfo(entry, nextPrefix, output, depth + 1);
+                });
+                return output;
+            }
+            const normalized = normalizeRotectorDisplayValue(value);
+            if (prefix && normalized) {
+                output.push([prefix, normalized]);
+            }
+            return output;
+        }
+
+        function uniqueRotectorValues(values) {
+            const seen = new Set();
+            return values.filter((value) => {
+                const normalized = normalizeRotectorDisplayValue(value);
+                if (!normalized || seen.has(normalized)) {
+                    return false;
+                }
+                seen.add(normalized);
+                return true;
+            });
+        }
+
+        function normalizeRotectorLookup(payload, userId, rawText = "") {
+            const parsedRaw = tryParseRotectorJsonValue(rawText);
+            const parsedPayload = payload && typeof payload === "object" ?
+                payload :
+                parsedRaw && typeof parsedRaw === "object" ?
+                    parsedRaw :
+                    null;
+            const statusValue = parsedPayload ?
+                getRotectorScalarValue(parsedPayload, [
+                    "flagState",
+                    "flag_state",
+                    "flagType",
+                    "flag_type",
+                    "flagStatus",
+                    "flag_status",
+                    "status",
+                    "state",
+                    "classification",
+                    "result",
+                    "type"
+                ]) :
+                rawText;
+            const queueValue = parsedPayload ?
+                getRotectorScalarValue(parsedPayload, [
+                    "queueState",
+                    "queue_state",
+                    "queueStatus",
+                    "queue_status",
+                    "reviewStatus",
+                    "review_status",
+                    "queued",
+                    "isQueued",
+                    "is_queued",
+                    "pending",
+                    "isPending",
+                    "is_pending",
+                    "underReview",
+                    "under_review"
+                ]) :
+                null;
+            const queueKey = normalizeRotectorStatusKey(queueValue);
+            let statusKey = normalizeRotectorStatusKey(statusValue) || queueKey || "unavailable";
+            if (["unflagged", "safe", "unavailable"].includes(statusKey) && ["queued", "pending", "under_review", "processing"].includes(queueKey)) {
+                statusKey = queueKey;
+            }
+            const statusMeta = ROTECTOR_STATUS_META[statusKey] || {
+                label: formatRobloxUserKey(statusKey || "Unavailable"),
+                tone: "rotector-muted",
+                action: "Review raw Rotector info",
+                note: "Rotector returned a status this page does not recognize yet."
+            };
+            const confidence = parsedPayload ?
+                getRotectorScalarValue(parsedPayload, [
+                    "confidence",
+                    "confidenceScore",
+                    "confidence_score",
+                    "score",
+                    "riskScore",
+                    "risk_score"
+                ]) :
+                null;
+            const reviewed = parsedPayload ?
+                getRotectorScalarValue(parsedPayload, [
+                    "reviewed",
+                    "isReviewed",
+                    "is_reviewed",
+                    "verified",
+                    "isVerified",
+                    "humanReviewed"
+                ]) :
+                null;
+            const updated = parsedPayload ?
+                getRotectorScalarValue(parsedPayload, [
+                    "updatedAt",
+                    "updated_at",
+                    "lastUpdated",
+                    "last_updated",
+                    "reviewedAt",
+                    "reviewed_at",
+                    "createdAt",
+                    "created_at"
+                ]) :
+                null;
+            const messageValues = parsedPayload ?
+                uniqueRotectorValues(
+                    collectRotectorValues(parsedPayload, [
+                        "message",
+                        "reason",
+                        "summary",
+                        "description",
+                        "violation",
+                        "violationReason",
+                        "violation_reason"
+                    ])
+                ) :
+                [];
+            const reason = messageValues.join("\n\n");
+            const infoSource = parsedPayload || parsedRaw || rawText;
+            const infoEntries = flattenRotectorInfo(infoSource)
+                .filter(([key, value]) => key && value)
+                .filter(([key]) => !/^raw$/i.test(key))
+                .slice(0, 80);
+            const flagState = normalizeRotectorDisplayValue(statusValue) ||
+                normalizeRotectorDisplayValue(queueValue) ||
+                statusMeta.label;
+
+            return {
+                userId,
+                statusKey,
+                statusLabel: statusMeta.label,
+                tone: statusMeta.tone,
+                action: statusMeta.action,
+                note: statusMeta.note,
+                confidence,
+                reviewed,
+                reason,
+                updated,
+                flagState,
+                queueState: normalizeRotectorDisplayValue(queueValue),
+                rawText: normalizeRotectorDisplayValue(rawText),
+                infoEntries,
+                raw: parsedPayload
+            };
+        }
+
+        function parseRotectorResponseText(text) {
+            const raw = normalizeRobloxUserValue(text);
+            if (!raw) {
+                return {
+                    payload: null,
+                    rawText: ""
+                };
+            }
+            try {
+                return {
+                    payload: JSON.parse(raw),
+                    rawText: raw
+                };
+            } catch {
+                return {
+                    payload: null,
+                    rawText: raw
+                };
+            }
+        }
+
+        async function fetchRotectorTextWithFallback(endpoint, contextLabel) {
+            const attempts = [
+                endpoint,
+                ...jsonProxyFallbacks.map((proxy) => proxy.buildUrl(endpoint)).filter(Boolean)
+            ];
+            const seen = new Set();
+            let lastError = null;
+
+            for (const attempt of attempts) {
+                if (!attempt || seen.has(attempt)) {
+                    continue;
+                }
+                seen.add(attempt);
+                try {
+                    const response = await fetch(attempt, {
+                        method: "GET",
+                        cache: "no-store",
+                        headers: {
+                            Accept: "application/json, text/plain, */*"
+                        }
+                    });
+                    if (!response.ok) {
+                        const error = new Error(`${contextLabel} failed (${response.status})`);
+                        error.status = response.status;
+                        throw error;
+                    }
+                    return await response.text();
+                } catch (error) {
+                    lastError = error;
+                    console.warn(`[Rotector] ${contextLabel} failed via ${attempt}.`, error);
+                    if (!shouldRetryWithProxy(error)) {
+                        break;
+                    }
+                }
+            }
+
+            throw lastError instanceof Error ?
+                lastError :
+                new Error(`${contextLabel} failed.`);
+        }
+
+        async function fetchRotectorRobloxUserStatus(userId) {
+            const id = Number(userId);
+            if (!Number.isFinite(id)) {
+                return normalizeRotectorLookup(null, userId, "");
+            }
+
+            const fullEndpoint = `${ROTECTOR_API_ROOT}/v1/lookup/roblox/user/${id}`;
+            const plainEndpoint = `${fullEndpoint}/plaintext`;
+            const [fullResult, plainResult] = await Promise.allSettled([
+                fetchRotectorTextWithFallback(fullEndpoint, `Rotector user ${id}`),
+                fetchRotectorTextWithFallback(plainEndpoint, `Rotector user ${id} plaintext`)
+            ]);
+            const fullText = resolveRobloxSettledValue(fullResult) || "";
+            const plainText = resolveRobloxSettledValue(plainResult) || "";
+            const fullParsed = parseRotectorResponseText(fullText);
+            const plainParsed = parseRotectorResponseText(plainText);
+            const payload = fullParsed.payload || plainParsed.payload;
+            const rawText = plainParsed.rawText || fullParsed.rawText;
+
+            if (!payload && !rawText) {
+                return normalizeRotectorLookup(null, id, "unavailable");
+            }
+
+            return normalizeRotectorLookup(payload, id, rawText);
         }
 
         async function fetchRobloxUserThumbnailMap(
@@ -13221,6 +13782,78 @@
             root.appendChild(section);
         }
 
+        function appendRobloxUserRotectorSection(root, rotector) {
+            if (!rotector) {
+                return;
+            }
+            const {
+                section,
+                body
+            } = createRobloxUserSection("Rotector API");
+            section.classList.add("roblox-user-search__section--rotector");
+
+            const head = section.querySelector("h4");
+            if (head) {
+                const wrapper = document.createElement("div");
+                wrapper.className = "roblox-user-search__section-head";
+                head.replaceWith(wrapper);
+                wrapper.appendChild(head);
+                wrapper.appendChild(createRobloxUserPill(rotector.statusLabel, rotector.tone));
+            }
+
+            const grid = document.createElement("div");
+            grid.className = "roblox-user-search__section-grid";
+            appendRobloxUserKv(grid, "Status", rotector.statusLabel);
+            appendRobloxUserKv(grid, "Flag State", rotector.flagState);
+            appendRobloxUserKv(grid, "Queue State", rotector.queueState);
+            appendRobloxUserKv(grid, "Guidance", rotector.action);
+
+            const confidence = Number(rotector.confidence);
+            if (Number.isFinite(confidence)) {
+                appendRobloxUserKv(
+                    grid,
+                    "Confidence",
+                    confidence <= 1 ? `${Math.round(confidence * 100)}%` : `${Math.round(confidence)}%`
+                );
+            }
+
+            if (rotector.reviewed !== null && rotector.reviewed !== undefined) {
+                appendRobloxUserKv(grid, "Reviewed", Boolean(rotector.reviewed));
+            }
+
+            const updated = formatRobloxUserDate(rotector.updated, true) || normalizeRotectorDisplayValue(rotector.updated);
+            if (updated) {
+                appendRobloxUserKv(grid, "Updated", updated);
+            }
+
+            body.appendChild(grid);
+
+            const reason = normalizeRotectorDisplayValue(rotector.reason);
+            if (reason) {
+                const reasonText = document.createElement("p");
+                reasonText.className = "roblox-user-search__note";
+                reasonText.textContent = reason;
+                body.appendChild(reasonText);
+            }
+
+            if (Array.isArray(rotector.infoEntries) && rotector.infoEntries.length) {
+                const full = document.createElement("div");
+                full.className = "roblox-user-search__section-grid";
+                rotector.infoEntries.forEach(([key, value]) => {
+                    appendRobloxUserKv(full, key, value);
+                });
+                if (full.childElementCount) {
+                    body.appendChild(full);
+                }
+            }
+
+            const note = document.createElement("p");
+            note.className = "roblox-user-search__note";
+            note.textContent = `${rotector.note} Source: Rotector.`;
+            body.appendChild(note);
+            root.appendChild(section);
+        }
+
         async function renderRobloxUserDetail(detailData) {
             const container = robloxUserSearchElements.detail;
             if (!container) {
@@ -13273,6 +13906,14 @@
             }
             if (profile.hasVerifiedBadge) {
                 pills.appendChild(createRobloxUserPill("Verified", "verified"));
+            }
+            if (detailData.rotector?.statusLabel) {
+                pills.appendChild(
+                    createRobloxUserPill(
+                        `Rotector: ${detailData.rotector.statusLabel}`,
+                        detailData.rotector.tone
+                    )
+                );
             }
 
             const actions = document.createElement("div");
@@ -13356,6 +13997,10 @@
                 createRobloxUserStat(
                     "Avatar Type",
                     detailData.avatar?.playerAvatarType || "Unknown"
+                ),
+                createRobloxUserStat(
+                    "Rotector",
+                    detailData.rotector?.statusLabel || "Unavailable"
                 )
             );
 
@@ -13363,6 +14008,7 @@
             container.appendChild(hero);
 
             appendRobloxUserTextSection(container, "Status", detailData.statusText);
+            appendRobloxUserRotectorSection(container, detailData.rotector);
             appendRobloxUserHistorySection(container, detailData.usernameHistory);
 
             if (detailData.avatar) {
@@ -13427,7 +14073,8 @@
                     `https://users.roblox.com/v1/users/${id}/promotion-channels`,
                     `Roblox promotion channels ${id}`
                 ),
-                fetchRobloxJsonSafe(`https://users.roblox.com/v1/users/${id}/metadata`, `Roblox metadata ${id}`)
+                fetchRobloxJsonSafe(`https://users.roblox.com/v1/users/${id}/metadata`, `Roblox metadata ${id}`),
+                fetchRotectorRobloxUserStatus(id)
             ]);
 
             if (robloxUserSearchState.profileToken !== token) {
@@ -13471,6 +14118,7 @@
                 avatarImageUrl: avatarMap.get(id) || headshotMap.get(id) || "",
                 promotionChannels: resolveRobloxSettledValue(requests[7]),
                 metadata: resolveRobloxSettledValue(requests[8]),
+                rotector: resolveRobloxSettledValue(requests[9]),
                 assetThumbnails
             });
             setRobloxUserStatus(
