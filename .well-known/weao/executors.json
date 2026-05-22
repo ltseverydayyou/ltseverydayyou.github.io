@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-05-22T01:29:56.291Z",
+  "fetchedAt": "2026-05-22T05:46:28.359Z",
   "data": [
     {
       "_id": "680eaddf8b44717c060fcf8d",
@@ -535,8 +535,8 @@
       "uncStatus": false,
       "free": false,
       "detected": false,
-      "rbxversion": "version-9377ee10133e4be3",
-      "updateStatus": false,
+      "rbxversion": "version-4b6315bf1f0a4dbb",
+      "updateStatus": true,
       "websitelink": "https://matrixhubs.shop/",
       "discordlink": "https://matrixhub.xyz/discord.html",
       "beta": false,
@@ -638,7 +638,7 @@
       "elementCertified": true,
       "cost": "$2.80 Weekly",
       "decompiler": true,
-      "multiInject": false,
+      "multiInject": true,
       "suncPercentage": 94,
       "uncPercentage": 99,
       "sunc": {
