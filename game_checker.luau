@@ -573,59 +573,6 @@ caller(function()
 			"Office_Killzone",
 			"Toilet_Killzone"
 		};
-		local function installCallBypass()
-			local gv = getgenv and getgenv() or _G;
-			if type(gv) == "table" and gv.__lt_3498637623_call_bypass then
-				return;
-			end;
-			if type(hookmetamethod) == "function" and type(newcclosure) == "function" and type(getnamecallmethod) == "function" then
-				local old;
-				local ok = pcall(function()
-					old = hookmetamethod(game, "__namecall", newcclosure(function(self, ...)
-						local method = getnamecallmethod();
-						if self == playersService.LocalPlayer and (method == "Kick" or method == "kick") then
-							return nil;
-						end;
-						if method == "FireServer" then
-							local fz = replicatedStorage and replicatedStorage:FindFirstChild("FNAZ");
-							local first = (...);
-							if self == fz and type(first) == "string" and (blockedFNAZ[first] or first:lower():find("killzone", 1, true)) then
-								return nil;
-							end;
-						end;
-						return old(self, ...);
-					end));
-				end);
-				if ok and type(gv) == "table" then
-					gv.__lt_3498637623_call_bypass = true;
-				end;
-			end;
-		end;
-		local function installKickFunctionBypass()
-			local gv = getgenv and getgenv() or _G;
-			if type(gv) == "table" and gv.__lt_3498637623_kick_function_bypass then
-				return;
-			end;
-			local plr = playersService.LocalPlayer;
-			if not plr or type(hookfunction) ~= "function" or type(newcclosure) ~= "function" then
-				return;
-			end;
-			local old;
-			local ok = pcall(function()
-				old = hookfunction(plr.Kick, newcclosure(function(self, ...)
-					if self == plr then
-						return nil;
-					end;
-					if old then
-						return old(self, ...);
-					end;
-					return nil;
-				end));
-			end);
-			if ok and type(gv) == "table" then
-				gv.__lt_3498637623_kick_function_bypass = true;
-			end;
-		end;
 		local killParts = {};
 		local function neutralizeKillPart(inst)
 			if not inst or typeof(inst) ~= "Instance" or not inst:IsA("BasePart") then
@@ -749,8 +696,6 @@ caller(function()
 			restoreCamera(hum);
 		end;
 
-		installCallBypass();
-		installKickFunctionBypass();
 		installKillPartBypass();
 		installPromptBypass();
 		task.spawn(function()

@@ -582,7 +582,7 @@ local function applyLpProps(lp)
 end
 
 if runService then
-	runService.RenderStepped:Connect(function()
+	runService.Heartbeat:Connect(function()
 		safeCall(function()
 			applyLpProps(localPlayer)
 		end)
@@ -688,7 +688,7 @@ safeCall(function()
 end);
 safeCall(function()
 	if runService then
-		runService.RenderStepped:Connect(function()
+		runService.Heartbeat:Connect(function()
 			safeCall(function()
 				local c = getChar()
 				local h = c and getHumanoid(c)
