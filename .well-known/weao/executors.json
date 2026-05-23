@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-05-23T10:54:04.556Z",
+  "fetchedAt": "2026-05-23T14:09:34.154Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -978,8 +978,8 @@
     {
       "_id": "66a679cc5b36b46c9327b0a7",
       "title": "Synapse Z",
-      "version": "1.0.2.5",
-      "updatedDate": "05/22/2026 at 12:16 AM UTC",
+      "version": "1.0.2.6",
+      "updatedDate": "05/23/2026 at 11:27 AM UTC",
       "uncStatus": true,
       "free": false,
       "detected": true,
@@ -1297,8 +1297,8 @@
     {
       "_id": "69f25c438d1db84cb50c8cfe",
       "title": "Madium",
-      "version": "1.4.5",
-      "updatedDate": "05/23/2026 at 9:59 AM UTC",
+      "version": "1.4.6",
+      "updatedDate": "05/23/2026 at 11:26 AM UTC",
       "uncStatus": true,
       "free": true,
       "detected": true,
