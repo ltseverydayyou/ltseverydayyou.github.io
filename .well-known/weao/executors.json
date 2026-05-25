@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-05-24T21:30:00.014Z",
+  "fetchedAt": "2026-05-25T12:49:19.996Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -1297,13 +1297,13 @@
     {
       "_id": "69f25c438d1db84cb50c8cfe",
       "title": "Madium",
-      "version": "1.4.7",
-      "updatedDate": "05/23/2026 at 4:19 PM UTC",
+      "version": "1.4.8",
+      "updatedDate": "05/25/2026 at 12:27 PM UTC",
       "uncStatus": true,
       "free": true,
       "detected": true,
-      "rbxversion": "version-4b6315bf1f0a4dbb",
-      "updateStatus": false,
+      "rbxversion": "version-2b1721d47abf49aa",
+      "updateStatus": true,
       "discordlink": "https://discord.com/invite/olemad",
       "beta": false,
       "platform": "Windows",
