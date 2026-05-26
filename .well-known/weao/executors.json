@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-05-26T00:09:08.628Z",
+  "fetchedAt": "2026-05-26T21:10:56.557Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -525,7 +525,7 @@
         "features": []
       },
       "longestRunning": true,
-      "clientmods": true,
+      "clientmods": false,
       "trackerId": "WEAO2c8e5827",
       "hidden": false,
       "slug": {
@@ -1323,7 +1323,7 @@
       "recommendedReason": {
         "features": []
       },
-      "clientmods": true,
+      "clientmods": false,
       "trackerId": "WEAO4a1j38nv",
       "hasIssues": false,
       "hidden": false,
