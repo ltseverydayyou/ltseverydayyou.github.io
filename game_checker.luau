@@ -478,7 +478,7 @@ local mods = {
 		u = "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/SlapAuraSB.luau"
 	}
 };
-for _, m in ipairs(mods) do
+for _, m in mods do
 	task.spawn(function()
 		caller(function()
 			if m.id and m.id ~= game.GameId then
@@ -507,7 +507,7 @@ caller(function()
 		if not workspaceService or (not runService) or (not playersService) then
 			return;
 		end;
-		for _, v in ipairs(workspaceService:GetDescendants()) do
+		for _, v in workspaceService:GetDescendants() do
 			if v:IsA("ProximityPrompt") and v.Parent and v.Parent.Name:lower() == "proxypart" then
 				table.insert(proxy, v);
 			end;
@@ -600,7 +600,7 @@ caller(function()
 				return;
 			end;
 			killPartsHooked = true;
-			for _, inst in ipairs(workspaceService:GetDescendants()) do
+			for _, inst in workspaceService:GetDescendants() do
 				neutralizeKillPart(inst);
 			end;
 			workspaceService.DescendantAdded:Connect(function(inst)
@@ -636,7 +636,7 @@ caller(function()
 			if not fz then
 				return;
 			end;
-			for _, attr in ipairs(fNAZAttrs) do
+			for _, attr in fNAZAttrs do
 				if fz:GetAttribute(attr) then
 					pcall(function()
 						fz:SetAttribute(attr, false);
@@ -649,7 +649,7 @@ caller(function()
 			if not cam then
 				return;
 			end;
-			for _, child in ipairs(cam:GetChildren()) do
+			for _, child in cam:GetChildren() do
 				if child.Name == "Black" or child:IsA("BlurEffect") or child:IsA("ColorCorrectionEffect") then
 					pcall(function()
 						child:Destroy();
@@ -671,7 +671,7 @@ caller(function()
 				root.Anchored = false;
 			end;
 			if c then
-				for _, inst in ipairs(c:GetDescendants()) do
+				for _, inst in c:GetDescendants() do
 					if inst:IsA("BasePart") and inst.Anchored then
 						inst.Anchored = false;
 					end;
@@ -701,7 +701,7 @@ caller(function()
 		task.spawn(function()
 			while task.wait(2) do
 				caller(function()
-					for inst in pairs(killParts) do
+					for inst in killParts do
 						if inst.Parent then
 							neutralizeKillPart(inst);
 						else
@@ -765,7 +765,7 @@ caller(function()
 		end;
 		local function mkBag()
 			bag = {};
-			for n in pairs(wl) do
+			for n in wl do
 				bag[(#bag) + 1] = n;
 			end;
 			for i = #bag, 2, -1 do
@@ -799,7 +799,7 @@ caller(function()
 			if not isSnd(s) then
 				return;
 			end;
-			for _, v in ipairs(fld:GetDescendants()) do
+			for _, v in fld:GetDescendants() do
 				if isSnd(v) and wl[v.Name] then
 					stopSnd(v);
 				end;
@@ -822,14 +822,14 @@ caller(function()
 				return;
 			end;
 			lock = true;
-			for s in pairs(st) do
+			for s in st do
 				if not s.Parent or not s:IsDescendantOf(fld) then
 					st[s] = nil;
 				end;
 			end;
 			local list = {};
 			local now = os.clock();
-			for _, v in ipairs(fld:GetDescendants()) do
+			for _, v in fld:GetDescendants() do
 				if isSnd(v) then
 					if wl[v.Name] then
 						setVol(v);
@@ -891,7 +891,7 @@ caller(function()
 				end);
 			end;
 		end;
-		for _, v in ipairs(fld:GetDescendants()) do
+		for _, v in fld:GetDescendants() do
 			if isSnd(v) then
 				hookSnd(v);
 			end;
@@ -1004,7 +1004,7 @@ caller(function()
 			end;
 			local claim = item:FindFirstChild("ClaimButton");
 			if not (claim and claim:IsA("ImageButton")) then
-				for _, d in ipairs(item:GetDescendants()) do
+				for _, d in item:GetDescendants() do
 					if d.Name == "ClaimButton" and d:IsA("ImageButton") then
 						claim = d;
 						break;
@@ -1021,7 +1021,7 @@ caller(function()
 			if not rl then
 				return;
 			end;
-			for _, item in ipairs(rl:GetChildren()) do
+			for _, item in rl:GetChildren() do
 				pt_tryHookItem(item);
 			end;
 			rl.ChildAdded:Connect(function(c)
@@ -1070,7 +1070,7 @@ caller(function()
 			end;
 			local cf = slot:FindFirstChild("Claim");
 			if not (cf and cf:IsA("Frame")) then
-				for _, d in ipairs(slot:GetDescendants()) do
+				for _, d in slot:GetDescendants() do
 					if d.Name == "Claim" and d:IsA("Frame") then
 						cf = d;
 						break;
@@ -1082,7 +1082,7 @@ caller(function()
 			end;
 			local btn = cf:FindFirstChild("Claim");
 			if not (btn and btn:IsA("ImageButton")) then
-				for _, d in ipairs(cf:GetDescendants()) do
+				for _, d in cf:GetDescendants() do
 					if d.Name == "Claim" and d:IsA("ImageButton") then
 						btn = d;
 						break;
@@ -1116,7 +1116,7 @@ caller(function()
 				return;
 			end;
 			bp_gridHooked[grid] = true;
-			for _, child in ipairs(grid:GetChildren()) do
+			for _, child in grid:GetChildren() do
 				if child:IsA("ImageLabel") then
 					bp_hookSlot(child);
 				end;

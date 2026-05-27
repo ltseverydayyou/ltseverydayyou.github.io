@@ -533,7 +533,7 @@ local skippedCoreGuiTypes = {
 	[Enum.CoreGuiType.EmotesMenu] = true,
 	[Enum.CoreGuiType.Chat] = true,
 }
-for _, coreType in ipairs(coreTypes) do
+for _, coreType in coreTypes do
 	if tostring(coreType.Name) == "ExperienceShop" then
 		skippedCoreGuiTypes[coreType] = true
 		break
@@ -544,7 +544,7 @@ local function enableCoreGui()
 	if not starterGuiService then
 		return
 	end
-	for _, t in ipairs(coreTypes) do
+	for _, t in coreTypes do
 		if not skippedCoreGuiTypes[t] then
 			local ok = pcall(function()
 				starterGuiService:SetCoreGuiEnabled(t, true)
@@ -574,7 +574,7 @@ local function applyLpProps(lp)
 	if not lp then
 		return
 	end
-	for k, v in pairs(desiredLpProps) do
+	for k, v in desiredLpProps do
 		if lp[k] ~= v then
 			lp[k] = v
 		end
@@ -624,7 +624,7 @@ end);]]
 			nf.ChildAdded:Connect(function(f)
 				safeCall(function()
 					if f:IsA("Frame") then
-						for _, btn in ipairs(f:GetChildren()) do
+						for _, btn in f:GetChildren() do
 							if btn:IsA("TextButton") then
 								local txt = btn.Text:lower();
 								if txt == "accept" or txt == "decline" then
@@ -741,12 +741,12 @@ safeCall(function()
 						end);
 					end);
 				end;
-				for _, g in ipairs(codex:GetChildren()) do
+				for _, g in codex:GetChildren() do
 					if g:IsA("ScreenGui") then
 						g.DisplayOrder = math.huge;
 					end;
 				end;
-				for _, c in ipairs(gui:GetDescendants()) do
+				for _, c in gui:GetDescendants() do
 					if c.Name:lower() == "content" then
 						c.ChildAdded:Connect(function(ch)
 							safeCall(function()

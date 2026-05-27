@@ -623,7 +623,7 @@ end
 local function trackedCount()
 	local n = 0
 
-	for obj in pairs(state.tracked) do
+	for obj in state.tracked do
 		if isInstance(obj) then
 			n += 1
 		end
@@ -1020,7 +1020,7 @@ local function startWatchdog()
 
 		local active = false
 
-		for obj, cfg in pairs(state.tracked) do
+		for obj, cfg in state.tracked do
 			if not isInstance(obj) or cfg.dead then
 				state.tracked[obj] = nil
 				state.locked[obj] = nil
@@ -1030,7 +1030,7 @@ local function startWatchdog()
 			else
 				active = true
 
-				for prop, val in pairs(cfg.properties) do
+				for prop, val in cfg.properties do
 					enforceTrackedProperty(obj, prop, val)
 					clearPending(obj, prop)
 				end
@@ -1057,7 +1057,7 @@ function protector.lockInstance(obj, props)
 		dead = false,
 	}
 
-	for prop, val in pairs(props) do
+	for prop, val in props do
 		setApplying(obj, prop, true)
 		setProperty(obj, prop, val)
 		setApplying(obj, prop, false)
@@ -1066,7 +1066,7 @@ function protector.lockInstance(obj, props)
 	if not state.locked[obj] then
 		state.locked[obj] = true
 
-		for prop in pairs(props) do
+		for prop in props do
 			local ok, sig = pcall(function()
 				return obj:GetPropertyChangedSignal(prop)
 			end)
@@ -1521,7 +1521,7 @@ function protector.restore()
 			return
 		end
 
-		for name, fn in pairs(names) do
+		for name, fn in names do
 			rawset(env, name, fn)
 		end
 	end
@@ -1573,7 +1573,7 @@ function protector.cleanup(obj)
 		return
 	end
 
-	for object, list in pairs(state.connections) do
+	for object, list in state.connections do
 		for i = 1, #list do
 			pcall(function()
 				list[i]:Disconnect()
@@ -1585,15 +1585,15 @@ function protector.cleanup(obj)
 		state.connections[object] = nil
 	end
 
-	for object in pairs(state.tracked) do
+	for object in state.tracked do
 		state.tracked[object] = nil
 	end
 
-	for object in pairs(state.locked) do
+	for object in state.locked do
 		state.locked[object] = nil
 	end
 
-	for object in pairs(state.descWatching) do
+	for object in state.descWatching do
 		state.descWatching[object] = nil
 	end
 

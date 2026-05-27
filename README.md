@@ -46,7 +46,7 @@ if not game:IsLoaded() then
 	game.Loaded:Wait()
 end
 
-for _, url in ipairs(urls) do
+for _, url in urls do
 	run(url)
 end
 ```
