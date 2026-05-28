@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-05-27T22:56:50.313Z",
+  "fetchedAt": "2026-05-28T00:06:11.010Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -494,13 +494,13 @@
     {
       "_id": "662ae7576238b7f2082f253b",
       "title": "Wave",
-      "version": "NEW-1.3.0",
-      "updatedDate": "05/24/2026 at 8:45 PM UTC",
+      "version": "NEW-1.3.1",
+      "updatedDate": "05/27/2026 at 11:49 PM UTC",
       "uncStatus": true,
       "free": false,
       "detected": true,
-      "rbxversion": "version-2b1721d47abf49aa",
-      "updateStatus": false,
+      "rbxversion": "version-460909c4fe904aae",
+      "updateStatus": true,
       "websitelink": "https://getwave.gg",
       "discordlink": "https://discord.gg/rARhPpN7fY",
       "beta": false,
