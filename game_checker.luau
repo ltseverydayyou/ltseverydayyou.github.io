@@ -721,7 +721,6 @@ caller(function()
 		task.spawn(function()
 			local gv = getgenv();
 			gv.visualizer = gv.visualizer or {};
-			gv.visualizer.mode = "VIM";
 			gv.visualizer.path = {
 				workspace:FindFirstChild("Balls", true),
 				workspace:FindFirstChild("TrainingBalls", true)
