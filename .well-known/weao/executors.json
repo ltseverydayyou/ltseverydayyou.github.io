@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-05-29T01:32:50.725Z",
+  "fetchedAt": "2026-05-29T14:09:43.162Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -525,7 +525,7 @@
         "features": []
       },
       "longestRunning": true,
-      "clientmods": false,
+      "clientmods": true,
       "trackerId": "WEAO2c8e5827",
       "hidden": false,
       "slug": {
@@ -541,7 +541,8 @@
           "https://cdn.weao.gg/slug/wave/screenshot6.png",
           "https://cdn.weao.gg/slug/wave/screenshot7.png"
         ]
-      }
+      },
+      "detectionReason": "Last banwave: May 26"
     },
     {
       "_id": "66ee1eafe70ddffe81ca0f0b",
@@ -1323,11 +1324,12 @@
       "recommendedReason": {
         "features": []
       },
-      "clientmods": false,
+      "clientmods": true,
       "trackerId": "WEAO4a1j38nv",
       "hasIssues": false,
       "hidden": false,
-      "websitelink": "https://getmadium.net/"
+      "websitelink": "https://getmadium.net/",
+      "detectionReason": "Last banwave: May 26"
     },
     {
       "_id": "6a0ea99cfd26ad90bea624eb",
