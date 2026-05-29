@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-05-29T17:50:44.307Z",
+  "fetchedAt": "2026-05-29T20:31:00.068Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -1254,13 +1254,13 @@
     {
       "_id": "69cace8670a25244103ea819",
       "title": "Cosmic",
-      "version": "1.1.9.2",
-      "updatedDate": "03/30/2026 at 7:45 PM UTC",
+      "version": "0.723.2.0.0-live",
+      "updatedDate": "05/29/2026 at 7:57 PM UTC",
       "uncStatus": true,
       "free": false,
       "detected": true,
-      "rbxversion": "version-6776addb8fbc4d17",
-      "updateStatus": false,
+      "rbxversion": "version-460909c4fe904aae",
+      "updateStatus": true,
       "discordlink": "https://discord.gg/getcosmic",
       "beta": false,
       "platform": "Windows",
@@ -1268,7 +1268,7 @@
       "roleId": "1484755192141578321",
       "index": 7,
       "unlinked": false,
-      "purchaselink": "",
+      "purchaselink": "https://cosmic.best",
       "elementCertified": false,
       "cost": "$9.99 Lifetime",
       "decompiler": true,
@@ -1293,7 +1293,8 @@
         "owner": "Savage"
       },
       "hasIssues": false,
-      "raknet": false
+      "raknet": false,
+      "websitelink": "https://cosmic.best"
     },
     {
       "_id": "69f25c438d1db84cb50c8cfe",
