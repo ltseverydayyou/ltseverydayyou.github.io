@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-05-29T22:38:44.020Z",
+  "fetchedAt": "2026-05-30T07:42:28.203Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -186,8 +186,8 @@
     {
       "_id": "67c8a2cb376f9e598b466705",
       "title": "SirHurt",
-      "version": "V5.436",
-      "updatedDate": "05/29/2026 at 8:54 PM UTC",
+      "version": "V5.437",
+      "updatedDate": "05/30/2026 at 7:40 AM UTC",
       "uncStatus": true,
       "free": false,
       "detected": true,
@@ -323,8 +323,8 @@
     {
       "_id": "67576d22d9181811c292bb79",
       "title": "Volt",
-      "version": "1.2.21.0",
-      "updatedDate": "05/27/2026 at 10:01 PM UTC",
+      "version": "1.2.21.1",
+      "updatedDate": "05/30/2026 at 6:31 AM UTC",
       "uncStatus": true,
       "free": false,
       "detected": true,
