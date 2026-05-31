@@ -1,19 +1,21 @@
-local globalEnv = getgenv and getgenv() or _G or {};
-local sharedEnv = rawget(_G, "shared");
-local cacheHost = type(sharedEnv) == "table" and sharedEnv or (type(globalEnv) == "table" and globalEnv or nil);
+local globalEnv = (getgenv and getgenv()) or _G or {}
+local sharedEnv = rawget(_G, "shared")
+local cacheHost = type(sharedEnv) == "table" and sharedEnv or (type(globalEnv) == "table" and globalEnv or nil)
+
 if cacheHost then
-	local cached = rawget(cacheHost, "__lt_service_resolver");
+	local cached = rawget(cacheHost, "__lt_service_resolver")
 	if type(cached) == "table" then
-		return cached;
-	end;
-end;
+		return cached
+	end
+end
+
 local __lt = {
-	cr = type(cloneref) == "function" and cloneref or nil,
+	cr = type(cloneref) == "function" and cloneref or nil;
 	svc = {
-		cache = {},
-		fallback = {},
-		invalid = {}
-	}
+		cache = {};
+		fallback = {};
+		invalid = {};
+	};
 };
 function __lt.sv(value)
 	return typeof(value) == "Instance";
@@ -46,7 +48,7 @@ end;
 function __lt.gs(name)
 	local cached = __lt.svc.cache[name];
 	local isFallback = __lt.svc.fallback[name] == true;
-	if __lt.sv(cached) and (not isFallback) then
+	if __lt.sv(cached) and not isFallback then
 		return cached;
 	end;
 	local service = __lt.fs(name);
@@ -128,7 +130,16 @@ function __lt.cs(name, refFn)
 	return nil;
 end;
 function __lt.ig(method)
-	return method == "FindFirstChild" or method == "WaitForChild" or method == "FindFirstChildOfClass" or method == "FindFirstChildWhichIsA" or method == "FindFirstAncestor" or method == "FindFirstAncestorOfClass" or method == "FindFirstAncestorWhichIsA" or method == "GetChildren" or method == "GetDescendants" or method == "QueryDescendants";
+	return method == "FindFirstChild"
+		or method == "WaitForChild"
+		or method == "FindFirstChildOfClass"
+		or method == "FindFirstChildWhichIsA"
+		or method == "FindFirstAncestor"
+		or method == "FindFirstAncestorOfClass"
+		or method == "FindFirstAncestorWhichIsA"
+		or method == "GetChildren"
+		or method == "GetDescendants"
+		or method == "QueryDescendants";
 end;
 function __lt.cm(name, method, ...)
 	local service = __lt.cs(name, __lt.cr);
@@ -141,7 +152,9 @@ function __lt.cm(name, method, ...)
 	end;
 	return fn(service, ...);
 end;
+
 if cacheHost then
-	cacheHost.__lt_service_resolver = __lt;
-end;
-return __lt;
+	cacheHost.__lt_service_resolver = __lt
+end
+
+return __lt
