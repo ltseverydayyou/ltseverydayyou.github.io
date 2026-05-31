@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-05-31T14:18:13.314Z",
+  "fetchedAt": "2026-05-31T23:03:11.949Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -376,8 +376,8 @@
     {
       "_id": "680eaddf8b44717c060fcf8d",
       "title": "Velocity",
-      "version": "0.9.9",
-      "updatedDate": "05/30/2026 at 11:11 AM UTC",
+      "version": "1.0.0",
+      "updatedDate": "05/31/2026 at 10:10 PM UTC",
       "uncStatus": true,
       "free": true,
       "detected": true,
@@ -1268,7 +1268,7 @@
       "roleId": "1484755192141578321",
       "index": 7,
       "unlinked": false,
-      "purchaselink": "https://cosmic.best",
+      "purchaselink": "https://wyv.gg/product/cosmic-executor/ref/weao/",
       "elementCertified": false,
       "cost": "$9.99 Lifetime",
       "decompiler": true,
