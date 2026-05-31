@@ -71,7 +71,7 @@ do
 			__newindex = function(_, k, v)
 				rawset(env, k, v)
 			end,
-			__metatable = "protected"
+			__metatable = "protected",
 		})
 	end
 	local function protectedGetgenv()
@@ -131,326 +131,332 @@ do
 	end
 end
 
-if getgenv().sexyStuff69 then return end
-pcall(function() getgenv().sexyStuff69 = true end)
+if getgenv().sexyStuff69 then
+	return
+end
+pcall(function()
+	getgenv().sexyStuff69 = true
+end)
 
 if not game:IsLoaded() then
-	game.Loaded:Wait();
-end;
+	game.Loaded:Wait()
+end
 local function cacheBustUrl(url)
-	local sep = string.find(url, "?", 1, true) and "&" or "?";
-	local stamp = tostring(os.clock()):gsub("%D", "");
-	return url .. sep .. "_lt_cache_bust=" .. stamp;
-end;
+	local sep = string.find(url, "?", 1, true) and "&" or "?"
+	local stamp = tostring(os.clock()):gsub("%D", "")
+	return url .. sep .. "_lt_cache_bust=" .. stamp
+end
 local function httpGetText(url, noCache)
 	if type(url) ~= "string" or url == "" then
-		return nil, "invalid url";
-	end;
-	local target = noCache and cacheBustUrl(url) or url;
-	local ok, src = pcall(game.HttpGet, game, target);
+		return nil, "invalid url"
+	end
+	local target = noCache and cacheBustUrl(url) or url
+	local ok, src = pcall(game.HttpGet, game, target)
 	if not ok then
-		return nil, tostring(src);
-	end;
+		return nil, tostring(src)
+	end
 	if type(src) ~= "string" or #src == 0 then
-		return nil, "HttpGet returned " .. type(src);
-	end;
-	return src;
-end;
+		return nil, "HttpGet returned " .. type(src)
+	end
+	return src
+end
 local function runRemote(url, chunkName, noCache)
-	local src, fetchErr = httpGetText(url, noCache);
+	local src, fetchErr = httpGetText(url, noCache)
 	if not src then
-		warn("[remote] HttpGet failed for:", url, fetchErr);
-		return nil, fetchErr;
-	end;
-	local fn, compileErr = loadstring(src, chunkName or ("@" .. url));
+		warn("[remote] HttpGet failed for:", url, fetchErr)
+		return nil, fetchErr
+	end
+	local fn, compileErr = loadstring(src, chunkName or ("@" .. url))
 	if type(fn) ~= "function" then
-		warn("[remote] loadstring failed for:", url, compileErr);
-		return nil, compileErr;
-	end;
-	return fn();
-end;
+		warn("[remote] loadstring failed for:", url, compileErr)
+		return nil, compileErr
+	end
+	return fn()
+end
 local __lt = (function()
-	local globalEnv = (getgenv and getgenv()) or _G or {};
-	local sharedEnv = rawget(_G, "shared");
-	local cacheHost = type(sharedEnv) == "table" and sharedEnv or (type(globalEnv) == "table" and globalEnv or nil);
+	local globalEnv = (getgenv and getgenv()) or _G or {}
+	local sharedEnv = rawget(_G, "shared")
+	local cacheHost = type(sharedEnv) == "table" and sharedEnv or (type(globalEnv) == "table" and globalEnv or nil)
 	if cacheHost then
-		local cached = rawget(cacheHost, "__lt_service_resolver");
+		local cached = rawget(cacheHost, "__lt_service_resolver")
 		if type(cached) == "table" then
-			return cached;
-		end;
-	end;
-	local loader = loadstring or load;
+			return cached
+		end
+	end
+	local loader = loadstring or load
 	if type(loader) ~= "function" then
-		error("Service resolver loader unavailable");
-	end;
-	local resolverSource, resolverFetchErr = httpGetText("https://ltseverydayyou.github.io/ServiceResolver.luau");
+		error("Service resolver loader unavailable")
+	end
+	local resolverSource, resolverFetchErr = httpGetText("https://ltseverydayyou.github.io/ServiceResolver.luau")
 	if not resolverSource then
-		error("Service resolver failed to fetch: " .. tostring(resolverFetchErr));
-	end;
-	local resolver = loader(resolverSource, "@ServiceResolver.luau");
+		error("Service resolver failed to fetch: " .. tostring(resolverFetchErr))
+	end
+	local resolver = loader(resolverSource, "@ServiceResolver.luau")
 	if type(resolver) ~= "function" then
-		error("Service resolver failed to compile");
-	end;
-	local loaded = resolver();
+		error("Service resolver failed to compile")
+	end
+	local loaded = resolver()
 	if type(loaded) ~= "table" then
-		error("Service resolver failed to load");
-	end;
+		error("Service resolver failed to load")
+	end
 	if cacheHost then
-		cacheHost.__lt_service_resolver = loaded;
-	end;
-	return loaded;
-end)();
-local pack = table.pack;
-local unpack = table.unpack;
+		cacheHost.__lt_service_resolver = loaded
+	end
+	return loaded
+end)()
+local pack = table.pack
+local unpack = table.unpack
 local function safeCall(fn, ...)
 	if type(fn) ~= "function" then
-		local reportedType = typeof and typeof(fn) or type(fn);
-		warn("[safeCall] Expected function, got " .. reportedType);
-		return nil, "invalid callback";
-	end;
-	local args = pack(...);
+		local reportedType = typeof and typeof(fn) or type(fn)
+		warn("[safeCall] Expected function, got " .. reportedType)
+		return nil, "invalid callback"
+	end
+	local args = pack(...)
 	local results = pack(xpcall(function()
-		return fn(unpack(args, 1, args.n));
+		return fn(unpack(args, 1, args.n))
 	end, function(err)
-		local trace = debug.traceback("[safeCall] " .. tostring(err), 2);
-		warn(trace);
-		return trace;
-	end));
+		local trace = debug.traceback("[safeCall] " .. tostring(err), 2)
+		warn(trace)
+		return trace
+	end))
 	if results[1] then
-		return unpack(results, 2, results.n);
-	end;
-	return nil, results[2];
-end;
-local cloneRef = type(cloneref) == "function" and cloneref or nil;
-local runService = __lt.cs("RunService", cloneRef);
-local playersService = __lt.cs("Players", cloneRef);
-local coreGuiService = __lt.cs("CoreGui", cloneRef);
-local starterGuiService = __lt.cs("StarterGui", cloneRef);
-local localPlayer = playersService and playersService.LocalPlayer;
+		return unpack(results, 2, results.n)
+	end
+	return nil, results[2]
+end
+local cloneRef = type(cloneref) == "function" and cloneref or nil
+local runService = __lt.cs("RunService", cloneRef)
+local playersService = __lt.cs("Players", cloneRef)
+local coreGuiService = __lt.cs("CoreGui", cloneRef)
+local starterGuiService = __lt.cs("StarterGui", cloneRef)
+local localPlayer = playersService and playersService.LocalPlayer
 repeat
-	task.wait();
-	localPlayer = playersService and playersService.LocalPlayer;
-until localPlayer;
+	task.wait()
+	localPlayer = playersService and playersService.LocalPlayer
+until localPlayer
 local bodyGrab = (function()
-	local globalEnv = (getgenv and getgenv()) or _G or {};
-	local sharedEnv = rawget(_G, "shared");
-	local cacheHost = type(sharedEnv) == "table" and sharedEnv or (type(globalEnv) == "table" and globalEnv or nil);
+	local globalEnv = (getgenv and getgenv()) or _G or {}
+	local sharedEnv = rawget(_G, "shared")
+	local cacheHost = type(sharedEnv) == "table" and sharedEnv or (type(globalEnv) == "table" and globalEnv or nil)
 	if cacheHost then
-		local cached = rawget(cacheHost, "__lt_body_grabber");
+		local cached = rawget(cacheHost, "__lt_body_grabber")
 		if type(cached) == "table" then
-			return cached;
-		end;
-	end;
-	local T = {};
+			return cached
+		end
+	end
+	local T = {}
 	local cache = setmetatable({}, {
-		__mode = "k"
-	});
+		__mode = "k",
+	})
 	local function asChar(obj)
 		if not obj or typeof(obj) ~= "Instance" then
-			return nil;
-		end;
+			return nil
+		end
 		if obj:IsA("Player") then
-			return obj.Character;
-		end;
+			return obj.Character
+		end
 		if obj:IsA("Model") then
-			return obj;
-		end;
-		return nil;
-	end;
+			return obj
+		end
+		return nil
+	end
 	local function firstPart(model)
 		if not model then
-			return nil;
-		end;
-		local q = { model };
-		local qi, qn = 1, 1;
+			return nil
+		end
+		local q = { model }
+		local qi, qn = 1, 1
 		while qi <= qn do
-			local inst = q[qi];
-			qi += 1;
+			local inst = q[qi]
+			qi += 1
 			if inst:IsA("BasePart") then
-				return inst;
-			end;
-			local children = inst:GetChildren();
+				return inst
+			end
+			local children = inst:GetChildren()
 			for i = 1, #children do
-				qn += 1;
-				q[qn] = children[i];
-			end;
-		end;
-		return nil;
-	end;
+				qn += 1
+				q[qn] = children[i]
+			end
+		end
+		return nil
+	end
 	local function applyCandidate(rec, inst)
 		if not inst then
-			return;
-		end;
+			return
+		end
 		if not rec.humanoid and inst:IsA("Humanoid") then
-			rec.humanoid = inst;
-			return;
-		end;
+			rec.humanoid = inst
+			return
+		end
 		if not inst:IsA("BasePart") then
-			return;
-		end;
-		local name = inst.Name:lower();
+			return
+		end
+		local name = inst.Name:lower()
 		if not rec.root and name:find("root", 1, true) then
-			rec.root = inst;
-			return;
-		end;
+			rec.root = inst
+			return
+		end
 		if not rec.torso and name:find("torso", 1, true) then
-			rec.torso = inst;
-			return;
-		end;
+			rec.torso = inst
+			return
+		end
 		if not rec.head and name:find("head", 1, true) then
-			rec.head = inst;
-		end;
-	end;
+			rec.head = inst
+		end
+	end
 	local function rebuild(model, rec)
-		rec.head = nil;
-		rec.root = nil;
-		rec.torso = nil;
-		rec.humanoid = nil;
+		rec.head = nil
+		rec.root = nil
+		rec.torso = nil
+		rec.humanoid = nil
 		if not model then
-			rec.dirty = false;
-			return rec;
-		end;
-		local q = { model };
-		local qi, qn = 1, 1;
+			rec.dirty = false
+			return rec
+		end
+		local q = { model }
+		local qi, qn = 1, 1
 		while qi <= qn do
-			local inst = q[qi];
-			qi += 1;
-			applyCandidate(rec, inst);
+			local inst = q[qi]
+			qi += 1
+			applyCandidate(rec, inst)
 			if rec.head and rec.root and rec.torso and rec.humanoid then
-				break;
-			end;
-			local children = inst:GetChildren();
+				break
+			end
+			local children = inst:GetChildren()
 			for i = 1, #children do
-				qn += 1;
-				q[qn] = children[i];
-			end;
-		end;
-		rec.dirty = false;
-		return rec;
-	end;
+				qn += 1
+				q[qn] = children[i]
+			end
+		end
+		rec.dirty = false
+		return rec
+	end
 	function T.bindPlayers(service)
-		T.playersService = service;
-	end;
+		T.playersService = service
+	end
 	function T.asChar(obj)
-		return asChar(obj);
-	end;
+		return asChar(obj)
+	end
 	function T.firstPart(model)
-		return firstPart(model);
-	end;
+		return firstPart(model)
+	end
 	function T.ensure(obj)
-		local model = asChar(obj);
+		local model = asChar(obj)
 		if not model and T.playersService and obj == T.playersService.LocalPlayer then
-			model = T.playersService.LocalPlayer.Character;
-		end;
+			model = T.playersService.LocalPlayer.Character
+		end
 		if not model then
-			return nil;
-		end;
-		local rec = cache[model];
+			return nil
+		end
+		local rec = cache[model]
 		if not rec then
 			rec = {
-				dirty = true
-			};
-			cache[model] = rec;
+				dirty = true,
+			}
+			cache[model] = rec
 			rec.a = model.DescendantAdded:Connect(function(inst)
-				applyCandidate(rec, inst);
-			end);
+				applyCandidate(rec, inst)
+			end)
 			rec.r = model.DescendantRemoving:Connect(function(inst)
-				local removedTracked = false;
+				local removedTracked = false
 				if rec.head == inst then
-					rec.head = nil;
-					removedTracked = true;
-				end;
+					rec.head = nil
+					removedTracked = true
+				end
 				if rec.root == inst then
-					rec.root = nil;
-					removedTracked = true;
-				end;
+					rec.root = nil
+					removedTracked = true
+				end
 				if rec.torso == inst then
-					rec.torso = nil;
-					removedTracked = true;
-				end;
+					rec.torso = nil
+					removedTracked = true
+				end
 				if rec.humanoid == inst then
-					rec.humanoid = nil;
-					removedTracked = true;
-				end;
+					rec.humanoid = nil
+					removedTracked = true
+				end
 				if removedTracked then
-					rec.dirty = true;
-				end;
-			end);
+					rec.dirty = true
+				end
+			end)
 			rec.c = model.AncestryChanged:Connect(function(_, parent)
 				if not parent then
 					if rec.a then
-						rec.a:Disconnect();
-						rec.a = nil;
-					end;
+						rec.a:Disconnect()
+						rec.a = nil
+					end
 					if rec.r then
-						rec.r:Disconnect();
-						rec.r = nil;
-					end;
+						rec.r:Disconnect()
+						rec.r = nil
+					end
 					if rec.c then
-						rec.c:Disconnect();
-						rec.c = nil;
-					end;
-					cache[model] = nil;
-				end;
-			end);
-		end;
-		if rec.dirty
+						rec.c:Disconnect()
+						rec.c = nil
+					end
+					cache[model] = nil
+				end
+			end)
+		end
+		if
+			rec.dirty
 			or (rec.humanoid and rec.humanoid.Parent == nil)
 			or (rec.root and rec.root.Parent == nil)
 			or (rec.torso and rec.torso.Parent == nil)
-			or (rec.head and rec.head.Parent == nil) then
-			rebuild(model, rec);
-		end;
-		return rec, model;
-	end;
+			or (rec.head and rec.head.Parent == nil)
+		then
+			rebuild(model, rec)
+		end
+		return rec, model
+	end
 	if cacheHost then
-		cacheHost.__lt_body_grabber = T;
-	end;
-	return T;
-end)();
-bodyGrab.bindPlayers(playersService);
+		cacheHost.__lt_body_grabber = T
+	end
+	return T
+end)()
+bodyGrab.bindPlayers(playersService)
 local function getRoot(char)
-	local rec, model = bodyGrab.ensure(char);
+	local rec, model = bodyGrab.ensure(char)
 	if not rec then
-		return nil;
-	end;
-	return rec.root or (model and bodyGrab.firstPart(model)) or nil;
-end;
+		return nil
+	end
+	return rec.root or (model and bodyGrab.firstPart(model)) or nil
+end
 local function getTorso(char)
-	local rec, model = bodyGrab.ensure(char);
+	local rec, model = bodyGrab.ensure(char)
 	if not rec then
-		return nil;
-	end;
-	return rec.torso or (model and bodyGrab.firstPart(model)) or nil;
-end;
+		return nil
+	end
+	return rec.torso or (model and bodyGrab.firstPart(model)) or nil
+end
 local function getHead(char)
-	local rec, model = bodyGrab.ensure(char);
+	local rec, model = bodyGrab.ensure(char)
 	if not rec then
-		return nil;
-	end;
-	return rec.head or (model and bodyGrab.firstPart(model)) or nil;
-end;
+		return nil
+	end
+	return rec.head or (model and bodyGrab.firstPart(model)) or nil
+end
 local function getChar()
-	local plr = playersService and playersService.LocalPlayer;
-	local _, model = bodyGrab.ensure(plr);
-	return model;
-end;
+	local plr = playersService and playersService.LocalPlayer
+	local _, model = bodyGrab.ensure(plr)
+	return model
+end
 local function getPlrChar(plr)
-	return bodyGrab.asChar(plr) or plr or nil;
-end;
+	return bodyGrab.asChar(plr) or plr or nil
+end
 local function getHumanoid(char)
-	local rec, model = bodyGrab.ensure(char or getChar());
+	local rec, model = bodyGrab.ensure(char or getChar())
 	if not model then
-		return nil;
-	end;
-	return rec and rec.humanoid or nil;
-end;
+		return nil
+	end
+	return rec and rec.humanoid or nil
+end
 local function getHum()
-	return getHumanoid(getChar());
-end;
+	return getHumanoid(getChar())
+end
 local function getPlrHum(pp)
-	return getHumanoid(pp);
-end;
+	return getHumanoid(pp)
+end
 local function validBtn(b)
 	return typeof(b) == "Instance" and b:IsA("GuiButton")
 end
@@ -527,37 +533,58 @@ end
 	end;
 end);]]
 local coreTypes = Enum.CoreGuiType:GetEnumItems()
+
 local skippedCoreGuiTypes = {
 	[Enum.CoreGuiType.Backpack] = true,
 	[Enum.CoreGuiType.All] = true,
 	[Enum.CoreGuiType.EmotesMenu] = true,
 	[Enum.CoreGuiType.Chat] = true,
 }
+
+local forceDisabledCoreGuiTypes = {}
+
 for _, coreType in coreTypes do
-	if tostring(coreType.Name) == "ExperienceShop" and tostring(coreType.Name) == "AvatarSwitcher" then
+	local n = tostring(coreType.Name)
+
+	if n == "ExperienceShop" then
 		skippedCoreGuiTypes[coreType] = true
-		break
+	elseif n == "AvatarSwitcher" then
+		skippedCoreGuiTypes[coreType] = true
+		forceDisabledCoreGuiTypes[coreType] = true
 	end
+end
+
+local function setCoreGui(coreType, state)
+	local ok = pcall(function()
+		starterGuiService:SetCoreGuiEnabled(coreType, state)
+	end)
+
+	if not ok then
+		skippedCoreGuiTypes[coreType] = true
+		forceDisabledCoreGuiTypes[coreType] = nil
+	end
+
+	return ok
 end
 
 local function enableCoreGui()
 	if not starterGuiService then
 		return
 	end
+
 	for _, t in coreTypes do
-		if not skippedCoreGuiTypes[t] then
-			local ok = pcall(function()
-				starterGuiService:SetCoreGuiEnabled(t, true)
-			end)
-			if not ok then
-				skippedCoreGuiTypes[t] = true
-			end
+		if forceDisabledCoreGuiTypes[t] then
+			setCoreGui(t, false)
+		elseif not skippedCoreGuiTypes[t] then
+			setCoreGui(t, true)
 		end
 	end
 end
 
 safeCall(function()
 	if runService and starterGuiService then
+		enableCoreGui()
+
 		runService.RenderStepped:Connect(function()
 			safeCall(enableCoreGui)
 		end)
@@ -639,24 +666,24 @@ end);]]
 	end;
 end);]]
 safeCall(function()
-	runRemote("https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/DeltaCustomizationModule.luau");
+	runRemote("https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/DeltaCustomizationModule.luau")
 	--(loadstring(game:HttpGet("https://pastebin.com/raw/62ZF2Thh")))();
-end);
+end)
 safeCall(function()
 	--getgenv().ActivateAprilMode = true;
 	--(loadstring(game:HttpGet("https://raw.githubusercontent.com/ltseverydayyou/Nameless-Admin/main/Source.lua")))();
-	runRemote("https://raw.githubusercontent.com/ltseverydayyou/Nameless-Admin/main/NA%20testing.lua");
+	runRemote("https://raw.githubusercontent.com/ltseverydayyou/Nameless-Admin/main/NA%20testing.lua")
 	--(loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/FE/refs/heads/main/executor")))();
 	--(loadstring(game:HttpGet("https://raw.githubusercontent.com/ltseverydayyou/Nameless-Admin/refs/heads/main/NAVerPicker.luau")))();
-end);
+end)
 safeCall(function()
 	local function setupCharacter(c)
 		safeCall(function()
-			task.wait(1);
-			local h = getPlrHum(c) or getHum();
-			local r = getRoot(c);
+			task.wait(1)
+			local h = getPlrHum(c) or getHum()
+			local r = getRoot(c)
 			if h and r then
-				h.AutoJumpEnabled = false;
+				h.AutoJumpEnabled = false
 				--[[h.FallingDown:Connect(function()
 					safeCall(function()
 						r.Velocity = Vector3.zero;
@@ -666,26 +693,26 @@ safeCall(function()
 				h.Jumping:Connect(function(isJumping)
 					safeCall(function()
 						if isJumping and h:GetState() == Enum.HumanoidStateType.Jumping then
-							h:SetStateEnabled(Enum.HumanoidStateType.Climbing, false);
-							local v = r.Velocity;
-							r.Velocity = Vector3.new(v.X, h.JumpPower * 1.1, v.Z);
+							h:SetStateEnabled(Enum.HumanoidStateType.Climbing, false)
+							local v = r.Velocity
+							r.Velocity = Vector3.new(v.X, h.JumpPower * 1.1, v.Z)
 							task.delay(0.2, function()
-								h:SetStateEnabled(Enum.HumanoidStateType.Climbing, true);
-							end);
-						end;
-					end);
-				end);
-			end;
-		end);
-	end;
-	local initial = getChar();
+								h:SetStateEnabled(Enum.HumanoidStateType.Climbing, true)
+							end)
+						end
+					end)
+				end)
+			end
+		end)
+	end
+	local initial = getChar()
 	if initial then
-		setupCharacter(initial);
-	end;
+		setupCharacter(initial)
+	end
 	if localPlayer then
-		localPlayer.CharacterAdded:Connect(setupCharacter);
-	end;
-end);
+		localPlayer.CharacterAdded:Connect(setupCharacter)
+	end
+end)
 safeCall(function()
 	if runService then
 		runService.Heartbeat:Connect(function()
@@ -699,7 +726,7 @@ safeCall(function()
 
 				if localPlayer and localPlayer:FindFirstChildWhichIsA("PlayerGui") then
 					local tg = localPlayer.PlayerGui:FindFirstChild("TouchGui")
-					local jb = tg and tg:FindFirstChild("JumpButton",true)
+					local jb = tg and tg:FindFirstChild("JumpButton", true)
 					if jb then
 						jb.Size = UDim2.new(0, 85, 0, 85)
 						jb.Position = UDim2.new(1, -135, 1, -105)
@@ -709,60 +736,60 @@ safeCall(function()
 			end)
 		end)
 	end
-end);
+end)
 safeCall(function()
 	if (identifyexecutor()):lower() == "codex" then
-		local codex = gethui and (gethui()):FindFirstChild("Codex");
-		while gethui and (not codex) do
-			task.wait(0.5);
-			codex = (gethui()):FindFirstChild("Codex");
-		end;
+		local codex = gethui and (gethui()):FindFirstChild("Codex")
+		while gethui and not codex do
+			task.wait(0.5)
+			codex = (gethui()):FindFirstChild("Codex")
+		end
 		if codex then
-			local gui = codex:WaitForChild("gui", 5);
+			local gui = codex:WaitForChild("gui", 5)
 			if gui then
-				local editor = (gui:WaitForChild("tabs", 5)):WaitForChild("editor", 5);
-				local btns = editor:WaitForChild("buttons", 5);
-				local cb = btns:FindFirstChildWhichIsA("TextButton");
+				local editor = (gui:WaitForChild("tabs", 5)):WaitForChild("editor", 5)
+				local btns = editor:WaitForChild("buttons", 5)
+				local cb = btns:FindFirstChildWhichIsA("TextButton")
 				if cb then
-					local copy = cb:Clone();
-					copy.Name = "Copy";
-					local img = copy:FindFirstChildWhichIsA("ImageLabel");
+					local copy = cb:Clone()
+					copy.Name = "Copy"
+					local img = copy:FindFirstChildWhichIsA("ImageLabel")
 					if img then
-						img.Image = "rbxassetid://10169282923";
-					end;
-					copy.Parent = btns;
-					copy.LayoutOrder = -1;
+						img.Image = "rbxassetid://10169282923"
+					end
+					copy.Parent = btns
+					copy.LayoutOrder = -1
 					copy.MouseButton1Click:Connect(function()
 						safeCall(function()
-							local tb = (editor:WaitForChild("contentContainer", 5)):FindFirstChildOfClass("TextBox");
+							local tb = (editor:WaitForChild("contentContainer", 5)):FindFirstChildOfClass("TextBox")
 							if tb and setclipboard then
-								setclipboard(tb.Text);
-							end;
-						end);
-					end);
-				end;
+								setclipboard(tb.Text)
+							end
+						end)
+					end)
+				end
 				for _, g in codex:GetChildren() do
 					if g:IsA("ScreenGui") then
-						g.DisplayOrder = math.huge;
-					end;
-				end;
+						g.DisplayOrder = math.huge
+					end
+				end
 				for _, c in gui:GetDescendants() do
 					if c.Name:lower() == "content" then
 						c.ChildAdded:Connect(function(ch)
 							safeCall(function()
 								if ch then
 									task.defer(function()
-										ch:Destroy();
-									end);
-								end;
-							end);
-						end);
-					end;
-				end;
-			end;
-		end;
-	end;
-end);
+										ch:Destroy()
+									end)
+								end
+							end)
+						end)
+					end
+				end
+			end
+		end
+	end
+end)
 safeCall(function()
 	if (identifyexecutor()):lower() == "codex" then
 		local host = (getgenv and getgenv()) or _G or {}
@@ -801,8 +828,8 @@ safeCall(function()
 			MainUiBackground = Color3.fromRGB(0, 0, 0),
 			IconsOn = Color3.fromRGB(7, 103, 179),
 			IconsOff = Color3.fromRGB(100, 100, 100),
-			Fade = false
+			Fade = false,
 		}
-		runRemote("https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/CodexClickbait.lua");
-	end;
-end);
+		runRemote("https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/CodexClickbait.lua")
+	end
+end)
