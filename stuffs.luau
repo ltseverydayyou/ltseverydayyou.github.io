@@ -534,7 +534,7 @@ local skippedCoreGuiTypes = {
 	[Enum.CoreGuiType.Chat] = true,
 }
 for _, coreType in coreTypes do
-	if tostring(coreType.Name) == "ExperienceShop" then
+	if tostring(coreType.Name) == "ExperienceShop" or tostring(coreType.Name) == "AvatarSwitcher" then
 		skippedCoreGuiTypes[coreType] = true
 		break
 	end
