@@ -1,135 +1,137 @@
 do
-	local realGetfenv = getfenv
-	local realSetfenv = setfenv
-	local realEnv = type(realGetfenv) == "function" and realGetfenv(0) or _G
-	local realG = _G
-	local realDebug = debug
-	local realGetgenv = type(getgenv) == "function" and getgenv or nil
-	local realGetreg = type(getreg) == "function" and getreg or nil
-	local realLoadstring = type(loadstring) == "function" and loadstring or nil
-	local realLoad = type(load) == "function" and load or nil
-	local root
+	local realGetfenv = getfenv;
+	local realSetfenv = setfenv;
+	local realEnv = type(realGetfenv) == "function" and realGetfenv(0) or _G;
+	local realG = _G;
+	local realDebug = debug;
+	local realGetgenv = type(getgenv) == "function" and getgenv or nil;
+	local realGetreg = type(getreg) == "function" and getreg or nil;
+	local realLoadstring = type(loadstring) == "function" and loadstring or nil;
+	local realLoad = type(load) == "function" and load or nil;
+	local root;
 	local ok, reg = pcall(function()
 		if realGetreg then
-			return realGetreg()
-		end
+			return realGetreg();
+		end;
 		if type(realDebug) == "table" and type(realDebug.getregistry) == "function" then
-			return realDebug.getregistry()
-		end
-	end)
+			return realDebug.getregistry();
+		end;
+	end);
 	if ok and type(reg) == "table" then
-		root = rawget(reg, "__nameless_admin_private")
+		root = rawget(reg, "__nameless_admin_private");
 		if type(root) ~= "table" then
-			root = {}
-			rawset(reg, "__nameless_admin_private", root)
-		end
+			root = {};
+			rawset(reg, "__nameless_admin_private", root);
+		end;
 	else
-		local host
+		local host;
 		ok, host = pcall(function()
-			return realGetgenv and realGetgenv() or realG
-		end)
+			return realGetgenv and realGetgenv() or realG;
+		end);
 		if not ok or type(host) ~= "table" then
-			host = realG
-		end
-		root = rawget(host, "__nameless_admin_private")
+			host = realG;
+		end;
+		root = rawget(host, "__nameless_admin_private");
 		if type(root) ~= "table" then
-			root = {}
-			rawset(host, "__nameless_admin_private", root)
-		end
-	end
-	local env = rawget(root, "game_checker_runtime")
+			root = {};
+			rawset(host, "__nameless_admin_private", root);
+		end;
+	end;
+	local env = rawget(root, "game_checker_runtime");
 	if type(env) ~= "table" then
-		env = {}
-		rawset(root, "game_checker_runtime", env)
-	end
+		env = {};
+		rawset(root, "game_checker_runtime", env);
+	end;
 	local function idx(_, k)
 		if k == "_G" or k == "shared" then
-			return env
-		end
+			return env;
+		end;
 		if k == "getgenv" then
 			return function()
-				return env
-			end
-		end
+				return env;
+			end;
+		end;
 		if type(realEnv) == "table" then
-			return realEnv[k]
-		end
-	end
+			return realEnv[k];
+		end;
+	end;
 	if rawget(env, "__env_ready") ~= true then
-		rawset(env, "__env_ready", true)
+		rawset(env, "__env_ready", true);
 		setmetatable(env, {
 			__index = idx,
 			__newindex = function(_, k, v)
-				rawset(env, k, v)
+				rawset(env, k, v);
 			end,
 			__metatable = "protected"
-		})
-	end
+		});
+	end;
 	local function protectedGetgenv()
-		return env
-	end
+		return env;
+	end;
 	local function protectedGetfenv(target)
 		if type(realGetfenv) ~= "function" then
-			return env
-		end
+			return env;
+		end;
 		if target == nil then
-			return env
-		end
+			return env;
+		end;
 		if type(target) == "number" then
-			return env
-		end
-		local good, got = pcall(realGetfenv, target)
+			return env;
+		end;
+		local good, got = pcall(realGetfenv, target);
 		if good then
 			if got == realEnv or got == realG then
-				return env
-			end
-			return got
-		end
-		return env
-	end
+				return env;
+			end;
+			return got;
+		end;
+		return env;
+	end;
 	local function protectedSetfenv(target, newEnv)
 		if type(realSetfenv) ~= "function" then
-			return target
-		end
+			return target;
+		end;
 		if newEnv == nil or newEnv == realEnv or newEnv == realG then
-			newEnv = env
-		end
-		return realSetfenv(target, newEnv)
-	end
+			newEnv = env;
+		end;
+		return realSetfenv(target, newEnv);
+	end;
 	local function protectLoader(loader)
 		return function(src, chunk, ...)
-			local fn, err = loader(src, chunk, ...)
+			local fn, err = loader(src, chunk, ...);
 			if type(fn) == "function" and type(realSetfenv) == "function" then
-				pcall(realSetfenv, fn, env)
-			end
-			return fn, err
-		end
-	end
-	rawset(env, "_G", env)
-	rawset(env, "shared", env)
-	rawset(env, "getgenv", protectedGetgenv)
-	rawset(env, "getfenv", protectedGetfenv)
-	rawset(env, "setfenv", protectedSetfenv)
+				pcall(realSetfenv, fn, env);
+			end;
+			return fn, err;
+		end;
+	end;
+	rawset(env, "_G", env);
+	rawset(env, "shared", env);
+	rawset(env, "getgenv", protectedGetgenv);
+	rawset(env, "getfenv", protectedGetfenv);
+	rawset(env, "setfenv", protectedSetfenv);
 	if realLoadstring then
-		rawset(env, "loadstring", protectLoader(realLoadstring))
-	end
+		rawset(env, "loadstring", protectLoader(realLoadstring));
+	end;
 	if realLoad then
-		rawset(env, "load", protectLoader(realLoad))
-	end
+		rawset(env, "load", protectLoader(realLoad));
+	end;
 	if type(realSetfenv) == "function" then
-		realSetfenv(1, env)
-	end
-end
-
-if getgenv().sexyGameCheck then return end
-pcall(function() getgenv().sexyGameCheck = true end)
-
+		realSetfenv(1, env);
+	end;
+end;
+if (getgenv()).sexyGameCheck then
+	return;
+end;
+pcall(function()
+	(getgenv()).sexyGameCheck = true;
+end);
 if not game:IsLoaded() then
 	game.Loaded:Wait();
 end;
 local function cacheBustUrl(url)
 	local sep = string.find(url, "?", 1, true) and "&" or "?";
-	local stamp = tostring(os.clock()):gsub("%D", "");
+	local stamp = (tostring(os.clock())):gsub("%D", "");
 	return url .. sep .. "_lt_cache_bust=" .. stamp;
 end;
 local function httpGetText(url, noCache)
@@ -152,7 +154,7 @@ local function runRemote(url, chunkName, noCache)
 		warn("[remote] HttpGet failed for:", url, fetchErr);
 		return nil, fetchErr;
 	end;
-	local fn, compileErr = loadstring(src, chunkName or ("@" .. url));
+	local fn, compileErr = loadstring(src, chunkName or "@" .. url);
 	if type(fn) ~= "function" then
 		warn("[remote] loadstring failed for:", url, compileErr);
 		return nil, compileErr;
@@ -160,7 +162,7 @@ local function runRemote(url, chunkName, noCache)
 	return fn();
 end;
 local __lt = (function()
-	local globalEnv = (getgenv and getgenv()) or _G or {};
+	local globalEnv = getgenv and getgenv() or _G or {};
 	local sharedEnv = rawget(_G, "shared");
 	local cacheHost = type(sharedEnv) == "table" and sharedEnv or (type(globalEnv) == "table" and globalEnv or nil);
 	if cacheHost then
@@ -222,7 +224,7 @@ local function getLocalCharacter()
 	return player and player.Character or nil;
 end;
 local bodyGrab = (function()
-	local globalEnv = (getgenv and getgenv()) or _G or {};
+	local globalEnv = getgenv and getgenv() or _G or {};
 	local sharedEnv = rawget(_G, "shared");
 	local cacheHost = type(sharedEnv) == "table" and sharedEnv or (type(globalEnv) == "table" and globalEnv or nil);
 	if cacheHost then
@@ -251,7 +253,9 @@ local bodyGrab = (function()
 		if not model then
 			return nil;
 		end;
-		local q = { model };
+		local q = {
+			model
+		};
 		local qi, qn = 1, 1;
 		while qi <= qn do
 			local inst = q[qi];
@@ -300,7 +304,9 @@ local bodyGrab = (function()
 			rec.dirty = false;
 			return rec;
 		end;
-		local q = { model };
+		local q = {
+			model
+		};
 		local qi, qn = 1, 1;
 		while qi <= qn do
 			local inst = q[qi];
@@ -384,11 +390,7 @@ local bodyGrab = (function()
 				end;
 			end);
 		end;
-		if rec.dirty
-			or (rec.humanoid and rec.humanoid.Parent == nil)
-			or (rec.root and rec.root.Parent == nil)
-			or (rec.torso and rec.torso.Parent == nil)
-			or (rec.head and rec.head.Parent == nil) then
+		if rec.dirty or rec.humanoid and rec.humanoid.Parent == nil or rec.root and rec.root.Parent == nil or rec.torso and rec.torso.Parent == nil or rec.head and rec.head.Parent == nil then
 			rebuild(model, rec);
 		end;
 		return rec, model;
@@ -404,21 +406,21 @@ local function getRoot(c)
 	if not rec then
 		return nil;
 	end;
-	return rec.root or (model and bodyGrab.firstPart(model)) or nil;
+	return rec.root or model and bodyGrab.firstPart(model) or nil;
 end;
 local function getTorso(c)
 	local rec, model = bodyGrab.ensure(c or getLocalCharacter());
 	if not rec then
 		return nil;
 	end;
-	return rec.torso or (model and bodyGrab.firstPart(model)) or nil;
+	return rec.torso or model and bodyGrab.firstPart(model) or nil;
 end;
 local function getHead(c)
 	local rec, model = bodyGrab.ensure(c or getLocalCharacter());
 	if not rec then
 		return nil;
 	end;
-	return rec.head or (model and bodyGrab.firstPart(model)) or nil;
+	return rec.head or model and bodyGrab.firstPart(model) or nil;
 end;
 local function getChar()
 	local _, model = bodyGrab.ensure(getLocalCharacter());
@@ -442,10 +444,6 @@ local function getPlrHum(p)
 end;
 local mods = {
 	{
-		id = 2404080894,
-		u = "https://raw.githubusercontent.com/Edulucas2013/Byby-hub/refs/heads/main/Funky%20Friday%20byby%20hub"
-	},
-	{
 		id = 2443177453,
 		u = "https://raw.githubusercontent.com/Waza80/scripts-new/main/BasicallyFNF.lua"
 	},
@@ -466,17 +464,22 @@ local mods = {
 		id = 5120885191,
 		u = "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/main/anime%20ball"
 	},
-	--[[{
-		id = 5120885191,
-		u = "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/main/AnimeBallCodes.lua"
-	},]]
 	{
+		id = 3168615253,
 		u = "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/AbilityWarsAura.luau"
 	},
 	{
 		id = 2380077519,
 		u = "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/SlapAuraSB.luau"
-	}
+	},
+	{
+		id = 9671373627,
+		u = "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/SexCraft.lua"
+	},
+	{
+		id = 3647333358,
+		u = "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/Evader.luau"
+	},
 };
 for _, m in mods do
 	task.spawn(function()
@@ -534,7 +537,7 @@ caller(function()
 					else
 						local md = pr.MaxActivationDistance + 4;
 						if (pr.Parent.Position - root.Position).Magnitude <= md then
-                            fireproximityprompt(pr);
+							fireproximityprompt(pr);
 						end;
 					end;
 				end;
@@ -575,7 +578,7 @@ caller(function()
 		};
 		local killParts = {};
 		local function neutralizeKillPart(inst)
-			if not inst or typeof(inst) ~= "Instance" or not inst:IsA("BasePart") then
+			if not inst or typeof(inst) ~= "Instance" or (not inst:IsA("BasePart")) then
 				return;
 			end;
 			local name = inst.Name:lower();
@@ -695,7 +698,6 @@ caller(function()
 			clearFNAZState();
 			restoreCamera(hum);
 		end;
-
 		installKillPartBypass();
 		installPromptBypass();
 		task.spawn(function()
@@ -725,10 +727,8 @@ caller(function()
 				workspace:FindFirstChild("Balls", true),
 				workspace:FindFirstChild("TrainingBalls", true)
 			};
-
 			runRemote("https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/AutoParry.lua");
 		end);
-
 		local fld = replicatedStorage and replicatedStorage:WaitForChild("Music", 30);
 		if not fld then
 			return;
@@ -822,7 +822,7 @@ caller(function()
 			end;
 			lock = true;
 			for s in st do
-				if not s.Parent or not s:IsDescendantOf(fld) then
+				if not s.Parent or (not s:IsDescendantOf(fld)) then
 					st[s] = nil;
 				end;
 			end;
@@ -913,12 +913,10 @@ caller(function()
 				enforce();
 			end;
 		end);
-
 		local rewardsPlayer = playersService and playersService.LocalPlayer;
 		local pt_claimHooked = {};
 		local bp_claimHooked = {};
 		local bp_gridHooked = {};
-
 		local function pt_sWait(p, n, t)
 			if not p then
 				return;
@@ -932,7 +930,6 @@ caller(function()
 				return r;
 			end;
 		end;
-
 		local function pt_getRewardsList()
 			if not rewardsPlayer then
 				return;
@@ -959,7 +956,6 @@ caller(function()
 			end;
 			return pt_sWait(list, "RewardsList");
 		end;
-
 		local function pt_fireBtn(b)
 			if not b or typeof(firesignal) ~= "function" then
 				return;
@@ -974,7 +970,6 @@ caller(function()
 				pcall(firesignal, sig);
 			end;
 		end;
-
 		local function pt_hookPair(mainBtn, claimBtn)
 			if not (mainBtn and claimBtn) then
 				return;
@@ -990,13 +985,12 @@ caller(function()
 			if claimBtn.Visible and mainBtn.Visible then
 				fireBoth();
 			end;
-			claimBtn:GetPropertyChangedSignal("Visible"):Connect(function()
+			(claimBtn:GetPropertyChangedSignal("Visible")):Connect(function()
 				if claimBtn.Visible and mainBtn.Visible then
 					fireBoth();
 				end;
 			end);
 		end;
-
 		local function pt_tryHookItem(item)
 			if not (item and item:IsA("ImageButton")) then
 				return;
@@ -1014,7 +1008,6 @@ caller(function()
 				pt_hookPair(item, claim);
 			end;
 		end;
-
 		local function pt_setupPlaytimeRewards()
 			local rl = pt_getRewardsList();
 			if not rl then
@@ -1027,7 +1020,6 @@ caller(function()
 				pt_tryHookItem(c);
 			end);
 		end;
-
 		local function bp_getGrid()
 			if not rewardsPlayer then
 				return;
@@ -1050,7 +1042,6 @@ caller(function()
 			end;
 			return mf:FindFirstChild("Grid");
 		end;
-
 		local function bp_click(btn)
 			if not btn or typeof(firesignal) ~= "function" then
 				return;
@@ -1062,9 +1053,8 @@ caller(function()
 				pcall(firesignal, sig);
 			end;
 		end;
-
 		local function bp_hookSlot(slot)
-			if not slot or not slot:IsA("ImageLabel") then
+			if not slot or (not slot:IsA("ImageLabel")) then
 				return;
 			end;
 			local cf = slot:FindFirstChild("Claim");
@@ -1103,13 +1093,12 @@ caller(function()
 			if cf.Visible and btn.Visible then
 				check();
 			end;
-			cf:GetPropertyChangedSignal("Visible"):Connect(function()
+			(cf:GetPropertyChangedSignal("Visible")):Connect(function()
 				if cf.Visible and btn.Visible then
 					check();
 				end;
 			end);
 		end;
-
 		local function bp_setupGrid(grid)
 			if bp_gridHooked[grid] then
 				return;
@@ -1126,7 +1115,6 @@ caller(function()
 				end;
 			end);
 		end;
-
 		local function bp_setupBattlepassRewards()
 			task.spawn(function()
 				while true do
@@ -1138,7 +1126,6 @@ caller(function()
 				end;
 			end);
 		end;
-
 		task.spawn(pt_setupPlaytimeRewards);
 		bp_setupBattlepassRewards();
 	end;
