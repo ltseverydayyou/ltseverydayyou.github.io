@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-06-01T07:03:04.069Z",
+  "fetchedAt": "2026-06-01T19:08:00.895Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -1130,8 +1130,8 @@
     {
       "_id": "6949f9ee0260ad9e36c73700",
       "title": "RbxCli",
-      "version": "1.7.6a-alpha",
-      "updatedDate": "05/29/2026 at 4:44 PM UTC",
+      "version": "1.7.6b-alpha",
+      "updatedDate": "06/01/2026 at 1:46 PM UTC",
       "uncStatus": false,
       "free": false,
       "detected": false,
@@ -1254,8 +1254,8 @@
     {
       "_id": "69cace8670a25244103ea819",
       "title": "Cosmic",
-      "version": "0.723.2.0.1-live",
-      "updatedDate": "05/30/2026 at 8:59 AM UTC",
+      "version": "v0.723.2.0.2-live",
+      "updatedDate": "06/01/2026 at 5:00 PM UTC",
       "uncStatus": true,
       "free": false,
       "detected": true,
