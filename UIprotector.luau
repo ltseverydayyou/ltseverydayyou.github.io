@@ -1186,7 +1186,7 @@ function protector.protectInstance(obj, opts)
 		end)
 	end
 
-	if opts.register ~= false then
+	if opts.register ~= false and next(props) ~= nil then
 		protector.lockInstance(obj, props)
 	end
 
