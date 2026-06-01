@@ -548,7 +548,7 @@ for _, coreType in coreTypes do
 
 	if n == "ExperienceShop" then
 		skippedCoreGuiTypes[coreType] = true
-	elseif n == "AvatarSwitcher" then
+	elseif n == "Captures" then
 		skippedCoreGuiTypes[coreType] = true
 		forceDisabledCoreGuiTypes[coreType] = true
 	end
