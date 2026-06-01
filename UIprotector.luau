@@ -1,5 +1,5 @@
-local build = "shared_hui_singleton_v2"
-local patch = "global_gethui_override_v2"
+local build = "shared_hui_singleton_v3"
+local patch = "global_gethui_override_v3"
 
 local okEnv, globalEnv = pcall(function()
 	if type(getgenv) == "function" then
@@ -113,6 +113,8 @@ local state = {
 	descQueued = setmetatable({}, { __mode = "k" }),
 	descPump = false,
 }
+
+local NIL_PARENT = {}
 
 pcall(function()
 	state.localFuncs.gethui = gethui
@@ -318,6 +320,10 @@ end
 
 local function samePropertyValue(prop, cur, val)
 	if prop == "Parent" then
+		if val == NIL_PARENT or val == nil then
+			return cur == nil
+		end
+
 		return isInstance(val) and sameInstance(cur, val)
 	end
 
@@ -353,7 +359,7 @@ local function enforceTrackedProperty(obj, prop, val)
 		return
 	end
 
-	if prop == "Parent" and not isInstance(val) then
+	if prop == "Parent" and val ~= NIL_PARENT and val ~= nil and not isInstance(val) then
 		return
 	end
 
@@ -363,7 +369,7 @@ local function enforceTrackedProperty(obj, prop, val)
 	end
 
 	setApplying(obj, prop, true)
-	setProperty(obj, prop, val)
+	setProperty(obj, prop, val == NIL_PARENT and nil or val)
 	setApplying(obj, prop, false)
 end
 
@@ -1059,7 +1065,7 @@ function protector.lockInstance(obj, props)
 
 	for prop, val in props do
 		setApplying(obj, prop, true)
-		setProperty(obj, prop, val)
+		setProperty(obj, prop, val == NIL_PARENT and nil or val)
 		setApplying(obj, prop, false)
 	end
 
@@ -1147,6 +1153,97 @@ function protector.harden(obj, opts)
 	end
 
 	return obj
+end
+
+function protector.setArchivableRecursive(obj, value)
+	if not isInstance(obj) then
+		return false
+	end
+
+	local target = value == true
+	pcall(function()
+		obj.Archivable = target
+	end)
+
+	local desc = qDesc(obj)
+	for i = 1, #desc do
+		local d = desc[i]
+		if isInstance(d) then
+			pcall(function()
+				d.Archivable = target
+			end)
+		end
+	end
+
+	return true
+end
+
+function protector.protectInstance(obj, opts)
+	if not isInstance(obj) then
+		return nil
+	end
+
+	opts = type(opts) == "table" and opts or {}
+	local props = {}
+
+	if opts.recursive ~= false then
+		protector.setArchivableRecursive(obj, false)
+	else
+		pcall(function()
+			obj.Archivable = false
+		end)
+	end
+
+	props.Archivable = false
+
+	local protectedName = nil
+	if opts.renameRoot == true then
+		protectedName = type(opts.name) == "string" and opts.name ~= "" and opts.name or protector.randomString(opts.nameKey)
+		pcall(function()
+			obj.Name = protectedName
+		end)
+		if opts.enforceName == true then
+			props.Name = protectedName
+		end
+	end
+
+	if opts.renameDescendants == true then
+		local desc = qDesc(obj)
+		for i = 1, #desc do
+			queueHardenDescendant(desc[i], true)
+		end
+	end
+
+	if opts.enforceParent == true then
+		props.Parent = isInstance(opts.parent) and opts.parent or NIL_PARENT
+	elseif isInstance(opts.parent) then
+		props.Parent = opts.parent
+	end
+
+	if opts.watch == true and not state.descWatching[obj] then
+		state.descWatching[obj] = true
+		bindDescAdd(obj, function(d)
+			queueHardenDescendant(d, opts.renameDescendants == true)
+		end)
+	end
+
+	if opts.register ~= false then
+		protector.lockInstance(obj, props)
+	end
+
+	return obj
+end
+
+function protector.protectCachedInternal(obj, opts)
+	opts = type(opts) == "table" and opts or {}
+	opts.recursive = opts.recursive ~= false
+	opts.renameRoot = opts.renameRoot ~= false
+	opts.renameDescendants = opts.renameDescendants == true
+	opts.enforceParent = opts.enforceParent ~= false
+	opts.parent = nil
+	opts.enforceName = opts.enforceName == true
+
+	return protector.protectInstance(obj, opts)
 end
 
 local function applyScreenDefaults(gui)
@@ -1356,6 +1453,11 @@ function protector.protectUI(gui, opts)
 	opts = type(opts) == "table" and opts or {}
 
 	protector.nativeProtect(gui)
+	protector.harden(gui, {
+		deep = opts.deepArchivable == true,
+		watch = opts.watchArchivable == true,
+		rename = false,
+	})
 
 	if isA(gui, "ScreenGui") then
 		applyScreenDefaults(gui)
