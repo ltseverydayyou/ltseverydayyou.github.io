@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-06-01T19:08:00.895Z",
+  "fetchedAt": "2026-06-01T22:21:07.459Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -48,7 +48,8 @@
       "hasIssues": false,
       "detectionReason": "",
       "raknet": true,
-      "unknown": false
+      "unknown": false,
+      "possibleBanwave": true
     },
     {
       "_id": "67e0d0d87d091e8f8b6d2a35",
@@ -272,7 +273,7 @@
           "https://cdn.weao.gg/slug/cryptic/screenshot4.png"
         ]
       },
-      "hidden": false
+      "hidden": true
     },
     {
       "_id": "671411144ca6cb25603cc3b0",
@@ -586,18 +587,19 @@
           "https://cdn.weao.gg/slug/delta/screenshot4.png"
         ]
       },
-      "raknet": true
+      "raknet": true,
+      "clientmods": true
     },
     {
       "_id": "66ee1fcae70ddffe81ca0f0c",
       "title": "Codex",
       "version": "2.720.1167",
-      "updatedDate": "05/20/2026 at 5:45 PM UTC",
+      "updatedDate": "06/01/2026 at 8:15 PM UTC",
       "uncStatus": true,
       "free": true,
-      "detected": false,
+      "detected": true,
       "rbxversion": "2.720.1167",
-      "updateStatus": true,
+      "updateStatus": false,
       "websitelink": "https://codex.lol",
       "discordlink": "https://discord.gg/codexlol",
       "beta": false,
@@ -630,7 +632,8 @@
           "https://cdn.weao.gg/slug/codex/screenshot3.png",
           "https://cdn.weao.gg/slug/codex/screenshot4.png"
         ]
-      }
+      },
+      "clientmods": true
     },
     {
       "_id": "67e46208b0f3bdbd0d867c29",
@@ -909,7 +912,8 @@
           "https://cdn.weao.gg/slug/delta/screenshot4.png"
         ]
       },
-      "raknet": true
+      "raknet": true,
+      "clientmods": true
     },
     {
       "_id": "688c1b3ccc42af0ea95977e3",
@@ -1095,12 +1099,12 @@
       "_id": "6949f6f40260ad9e36c736ff",
       "title": "Vega X",
       "version": "2.720.1167",
-      "updatedDate": "05/19/2026 at 2:22 AM UTC",
+      "updatedDate": "06/01/2026 at 8:16 PM UTC",
       "uncStatus": true,
       "free": true,
-      "detected": false,
+      "detected": true,
       "rbxversion": "2.720.1167",
-      "updateStatus": true,
+      "updateStatus": false,
       "websitelink": "https://www.vegax.gg",
       "discordlink": "https://www.vegax.gg/discord.html",
       "beta": false,
@@ -1125,7 +1129,8 @@
       "suncPercentage": 98,
       "slug": {
         "fullDescription": "No description currently available. Check back soon!"
-      }
+      },
+      "clientmods": true
     },
     {
       "_id": "6949f9ee0260ad9e36c73700",
