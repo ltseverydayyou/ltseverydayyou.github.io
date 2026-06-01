@@ -517,10 +517,6 @@ local function applyHardenDescendant(d, rename)
 		return
 	end
 
-	pcall(function()
-		d.Archivable = false
-	end)
-
 	if rename then
 		pcall(function()
 			d.Name = protector.randomString()
@@ -1127,10 +1123,6 @@ function protector.harden(obj, opts)
 
 	opts = type(opts) == "table" and opts or {}
 
-	pcall(function()
-		obj.Archivable = false
-	end)
-
 	if opts.rename then
 		pcall(function()
 			obj.Name = protector.randomString()
@@ -1155,29 +1147,6 @@ function protector.harden(obj, opts)
 	return obj
 end
 
-function protector.setArchivableRecursive(obj, value)
-	if not isInstance(obj) then
-		return false
-	end
-
-	local target = value == true
-	pcall(function()
-		obj.Archivable = target
-	end)
-
-	local desc = qDesc(obj)
-	for i = 1, #desc do
-		local d = desc[i]
-		if isInstance(d) then
-			pcall(function()
-				d.Archivable = target
-			end)
-		end
-	end
-
-	return true
-end
-
 function protector.protectInstance(obj, opts)
 	if not isInstance(obj) then
 		return nil
@@ -1185,16 +1154,6 @@ function protector.protectInstance(obj, opts)
 
 	opts = type(opts) == "table" and opts or {}
 	local props = {}
-
-	if opts.recursive ~= false then
-		protector.setArchivableRecursive(obj, false)
-	else
-		pcall(function()
-			obj.Archivable = false
-		end)
-	end
-
-	props.Archivable = false
 
 	local protectedName = nil
 	if opts.renameRoot == true then
@@ -1236,7 +1195,6 @@ end
 
 function protector.protectCachedInternal(obj, opts)
 	opts = type(opts) == "table" and opts or {}
-	opts.recursive = opts.recursive ~= false
 	opts.renameRoot = opts.renameRoot ~= false
 	opts.renameDescendants = opts.renameDescendants == true
 	opts.enforceParent = opts.enforceParent ~= false
@@ -1302,7 +1260,6 @@ local function protectFolder(folder, parent, name)
 	return protector.lockInstance(folder, {
 		Name = type(name) == "string" and name ~= "" and name or protector.randomString("hui"),
 		Parent = parent,
-		Archivable = false,
 	})
 end
 
@@ -1314,7 +1271,6 @@ local function protectScreen(gui, parent, name)
 	return protector.lockInstance(gui, {
 		Name = type(name) == "string" and name ~= "" and name or protector.randomString("screen"),
 		Parent = parent,
-		Archivable = false,
 	})
 end
 
@@ -1327,12 +1283,7 @@ local function protectNativeScreen(gui)
 	if isInstance(par) then
 		protector.lockInstance(gui, {
 			Parent = par,
-			Archivable = false,
 		})
-	else
-		pcall(function()
-			gui.Archivable = false
-		end)
 	end
 
 	return gui
@@ -1453,11 +1404,6 @@ function protector.protectUI(gui, opts)
 	opts = type(opts) == "table" and opts or {}
 
 	protector.nativeProtect(gui)
-	protector.harden(gui, {
-		deep = opts.deepArchivable == true,
-		watch = opts.watchArchivable == true,
-		rename = false,
-	})
 
 	if isA(gui, "ScreenGui") then
 		applyScreenDefaults(gui)
@@ -1473,7 +1419,6 @@ function protector.protectUI(gui, opts)
 
 		local props = {
 			Parent = target,
-			Archivable = false,
 		}
 
 		if not opts.keepName then
@@ -1500,7 +1445,6 @@ function protector.protectUI(gui, opts)
 
 	local props = {
 		Parent = target,
-		Archivable = false,
 	}
 
 	if opts.lockName == true then
@@ -1527,10 +1471,6 @@ function protector.protectName(obj, prop)
 
 	pcall(function()
 		obj[prop or "Name"] = protector.randomString()
-	end)
-
-	pcall(function()
-		obj.Archivable = false
 	end)
 
 	return obj
