@@ -1,15 +1,15 @@
 {
-  "fetchedAt": "2026-06-03T20:39:13.172Z",
+  "fetchedAt": "2026-06-03T23:06:59.429Z",
   "data": {
     "current": {
-      "Windows": "version-460909c4fe904aae",
-      "WindowsDate": "6/2/2026, 11:49:37 PM UTC",
+      "Windows": "version-ad5d3e2906444472",
+      "WindowsDate": "6/3/2026, 8:55:47 PM UTC",
       "WindowsResponse": {
-        "version": "0.723.0.7230785",
-        "clientVersionUpload": "version-460909c4fe904aae",
-        "bootstrapperVersion": "1, 6, 0, 7230785",
-        "timestamp": 1780444177,
-        "type": "revert"
+        "version": "0.724.0.7240739",
+        "clientVersionUpload": "version-ad5d3e2906444472",
+        "bootstrapperVersion": "1, 6, 0, 7240739",
+        "timestamp": 1780520147,
+        "type": "new"
       },
       "Mac": "version-b6bc8a3f6c184e6f",
       "MacDate": "6/2/2026, 10:19:47 PM UTC",
@@ -34,11 +34,11 @@
       }
     },
     "future": {
-      "Windows": "version-hidden",
+      "Windows": "version-ad5d3e2906444472",
       "WindowsDate": "6/3/2026, 5:18:52 PM UTC",
       "WindowsResponse": {
         "version": "0.724.0.7240739",
-        "clientVersionUpload": "version-hidden",
+        "clientVersionUpload": "version-ad5d3e2906444472",
         "bootstrapperVersion": "0, 724, 0, 7240739",
         "timestamp": 1780507132
       },
@@ -52,14 +52,14 @@
       }
     },
     "past": {
-      "Windows": "version-a182ba0d4c6f483b",
-      "WindowsDate": "6/2/2026, 10:19:39 PM UTC",
+      "Windows": "version-460909c4fe904aae",
+      "WindowsDate": "6/2/2026, 11:49:37 PM UTC",
       "WindowsResponse": {
-        "version": "0.724.0.7240735",
-        "clientVersionUpload": "version-a182ba0d4c6f483b",
-        "bootstrapperVersion": "1, 6, 0, 7240735",
-        "timestamp": 1780438779,
-        "type": "new"
+        "version": "0.723.0.7230785",
+        "clientVersionUpload": "version-460909c4fe904aae",
+        "bootstrapperVersion": "1, 6, 0, 7230785",
+        "timestamp": 1780444177,
+        "type": "revert"
       },
       "Mac": "version-789d64d8ac264b79",
       "MacDate": "5/27/2026, 6:05:58 PM UTC",
