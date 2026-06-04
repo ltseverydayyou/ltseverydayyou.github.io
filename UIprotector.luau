@@ -1320,8 +1320,7 @@ function protector.huiGrabber()
 
 	if isInstance(hidden) then
 		if kind == "screen" then
-			state.screenGui = hidden
-			return protectNativeScreen(hidden)
+			return protector.getCustomHui(hidden)
 		end
 
 		if kind == "folder" then
