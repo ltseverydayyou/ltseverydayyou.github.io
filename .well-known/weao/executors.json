@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-06-04T10:47:36.900Z",
+  "fetchedAt": "2026-06-04T17:28:46.309Z",
   "data": [
     {
       "_id": "680eaddf8b44717c060fcf8d",
@@ -1060,8 +1060,8 @@
     {
       "_id": "692794d789eb1e034ad699c3",
       "title": "MacSploit",
-      "version": "724.143",
-      "updatedDate": "06/04/2026 at 7:23 AM UTC",
+      "version": "724.144",
+      "updatedDate": "06/04/2026 at 4:08 PM UTC",
       "uncStatus": true,
       "free": false,
       "detected": false,
@@ -1136,8 +1136,8 @@
     {
       "_id": "6949f9ee0260ad9e36c73700",
       "title": "RbxCli",
-      "version": "1.8.2-free",
-      "updatedDate": "06/03/2026 at 9:34 PM UTC",
+      "version": "1.8.2a-free",
+      "updatedDate": "06/04/2026 at 3:22 PM UTC",
       "uncStatus": false,
       "free": false,
       "detected": false,
@@ -1260,13 +1260,13 @@
     {
       "_id": "69cace8670a25244103ea819",
       "title": "Cosmic",
-      "version": "v0.723.2.0.2-live",
-      "updatedDate": "06/01/2026 at 5:00 PM UTC",
+      "version": "0.724",
+      "updatedDate": "06/04/2026 at 2:18 PM UTC",
       "uncStatus": true,
       "free": false,
       "detected": true,
-      "rbxversion": "version-460909c4fe904aae",
-      "updateStatus": false,
+      "rbxversion": "version-ad5d3e2906444472",
+      "updateStatus": true,
       "discordlink": "https://discord.gg/getcosmic",
       "beta": false,
       "platform": "Windows",
