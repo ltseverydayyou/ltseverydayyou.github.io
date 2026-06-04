@@ -1314,13 +1314,121 @@ function protector.getCustomHui(parent)
 	return protectFolder(folder, parent)
 end
 
+local function hasLayerCollectorAncestor(obj)
+	local parent = getProperty(obj, "Parent")
+	local guard = 0
+
+	while isInstance(parent) and guard < 32 do
+		if isA(parent, "LayerCollector") then
+			return true
+		end
+
+		parent = getProperty(parent, "Parent")
+		guard += 1
+	end
+
+	return false
+end
+
+local function getManagedScreenInHui(folder)
+	if not isInstance(folder) then
+		return nil
+	end
+
+	if isInstance(state.screenGui) and sameInstance(state.screenGui.Parent, folder) then
+		markSharedContainer(state.screenGui, roleScreen)
+		return state.screenGui
+	end
+
+	local existing = findSharedContainer(folder, roleScreen, "ScreenGui")
+	if isInstance(existing) then
+		state.screenGui = existing
+		return protectScreen(existing, folder, existing.Name)
+	end
+
+	local gui = Instance.new("ScreenGui")
+	markSharedContainer(gui, roleScreen)
+	state.screenGui = gui
+
+	return protectScreen(gui, folder)
+end
+
+local function destroyScreenLater(screen)
+	if not (isInstance(screen) and isA(screen, "ScreenGui")) then
+		return
+	end
+
+	if sameInstance(state.rawHui, screen) then
+		state.rawHui = nil
+	end
+
+	if sameInstance(state.screenGui, screen) then
+		state.screenGui = nil
+	end
+
+	local function destroy()
+		pcall(function()
+			screen:Destroy()
+		end)
+	end
+
+	local okTask, taskLib = pcall(function()
+		return task
+	end)
+
+	if okTask and type(taskLib) == "table" and type(taskLib.defer) == "function" then
+		pcall(taskLib.defer, destroy)
+	else
+		destroy()
+	end
+end
+
+local function absorbScreenHui(screen)
+	if not (isInstance(screen) and isA(screen, "ScreenGui")) then
+		return nil
+	end
+
+	local folder = protector.getCustomHui(screen)
+	if not isInstance(folder) then
+		return nil
+	end
+
+	local managedScreen = nil
+
+	for _ = 1, 4 do
+		local kids = tryCall(function()
+			return screen:GetChildren()
+		end)
+
+		if type(kids) ~= "table" or #kids <= 0 then
+			break
+		end
+
+		for i = 1, #kids do
+			local child = kids[i]
+			if isInstance(child) and not sameInstance(child, folder) then
+				local target = folder
+				if not isA(child, "LayerCollector") and not hasLayerCollectorAncestor(folder) then
+					managedScreen = managedScreen or getManagedScreenInHui(folder)
+					target = isInstance(managedScreen) and managedScreen or folder
+				end
+
+				setProperty(child, "Parent", target)
+			end
+		end
+	end
+
+	destroyScreenLater(screen)
+	return folder
+end
+
 function protector.huiGrabber()
 	local hidden = protector.rawHuiGrabber()
 	local kind = huiKind(hidden)
 
 	if isInstance(hidden) then
 		if kind == "screen" then
-			return protector.getCustomHui(hidden)
+			return absorbScreenHui(hidden)
 		end
 
 		if kind == "folder" then
