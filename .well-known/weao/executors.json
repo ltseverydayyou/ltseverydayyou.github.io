@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-06-05T01:37:36.303Z",
+  "fetchedAt": "2026-06-05T06:27:37.922Z",
   "data": [
     {
       "_id": "680eaddf8b44717c060fcf8d",
@@ -1060,8 +1060,8 @@
     {
       "_id": "692794d789eb1e034ad699c3",
       "title": "MacSploit",
-      "version": "724.144",
-      "updatedDate": "06/04/2026 at 4:08 PM UTC",
+      "version": "724.145",
+      "updatedDate": "06/05/2026 at 5:27 AM UTC",
       "uncStatus": true,
       "free": false,
       "detected": false,
