@@ -1,16 +1,16 @@
 {
-  "fetchedAt": "2026-06-06T17:42:04.308Z",
+  "fetchedAt": "2026-06-06T19:37:34.298Z",
   "data": [
     {
       "_id": "680eaddf8b44717c060fcf8d",
       "title": "Velocity",
-      "version": "1.0.0",
-      "updatedDate": "06/04/2026 at 6:30 PM UTC",
+      "version": "1.0.1",
+      "updatedDate": "06/06/2026 at 7:25 PM UTC",
       "uncStatus": true,
       "free": true,
       "detected": true,
-      "rbxversion": "version-460909c4fe904aae",
-      "updateStatus": false,
+      "rbxversion": "version-ad5d3e2906444472",
+      "updateStatus": true,
       "discordlink": "https://discord.com/invite/velocityide",
       "beta": false,
       "platform": "Windows",
