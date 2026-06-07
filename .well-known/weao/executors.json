@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-06-07T05:08:05.664Z",
+  "fetchedAt": "2026-06-07T15:10:59.583Z",
   "data": [
     {
       "_id": "680eaddf8b44717c060fcf8d",
@@ -71,7 +71,7 @@
       "recommendedReason": {
         "features": []
       },
-      "keysystem": false,
+      "keysystem": true,
       "trackerId": "WEAO765cd973",
       "sunc": {
         "suncScrap": "U1qoiWmhnXU4xX8K",
@@ -1173,7 +1173,7 @@
       "detected": false,
       "rbxversion": "version-b6bc8a3f6c184e6f",
       "updateStatus": true,
-      "websitelink": "https://discord.gg/opiumware",
+      "websitelink": "https://use.opiumware.today/",
       "discordlink": "https://discord.gg/opiumware",
       "beta": false,
       "platform": "Mac",
@@ -1203,7 +1203,8 @@
           "https://cdn.weao.gg/slug/opiumware/screenshot1.png"
         ]
       },
-      "hidden": false
+      "hidden": false,
+      "raknet": true
     },
     {
       "_id": "69ac8b5a65ef43372e396781",
