@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-06-08T17:57:14.979Z",
+  "fetchedAt": "2026-06-08T20:28:14.330Z",
   "data": [
     {
       "_id": "680eaddf8b44717c060fcf8d",
@@ -785,7 +785,7 @@
       "_id": "66ee1eafe70ddffe81ca0f0b",
       "title": "Delta",
       "version": "2.721.1108",
-      "updatedDate": "05/21/2026 at 2:01 AM UTC",
+      "updatedDate": "06/08/2026 at 7:11 PM UTC",
       "uncStatus": true,
       "free": true,
       "detected": true,
@@ -1100,12 +1100,12 @@
       "_id": "6949f6f40260ad9e36c736ff",
       "title": "Vega X",
       "version": "2.721.1108",
-      "updatedDate": "06/06/2026 at 4:55 AM UTC",
+      "updatedDate": "06/08/2026 at 7:11 PM UTC",
       "uncStatus": true,
       "free": true,
       "detected": true,
       "rbxversion": "2.721.1108",
-      "updateStatus": true,
+      "updateStatus": false,
       "websitelink": "https://www.vegax.gg",
       "discordlink": "https://www.vegax.gg/discord.html",
       "beta": false,
@@ -1306,8 +1306,8 @@
     {
       "_id": "69f25c438d1db84cb50c8cfe",
       "title": "Madium",
-      "version": "1.5.4",
-      "updatedDate": "06/07/2026 at 6:44 PM UTC",
+      "version": "1.5.5",
+      "updatedDate": "06/08/2026 at 6:07 PM UTC",
       "uncStatus": true,
       "free": true,
       "detected": true,
