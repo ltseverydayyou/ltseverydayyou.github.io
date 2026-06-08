@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-06-07T21:17:38.754Z",
+  "fetchedAt": "2026-06-08T17:57:14.979Z",
   "data": [
     {
       "_id": "680eaddf8b44717c060fcf8d",
@@ -49,12 +49,12 @@
     {
       "_id": "66ee1fcae70ddffe81ca0f0c",
       "title": "Codex",
-      "version": "2.721.1108",
-      "updatedDate": "06/05/2026 at 12:08 AM UTC",
+      "version": "2.723.787",
+      "updatedDate": "06/08/2026 at 2:54 PM UTC",
       "uncStatus": true,
       "free": true,
       "detected": true,
-      "rbxversion": "2.721.1108",
+      "rbxversion": "2.723.787",
       "updateStatus": true,
       "websitelink": "https://codex.lol",
       "discordlink": "https://discord.gg/codexlol",
@@ -252,10 +252,10 @@
         ]
       },
       "hasIssues": false,
-      "detectionReason": "",
+      "detectionReason": "Last banwave: June 1st",
       "raknet": true,
       "unknown": false,
-      "possibleBanwave": true
+      "possibleBanwave": false
     },
     {
       "_id": "680ab721b50548f01fd62715",
