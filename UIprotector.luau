@@ -1,5 +1,5 @@
 local build = "shared_hui_singleton_v4"
-local patch = "global_gethui_override_nodefer_soft_v4"
+local patch = "global_gethui_override_coregui_folder_v5"
 
 local okEnv, globalEnv = pcall(function()
 	if type(getgenv) == "function" then
@@ -898,14 +898,6 @@ function protector.getBaseParent()
 	local coreGui = getService("CoreGui")
 
 	if isInstance(coreGui) then
-		local robloxGui = tryCall(function()
-			return coreGui:FindFirstChild("RobloxGui")
-		end)
-
-		if isInstance(robloxGui) then
-			return robloxGui
-		end
-
 		return coreGui
 	end
 
@@ -915,18 +907,14 @@ end
 local function getFolderParent(parent)
 	if isInstance(parent) then
 		if isRobloxGuiName(parent) then
+			local coreGui = getService("CoreGui")
+			if isInstance(coreGui) then
+				return coreGui
+			end
 			return parent
 		end
 
 		if parent.ClassName == "CoreGui" then
-			local robloxGui = tryCall(function()
-				return parent:FindFirstChild("RobloxGui")
-			end)
-
-			if isInstance(robloxGui) then
-				return robloxGui
-			end
-
 			return parent
 		end
 
