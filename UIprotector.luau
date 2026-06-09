@@ -1,5 +1,5 @@
-local build = "legacy_na_method_test_v1"
-local patch = "old_na_protectui_light_v1"
+local build = "shared_hui_singleton_v3"
+local patch = "global_gethui_override_v3"
 
 local okEnv, globalEnv = pcall(function()
 	if type(getgenv) == "function" then
@@ -22,55 +22,66 @@ if type(sharedEnv) ~= "table" then
 	end)
 end
 
-local key = "__lt_ui_protector"
-local hosts = {}
+local cacheKey = "__lt_ui_protector"
+local cacheHosts = {}
 
-local function addHost(t)
+local function addCacheHost(t)
 	if type(t) ~= "table" then
 		return
 	end
-	for i = 1, #hosts do
-		if hosts[i] == t then
+
+	for i = 1, #cacheHosts do
+		if cacheHosts[i] == t then
 			return
 		end
 	end
-	hosts[#hosts + 1] = t
+
+	cacheHosts[#cacheHosts + 1] = t
 end
 
-addHost(sharedEnv)
-addHost(globalEnv)
+addCacheHost(sharedEnv)
+addCacheHost(globalEnv)
+
 pcall(function()
-	addHost(_G)
-	addHost(rawget(_G, "shared"))
+	addCacheHost(_G)
+
+	local gShared = rawget(_G, "shared")
+	addCacheHost(gShared)
 end)
 
-local function cached()
-	for i = 1, #hosts do
-		local ok, v = pcall(rawget, hosts[i], key)
-		if ok and type(v) == "table" and rawget(v, "ready") == true then
-			return v
+local cacheHost = cacheHosts[1] or globalEnv
+
+local function getCachedProtector()
+	for i = 1, #cacheHosts do
+		local env = cacheHosts[i]
+		local ok, ret = pcall(rawget, env, cacheKey)
+		if ok and type(ret) == "table" and rawget(ret, "ready") == true then
+			return ret
 		end
 	end
+
 	return nil
 end
 
-local old = cached()
-if type(old) == "table" and rawget(old, "build") == build and rawget(old, "patch") == patch then
-	if type(old.installGetHuiOverride) == "function" then
-		pcall(old.installGetHuiOverride)
+local cached = getCachedProtector()
+
+if type(cached) == "table" and rawget(cached, "build") == build and rawget(cached, "patch") == patch then
+	if type(cached.installGetHuiOverride) == "function" then
+		pcall(cached.installGetHuiOverride)
 	end
-	return old
+	return cached
 end
 
-if type(old) == "table" then
+if type(cached) == "table" then
 	pcall(function()
-		if type(old.cleanup) == "function" then
-			old.cleanup()
+		if type(cached.cleanup) == "function" then
+			cached.cleanup()
 		end
 	end)
+
 	pcall(function()
-		if type(old.restore) == "function" then
-			old.restore()
+		if type(cached.restore) == "function" then
+			cached.restore()
 		end
 	end)
 end
@@ -81,232 +92,683 @@ local state = {
 	customHui = nil,
 	screenGui = nil,
 	rawHui = nil,
+	heartbeat = nil,
 	installed = false,
-	cons = setmetatable({}, { __mode = "k" }),
-	tracks = setmetatable({}, { __mode = "k" }),
-	nameMap = {},
-	nameProvider = nil,
-	funcs = {},
-	native = {},
+	last = 0,
+	rate = 0.35,
+	connections = setmetatable({}, { __mode = "k" }),
+	tracked = setmetatable({}, { __mode = "k" }),
+	locked = setmetatable({}, { __mode = "k" }),
+	descWatching = setmetatable({}, { __mode = "k" }),
+	applying = setmetatable({}, { __mode = "k" }),
+	pending = setmetatable({}, { __mode = "k" }),
+	funcCache = {},
+	localFuncs = {},
+	nativeHuiFns = {},
+	sessionNameProvider = nil,
+	sessionNameMap = {},
+	descQueue = {},
+	descHead = 1,
+	descTail = 0,
+	descQueued = setmetatable({}, { __mode = "k" }),
+	descPump = false,
 }
 
+local NIL_PARENT = {}
+
 pcall(function()
-	state.funcs.gethui = gethui
-	state.funcs.gethiddenui = gethiddenui
-	state.funcs.gethiddengui = gethiddengui
-	state.funcs.get_hidden_ui = get_hidden_ui
-	state.funcs.get_hidden_gui = get_hidden_gui
-	state.funcs.cloneref = cloneref
-	state.funcs.compareinstances = compareinstances
-	state.funcs.setreadonly = setreadonly
-	state.funcs.isreadonly = isreadonly
-	state.funcs.protect_gui = protect_gui
-	state.funcs.protectgui = protectgui
-	state.funcs.protect_ui = protect_ui
-	state.funcs.protectui = protectui
+	state.localFuncs.gethui = gethui
+	state.localFuncs.gethiddenui = gethiddenui
+	state.localFuncs.gethiddengui = gethiddengui
+	state.localFuncs.get_hidden_ui = get_hidden_ui
+	state.localFuncs.get_hidden_gui = get_hidden_gui
+	state.localFuncs.cloneref = cloneref
+	state.localFuncs.compareinstances = compareinstances
+	state.localFuncs.setreadonly = setreadonly
+	state.localFuncs.isreadonly = isreadonly
+	state.localFuncs.protect_gui = protect_gui
+	state.localFuncs.protectgui = protectgui
+	state.localFuncs.protect_ui = protect_ui
+	state.localFuncs.protectui = protectui
+	state.localFuncs.getrenv = getrenv
 end)
 
-local function isInst(v)
+local function isInstance(v)
 	return typeof(v) == "Instance"
 end
 
-local function fn(name)
-	local v = state.funcs[name]
+local function tryCall(fn, ...)
+	if type(fn) ~= "function" then
+		return nil
+	end
+
+	local ok, ret = pcall(fn, ...)
+	if ok then
+		return ret
+	end
+
+	return nil
+end
+
+local function captureFunc(name)
+	local v = state.localFuncs[name]
+
 	if type(v) == "function" then
 		return v
 	end
+
 	if type(globalEnv) == "table" then
 		v = rawget(globalEnv, name)
 		if type(v) == "function" then
 			return v
 		end
 	end
+
 	pcall(function()
 		if type(_G) == "table" then
 			v = rawget(_G, name)
 		end
 	end)
+
 	if type(v) == "function" then
 		return v
 	end
+
 	return nil
 end
 
-state.native.gethui = fn("gethui")
-state.native.gethiddenui = fn("gethiddenui")
-state.native.gethiddengui = fn("gethiddengui")
-state.native.get_hidden_ui = fn("get_hidden_ui")
-state.native.get_hidden_gui = fn("get_hidden_gui")
+state.nativeHuiFns.gethui = captureFunc("gethui")
+state.nativeHuiFns.gethiddenui = captureFunc("gethiddenui")
+state.nativeHuiFns.gethiddengui = captureFunc("gethiddengui")
+state.nativeHuiFns.get_hidden_ui = captureFunc("get_hidden_ui")
+state.nativeHuiFns.get_hidden_gui = captureFunc("get_hidden_gui")
+
+local function getFunc(name)
+	local v = state.localFuncs[name]
+
+	if type(v) == "function" then
+		return v
+	end
+
+	if type(state.funcCache[name]) == "function" then
+		return state.funcCache[name]
+	end
+
+	if type(globalEnv) == "table" then
+		v = rawget(globalEnv, name)
+		if type(v) == "function" then
+			state.funcCache[name] = v
+			return v
+		end
+	end
+
+	pcall(function()
+		if type(_G) == "table" then
+			v = rawget(_G, name)
+		end
+	end)
+
+	if type(v) == "function" then
+		state.funcCache[name] = v
+		return v
+	end
+
+	local gr = state.localFuncs.getrenv
+
+	if type(gr) ~= "function" and type(globalEnv) == "table" then
+		gr = rawget(globalEnv, "getrenv")
+	end
+
+	if type(gr) == "function" then
+		local renv = tryCall(gr)
+		if type(renv) == "table" then
+			v = rawget(renv, name)
+			if type(v) == "function" then
+				state.funcCache[name] = v
+				return v
+			end
+		end
+	end
+
+	return nil
+end
 
 function protector.has(name)
-	return type(fn(name)) == "function"
+	return type(getFunc(name)) == "function"
 end
 
 function protector.getFunction(name)
-	return fn(name)
+	return getFunc(name)
 end
 
-local function call(f, ...)
-	if type(f) ~= "function" then
-		return nil
-	end
-	local ok, res = pcall(f, ...)
-	if ok then
-		return res
-	end
-	return nil
-end
+local function cloneRef(v)
+	local fn = getFunc("cloneref")
 
-local function cref(v)
-	local cf = fn("cloneref")
-	if type(cf) == "function" and isInst(v) then
-		local ok, res = pcall(cf, v)
-		if ok and res ~= nil then
-			return res
+	if type(fn) == "function" and isInstance(v) then
+		local ok, ret = pcall(fn, v)
+		if ok and ret ~= nil then
+			return ret
 		end
 	end
+
 	return v
 end
 
-local function svc(name)
-	local ok, res = pcall(function()
-		local cf = fn("cloneref")
-		local s = game:GetService(name)
-		if type(cf) == "function" then
-			return cf(s)
+local function getService(name)
+	local ok, ret = pcall(function()
+		local fn = getFunc("cloneref")
+		if type(fn) == "function" then
+			return fn(game:GetService(name))
 		end
-		return s
+
+		return game:GetService(name)
 	end)
-	if ok and isInst(res) then
-		return res
+
+	if ok and isInstance(ret) then
+		return ret
 	end
+
 	return nil
 end
 
-local function isA(v, cls)
-	if not isInst(v) then
+local function isA(v, class)
+	if not isInstance(v) then
 		return false
 	end
-	local ok, res = pcall(function()
-		return v:IsA(cls)
+
+	local ok, ret = pcall(function()
+		return v:IsA(class)
 	end)
-	return ok and res == true
+
+	return ok and ret == true
 end
 
-local function same(a, b)
+local function sameInstance(a, b)
 	if a == b then
 		return true
 	end
-	local cf = fn("compareinstances")
-	if type(cf) == "function" and isInst(a) and isInst(b) then
-		local ok, res = pcall(cf, a, b)
+
+	local fn = getFunc("compareinstances")
+
+	if type(fn) == "function" and isInstance(a) and isInstance(b) then
+		local ok, ret = pcall(fn, a, b)
 		if ok then
-			return res == true
+			return ret == true
 		end
 	end
+
 	return false
 end
 
-local function prop(obj, name)
-	local ok, res = pcall(function()
-		return obj[name]
+local function getProperty(obj, prop)
+	local ok, ret = pcall(function()
+		return obj[prop]
 	end)
+
 	if ok then
-		return res
+		return ret
 	end
+
 	return nil
 end
 
-local function setp(obj, name, val)
+local function setProperty(obj, prop, val)
 	pcall(function()
-		obj[name] = val
+		obj[prop] = val
 	end)
 end
 
-local function con(obj, c)
-	if not c then
-		return c
+local function samePropertyValue(prop, cur, val)
+	if prop == "Parent" then
+		if val == NIL_PARENT or val == nil then
+			return cur == nil
+		end
+
+		return isInstance(val) and sameInstance(cur, val)
 	end
-	local list = state.cons[obj]
-	if type(list) ~= "table" then
+
+	return cur == val
+end
+
+local function isApplying(obj, prop)
+	local props = state.applying[obj]
+	return type(props) == "table" and props[prop] == true
+end
+
+local function setApplying(obj, prop, active)
+	local props = state.applying[obj]
+
+	if active then
+		if not props then
+			props = {}
+			state.applying[obj] = props
+		end
+
+		props[prop] = true
+	elseif props then
+		props[prop] = nil
+
+		if next(props) == nil then
+			state.applying[obj] = nil
+		end
+	end
+end
+
+local function enforceTrackedProperty(obj, prop, val)
+	if isApplying(obj, prop) then
+		return
+	end
+
+	if prop == "Parent" and val ~= NIL_PARENT and val ~= nil and not isInstance(val) then
+		return
+	end
+
+	local cur = getProperty(obj, prop)
+	if samePropertyValue(prop, cur, val) then
+		return
+	end
+
+	setApplying(obj, prop, true)
+	setProperty(obj, prop, val == NIL_PARENT and nil or val)
+	setApplying(obj, prop, false)
+end
+
+local function clearPending(obj, prop)
+	local props = state.pending[obj]
+
+	if props then
+		props[prop] = nil
+
+		if next(props) == nil then
+			state.pending[obj] = nil
+		end
+	end
+end
+
+local function scheduleTrackedProperty(obj, prop)
+	if isApplying(obj, prop) then
+		return
+	end
+
+	local props = state.pending[obj]
+	if not props then
+		props = {}
+		state.pending[obj] = props
+	end
+
+	if props[prop] then
+		return
+	end
+
+	props[prop] = true
+	state.last = 0
+end
+
+local function addConnection(obj, con)
+	if not con then
+		return
+	end
+
+	local list = state.connections[obj]
+	if not list then
 		list = {}
-		state.cons[obj] = list
+		state.connections[obj] = list
 	end
-	list[#list + 1] = c
-	return c
+
+	list[#list + 1] = con
 end
 
-local function alive(obj)
-	if not isInst(obj) then
-		return false
-	end
-	local ok, parent = pcall(function()
-		return obj.Parent
+local function naEnvList()
+	local list = {globalEnv, cacheHost}
+
+	pcall(function()
+		if type(shared) == "table" then
+			list[#list + 1] = shared
+		end
 	end)
-	return ok and parent ~= nil
+
+	pcall(function()
+		if type(_G) == "table" then
+			list[#list + 1] = _G
+			if type(rawget(_G, "shared")) == "table" then
+				list[#list + 1] = rawget(_G, "shared")
+			end
+		end
+	end)
+
+	return list
 end
 
-local function rname(keyName)
-	local provider = state.nameProvider
-	if type(provider) == "function" then
-		local ok, res = pcall(provider, keyName)
-		if ok and type(res) == "string" and res ~= "" then
+local function naManage()
+	local list = naEnvList()
+	for i = 1, #list do
+		local env = list[i]
+		if type(env) == "table" then
+			local direct = rawget(env, "NAmanage") or rawget(env, "__NAmanage")
+			if type(direct) == "table" then
+				return direct
+			end
+
+			local rootEnv = rawget(env, "__nameless_admin_private")
+			local testEnv = type(rootEnv) == "table" and rawget(rootEnv, "testing") or nil
+			local sharedState = type(testEnv) == "table" and rawget(testEnv, "shared") or nil
+			local nested = type(sharedState) == "table" and (rawget(sharedState, "NAmanage") or rawget(sharedState, "__NAmanage")) or nil
+			if type(nested) == "table" then
+				return nested
+			end
+		end
+	end
+
+	return nil
+end
+
+local function qDesc(obj)
+	if not isInstance(obj) then
+		return {}
+	end
+
+	local mgr = naManage()
+	if type(mgr) == "table" and type(mgr.qDesc) == "function" then
+		local ok, res = pcall(mgr.qDesc, obj)
+		if ok and type(res) == "table" then
 			return res
 		end
 	end
-	keyName = tostring(keyName or os.clock())
-	if state.nameMap[keyName] then
-		return state.nameMap[keyName]
+
+	local desc = tryCall(function()
+		return obj:GetDescendants()
+	end)
+
+	if type(desc) == "table" then
+		return desc
 	end
-	local hs = svc("HttpService")
-	local out
-	if isInst(hs) then
-		out = call(function()
-			return hs:GenerateGUID(false)
+
+	return {}
+end
+
+local function bindDescAdd(obj, fn)
+	if not isInstance(obj) or type(fn) ~= "function" then
+		return false
+	end
+
+	local mgr = naManage()
+	if type(mgr) == "table" and type(mgr.descAdd) == "function" then
+		local ok, con = pcall(mgr.descAdd, obj, fn)
+		if ok and con then
+			addConnection(obj, con)
+			return true
+		end
+	end
+
+	local ok, con = pcall(function()
+		return obj.DescendantAdded:Connect(fn)
+	end)
+
+	if ok and con then
+		addConnection(obj, con)
+		return true
+	end
+
+	return false
+end
+
+local function applyHardenDescendant(d, rename)
+	if not isInstance(d) then
+		return
+	end
+
+	if rename then
+		pcall(function()
+			d.Name = protector.randomString()
 		end)
 	end
-	if type(out) ~= "string" or out == "" then
-		local chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-		local t = {}
-		for i = 1, 24 do
-			local n = math.random(1, #chars)
-			t[i] = chars:sub(n, n)
+end
+
+local function packDescQueue()
+	local out = {}
+	local n = 0
+
+	for i = state.descHead, state.descTail do
+		local item = state.descQueue[i]
+		if item ~= nil then
+			n += 1
+			out[n] = item
 		end
-		out = table.concat(t)
 	end
-	state.nameMap[keyName] = out
-	return out
+
+	state.descQueue = out
+	state.descHead = 1
+	state.descTail = n
 end
 
-function protector.setSessionNameProvider(f)
-	state.nameProvider = type(f) == "function" and f or nil
-	return state.nameProvider ~= nil
+local function processDescQueue()
+	state.descPump = false
+
+	local t0 = os.clock()
+	local n = 0
+
+	while state.descHead <= state.descTail and n < 32 and os.clock() - t0 < 0.0015 do
+		local item = state.descQueue[state.descHead]
+		state.descQueue[state.descHead] = nil
+		state.descHead += 1
+		n += 1
+
+		if type(item) == "table" then
+			local inst = item.inst
+			if isInstance(inst) then
+				state.descQueued[inst] = nil
+				applyHardenDescendant(inst, item.rename == true)
+			end
+		end
+	end
+
+	if state.descHead > 128 and state.descHead > state.descTail / 2 then
+		packDescQueue()
+	end
+
+	if state.descHead <= state.descTail then
+		state.descPump = true
+		task.defer(processDescQueue)
+	end
 end
 
-function protector.getSessionInstanceName(keyName)
-	return rname(keyName)
+local function queueHardenDescendant(d, rename)
+	if not isInstance(d) then
+		return
+	end
+
+	if state.descQueued[d] then
+		return
+	end
+
+	state.descQueued[d] = true
+	state.descTail += 1
+	state.descQueue[state.descTail] = {
+		inst = d,
+		rename = rename == true,
+	}
+
+	if not state.descPump then
+		state.descPump = true
+		task.defer(processDescQueue)
+	end
 end
 
-function protector.randomString(keyName)
-	return rname(keyName)
+local function getEnum(a, b)
+	local ok, ret = pcall(function()
+		return Enum[a][b]
+	end)
+
+	if ok then
+		return ret
+	end
+
+	return nil
+end
+
+local function getPath(obj)
+	if not isInstance(obj) then
+		return nil
+	end
+
+	local ok, ret = pcall(function()
+		return obj:GetFullName()
+	end)
+
+	if ok then
+		return ret
+	end
+
+	return obj.ClassName
+end
+
+local function trackedCount()
+	local n = 0
+
+	for obj in state.tracked do
+		if isInstance(obj) then
+			n += 1
+		end
+	end
+
+	return n
+end
+
+local function getGuid()
+	local hs = getService("HttpService")
+
+	if isInstance(hs) then
+		local ok, ret = pcall(function()
+			return hs:GenerateGUID(false)
+		end)
+
+		if ok and type(ret) == "string" and ret ~= "" then
+			return ret
+		end
+	end
+
+	return nil
+end
+
+local function cursedString()
+	local len = math.random(10, 20)
+	local out = {}
+	local marks = {"̶", "̷", "̸", "̹", "̺", "̻", "͓", "͔", "͘", "͜", "͞", "͟", "͢"}
+
+	for i = 1, len do
+		out[#out + 1] = string.char(math.random(32, 126))
+		if math.random() < 0.5 then
+			for _ = 1, math.random(1, 4) do
+				out[#out + 1] = marks[math.random(#marks)]
+			end
+		end
+	end
+
+	if utf8 and type(utf8.char) == "function" and math.random() < 0.3 then
+		out[#out + 1] = utf8.char(math.random(0x0300, 0x036F))
+	end
+
+	if math.random() < 0.1 then
+		out[#out + 1] = string.rep("​", math.random(5, 20))
+	end
+
+	if utf8 and type(utf8.char) == "function" and math.random() < 0.2 then
+		out[#out + 1] = utf8.char(0x202E)
+	end
+
+	return table.concat(out)
+end
+
+local function localSessionName(key)
+	key = tostring(key or getGuid() or os.clock())
+	local map = state.sessionNameMap
+	if type(map) ~= "table" then
+		map = {}
+		state.sessionNameMap = map
+	end
+
+	local old = map[key]
+	if type(old) == "string" and old ~= "" then
+		return old
+	end
+
+	local chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789._-/__--"
+	local len = math.random(18, 32)
+	local out = {}
+
+	for i = 1, len do
+		local n = math.random(1, #chars)
+		out[i] = chars:sub(n, n)
+	end
+
+	local ret = table.concat(out)
+	map[key] = ret
+	return ret
+end
+
+function protector.setSessionNameProvider(fn)
+	state.sessionNameProvider = type(fn) == "function" and fn or nil
+	return state.sessionNameProvider ~= nil
+end
+
+function protector.getSessionInstanceName(key)
+	local fn = state.sessionNameProvider
+	if type(fn) == "function" then
+		local ok, ret = pcall(fn, key)
+		if ok and type(ret) == "string" and ret ~= "" then
+			return ret
+		end
+	end
+
+	return localSessionName(key)
+end
+
+function protector.randomString(key)
+	local out = {}
+	local guid = getGuid()
+
+	if type(guid) == "string" and guid ~= "" then
+		out[#out + 1] = guid
+	end
+
+	local sess = protector.getSessionInstanceName(key or guid)
+	if type(sess) == "string" and sess ~= "" then
+		out[#out + 1] = sess
+	end
+
+	local cursed = cursedString()
+	if type(cursed) == "string" and cursed ~= "" then
+		out[#out + 1] = cursed
+	end
+
+	out[#out + 1] = "\0"
+
+	local ret = table.concat(out)
+	if ret ~= "" then
+		return ret
+	end
+	return "\0"
 end
 
 function protector.nativeProtect(obj)
-	if not isInst(obj) then
+	if not isInstance(obj) then
 		return obj
 	end
+
 	local names = {
 		"protect_gui",
 		"protectgui",
 		"protect_ui",
 		"protectui",
 	}
+
 	for i = 1, #names do
-		local f = fn(names[i])
-		if type(f) == "function" then
-			pcall(f, obj)
+		local fn = getFunc(names[i])
+		if type(fn) == "function" then
+			pcall(fn, obj)
 		end
 	end
+
 	return obj
 end
 
@@ -314,28 +776,33 @@ function protector.setTableReadonly(tbl, value)
 	if type(tbl) ~= "table" then
 		return tbl
 	end
-	local f = fn("setreadonly")
-	if type(f) == "function" then
-		pcall(f, tbl, value ~= false)
+
+	local fn = getFunc("setreadonly")
+
+	if type(fn) == "function" then
+		pcall(fn, tbl, value ~= false)
 	end
+
 	return tbl
 end
 
 local function rawHui()
-	local list = {
-		state.native.gethui,
-		state.native.gethiddenui,
-		state.native.gethiddengui,
-		state.native.get_hidden_ui,
-		state.native.get_hidden_gui,
+	local fns = {
+		state.nativeHuiFns.gethui,
+		state.nativeHuiFns.gethiddenui,
+		state.nativeHuiFns.gethiddengui,
+		state.nativeHuiFns.get_hidden_ui,
+		state.nativeHuiFns.get_hidden_gui,
 	}
-	for i = 1, #list do
-		local res = cref(call(list[i]))
-		if isInst(res) and not same(res, state.customHui) and not same(res, state.screenGui) then
-			state.rawHui = res
-			return res
+
+	for i = 1, #fns do
+		local ret = cloneRef(tryCall(fns[i]))
+		if isInstance(ret) and not sameInstance(ret, state.customHui) and not sameInstance(ret, state.screenGui) then
+			state.rawHui = ret
+			return ret
 		end
 	end
+
 	return state.rawHui
 end
 
@@ -343,496 +810,785 @@ function protector.rawHuiGrabber()
 	return rawHui()
 end
 
-local function playerGui()
-	local ps = svc("Players")
-	local lp = isInst(ps) and cref(ps.LocalPlayer) or nil
-	if isInst(lp) then
-		local pg = call(function()
+local function getPlayerGuiContainer()
+	local players = getService("Players")
+	local lp = isInstance(players) and cloneRef(players.LocalPlayer) or nil
+
+	if isInstance(lp) then
+		local pg = tryCall(function()
 			return lp:FindFirstChildWhichIsA("PlayerGui")
 		end)
-		if isInst(pg) then
+
+		if isInstance(pg) then
 			return pg
 		end
 	end
+
 	return nil
 end
 
-local function coreBase()
-	local cg = svc("CoreGui")
-	if isInst(cg) then
-		local rg = call(function()
-			return cg:FindFirstChild("RobloxGui")
-		end)
-		if isInst(rg) then
-			return rg
-		end
-		return cg
-	end
-	return playerGui()
+local function isRobloxGuiName(obj)
+	return isInstance(obj) and tostring(obj.Name or "") == "RobloxGui"
 end
 
-local function kind(obj)
-	if not isInst(obj) then
+local function isAliasRoot(obj, coreGui)
+	if not isInstance(obj) then
+		return false
+	end
+
+	if isRobloxGuiName(obj) then
+		return true
+	end
+
+	coreGui = isInstance(coreGui) and coreGui or getService("CoreGui")
+
+	if isInstance(coreGui) and sameInstance(obj, coreGui) then
+		return true
+	end
+
+	local class = obj.ClassName
+
+	if class == "CoreGui" or class == "PlayerGui" or class == "StarterGui" then
+		return true
+	end
+
+	return false
+end
+
+local function huiKind(obj)
+	if not isInstance(obj) then
 		return nil
 	end
+
+	local coreGui = getService("CoreGui")
+
+	if isAliasRoot(obj, coreGui) then
+		return "alias"
+	end
+
 	if isA(obj, "ScreenGui") then
 		return "screen"
 	end
+
 	if isA(obj, "Folder") then
 		return "folder"
 	end
-	if obj.ClassName == "CoreGui" or tostring(obj.Name) == "RobloxGui" then
-		return "alias"
-	end
-	if isA(obj, "BasePlayerGui") or obj.ClassName == "StarterGui" then
+
+	if isA(obj, "BasePlayerGui") then
 		return "root"
 	end
+
 	return "other"
 end
 
 function protector.getRawHuiKind()
-	return kind(rawHui())
-end
-
-local function folderParent(parent)
-	if isInst(parent) then
-		if isA(parent, "ScreenGui") then
-			local p = prop(parent, "Parent")
-			if isInst(p) then
-				return p
-			end
-		end
-		if parent.ClassName == "CoreGui" then
-			local rg = call(function()
-				return parent:FindFirstChild("RobloxGui")
-			end)
-			if isInst(rg) then
-				return rg
-			end
-			return parent
-		end
-		if tostring(parent.Name) == "RobloxGui" or isA(parent, "Folder") or isA(parent, "BasePlayerGui") or parent.ClassName == "StarterGui" then
-			return parent
-		end
-	end
-	local raw = rawHui()
-	if isInst(raw) then
-		if isA(raw, "ScreenGui") then
-			local p = prop(raw, "Parent")
-			if isInst(p) then
-				return p
-			end
-		elseif raw.ClassName == "CoreGui" then
-			local rg = call(function()
-				return raw:FindFirstChild("RobloxGui")
-			end)
-			if isInst(rg) then
-				return rg
-			end
-			return raw
-		elseif tostring(raw.Name) == "RobloxGui" or isA(raw, "BasePlayerGui") or raw.ClassName == "StarterGui" then
-			return raw
-		end
-	end
-	return coreBase()
+	return huiKind(rawHui())
 end
 
 function protector.getBaseParent()
-	return folderParent()
+	local coreGui = getService("CoreGui")
+
+	if isInstance(coreGui) then
+		local robloxGui = tryCall(function()
+			return coreGui:FindFirstChild("RobloxGui")
+		end)
+
+		if isInstance(robloxGui) then
+			return robloxGui
+		end
+
+		return coreGui
+	end
+
+	return getPlayerGuiContainer()
 end
 
-local attrRole = "__lt_ui_protector_role"
-local attrKey = "__lt_ui_protector_key"
-local attrVal = "legacy_na_method_test_v1"
+local function getFolderParent(parent)
+	if isInstance(parent) then
+		if isRobloxGuiName(parent) then
+			return parent
+		end
 
-local function mark(obj, role)
-	if not isInst(obj) then
+		if parent.ClassName == "CoreGui" then
+			local robloxGui = tryCall(function()
+				return parent:FindFirstChild("RobloxGui")
+			end)
+
+			if isInstance(robloxGui) then
+				return robloxGui
+			end
+
+			return parent
+		end
+
+		if parent.ClassName == "PlayerGui" or parent.ClassName == "StarterGui" then
+			return parent
+		end
+
+		if isA(parent, "BasePlayerGui") then
+			return parent
+		end
+	end
+
+	return protector.getBaseParent()
+end
+
+local sharedRootKey = "lt-ui-protector-shared-root-v2"
+local roleAttr = "__lt_ui_protector_role"
+local keyAttr = "__lt_ui_protector_key"
+local roleHui = "hui"
+local roleScreen = "screen"
+
+local function markSharedContainer(obj, role)
+	if not isInstance(obj) then
 		return obj
 	end
+
 	pcall(function()
-		obj:SetAttribute(attrRole, role)
-		obj:SetAttribute(attrKey, attrVal)
+		obj:SetAttribute(roleAttr, role)
 	end)
+
+	pcall(function()
+		obj:SetAttribute(keyAttr, sharedRootKey)
+	end)
+
 	return obj
 end
 
-local function isMarked(obj, role)
-	if not isInst(obj) then
+local function isSharedContainer(obj, role)
+	if not isInstance(obj) then
 		return false
 	end
-	local ok1, r = pcall(function()
-		return obj:GetAttribute(attrRole)
+
+	local okRole, gotRole = pcall(function()
+		return obj:GetAttribute(roleAttr)
 	end)
-	local ok2, k = pcall(function()
-		return obj:GetAttribute(attrKey)
+
+	local okKey, gotKey = pcall(function()
+		return obj:GetAttribute(keyAttr)
 	end)
-	return ok1 and ok2 and r == role and k == attrVal
+
+	return okRole and okKey and gotRole == role and gotKey == sharedRootKey
 end
 
-local function findMarked(parent, role, className)
-	if not isInst(parent) then
+local function findSharedContainer(parent, role, className)
+	if not isInstance(parent) then
 		return nil
 	end
-	local kids = call(function()
+
+	local kids = tryCall(function()
 		return parent:GetChildren()
 	end)
+
 	if type(kids) ~= "table" then
 		return nil
 	end
+
+	local found
+
 	for i = 1, #kids do
-		local c = kids[i]
-		if isInst(c) and isA(c, className) and isMarked(c, role) then
-			return c
+		local child = kids[i]
+		if isInstance(child) and isA(child, className) and isSharedContainer(child, role) then
+			if not found then
+				found = child
+			else
+				pcall(function()
+					child:Destroy()
+				end)
+			end
 		end
 	end
-	return nil
+
+	return found
 end
 
-local function screenDefaults(gui)
-	if not isInst(gui) or not isA(gui, "ScreenGui") then
-		return gui
+local function startWatchdog()
+	if state.heartbeat then
+		return
 	end
-	setp(gui, "ZIndexBehavior", Enum.ZIndexBehavior.Global)
-	setp(gui, "DisplayOrder", 0x7FFFFFFF)
-	setp(gui, "ResetOnSpawn", false)
-	setp(gui, "IgnoreGuiInset", true)
-	pcall(function()
-		gui.ScreenInsets = Enum.ScreenInsets.None
-	end)
-	pcall(function()
-		gui.SafeAreaCompatibility = Enum.SafeAreaCompatibility.None
-	end)
-	pcall(function()
-		gui.ClipToDeviceSafeArea = false
-	end)
-	pcall(function()
-		gui.OnTopOfCoreBlur = true
-	end)
-	return gui
-end
 
-local function sameVal(propName, a, b)
-	if propName == "Parent" then
-		return isInst(a) and isInst(b) and same(a, b)
+	local runService = getService("RunService")
+	if not (isInstance(runService) and runService.Heartbeat) then
+		return
 	end
-	return a == b
+
+	state.heartbeat = runService.Heartbeat:Connect(function()
+		local now = os.clock()
+		if now - state.last < state.rate then
+			return
+		end
+
+		state.last = now
+
+		local active = false
+
+		for obj, cfg in state.tracked do
+			if not isInstance(obj) or cfg.dead then
+				state.tracked[obj] = nil
+				state.locked[obj] = nil
+				state.descWatching[obj] = nil
+				state.applying[obj] = nil
+				state.pending[obj] = nil
+			else
+				active = true
+
+				for prop, val in cfg.properties do
+					enforceTrackedProperty(obj, prop, val)
+					clearPending(obj, prop)
+				end
+			end
+		end
+
+		if not active and state.heartbeat then
+			pcall(function()
+				state.heartbeat:Disconnect()
+			end)
+
+			state.heartbeat = nil
+		end
+	end)
 end
 
 function protector.lockInstance(obj, props)
-	if not isInst(obj) or type(props) ~= "table" then
+	if not isInstance(obj) or type(props) ~= "table" then
 		return obj
 	end
-	local oldTrack = state.tracks[obj]
-	if oldTrack and type(oldTrack.props) == "table" then
-		for k, v in props do
-			oldTrack.props[k] = v
-		end
-		props = oldTrack.props
-	end
-	state.tracks[obj] = {
-		alive = true,
-		props = props,
+
+	state.tracked[obj] = {
+		properties = props,
+		dead = false,
 	}
-	for k, v in props do
-		if v ~= nil then
-			setp(obj, k, v)
-		end
+
+	for prop, val in props do
+		setApplying(obj, prop, true)
+		setProperty(obj, prop, val == NIL_PARENT and nil or val)
+		setApplying(obj, prop, false)
 	end
-	if not oldTrack then
-		for k in props do
+
+	if not state.locked[obj] then
+		state.locked[obj] = true
+
+		for prop in props do
 			local ok, sig = pcall(function()
-				return obj:GetPropertyChangedSignal(k)
+				return obj:GetPropertyChangedSignal(prop)
 			end)
+
 			if ok and sig then
-				con(obj, sig:Connect(function()
-					local tr = state.tracks[obj]
-					if not tr or tr.alive ~= true then
+				addConnection(obj, sig:Connect(function()
+					local cfg = state.tracked[obj]
+					if not cfg or cfg.dead then
 						return
 					end
-					local want = tr.props[k]
-					if want ~= nil and not sameVal(k, prop(obj, k), want) then
-						setp(obj, k, want)
-					end
+
+					scheduleTrackedProperty(obj, prop)
 				end))
 			end
 		end
+
 		pcall(function()
-			con(obj, obj.AncestryChanged:Connect(function()
-				local tr = state.tracks[obj]
-				if not tr or tr.alive ~= true then
+			addConnection(obj, obj.AncestryChanged:Connect(function()
+				local cfg = state.tracked[obj]
+				if not cfg or cfg.dead then
 					return
 				end
-				local want = tr.props.Parent
-				if isInst(want) and not sameVal("Parent", prop(obj, "Parent"), want) then
-					setp(obj, "Parent", want)
-				end
+
+				scheduleTrackedProperty(obj, "Parent")
 			end))
 		end)
+
 		pcall(function()
-			con(obj, obj.Destroying:Connect(function()
-				local tr = state.tracks[obj]
-				if tr then
-					tr.alive = false
+			addConnection(obj, obj.Destroying:Connect(function()
+				local cfg = state.tracked[obj]
+				if cfg then
+					cfg.dead = true
 				end
-				state.tracks[obj] = nil
+
+				state.tracked[obj] = nil
+				state.locked[obj] = nil
+				state.descWatching[obj] = nil
+				state.applying[obj] = nil
+				state.pending[obj] = nil
 			end))
-		end)
-		task.spawn(function()
-			while state.tracks[obj] and state.tracks[obj].alive == true and alive(obj) do
-				task.wait(0.75)
-				local tr = state.tracks[obj]
-				if not tr or tr.alive ~= true then
-					break
-				end
-				for k, v in tr.props do
-					if v ~= nil and not sameVal(k, prop(obj, k), v) then
-						setp(obj, k, v)
-					end
-				end
-			end
 		end)
 	end
+
+	startWatchdog()
 	return obj
 end
 
 function protector.harden(obj, opts)
-	if not isInst(obj) then
+	if not isInstance(obj) then
 		return obj
 	end
+
 	opts = type(opts) == "table" and opts or {}
-	pcall(function()
-		obj.Archivable = false
-	end)
-	if opts.rename == true then
+
+	if opts.rename then
 		pcall(function()
-			obj.Name = rname()
+			obj.Name = protector.randomString()
 		end)
 	end
-	if opts.deep == true then
-		local max = math.max(0, math.floor(tonumber(opts.maxDescendants) or 200))
-		local desc = call(function()
-			return obj:GetDescendants()
-		end)
-		if type(desc) == "table" then
-			for i = 1, math.min(#desc, max) do
-				local d = desc[i]
-				if isInst(d) then
-					pcall(function()
-						d.Archivable = false
-					end)
-					if opts.rename == true then
-						pcall(function()
-							d.Name = rname()
-						end)
-					end
-				end
-			end
+
+	if opts.deep then
+		local desc = qDesc(obj)
+		for i = 1, #desc do
+			queueHardenDescendant(desc[i], opts.rename == true)
 		end
 	end
-	if opts.watch == true then
-		pcall(function()
-			con(obj, obj.DescendantAdded:Connect(function(d)
-				if isInst(d) then
-					pcall(function()
-						d.Archivable = false
-					end)
-					if opts.rename == true then
-						pcall(function()
-							d.Name = rname()
-						end)
-					end
-				end
-			end))
+
+	if opts.watch and not state.descWatching[obj] then
+		state.descWatching[obj] = true
+
+		bindDescAdd(obj, function(d)
+			queueHardenDescendant(d, opts.rename == true)
 		end)
 	end
+
 	return obj
 end
 
-function protector.getCustomHui(parent)
-	parent = folderParent(parent)
-	if not isInst(parent) then
+function protector.protectInstance(obj, opts)
+	if not isInstance(obj) then
 		return nil
 	end
-	if isInst(state.customHui) and same(prop(state.customHui, "Parent"), parent) then
-		mark(state.customHui, "hui")
-		return state.customHui
+
+	opts = type(opts) == "table" and opts or {}
+	local props = {}
+
+	local protectedName = nil
+	if opts.renameRoot == true then
+		protectedName = type(opts.name) == "string" and opts.name ~= "" and opts.name or protector.randomString(opts.nameKey)
+		pcall(function()
+			obj.Name = protectedName
+		end)
+		if opts.enforceName == true then
+			props.Name = protectedName
+		end
 	end
-	local found = findMarked(parent, "hui", "Folder")
-	if isInst(found) then
-		state.customHui = found
-	else
-		state.customHui = Instance.new("Folder")
-		mark(state.customHui, "hui")
+
+	if opts.renameDescendants == true then
+		local desc = qDesc(obj)
+		for i = 1, #desc do
+			queueHardenDescendant(desc[i], true)
+		end
 	end
-	protector.nativeProtect(state.customHui)
-	return protector.lockInstance(state.customHui, {
-		Name = rname("hui"),
+
+	if opts.enforceParent == true then
+		props.Parent = isInstance(opts.parent) and opts.parent or NIL_PARENT
+	elseif isInstance(opts.parent) then
+		props.Parent = opts.parent
+	end
+
+	if opts.watch == true and not state.descWatching[obj] then
+		state.descWatching[obj] = true
+		bindDescAdd(obj, function(d)
+			queueHardenDescendant(d, opts.renameDescendants == true)
+		end)
+	end
+
+	if opts.register ~= false and next(props) ~= nil then
+		protector.lockInstance(obj, props)
+	end
+
+	return obj
+end
+
+function protector.protectCachedInternal(obj, opts)
+	opts = type(opts) == "table" and opts or {}
+	opts.renameRoot = opts.renameRoot ~= false
+	opts.renameDescendants = opts.renameDescendants == true
+	opts.enforceParent = opts.enforceParent ~= false
+	opts.parent = nil
+	opts.enforceName = opts.enforceName == true
+
+	return protector.protectInstance(obj, opts)
+end
+
+local function applyScreenDefaults(gui)
+	if not isInstance(gui) then
+		return nil
+	end
+
+	pcall(function()
+		gui.ResetOnSpawn = false
+	end)
+
+	pcall(function()
+		gui.IgnoreGuiInset = true
+	end)
+
+	pcall(function()
+		gui.DisplayOrder = 2147483647
+	end)
+
+	local z = getEnum("ZIndexBehavior", "Global")
+	if z then
+		pcall(function()
+			gui.ZIndexBehavior = z
+		end)
+	end
+
+	local s = getEnum("ScreenInsets", "None")
+	if s then
+		pcall(function()
+			gui.ScreenInsets = s
+		end)
+	end
+
+	local a = getEnum("SafeAreaCompatibility", "None")
+	if a then
+		pcall(function()
+			gui.SafeAreaCompatibility = a
+		end)
+	end
+
+	pcall(function()
+		gui.ClipToDeviceSafeArea = false
+	end)
+
+	pcall(function()
+		gui.OnTopOfCoreBlur = true
+	end)
+
+	return gui
+end
+
+local function protectFolder(folder, parent, name)
+	markSharedContainer(folder, roleHui)
+	protector.nativeProtect(folder)
+
+	return protector.lockInstance(folder, {
+		Name = type(name) == "string" and name ~= "" and name or protector.randomString("hui"),
 		Parent = parent,
-		Archivable = false,
 	})
 end
 
+local function protectScreen(gui, parent, name)
+	markSharedContainer(gui, roleScreen)
+	applyScreenDefaults(gui)
+	protector.nativeProtect(gui)
+
+	return protector.lockInstance(gui, {
+		Name = type(name) == "string" and name ~= "" and name or protector.randomString("screen"),
+		Parent = parent,
+	})
+end
+
+local function protectNativeScreen(gui)
+	applyScreenDefaults(gui)
+	protector.nativeProtect(gui)
+
+	local par = getProperty(gui, "Parent")
+
+	if isInstance(par) then
+		protector.lockInstance(gui, {
+			Parent = par,
+		})
+	end
+
+	return gui
+end
+
+function protector.getCustomHui(parent)
+	parent = getFolderParent(parent)
+
+	if not isInstance(parent) then
+		return nil
+	end
+
+	if isInstance(state.customHui) and sameInstance(state.customHui.Parent, parent) then
+		markSharedContainer(state.customHui, roleHui)
+		return state.customHui
+	end
+
+	local existing = findSharedContainer(parent, roleHui, "Folder")
+	if isInstance(existing) then
+		state.customHui = existing
+		return protectFolder(existing, parent, existing.Name)
+	end
+
+	local folder = Instance.new("Folder")
+	markSharedContainer(folder, roleHui)
+	state.customHui = folder
+
+	return protectFolder(folder, parent)
+end
+
+local function hasLayerCollectorAncestor(obj)
+	local parent = getProperty(obj, "Parent")
+	local guard = 0
+
+	while isInstance(parent) and guard < 32 do
+		if isA(parent, "LayerCollector") then
+			return true
+		end
+
+		parent = getProperty(parent, "Parent")
+		guard += 1
+	end
+
+	return false
+end
+
+local function getManagedScreenInHui(folder)
+	if not isInstance(folder) then
+		return nil
+	end
+
+	if isInstance(state.screenGui) and sameInstance(state.screenGui.Parent, folder) then
+		markSharedContainer(state.screenGui, roleScreen)
+		return state.screenGui
+	end
+
+	local existing = findSharedContainer(folder, roleScreen, "ScreenGui")
+	if isInstance(existing) then
+		state.screenGui = existing
+		return protectScreen(existing, folder, existing.Name)
+	end
+
+	local gui = Instance.new("ScreenGui")
+	markSharedContainer(gui, roleScreen)
+	state.screenGui = gui
+
+	return protectScreen(gui, folder)
+end
+
+local function destroyScreenLater(screen)
+	if not (isInstance(screen) and isA(screen, "ScreenGui")) then
+		return
+	end
+
+	if sameInstance(state.rawHui, screen) then
+		state.rawHui = nil
+	end
+
+	if sameInstance(state.screenGui, screen) then
+		state.screenGui = nil
+	end
+
+	local function destroy()
+		pcall(function()
+			screen:Destroy()
+		end)
+	end
+
+	local okTask, taskLib = pcall(function()
+		return task
+	end)
+
+	if okTask and type(taskLib) == "table" and type(taskLib.defer) == "function" then
+		pcall(taskLib.defer, destroy)
+	else
+		destroy()
+	end
+end
+
+local function absorbScreenHui(screen)
+	if not (isInstance(screen) and isA(screen, "ScreenGui")) then
+		return nil
+	end
+
+	local folder = protector.getCustomHui(screen)
+	if not isInstance(folder) then
+		return nil
+	end
+
+	local managedScreen = nil
+
+	for _ = 1, 4 do
+		local kids = tryCall(function()
+			return screen:GetChildren()
+		end)
+
+		if type(kids) ~= "table" or #kids <= 0 then
+			break
+		end
+
+		for i = 1, #kids do
+			local child = kids[i]
+			if isInstance(child) and not sameInstance(child, folder) then
+				local target = folder
+				if not isA(child, "LayerCollector") and not hasLayerCollectorAncestor(folder) then
+					managedScreen = managedScreen or getManagedScreenInHui(folder)
+					target = isInstance(managedScreen) and managedScreen or folder
+				end
+
+				setProperty(child, "Parent", target)
+			end
+		end
+	end
+
+	destroyScreenLater(screen)
+	return folder
+end
+
 function protector.huiGrabber()
-	local raw = rawHui()
-	local k = kind(raw)
-	if k == "folder" then
-		return raw
+	local hidden = protector.rawHuiGrabber()
+	local kind = huiKind(hidden)
+
+	if isInstance(hidden) then
+		if kind == "screen" then
+			return absorbScreenHui(hidden)
+		end
+
+		if kind == "folder" then
+			return hidden
+		end
+
+		if kind == "root" then
+			return hidden
+		end
+
+		if kind == "alias" then
+			return protector.getCustomHui(hidden)
+		end
+
+		return hidden
 	end
-	if k == "screen" or k == "alias" or k == "root" then
-		return protector.getCustomHui(raw)
-	end
-	if isInst(raw) then
-		return raw
-	end
+
 	return protector.getCustomHui()
 end
 
 function protector.getScreenGui(name)
-	local parent = protector.huiGrabber()
-	if isInst(parent) and isA(parent, "ScreenGui") then
-		state.screenGui = parent
-		screenDefaults(parent)
-		return parent
+	local hidden = protector.huiGrabber()
+
+	if isInstance(hidden) and isA(hidden, "ScreenGui") then
+		state.screenGui = hidden
+		return hidden
 	end
-	if not isInst(parent) then
+
+	if not isInstance(hidden) then
 		return nil
 	end
-	if isInst(state.screenGui) and same(prop(state.screenGui, "Parent"), parent) then
-		mark(state.screenGui, "screen")
+
+	if isInstance(state.screenGui) and sameInstance(state.screenGui.Parent, hidden) then
+		markSharedContainer(state.screenGui, roleScreen)
 		return state.screenGui
 	end
-	local found = findMarked(parent, "screen", "ScreenGui")
-	if isInst(found) then
-		state.screenGui = found
-	else
-		state.screenGui = Instance.new("ScreenGui")
-		mark(state.screenGui, "screen")
+
+	local existing = findSharedContainer(hidden, roleScreen, "ScreenGui")
+	if isInstance(existing) then
+		state.screenGui = existing
+		return protectScreen(existing, hidden, existing.Name)
 	end
-	protector.nativeProtect(state.screenGui)
-	screenDefaults(state.screenGui)
-	return protector.lockInstance(state.screenGui, {
-		Name = type(name) == "string" and name ~= "" and name or rname("screen"),
-		Parent = parent,
-		Archivable = false,
-		ZIndexBehavior = Enum.ZIndexBehavior.Global,
-		DisplayOrder = 0x7FFFFFFF,
-		ResetOnSpawn = false,
-		IgnoreGuiInset = true,
-	})
+
+	local gui = Instance.new("ScreenGui")
+	markSharedContainer(gui, roleScreen)
+	state.screenGui = gui
+
+	return protectScreen(gui, hidden, name)
 end
 
 function protector.resolveParent(opts)
 	opts = type(opts) == "table" and opts or {}
-	local got = call(opts.parentResolver)
-	if isInst(got) then
-		return cref(got)
+
+	local fromResolver = tryCall(opts.parentResolver)
+	if isInstance(fromResolver) then
+		return fromResolver
 	end
-	if isInst(opts.parent) then
-		return cref(opts.parent)
+
+	if isInstance(opts.parent) then
+		return cloneRef(opts.parent)
 	end
-	return protector.huiGrabber()
+
+	local hidden = protector.huiGrabber()
+	if isInstance(hidden) then
+		return hidden
+	end
+
+	return protector.getCustomHui()
 end
 
 function protector.parent()
 	return protector.huiGrabber()
 end
 
-local function uiProps(gui, target, opts)
-	local props = {
-		Parent = target,
-		Archivable = false,
-	}
-	if not opts.keepName then
-		props.Name = type(opts.name) == "string" and opts.name ~= "" and opts.name or rname()
-	end
-	if isA(gui, "ScreenGui") then
-		props.ZIndexBehavior = Enum.ZIndexBehavior.Global
-		props.DisplayOrder = 0x7FFFFFFF
-		props.ResetOnSpawn = false
-		props.IgnoreGuiInset = true
-	end
-	return props
-end
-
 function protector.protectUI(gui, opts)
-	if not isInst(gui) then
+	if not isInstance(gui) then
 		return nil
 	end
+
 	opts = type(opts) == "table" and opts or {}
+
 	protector.nativeProtect(gui)
-	pcall(function()
-		gui.Archivable = false
-	end)
+
 	if isA(gui, "ScreenGui") then
-		screenDefaults(gui)
+		applyScreenDefaults(gui)
+
 		local target = protector.resolveParent(opts)
-		if not isInst(target) then
+		if not isInstance(target) then
 			return nil
 		end
-		if same(gui, target) then
-			return protector.lockInstance(gui, {
-				Archivable = false,
-				ZIndexBehavior = Enum.ZIndexBehavior.Global,
-				DisplayOrder = 0x7FFFFFFF,
-				ResetOnSpawn = false,
-				IgnoreGuiInset = true,
+
+		if sameInstance(gui, target) then
+			return protectNativeScreen(gui)
+		end
+
+		local props = {
+			Parent = target,
+		}
+
+		if not opts.keepName then
+			props.Name = type(opts.name) == "string" and opts.name ~= "" and opts.name or protector.randomString()
+		end
+
+		protector.lockInstance(gui, props)
+
+		if opts.harden == true then
+			protector.harden(gui, {
+				deep = opts.deep == true,
+				watch = opts.watch == true,
+				rename = opts.rename == true,
 			})
 		end
-		protector.lockInstance(gui, uiProps(gui, target, opts))
-		if opts.harden == true then
-			protector.harden(gui, opts)
-		end
+
 		return gui
 	end
-	local target
-	if isInst(opts.parent) and not isA(opts.parent, "Folder") then
-		target = cref(opts.parent)
-	else
-		target = protector.getScreenGui(type(opts.name) == "string" and opts.name or nil)
-	end
-	if not isInst(target) then
+
+	local target = protector.getScreenGui()
+	if not isInstance(target) then
 		return nil
 	end
+
 	local props = {
 		Parent = target,
-		Archivable = false,
 	}
+
 	if opts.lockName == true then
-		props.Name = type(opts.name) == "string" and opts.name ~= "" and opts.name or rname()
+		props.Name = type(opts.name) == "string" and opts.name ~= "" and opts.name or protector.randomString()
 	end
+
 	protector.lockInstance(gui, props)
+
 	if opts.harden == true then
-		protector.harden(gui, opts)
+		protector.harden(gui, {
+			deep = opts.deep == true,
+			watch = opts.watch == true,
+			rename = opts.rename == true,
+		})
 	end
+
 	return gui
 end
 
-function protector.protectName(obj, propName)
-	if not isInst(obj) then
+function protector.protectName(obj, prop)
+	if not isInstance(obj) then
 		return nil
 	end
-	propName = type(propName) == "string" and propName ~= "" and propName or "Name"
+
 	pcall(function()
-		obj[propName] = rname()
+		obj[prop or "Name"] = protector.randomString()
 	end)
-	pcall(function()
-		obj.Archivable = false
-	end)
+
 	return obj
 end
 
-function protector.NAProtection(obj, propName)
-	return protector.protectName(obj, propName)
-end
-
-function protector.NaProtectUI(gui, opts)
-	return protector.protectUI(gui, opts)
-end
-
 function protector.installGetHuiOverride()
-	local function custom()
+	local function customGetHui()
 		return protector.huiGrabber()
 	end
+
+	local installed = false
 	local names = {
 		"gethui",
 		"gethiddenui",
@@ -840,34 +1596,50 @@ function protector.installGetHuiOverride()
 		"get_hidden_ui",
 		"get_hidden_gui",
 	}
-	local installed = false
+
 	pcall(function()
-		gethui = custom
-		gethiddenui = custom
-		gethiddengui = custom
-		get_hidden_ui = custom
-		get_hidden_gui = custom
+		gethui = customGetHui
+		gethiddenui = customGetHui
+		gethiddengui = customGetHui
+		get_hidden_ui = customGetHui
+		get_hidden_gui = customGetHui
 		installed = true
 	end)
+
 	local function apply(env)
 		if type(env) ~= "table" then
 			return false
 		end
+
 		for i = 1, #names do
-			rawset(env, names[i], custom)
+			rawset(env, names[i], customGetHui)
 		end
+
 		return true
 	end
+
+	local okGenv = false
+	local okG = false
+
 	pcall(function()
 		if type(getgenv) == "function" then
-			installed = apply(getgenv()) or installed
+			okGenv = apply(getgenv()) == true
 		end
 	end)
+
+	if not okGenv then
+		local okApply, applied = pcall(apply, _G)
+		okG = okApply and applied == true
+	else
+		pcall(apply, _G)
+	end
+
+	state.installed = installed or okGenv or okG
+
 	pcall(function()
-		installed = apply(_G) or installed
+		protector.getHuiOverrideInstalled = state.installed
 	end)
-	state.installed = installed == true
-	protector.getHuiOverrideInstalled = state.installed
+
 	return state.installed
 end
 
@@ -876,7 +1648,15 @@ function protector.install()
 end
 
 function protector.restore()
-	local native = state.native
+	local native = state.nativeHuiFns
+	local names = {
+		gethui = native.gethui,
+		gethiddenui = native.gethiddenui,
+		gethiddengui = native.gethiddengui,
+		get_hidden_ui = native.get_hidden_ui,
+		get_hidden_gui = native.get_hidden_gui,
+	}
+
 	pcall(function()
 		gethui = native.gethui
 		gethiddenui = native.gethiddenui
@@ -884,70 +1664,122 @@ function protector.restore()
 		get_hidden_ui = native.get_hidden_ui
 		get_hidden_gui = native.get_hidden_gui
 	end)
+
 	local function apply(env)
 		if type(env) ~= "table" then
 			return
 		end
-		rawset(env, "gethui", native.gethui)
-		rawset(env, "gethiddenui", native.gethiddenui)
-		rawset(env, "gethiddengui", native.gethiddengui)
-		rawset(env, "get_hidden_ui", native.get_hidden_ui)
-		rawset(env, "get_hidden_gui", native.get_hidden_gui)
+
+		for name, fn in names do
+			rawset(env, name, fn)
+		end
 	end
+
 	pcall(function()
 		if type(getgenv) == "function" then
 			apply(getgenv())
+		else
+			apply(_G)
 		end
 	end)
 	pcall(apply, _G)
+
 	state.installed = false
-	protector.getHuiOverrideInstalled = false
+
+	pcall(function()
+		protector.getHuiOverrideInstalled = false
+	end)
 end
 
 function protector.cleanup(obj)
-	if isInst(obj) then
-		local list = state.cons[obj]
-		if type(list) == "table" then
+	if isInstance(obj) then
+		local list = state.connections[obj]
+
+		if list then
 			for i = 1, #list do
 				pcall(function()
 					list[i]:Disconnect()
 				end)
+
 				list[i] = nil
 			end
 		end
-		state.cons[obj] = nil
-		state.tracks[obj] = nil
+
+		state.connections[obj] = nil
+		state.tracked[obj] = nil
+		state.locked[obj] = nil
+		state.descWatching[obj] = nil
+		state.descQueued[obj] = nil
+
+		if trackedCount() <= 0 and state.heartbeat then
+			pcall(function()
+				state.heartbeat:Disconnect()
+			end)
+
+			state.heartbeat = nil
+		end
+
 		return
 	end
-	for o, list in state.cons do
-		if type(list) == "table" then
-			for i = 1, #list do
-				pcall(function()
-					list[i]:Disconnect()
-				end)
-				list[i] = nil
-			end
+
+	for object, list in state.connections do
+		for i = 1, #list do
+			pcall(function()
+				list[i]:Disconnect()
+			end)
+
+			list[i] = nil
 		end
-		state.cons[o] = nil
+
+		state.connections[object] = nil
 	end
-	for o in state.tracks do
-		state.tracks[o] = nil
+
+	for object in state.tracked do
+		state.tracked[object] = nil
+	end
+
+	for object in state.locked do
+		state.locked[object] = nil
+	end
+
+	for object in state.descWatching do
+		state.descWatching[object] = nil
+	end
+
+	state.descQueue = {}
+	state.descHead = 1
+	state.descTail = 0
+	state.descQueued = setmetatable({}, { __mode = "k" })
+	state.descPump = false
+
+	if state.heartbeat then
+		pcall(function()
+			state.heartbeat:Disconnect()
+		end)
+
+		state.heartbeat = nil
 	end
 end
 
 function protector.destroy()
 	protector.cleanup()
 	protector.restore()
+
 	pcall(function()
-		if isInst(state.screenGui) then
-			state.screenGui:Destroy()
+		if isInstance(state.screenGui) then
+			local raw = rawHui()
+			if not sameInstance(state.screenGui, raw) then
+				state.screenGui:Destroy()
+			end
 		end
 	end)
+
 	pcall(function()
-		if isInst(state.customHui) then
+		if isInstance(state.customHui) then
 			state.customHui:Destroy()
 		end
 	end)
+
 	state.screenGui = nil
 	state.customHui = nil
 end
@@ -968,56 +1800,37 @@ function protector.support()
 		"protect_ui",
 		"protectui",
 	}
-	local out = {}
+
+	local result = {}
+
 	for i = 1, #names do
-		out[names[i]] = protector.has(names[i])
+		result[names[i]] = protector.has(names[i])
 	end
-	return out
-end
 
-local function path(obj)
-	if not isInst(obj) then
-		return nil
-	end
-	local ok, res = pcall(function()
-		return obj:GetFullName()
-	end)
-	if ok then
-		return res
-	end
-	return obj.ClassName
-end
-
-local function count(t)
-	local n = 0
-	for o in t do
-		if isInst(o) then
-			n += 1
-		end
-	end
-	return n
+	return result
 end
 
 function protector.status()
 	local raw = rawHui()
 	local parent = protector.huiGrabber()
 	local screen = protector.getScreenGui()
+
 	return {
 		build = build,
 		patch = patch,
 		raw = raw,
-		rawClass = isInst(raw) and raw.ClassName or nil,
-		rawKind = kind(raw),
-		rawPath = path(raw),
+		rawClass = isInstance(raw) and raw.ClassName or nil,
+		rawKind = huiKind(raw),
+		rawPath = getPath(raw),
 		parent = parent,
-		parentClass = isInst(parent) and parent.ClassName or nil,
-		parentKind = kind(parent),
-		parentPath = path(parent),
+		parentClass = isInstance(parent) and parent.ClassName or nil,
+		parentKind = huiKind(parent),
+		parentPath = getPath(parent),
 		screen = screen,
-		screenClass = isInst(screen) and screen.ClassName or nil,
-		screenPath = path(screen),
+		screenClass = isInstance(screen) and screen.ClassName or nil,
+		screenPath = getPath(screen),
 		installed = state.installed,
-		tracked = count(state.tracks),
+		tracked = trackedCount(),
 		support = protector.support(),
 	}
 end
@@ -1025,11 +1838,15 @@ end
 protector.ready = true
 protector.build = build
 protector.patch = patch
-protector.version = patch
 
-for i = 1, #hosts do
-	pcall(rawset, hosts[i], key, protector)
+pcall(function()
+	protector.installGetHuiOverride()
+end)
+
+for i = 1, #cacheHosts do
+	pcall(rawset, cacheHosts[i], cacheKey, protector)
 end
 
-protector.installGetHuiOverride()
+protector.setTableReadonly(protector, true)
+
 return protector
