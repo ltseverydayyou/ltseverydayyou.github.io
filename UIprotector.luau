@@ -1,5 +1,5 @@
-local build = "shared_hui_singleton_v2"
-local patch = "global_gethui_override_v2"
+local build = "shared_hui_singleton_v3"
+local patch = "screen_gethui_folder_safe_v1"
 
 local okEnv, globalEnv = pcall(function()
 	if type(getgenv) == "function" then
@@ -91,11 +91,17 @@ local protector = {}
 local state = {
 	customHui = nil,
 	screenGui = nil,
+	nativeScreen = nil,
 	rawHui = nil,
 	heartbeat = nil,
 	installed = false,
 	last = 0,
-	rate = 0.35,
+	rate = 0.75,
+	descBatch = 12,
+	descBudget = 0.0008,
+	descDelay = 0.025,
+	maxDescPerDeep = 256,
+	maxDescQueue = 1024,
 	connections = setmetatable({}, { __mode = "k" }),
 	tracked = setmetatable({}, { __mode = "k" }),
 	locked = setmetatable({}, { __mode = "k" }),
@@ -539,13 +545,36 @@ local function packDescQueue()
 	state.descTail = n
 end
 
-local function processDescQueue()
+local processDescQueue
+
+local function scheduleDescQueue(delayTime)
+	if state.descPump then
+		return
+	end
+
+	state.descPump = true
+	delayTime = tonumber(delayTime) or state.descDelay or 0.025
+
+	if task and type(task.delay) == "function" then
+		task.delay(delayTime, processDescQueue)
+	elseif task and type(task.defer) == "function" then
+		task.defer(processDescQueue)
+	else
+		pcall(function()
+			delay(delayTime, processDescQueue)
+		end)
+	end
+end
+
+processDescQueue = function()
 	state.descPump = false
 
 	local t0 = os.clock()
 	local n = 0
+	local batch = tonumber(state.descBatch) or 12
+	local budget = tonumber(state.descBudget) or 0.0008
 
-	while state.descHead <= state.descTail and n < 32 and os.clock() - t0 < 0.0015 do
+	while state.descHead <= state.descTail and n < batch and os.clock() - t0 < budget do
 		local item = state.descQueue[state.descHead]
 		state.descQueue[state.descHead] = nil
 		state.descHead += 1
@@ -565,8 +594,7 @@ local function processDescQueue()
 	end
 
 	if state.descHead <= state.descTail then
-		state.descPump = true
-		task.defer(processDescQueue)
+		scheduleDescQueue(state.descDelay)
 	end
 end
 
@@ -579,6 +607,11 @@ local function queueHardenDescendant(d, rename)
 		return
 	end
 
+	local maxQueue = tonumber(state.maxDescQueue) or 1024
+	if state.descTail - state.descHead + 1 >= maxQueue then
+		return
+	end
+
 	state.descQueued[d] = true
 	state.descTail += 1
 	state.descQueue[state.descTail] = {
@@ -586,10 +619,7 @@ local function queueHardenDescendant(d, rename)
 		rename = rename == true,
 	}
 
-	if not state.descPump then
-		state.descPump = true
-		task.defer(processDescQueue)
-	end
+	scheduleDescQueue(state.descDelay)
 end
 
 local function getEnum(a, b)
@@ -903,6 +933,13 @@ end
 
 local function getFolderParent(parent)
 	if isInstance(parent) then
+		if isA(parent, "ScreenGui") then
+			local par = getProperty(parent, "Parent")
+			if isInstance(par) then
+				return getFolderParent(par)
+			end
+		end
+
 		if isRobloxGuiName(parent) then
 			return parent
 		end
@@ -1133,7 +1170,12 @@ function protector.harden(obj, opts)
 
 	if opts.deep then
 		local desc = qDesc(obj)
-		for i = 1, #desc do
+		local max = tonumber(opts.maxDescendants) or tonumber(state.maxDescPerDeep) or 256
+		if max < 0 then
+			max = 0
+		end
+
+		for i = 1, math.min(#desc, max) do
 			queueHardenDescendant(desc[i], opts.rename == true)
 		end
 	end
@@ -1241,6 +1283,17 @@ local function protectNativeScreen(gui)
 	return gui
 end
 
+local function getScreenHuiFolderParent(screen)
+	if isInstance(screen) then
+		local par = getProperty(screen, "Parent")
+		if isInstance(par) then
+			return getFolderParent(par)
+		end
+	end
+
+	return protector.getBaseParent()
+end
+
 function protector.getCustomHui(parent)
 	parent = getFolderParent(parent)
 
@@ -1272,8 +1325,8 @@ function protector.huiGrabber()
 
 	if isInstance(hidden) then
 		if kind == "screen" then
-			state.screenGui = hidden
-			return protectNativeScreen(hidden)
+			state.nativeScreen = hidden
+			return protector.getCustomHui(getScreenHuiFolderParent(hidden))
 		end
 
 		if kind == "folder" then
@@ -1298,8 +1351,7 @@ function protector.getScreenGui(name)
 	local hidden = protector.huiGrabber()
 
 	if isInstance(hidden) and isA(hidden, "ScreenGui") then
-		state.screenGui = hidden
-		return hidden
+		hidden = protector.getCustomHui(getScreenHuiFolderParent(hidden))
 	end
 
 	if not isInstance(hidden) then
@@ -1632,6 +1684,7 @@ function protector.destroy()
 	end)
 
 	state.screenGui = nil
+	state.nativeScreen = nil
 	state.customHui = nil
 end
 
