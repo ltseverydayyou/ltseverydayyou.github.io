@@ -1,5 +1,5 @@
-local build = "shared_hui_singleton_v3"
-local patch = "global_gethui_override_v3"
+local build = "shared_hui_singleton_v4_safe_boot"
+local patch = "safe_hui_no_auto_override_v1"
 
 local okEnv, globalEnv = pcall(function()
 	if type(getgenv) == "function" then
@@ -66,9 +66,6 @@ end
 local cached = getCachedProtector()
 
 if type(cached) == "table" and rawget(cached, "build") == build and rawget(cached, "patch") == patch then
-	if type(cached.installGetHuiOverride) == "function" then
-		pcall(cached.installGetHuiOverride)
-	end
 	return cached
 end
 
@@ -544,14 +541,10 @@ end
 local function processDescQueue()
 	state.descPump = false
 
-	local t0 = os.clock()
-	local n = 0
-
-	while state.descHead <= state.descTail and n < 32 and os.clock() - t0 < 0.0015 do
+	while state.descHead <= state.descTail do
 		local item = state.descQueue[state.descHead]
 		state.descQueue[state.descHead] = nil
 		state.descHead += 1
-		n += 1
 
 		if type(item) == "table" then
 			local inst = item.inst
@@ -564,11 +557,6 @@ local function processDescQueue()
 
 	if state.descHead > 128 and state.descHead > state.descTail / 2 then
 		packDescQueue()
-	end
-
-	if state.descHead <= state.descTail then
-		state.descPump = true
-		task.defer(processDescQueue)
 	end
 end
 
@@ -590,7 +578,7 @@ local function queueHardenDescendant(d, rename)
 
 	if not state.descPump then
 		state.descPump = true
-		task.defer(processDescQueue)
+		processDescQueue()
 	end
 end
 
@@ -1372,15 +1360,7 @@ local function destroyScreenLater(screen)
 		end)
 	end
 
-	local okTask, taskLib = pcall(function()
-		return task
-	end)
-
-	if okTask and type(taskLib) == "table" and type(taskLib.defer) == "function" then
-		pcall(taskLib.defer, destroy)
-	else
-		destroy()
-	end
+	destroy()
 end
 
 local function absorbScreenHui(screen)
@@ -1428,7 +1408,9 @@ function protector.huiGrabber()
 
 	if isInstance(hidden) then
 		if kind == "screen" then
-			return absorbScreenHui(hidden)
+			local par = getProperty(hidden, "Parent")
+			local folder = protector.getCustomHui(isInstance(par) and par or nil)
+			return isInstance(folder) and folder or hidden
 		end
 
 		if kind == "folder" then
@@ -1838,9 +1820,16 @@ end
 protector.ready = true
 protector.build = build
 protector.patch = patch
+protector.autoInstall = false
 
 pcall(function()
-	protector.installGetHuiOverride()
+	local flag = false
+	if type(globalEnv) == "table" then
+		flag = rawget(globalEnv, "__lt_ui_protector_auto_install") == true
+	end
+	if flag then
+		protector.installGetHuiOverride()
+	end
 end)
 
 for i = 1, #cacheHosts do
