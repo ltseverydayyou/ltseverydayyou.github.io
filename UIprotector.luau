@@ -1,5 +1,5 @@
-local build = "shared_hui_singleton_v3"
-local patch = "global_gethui_override_v3"
+local build = "shared_hui_singleton_v4"
+local patch = "global_gethui_override_v4_safe"
 
 local okEnv, globalEnv = pcall(function()
 	if type(getgenv) == "function" then
@@ -92,10 +92,12 @@ local state = {
 	customHui = nil,
 	screenGui = nil,
 	rawHui = nil,
+	rawHuiAt = 0,
 	heartbeat = nil,
 	installed = false,
 	last = 0,
-	rate = 0.35,
+	rate = 0.75,
+	fullRate = 2.5,
 	connections = setmetatable({}, { __mode = "k" }),
 	tracked = setmetatable({}, { __mode = "k" }),
 	locked = setmetatable({}, { __mode = "k" }),
@@ -541,13 +543,22 @@ local function packDescQueue()
 	state.descTail = n
 end
 
+local startWatchdog
+
+local function hasDescQueue()
+	return state.descHead <= state.descTail
+end
+
 local function processDescQueue()
-	state.descPump = false
+	if not hasDescQueue() then
+		state.descPump = false
+		return false
+	end
 
 	local t0 = os.clock()
 	local n = 0
 
-	while state.descHead <= state.descTail and n < 32 and os.clock() - t0 < 0.0015 do
+	while hasDescQueue() and n < 12 and os.clock() - t0 < 0.001 do
 		local item = state.descQueue[state.descHead]
 		state.descQueue[state.descHead] = nil
 		state.descHead += 1
@@ -566,10 +577,8 @@ local function processDescQueue()
 		packDescQueue()
 	end
 
-	if state.descHead <= state.descTail then
-		state.descPump = true
-		task.defer(processDescQueue)
-	end
+	state.descPump = hasDescQueue()
+	return state.descPump
 end
 
 local function queueHardenDescendant(d, rename)
@@ -590,7 +599,11 @@ local function queueHardenDescendant(d, rename)
 
 	if not state.descPump then
 		state.descPump = true
-		task.defer(processDescQueue)
+		processDescQueue()
+	end
+
+	if state.descPump and type(startWatchdog) == "function" then
+		startWatchdog()
 	end
 end
 
@@ -787,6 +800,14 @@ function protector.setTableReadonly(tbl, value)
 end
 
 local function rawHui()
+	local now = os.clock()
+
+	if isInstance(state.rawHui) and now - state.rawHuiAt < 1 then
+		return state.rawHui
+	end
+
+	state.rawHuiAt = now
+
 	local fns = {
 		state.nativeHuiFns.gethui,
 		state.nativeHuiFns.gethiddenui,
@@ -840,15 +861,13 @@ local function isAliasRoot(obj, coreGui)
 		return true
 	end
 
-	coreGui = isInstance(coreGui) and coreGui or getService("CoreGui")
-
-	if isInstance(coreGui) and sameInstance(obj, coreGui) then
-		return true
-	end
-
 	local class = obj.ClassName
 
 	if class == "CoreGui" or class == "PlayerGui" or class == "StarterGui" then
+		return true
+	end
+
+	if isInstance(coreGui) and sameInstance(obj, coreGui) then
 		return true
 	end
 
@@ -860,9 +879,7 @@ local function huiKind(obj)
 		return nil
 	end
 
-	local coreGui = getService("CoreGui")
-
-	if isAliasRoot(obj, coreGui) then
+	if isRobloxGuiName(obj) then
 		return "alias"
 	end
 
@@ -876,6 +893,10 @@ local function huiKind(obj)
 
 	if isA(obj, "BasePlayerGui") then
 		return "root"
+	end
+
+	if isAliasRoot(obj, getService("CoreGui")) then
+		return "alias"
 	end
 
 	return "other"
@@ -991,10 +1012,6 @@ local function findSharedContainer(parent, role, className)
 		if isInstance(child) and isA(child, className) and isSharedContainer(child, role) then
 			if not found then
 				found = child
-			else
-				pcall(function()
-					child:Destroy()
-				end)
 			end
 		end
 	end
@@ -1002,7 +1019,7 @@ local function findSharedContainer(parent, role, className)
 	return found
 end
 
-local function startWatchdog()
+function startWatchdog()
 	if state.heartbeat then
 		return
 	end
@@ -1014,13 +1031,13 @@ local function startWatchdog()
 
 	state.heartbeat = runService.Heartbeat:Connect(function()
 		local now = os.clock()
-		if now - state.last < state.rate then
-			return
+		local queueActive = processDescQueue()
+		local canCheck = now - state.last >= state.rate
+		local active = queueActive
+
+		if canCheck then
+			state.last = now
 		end
-
-		state.last = now
-
-		local active = false
 
 		for obj, cfg in state.tracked do
 			if not isInstance(obj) or cfg.dead then
@@ -1032,9 +1049,27 @@ local function startWatchdog()
 			else
 				active = true
 
-				for prop, val in cfg.properties do
-					enforceTrackedProperty(obj, prop, val)
-					clearPending(obj, prop)
+				if canCheck then
+					local pending = state.pending[obj]
+					local did = false
+
+					if type(pending) == "table" then
+						for prop in pending do
+							local val = cfg.properties[prop]
+							if val ~= nil then
+								enforceTrackedProperty(obj, prop, val)
+							end
+							clearPending(obj, prop)
+							did = true
+						end
+					end
+
+					if not did and now - (cfg.lastFull or 0) >= state.fullRate then
+						cfg.lastFull = now
+						for prop, val in cfg.properties do
+							enforceTrackedProperty(obj, prop, val)
+						end
+					end
 				end
 			end
 		end
@@ -1057,6 +1092,7 @@ function protector.lockInstance(obj, props)
 	state.tracked[obj] = {
 		properties = props,
 		dead = false,
+		lastFull = 0,
 	}
 
 	for prop, val in props do
@@ -1366,21 +1402,9 @@ local function destroyScreenLater(screen)
 		state.screenGui = nil
 	end
 
-	local function destroy()
-		pcall(function()
-			screen:Destroy()
-		end)
-	end
-
-	local okTask, taskLib = pcall(function()
-		return task
+	pcall(function()
+		screen:Destroy()
 	end)
-
-	if okTask and type(taskLib) == "table" and type(taskLib.defer) == "function" then
-		pcall(taskLib.defer, destroy)
-	else
-		destroy()
-	end
 end
 
 local function absorbScreenHui(screen)
@@ -1428,7 +1452,10 @@ function protector.huiGrabber()
 
 	if isInstance(hidden) then
 		if kind == "screen" then
-			return absorbScreenHui(hidden)
+			state.screenGui = hidden
+			applyScreenDefaults(hidden)
+			protector.nativeProtect(hidden)
+			return hidden
 		end
 
 		if kind == "folder" then
