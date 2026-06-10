@@ -10590,7 +10590,9 @@
             <section id="pm" class="pp">
                 <div class="g ed lua-manifest">
                     <h3>LUA by ID Manifest</h3>
-                    <p>Paste a Steam AppID or store URL. It builds the zip that SteamTools expects:
+                    <p>Paste a Steam AppID or store URL. It uses
+                        <a href="https://steamml.netlify.app" target="_blank" rel="noopener noreferrer">SteamML v2</a>
+                        to build the zip that SteamTools expects:
                         <a href="https://steamtools.net" target="_blank" rel="noopener noreferrer">steamtools.net</a>.
                     </p>
                     <div class="lua-manifest__controls">
@@ -20161,7 +20163,9 @@ self.addEventListener("message", async (event) => {
                 openBtn.textContent =
                     luaManifestResultMode === "blob" ?
                         getLuaManifestDownloadLabel(luaManifestFilename) :
-                        "Open file";
+                        luaManifestFilename ?
+                            getLuaManifestDownloadLabel(luaManifestFilename) :
+                            "Open file";
             }
             if (openLuaBtn) {
                 openLuaBtn.disabled = !hasLuaDownload;
@@ -20410,8 +20414,11 @@ self.addEventListener("message", async (event) => {
             return normalized || fallback;
         }
 
-        const steamMlManifestPackageBaseUrl =
-            "https://pub-5b6d3b7c03fd4ac1afb5bd3017850e20.r2.dev";
+        const steamMlManifestSiteUrl = "https://steamml.netlify.app";
+        const steamMlManifestPackageBaseUrls = [
+            steamMlManifestSiteUrl,
+            "https://pub-5b6d3b7c03fd4ac1afb5bd3017850e20.r2.dev"
+        ];
 
         function normalizeLuaManifestPathname(value) {
             return typeof value === "string" ?
@@ -20419,8 +20426,45 @@ self.addEventListener("message", async (event) => {
                 "";
         }
 
-        function buildSteamMlManifestZipUrl(appId) {
-            return `${steamMlManifestPackageBaseUrl}/${encodeURIComponent(appId)}.zip`;
+        function buildSteamMlManifestZipUrl(appId, baseUrl = steamMlManifestSiteUrl) {
+            return `${baseUrl.replace(/\/+$/, "")}/${encodeURIComponent(appId)}.zip`;
+        }
+
+        function buildSteamMlManifestZipUrlCandidates(appId) {
+            const urls = [];
+            const seen = new Set();
+            steamMlManifestPackageBaseUrls.forEach((baseUrl) => {
+                const url = buildSteamMlManifestZipUrl(appId, baseUrl);
+                if (!url || seen.has(url)) {
+                    return;
+                }
+                seen.add(url);
+                urls.push(url);
+            });
+            return urls;
+        }
+
+        function buildSteamMlManifestDirectDownloadUrl(appId) {
+            const packageBaseUrl =
+                steamMlManifestPackageBaseUrls[1] ||
+                steamMlManifestPackageBaseUrls[0] ||
+                steamMlManifestSiteUrl;
+            return buildSteamMlManifestZipUrl(appId, packageBaseUrl);
+        }
+
+        function buildSteamMlManifestDirectDownloadResult(appId, fallbackGameName = "") {
+            const gameName = normalizeLuaManifestLabel(fallbackGameName, `App ${appId}`);
+            const url = buildSteamMlManifestDirectDownloadUrl(appId);
+            return {
+                kind: "url",
+                url,
+                filename: `${appId}.zip`,
+                copyText: url,
+                copyLabel: `${appId}.zip`,
+                displayText: `${appId}.zip - ${gameName} via SteamML v2`,
+                statusText:
+                    `SteamML v2 download link is ready for ${gameName}. If it returns 404, request the game through SteamML.`
+            };
         }
 
         async function fetchArrayBufferWithProxyFallback(endpoint, contextLabel) {
@@ -20482,7 +20526,7 @@ self.addEventListener("message", async (event) => {
             "Included files are the cleaned Lua script plus the bundled depot manifest files."
         ].join("\r\n");
 
-        async function parseSteamMlManifestPackage(appId, arrayBuffer, fallbackGameName = "") {
+        async function parseSteamMlManifestPackage(appId, arrayBuffer, fallbackGameName = "", sourceZipUrl = "") {
             if (!window.JSZip) {
                 throw new Error("JSZip failed to load. Check your connection and retry.");
             }
@@ -20548,7 +20592,7 @@ self.addEventListener("message", async (event) => {
             return {
                 appId,
                 gameName: normalizeLuaManifestLabel(fallbackGameName, `App ${appId}`),
-                zipUrl: buildSteamMlManifestZipUrl(appId),
+                zipUrl: sourceZipUrl || buildSteamMlManifestZipUrl(appId),
                 luaFilename,
                 luaText,
                 manifestFiles,
@@ -20572,11 +20616,34 @@ self.addEventListener("message", async (event) => {
                 return luaManifestPackagePromiseCache.get(appId);
             }
 
-            const promise = fetchArrayBufferWithProxyFallback(
-                buildSteamMlManifestZipUrl(appId),
-                "SteamML manifest package"
-            )
-                .then((arrayBuffer) => parseSteamMlManifestPackage(appId, arrayBuffer, fallbackGameName))
+            const promise = (async () => {
+                const zipUrls = buildSteamMlManifestZipUrlCandidates(appId);
+                let lastError = null;
+
+                for (let index = 0; index < zipUrls.length; index += 1) {
+                    const zipUrl = zipUrls[index];
+                    try {
+                        const arrayBuffer = await fetchArrayBufferWithProxyFallback(
+                            zipUrl,
+                            "SteamML manifest package"
+                        );
+                        return parseSteamMlManifestPackage(appId, arrayBuffer, fallbackGameName, zipUrl);
+                    } catch (error) {
+                        lastError = error;
+                        if (Number(error?.status) !== 404 || index === zipUrls.length - 1) {
+                            throw error;
+                        }
+                        console.warn(
+                            `[SteamML] Manifest package not found at ${zipUrl}. Trying next route.`,
+                            error
+                        );
+                    }
+                }
+
+                throw lastError instanceof Error ?
+                    lastError :
+                    new Error("SteamML manifest package failed.");
+            })()
                 .then((manifestPackage) => {
                     luaManifestPackageCache.set(appId, manifestPackage);
                     return manifestPackage;
@@ -20705,9 +20772,8 @@ self.addEventListener("message", async (event) => {
                 if (status === 404) {
                     throw new Error("SteamML does not have a manifest package for this AppID.");
                 }
-                throw error instanceof Error ?
-                    error :
-                    new Error("Unable to load the SteamML package right now.");
+                console.warn("Unable to parse the SteamML package. Falling back to direct download.", error);
+                return buildSteamMlManifestDirectDownloadResult(appId, fallbackGameName);
             }
 
             const blob = await buildLuaManifestPackageBlob(appId, model);
@@ -20774,7 +20840,7 @@ self.addEventListener("message", async (event) => {
 
             const providers = [
                 {
-                    key: "SteamML package builder",
+                    key: "SteamML v2",
                     resolve: () => fetchLuaManifestFromSteamMl(appId, fallbackGameName)
                 }
             ];
