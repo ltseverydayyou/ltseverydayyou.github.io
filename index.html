@@ -19932,6 +19932,10 @@ self.addEventListener("message", async (event) => {
         let luaManifestSelectedGameName = "";
         const luaManifestPackageCache = new Map();
         const luaManifestPackagePromiseCache = new Map();
+        const steamAppListFallbackUrl =
+            "https://raw.githubusercontent.com/jsnli/steamappidlist/master/data/games_appid.json";
+        let steamAppListFallbackCache = null;
+        let steamAppListFallbackPromise = null;
 
         function getLuaManifestDownloadLabel(filename) {
             const normalized =
@@ -20062,6 +20066,12 @@ self.addEventListener("message", async (event) => {
                     thumb.src = entry.thumbnail;
                     thumb.alt = `${entry.name} cover art`;
                     thumb.loading = "eager";
+                    thumb.addEventListener("error", () => {
+                        const placeholder = document.createElement("div");
+                        placeholder.className = thumb.className;
+                        placeholder.setAttribute("aria-hidden", "true");
+                        thumb.replaceWith(placeholder);
+                    });
                 } else {
                     thumb.setAttribute("aria-hidden", "true");
                 }
@@ -20656,11 +20666,101 @@ self.addEventListener("message", async (event) => {
             return promise;
         }
 
-        async function searchLuaManifestGames(query) {
-            const normalizedQuery = (query || "").trim();
+        function normalizeSteamSearchText(value) {
+            return String(value || "")
+                .toLowerCase()
+                .replace(/[^a-z0-9]+/g, " ")
+                .replace(/\s+/g, " ")
+                .trim();
+        }
+
+        function buildSteamAppCapsuleUrl(appId) {
+            return `https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/${encodeURIComponent(appId)}/capsule_184x69.jpg`;
+        }
+
+        function scoreSteamAppNameMatch(normalizedName, normalizedQuery) {
+            if (!normalizedName || !normalizedQuery) {
+                return 0;
+            }
+            if (normalizedName === normalizedQuery) {
+                return 1000;
+            }
+            if (normalizedName.startsWith(normalizedQuery)) {
+                return 800 - Math.min(normalizedName.length - normalizedQuery.length, 120);
+            }
+            const wordIndex = normalizedName.indexOf(` ${normalizedQuery}`);
+            if (wordIndex >= 0) {
+                return 650 - Math.min(wordIndex, 120);
+            }
+            if (normalizedName.includes(normalizedQuery)) {
+                return 450 - Math.min(normalizedName.indexOf(normalizedQuery), 120);
+            }
+
+            const queryWords = normalizedQuery.split(" ").filter(Boolean);
+            if (!queryWords.length || !queryWords.every((word) => normalizedName.includes(word))) {
+                return 0;
+            }
+            return 250 - Math.min(normalizedName.length, 120);
+        }
+
+        async function loadSteamAppListFallback() {
+            if (Array.isArray(steamAppListFallbackCache)) {
+                return steamAppListFallbackCache;
+            }
+            if (steamAppListFallbackPromise) {
+                return steamAppListFallbackPromise;
+            }
+
+            steamAppListFallbackPromise = fetchJsonGetWithProxyFallback(
+                steamAppListFallbackUrl,
+                "Steam app list fallback"
+            )
+                .then((payload) => {
+                    const list = Array.isArray(payload) ? payload : [];
+                    steamAppListFallbackCache = list
+                        .filter((entry) => entry && /^\d+$/.test(String(entry.appid || "")) && entry.name)
+                        .map((entry) => ({
+                            appId: String(entry.appid),
+                            name: normalizeLuaManifestLabel(entry.name, `App ${entry.appid}`),
+                            thumbnail: buildSteamAppCapsuleUrl(entry.appid)
+                        }));
+                    return steamAppListFallbackCache;
+                })
+                .finally(() => {
+                    steamAppListFallbackPromise = null;
+                });
+
+            return steamAppListFallbackPromise;
+        }
+
+        async function searchLuaManifestGamesFromFallbackList(query) {
+            const normalizedQuery = normalizeSteamSearchText(query);
             if (normalizedQuery.length < 2) {
                 return [];
             }
+
+            const apps = await loadSteamAppListFallback();
+            return apps
+                .map((entry) => ({
+                    ...entry,
+                    matchScore: scoreSteamAppNameMatch(
+                        normalizeSteamSearchText(entry.name),
+                        normalizedQuery
+                    )
+                }))
+                .filter((entry) => entry.matchScore > 0)
+                .sort((left, right) =>
+                    right.matchScore - left.matchScore ||
+                    left.name.localeCompare(right.name, undefined, {
+                        numeric: true,
+                        sensitivity: "base"
+                    })
+                )
+                .slice(0, 8)
+                .map(({ matchScore, ...entry }) => entry);
+        }
+
+        async function searchLuaManifestGamesFromSteamStore(normalizedQuery) {
             const searchUrl =
                 `https://store.steampowered.com/api/storesearch/?term=${encodeURIComponent(normalizedQuery)}&l=english&cc=us`;
             const payload = await fetchJsonGetWithProxyFallback(searchUrl, "Steam store search");
@@ -20676,6 +20776,21 @@ self.addEventListener("message", async (event) => {
                             entry.tiny_image :
                             ""
                 }));
+        }
+
+        async function searchLuaManifestGames(query) {
+            const normalizedQuery = (query || "").trim();
+            if (normalizedQuery.length < 2) {
+                return [];
+            }
+
+            try {
+                return await searchLuaManifestGamesFromSteamStore(normalizedQuery);
+            } catch (error) {
+                console.warn("Steam store search failed. Falling back to cached app list.", error);
+                setLuaManifestStatus("Steam search failed; checking the backup app list...");
+                return searchLuaManifestGamesFromFallbackList(normalizedQuery);
+            }
         }
 
         async function performLuaManifestSearch(rawQuery) {
