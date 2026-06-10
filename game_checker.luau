@@ -476,10 +476,6 @@ local mods = {
 		id = 9671373627,
 		u = "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/SexCraft.lua"
 	},
-	{
-		id = 3647333358,
-		u = "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/Evader.luau"
-	},
 };
 for _, m in mods do
 	task.spawn(function()
