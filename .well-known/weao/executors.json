@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-06-14T17:58:17.691Z",
+  "fetchedAt": "2026-06-14T21:16:21.887Z",
   "data": [
     {
       "_id": "680eaddf8b44717c060fcf8d",
@@ -548,7 +548,7 @@
       "extype": "wexternal",
       "roleId": "1293413270388215879",
       "index": 8,
-      "purchaselink": "https://matrixhubs.shop/",
+      "purchaselink": "https://rsware.store/products/matrix-hub-roblox-external-win-10--11?ref=weao",
       "elementCertified": false,
       "cost": "$4.99 Lifetime",
       "__v": 1,
@@ -1136,8 +1136,8 @@
     {
       "_id": "6949f9ee0260ad9e36c73700",
       "title": "RbxCli",
-      "version": "1.9.5a-beta",
-      "updatedDate": "06/14/2026 at 5:35 PM UTC",
+      "version": "1.9.6-beta",
+      "updatedDate": "06/14/2026 at 8:33 PM UTC",
       "uncStatus": false,
       "free": false,
       "detected": false,
