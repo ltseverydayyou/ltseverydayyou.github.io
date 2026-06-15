@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-06-15T00:16:07.307Z",
+  "fetchedAt": "2026-06-15T05:37:57.542Z",
   "data": [
     {
       "_id": "680eaddf8b44717c060fcf8d",
@@ -1342,8 +1342,8 @@
     {
       "_id": "6a0ea99cfd26ad90bea624eb",
       "title": "Lumen",
-      "version": "1.0.5",
-      "updatedDate": "06/09/2026 at 11:25 PM UTC",
+      "version": "1.0.6",
+      "updatedDate": "06/15/2026 at 2:12 AM UTC",
       "uncStatus": false,
       "free": false,
       "detected": false,
@@ -1358,7 +1358,7 @@
       "roleId": "1506909341410656376",
       "index": 5,
       "hidden": false,
-      "cost": "$5.99 Monthly",
+      "cost": "$9.99 Lifetime",
       "__v": 1,
       "recommendedReason": {
         "features": []
