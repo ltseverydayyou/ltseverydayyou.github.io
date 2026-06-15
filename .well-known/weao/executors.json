@@ -1,11 +1,11 @@
 {
-  "fetchedAt": "2026-06-15T12:23:44.472Z",
+  "fetchedAt": "2026-06-15T21:08:15.651Z",
   "data": [
     {
       "_id": "680eaddf8b44717c060fcf8d",
       "title": "Velocity",
-      "version": "1.0.3",
-      "updatedDate": "06/14/2026 at 10:59 PM UTC",
+      "version": "1.0.4",
+      "updatedDate": "06/15/2026 at 7:20 PM UTC",
       "uncStatus": true,
       "free": true,
       "detected": true,
@@ -984,8 +984,8 @@
     {
       "_id": "66a679cc5b36b46c9327b0a7",
       "title": "Synapse Z",
-      "version": "1.0.2.7",
-      "updatedDate": "06/13/2026 at 10:02 PM UTC",
+      "version": "1.0.2.8",
+      "updatedDate": "06/15/2026 at 8:45 PM UTC",
       "uncStatus": true,
       "free": false,
       "detected": true,
@@ -1100,7 +1100,7 @@
       "_id": "6949f6f40260ad9e36c736ff",
       "title": "Vega X",
       "version": "2.723.787",
-      "updatedDate": "06/09/2026 at 2:52 AM UTC",
+      "updatedDate": "06/15/2026 at 9:08 PM UTC",
       "uncStatus": true,
       "free": true,
       "detected": true,
