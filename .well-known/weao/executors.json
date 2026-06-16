@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-06-16T21:27:16.775Z",
+  "fetchedAt": "2026-06-16T23:10:00.945Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -45,7 +45,7 @@
           "https://cdn.weao.gg/slug/potassium/screenshot4.png"
         ]
       },
-      "hasIssues": true,
+      "hasIssues": false,
       "detectionReason": "Last banwave: June 1st",
       "raknet": true,
       "unknown": false,
