@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-06-18T00:24:28.303Z",
+  "fetchedAt": "2026-06-18T09:55:36.858Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -324,8 +324,8 @@
     {
       "_id": "67576d22d9181811c292bb79",
       "title": "Volt",
-      "version": "1.2.24.2",
-      "updatedDate": "06/17/2026 at 11:08 PM UTC",
+      "version": "1.2.24.3",
+      "updatedDate": "06/18/2026 at 7:24 AM UTC",
       "uncStatus": true,
       "free": false,
       "detected": true,
@@ -378,13 +378,13 @@
     {
       "_id": "680eaddf8b44717c060fcf8d",
       "title": "Velocity",
-      "version": "1.0.4",
-      "updatedDate": "06/15/2026 at 7:20 PM UTC",
+      "version": "1.0.5",
+      "updatedDate": "06/18/2026 at 8:36 AM UTC",
       "uncStatus": true,
       "free": true,
       "detected": true,
-      "rbxversion": "version-76173e47a79145c7",
-      "updateStatus": false,
+      "rbxversion": "version-8884371d30284041",
+      "updateStatus": true,
       "discordlink": "https://discord.com/invite/velocityide",
       "beta": false,
       "platform": "Windows",
