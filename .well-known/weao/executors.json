@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-06-18T09:55:36.858Z",
+  "fetchedAt": "2026-06-18T13:30:56.654Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -378,8 +378,8 @@
     {
       "_id": "680eaddf8b44717c060fcf8d",
       "title": "Velocity",
-      "version": "1.0.5",
-      "updatedDate": "06/18/2026 at 8:36 AM UTC",
+      "version": "1.0.6",
+      "updatedDate": "06/18/2026 at 10:44 AM UTC",
       "uncStatus": true,
       "free": true,
       "detected": true,
@@ -1031,12 +1031,12 @@
       "_id": "6907cafc4b9bde193883d902",
       "title": "Severe",
       "version": "v2",
-      "updatedDate": "06/10/2026 at 6:18 AM UTC",
+      "updatedDate": "06/18/2026 at 12:20 PM UTC",
       "uncStatus": false,
       "free": false,
       "detected": false,
-      "rbxversion": "version-76173e47a79145c7",
-      "updateStatus": false,
+      "rbxversion": "version-8884371d30284041",
+      "updateStatus": true,
       "websitelink": "https://discord.gg/QaheZpKzsX",
       "discordlink": "https://discord.gg/QaheZpKzsX",
       "purchaselink": "https://bloxproducts.com/r/weao#Severe",
