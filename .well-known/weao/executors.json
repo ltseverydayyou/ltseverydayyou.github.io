@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-06-19T05:34:23.301Z",
+  "fetchedAt": "2026-06-19T19:03:12.849Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -235,7 +235,7 @@
       "_id": "6733c47fd9dd590769498131",
       "title": "Cryptic",
       "version": "undefined",
-      "updatedDate": "06/19/2026 at 3:38 AM UTC",
+      "updatedDate": "06/19/2026 at 5:25 PM UTC",
       "uncStatus": true,
       "free": true,
       "detected": false,
