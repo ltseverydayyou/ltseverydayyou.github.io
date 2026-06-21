@@ -24019,6 +24019,14 @@ self.addEventListener("message", async (event) => {
 
       const sortedGames = [...games].sort((a, b) => a.id - b.id);
       const iconUrl = (label) => `https://placehold.co/512x512/111827/5eead4?text=${encodeURIComponent(label)}`;
+      const focusPrivateServers = () => {
+        if (window.location.hash !== '#private-servers') return;
+
+        document.querySelector('#private-servers')?.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      };
       const fetchJson = async (urls) => {
         let lastError;
 
@@ -24084,6 +24092,9 @@ self.addEventListener("message", async (event) => {
 
         list.append(card);
       });
+
+      requestAnimationFrame(focusPrivateServers);
+      window.addEventListener('hashchange', focusPrivateServers);
 
       const universeIds = sortedGames.map((game) => game.id).join(',');
 
