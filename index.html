@@ -23674,6 +23674,8 @@ self.addEventListener("message", async (event) => {
             initBuilderIcons();
         });
     </script>
+  <a class="private-servers-jump" href="#private-servers">Private Servers</a>
+
   <section class="private-servers" id="private-servers" aria-labelledby="private-servers-title">
     <div class="private-servers__inner">
       <div class="private-servers__header">
@@ -23694,7 +23696,7 @@ self.addEventListener("message", async (event) => {
         <img class="private-server-card__icon" alt="" loading="lazy">
       </div>
       <div class="private-server-card__body">
-        <div>
+        <div class="private-server-card__details">
           <h3 class="private-server-card__title"></h3>
           <p class="private-server-card__meta"></p>
         </div>
@@ -23704,7 +23706,34 @@ self.addEventListener("message", async (event) => {
   </template>
 
   <style>
+    .private-servers-jump {
+      position: fixed;
+      right: 1rem;
+      bottom: 1rem;
+      z-index: 1000;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 0 1rem;
+      border: 1px solid rgba(15, 23, 42, 0.18);
+      border-radius: 999px;
+      color: #04111f;
+      background: #5eead4;
+      box-shadow: 0 12px 32px rgba(2, 6, 23, 0.28);
+      font-weight: 900;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    .private-servers-jump:hover,
+    .private-servers-jump:focus-visible {
+      background: #99f6e4;
+      transform: translateY(-1px);
+    }
+
     .private-servers {
+      scroll-margin-top: 1rem;
       padding: clamp(3rem, 7vw, 5.5rem) 1rem;
       background:
         radial-gradient(circle at 15% 12%, rgba(0, 176, 111, 0.18), transparent 30rem),
@@ -23713,7 +23742,7 @@ self.addEventListener("message", async (event) => {
     }
 
     .private-servers__inner {
-      width: min(1120px, 100%);
+      width: min(1240px, 100%);
       margin: 0 auto;
     }
 
@@ -23747,15 +23776,15 @@ self.addEventListener("message", async (event) => {
 
     .private-servers__grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(min(100%, 310px), 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr));
       gap: 1rem;
     }
 
     .private-server-card {
       display: grid;
-      grid-template-columns: 112px minmax(0, 1fr);
+      grid-template-columns: 120px minmax(0, 1fr);
       gap: 1rem;
-      min-height: 168px;
+      min-height: 0;
       padding: 1rem;
       border: 1px solid rgba(148, 163, 184, 0.24);
       border-radius: 8px;
@@ -23765,7 +23794,7 @@ self.addEventListener("message", async (event) => {
     }
 
     .private-server-card__media {
-      width: 112px;
+      width: 120px;
       aspect-ratio: 1;
       overflow: hidden;
       border-radius: 8px;
@@ -23780,11 +23809,12 @@ self.addEventListener("message", async (event) => {
     }
 
     .private-server-card__body {
-      display: flex;
+      display: contents;
       min-width: 0;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 1rem;
+    }
+
+    .private-server-card__details {
+      min-width: 0;
     }
 
     .private-server-card__title {
@@ -23804,12 +23834,33 @@ self.addEventListener("message", async (event) => {
 
     .private-server-card__links {
       display: grid;
+      grid-column: 1 / -1;
       gap: 0.55rem;
+      max-height: 166px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      padding-right: 0.25rem;
+      scrollbar-color: rgba(94, 234, 212, 0.75) rgba(15, 23, 42, 0.65);
+      scrollbar-width: thin;
+    }
+
+    .private-server-card__links::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .private-server-card__links::-webkit-scrollbar-track {
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.65);
+    }
+
+    .private-server-card__links::-webkit-scrollbar-thumb {
+      border-radius: 999px;
+      background: rgba(94, 234, 212, 0.75);
     }
 
     .private-server-link {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) auto auto;
+      grid-template-columns: minmax(5.5rem, 1fr) auto auto;
       align-items: center;
       gap: 0.45rem;
       min-height: 42px;
@@ -23825,8 +23876,6 @@ self.addEventListener("message", async (event) => {
       font-size: 0.9rem;
       font-weight: 700;
       white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
     }
 
     .private-server-link__button {
@@ -23866,20 +23915,25 @@ self.addEventListener("message", async (event) => {
     }
 
     @media (max-width: 520px) {
+      .private-servers-jump {
+        right: 0.75rem;
+        bottom: 0.75rem;
+      }
+
       .private-server-card {
-        grid-template-columns: 84px minmax(0, 1fr);
+        grid-template-columns: 96px minmax(0, 1fr);
       }
 
       .private-server-card__media {
-        width: 84px;
+        width: 96px;
       }
 
       .private-server-link {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: minmax(4.75rem, 1fr) auto auto;
       }
 
       .private-server-link__label {
-        grid-column: 1 / -1;
+        grid-column: auto;
       }
     }
   </style>
@@ -23913,6 +23967,27 @@ self.addEventListener("message", async (event) => {
             'https://www.roblox.com/share?code=81326ae2bb6f34489749079a16620fa8&type=Server',
             'https://www.roblox.com/share?code=74b0c48a8119404ead62dc778c0e2162&type=Server'
           ]
+        },
+        {
+          id: 9068117107,
+          links: [
+            'https://www.roblox.com/share?code=49c8fc02bb86504b97859a36cc71c1cf&type=Server',
+            'https://www.roblox.com/share?code=d66358ab4993d04086aded0a7d189c6f&type=Server',
+            'https://www.roblox.com/share?code=be6bd99e2783144b8071c1053001f347&type=Server'
+          ]
+        },
+        {
+          id: 761462079,
+          links: [
+            'https://www.roblox.com/share?code=70d844690f110343aa82f3ad733c969c&type=Server'
+          ]
+        },
+        {
+          id: 10093833731,
+          links: [
+            'https://www.roblox.com/share?code=ad5fe489c3633149b416f1e42756fa78&type=Server',
+            'https://www.roblox.com/share?code=cfbb9a142ff39b4693bc3eb6cb0922b6&type=Server'
+          ]
         }
       ];
 
@@ -23921,7 +23996,22 @@ self.addEventListener("message", async (event) => {
       if (!list || !template) return;
 
       const sortedGames = [...games].sort((a, b) => a.id - b.id);
-      const iconUrl = (id) => `https://placehold.co/512x512/111827/5eead4?text=${id}`;
+      const iconUrl = (label) => `https://placehold.co/512x512/111827/5eead4?text=${encodeURIComponent(label)}`;
+      const fetchJson = async (urls) => {
+        let lastError;
+
+        for (const url of urls) {
+          try {
+            const response = await fetch(url);
+            if (!response.ok) throw new Error(`Request failed: ${response.status}`);
+            return await response.json();
+          } catch (error) {
+            lastError = error;
+          }
+        }
+
+        throw lastError;
+      };
 
       sortedGames.forEach((game) => {
         const card = template.content.firstElementChild.cloneNode(true);
@@ -23930,10 +24020,10 @@ self.addEventListener("message", async (event) => {
         const meta = card.querySelector('.private-server-card__meta');
         const links = card.querySelector('.private-server-card__links');
 
-        title.textContent = `Game ID ${game.id}`;
-        meta.textContent = `${game.links.length} private server${game.links.length === 1 ? '' : 's'} available`;
+        title.textContent = 'Loading Roblox game...';
+        meta.textContent = `Universe ID ${game.id} · ${game.links.length} private server${game.links.length === 1 ? '' : 's'} available`;
         icon.src = iconUrl(game.id);
-        icon.alt = `Roblox game icon for ${game.id}`;
+        icon.alt = `Roblox game icon for universe ${game.id}`;
 
         game.links.forEach((link, index) => {
           const row = document.createElement('div');
@@ -23973,19 +24063,61 @@ self.addEventListener("message", async (event) => {
         list.append(card);
       });
 
-      fetch(`https://thumbnails.roblox.com/v1/places/gameicons?placeIds=${sortedGames.map((game) => game.id).join(',')}&size=512x512&format=Png&isCircular=false`)
-        .then((response) => response.ok ? response.json() : Promise.reject())
+      const universeIds = sortedGames.map((game) => game.id).join(',');
+
+      fetchJson([
+        `https://games.roproxy.com/v1/games?universeIds=${universeIds}`,
+        `https://games.rotunnel.com/v1/games?universeIds=${universeIds}`,
+        `https://games.roblox.com/v1/games?universeIds=${universeIds}`
+      ])
         .then((payload) => {
-          const thumbnails = new Map((payload.data || []).map((item) => [item.targetId, item.imageUrl]));
+          const gameDetails = new Map((payload.data || []).map((item) => [item.id, item]));
+
           document.querySelectorAll('.private-server-card').forEach((card, index) => {
             const game = sortedGames[index];
-            const thumbnail = thumbnails.get(game.id);
-            if (thumbnail) {
-              card.querySelector('.private-server-card__icon').src = thumbnail;
+            const details = gameDetails.get(game.id);
+
+            if (details) {
+              card.querySelector('.private-server-card__title').textContent = details.name;
+              card.querySelector('.private-server-card__meta').textContent = `Universe ID ${game.id} · Root place ID ${details.rootPlaceId} · ${game.links.length} private server${game.links.length === 1 ? '' : 's'} available`;
+              card.querySelector('.private-server-card__icon').alt = `${details.name} Roblox game icon`;
+            } else {
+              card.querySelector('.private-server-card__title').textContent = `Roblox Game ${game.id}`;
             }
           });
+
+          const rootPlaceIds = (payload.data || [])
+            .map((item) => item.rootPlaceId)
+            .filter(Boolean);
+
+          if (!rootPlaceIds.length) return;
+
+          const placeIds = rootPlaceIds.join(',');
+
+          return fetchJson([
+            `https://thumbnails.roproxy.com/v1/places/gameicons?placeIds=${placeIds}&size=512x512&format=Png&isCircular=false`,
+            `https://thumbnails.rotunnel.com/v1/places/gameicons?placeIds=${placeIds}&size=512x512&format=Png&isCircular=false`,
+            `https://thumbnails.roblox.com/v1/places/gameicons?placeIds=${placeIds}&size=512x512&format=Png&isCircular=false`
+          ])
+            .then((thumbnailPayload) => {
+              const thumbnails = new Map((thumbnailPayload.data || []).map((item) => [item.targetId, item.imageUrl]));
+
+              document.querySelectorAll('.private-server-card').forEach((card, index) => {
+                const details = gameDetails.get(sortedGames[index].id);
+                const thumbnail = details && thumbnails.get(details.rootPlaceId);
+
+                if (thumbnail) {
+                  card.querySelector('.private-server-card__icon').src = thumbnail;
+                }
+              });
+            })
+            .catch(() => {});
         })
-        .catch(() => {});
+        .catch(() => {
+          document.querySelectorAll('.private-server-card').forEach((card, index) => {
+            card.querySelector('.private-server-card__title').textContent = `Roblox Game ${sortedGames[index].id}`;
+          });
+        });
     })();
   </script>
 </body>
