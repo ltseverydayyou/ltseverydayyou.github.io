@@ -6322,6 +6322,28 @@
             flex: 0 0 auto;
         }
 
+        .hero__actions .btn--na-docs {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.035)), #050505;
+            color: #f7f7f7;
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 18px 46px rgba(0, 0, 0, 0.42);
+        }
+
+        .hero__actions .btn--na-docs .btn__icon {
+            filter: grayscale(1) contrast(1.18);
+        }
+
+        .hero__actions .btn--na-docs:hover {
+            background: #f7f7f7;
+            color: #050505;
+            border-color: #f7f7f7;
+            box-shadow: 0 20px 52px rgba(0, 0, 0, 0.48);
+        }
+
+        .hero__actions .btn--na-docs:hover .btn__icon {
+            filter: grayscale(1) contrast(1.18) brightness(0.2);
+        }
+
         .btn:hover {
             transform: translateY(-2px) scale(1.01);
             filter: brightness(1.06);
@@ -10458,7 +10480,7 @@
 
 
                         <div class="hero__actions">
-                            <a class="btn" href="https://ltseverydayyou.github.io/NA-docs/" target="_blank"
+                            <a class="btn btn--na-docs" href="https://ltseverydayyou.github.io/NA-docs/" target="_blank"
                                 rel="noopener noreferrer">
                                 <img class="btn__icon"
                                     src="https://raw.githubusercontent.com/ltseverydayyou/Nameless-Admin/refs/heads/main/NAimages/NAnew.png"
