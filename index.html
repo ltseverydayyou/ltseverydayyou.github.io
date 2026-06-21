@@ -6344,6 +6344,20 @@
             filter: grayscale(1) contrast(1.18) brightness(0.2);
         }
 
+        .hero__actions .btn--kofi {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.13), rgba(255, 255, 255, 0.04)), #ff5e5b;
+            color: #130f14;
+            border-color: rgba(255, 255, 255, 0.24);
+            box-shadow: 0 18px 42px rgba(255, 94, 91, 0.22);
+        }
+
+        .hero__actions .btn--kofi:hover {
+            background: #fff6f5;
+            color: #161014;
+            border-color: rgba(255, 255, 255, 0.72);
+            box-shadow: 0 20px 52px rgba(255, 94, 91, 0.3);
+        }
+
         .btn:hover {
             transform: translateY(-2px) scale(1.01);
             filter: brightness(1.06);
@@ -10487,6 +10501,11 @@
                                     alt="" />
                                 <span>Nameless Admin Docs</span>
                             </a>
+                            <a class="btn btn--kofi" href="https://ko-fi.com/ltseverydayyou" target="_blank"
+                                rel="noopener noreferrer">
+                                <img class="btn__icon" src="https://cdn.simpleicons.org/kofi/130f14" alt="" />
+                                <span>Support Ko-fi</span>
+                            </a>
                             <button class="top__theme-btn" id="top-theme-btn" type="button"
                                 aria-label="Open Theme page">
                                 <img src="/images/paint_brush_icon.png" alt="" />
@@ -11835,6 +11854,11 @@
             "GitHub",
             "https://cdn.simpleicons.org/github",
             "https://github.com/ltseverydayyou"
+        );
+        AddLink(
+            "Ko-fi",
+            "https://cdn.simpleicons.org/kofi/FF5E5B",
+            "https://ko-fi.com/ltseverydayyou"
         );
         AddLink(
             "Spotify",
