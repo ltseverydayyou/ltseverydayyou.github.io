@@ -6322,26 +6322,32 @@
             flex: 0 0 auto;
         }
 
-        .hero__actions .btn--na-docs {
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.035)), #050505;
-            color: #f7f7f7;
-            border-color: rgba(255, 255, 255, 0.2);
-            box-shadow: 0 18px 46px rgba(0, 0, 0, 0.42);
+        .hero__actions .btn--na-docs,
+        .hero__actions > a.btn[href="https://ltseverydayyou.github.io/NA-docs/"] {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.035)), #050505 !important;
+            color: #f7f7f7 !important;
+            border-color: rgba(255, 255, 255, 0.28) !important;
+            box-shadow: 0 18px 46px rgba(0, 0, 0, 0.42) !important;
+            filter: none !important;
         }
 
-        .hero__actions .btn--na-docs .btn__icon {
-            filter: grayscale(1) contrast(1.18);
+        .hero__actions .btn--na-docs .btn__icon,
+        .hero__actions > a.btn[href="https://ltseverydayyou.github.io/NA-docs/"] .btn__icon {
+            filter: grayscale(1) contrast(1.18) !important;
         }
 
-        .hero__actions .btn--na-docs:hover {
-            background: #f7f7f7;
-            color: #050505;
-            border-color: #f7f7f7;
-            box-shadow: 0 20px 52px rgba(0, 0, 0, 0.48);
+        .hero__actions .btn--na-docs:hover,
+        .hero__actions > a.btn[href="https://ltseverydayyou.github.io/NA-docs/"]:hover {
+            background: #f7f7f7 !important;
+            color: #050505 !important;
+            border-color: #f7f7f7 !important;
+            box-shadow: 0 20px 52px rgba(0, 0, 0, 0.48) !important;
+            filter: none !important;
         }
 
-        .hero__actions .btn--na-docs:hover .btn__icon {
-            filter: grayscale(1) contrast(1.18) brightness(0.2);
+        .hero__actions .btn--na-docs:hover .btn__icon,
+        .hero__actions > a.btn[href="https://ltseverydayyou.github.io/NA-docs/"]:hover .btn__icon {
+            filter: grayscale(1) contrast(1.18) brightness(0.2) !important;
         }
 
         .btn:hover {
