@@ -18254,7 +18254,7 @@
             }, spd);
         }
 
-        function tab(id) {
+        function tab(id, options = {}) {
             const current = document.querySelector(".pp.on");
             const next = q(`#p${id}`);
             if (!next) {
@@ -18309,7 +18309,9 @@
                 next.classList.add("on");
                 initMotionFx();
 
-                history.replaceState(null, "", `#${id}`);
+                if (!options.preserveHash) {
+                    history.replaceState(null, "", `#${id}`);
+                }
             };
 
             if (current) {
@@ -22970,6 +22972,8 @@ self.addEventListener("message", async (event) => {
             if (init === "404") {
                 tab("h");
                 window.setTimeout(open404MiniGame, 240);
+            } else if (init === "private-servers") {
+                tab("h", { preserveHash: true });
             } else if (/^[a-z]$/.test(init) && q(`#p${init}`)) {
                 tab(init);
             } else {
@@ -23684,6 +23688,27 @@ self.addEventListener("message", async (event) => {
         <p class="private-servers__intro">
           Free invite links for private Roblox servers. Pick a game, press Play, or copy an invite link to share it later.
         </p>
+        <p class="private-servers__note">
+          These are for Roblox games that normally have paid private servers. Join the Discord server to request another
+          game private server.
+        </p>
+        <p class="private-servers__note private-servers__note--muted">
+          Requests are not instant because I am usually busy. If a private server invite says it is invalid, it means the
+          server link needs to be renewed before it works again.
+        </p>
+        <div class="private-servers__discord">
+          <img
+            class="private-servers__discord-icon"
+            src="https://cdn.discordapp.com/icons/1371485672589754420/5cd78eb331031e0a6f28d367d0a5769f.webp?size=128"
+            alt="Nameless Admin Discord server icon"
+            loading="lazy">
+          <div class="private-servers__discord-body">
+            <strong>Nameless Admin</strong>
+            <span>Request private server games in the Discord.</span>
+            <span>1,892 members · 186 online</span>
+          </div>
+          <a class="private-servers__discord-link" href="https://discord.gg/zzjYhtMGFD" target="_blank" rel="noopener noreferrer">Join</a>
+        </div>
       </div>
 
       <div class="private-servers__grid" data-private-server-list></div>
@@ -23772,6 +23797,82 @@ self.addEventListener("message", async (event) => {
       color: #cbd5e1;
       font-size: clamp(1rem, 2vw, 1.15rem);
       line-height: 1.65;
+    }
+
+    .private-servers__note {
+      margin: 0.85rem 0 0;
+      padding: 0.85rem 1rem;
+      border: 1px solid rgba(94, 234, 212, 0.28);
+      border-radius: 8px;
+      color: #e2e8f0;
+      background: rgba(15, 23, 42, 0.72);
+      font-size: 0.96rem;
+      line-height: 1.55;
+    }
+
+    .private-servers__note--muted {
+      border-color: rgba(148, 163, 184, 0.2);
+      color: #cbd5e1;
+      background: rgba(2, 6, 23, 0.34);
+      font-size: 0.92rem;
+    }
+
+    .private-servers__discord {
+      display: grid;
+      grid-template-columns: 56px minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 0.9rem;
+      width: min(520px, 100%);
+      margin-top: 1rem;
+      padding: 0.9rem;
+      border: 1px solid rgba(88, 101, 242, 0.42);
+      border-radius: 8px;
+      background: linear-gradient(135deg, rgba(88, 101, 242, 0.22), rgba(15, 23, 42, 0.82));
+    }
+
+    .private-servers__discord-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+
+    .private-servers__discord-body {
+      display: grid;
+      gap: 0.12rem;
+      min-width: 0;
+    }
+
+    .private-servers__discord-body strong {
+      color: #ffffff;
+      font-size: 1rem;
+      line-height: 1.2;
+    }
+
+    .private-servers__discord-body span {
+      color: #cbd5e1;
+      font-size: 0.88rem;
+      line-height: 1.35;
+    }
+
+    .private-servers__discord-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 0 1rem;
+      border-radius: 8px;
+      color: #04111f;
+      background: #5eead4;
+      font-weight: 900;
+      text-decoration: none;
+      transition: transform 160ms ease, background-color 160ms ease;
+    }
+
+    .private-servers__discord-link:hover,
+    .private-servers__discord-link:focus-visible {
+      background: #99f6e4;
+      transform: translateY(-1px);
     }
 
     .private-servers__grid {
@@ -23935,83 +24036,101 @@ self.addEventListener("message", async (event) => {
       .private-server-link__label {
         grid-column: auto;
       }
+
+      .private-servers__discord {
+        grid-template-columns: 48px minmax(0, 1fr);
+      }
+
+      .private-servers__discord-icon {
+        width: 48px;
+        height: 48px;
+      }
+
+      .private-servers__discord-link {
+        grid-column: 1 / -1;
+      }
     }
   </style>
 
   <script>
     (() => {
-      const games = [
-        {
-          id: 323675642,
-          links: [
-            'https://www.roblox.com/share?code=00ad64bed968584799e6f248ad57fe57&type=Server',
-            'https://www.roblox.com/share?code=8470a0f968b8a04da9ee90b912250818&type=Server',
-            'https://www.roblox.com/share?code=3c2748cb60780c4aae5d50fd521f7144&type=Server',
-            'https://www.roblox.com/share?code=4ef0d70ffdab8b48b520e8363ecc1ae4&type=Server',
-            'https://www.roblox.com/share?code=8525852e591d494db7568954908239c2&type=Server',
-            'https://www.roblox.com/share?code=a13cdaf78dca2b47905f9f74d3acb0bc&type=Server'
-          ]
-        },
-        {
-          id: 3647333358,
-          links: [
-            'https://www.roblox.com/share?code=b234255b5b9e4d4ea451beda5a14dafd&type=Server',
-            'https://www.roblox.com/share?code=bed92428ffb76d48b271a3c16e7dbd3a&type=Server',
-            'https://www.roblox.com/share?code=af6702ab8666fa43acdb9f00da4aed35&type=Server'
-          ]
-        },
-        {
-          id: 847722000,
-          links: [
-            'https://www.roblox.com/share?code=53bc8f94646e5942bbb606fea85205f1&type=Server',
-            'https://www.roblox.com/share?code=81326ae2bb6f34489749079a16620fa8&type=Server',
-            'https://www.roblox.com/share?code=74b0c48a8119404ead62dc778c0e2162&type=Server'
-          ]
-        },
-        {
-          id: 9068117107,
-          links: [
-            'https://www.roblox.com/share?code=49c8fc02bb86504b97859a36cc71c1cf&type=Server',
-            'https://www.roblox.com/share?code=d66358ab4993d04086aded0a7d189c6f&type=Server',
-            'https://www.roblox.com/share?code=be6bd99e2783144b8071c1053001f347&type=Server'
-          ]
-        },
-        {
-          id: 761462079,
-          links: [
-            'https://www.roblox.com/share?code=70d844690f110343aa82f3ad733c969c&type=Server'
-          ]
-        },
-        {
-          id: 10093833731,
-          links: [
-            'https://www.roblox.com/share?code=ad5fe489c3633149b416f1e42756fa78&type=Server',
-            'https://www.roblox.com/share?code=cfbb9a142ff39b4693bc3eb6cb0922b6&type=Server'
-          ]
-        },
-        {
-          id: 245662005,
-          links: [
-            'https://www.roblox.com/share?code=5b0ce0190de796468327895d0d5bfc2a&type=Server',
-            'https://www.roblox.com/share?code=b5a2f803bc89ca46822e34b1bbd1b56e&type=Server'
-          ]
-        },
-        {
-          id: 5611522097,
-          links: [
-            'https://www.roblox.com/share?code=88d542b7476c724b90602a57bf72a019&type=Server',
-            'https://www.roblox.com/share?code=e1c5fefb1f274a478cdac2cb049f8f5d&type=Server'
-          ]
-        },
-        {
-          id: 703124385,
-          links: [
-            'https://www.roblox.com/share?code=c0c342e556f5c6458f1e35bc54f9064b&type=Server',
-            'https://www.roblox.com/share?code=62832c61ccbf0244ab35fe4fb8836219&type=Server',
-            'https://www.roblox.com/share?code=e2f9a13a3bcef145a86f52ab93650055&type=Server'
-          ]
+      const games = [];
+
+      function PrivateServerAdd(gameId, ...links) {
+        const id = Number(gameId);
+        const normalizedLinks = links
+          .flat()
+          .map((link) => String(link || '').trim())
+          .filter((link) => /^https:\/\/www\.roblox\.com\/share\?/.test(link));
+
+        if (!id || !normalizedLinks.length) return;
+
+        const existing = games.find((game) => game.id === id);
+        if (existing) {
+          existing.links.push(...normalizedLinks);
+          return;
         }
-      ];
+
+        games.push({
+          id,
+          links: normalizedLinks
+        });
+      }
+
+      window.PrivateServerAdd = PrivateServerAdd;
+
+      PrivateServerAdd(
+        323675642,
+        'https://www.roblox.com/share?code=00ad64bed968584799e6f248ad57fe57&type=Server',
+        'https://www.roblox.com/share?code=8470a0f968b8a04da9ee90b912250818&type=Server',
+        'https://www.roblox.com/share?code=3c2748cb60780c4aae5d50fd521f7144&type=Server',
+        'https://www.roblox.com/share?code=4ef0d70ffdab8b48b520e8363ecc1ae4&type=Server',
+        'https://www.roblox.com/share?code=8525852e591d494db7568954908239c2&type=Server',
+        'https://www.roblox.com/share?code=a13cdaf78dca2b47905f9f74d3acb0bc&type=Server'
+      );
+      PrivateServerAdd(
+        3647333358,
+        'https://www.roblox.com/share?code=b234255b5b9e4d4ea451beda5a14dafd&type=Server',
+        'https://www.roblox.com/share?code=bed92428ffb76d48b271a3c16e7dbd3a&type=Server',
+        'https://www.roblox.com/share?code=af6702ab8666fa43acdb9f00da4aed35&type=Server'
+      );
+      PrivateServerAdd(
+        847722000,
+        'https://www.roblox.com/share?code=53bc8f94646e5942bbb606fea85205f1&type=Server',
+        'https://www.roblox.com/share?code=81326ae2bb6f34489749079a16620fa8&type=Server',
+        'https://www.roblox.com/share?code=74b0c48a8119404ead62dc778c0e2162&type=Server'
+      );
+      PrivateServerAdd(
+        9068117107,
+        'https://www.roblox.com/share?code=49c8fc02bb86504b97859a36cc71c1cf&type=Server',
+        'https://www.roblox.com/share?code=d66358ab4993d04086aded0a7d189c6f&type=Server',
+        'https://www.roblox.com/share?code=be6bd99e2783144b8071c1053001f347&type=Server'
+      );
+      PrivateServerAdd(
+        761462079,
+        'https://www.roblox.com/share?code=70d844690f110343aa82f3ad733c969c&type=Server'
+      );
+      PrivateServerAdd(
+        10093833731,
+        'https://www.roblox.com/share?code=ad5fe489c3633149b416f1e42756fa78&type=Server',
+        'https://www.roblox.com/share?code=cfbb9a142ff39b4693bc3eb6cb0922b6&type=Server'
+      );
+      PrivateServerAdd(
+        245662005,
+        'https://www.roblox.com/share?code=5b0ce0190de796468327895d0d5bfc2a&type=Server',
+        'https://www.roblox.com/share?code=b5a2f803bc89ca46822e34b1bbd1b56e&type=Server'
+      );
+      PrivateServerAdd(
+        5611522097,
+        'https://www.roblox.com/share?code=88d542b7476c724b90602a57bf72a019&type=Server',
+        'https://www.roblox.com/share?code=e1c5fefb1f274a478cdac2cb049f8f5d&type=Server'
+      );
+      PrivateServerAdd(
+        703124385,
+        'https://www.roblox.com/share?code=c0c342e556f5c6458f1e35bc54f9064b&type=Server',
+        'https://www.roblox.com/share?code=62832c61ccbf0244ab35fe4fb8836219&type=Server',
+        'https://www.roblox.com/share?code=e2f9a13a3bcef145a86f52ab93650055&type=Server'
+      );
 
       const list = document.querySelector('[data-private-server-list]');
       const template = document.querySelector('#private-server-card-template');
