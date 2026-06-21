@@ -23674,6 +23674,320 @@ self.addEventListener("message", async (event) => {
             initBuilderIcons();
         });
     </script>
+  <section class="private-servers" id="private-servers" aria-labelledby="private-servers-title">
+    <div class="private-servers__inner">
+      <div class="private-servers__header">
+        <p class="private-servers__eyebrow">Roblox</p>
+        <h2 id="private-servers-title">Private Servers</h2>
+        <p class="private-servers__intro">
+          Free invite links for private Roblox servers. Pick a game, press Play, or copy an invite link to share it later.
+        </p>
+      </div>
+
+      <div class="private-servers__grid" data-private-server-list></div>
+    </div>
+  </section>
+
+  <template id="private-server-card-template">
+    <article class="private-server-card">
+      <div class="private-server-card__media">
+        <img class="private-server-card__icon" alt="" loading="lazy">
+      </div>
+      <div class="private-server-card__body">
+        <div>
+          <h3 class="private-server-card__title"></h3>
+          <p class="private-server-card__meta"></p>
+        </div>
+        <div class="private-server-card__links"></div>
+      </div>
+    </article>
+  </template>
+
+  <style>
+    .private-servers {
+      padding: clamp(3rem, 7vw, 5.5rem) 1rem;
+      background:
+        radial-gradient(circle at 15% 12%, rgba(0, 176, 111, 0.18), transparent 30rem),
+        linear-gradient(135deg, #111827 0%, #0f172a 48%, #04111f 100%);
+      color: #f8fafc;
+    }
+
+    .private-servers__inner {
+      width: min(1120px, 100%);
+      margin: 0 auto;
+    }
+
+    .private-servers__header {
+      max-width: 700px;
+      margin-bottom: 1.75rem;
+    }
+
+    .private-servers__eyebrow {
+      margin: 0 0 0.5rem;
+      color: #5eead4;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .private-servers h2 {
+      margin: 0;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      line-height: 1;
+      letter-spacing: 0;
+    }
+
+    .private-servers__intro {
+      margin: 0.9rem 0 0;
+      color: #cbd5e1;
+      font-size: clamp(1rem, 2vw, 1.15rem);
+      line-height: 1.65;
+    }
+
+    .private-servers__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 310px), 1fr));
+      gap: 1rem;
+    }
+
+    .private-server-card {
+      display: grid;
+      grid-template-columns: 112px minmax(0, 1fr);
+      gap: 1rem;
+      min-height: 168px;
+      padding: 1rem;
+      border: 1px solid rgba(148, 163, 184, 0.24);
+      border-radius: 8px;
+      background: rgba(15, 23, 42, 0.78);
+      box-shadow: 0 20px 48px rgba(2, 6, 23, 0.28);
+      backdrop-filter: blur(10px);
+    }
+
+    .private-server-card__media {
+      width: 112px;
+      aspect-ratio: 1;
+      overflow: hidden;
+      border-radius: 8px;
+      background: #1e293b;
+    }
+
+    .private-server-card__icon {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .private-server-card__body {
+      display: flex;
+      min-width: 0;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .private-server-card__title {
+      margin: 0;
+      color: #ffffff;
+      font-size: 1.1rem;
+      line-height: 1.25;
+      letter-spacing: 0;
+      overflow-wrap: anywhere;
+    }
+
+    .private-server-card__meta {
+      margin: 0.3rem 0 0;
+      color: #94a3b8;
+      font-size: 0.9rem;
+    }
+
+    .private-server-card__links {
+      display: grid;
+      gap: 0.55rem;
+    }
+
+    .private-server-link {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto auto;
+      align-items: center;
+      gap: 0.45rem;
+      min-height: 42px;
+      padding: 0.35rem 0.35rem 0.35rem 0.75rem;
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      border-radius: 8px;
+      background: rgba(2, 6, 23, 0.42);
+    }
+
+    .private-server-link__label {
+      min-width: 0;
+      color: #e2e8f0;
+      font-size: 0.9rem;
+      font-weight: 700;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .private-server-link__button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 32px;
+      padding: 0 0.72rem;
+      border: 0;
+      border-radius: 7px;
+      color: #04111f;
+      background: #5eead4;
+      font: inherit;
+      font-size: 0.82rem;
+      font-weight: 800;
+      line-height: 1;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform 160ms ease, background-color 160ms ease;
+    }
+
+    .private-server-link__button:hover,
+    .private-server-link__button:focus-visible {
+      background: #99f6e4;
+      transform: translateY(-1px);
+    }
+
+    .private-server-link__button--copy {
+      color: #e2e8f0;
+      background: rgba(148, 163, 184, 0.18);
+    }
+
+    .private-server-link__button--copy:hover,
+    .private-server-link__button--copy:focus-visible {
+      color: #ffffff;
+      background: rgba(148, 163, 184, 0.28);
+    }
+
+    @media (max-width: 520px) {
+      .private-server-card {
+        grid-template-columns: 84px minmax(0, 1fr);
+      }
+
+      .private-server-card__media {
+        width: 84px;
+      }
+
+      .private-server-link {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .private-server-link__label {
+        grid-column: 1 / -1;
+      }
+    }
+  </style>
+
+  <script>
+    (() => {
+      const games = [
+        {
+          id: 323675642,
+          links: [
+            'https://www.roblox.com/share?code=00ad64bed968584799e6f248ad57fe57&type=Server',
+            'https://www.roblox.com/share?code=8470a0f968b8a04da9ee90b912250818&type=Server',
+            'https://www.roblox.com/share?code=3c2748cb60780c4aae5d50fd521f7144&type=Server',
+            'https://www.roblox.com/share?code=4ef0d70ffdab8b48b520e8363ecc1ae4&type=Server',
+            'https://www.roblox.com/share?code=8525852e591d494db7568954908239c2&type=Server',
+            'https://www.roblox.com/share?code=a13cdaf78dca2b47905f9f74d3acb0bc&type=Server'
+          ]
+        },
+        {
+          id: 3647333358,
+          links: [
+            'https://www.roblox.com/share?code=b234255b5b9e4d4ea451beda5a14dafd&type=Server',
+            'https://www.roblox.com/share?code=bed92428ffb76d48b271a3c16e7dbd3a&type=Server',
+            'https://www.roblox.com/share?code=af6702ab8666fa43acdb9f00da4aed35&type=Server'
+          ]
+        },
+        {
+          id: 847722000,
+          links: [
+            'https://www.roblox.com/share?code=53bc8f94646e5942bbb606fea85205f1&type=Server',
+            'https://www.roblox.com/share?code=81326ae2bb6f34489749079a16620fa8&type=Server',
+            'https://www.roblox.com/share?code=74b0c48a8119404ead62dc778c0e2162&type=Server'
+          ]
+        }
+      ];
+
+      const list = document.querySelector('[data-private-server-list]');
+      const template = document.querySelector('#private-server-card-template');
+      if (!list || !template) return;
+
+      const sortedGames = [...games].sort((a, b) => a.id - b.id);
+      const iconUrl = (id) => `https://placehold.co/512x512/111827/5eead4?text=${id}`;
+
+      sortedGames.forEach((game) => {
+        const card = template.content.firstElementChild.cloneNode(true);
+        const icon = card.querySelector('.private-server-card__icon');
+        const title = card.querySelector('.private-server-card__title');
+        const meta = card.querySelector('.private-server-card__meta');
+        const links = card.querySelector('.private-server-card__links');
+
+        title.textContent = `Game ID ${game.id}`;
+        meta.textContent = `${game.links.length} private server${game.links.length === 1 ? '' : 's'} available`;
+        icon.src = iconUrl(game.id);
+        icon.alt = `Roblox game icon for ${game.id}`;
+
+        game.links.forEach((link, index) => {
+          const row = document.createElement('div');
+          row.className = 'private-server-link';
+
+          const label = document.createElement('span');
+          label.className = 'private-server-link__label';
+          label.textContent = `Server ${index + 1}`;
+
+          const play = document.createElement('a');
+          play.className = 'private-server-link__button';
+          play.href = link;
+          play.target = '_blank';
+          play.rel = 'noopener noreferrer';
+          play.textContent = 'Play';
+
+          const copy = document.createElement('button');
+          copy.className = 'private-server-link__button private-server-link__button--copy';
+          copy.type = 'button';
+          copy.textContent = 'Copy';
+          copy.addEventListener('click', async () => {
+            try {
+              await navigator.clipboard.writeText(link);
+              copy.textContent = 'Copied';
+              setTimeout(() => {
+                copy.textContent = 'Copy';
+              }, 1600);
+            } catch {
+              window.prompt('Copy this private server invite:', link);
+            }
+          });
+
+          row.append(label, play, copy);
+          links.append(row);
+        });
+
+        list.append(card);
+      });
+
+      fetch(`https://thumbnails.roblox.com/v1/places/gameicons?placeIds=${sortedGames.map((game) => game.id).join(',')}&size=512x512&format=Png&isCircular=false`)
+        .then((response) => response.ok ? response.json() : Promise.reject())
+        .then((payload) => {
+          const thumbnails = new Map((payload.data || []).map((item) => [item.targetId, item.imageUrl]));
+          document.querySelectorAll('.private-server-card').forEach((card, index) => {
+            const game = sortedGames[index];
+            const thumbnail = thumbnails.get(game.id);
+            if (thumbnail) {
+              card.querySelector('.private-server-card__icon').src = thumbnail;
+            }
+          });
+        })
+        .catch(() => {});
+    })();
+  </script>
 </body>
 
 </html>
