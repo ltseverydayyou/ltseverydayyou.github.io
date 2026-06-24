@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-06-24T20:17:58.533Z",
+  "fetchedAt": "2026-06-24T21:53:56.303Z",
   "data": [
     {
       "_id": "680eaddf8b44717c060fcf8d",
@@ -1343,12 +1343,12 @@
       "_id": "6a0ea99cfd26ad90bea624eb",
       "title": "Lumen",
       "version": "1.0.6",
-      "updatedDate": "06/17/2026 at 4:00 PM UTC",
+      "updatedDate": "06/24/2026 at 8:54 PM UTC",
       "uncStatus": false,
       "free": false,
       "detected": false,
-      "rbxversion": "version-8884371d30284041",
-      "updateStatus": false,
+      "rbxversion": "version-1a951716f19e4638",
+      "updateStatus": true,
       "websitelink": "https://getlumen.net/",
       "discordlink": "https://discord.gg/U6RKvuEBDv",
       "purchaselink": "https://bloxproducts.com/r/weao#Lumen",
