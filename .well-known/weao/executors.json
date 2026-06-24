@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-06-24T16:23:42.400Z",
+  "fetchedAt": "2026-06-24T18:17:49.313Z",
   "data": [
     {
       "_id": "680eaddf8b44717c060fcf8d",
@@ -181,13 +181,13 @@
     {
       "_id": "66837bf003fe5828bec91bc5",
       "title": "DX9WARE V2",
-      "version": "1.1.202",
-      "updatedDate": "06/17/2026 at 7:22 PM UTC",
+      "version": "1.1.203",
+      "updatedDate": "06/24/2026 at 4:39 PM UTC",
       "uncStatus": false,
       "free": false,
       "detected": false,
-      "rbxversion": "version-8884371d30284041",
-      "updateStatus": false,
+      "rbxversion": "version-1a951716f19e4638",
+      "updateStatus": true,
       "websitelink": "https://cultofintellect.com/",
       "discordlink": "https://discord.gg/coi",
       "purchaselink": "https://cultofintellect.com/dx9ware#pricing",
@@ -251,7 +251,7 @@
           "https://cdn.weao.gg/slug/potassium/screenshot4.png"
         ]
       },
-      "hasIssues": true,
+      "hasIssues": false,
       "detectionReason": "Last banwave: June 1st",
       "raknet": true,
       "unknown": false,
@@ -535,12 +535,12 @@
       "_id": "6705f74ed02338b4f68f9c62",
       "title": "Matrix Hub",
       "version": "v2",
-      "updatedDate": "06/17/2026 at 4:00 PM UTC",
+      "updatedDate": "06/24/2026 at 4:26 PM UTC",
       "uncStatus": false,
       "free": false,
       "detected": false,
-      "rbxversion": "version-8884371d30284041",
-      "updateStatus": false,
+      "rbxversion": "version-1a951716f19e4638",
+      "updateStatus": true,
       "websitelink": "https://matrixhubs.shop/",
       "discordlink": "https://matrixhub.xyz/discord.html",
       "beta": false,
