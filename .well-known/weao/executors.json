@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-06-26T23:10:21.364Z",
+  "fetchedAt": "2026-06-27T08:40:45.777Z",
   "data": [
     {
       "_id": "680eaddf8b44717c060fcf8d",
@@ -728,7 +728,7 @@
       "platform": "Windows",
       "extype": "wexternal",
       "roleId": "1377502396770684968",
-      "index": 4,
+      "index": 6,
       "elementCertified": true,
       "cost": "$9.59 Lifetime",
       "__v": 1,
@@ -750,7 +750,7 @@
           "https://cdn.weao.gg/slug/ronin/screenshot7.png"
         ]
       },
-      "hidden": true
+      "hidden": false
     },
     {
       "_id": "67e0d0d87d091e8f8b6d2a35",
