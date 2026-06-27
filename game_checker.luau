@@ -506,9 +506,8 @@ caller(function()
 		if not workspaceService or (not runService) or (not playersService) then
 			return;
 		end;
-		for _, v in workspaceService:GetDescendants() do
-			if v:IsA("ProximityPrompt") and v.Parent and v.Parent.Name:lower() == "proxypart" then
-				table.insert(proxy, v);
+		for _, v in workspaceService:QueryDescendants("ProximityPrompt") do
+			if v.Parent and v.Parent.Name:lower() == "proxypart" then				table.insert(proxy, v);
 			end;
 		end;
 		workspaceService.DescendantAdded:Connect(function(cur)
@@ -599,7 +598,7 @@ caller(function()
 				return;
 			end;
 			killPartsHooked = true;
-			for _, inst in workspaceService:GetDescendants() do
+			for _, inst in workspaceService:QueryDescendants("Instance") do
 				neutralizeKillPart(inst);
 			end;
 			workspaceService.DescendantAdded:Connect(function(inst)
@@ -670,9 +669,8 @@ caller(function()
 				root.Anchored = false;
 			end;
 			if c then
-				for _, inst in c:GetDescendants() do
-					if inst:IsA("BasePart") and inst.Anchored then
-						inst.Anchored = false;
+				for _, inst in c:QueryDescendants("BasePart") do
+					if inst.Anchored then						inst.Anchored = false;
 					end;
 				end;
 			end;
@@ -794,7 +792,7 @@ caller(function()
 			if not isSnd(s) then
 				return;
 			end;
-			for _, v in fld:GetDescendants() do
+			for _, v in fld:QueryDescendants("Instance") do
 				if isSnd(v) and wl[v.Name] then
 					stopSnd(v);
 				end;
@@ -824,7 +822,7 @@ caller(function()
 			end;
 			local list = {};
 			local now = os.clock();
-			for _, v in fld:GetDescendants() do
+			for _, v in fld:QueryDescendants("Instance") do
 				if isSnd(v) then
 					if wl[v.Name] then
 						setVol(v);
@@ -886,7 +884,7 @@ caller(function()
 				end);
 			end;
 		end;
-		for _, v in fld:GetDescendants() do
+		for _, v in fld:QueryDescendants("Instance") do
 			if isSnd(v) then
 				hookSnd(v);
 			end;
@@ -993,7 +991,7 @@ caller(function()
 			end;
 			local claim = item:FindFirstChild("ClaimButton");
 			if not (claim and claim:IsA("ImageButton")) then
-				for _, d in item:GetDescendants() do
+				for _, d in item:QueryDescendants("Instance") do
 					if d.Name == "ClaimButton" and d:IsA("ImageButton") then
 						claim = d;
 						break;
@@ -1055,7 +1053,7 @@ caller(function()
 			end;
 			local cf = slot:FindFirstChild("Claim");
 			if not (cf and cf:IsA("Frame")) then
-				for _, d in slot:GetDescendants() do
+				for _, d in slot:QueryDescendants("Instance") do
 					if d.Name == "Claim" and d:IsA("Frame") then
 						cf = d;
 						break;
@@ -1067,7 +1065,7 @@ caller(function()
 			end;
 			local btn = cf:FindFirstChild("Claim");
 			if not (btn and btn:IsA("ImageButton")) then
-				for _, d in cf:GetDescendants() do
+				for _, d in cf:QueryDescendants("Instance") do
 					if d.Name == "Claim" and d:IsA("ImageButton") then
 						btn = d;
 						break;

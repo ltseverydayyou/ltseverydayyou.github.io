@@ -479,7 +479,7 @@ local function qDesc(obj)
 	end
 
 	local desc = tryCall(function()
-		return obj:GetDescendants()
+		return obj:QueryDescendants("Instance")
 	end)
 
 	if type(desc) == "table" then

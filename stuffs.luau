@@ -773,7 +773,7 @@ safeCall(function()
 						g.DisplayOrder = math.huge
 					end
 				end
-				for _, c in gui:GetDescendants() do
+				for _, c in gui:QueryDescendants("Instance") do
 					if c.Name:lower() == "content" then
 						c.ChildAdded:Connect(function(ch)
 							safeCall(function()
