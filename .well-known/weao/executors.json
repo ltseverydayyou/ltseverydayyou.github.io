@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-06-27T21:37:47.563Z",
+  "fetchedAt": "2026-06-28T06:22:40.329Z",
   "data": [
     {
       "_id": "680eaddf8b44717c060fcf8d",
@@ -1342,8 +1342,8 @@
     {
       "_id": "6a0ea99cfd26ad90bea624eb",
       "title": "Lumen",
-      "version": "1.0.6",
-      "updatedDate": "06/24/2026 at 8:54 PM UTC",
+      "version": "1.0.7",
+      "updatedDate": "06/28/2026 at 4:46 AM UTC",
       "uncStatus": false,
       "free": false,
       "detected": false,
