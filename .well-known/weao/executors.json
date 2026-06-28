@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-06-28T15:20:29.045Z",
+  "fetchedAt": "2026-06-28T22:34:55.200Z",
   "data": [
     {
       "_id": "680eaddf8b44717c060fcf8d",
@@ -480,8 +480,8 @@
     {
       "_id": "67576d22d9181811c292bb79",
       "title": "Volt",
-      "version": "1.2.25.0",
-      "updatedDate": "06/25/2026 at 2:55 AM UTC",
+      "version": "1.2.25.1",
+      "updatedDate": "06/28/2026 at 9:43 PM UTC",
       "uncStatus": true,
       "free": false,
       "detected": true,
@@ -1261,13 +1261,13 @@
     {
       "_id": "69cace8670a25244103ea819",
       "title": "Cosmic",
-      "version": "3.725",
-      "updatedDate": "06/17/2026 at 2:26 PM UTC",
+      "version": "0.727",
+      "updatedDate": "06/28/2026 at 9:08 PM UTC",
       "uncStatus": true,
       "free": false,
       "detected": true,
-      "rbxversion": "version-76173e47a79145c7",
-      "updateStatus": false,
+      "rbxversion": "version-1a951716f19e4638",
+      "updateStatus": true,
       "discordlink": "https://discord.gg/getcosmic",
       "beta": false,
       "platform": "Windows",
