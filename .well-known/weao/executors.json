@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-06-28T22:34:55.200Z",
+  "fetchedAt": "2026-06-29T05:12:21.012Z",
   "data": [
     {
       "_id": "680eaddf8b44717c060fcf8d",
@@ -1019,7 +1019,7 @@
       },
       "hidden": false,
       "trackerId": "WEAO228206d0",
-      "clientmods": true,
+      "clientmods": false,
       "sunc": {
         "suncScrap": "8JTQe9A4s8f8h62r",
         "suncKey": "MURIaZyu8xxsYhmVdK4i1kmnfTQofi3x"
