@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-06-29T05:12:21.012Z",
+  "fetchedAt": "2026-06-29T21:52:20.561Z",
   "data": [
     {
       "_id": "680eaddf8b44717c060fcf8d",
@@ -984,8 +984,8 @@
     {
       "_id": "66a679cc5b36b46c9327b0a7",
       "title": "Synapse Z",
-      "version": "1.0.3.0",
-      "updatedDate": "06/24/2026 at 7:29 PM UTC",
+      "version": "1.0.3.1",
+      "updatedDate": "06/29/2026 at 8:38 PM UTC",
       "uncStatus": true,
       "free": false,
       "detected": true,
