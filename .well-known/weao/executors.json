@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-06-29T21:52:20.561Z",
+  "fetchedAt": "2026-06-30T06:15:49.214Z",
   "data": [
     {
       "_id": "680eaddf8b44717c060fcf8d",
@@ -1060,13 +1060,13 @@
     {
       "_id": "692794d789eb1e034ad699c3",
       "title": "MacSploit",
-      "version": "726.142",
-      "updatedDate": "06/21/2026 at 11:11 AM UTC",
+      "version": "727.142",
+      "updatedDate": "06/30/2026 at 2:56 AM UTC",
       "uncStatus": true,
       "free": false,
       "detected": false,
-      "rbxversion": "version-d9748b94acff4b5d",
-      "updateStatus": false,
+      "rbxversion": "version-e6241eed717840df",
+      "updateStatus": true,
       "websitelink": "https://www.raptor.fun/",
       "discordlink": "https://discord.gg/macsploit",
       "beta": false,
@@ -1136,8 +1136,8 @@
     {
       "_id": "6949f9ee0260ad9e36c73700",
       "title": "RbxCli",
-      "version": "1.9.10-beta",
-      "updatedDate": "06/28/2026 at 3:18 PM UTC",
+      "version": "1.9.12-beta",
+      "updatedDate": "06/30/2026 at 3:09 AM UTC",
       "uncStatus": false,
       "free": false,
       "detected": false,
