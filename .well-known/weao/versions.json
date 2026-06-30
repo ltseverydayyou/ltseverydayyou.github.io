@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-06-30T19:19:24.706Z",
+  "fetchedAt": "2026-06-30T21:14:43.203Z",
   "data": {
     "current": {
       "Windows": "version-1a951716f19e4638",
@@ -34,11 +34,11 @@
       }
     },
     "future": {
-      "Windows": "version-hidden",
+      "Windows": "version-5cf2272675e145f5",
       "WindowsDate": "6/30/2026, 2:55:46 PM UTC",
       "WindowsResponse": {
         "version": "0.728.0.7280895",
-        "clientVersionUpload": "version-hidden",
+        "clientVersionUpload": "version-5cf2272675e145f5",
         "bootstrapperVersion": "0, 728, 0, 7280895",
         "timestamp": 1782831346
       },
