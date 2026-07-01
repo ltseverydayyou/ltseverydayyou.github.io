@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-07-01T00:09:43.627Z",
+  "fetchedAt": "2026-07-01T05:06:20.874Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -594,13 +594,13 @@
     {
       "_id": "66ee1fcae70ddffe81ca0f0c",
       "title": "Codex",
-      "version": "2.724.735",
-      "updatedDate": "06/30/2026 at 10:55 PM UTC",
+      "version": "2.726.1142",
+      "updatedDate": "07/01/2026 at 1:12 AM UTC",
       "uncStatus": true,
       "free": true,
       "detected": true,
-      "rbxversion": "2.724.735",
-      "updateStatus": false,
+      "rbxversion": "2.726.1142",
+      "updateStatus": true,
       "websitelink": "https://codex.lol",
       "discordlink": "https://discord.gg/codexlol",
       "beta": false,
@@ -1099,13 +1099,13 @@
     {
       "_id": "6949f6f40260ad9e36c736ff",
       "title": "Vega X",
-      "version": "2.724.735",
-      "updatedDate": "06/30/2026 at 10:55 PM UTC",
+      "version": "2.726.1142",
+      "updatedDate": "07/01/2026 at 1:03 AM UTC",
       "uncStatus": true,
       "free": true,
       "detected": true,
-      "rbxversion": "2.724.735",
-      "updateStatus": false,
+      "rbxversion": "2.726.1142",
+      "updateStatus": true,
       "websitelink": "https://www.vegax.gg",
       "discordlink": "https://www.vegax.gg/discord.html",
       "beta": false,
