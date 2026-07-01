@@ -1,5 +1,5 @@
 local build = "shared_hui_singleton_v4"
-local patch = "global_gethui_override_coregui_folder_v5"
+local patch = "global_gethui_override_coregui_folder_v6_session_names"
 
 local okEnv, globalEnv = pcall(function()
 	if type(getgenv) == "function" then
@@ -110,6 +110,7 @@ local state = {
 	nativeHuiFns = {},
 	sessionNameProvider = nil,
 	sessionNameMap = {},
+	sessionNameCounter = 0,
 	descQueue = {},
 	descHead = 1,
 	descTail = 0,
@@ -643,20 +644,9 @@ local function trackedCount()
 	return n
 end
 
-local function getGuid()
-	local hs = getService("HttpService")
-
-	if isInstance(hs) then
-		local ok, ret = pcall(function()
-			return hs:GenerateGUID(false)
-		end)
-
-		if ok and type(ret) == "string" and ret ~= "" then
-			return ret
-		end
-	end
-
-	return nil
+local function nextSessionKey(prefix)
+	state.sessionNameCounter = (tonumber(state.sessionNameCounter) or 0) + 1
+	return tostring(prefix or "session") .. ":" .. tostring(state.sessionNameCounter) .. ":" .. tostring(os.clock())
 end
 
 local function cursedString()
@@ -689,7 +679,7 @@ local function cursedString()
 end
 
 local function localSessionName(key)
-	key = tostring(key or getGuid() or os.clock())
+	key = tostring(key or nextSessionKey("local"))
 	local map = state.sessionNameMap
 	if type(map) ~= "table" then
 		map = {}
@@ -734,13 +724,9 @@ end
 
 function protector.randomString(key)
 	local out = {}
-	local guid = getGuid()
+	local sessionKey = key or nextSessionKey("random")
+	local sess = protector.getSessionInstanceName(sessionKey)
 
-	if type(guid) == "string" and guid ~= "" then
-		out[#out + 1] = guid
-	end
-
-	local sess = protector.getSessionInstanceName(key or guid)
 	if type(sess) == "string" and sess ~= "" then
 		out[#out + 1] = sess
 	end
