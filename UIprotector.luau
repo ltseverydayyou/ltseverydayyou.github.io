@@ -1206,18 +1206,27 @@ function protector.protectCachedInternal(obj, opts)
 	return protector.protectInstance(obj, opts)
 end
 
-local function applyScreenDefaults(gui)
+local function applyScreenDefaults(gui, opts)
 	if not isInstance(gui) then
 		return nil
 	end
+
+	opts = type(opts) == "table" and opts or {}
+	local applyIgnoreGuiInset = opts.ignoreGuiInset ~= false
+		and opts.IgnoreGuiInset ~= false
+		and opts.forceIgnoreGuiInset ~= false
+		and opts.enforceIgnoreGuiInset ~= false
+		and opts.setIgnoreGuiInset ~= false
 
 	pcall(function()
 		gui.ResetOnSpawn = false
 	end)
 
-	pcall(function()
-		gui.IgnoreGuiInset = true
-	end)
+	if applyIgnoreGuiInset then
+		pcall(function()
+			gui.IgnoreGuiInset = true
+		end)
+	end
 
 	pcall(function()
 		gui.DisplayOrder = 2147483647
@@ -1235,7 +1244,7 @@ local function applyScreenDefaults(gui)
 	end
 
 	local s = getEnum("ScreenInsets", "None")
-	if s then
+	if applyIgnoreGuiInset and s then
 		pcall(function()
 			gui.ScreenInsets = s
 		end)
@@ -1505,7 +1514,7 @@ function protector.protectUI(gui, opts)
 	protector.nativeProtect(gui)
 
 	if isA(gui, "ScreenGui") then
-		applyScreenDefaults(gui)
+		applyScreenDefaults(gui, opts)
 
 		local target = protector.resolveParent(opts)
 		if not isInstance(target) then
