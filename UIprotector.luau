@@ -1223,6 +1223,10 @@ local function applyScreenDefaults(gui)
 		gui.DisplayOrder = 2147483647
 	end)
 
+	pcall(function()
+		gui.OnTopOfCoreBlur = true
+	end)
+
 	local z = getEnum("ZIndexBehavior", "Global")
 	if z then
 		pcall(function()
