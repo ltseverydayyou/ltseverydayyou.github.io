@@ -7,7 +7,7 @@ Executor-only Luau helpers.
 
 ## Load
 
-```lua
+```luau
 local SR = loadstring(game:HttpGet("https://raw.githubusercontent.com/ltseverydayyou/ltseverydayyou.github.io/refs/heads/main/ServiceResolver.luau"))()
 local UIP = loadstring(game:HttpGet("https://raw.githubusercontent.com/ltseverydayyou/ltseverydayyou.github.io/refs/heads/main/UIprotector.luau"))()
 ```
@@ -16,7 +16,7 @@ local UIP = loadstring(game:HttpGet("https://raw.githubusercontent.com/ltseveryd
 
 Create your UI first, then protect it:
 
-```lua
+```luau
 local UIP = loadstring(game:HttpGet("https://raw.githubusercontent.com/ltseverydayyou/ltseverydayyou.github.io/refs/heads/main/UIprotector.luau"))()
 
 local gui = Instance.new("ScreenGui")
@@ -38,7 +38,7 @@ UIP.protectUI(gui, {
 
 For a single UI object that is not a `ScreenGui`:
 
-```lua
+```luau
 local button = Instance.new("TextButton")
 button.Size = UDim2.fromOffset(160, 40)
 button.Text = "Button"
@@ -52,7 +52,7 @@ UIP.protectUI(button, {
 
 ## ServiceResolver Usage
 
-```lua
+```luau
 local SR = loadstring(game:HttpGet("https://raw.githubusercontent.com/ltseverydayyou/ltseverydayyou.github.io/refs/heads/main/ServiceResolver.luau"))()
 
 local Players = SR.cs("Players", cloneref)
@@ -66,7 +66,7 @@ Use `SR.cs("ServiceName", cloneref)` when you want a cloned/ref-safe service.
 
 Use `SR.cm("ServiceName", "MethodName", ...)` to call a method on a resolved service.
 
-```lua
+```luau
 local player = SR.cm("Players", "GetPlayerFromCharacter", character)
 ```
 
@@ -86,17 +86,19 @@ local player = SR.cm("Players", "GetPlayerFromCharacter", character)
 
 Allowed `ig()` method names:
 
-```lua
-FindFirstChild
-WaitForChild
-FindFirstChildOfClass
-FindFirstChildWhichIsA
-FindFirstAncestor
-FindFirstAncestorOfClass
-FindFirstAncestorWhichIsA
-GetChildren
-GetDescendants
-QueryDescendants
+```luau
+local allowedLookupMethods = {
+	"FindFirstChild",
+	"WaitForChild",
+	"FindFirstChildOfClass",
+	"FindFirstChildWhichIsA",
+	"FindFirstAncestor",
+	"FindFirstAncestorOfClass",
+	"FindFirstAncestorWhichIsA",
+	"GetChildren",
+	"GetDescendants",
+	"QueryDescendants",
+}
 ```
 
 ## UIprotector Usage
@@ -105,29 +107,31 @@ QueryDescendants
 
 These names point to `UIP.huiGrabber()` after install:
 
-```lua
-gethui
-gethiddenui
-gethiddengui
-get_hidden_ui
-get_hidden_gui
+```luau
+local hiddenUiAliases = {
+	"gethui",
+	"gethiddenui",
+	"gethiddengui",
+	"get_hidden_ui",
+	"get_hidden_gui",
+}
 ```
 
 Get the protected parent:
 
-```lua
+```luau
 local parent = UIP.parent()
 ```
 
 Get a protected `ScreenGui`:
 
-```lua
+```luau
 local screen = UIP.getScreenGui("MyScreen")
 ```
 
 Protect an existing `ScreenGui`:
 
-```lua
+```luau
 UIP.protectUI(gui, {
 	name = "MyUI",
 	keepName = false,
@@ -140,7 +144,7 @@ UIP.protectUI(gui, {
 
 Protect an object inside the protected screen:
 
-```lua
+```luau
 UIP.protectUI(frame, {
 	lockName = true,
 	name = "MainFrame",
@@ -196,7 +200,7 @@ UIP.protectUI(frame, {
 
 ## Common Calls
 
-```lua
+```luau
 local status = UIP.status()
 print(status.parentPath, status.screenPath, status.tracked)
 
@@ -210,27 +214,29 @@ UIP.destroy()
 
 ## Public Fields
 
-```lua
-UIP.ready
-UIP.build
-UIP.patch
-UIP.getHuiOverrideInstalled
+```luau
+local publicFields = {
+	ready = UIP.ready,
+	build = UIP.build,
+	patch = UIP.patch,
+	getHuiOverrideInstalled = UIP.getHuiOverrideInstalled,
+}
 ```
 
 ## Autoexec
 
 Put this in autoexec if you want `stuffs.luau` and `game_checker.luau` to load automatically:
 
-```lua
+```luau
 -- ltseverydayyou's autoexec shit lol
 local urls = {
 	"https://raw.githubusercontent.com/ltseverydayyou/ltseverydayyou.github.io/refs/heads/main/stuffs.luau",
 	"https://raw.githubusercontent.com/ltseverydayyou/ltseverydayyou.github.io/refs/heads/main/game_checker.luau",
 }
 
-local loaded = {}
+local loaded: { [string]: boolean } = {}
 
-local function run(url)
+local function run(url: string)
 	if loaded[url] then
 		return
 	end
