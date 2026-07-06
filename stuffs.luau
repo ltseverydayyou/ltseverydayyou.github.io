@@ -1,18 +1,19 @@
+--!nonstrict
 do
 	local realGetfenv = getfenv
 	local realSetfenv = setfenv
-	local realEnv = type(realGetfenv) == "function" and realGetfenv(0) or _G
+	local realEnv = typeof(realGetfenv) == "function" and realGetfenv(0) or _G
 	local realG = _G
 	local realDebug = debug
-	local realGetgenv = type(getgenv) == "function" and getgenv or nil
-	local realGetreg = type(getreg) == "function" and getreg or nil
-	local realLoadstring = type(loadstring) == "function" and loadstring or nil
-	local realLoad = type(load) == "function" and load or nil
+	local realGetgenv = typeof(getgenv) == "function" and getgenv or nil
+	local realGetreg = typeof(getreg) == "function" and getreg or nil
+	local realLoadstring = typeof(loadstring) == "function" and loadstring or nil
+	local realLoad = typeof(load) == "function" and load or nil
 	local hostGlobalEnv
 	local okHost, resolvedHost = pcall(function()
 		return realGetgenv and realGetgenv() or realG
 	end)
-	if okHost and type(resolvedHost) == "table" then
+	if okHost and typeof(resolvedHost) == "table" then
 		hostGlobalEnv = resolvedHost
 	else
 		hostGlobalEnv = realG
@@ -22,13 +23,13 @@ do
 		if realGetreg then
 			return realGetreg()
 		end
-		if type(realDebug) == "table" and type(realDebug.getregistry) == "function" then
+		if typeof(realDebug) == "table" and typeof(realDebug.getregistry) == "function" then
 			return realDebug.getregistry()
 		end
 	end)
-	if ok and type(reg) == "table" then
+	if ok and typeof(reg) == "table" then
 		root = rawget(reg, "__nameless_admin_private")
-		if type(root) ~= "table" then
+		if typeof(root) ~= "table" then
 			root = {}
 			rawset(reg, "__nameless_admin_private", root)
 		end
@@ -37,17 +38,17 @@ do
 		ok, host = pcall(function()
 			return realGetgenv and realGetgenv() or realG
 		end)
-		if not ok or type(host) ~= "table" then
+		if not ok or typeof(host) ~= "table" then
 			host = realG
 		end
 		root = rawget(host, "__nameless_admin_private")
-		if type(root) ~= "table" then
+		if typeof(root) ~= "table" then
 			root = {}
 			rawset(host, "__nameless_admin_private", root)
 		end
 	end
 	local env = rawget(root, "stuffs_runtime")
-	if type(env) ~= "table" then
+	if typeof(env) ~= "table" then
 		env = {}
 		rawset(root, "stuffs_runtime", env)
 	end
@@ -60,7 +61,7 @@ do
 				return env
 			end
 		end
-		if type(realEnv) == "table" then
+		if typeof(realEnv) == "table" then
 			return realEnv[k]
 		end
 	end
@@ -78,13 +79,13 @@ do
 		return env
 	end
 	local function protectedGetfenv(target)
-		if type(realGetfenv) ~= "function" then
+		if typeof(realGetfenv) ~= "function" then
 			return env
 		end
 		if target == nil then
 			return env
 		end
-		if type(target) == "number" then
+		if typeof(target) == "number" then
 			return env
 		end
 		local good, got = pcall(realGetfenv, target)
@@ -97,7 +98,7 @@ do
 		return env
 	end
 	local function protectedSetfenv(target, newEnv)
-		if type(realSetfenv) ~= "function" then
+		if typeof(realSetfenv) ~= "function" then
 			return target
 		end
 		if newEnv == nil or newEnv == realEnv or newEnv == realG then
@@ -108,7 +109,7 @@ do
 	local function protectLoader(loader)
 		return function(src, chunk, ...)
 			local fn, err = loader(src, chunk, ...)
-			if type(fn) == "function" and type(realSetfenv) == "function" then
+			if typeof(fn) == "function" and typeof(realSetfenv) == "function" then
 				pcall(realSetfenv, fn, env)
 			end
 			return fn, err
@@ -126,7 +127,7 @@ do
 	if realLoad then
 		rawset(env, "load", protectLoader(realLoad))
 	end
-	if type(realSetfenv) == "function" then
+	if typeof(realSetfenv) == "function" then
 		realSetfenv(1, env)
 	end
 end
@@ -141,24 +142,58 @@ end)
 if not game:IsLoaded() then
 	game.Loaded:Wait()
 end
-local function cacheBustUrl(url)
-	local sep = string.find(url, "?", 1, true) and "&" or "?"
-	local stamp = tostring(os.clock()):gsub("%D", "")
+local HTTP_RETRY_BASE_DELAY: number = 0.75
+local HTTP_RETRY_MAX_DELAY: number = 8
+local HTTP_RETRY_JITTER: number = 0.35
+
+type HttpRetryError = string?
+
+local function cacheBustUrl(url: string): string
+	local sep: string = if string.find(url, "?", 1, true) then "&" else "?"
+	local stamp: string = tostring(os.clock()):gsub("%D", "")
 	return url .. sep .. "_lt_cache_bust=" .. stamp
 end
-local function httpGetText(url, noCache)
-	if type(url) ~= "string" or url == "" then
+
+local function getHttpRetryDelay(attempt: number, err: any): number
+	local cappedAttempt: number = math.min(attempt, 6)
+	local retryDelay: number = math.min(HTTP_RETRY_MAX_DELAY, HTTP_RETRY_BASE_DELAY * (2 ^ math.max(cappedAttempt - 1, 0)))
+	local errText: string = string.lower(tostring(err))
+
+	if string.find(errText, "429", 1, true)
+		or string.find(errText, "too many requests", 1, true)
+		or string.find(errText, "rate limit", 1, true)
+	then
+		retryDelay = math.max(retryDelay, 2)
+	end
+
+	return retryDelay + (math.random() * HTTP_RETRY_JITTER)
+end
+
+local function httpGetText(url: string, noCache: boolean?): (string?, HttpRetryError)
+	if typeof(url) ~= "string" or url == "" then
 		return nil, "invalid url"
 	end
-	local target = noCache and cacheBustUrl(url) or url
-	local ok, src = pcall(game.HttpGet, game, target)
-	if not ok then
-		return nil, tostring(src)
+
+	local attempt: number = 0
+	local lastErr: HttpRetryError = nil
+
+	while true do
+		attempt += 1
+		local target: string = if noCache then cacheBustUrl(url) else url
+		local ok: boolean, srcOrErr: any = pcall(game.HttpGet, game, target)
+
+		if ok and typeof(srcOrErr) == "string" and #srcOrErr > 0 then
+			return srcOrErr, nil
+		end
+
+		if ok then
+			lastErr = "HttpGet returned " .. typeof(srcOrErr)
+		else
+			lastErr = tostring(srcOrErr)
+		end
+
+		task.wait(getHttpRetryDelay(attempt, lastErr))
 	end
-	if type(src) ~= "string" or #src == 0 then
-		return nil, "HttpGet returned " .. type(src)
-	end
-	return src
 end
 local function runRemote(url, chunkName, noCache)
 	local src, fetchErr = httpGetText(url, noCache)
@@ -167,7 +202,7 @@ local function runRemote(url, chunkName, noCache)
 		return nil, fetchErr
 	end
 	local fn, compileErr = loadstring(src, chunkName or ("@" .. url))
-	if type(fn) ~= "function" then
+	if typeof(fn) ~= "function" then
 		warn("[remote] loadstring failed for:", url, compileErr)
 		return nil, compileErr
 	end
@@ -176,15 +211,15 @@ end
 local __lt = (function()
 	local globalEnv = (getgenv and getgenv()) or _G or {}
 	local sharedEnv = rawget(_G, "shared")
-	local cacheHost = type(sharedEnv) == "table" and sharedEnv or (type(globalEnv) == "table" and globalEnv or nil)
+	local cacheHost = typeof(sharedEnv) == "table" and sharedEnv or (typeof(globalEnv) == "table" and globalEnv or nil)
 	if cacheHost then
 		local cached = rawget(cacheHost, "__lt_service_resolver")
-		if type(cached) == "table" then
+		if typeof(cached) == "table" then
 			return cached
 		end
 	end
 	local loader = loadstring or load
-	if type(loader) ~= "function" then
+	if typeof(loader) ~= "function" then
 		error("Service resolver loader unavailable")
 	end
 	local resolverSource, resolverFetchErr = httpGetText("https://ltseverydayyou.github.io/ServiceResolver.luau")
@@ -192,11 +227,11 @@ local __lt = (function()
 		error("Service resolver failed to fetch: " .. tostring(resolverFetchErr))
 	end
 	local resolver = loader(resolverSource, "@ServiceResolver.luau")
-	if type(resolver) ~= "function" then
+	if typeof(resolver) ~= "function" then
 		error("Service resolver failed to compile")
 	end
 	local loaded = resolver()
-	if type(loaded) ~= "table" then
+	if typeof(loaded) ~= "table" then
 		error("Service resolver failed to load")
 	end
 	if cacheHost then
@@ -207,8 +242,8 @@ end)()
 local pack = table.pack
 local unpack = table.unpack
 local function safeCall(fn, ...)
-	if type(fn) ~= "function" then
-		local reportedType = typeof and typeof(fn) or type(fn)
+	if typeof(fn) ~= "function" then
+		local reportedType = typeof and typeof(fn) or typeof(fn)
 		warn("[safeCall] Expected function, got " .. reportedType)
 		return nil, "invalid callback"
 	end
@@ -225,7 +260,7 @@ local function safeCall(fn, ...)
 	end
 	return nil, results[2]
 end
-local cloneRef = type(cloneref) == "function" and cloneref or nil
+local cloneRef = typeof(cloneref) == "function" and cloneref or nil
 local runService = __lt.cs("RunService", cloneRef)
 local playersService = __lt.cs("Players", cloneRef)
 local coreGuiService = __lt.cs("CoreGui", cloneRef)
@@ -238,10 +273,10 @@ until localPlayer
 local bodyGrab = (function()
 	local globalEnv = (getgenv and getgenv()) or _G or {}
 	local sharedEnv = rawget(_G, "shared")
-	local cacheHost = type(sharedEnv) == "table" and sharedEnv or (type(globalEnv) == "table" and globalEnv or nil)
+	local cacheHost = typeof(sharedEnv) == "table" and sharedEnv or (typeof(globalEnv) == "table" and globalEnv or nil)
 	if cacheHost then
 		local cached = rawget(cacheHost, "__lt_body_grabber")
-		if type(cached) == "table" then
+		if typeof(cached) == "table" then
 			return cached
 		end
 	end
@@ -497,9 +532,9 @@ local function firebtnall(b)
 end
 local publicEnv = rawget(getgenv(), "__host_global_env")
 local function canUsePublicFireBtn()
-	return type(checkcaller) ~= "function" or checkcaller()
+	return typeof(checkcaller) ~= "function" or checkcaller()
 end
-if type(publicEnv) == "table" then
+if typeof(publicEnv) == "table" then
 	publicEnv.firebtnclick = function(b)
 		if not canUsePublicFireBtn() then
 			return
@@ -795,28 +830,28 @@ safeCall(function()
 		local host = (getgenv and getgenv()) or _G or {}
 		local dbg = rawget(host, "debug") or debug
 		local registry
-		if type(getreg) == "function" then
+		if typeof(getreg) == "function" then
 			pcall(function()
 				registry = getreg()
 			end)
 		end
-		if type(registry) ~= "table" and type(dbg) == "table" and type(dbg.getregistry) == "function" then
+		if typeof(registry) ~= "table" and typeof(dbg) == "table" and typeof(dbg.getregistry) == "function" then
 			pcall(function()
 				registry = dbg.getregistry()
 			end)
 		end
-		if type(registry) ~= "table" then
+		if typeof(registry) ~= "table" then
 			registry = host
 		end
-		local privateRoot = type(registry) == "table" and rawget(registry, "__nameless_admin_private") or nil
-		if type(privateRoot) ~= "table" then
+		local privateRoot = typeof(registry) == "table" and rawget(registry, "__nameless_admin_private") or nil
+		if typeof(privateRoot) ~= "table" then
 			privateRoot = {}
-			if type(registry) == "table" then
+			if typeof(registry) == "table" then
 				rawset(registry, "__nameless_admin_private", privateRoot)
 			end
 		end
 		local clickbaitState = rawget(privateRoot, "codex_clickbait")
-		if type(clickbaitState) ~= "table" then
+		if typeof(clickbaitState) ~= "table" then
 			clickbaitState = {}
 			rawset(privateRoot, "codex_clickbait", clickbaitState)
 		end
