@@ -23702,481 +23702,897 @@ self.addEventListener("message", async (event) => {
             initBuilderIcons();
         });
     </script>
-  <a class="private-servers-jump" href="#private-servers">Private Servers</a>
+  <a class="private-servers-jump" href="#private-servers" aria-label="Jump to Roblox private servers">
+    <span>Private Servers</span>
+  </a>
 
   <section class="private-servers" id="private-servers" aria-labelledby="private-servers-title">
+    <div class="private-servers__glow private-servers__glow--left" aria-hidden="true"></div>
+    <div class="private-servers__glow private-servers__glow--right" aria-hidden="true"></div>
+
     <div class="private-servers__inner">
-      <div class="private-servers__header">
-        <p class="private-servers__eyebrow">Roblox</p>
-        <h2 id="private-servers-title">Private Servers</h2>
-        <p class="private-servers__intro">
-          Free invite links for private Roblox servers. Pick a game, press Play, or copy an invite link to share it later.
-        </p>
-        <p class="private-servers__note">
-          These are for Roblox games that normally have paid private servers. Join the Discord server to request another
-          game private server.
-        </p>
-        <p class="private-servers__note private-servers__note--muted">
-          Requests are not instant because I am usually busy. If a private server invite says it is invalid, it means the
-          server link needs to be renewed before it works again.
-        </p>
-        <div class="private-servers__discord">
-          <img
-            class="private-servers__discord-icon"
-            src="https://cdn.discordapp.com/icons/1371485672589754420/5cd78eb331031e0a6f28d367d0a5769f.webp?size=128"
-            alt="Nameless Admin Discord server icon"
-            loading="lazy">
-          <div class="private-servers__discord-body">
-            <strong>Nameless Admin</strong>
-            <span>Request private server games in the Discord.</span>
-            <span>1,892 members · 186 online</span>
-          </div>
-          <a class="private-servers__discord-link" href="https://discord.gg/zzjYhtMGFD" target="_blank" rel="noopener noreferrer">Join</a>
+      <div class="private-servers__hero">
+        <div class="private-servers__copy">
+          <p class="private-servers__eyebrow"><span aria-hidden="true"></span>Roblox private servers</p>
+          <h2 id="private-servers-title">Private Servers</h2>
+          <p class="private-servers__intro">
+            Private server links I created for Roblox experiences. The experiences are not mine; this section only lists my private-server invite links.
+          </p>
+        </div>
+
+        <div class="private-servers__panel" aria-label="Private server summary">
+          <div class="private-servers__panel-row"><span>Experiences listed</span><strong data-private-server-games>9</strong></div>
+          <div class="private-servers__panel-row"><span>Invite links</span><strong data-private-server-links>25</strong></div>
+          <div class="private-servers__panel-status" data-private-server-status>Ready: 9 experiences and 25 invite links.</div>
         </div>
       </div>
 
-      <div class="private-servers__grid" data-private-server-list></div>
+      <div class="private-servers__toolbar" aria-label="Private server tools">
+        <label class="private-servers__search">
+          <span>Search</span>
+          <input type="search" data-private-server-search placeholder="Search experience name, creator, universe ID, or server count">
+        </label>
+        <div class="private-servers__chips" aria-label="Section details">
+          <span>Private servers I created</span>
+          <span>Direct play links</span>
+          <span>Clipboard copy</span>
+        </div>
+      </div>
+
+      <div class="private-servers__empty" data-private-server-empty hidden>No private servers matched your search.</div>
+      <div class="private-servers__grid" data-private-server-list>
+          <article class="private-server-card" data-game-id="245662005" data-place-id="606849621" data-title="Jailbreak" data-search="jailbreak badimo 245662005 606849621 2 private server servers invite link links" style="--i:0">
+            <div class="private-server-card__media">
+              <img class="private-server-card__icon" src="https://placehold.co/512x512/07101f/5eead4?text=J" alt="Jailbreak Roblox experience icon placeholder" loading="lazy">
+              <div class="private-server-card__media-shade" aria-hidden="true"></div>
+              <span class="private-server-card__badge">2 links</span>
+            </div>
+            <div class="private-server-card__body">
+              <div class="private-server-card__headline">
+                <span class="private-server-card__number">01</span>
+                <div>
+                  <h3 class="private-server-card__title">Jailbreak</h3>
+                  <p class="private-server-card__creator">By Badimo</p>
+                </div>
+              </div>
+              <p class="private-server-card__meta">Universe ID 245662005 · Root place ID 606849621 · private server links created by me</p>
+              <div class="private-server-card__links">
+              <div class="private-server-link">
+                <span class="private-server-link__label">Server 1</span>
+                <a class="private-server-link__button" href="https://www.roblox.com/share?code=5b0ce0190de796468327895d0d5bfc2a&amp;type=Server" target="_blank" rel="noopener noreferrer">Play</a>
+                <button class="private-server-link__button private-server-link__button--copy" type="button" data-private-server-copy="https://www.roblox.com/share?code=5b0ce0190de796468327895d0d5bfc2a&amp;type=Server">Copy</button>
+              </div>
+              <div class="private-server-link">
+                <span class="private-server-link__label">Server 2</span>
+                <a class="private-server-link__button" href="https://www.roblox.com/share?code=b5a2f803bc89ca46822e34b1bbd1b56e&amp;type=Server" target="_blank" rel="noopener noreferrer">Play</a>
+                <button class="private-server-link__button private-server-link__button--copy" type="button" data-private-server-copy="https://www.roblox.com/share?code=b5a2f803bc89ca46822e34b1bbd1b56e&amp;type=Server">Copy</button>
+              </div>
+              </div>
+            </div>
+          </article>
+          <article class="private-server-card" data-game-id="323675642" data-place-id="738339342" data-title="Flood Escape 2" data-search="flood escape 2 crazyblox games 323675642 738339342 6 private server servers invite link links" style="--i:1">
+            <div class="private-server-card__media">
+              <img class="private-server-card__icon" src="https://placehold.co/512x512/07101f/5eead4?text=FE2" alt="Flood Escape 2 Roblox experience icon placeholder" loading="lazy">
+              <div class="private-server-card__media-shade" aria-hidden="true"></div>
+              <span class="private-server-card__badge">6 links</span>
+            </div>
+            <div class="private-server-card__body">
+              <div class="private-server-card__headline">
+                <span class="private-server-card__number">02</span>
+                <div>
+                  <h3 class="private-server-card__title">Flood Escape 2</h3>
+                  <p class="private-server-card__creator">By Crazyblox Games</p>
+                </div>
+              </div>
+              <p class="private-server-card__meta">Universe ID 323675642 · Root place ID 738339342 · private server links created by me</p>
+              <div class="private-server-card__links">
+              <div class="private-server-link">
+                <span class="private-server-link__label">Server 1</span>
+                <a class="private-server-link__button" href="https://www.roblox.com/share?code=00ad64bed968584799e6f248ad57fe57&amp;type=Server" target="_blank" rel="noopener noreferrer">Play</a>
+                <button class="private-server-link__button private-server-link__button--copy" type="button" data-private-server-copy="https://www.roblox.com/share?code=00ad64bed968584799e6f248ad57fe57&amp;type=Server">Copy</button>
+              </div>
+              <div class="private-server-link">
+                <span class="private-server-link__label">Server 2</span>
+                <a class="private-server-link__button" href="https://www.roblox.com/share?code=8470a0f968b8a04da9ee90b912250818&amp;type=Server" target="_blank" rel="noopener noreferrer">Play</a>
+                <button class="private-server-link__button private-server-link__button--copy" type="button" data-private-server-copy="https://www.roblox.com/share?code=8470a0f968b8a04da9ee90b912250818&amp;type=Server">Copy</button>
+              </div>
+              <div class="private-server-link">
+                <span class="private-server-link__label">Server 3</span>
+                <a class="private-server-link__button" href="https://www.roblox.com/share?code=3c2748cb60780c4aae5d50fd521f7144&amp;type=Server" target="_blank" rel="noopener noreferrer">Play</a>
+                <button class="private-server-link__button private-server-link__button--copy" type="button" data-private-server-copy="https://www.roblox.com/share?code=3c2748cb60780c4aae5d50fd521f7144&amp;type=Server">Copy</button>
+              </div>
+              <div class="private-server-link">
+                <span class="private-server-link__label">Server 4</span>
+                <a class="private-server-link__button" href="https://www.roblox.com/share?code=4ef0d70ffdab8b48b520e8363ecc1ae4&amp;type=Server" target="_blank" rel="noopener noreferrer">Play</a>
+                <button class="private-server-link__button private-server-link__button--copy" type="button" data-private-server-copy="https://www.roblox.com/share?code=4ef0d70ffdab8b48b520e8363ecc1ae4&amp;type=Server">Copy</button>
+              </div>
+              <div class="private-server-link">
+                <span class="private-server-link__label">Server 5</span>
+                <a class="private-server-link__button" href="https://www.roblox.com/share?code=8525852e591d494db7568954908239c2&amp;type=Server" target="_blank" rel="noopener noreferrer">Play</a>
+                <button class="private-server-link__button private-server-link__button--copy" type="button" data-private-server-copy="https://www.roblox.com/share?code=8525852e591d494db7568954908239c2&amp;type=Server">Copy</button>
+              </div>
+              <div class="private-server-link">
+                <span class="private-server-link__label">Server 6</span>
+                <a class="private-server-link__button" href="https://www.roblox.com/share?code=a13cdaf78dca2b47905f9f74d3acb0bc&amp;type=Server" target="_blank" rel="noopener noreferrer">Play</a>
+                <button class="private-server-link__button private-server-link__button--copy" type="button" data-private-server-copy="https://www.roblox.com/share?code=a13cdaf78dca2b47905f9f74d3acb0bc&amp;type=Server">Copy</button>
+              </div>
+              </div>
+            </div>
+          </article>
+          <article class="private-server-card" data-game-id="703124385" data-place-id="1962086868" data-title="Tower of Hell" data-search="tower of hell yxceptional studios 703124385 1962086868 3 private server servers invite link links" style="--i:2">
+            <div class="private-server-card__media">
+              <img class="private-server-card__icon" src="https://placehold.co/512x512/07101f/5eead4?text=TOH" alt="Tower of Hell Roblox experience icon placeholder" loading="lazy">
+              <div class="private-server-card__media-shade" aria-hidden="true"></div>
+              <span class="private-server-card__badge">3 links</span>
+            </div>
+            <div class="private-server-card__body">
+              <div class="private-server-card__headline">
+                <span class="private-server-card__number">03</span>
+                <div>
+                  <h3 class="private-server-card__title">Tower of Hell</h3>
+                  <p class="private-server-card__creator">By YXceptional Studios</p>
+                </div>
+              </div>
+              <p class="private-server-card__meta">Universe ID 703124385 · Root place ID 1962086868 · private server links created by me</p>
+              <div class="private-server-card__links">
+              <div class="private-server-link">
+                <span class="private-server-link__label">Server 1</span>
+                <a class="private-server-link__button" href="https://www.roblox.com/share?code=c0c342e556f5c6458f1e35bc54f9064b&amp;type=Server" target="_blank" rel="noopener noreferrer">Play</a>
+                <button class="private-server-link__button private-server-link__button--copy" type="button" data-private-server-copy="https://www.roblox.com/share?code=c0c342e556f5c6458f1e35bc54f9064b&amp;type=Server">Copy</button>
+              </div>
+              <div class="private-server-link">
+                <span class="private-server-link__label">Server 2</span>
+                <a class="private-server-link__button" href="https://www.roblox.com/share?code=62832c61ccbf0244ab35fe4fb8836219&amp;type=Server" target="_blank" rel="noopener noreferrer">Play</a>
+                <button class="private-server-link__button private-server-link__button--copy" type="button" data-private-server-copy="https://www.roblox.com/share?code=62832c61ccbf0244ab35fe4fb8836219&amp;type=Server">Copy</button>
+              </div>
+              <div class="private-server-link">
+                <span class="private-server-link__label">Server 3</span>
+                <a class="private-server-link__button" href="https://www.roblox.com/share?code=e2f9a13a3bcef145a86f52ab93650055&amp;type=Server" target="_blank" rel="noopener noreferrer">Play</a>
+                <button class="private-server-link__button private-server-link__button--copy" type="button" data-private-server-copy="https://www.roblox.com/share?code=e2f9a13a3bcef145a86f52ab93650055&amp;type=Server">Copy</button>
+              </div>
+              </div>
+            </div>
+          </article>
+          <article class="private-server-card" data-game-id="761462079" data-place-id="2181746027" data-title="Flood Escape Mission: Legacy" data-search="flood escape mission: legacy fem development 761462079 2181746027 1 private server servers invite link links" style="--i:3">
+            <div class="private-server-card__media">
+              <img class="private-server-card__icon" src="https://placehold.co/512x512/07101f/5eead4?text=FEM" alt="Flood Escape Mission: Legacy Roblox experience icon placeholder" loading="lazy">
+              <div class="private-server-card__media-shade" aria-hidden="true"></div>
+              <span class="private-server-card__badge">1 link</span>
+            </div>
+            <div class="private-server-card__body">
+              <div class="private-server-card__headline">
+                <span class="private-server-card__number">04</span>
+                <div>
+                  <h3 class="private-server-card__title">Flood Escape Mission: Legacy</h3>
+                  <p class="private-server-card__creator">By FEM Development</p>
+                </div>
+              </div>
+              <p class="private-server-card__meta">Universe ID 761462079 · Root place ID 2181746027 · private server link created by me</p>
+              <div class="private-server-card__links">
+              <div class="private-server-link">
+                <span class="private-server-link__label">Server 1</span>
+                <a class="private-server-link__button" href="https://www.roblox.com/share?code=70d844690f110343aa82f3ad733c969c&amp;type=Server" target="_blank" rel="noopener noreferrer">Play</a>
+                <button class="private-server-link__button private-server-link__button--copy" type="button" data-private-server-copy="https://www.roblox.com/share?code=70d844690f110343aa82f3ad733c969c&amp;type=Server">Copy</button>
+              </div>
+              </div>
+            </div>
+          </article>
+          <article class="private-server-card" data-game-id="847722000" data-place-id="2413927524" data-title="The Rake REMASTERED" data-search="the rake remastered @rvvz 847722000 2413927524 3 private server servers invite link links" style="--i:4">
+            <div class="private-server-card__media">
+              <img class="private-server-card__icon" src="https://placehold.co/512x512/07101f/5eead4?text=TRR" alt="The Rake REMASTERED Roblox experience icon placeholder" loading="lazy">
+              <div class="private-server-card__media-shade" aria-hidden="true"></div>
+              <span class="private-server-card__badge">3 links</span>
+            </div>
+            <div class="private-server-card__body">
+              <div class="private-server-card__headline">
+                <span class="private-server-card__number">05</span>
+                <div>
+                  <h3 class="private-server-card__title">The Rake REMASTERED</h3>
+                  <p class="private-server-card__creator">By @RVVZ</p>
+                </div>
+              </div>
+              <p class="private-server-card__meta">Universe ID 847722000 · Root place ID 2413927524 · private server links created by me</p>
+              <div class="private-server-card__links">
+              <div class="private-server-link">
+                <span class="private-server-link__label">Server 1</span>
+                <a class="private-server-link__button" href="https://www.roblox.com/share?code=53bc8f94646e5942bbb606fea85205f1&amp;type=Server" target="_blank" rel="noopener noreferrer">Play</a>
+                <button class="private-server-link__button private-server-link__button--copy" type="button" data-private-server-copy="https://www.roblox.com/share?code=53bc8f94646e5942bbb606fea85205f1&amp;type=Server">Copy</button>
+              </div>
+              <div class="private-server-link">
+                <span class="private-server-link__label">Server 2</span>
+                <a class="private-server-link__button" href="https://www.roblox.com/share?code=81326ae2bb6f34489749079a16620fa8&amp;type=Server" target="_blank" rel="noopener noreferrer">Play</a>
+                <button class="private-server-link__button private-server-link__button--copy" type="button" data-private-server-copy="https://www.roblox.com/share?code=81326ae2bb6f34489749079a16620fa8&amp;type=Server">Copy</button>
+              </div>
+              <div class="private-server-link">
+                <span class="private-server-link__label">Server 3</span>
+                <a class="private-server-link__button" href="https://www.roblox.com/share?code=74b0c48a8119404ead62dc778c0e2162&amp;type=Server" target="_blank" rel="noopener noreferrer">Play</a>
+                <button class="private-server-link__button private-server-link__button--copy" type="button" data-private-server-copy="https://www.roblox.com/share?code=74b0c48a8119404ead62dc778c0e2162&amp;type=Server">Copy</button>
+              </div>
+              </div>
+            </div>
+          </article>
+          <article class="private-server-card" data-game-id="3647333358" data-place-id="9872472334" data-title="Evade" data-search="evade hexagon development community 3647333358 9872472334 3 private server servers invite link links" style="--i:5">
+            <div class="private-server-card__media">
+              <img class="private-server-card__icon" src="https://placehold.co/512x512/07101f/5eead4?text=E" alt="Evade Roblox experience icon placeholder" loading="lazy">
+              <div class="private-server-card__media-shade" aria-hidden="true"></div>
+              <span class="private-server-card__badge">3 links</span>
+            </div>
+            <div class="private-server-card__body">
+              <div class="private-server-card__headline">
+                <span class="private-server-card__number">06</span>
+                <div>
+                  <h3 class="private-server-card__title">Evade</h3>
+                  <p class="private-server-card__creator">By Hexagon Development Community</p>
+                </div>
+              </div>
+              <p class="private-server-card__meta">Universe ID 3647333358 · Root place ID 9872472334 · private server links created by me</p>
+              <div class="private-server-card__links">
+              <div class="private-server-link">
+                <span class="private-server-link__label">Server 1</span>
+                <a class="private-server-link__button" href="https://www.roblox.com/share?code=b234255b5b9e4d4ea451beda5a14dafd&amp;type=Server" target="_blank" rel="noopener noreferrer">Play</a>
+                <button class="private-server-link__button private-server-link__button--copy" type="button" data-private-server-copy="https://www.roblox.com/share?code=b234255b5b9e4d4ea451beda5a14dafd&amp;type=Server">Copy</button>
+              </div>
+              <div class="private-server-link">
+                <span class="private-server-link__label">Server 2</span>
+                <a class="private-server-link__button" href="https://www.roblox.com/share?code=bed92428ffb76d48b271a3c16e7dbd3a&amp;type=Server" target="_blank" rel="noopener noreferrer">Play</a>
+                <button class="private-server-link__button private-server-link__button--copy" type="button" data-private-server-copy="https://www.roblox.com/share?code=bed92428ffb76d48b271a3c16e7dbd3a&amp;type=Server">Copy</button>
+              </div>
+              <div class="private-server-link">
+                <span class="private-server-link__label">Server 3</span>
+                <a class="private-server-link__button" href="https://www.roblox.com/share?code=af6702ab8666fa43acdb9f00da4aed35&amp;type=Server" target="_blank" rel="noopener noreferrer">Play</a>
+                <button class="private-server-link__button private-server-link__button--copy" type="button" data-private-server-copy="https://www.roblox.com/share?code=af6702ab8666fa43acdb9f00da4aed35&amp;type=Server">Copy</button>
+              </div>
+              </div>
+            </div>
+          </article>
+          <article class="private-server-card" data-game-id="5611522097" data-place-id="16261605398" data-title="Airsoft Battles" data-search="airsoft battles stealth developers 5611522097 16261605398 2 private server servers invite link links" style="--i:6">
+            <div class="private-server-card__media">
+              <img class="private-server-card__icon" src="https://placehold.co/512x512/07101f/5eead4?text=AB" alt="Airsoft Battles Roblox experience icon placeholder" loading="lazy">
+              <div class="private-server-card__media-shade" aria-hidden="true"></div>
+              <span class="private-server-card__badge">2 links</span>
+            </div>
+            <div class="private-server-card__body">
+              <div class="private-server-card__headline">
+                <span class="private-server-card__number">07</span>
+                <div>
+                  <h3 class="private-server-card__title">Airsoft Battles</h3>
+                  <p class="private-server-card__creator">By Stealth Developers</p>
+                </div>
+              </div>
+              <p class="private-server-card__meta">Universe ID 5611522097 · Root place ID 16261605398 · private server links created by me</p>
+              <div class="private-server-card__links">
+              <div class="private-server-link">
+                <span class="private-server-link__label">Server 1</span>
+                <a class="private-server-link__button" href="https://www.roblox.com/share?code=88d542b7476c724b90602a57bf72a019&amp;type=Server" target="_blank" rel="noopener noreferrer">Play</a>
+                <button class="private-server-link__button private-server-link__button--copy" type="button" data-private-server-copy="https://www.roblox.com/share?code=88d542b7476c724b90602a57bf72a019&amp;type=Server">Copy</button>
+              </div>
+              <div class="private-server-link">
+                <span class="private-server-link__label">Server 2</span>
+                <a class="private-server-link__button" href="https://www.roblox.com/share?code=e1c5fefb1f274a478cdac2cb049f8f5d&amp;type=Server" target="_blank" rel="noopener noreferrer">Play</a>
+                <button class="private-server-link__button private-server-link__button--copy" type="button" data-private-server-copy="https://www.roblox.com/share?code=e1c5fefb1f274a478cdac2cb049f8f5d&amp;type=Server">Copy</button>
+              </div>
+              </div>
+            </div>
+          </article>
+          <article class="private-server-card" data-game-id="9068117107" data-place-id="117297631008682" data-title="Automatic Transit Operations of Greater Figglehorn" data-search="automatic transit operations of greater figglehorn automatic transit operations of greater figglehorn 9068117107 117297631008682 3 private server servers invite link links" style="--i:7">
+            <div class="private-server-card__media">
+              <img class="private-server-card__icon" src="https://placehold.co/512x512/07101f/5eead4?text=ATO" alt="Automatic Transit Operations of Greater Figglehorn Roblox experience icon placeholder" loading="lazy">
+              <div class="private-server-card__media-shade" aria-hidden="true"></div>
+              <span class="private-server-card__badge">3 links</span>
+            </div>
+            <div class="private-server-card__body">
+              <div class="private-server-card__headline">
+                <span class="private-server-card__number">08</span>
+                <div>
+                  <h3 class="private-server-card__title">Automatic Transit Operations of Greater Figglehorn</h3>
+                  <p class="private-server-card__creator">By Automatic Transit Operations of Greater Figglehorn</p>
+                </div>
+              </div>
+              <p class="private-server-card__meta">Universe ID 9068117107 · Root place ID 117297631008682 · private server links created by me</p>
+              <div class="private-server-card__links">
+              <div class="private-server-link">
+                <span class="private-server-link__label">Server 1</span>
+                <a class="private-server-link__button" href="https://www.roblox.com/share?code=49c8fc02bb86504b97859a36cc71c1cf&amp;type=Server" target="_blank" rel="noopener noreferrer">Play</a>
+                <button class="private-server-link__button private-server-link__button--copy" type="button" data-private-server-copy="https://www.roblox.com/share?code=49c8fc02bb86504b97859a36cc71c1cf&amp;type=Server">Copy</button>
+              </div>
+              <div class="private-server-link">
+                <span class="private-server-link__label">Server 2</span>
+                <a class="private-server-link__button" href="https://www.roblox.com/share?code=d66358ab4993d04086aded0a7d189c6f&amp;type=Server" target="_blank" rel="noopener noreferrer">Play</a>
+                <button class="private-server-link__button private-server-link__button--copy" type="button" data-private-server-copy="https://www.roblox.com/share?code=d66358ab4993d04086aded0a7d189c6f&amp;type=Server">Copy</button>
+              </div>
+              <div class="private-server-link">
+                <span class="private-server-link__label">Server 3</span>
+                <a class="private-server-link__button" href="https://www.roblox.com/share?code=be6bd99e2783144b8071c1053001f347&amp;type=Server" target="_blank" rel="noopener noreferrer">Play</a>
+                <button class="private-server-link__button private-server-link__button--copy" type="button" data-private-server-copy="https://www.roblox.com/share?code=be6bd99e2783144b8071c1053001f347&amp;type=Server">Copy</button>
+              </div>
+              </div>
+            </div>
+          </article>
+          <article class="private-server-card" data-game-id="10093833731" data-place-id="97387256206808" data-title="Broken Blade" data-search="broken blade skyrift devs 10093833731 97387256206808 2 private server servers invite link links" style="--i:8">
+            <div class="private-server-card__media">
+              <img class="private-server-card__icon" src="https://placehold.co/512x512/07101f/5eead4?text=BB" alt="Broken Blade Roblox experience icon placeholder" loading="lazy">
+              <div class="private-server-card__media-shade" aria-hidden="true"></div>
+              <span class="private-server-card__badge">2 links</span>
+            </div>
+            <div class="private-server-card__body">
+              <div class="private-server-card__headline">
+                <span class="private-server-card__number">09</span>
+                <div>
+                  <h3 class="private-server-card__title">Broken Blade</h3>
+                  <p class="private-server-card__creator">By Skyrift Devs</p>
+                </div>
+              </div>
+              <p class="private-server-card__meta">Universe ID 10093833731 · Root place ID 97387256206808 · private server links created by me</p>
+              <div class="private-server-card__links">
+              <div class="private-server-link">
+                <span class="private-server-link__label">Server 1</span>
+                <a class="private-server-link__button" href="https://www.roblox.com/share?code=ad5fe489c3633149b416f1e42756fa78&amp;type=Server" target="_blank" rel="noopener noreferrer">Play</a>
+                <button class="private-server-link__button private-server-link__button--copy" type="button" data-private-server-copy="https://www.roblox.com/share?code=ad5fe489c3633149b416f1e42756fa78&amp;type=Server">Copy</button>
+              </div>
+              <div class="private-server-link">
+                <span class="private-server-link__label">Server 2</span>
+                <a class="private-server-link__button" href="https://www.roblox.com/share?code=cfbb9a142ff39b4693bc3eb6cb0922b6&amp;type=Server" target="_blank" rel="noopener noreferrer">Play</a>
+                <button class="private-server-link__button private-server-link__button--copy" type="button" data-private-server-copy="https://www.roblox.com/share?code=cfbb9a142ff39b4693bc3eb6cb0922b6&amp;type=Server">Copy</button>
+              </div>
+              </div>
+            </div>
+          </article>
+      </div>
     </div>
   </section>
-
-  <template id="private-server-card-template">
-    <article class="private-server-card">
-      <div class="private-server-card__media">
-        <img class="private-server-card__icon" alt="" loading="lazy">
-      </div>
-      <div class="private-server-card__body">
-        <div class="private-server-card__details">
-          <h3 class="private-server-card__title"></h3>
-          <p class="private-server-card__meta"></p>
-        </div>
-        <div class="private-server-card__links"></div>
-      </div>
-    </article>
-  </template>
 
   <style>
     .private-servers-jump {
       position: fixed;
-      right: 1rem;
-      bottom: 1rem;
+      right: clamp(0.75rem, 2vw, 1.25rem);
+      bottom: clamp(0.75rem, 2vw, 1.25rem);
       z-index: 1000;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       min-height: 44px;
       padding: 0 1rem;
-      border: 1px solid rgba(15, 23, 42, 0.18);
+      border: 1px solid rgba(255, 255, 255, 0.14);
       border-radius: 999px;
-      color: #04111f;
-      background: #5eead4;
-      box-shadow: 0 12px 32px rgba(2, 6, 23, 0.28);
+      color: #eaffff;
+      background: linear-gradient(135deg, rgba(94, 234, 212, 0.24), rgba(167, 139, 250, 0.22)), rgba(4, 8, 20, 0.78);
+      box-shadow: 0 16px 46px rgba(0, 0, 0, 0.36);
+      backdrop-filter: blur(14px);
       font-weight: 900;
       line-height: 1;
       text-decoration: none;
+      transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
     }
 
     .private-servers-jump:hover,
     .private-servers-jump:focus-visible {
-      background: #99f6e4;
-      transform: translateY(-1px);
+      transform: translateY(-2px);
+      border-color: rgba(94, 234, 212, 0.46);
+      box-shadow: 0 20px 58px rgba(0, 0, 0, 0.42), 0 0 28px rgba(94, 234, 212, 0.14);
+      outline: none;
     }
 
     .private-servers {
+      position: relative;
+      isolation: isolate;
       scroll-margin-top: 1rem;
-      padding: clamp(3rem, 7vw, 5.5rem) 1rem;
-      background:
-        radial-gradient(circle at 15% 12%, rgba(0, 176, 111, 0.18), transparent 30rem),
-        linear-gradient(135deg, #111827 0%, #0f172a 48%, #04111f 100%);
+      overflow: hidden;
+      padding: clamp(3.4rem, 8vw, 6.4rem) 1rem;
       color: #f8fafc;
+      background: radial-gradient(circle at 18% 18%, rgba(94, 234, 212, 0.16), transparent 28rem), radial-gradient(circle at 86% 20%, rgba(167, 139, 250, 0.18), transparent 30rem), linear-gradient(135deg, #050816 0%, #08111f 42%, #020617 100%);
+    }
+
+    .private-servers::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background-image: linear-gradient(rgba(255, 255, 255, 0.042) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.038) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.82), transparent 86%);
+    }
+
+    .private-servers__glow {
+      position: absolute;
+      z-index: -1;
+      width: 24rem;
+      height: 24rem;
+      border-radius: 999px;
+      filter: blur(26px);
+      pointer-events: none;
+    }
+
+    .private-servers__glow--left {
+      left: -8rem;
+      top: 14rem;
+      background: radial-gradient(circle, rgba(94, 234, 212, 0.18), transparent 68%);
+    }
+
+    .private-servers__glow--right {
+      right: -10rem;
+      top: 4rem;
+      background: radial-gradient(circle, rgba(167, 139, 250, 0.22), transparent 68%);
     }
 
     .private-servers__inner {
       width: min(1240px, 100%);
       margin: 0 auto;
+      display: grid;
+      gap: 1.5rem;
     }
 
-    .private-servers__header {
-      max-width: 700px;
-      margin-bottom: 1.75rem;
+    .private-servers__hero,
+    .private-servers__panel,
+    .private-servers__toolbar,
+    .private-server-card {
+      border: 1px solid rgba(255, 255, 255, 0.11);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.072), rgba(255, 255, 255, 0.024)), rgba(7, 12, 26, 0.78);
+      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.32);
+      backdrop-filter: blur(16px);
+    }
+
+    .private-servers__hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(270px, 340px);
+      gap: clamp(1rem, 3vw, 1.5rem);
+      align-items: stretch;
+      padding: clamp(1.25rem, 3.4vw, 2rem);
+      border-radius: 28px;
+    }
+
+    .private-servers__copy {
+      min-width: 0;
+      align-self: end;
     }
 
     .private-servers__eyebrow {
-      margin: 0 0 0.5rem;
-      color: #5eead4;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      margin: 0 0 0.8rem;
+      color: #99f6e4;
       font-size: 0.78rem;
-      font-weight: 800;
-      letter-spacing: 0.12em;
+      font-weight: 900;
+      letter-spacing: 0.13em;
       text-transform: uppercase;
+    }
+
+    .private-servers__eyebrow span {
+      width: 0.55rem;
+      height: 0.55rem;
+      border-radius: 999px;
+      background: #5eead4;
+      box-shadow: 0 0 20px rgba(94, 234, 212, 0.85);
     }
 
     .private-servers h2 {
       margin: 0;
-      font-size: clamp(2rem, 5vw, 3.5rem);
-      line-height: 1;
-      letter-spacing: 0;
+      max-width: 10ch;
+      color: #ffffff;
+      font-size: clamp(2.4rem, 7vw, 5rem);
+      line-height: 0.92;
+      letter-spacing: -0.055em;
     }
 
     .private-servers__intro {
-      margin: 0.9rem 0 0;
-      color: #cbd5e1;
-      font-size: clamp(1rem, 2vw, 1.15rem);
-      line-height: 1.65;
+      max-width: 68ch;
+      margin: 1rem 0 0;
+      color: rgba(226, 232, 240, 0.82);
+      font-size: clamp(1rem, 2vw, 1.12rem);
+      line-height: 1.7;
     }
 
-    .private-servers__note {
-      margin: 0.85rem 0 0;
-      padding: 0.85rem 1rem;
-      border: 1px solid rgba(94, 234, 212, 0.28);
-      border-radius: 8px;
-      color: #e2e8f0;
-      background: rgba(15, 23, 42, 0.72);
-      font-size: 0.96rem;
-      line-height: 1.55;
-    }
-
-    .private-servers__note--muted {
-      border-color: rgba(148, 163, 184, 0.2);
-      color: #cbd5e1;
-      background: rgba(2, 6, 23, 0.34);
-      font-size: 0.92rem;
-    }
-
-    .private-servers__discord {
+    .private-servers__panel {
       display: grid;
-      grid-template-columns: 56px minmax(0, 1fr) auto;
+      align-content: space-between;
+      gap: 0.75rem;
+      min-height: 100%;
+      padding: 1rem;
+      border: 1px solid rgba(94, 234, 212, 0.18);
+      border-radius: 22px;
+      background: linear-gradient(135deg, rgba(94, 234, 212, 0.11), rgba(167, 139, 250, 0.08)), rgba(10, 17, 32, 0.72);
+    }
+
+    .private-servers__panel-row,
+    .private-servers__panel-status {
+      display: flex;
       align-items: center;
-      gap: 0.9rem;
-      width: min(520px, 100%);
-      margin-top: 1rem;
-      padding: 0.9rem;
-      border: 1px solid rgba(88, 101, 242, 0.42);
-      border-radius: 8px;
-      background: linear-gradient(135deg, rgba(88, 101, 242, 0.22), rgba(15, 23, 42, 0.82));
+      justify-content: space-between;
+      gap: 1rem;
+      min-height: 56px;
+      padding: 0 1rem;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.052);
     }
 
-    .private-servers__discord-icon {
-      width: 56px;
-      height: 56px;
-      border-radius: 8px;
-      object-fit: cover;
+    .private-servers__panel-row span {
+      color: rgba(226, 232, 240, 0.72);
+      font-weight: 800;
     }
 
-    .private-servers__discord-body {
-      display: grid;
-      gap: 0.12rem;
-      min-width: 0;
-    }
-
-    .private-servers__discord-body strong {
+    .private-servers__panel-row strong {
       color: #ffffff;
-      font-size: 1rem;
-      line-height: 1.2;
+      font-size: 1.75rem;
+      line-height: 1;
     }
 
-    .private-servers__discord-body span {
-      color: #cbd5e1;
-      font-size: 0.88rem;
-      line-height: 1.35;
+    .private-servers__panel-status {
+      justify-content: flex-start;
+      border: 1px solid rgba(94, 234, 212, 0.16);
+      color: #ccfbf1;
+      font-weight: 850;
     }
 
-    .private-servers__discord-link {
+    .private-servers__panel-status.is-error {
+      border-color: rgba(251, 113, 133, 0.3);
+      color: #fecdd3;
+    }
+
+    .private-servers__toolbar {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 1rem;
+      padding: 1.1rem;
+      border-radius: 26px;
+    }
+
+    .private-servers__search {
+      display: grid;
+      gap: 0.65rem;
+    }
+
+    .private-servers__search span {
+      color: rgba(226, 232, 240, 0.66);
+      font-size: 0.78rem;
+      font-weight: 950;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    .private-servers__search input {
+      width: 100%;
+      min-height: 54px;
+      border: 1px solid rgba(255, 255, 255, 0.11);
+      border-radius: 18px;
+      background: rgba(2, 6, 23, 0.48);
+      color: #f8fafc;
+      padding: 0 1rem;
+      outline: none;
+      font: inherit;
+      transition: border-color 180ms ease, box-shadow 180ms ease, background 180ms ease;
+    }
+
+    .private-servers__search input:focus {
+      border-color: rgba(94, 234, 212, 0.46);
+      background: rgba(2, 6, 23, 0.64);
+      box-shadow: 0 0 0 4px rgba(94, 234, 212, 0.11);
+    }
+
+    .private-servers__chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+    }
+
+    .private-servers__chips span {
       display: inline-flex;
       align-items: center;
-      justify-content: center;
-      min-height: 42px;
-      padding: 0 1rem;
-      border-radius: 8px;
-      color: #04111f;
-      background: #5eead4;
-      font-weight: 900;
-      text-decoration: none;
-      transition: transform 160ms ease, background-color 160ms ease;
+      min-height: 38px;
+      padding: 0 0.9rem;
+      border: 1px solid rgba(255, 255, 255, 0.11);
+      border-radius: 999px;
+      color: rgba(248, 250, 252, 0.82);
+      background: rgba(255, 255, 255, 0.06);
+      font-weight: 850;
     }
 
-    .private-servers__discord-link:hover,
-    .private-servers__discord-link:focus-visible {
-      background: #99f6e4;
-      transform: translateY(-1px);
+    .private-servers__empty {
+      padding: 1.1rem;
+      border: 1px dashed rgba(255, 255, 255, 0.16);
+      border-radius: 20px;
+      color: rgba(226, 232, 240, 0.76);
+      text-align: center;
+      background: rgba(255, 255, 255, 0.035);
     }
 
     .private-servers__grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 350px), 1fr));
       gap: 1rem;
     }
 
     .private-server-card {
+      position: relative;
+      overflow: hidden;
       display: grid;
-      grid-template-columns: 120px minmax(0, 1fr);
-      gap: 1rem;
-      min-height: 0;
-      padding: 1rem;
-      border: 1px solid rgba(148, 163, 184, 0.24);
-      border-radius: 8px;
-      background: rgba(15, 23, 42, 0.78);
-      box-shadow: 0 20px 48px rgba(2, 6, 23, 0.28);
-      backdrop-filter: blur(10px);
+      grid-template-rows: auto 1fr;
+      min-height: 390px;
+      border-radius: 24px;
+      opacity: 1;
+      transform: none;
+      transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+    }
+
+    .private-server-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(94, 234, 212, 0.34);
+      box-shadow: 0 30px 86px rgba(0, 0, 0, 0.42), 0 0 32px rgba(94, 234, 212, 0.08);
+    }
+
+    .private-server-card[hidden] {
+      display: none;
     }
 
     .private-server-card__media {
-      width: 120px;
-      aspect-ratio: 1;
+      position: relative;
+      aspect-ratio: 16 / 9;
       overflow: hidden;
-      border-radius: 8px;
-      background: #1e293b;
+      background: linear-gradient(135deg, rgba(94, 234, 212, 0.18), rgba(167, 139, 250, 0.16)), #0f172a;
     }
 
     .private-server-card__icon {
+      display: block;
       width: 100%;
       height: 100%;
-      display: block;
       object-fit: cover;
+      transform: scale(1.01);
+      filter: saturate(1.05) contrast(1.03);
+      transition: transform 520ms ease, filter 520ms ease;
+    }
+
+    .private-server-card:hover .private-server-card__icon {
+      transform: scale(1.07);
+      filter: saturate(1.2) contrast(1.08);
+    }
+
+    .private-server-card__media-shade {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 24%, rgba(2, 6, 23, 0.78)), linear-gradient(90deg, rgba(255, 255, 255, 0.055) 1px, transparent 1px);
+      background-size: auto, 48px 100%;
+      pointer-events: none;
+    }
+
+    .private-server-card__badge {
+      position: absolute;
+      right: 0.85rem;
+      top: 0.85rem;
+      display: inline-flex;
+      align-items: center;
+      min-height: 32px;
+      padding: 0 0.72rem;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 999px;
+      color: #dffef9;
+      background: rgba(2, 6, 23, 0.54);
+      backdrop-filter: blur(12px);
+      font-size: 0.75rem;
+      font-weight: 900;
     }
 
     .private-server-card__body {
-      display: contents;
+      display: grid;
+      grid-template-rows: auto auto minmax(0, 1fr);
+      gap: 0.8rem;
+      padding: 1rem;
       min-width: 0;
     }
 
-    .private-server-card__details {
-      min-width: 0;
+    .private-server-card__headline {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: 0.75rem;
+      align-items: start;
+    }
+
+    .private-server-card__number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.4rem;
+      height: 2.4rem;
+      border: 1px solid rgba(94, 234, 212, 0.2);
+      border-radius: 14px;
+      color: #99f6e4;
+      background: rgba(94, 234, 212, 0.08);
+      font-weight: 950;
     }
 
     .private-server-card__title {
       margin: 0;
       color: #ffffff;
-      font-size: 1.1rem;
-      line-height: 1.25;
-      letter-spacing: 0;
-      overflow-wrap: anywhere;
+      font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+      line-height: 1.1;
+      letter-spacing: -0.025em;
     }
 
+    .private-server-card__creator,
     .private-server-card__meta {
-      margin: 0.3rem 0 0;
-      color: #94a3b8;
-      font-size: 0.9rem;
+      margin: 0;
+      color: rgba(226, 232, 240, 0.68);
+      font-size: 0.84rem;
+      line-height: 1.55;
+    }
+
+    .private-server-card__creator {
+      margin-top: 0.28rem;
     }
 
     .private-server-card__links {
       display: grid;
-      grid-column: 1 / -1;
-      gap: 0.55rem;
-      max-height: 166px;
-      overflow-y: auto;
-      overflow-x: hidden;
+      align-content: start;
+      gap: 0.58rem;
+      max-height: 240px;
+      overflow: auto;
       padding-right: 0.25rem;
-      scrollbar-color: rgba(94, 234, 212, 0.75) rgba(15, 23, 42, 0.65);
+      scrollbar-color: rgba(94, 234, 212, 0.35) rgba(255, 255, 255, 0.06);
       scrollbar-width: thin;
-    }
-
-    .private-server-card__links::-webkit-scrollbar {
-      width: 8px;
-    }
-
-    .private-server-card__links::-webkit-scrollbar-track {
-      border-radius: 999px;
-      background: rgba(15, 23, 42, 0.65);
-    }
-
-    .private-server-card__links::-webkit-scrollbar-thumb {
-      border-radius: 999px;
-      background: rgba(94, 234, 212, 0.75);
     }
 
     .private-server-link {
       display: grid;
-      grid-template-columns: minmax(5.5rem, 1fr) auto auto;
+      grid-template-columns: minmax(0, 1fr) auto auto;
+      gap: 0.5rem;
       align-items: center;
-      gap: 0.45rem;
-      min-height: 42px;
-      padding: 0.35rem 0.35rem 0.35rem 0.75rem;
-      border: 1px solid rgba(148, 163, 184, 0.2);
-      border-radius: 8px;
-      background: rgba(2, 6, 23, 0.42);
+      padding: 0.55rem;
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.04);
     }
 
     .private-server-link__label {
-      min-width: 0;
-      color: #e2e8f0;
-      font-size: 0.9rem;
-      font-weight: 700;
-      white-space: nowrap;
+      color: rgba(248, 250, 252, 0.88);
+      font-weight: 850;
     }
 
     .private-server-link__button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 32px;
-      padding: 0 0.72rem;
-      border: 0;
-      border-radius: 7px;
+      min-height: 34px;
+      padding: 0 0.78rem;
+      border: 1px solid rgba(94, 234, 212, 0.2);
+      border-radius: 12px;
       color: #04111f;
-      background: #5eead4;
-      font: inherit;
-      font-size: 0.82rem;
-      font-weight: 800;
-      line-height: 1;
-      text-decoration: none;
+      background: linear-gradient(135deg, #5eead4, #99f6e4);
+      box-shadow: 0 10px 24px rgba(94, 234, 212, 0.12);
       cursor: pointer;
-      transition: transform 160ms ease, background-color 160ms ease;
+      font: inherit;
+      font-size: 0.83rem;
+      font-weight: 950;
+      text-decoration: none;
+      transition: transform 160ms ease, filter 160ms ease, background 160ms ease;
     }
 
     .private-server-link__button:hover,
     .private-server-link__button:focus-visible {
-      background: #99f6e4;
       transform: translateY(-1px);
+      filter: brightness(1.06);
+      outline: none;
     }
 
     .private-server-link__button--copy {
-      color: #e2e8f0;
-      background: rgba(148, 163, 184, 0.18);
+      color: #f8fafc;
+      border-color: rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.08);
+      box-shadow: none;
     }
 
-    .private-server-link__button--copy:hover,
-    .private-server-link__button--copy:focus-visible {
-      color: #ffffff;
-      background: rgba(148, 163, 184, 0.28);
-    }
+    @media (max-width: 820px) {
+      .private-servers {
+        padding: 1rem 1rem 4.75rem;
+      }
 
-    @media (max-width: 520px) {
-      .private-servers-jump {
-        right: 0.75rem;
-        bottom: 0.75rem;
+      .private-servers__hero {
+        grid-template-columns: 1fr;
+        border-radius: 26px;
+      }
+
+      .private-servers__panel {
+        min-height: auto;
       }
 
       .private-server-card {
-        grid-template-columns: 96px minmax(0, 1fr);
+        min-height: 0;
       }
+    }
 
-      .private-server-card__media {
-        width: 96px;
+    @media (max-width: 520px) {
+      .private-servers__grid {
+        grid-template-columns: 1fr;
       }
 
       .private-server-link {
-        grid-template-columns: minmax(4.75rem, 1fr) auto auto;
+        grid-template-columns: 1fr;
+        padding: 0.65rem;
       }
 
-      .private-server-link__label {
-        grid-column: auto;
+      .private-server-link__button {
+        width: 100%;
       }
+    }
 
-      .private-servers__discord {
-        grid-template-columns: 48px minmax(0, 1fr);
-      }
-
-      .private-servers__discord-icon {
-        width: 48px;
-        height: 48px;
-      }
-
-      .private-servers__discord-link {
-        grid-column: 1 / -1;
+    @media (prefers-reduced-motion: reduce) {
+      .private-servers-jump,
+      .private-server-card,
+      .private-server-card__icon,
+      .private-server-link__button {
+        transition: none;
       }
     }
   </style>
 
   <script>
     (() => {
-      const games = [];
-
-      function PrivateServerAdd(gameId, ...links) {
-        const id = Number(gameId);
-        const normalizedLinks = links
-          .flat()
-          .map((link) => String(link || '').trim())
-          .filter((link) => /^https:\/\/www\.roblox\.com\/share\?/.test(link));
-
-        if (!id || !normalizedLinks.length) return;
-
-        const existing = games.find((game) => game.id === id);
-        if (existing) {
-          existing.links.push(...normalizedLinks);
-          return;
-        }
-
-        games.push({
-          id,
-          links: normalizedLinks
-        });
-      }
-
-      window.PrivateServerAdd = PrivateServerAdd;
-
-      PrivateServerAdd(
-        323675642,
-        'https://www.roblox.com/share?code=00ad64bed968584799e6f248ad57fe57&type=Server',
-        'https://www.roblox.com/share?code=8470a0f968b8a04da9ee90b912250818&type=Server',
-        'https://www.roblox.com/share?code=3c2748cb60780c4aae5d50fd521f7144&type=Server',
-        'https://www.roblox.com/share?code=4ef0d70ffdab8b48b520e8363ecc1ae4&type=Server',
-        'https://www.roblox.com/share?code=8525852e591d494db7568954908239c2&type=Server',
-        'https://www.roblox.com/share?code=a13cdaf78dca2b47905f9f74d3acb0bc&type=Server'
-      );
-      PrivateServerAdd(
-        3647333358,
-        'https://www.roblox.com/share?code=b234255b5b9e4d4ea451beda5a14dafd&type=Server',
-        'https://www.roblox.com/share?code=bed92428ffb76d48b271a3c16e7dbd3a&type=Server',
-        'https://www.roblox.com/share?code=af6702ab8666fa43acdb9f00da4aed35&type=Server'
-      );
-      PrivateServerAdd(
-        847722000,
-        'https://www.roblox.com/share?code=53bc8f94646e5942bbb606fea85205f1&type=Server',
-        'https://www.roblox.com/share?code=81326ae2bb6f34489749079a16620fa8&type=Server',
-        'https://www.roblox.com/share?code=74b0c48a8119404ead62dc778c0e2162&type=Server'
-      );
-      PrivateServerAdd(
-        9068117107,
-        'https://www.roblox.com/share?code=49c8fc02bb86504b97859a36cc71c1cf&type=Server',
-        'https://www.roblox.com/share?code=d66358ab4993d04086aded0a7d189c6f&type=Server',
-        'https://www.roblox.com/share?code=be6bd99e2783144b8071c1053001f347&type=Server'
-      );
-      PrivateServerAdd(
-        761462079,
-        'https://www.roblox.com/share?code=70d844690f110343aa82f3ad733c969c&type=Server'
-      );
-      PrivateServerAdd(
-        10093833731,
-        'https://www.roblox.com/share?code=ad5fe489c3633149b416f1e42756fa78&type=Server',
-        'https://www.roblox.com/share?code=cfbb9a142ff39b4693bc3eb6cb0922b6&type=Server'
-      );
-      PrivateServerAdd(
-        245662005,
-        'https://www.roblox.com/share?code=5b0ce0190de796468327895d0d5bfc2a&type=Server',
-        'https://www.roblox.com/share?code=b5a2f803bc89ca46822e34b1bbd1b56e&type=Server'
-      );
-      PrivateServerAdd(
-        5611522097,
-        'https://www.roblox.com/share?code=88d542b7476c724b90602a57bf72a019&type=Server',
-        'https://www.roblox.com/share?code=e1c5fefb1f274a478cdac2cb049f8f5d&type=Server'
-      );
-      PrivateServerAdd(
-        703124385,
-        'https://www.roblox.com/share?code=c0c342e556f5c6458f1e35bc54f9064b&type=Server',
-        'https://www.roblox.com/share?code=62832c61ccbf0244ab35fe4fb8836219&type=Server',
-        'https://www.roblox.com/share?code=e2f9a13a3bcef145a86f52ab93650055&type=Server'
-      );
-
       const list = document.querySelector('[data-private-server-list]');
-      const template = document.querySelector('#private-server-card-template');
-      if (!list || !template) return;
+      const search = document.querySelector('[data-private-server-search]');
+      const empty = document.querySelector('[data-private-server-empty]');
+      const status = document.querySelector('[data-private-server-status]');
+      const gamesCount = document.querySelector('[data-private-server-games]');
+      const linksCount = document.querySelector('[data-private-server-links]');
 
-      const sortedGames = [...games].sort((a, b) => a.id - b.id);
-      const iconUrl = (label) => `https://placehold.co/512x512/111827/5eead4?text=${encodeURIComponent(label)}`;
-      const focusPrivateServers = () => {
-        if (window.location.hash !== '#private-servers') return;
+      if (!list) return;
 
-        document.querySelector('#private-servers')?.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
-        });
+      const cards = Array.from(list.querySelectorAll('.private-server-card'));
+      const totalLinks = list.querySelectorAll('.private-server-link').length;
+
+      const setStatus = (message, isError = false) => {
+        if (!status) return;
+        status.textContent = message;
+        status.classList.toggle('is-error', isError);
       };
+
+      const updateCounts = (visibleCount = cards.length) => {
+        if (gamesCount) gamesCount.textContent = String(visibleCount);
+        if (linksCount) linksCount.textContent = String(totalLinks);
+      };
+
+      const applyFilter = () => {
+        const query = String(search?.value || '').trim().toLowerCase();
+        let visible = 0;
+
+        cards.forEach((card) => {
+          const matches = !query || String(card.dataset.search || '').toLowerCase().includes(query);
+          card.hidden = !matches;
+          if (matches) visible += 1;
+        });
+
+        if (empty) empty.hidden = visible !== 0;
+        updateCounts(visible);
+        setStatus(
+          query
+            ? `Showing ${visible} of ${cards.length} experiences.`
+            : `Ready: ${cards.length} experiences and ${totalLinks} invite links.`
+        );
+      };
+
+      list.addEventListener('click', async (event) => {
+        const button = event.target.closest('[data-private-server-copy]');
+        if (!button) return;
+
+        const link = button.getAttribute('data-private-server-copy') || '';
+        const oldText = button.textContent;
+
+        try {
+          await navigator.clipboard.writeText(link);
+          button.textContent = 'Copied';
+          setStatus('Private server invite copied.');
+          window.setTimeout(() => {
+            button.textContent = oldText;
+          }, 1600);
+        } catch {
+          window.prompt('Copy this private server invite:', link);
+          setStatus('Clipboard permission denied. Manual copy fallback opened.', true);
+        }
+      });
+
       const fetchJson = async (urls) => {
         let lastError;
 
         for (const url of urls) {
           try {
             const response = await fetch(url);
-            if (!response.ok) throw new Error(`Request failed: ${response.status}`);
+            if (!response.ok) throw new Error(`Fetch failed: ${response.status}`);
             return await response.json();
           } catch (error) {
             lastError = error;
@@ -24186,116 +24602,43 @@ self.addEventListener("message", async (event) => {
         throw lastError;
       };
 
-      sortedGames.forEach((game) => {
-        const card = template.content.firstElementChild.cloneNode(true);
-        const icon = card.querySelector('.private-server-card__icon');
-        const title = card.querySelector('.private-server-card__title');
-        const meta = card.querySelector('.private-server-card__meta');
-        const links = card.querySelector('.private-server-card__links');
+      const hydrateRobloxIcons = async () => {
+        const placeIds = cards.map((card) => card.dataset.placeId).filter(Boolean);
+        if (!placeIds.length) return;
 
-        title.textContent = 'Loading Roblox game...';
-        meta.textContent = `Universe ID ${game.id} · ${game.links.length} private server${game.links.length === 1 ? '' : 's'} available`;
-        icon.src = iconUrl(game.id);
-        icon.alt = `Roblox game icon for universe ${game.id}`;
+        const thumbnailPayload = await fetchJson([
+          `https://thumbnails.roproxy.com/v1/places/gameicons?placeIds=${placeIds.join(',')}&size=512x512&format=Png&isCircular=false`,
+          `https://thumbnails.rotunnel.com/v1/places/gameicons?placeIds=${placeIds.join(',')}&size=512x512&format=Png&isCircular=false`,
+          `https://thumbnails.roblox.com/v1/places/gameicons?placeIds=${placeIds.join(',')}&size=512x512&format=Png&isCircular=false`
+        ]);
 
-        game.links.forEach((link, index) => {
-          const row = document.createElement('div');
-          row.className = 'private-server-link';
+        const thumbnails = new Map((thumbnailPayload.data || []).map((item) => [String(item.targetId), item.imageUrl]));
 
-          const label = document.createElement('span');
-          label.className = 'private-server-link__label';
-          label.textContent = `Server ${index + 1}`;
-
-          const play = document.createElement('a');
-          play.className = 'private-server-link__button';
-          play.href = link;
-          play.target = '_blank';
-          play.rel = 'noopener noreferrer';
-          play.textContent = 'Play';
-
-          const copy = document.createElement('button');
-          copy.className = 'private-server-link__button private-server-link__button--copy';
-          copy.type = 'button';
-          copy.textContent = 'Copy';
-          copy.addEventListener('click', async () => {
-            try {
-              await navigator.clipboard.writeText(link);
-              copy.textContent = 'Copied';
-              setTimeout(() => {
-                copy.textContent = 'Copy';
-              }, 1600);
-            } catch {
-              window.prompt('Copy this private server invite:', link);
-            }
-          });
-
-          row.append(label, play, copy);
-          links.append(row);
+        cards.forEach((card) => {
+          const icon = card.querySelector('.private-server-card__icon');
+          const thumbnail = thumbnails.get(String(card.dataset.placeId));
+          if (thumbnail && icon) icon.src = thumbnail;
         });
+      };
 
-        list.append(card);
+      window.PrivateServerAdd = null;
+      updateCounts();
+      applyFilter();
+      search?.addEventListener('input', applyFilter);
+
+      if (window.location.hash === '#private-servers') {
+        document.querySelector('#private-servers')?.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+
+      hydrateRobloxIcons().catch(() => {
+        setStatus('Loaded private server links. Roblox icons could not be fetched.', true);
       });
-
-      requestAnimationFrame(focusPrivateServers);
-      window.addEventListener('hashchange', focusPrivateServers);
-
-      const universeIds = sortedGames.map((game) => game.id).join(',');
-
-      fetchJson([
-        `https://games.roproxy.com/v1/games?universeIds=${universeIds}`,
-        `https://games.rotunnel.com/v1/games?universeIds=${universeIds}`,
-        `https://games.roblox.com/v1/games?universeIds=${universeIds}`
-      ])
-        .then((payload) => {
-          const gameDetails = new Map((payload.data || []).map((item) => [item.id, item]));
-
-          document.querySelectorAll('.private-server-card').forEach((card, index) => {
-            const game = sortedGames[index];
-            const details = gameDetails.get(game.id);
-
-            if (details) {
-              card.querySelector('.private-server-card__title').textContent = details.name;
-              card.querySelector('.private-server-card__meta').textContent = `Universe ID ${game.id} · Root place ID ${details.rootPlaceId} · ${game.links.length} private server${game.links.length === 1 ? '' : 's'} available`;
-              card.querySelector('.private-server-card__icon').alt = `${details.name} Roblox game icon`;
-            } else {
-              card.querySelector('.private-server-card__title').textContent = `Roblox Game ${game.id}`;
-            }
-          });
-
-          const rootPlaceIds = (payload.data || [])
-            .map((item) => item.rootPlaceId)
-            .filter(Boolean);
-
-          if (!rootPlaceIds.length) return;
-
-          const placeIds = rootPlaceIds.join(',');
-
-          return fetchJson([
-            `https://thumbnails.roproxy.com/v1/places/gameicons?placeIds=${placeIds}&size=512x512&format=Png&isCircular=false`,
-            `https://thumbnails.rotunnel.com/v1/places/gameicons?placeIds=${placeIds}&size=512x512&format=Png&isCircular=false`,
-            `https://thumbnails.roblox.com/v1/places/gameicons?placeIds=${placeIds}&size=512x512&format=Png&isCircular=false`
-          ])
-            .then((thumbnailPayload) => {
-              const thumbnails = new Map((thumbnailPayload.data || []).map((item) => [item.targetId, item.imageUrl]));
-
-              document.querySelectorAll('.private-server-card').forEach((card, index) => {
-                const details = gameDetails.get(sortedGames[index].id);
-                const thumbnail = details && thumbnails.get(details.rootPlaceId);
-
-                if (thumbnail) {
-                  card.querySelector('.private-server-card__icon').src = thumbnail;
-                }
-              });
-            })
-            .catch(() => {});
-        })
-        .catch(() => {
-          document.querySelectorAll('.private-server-card').forEach((card, index) => {
-            card.querySelector('.private-server-card__title').textContent = `Roblox Game ${sortedGames[index].id}`;
-          });
-        });
     })();
   </script>
+
 </body>
 
 </html>
