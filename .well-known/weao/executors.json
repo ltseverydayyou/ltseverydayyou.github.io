@@ -1,16 +1,16 @@
 {
-  "fetchedAt": "2026-07-08T13:06:33.629Z",
+  "fetchedAt": "2026-07-08T15:42:08.927Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
       "title": "Potassium",
-      "version": "2.2.7",
-      "updatedDate": "07/01/2026 at 11:47 PM UTC",
+      "version": "2.2.8",
+      "updatedDate": "07/08/2026 at 1:08 PM UTC",
       "uncStatus": true,
       "free": false,
       "detected": true,
-      "rbxversion": "version-5cf2272675e145f5",
-      "updateStatus": false,
+      "rbxversion": "version-90f2fddd3b244ff6",
+      "updateStatus": true,
       "websitelink": "https://www.potassium.pro/",
       "discordlink": "https://discord.com/invite/potassium",
       "beta": false,
@@ -945,8 +945,8 @@
     {
       "_id": "6949f9ee0260ad9e36c73700",
       "title": "RbxCli",
-      "version": "1.9.14-beta",
-      "updatedDate": "07/07/2026 at 6:09 PM UTC",
+      "version": "1.9.14a-beta",
+      "updatedDate": "07/08/2026 at 2:55 PM UTC",
       "uncStatus": false,
       "free": false,
       "detected": false,
