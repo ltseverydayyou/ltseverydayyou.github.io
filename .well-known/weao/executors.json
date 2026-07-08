@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-07-08T00:00:01.076Z",
+  "fetchedAt": "2026-07-08T03:37:05.299Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -424,12 +424,12 @@
       "_id": "6705f74ed02338b4f68f9c62",
       "title": "Matrix Hub",
       "version": "v2",
-      "updatedDate": "07/01/2026 at 8:51 PM UTC",
+      "updatedDate": "07/08/2026 at 12:45 AM UTC",
       "uncStatus": false,
       "free": false,
       "detected": false,
-      "rbxversion": "version-5cf2272675e145f5",
-      "updateStatus": false,
+      "rbxversion": "version-90f2fddd3b244ff6",
+      "updateStatus": true,
       "websitelink": "https://matrixhubs.shop/",
       "discordlink": "https://matrixhub.xyz/discord.html",
       "beta": false,
