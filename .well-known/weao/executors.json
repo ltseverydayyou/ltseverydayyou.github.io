@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-07-08T11:24:10.045Z",
+  "fetchedAt": "2026-07-08T13:06:33.629Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -334,8 +334,8 @@
     {
       "_id": "680eaddf8b44717c060fcf8d",
       "title": "Velocity",
-      "version": "1.1.0",
-      "updatedDate": "07/07/2026 at 10:46 PM UTC",
+      "version": "1.1.1",
+      "updatedDate": "07/08/2026 at 12:16 PM UTC",
       "uncStatus": true,
       "free": true,
       "detected": true,
@@ -374,7 +374,8 @@
         ]
       },
       "hasIssues": false,
-      "websitelink": "https://realvelocity.xyz/"
+      "websitelink": "https://realvelocity.xyz/",
+      "keysystem": true
     },
     {
       "_id": "66633ac4b29bacaa7a568fdc",
