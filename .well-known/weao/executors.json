@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-07-09T04:31:37.356Z",
+  "fetchedAt": "2026-07-09T15:41:23.059Z",
   "data": [
     {
       "_id": "66633ac4b29bacaa7a568fdc",
@@ -590,8 +590,8 @@
     {
       "_id": "680eaddf8b44717c060fcf8d",
       "title": "Velocity",
-      "version": "1.1.1",
-      "updatedDate": "07/08/2026 at 12:16 PM UTC",
+      "version": "1.1.2",
+      "updatedDate": "07/09/2026 at 1:21 PM UTC",
       "uncStatus": true,
       "free": true,
       "detected": true,
@@ -1092,8 +1092,8 @@
     {
       "_id": "69f25c438d1db84cb50c8cfe",
       "title": "Madium",
-      "version": "1.6.2",
-      "updatedDate": "07/08/2026 at 11:09 AM UTC",
+      "version": "1.6.3",
+      "updatedDate": "07/09/2026 at 2:18 PM UTC",
       "uncStatus": true,
       "free": true,
       "detected": true,
