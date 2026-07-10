@@ -10439,6 +10439,524 @@
             filter: none !important;
         }
 
+
+        /* Rscripts-inspired catalog interaction layer
+           Recreates the high-level interaction language only: compact filters,
+           keyboard search, progressive results, dark cards and restrained motion. */
+        #ps {
+            --catalog-surface: rgba(7, 9, 15, 0.92);
+            --catalog-surface-soft: rgba(255, 255, 255, 0.045);
+            --catalog-border: rgba(255, 255, 255, 0.10);
+            --catalog-muted: rgba(231, 233, 238, 0.58);
+        }
+
+        #ps .scripts-showcase {
+            overflow: visible;
+            background:
+                radial-gradient(760px 360px at 8% -10%, color-mix(in srgb, var(--ac) 13%, transparent), transparent 68%),
+                radial-gradient(680px 330px at 96% 0%, color-mix(in srgb, var(--ac2) 11%, transparent), transparent 70%),
+                linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.012)),
+                var(--catalog-surface);
+        }
+
+        #ps .scripts-showcase::before {
+            opacity: 0.34;
+            animation-duration: 18s;
+        }
+
+        #ps .scripts-showcase__hero {
+            align-items: stretch;
+        }
+
+        #ps .scripts-showcase__intro,
+        #ps .scripts-showcase__tools,
+        #ps .scripts-showcase__summary {
+            background: rgba(255, 255, 255, 0.026);
+            border-color: var(--catalog-border);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.045);
+        }
+
+        #ps .scripts-showcase__intro h3 {
+            color: #fff;
+            background: none;
+            -webkit-text-fill-color: currentColor;
+            animation: none;
+        }
+
+        #ps .scripts-showcase__eyebrow {
+            border-color: rgba(255, 255, 255, 0.12);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        #ps .scripts-showcase__eyebrow::before {
+            background: var(--ac);
+            box-shadow: 0 0 16px color-mix(in srgb, var(--ac) 70%, transparent);
+            animation: rsCatalogPulse 1.9s ease-in-out infinite;
+        }
+
+        #ps .scripts-showcase__search {
+            display: flex;
+            align-items: center;
+        }
+
+        #ps .scripts-showcase__search input {
+            padding-right: 78px;
+        }
+
+        .scripts-showcase__shortcut {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            min-height: 26px;
+            padding: 0 8px;
+            border: 1px solid rgba(255, 255, 255, 0.11);
+            border-radius: 8px;
+            color: rgba(255, 255, 255, 0.50);
+            background: rgba(255, 255, 255, 0.045);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            font: 700 10px/1 ui-sans-serif, system-ui, sans-serif;
+            pointer-events: none;
+        }
+
+        .scripts-catalog-bar {
+            position: sticky;
+            top: 12px;
+            z-index: 20;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto auto;
+            align-items: center;
+            gap: 12px;
+            margin: 0 0 18px;
+            padding: 10px 12px;
+            border: 1px solid rgba(255, 255, 255, 0.11);
+            border-radius: 18px;
+            background: rgba(7, 9, 15, 0.78);
+            box-shadow: 0 16px 44px rgba(0, 0, 0, 0.30), inset 0 1px 0 rgba(255, 255, 255, 0.055);
+            backdrop-filter: blur(18px) saturate(140%);
+            -webkit-backdrop-filter: blur(18px) saturate(140%);
+        }
+
+        .scripts-catalog-bar__results {
+            min-width: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--catalog-muted);
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .scripts-catalog-bar__results::before {
+            content: "";
+            flex: 0 0 auto;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--ok);
+            box-shadow: 0 0 15px rgba(114, 243, 182, 0.65);
+        }
+
+        .scripts-catalog-bar__results strong {
+            overflow: hidden;
+            color: #fff;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .scripts-catalog-sort {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            min-height: 38px;
+            padding-left: 11px;
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.045);
+        }
+
+        .scripts-catalog-sort span {
+            color: rgba(255, 255, 255, 0.42);
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+
+        .scripts-catalog-sort select {
+            min-height: 36px;
+            padding: 0 30px 0 0;
+            border: 0;
+            outline: 0;
+            color: #fff;
+            background: transparent;
+            font: 750 12px/1 ui-sans-serif, system-ui, sans-serif;
+            cursor: pointer;
+        }
+
+        .scripts-catalog-sort select option {
+            background: #0a0c12;
+        }
+
+        .scripts-catalog-view {
+            display: inline-grid;
+            grid-template-columns: repeat(2, 38px);
+            gap: 4px;
+            padding: 4px;
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .scripts-catalog-view button {
+            display: grid;
+            place-items: center;
+            width: 38px;
+            height: 30px;
+            padding: 0;
+            border: 0;
+            border-radius: 8px;
+            color: rgba(255, 255, 255, 0.46);
+            background: transparent;
+            cursor: pointer;
+            transition: color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+        }
+
+        .scripts-catalog-view button:hover {
+            color: #fff;
+            transform: translateY(-1px);
+        }
+
+        .scripts-catalog-view button.is-active {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.10);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07);
+        }
+
+        .scripts-catalog-view button svg {
+            width: 15px;
+            height: 15px;
+            fill: currentColor;
+        }
+
+        #ps .scripts-showcase__grid {
+            grid-template-columns: repeat(auto-fill, minmax(286px, 1fr));
+            gap: 14px;
+            perspective: none;
+        }
+
+        #ps .scripts-showcase__grid > .sc {
+            min-height: 0;
+            border-radius: 18px;
+            border-color: var(--catalog-border);
+            background: rgba(10, 12, 19, 0.94);
+            box-shadow: 0 12px 34px rgba(0, 0, 0, 0.26), inset 0 1px 0 rgba(255, 255, 255, 0.045);
+            opacity: 0;
+            transform: translateY(16px) scale(0.985);
+            animation: none;
+            transition:
+                opacity 0.46s cubic-bezier(0.18, 0.84, 0.24, 1),
+                transform 0.46s cubic-bezier(0.18, 0.84, 0.24, 1),
+                border-color 0.25s ease,
+                box-shadow 0.25s ease;
+        }
+
+        #ps .scripts-showcase__grid > .sc.is-visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        #ps .scripts-showcase__grid > .sc::before {
+            background: radial-gradient(circle at var(--mx, 50%) var(--my, 20%), rgba(255, 255, 255, 0.11), transparent 34%);
+        }
+
+        #ps .scripts-showcase__grid > .sc::after {
+            height: 1px;
+            opacity: 0.52;
+        }
+
+        #ps .scripts-showcase__grid > .sc:hover {
+            transform: translateY(-5px) scale(1.006);
+            border-color: rgba(255, 255, 255, 0.20);
+            box-shadow: 0 24px 58px rgba(0, 0, 0, 0.38), inset 0 1px 0 rgba(255, 255, 255, 0.065);
+        }
+
+        #ps .scripts-showcase__grid > .sc.featured {
+            border-color: color-mix(in srgb, var(--ac2) 36%, rgba(255, 255, 255, 0.10));
+            background:
+                radial-gradient(440px 170px at 0% 0%, color-mix(in srgb, var(--ac2) 13%, transparent), transparent 70%),
+                rgba(10, 12, 19, 0.94);
+        }
+
+        #ps .scripts-showcase .sc_media {
+            aspect-ratio: 16 / 8.8;
+            border-radius: 17px 17px 0 0;
+            cursor: pointer;
+        }
+
+        #ps .scripts-showcase .sc_media:focus-visible {
+            outline: 2px solid var(--ac);
+            outline-offset: -3px;
+        }
+
+        #ps .scripts-showcase .sc_media::after {
+            background:
+                linear-gradient(180deg, rgba(5, 6, 10, 0.03), rgba(5, 6, 10, 0.78)),
+                radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(255, 255, 255, 0.12), transparent 30%);
+            background-size: auto;
+        }
+
+        #ps .scripts-showcase .sc_img {
+            filter: saturate(0.88) contrast(1.04) brightness(0.86);
+        }
+
+        #ps .scripts-showcase .sc:hover .sc_img {
+            transform: scale(1.045);
+            filter: saturate(1.02) contrast(1.06) brightness(0.94);
+        }
+
+        .sc_catalog-index {
+            position: absolute;
+            left: 12px;
+            bottom: 12px;
+            z-index: 2;
+            display: inline-flex;
+            align-items: center;
+            min-height: 28px;
+            padding: 0 9px;
+            border: 1px solid rgba(255, 255, 255, 0.11);
+            border-radius: 9px;
+            color: rgba(255, 255, 255, 0.78);
+            background: rgba(7, 9, 15, 0.58);
+            backdrop-filter: blur(10px);
+            font-size: 10px;
+            font-weight: 850;
+            letter-spacing: 0.10em;
+        }
+
+        #ps .scripts-showcase .sc_top {
+            inset: 12px 12px auto;
+        }
+
+        #ps .scripts-showcase .sc_badge,
+        #ps .sc_meta span,
+        #ps .sc_chip {
+            border-color: rgba(255, 255, 255, 0.10);
+            background: rgba(7, 9, 15, 0.56);
+        }
+
+        #ps .scripts-showcase .sc_body {
+            gap: 14px;
+            padding: 15px;
+        }
+
+        .sc_source-row {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            min-width: 0;
+        }
+
+        .sc_source-avatar {
+            flex: 0 0 auto;
+            display: grid;
+            place-items: center;
+            width: 28px;
+            height: 28px;
+            border: 1px solid rgba(255, 255, 255, 0.10);
+            border-radius: 50%;
+            color: #fff;
+            background: linear-gradient(135deg, color-mix(in srgb, var(--ac) 34%, #11141d), color-mix(in srgb, var(--ac2) 30%, #11141d));
+            font-size: 10px;
+            font-weight: 900;
+        }
+
+        .sc_source-copy {
+            display: grid;
+            min-width: 0;
+            gap: 1px;
+        }
+
+        .sc_source-copy strong,
+        .sc_source-copy span {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .sc_source-copy strong {
+            color: rgba(255, 255, 255, 0.82);
+            font-size: 11px;
+            font-weight: 800;
+        }
+
+        .sc_source-copy span {
+            color: rgba(255, 255, 255, 0.42);
+            font-size: 10px;
+        }
+
+        #ps .scripts-showcase .sc .nm {
+            font-size: 18px;
+        }
+
+        #ps .scripts-showcase .sc_desc {
+            min-height: 40px;
+            font-size: 12px;
+        }
+
+        #ps .scripts-showcase .bn {
+            min-height: 40px;
+            border-radius: 11px;
+        }
+
+        #ps .scripts-showcase .sc_link {
+            padding: 5px 0;
+            border-radius: 0;
+            background: transparent;
+        }
+
+        #ps .scripts-showcase .sc_link:hover {
+            background: transparent;
+        }
+
+        #ps .sc_action-hint {
+            display: none;
+        }
+
+        .scripts-catalog-load-wrap {
+            display: grid;
+            justify-items: center;
+            gap: 8px;
+            margin-top: 20px;
+        }
+
+        .scripts-catalog-load {
+            position: relative;
+            min-width: 160px;
+            min-height: 44px;
+            padding: 0 20px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.13);
+            border-radius: 13px;
+            color: #fff;
+            background: rgba(255, 255, 255, 0.055);
+            box-shadow: 0 14px 32px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.055);
+            font: 800 12px/1 ui-sans-serif, system-ui, sans-serif;
+            cursor: pointer;
+            transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+        }
+
+        .scripts-catalog-load::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(100deg, transparent 18%, rgba(255, 255, 255, 0.11) 48%, transparent 78%);
+            transform: translateX(-130%);
+            transition: transform 0.5s ease;
+        }
+
+        .scripts-catalog-load:hover {
+            transform: translateY(-2px);
+            border-color: rgba(255, 255, 255, 0.22);
+            background: rgba(255, 255, 255, 0.075);
+        }
+
+        .scripts-catalog-load:hover::before {
+            transform: translateX(130%);
+        }
+
+        .scripts-catalog-load[hidden] {
+            display: none;
+        }
+
+        .scripts-catalog-load-meta {
+            color: rgba(255, 255, 255, 0.40);
+            font-size: 10px;
+            font-weight: 700;
+        }
+
+        #ps .scripts-showcase[data-script-view="compact"] .scripts-showcase__grid {
+            grid-template-columns: 1fr;
+        }
+
+        #ps .scripts-showcase[data-script-view="compact"] .scripts-showcase__grid > .sc {
+            display: grid;
+            grid-template-columns: minmax(190px, 280px) minmax(0, 1fr);
+        }
+
+        #ps .scripts-showcase[data-script-view="compact"] .sc_media {
+            height: 100%;
+            min-height: 190px;
+            aspect-ratio: auto;
+            border-radius: 17px 0 0 17px;
+        }
+
+        #ps .scripts-showcase[data-script-view="compact"] .sc_body {
+            min-width: 0;
+        }
+
+        @keyframes rsCatalogPulse {
+            0%, 100% { transform: scale(0.86); opacity: 0.72; }
+            50% { transform: scale(1.12); opacity: 1; }
+        }
+
+        @media (max-width: 760px) {
+            .scripts-catalog-bar {
+                position: relative;
+                top: auto;
+                grid-template-columns: 1fr;
+                align-items: stretch;
+            }
+
+            .scripts-catalog-sort {
+                justify-content: space-between;
+            }
+
+            .scripts-catalog-view {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .scripts-catalog-view button {
+                width: auto;
+            }
+
+            #ps .scripts-showcase[data-script-view="compact"] .scripts-showcase__grid > .sc {
+                grid-template-columns: 1fr;
+            }
+
+            #ps .scripts-showcase[data-script-view="compact"] .sc_media {
+                min-height: 0;
+                aspect-ratio: 16 / 8.8;
+                border-radius: 17px 17px 0 0;
+            }
+        }
+
+        @media (max-width: 520px) {
+            .scripts-showcase__shortcut {
+                display: none;
+            }
+
+            #ps .scripts-showcase__search input {
+                padding-right: 14px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            #ps .scripts-showcase__grid > .sc,
+            #ps .scripts-showcase__grid > .sc.is-visible,
+            .scripts-catalog-load,
+            .scripts-showcase__eyebrow::before {
+                opacity: 1 !important;
+                transform: none !important;
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+
 </style>
 </head>
 
@@ -11877,7 +12395,11 @@
         let scriptGameIconTimer = null;
         const scriptShowcaseState = {
             query: "",
-            filter: "all"
+            filter: "all",
+            sort: "featured",
+            view: "grid",
+            pageSize: 12,
+            visible: 12
         };
 
         const scriptSearcherState = {
@@ -17618,7 +18140,7 @@
 
         function getFilteredScriptItems(items) {
             const query = scriptShowcaseState.query.trim().toLowerCase();
-            return items.filter((item) => {
+            const filtered = items.filter((item) => {
                 if (scriptShowcaseState.filter === "pinned" && !item.featured) {
                     return false;
                 }
@@ -17628,10 +18150,157 @@
                 if (!query) {
                     return true;
                 }
-                return [item.name, item.url, item.game]
+                return [item.name, item.url, item.game, host(item.url)]
                     .filter(Boolean)
                     .some((value) => String(value).toLowerCase().includes(query));
             });
+
+            return filtered.sort((a, b) => {
+                switch (scriptShowcaseState.sort) {
+                    case "az":
+                        return String(a.name || "").localeCompare(String(b.name || ""));
+                    case "za":
+                        return String(b.name || "").localeCompare(String(a.name || ""));
+                    case "games":
+                        return Number(Boolean(b.game)) - Number(Boolean(a.game)) ||
+                            Number(Boolean(b.featured)) - Number(Boolean(a.featured)) ||
+                            String(a.name || "").localeCompare(String(b.name || ""));
+                    default:
+                        return Number(Boolean(b.featured)) - Number(Boolean(a.featured));
+                }
+            });
+        }
+
+        function scriptCatalogViewIcon(type) {
+            if (type === "compact") {
+                return '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v4H4V5Zm0 6h16v4H4v-4Zm0 6h16v2H4v-2Z"/></svg>';
+            }
+            return '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h7v7H4V4Zm9 0h7v7h-7V4ZM4 13h7v7H4v-7Zm9 0h7v7h-7v-7Z"/></svg>';
+        }
+
+        function ensureScriptCatalogChrome() {
+            const showcase = q("#ps .scripts-showcase");
+            const list = q("#sc_list");
+            const search = q("#scripts-filter-input");
+            if (!showcase || !list || !search) {
+                return null;
+            }
+
+            showcase.dataset.scriptView = scriptShowcaseState.view;
+
+            const searchLabel = search.closest(".scripts-showcase__search");
+            if (searchLabel && !searchLabel.querySelector(".scripts-showcase__shortcut")) {
+                const shortcut = document.createElement("kbd");
+                shortcut.className = "scripts-showcase__shortcut";
+                shortcut.textContent = navigator.platform?.toLowerCase().includes("mac") ? "⌘ K" : "Ctrl K";
+                searchLabel.appendChild(shortcut);
+            }
+
+            let bar = q("#scripts-catalog-bar");
+            if (!bar) {
+                bar = document.createElement("div");
+                bar.id = "scripts-catalog-bar";
+                bar.className = "scripts-catalog-bar";
+                bar.innerHTML = `
+                    <div class="scripts-catalog-bar__results" aria-live="polite">
+                        <strong id="scripts-result-count">0 scripts</strong>
+                    </div>
+                    <label class="scripts-catalog-sort">
+                        <span>Order</span>
+                        <select id="scripts-sort" aria-label="Sort scripts">
+                            <option value="featured">Featured first</option>
+                            <option value="az">Name A–Z</option>
+                            <option value="za">Name Z–A</option>
+                            <option value="games">Games first</option>
+                        </select>
+                    </label>
+                    <div class="scripts-catalog-view" role="group" aria-label="Catalog layout">
+                        <button type="button" data-script-view="grid" aria-label="Grid view" title="Grid view">${scriptCatalogViewIcon("grid")}</button>
+                        <button type="button" data-script-view="compact" aria-label="Compact view" title="Compact view">${scriptCatalogViewIcon("compact")}</button>
+                    </div>`;
+                list.before(bar);
+            }
+
+            let loadWrap = q("#scripts-catalog-load-wrap");
+            if (!loadWrap) {
+                loadWrap = document.createElement("div");
+                loadWrap.id = "scripts-catalog-load-wrap";
+                loadWrap.className = "scripts-catalog-load-wrap";
+                loadWrap.innerHTML = `
+                    <button class="scripts-catalog-load" id="scripts-load-more" type="button">Load more</button>
+                    <span class="scripts-catalog-load-meta" id="scripts-load-meta"></span>`;
+                list.after(loadWrap);
+            }
+
+            if (bar.dataset.bound !== "1") {
+                bar.dataset.bound = "1";
+                const sort = q("#scripts-sort");
+                if (sort) {
+                    sort.value = scriptShowcaseState.sort;
+                    sort.addEventListener("change", () => {
+                        scriptShowcaseState.sort = sort.value || "featured";
+                        scriptShowcaseState.visible = scriptShowcaseState.pageSize;
+                        renderScripts();
+                    });
+                }
+
+                qa("[data-script-view]", bar).forEach((button) => {
+                    button.addEventListener("click", (event) => {
+                        ripple(button, event);
+                        scriptShowcaseState.view = button.dataset.scriptView || "grid";
+                        showcase.dataset.scriptView = scriptShowcaseState.view;
+                        qa("[data-script-view]", bar).forEach((candidate) => {
+                            const active = candidate.dataset.scriptView === scriptShowcaseState.view;
+                            candidate.classList.toggle("is-active", active);
+                            candidate.setAttribute("aria-pressed", active ? "true" : "false");
+                        });
+                    });
+                });
+            }
+
+            const loadButton = q("#scripts-load-more");
+            if (loadButton && loadButton.dataset.bound !== "1") {
+                loadButton.dataset.bound = "1";
+                loadButton.addEventListener("click", (event) => {
+                    ripple(loadButton, event);
+                    scriptShowcaseState.visible += scriptShowcaseState.pageSize;
+                    renderScripts();
+                });
+            }
+
+            qa("[data-script-view]", bar).forEach((button) => {
+                const active = button.dataset.scriptView === scriptShowcaseState.view;
+                button.classList.toggle("is-active", active);
+                button.setAttribute("aria-pressed", active ? "true" : "false");
+            });
+
+            return { showcase, bar, loadWrap };
+        }
+
+        function revealScriptCards(list) {
+            const cards = Array.from(list.querySelectorAll(".sc"));
+            const reduced = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
+            if (reduced || !("IntersectionObserver" in window)) {
+                cards.forEach((card) => card.classList.add("is-visible"));
+                return;
+            }
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (!entry.isIntersecting) {
+                        return;
+                    }
+                    const card = entry.target;
+                    const delay = Math.min(Number(card.style.getPropertyValue("--i")) || 0, 8) * 34;
+                    window.setTimeout(() => card.classList.add("is-visible"), delay);
+                    observer.unobserve(card);
+                });
+            }, {
+                rootMargin: "80px 0px -5% 0px",
+                threshold: 0.08
+            });
+
+            cards.forEach((card) => observer.observe(card));
         }
 
         function renderScripts() {
@@ -17640,13 +18309,18 @@
                 return;
             }
 
+            const chrome = ensureScriptCatalogChrome();
             list.innerHTML = "";
+
             const featuredList = scriptItems.filter((item) => item.featured);
-            const regularList = scriptItems.filter((item) => !item.featured);
-            const sorted = getFilteredScriptItems([...featuredList, ...regularList]);
+            const filtered = getFilteredScriptItems(scriptItems.slice());
+            const visible = filtered.slice(0, Math.max(scriptShowcaseState.visible, scriptShowcaseState.pageSize));
             const totalEl = q("#scripts-total");
             const featuredEl = q("#scripts-featured");
             const gameLinkedEl = q("#scripts-games");
+            const resultCount = q("#scripts-result-count");
+            const loadButton = q("#scripts-load-more");
+            const loadMeta = q("#scripts-load-meta");
 
             if (totalEl) {
                 totalEl.textContent = String(scriptItems.length);
@@ -17655,23 +18329,43 @@
                 featuredEl.textContent = String(featuredList.length);
             }
             if (gameLinkedEl) {
-                gameLinkedEl.textContent = String(
-                    scriptItems.filter((item) => Boolean(item.game)).length
-                );
+                gameLinkedEl.textContent = String(scriptItems.filter((item) => Boolean(item.game)).length);
+            }
+            if (resultCount) {
+                const qualifier = scriptShowcaseState.query ? ` for “${scriptShowcaseState.query.trim()}”` : "";
+                resultCount.textContent = `${filtered.length.toLocaleString()} ${filtered.length === 1 ? "script" : "scripts"}${qualifier}`;
+            }
+            if (loadButton) {
+                loadButton.hidden = visible.length >= filtered.length;
+                loadButton.textContent = `Load ${Math.min(scriptShowcaseState.pageSize, Math.max(filtered.length - visible.length, 0)) || "more"} more`;
+            }
+            if (loadMeta) {
+                loadMeta.textContent = filtered.length ? `Showing ${visible.length.toLocaleString()} of ${filtered.length.toLocaleString()}` : "";
             }
 
-            if (!sorted.length) {
-                list.innerHTML =
-                    '<div class="scripts-showcase__empty"><strong>No scripts found</strong><span>Try another search or filter.</span></div>';
+            if (!filtered.length) {
+                list.innerHTML = '<div class="scripts-showcase__empty"><strong>No scripts found</strong><span>Try another search or filter.</span></div>';
+                if (chrome?.loadWrap) {
+                    chrome.loadWrap.hidden = true;
+                }
                 return;
+            }
+            if (chrome?.loadWrap) {
+                chrome.loadWrap.hidden = false;
             }
 
             const fragment = document.createDocumentFragment();
 
-            sorted.forEach((item, index) => {
+            visible.forEach((item, index) => {
                 const entry = document.createElement("article");
                 const sourceHost = host(item.url);
                 const kind = item.featured ? "Pinned" : item.game ? "Game" : "Script";
+                const initials = (sourceHost || "source")
+                    .split(/[.\-_]/)
+                    .filter(Boolean)
+                    .slice(0, 2)
+                    .map((part) => part.charAt(0).toUpperCase())
+                    .join("") || "SC";
                 entry.className = "sc";
                 entry.style.setProperty("--i", String(index));
                 if (item.featured) {
@@ -17683,12 +18377,17 @@
 
                 const media = document.createElement("div");
                 media.className = "sc_media";
+                media.tabIndex = 0;
+                media.setAttribute("role", "button");
+                media.setAttribute("aria-label", `Preview ${item.name}`);
 
                 if (item.image) {
                     const img = document.createElement("img");
                     img.className = "sc_img";
                     img.src = item.image;
                     img.alt = item.name;
+                    img.loading = "lazy";
+                    img.decoding = "async";
                     media.appendChild(img);
                 } else {
                     const fallback = document.createElement("div");
@@ -17700,6 +18399,11 @@
                         .join("") || "SC";
                     media.appendChild(fallback);
                 }
+
+                const catalogIndex = document.createElement("span");
+                catalogIndex.className = "sc_catalog-index";
+                catalogIndex.textContent = String(index + 1).padStart(2, "0");
+                media.appendChild(catalogIndex);
 
                 const top = document.createElement("div");
                 top.className = "sc_top";
@@ -17717,13 +18421,22 @@
                 top.appendChild(hostBadge);
                 media.appendChild(top);
 
-                const actionHint = document.createElement("div");
-                actionHint.className = "sc_action-hint";
-                actionHint.innerHTML = `<strong>Preview code</strong><span>${item.game ? "game" : "script"}</span>`;
-                media.appendChild(actionHint);
+                media.addEventListener("click", () => view(media));
+                media.addEventListener("keydown", (event) => {
+                    if (event.key === "Enter" || event.key === " ") {
+                        event.preventDefault();
+                        view(media);
+                    }
+                });
 
                 const body = document.createElement("div");
                 body.className = "sc_body";
+
+                const sourceRow = document.createElement("div");
+                sourceRow.className = "sc_source-row";
+                sourceRow.innerHTML = `
+                    <span class="sc_source-avatar" aria-hidden="true">${initials}</span>
+                    <span class="sc_source-copy"><strong>${sourceHost || "Raw source"}</strong><span>${item.game ? "Roblox game script" : "Luau source"}</span></span>`;
 
                 const info = document.createElement("div");
                 info.className = "sc_info";
@@ -17758,7 +18471,6 @@
                     meta.appendChild(game);
                 }
                 text.appendChild(meta);
-
                 info.append(text);
 
                 const controls = document.createElement("div");
@@ -17798,13 +18510,14 @@
                 rawLink.textContent = "Open source ↗";
 
                 controls.append(buttonRow, rawLink);
-                body.append(info, controls);
+                body.append(sourceRow, info, controls);
                 entry.append(media, body);
                 fragment.appendChild(entry);
             });
 
             list.appendChild(fragment);
             bindPointerGlow(list);
+            revealScriptCards(list);
             updateHeroStats();
             initMotionFx();
         }
@@ -17812,22 +18525,62 @@
         function initScriptsShowcaseControls() {
             const input = q("#scripts-filter-input");
             const filterButtons = qa("[data-script-filter]");
-            if (input) {
+            ensureScriptCatalogChrome();
+
+            if (input && input.dataset.bound !== "1") {
+                input.dataset.bound = "1";
                 input.addEventListener("input", () => {
                     scriptShowcaseState.query = input.value || "";
+                    scriptShowcaseState.visible = scriptShowcaseState.pageSize;
                     renderScripts();
                 });
+                input.addEventListener("keydown", (event) => {
+                    if (event.key === "Escape" && input.value) {
+                        input.value = "";
+                        scriptShowcaseState.query = "";
+                        scriptShowcaseState.visible = scriptShowcaseState.pageSize;
+                        renderScripts();
+                    }
+                });
             }
+
             filterButtons.forEach((button) => {
+                if (button.dataset.bound === "1") {
+                    return;
+                }
+                button.dataset.bound = "1";
                 button.addEventListener("click", (event) => {
                     ripple(button, event);
                     scriptShowcaseState.filter = button.dataset.scriptFilter || "all";
+                    scriptShowcaseState.visible = scriptShowcaseState.pageSize;
                     filterButtons.forEach((item) => {
                         item.classList.toggle("is-active", item === button);
                     });
                     renderScripts();
                 });
             });
+
+            if (document.documentElement.dataset.scriptShortcutBound !== "1") {
+                document.documentElement.dataset.scriptShortcutBound = "1";
+                document.addEventListener("keydown", (event) => {
+                    const target = event.target;
+                    const editing = target instanceof HTMLInputElement ||
+                        target instanceof HTMLTextAreaElement ||
+                        target?.isContentEditable;
+                    if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "k") {
+                        event.preventDefault();
+                        tab("s");
+                        window.setTimeout(() => {
+                            input?.focus();
+                            input?.select();
+                        }, 80);
+                    } else if (!editing && event.key === "/") {
+                        event.preventDefault();
+                        tab("s");
+                        window.setTimeout(() => input?.focus(), 80);
+                    }
+                });
+            }
         }
 
         function extractPlaceIdFromGameLink(value) {
