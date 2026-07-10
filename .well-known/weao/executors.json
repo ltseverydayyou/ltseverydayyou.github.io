@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-07-09T23:14:47.566Z",
+  "fetchedAt": "2026-07-10T09:41:16.177Z",
   "data": [
     {
       "_id": "66633ac4b29bacaa7a568fdc",
@@ -17,7 +17,7 @@
       "platform": "Windows",
       "extype": "wexecutor",
       "roleId": "1247914099866603611",
-      "index": 12,
+      "index": 10,
       "elementCertified": true,
       "decompiler": true,
       "multiInject": true,
@@ -111,11 +111,11 @@
       "cost": "$22.99 Lifetime",
       "decompiler": true,
       "multiInject": true,
-      "suncPercentage": 100,
+      "suncPercentage": 98,
       "uncPercentage": 99,
       "sunc": {
-        "suncScrap": "XhNSDf9pvaM1QDCj",
-        "suncKey": "t8prFCS4a302ynvLrglnYC4zfnrqhMpH"
+        "suncScrap": "bKZPOsAYxpQ3XFV0",
+        "suncKey": "EmOPv5Ap5GXz8IcVT7CElD2O5iFHp8pb"
       },
       "__v": 1,
       "recommendedReason": {
@@ -186,7 +186,7 @@
       "platform": "Windows",
       "extype": "wexecutor",
       "roleId": "1316611609988300860",
-      "index": 11,
+      "index": 9,
       "unlinked": false,
       "elementCertified": true,
       "cost": "$2.80 Weekly",
@@ -428,7 +428,7 @@
       "platform": "Windows",
       "extype": "wexecutor",
       "roleId": "1484755192141578321",
-      "index": 7,
+      "index": 6,
       "unlinked": false,
       "purchaselink": "https://wyv.gg/product/cosmic-executor/ref/weao/",
       "elementCertified": false,
@@ -531,7 +531,8 @@
       },
       "beta": false,
       "raknet": true,
-      "detectionReason": "We have observed no bans after a weeks worth of testing."
+      "detectionReason": "We have observed no bans after a weeks worth of testing.",
+      "hidden": true
     },
     {
       "_id": "67576d22d9181811c292bb79",
@@ -590,8 +591,8 @@
     {
       "_id": "680eaddf8b44717c060fcf8d",
       "title": "Velocity",
-      "version": "1.1.3",
-      "updatedDate": "07/09/2026 at 8:32 PM UTC",
+      "version": "1.1.3a",
+      "updatedDate": "07/10/2026 at 9:38 AM UTC",
       "uncStatus": true,
       "free": true,
       "detected": true,
@@ -602,7 +603,7 @@
       "platform": "Windows",
       "extype": "wexecutor",
       "roleId": "1366164709996363988",
-      "index": 9,
+      "index": 8,
       "elementCertified": true,
       "decompiler": true,
       "multiInject": true,
@@ -959,7 +960,7 @@
       "platform": "Windows",
       "extype": "wexecutor",
       "roleId": "1332793088879497338",
-      "index": 13,
+      "index": 11,
       "decompiler": true,
       "multiInject": true,
       "suncPercentage": 40,
@@ -1104,7 +1105,7 @@
       "platform": "Windows",
       "extype": "wexecutor",
       "roleId": "1491890114723320098",
-      "index": 6,
+      "index": 5,
       "decompiler": true,
       "multiInject": true,
       "raknet": true,
@@ -1124,6 +1125,43 @@
       "hidden": false,
       "websitelink": "https://getmadium.net/",
       "detectionReason": "Last banwave: May 26"
+    },
+    {
+      "_id": "6a5095abbb457d55d62f8061",
+      "title": "Real",
+      "version": "1.0.1",
+      "updatedDate": "07/10/2026 at 6:56 AM UTC",
+      "uncStatus": true,
+      "free": true,
+      "detected": true,
+      "rbxversion": "version-36a2600cebf1487d",
+      "updateStatus": true,
+      "discordlink": "https://discord.gg/projectreal",
+      "beta": false,
+      "platform": "Windows",
+      "extype": "wexecutor",
+      "roleId": "1525024535924178964",
+      "index": 7,
+      "decompiler": true,
+      "multiInject": true,
+      "raknet": false,
+      "suncPercentage": 98,
+      "uncPercentage": 99,
+      "sunc": {
+        "suncScrap": "VmbvpIIEiajAni5J",
+        "suncKey": "rtMLIdCJ1w7IqDMS4YWSleqBZbvBmWbF"
+      },
+      "__v": 1,
+      "recommendedReason": {
+        "features": []
+      },
+      "clientmods": true,
+      "trackerId": "WEAO4a1f93j6",
+      "hasIssues": false,
+      "websitelink": "https://realest.gg",
+      "purchaselink": "https://rcheatz.com/product?id=real-executor&ref=weao",
+      "keysystem": true,
+      "hidden": false
     }
   ]
 }
