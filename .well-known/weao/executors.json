@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-07-11T15:31:36.754Z",
+  "fetchedAt": "2026-07-11T17:01:13.159Z",
   "data": [
     {
       "_id": "66633ac4b29bacaa7a568fdc",
@@ -93,8 +93,8 @@
     {
       "_id": "67d6005efa8c791236079278",
       "title": "Potassium",
-      "version": "2.2.9",
-      "updatedDate": "07/09/2026 at 4:53 PM UTC",
+      "version": "2.3.0",
+      "updatedDate": "07/11/2026 at 4:15 PM UTC",
       "uncStatus": true,
       "free": false,
       "detected": true,
@@ -111,11 +111,11 @@
       "cost": "$22.99 Lifetime",
       "decompiler": true,
       "multiInject": true,
-      "suncPercentage": 98,
+      "suncPercentage": 100,
       "uncPercentage": 99,
       "sunc": {
-        "suncScrap": "bKZPOsAYxpQ3XFV0",
-        "suncKey": "EmOPv5Ap5GXz8IcVT7CElD2O5iFHp8pb"
+        "suncScrap": "H6t0H3yvle51vF78",
+        "suncKey": "sR7wwmA8U3dNIiLGx1NBEaIPvEMUpJ43"
       },
       "__v": 1,
       "recommendedReason": {
@@ -1145,11 +1145,11 @@
       "decompiler": true,
       "multiInject": true,
       "raknet": false,
-      "suncPercentage": 98,
+      "suncPercentage": 100,
       "uncPercentage": 99,
       "sunc": {
-        "suncScrap": "VmbvpIIEiajAni5J",
-        "suncKey": "rtMLIdCJ1w7IqDMS4YWSleqBZbvBmWbF"
+        "suncScrap": "kYPeSWVI8fhm05fJ",
+        "suncKey": "R0izzkjobxJm7nKFUm5OrGFoplENSVJY"
       },
       "__v": 1,
       "recommendedReason": {
