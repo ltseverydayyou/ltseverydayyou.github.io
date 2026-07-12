@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-07-12T10:54:19.408Z",
+  "fetchedAt": "2026-07-12T12:02:02.271Z",
   "data": [
     {
       "_id": "66633ac4b29bacaa7a568fdc",
@@ -537,8 +537,8 @@
     {
       "_id": "67576d22d9181811c292bb79",
       "title": "Volt",
-      "version": "1.3.0.0",
-      "updatedDate": "07/12/2026 at 10:04 AM UTC",
+      "version": "1.3.0.1",
+      "updatedDate": "07/12/2026 at 11:30 AM UTC",
       "uncStatus": true,
       "free": false,
       "detected": true,
@@ -554,13 +554,13 @@
       "index": 1,
       "elementCertified": false,
       "cost": "$5.99 Weekly",
-      "decompiler": false,
+      "decompiler": true,
       "multiInject": true,
-      "suncPercentage": 98,
+      "suncPercentage": 100,
       "uncPercentage": 99,
       "sunc": {
-        "suncScrap": "FeAcn1vkz6qSkFSD",
-        "suncKey": "bdbA94gH0eHL2VeSdKlFBgQYoff3NU6c"
+        "suncScrap": "9X48vcVUIIuQ9uLZ",
+        "suncKey": "s80hJiPo3hUMKp4zhumXgjovxoBmi1DP"
       },
       "__v": 1,
       "recommendedReason": {
@@ -569,7 +569,7 @@
       "hidden": false,
       "trackerId": "WEAO0fc0936f",
       "slug": {
-        "fullDescription": "Volt (previously AWP.GG) is a premium Windows script executor costing $5.99 weekly, featuring: \n\n* Working Hyperion Emulation\n* VSCode IDE Style UI\n* 98% sUNC (Uses Medal for the decompiler, causing it not to get 100%)\n* Optimized Multi-Instance (Be sure to check out Volt’s tiers or consider purchasing the farmer package directly on [VOLTBZ.NET](https://voltbz.net), as they have an instance cap on their normal tiers!)\n* Fast updates under normal Roblox update conditions\n\n! Things to keep in mind: \n\n! While under the AWP.GG name, this exploit had a **long downtime period**, but after rebranding (And possibly switching developers), all existing users were compensated, and it has been reliably updating ever since. \n\nFor a better decompilation experience, consider purchasing [Oracle Decompiler](https://discord.gg/decompiler) for $11.63 alongside it, but for most cases, [Medal Decompiler](https://github.com/Stefanuk12/medal-decompiler) serves just fine. ",
+        "fullDescription": "Volt (previously AWP.GG) is a premium Windows script executor costing $5.99 weekly, featuring: \n\n* Working Hyperion Emulation\n* VSCode IDE Style UI\n* 98% sUNC\n* Optimized Multi-Instance (Be sure to check out Volt’s tiers or consider purchasing the farmer package directly on [VOLTBZ.NET](https://voltbz.net), as they have an instance cap on their normal tiers!)\n* Fast updates under normal Roblox update conditions\n* Comes with a account manager built in\n* Comes with a decompiler built in\n\n! Things to keep in mind: \n\n! While under the AWP.GG name, this exploit had a **long downtime period**, but after rebranding (And possibly switching developers), all existing users were compensated, and it has been reliably updating ever since. ",
         "logo": "https://cdn.weao.gg/slug/volt/logo.png",
         "owner": "Volt Team",
         "screenshots": [
@@ -577,9 +577,7 @@
           "https://cdn.weao.gg/slug/volt/screenshot2.png",
           "https://cdn.weao.gg/slug/volt/screenshot3.png",
           "https://cdn.weao.gg/slug/volt/screenshot4.png",
-          "https://cdn.weao.gg/slug/volt/screenshot5.png",
-          "https://cdn.weao.gg/slug/volt/screenshot6.png",
-          "https://cdn.weao.gg/slug/volt/screenshot7.png"
+          "https://cdn.weao.gg/slug/volt/screenshot5.png"
         ]
       },
       "clientmods": true,
