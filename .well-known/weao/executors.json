@@ -1,11 +1,11 @@
 {
-  "fetchedAt": "2026-07-12T23:58:43.138Z",
+  "fetchedAt": "2026-07-13T03:48:39.888Z",
   "data": [
     {
       "_id": "66633ac4b29bacaa7a568fdc",
       "title": "Solara",
-      "version": "3.262",
-      "updatedDate": "07/09/2026 at 7:44 PM UTC",
+      "version": "3.263",
+      "updatedDate": "07/13/2026 at 1:41 AM UTC",
       "uncStatus": true,
       "free": true,
       "detected": true,
@@ -21,7 +21,7 @@
       "elementCertified": true,
       "decompiler": true,
       "multiInject": true,
-      "suncPercentage": 39,
+      "suncPercentage": 46,
       "uncPercentage": 67,
       "__v": 1,
       "recommendedReason": {
@@ -29,8 +29,8 @@
       },
       "clientmods": true,
       "sunc": {
-        "suncScrap": "jfTYuDQSZr8xK2vD",
-        "suncKey": "O3ho3RP8esDis6p0faLQuT7zaJKrgZPx"
+        "suncScrap": "3XYVnsTHAU6AXRS1",
+        "suncKey": "Uz16rIffP877cuzpcM1NDHd01tBZj4AH"
       },
       "trackerId": "WEAO1af938a2",
       "slug": {
