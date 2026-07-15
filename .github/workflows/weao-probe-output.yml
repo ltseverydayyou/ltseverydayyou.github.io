@@ -22,10 +22,16 @@ jobs:
         with:
           node-version: 24
 
-      - name: Apply executor changelog support
+      - name: Validate scripts
         run: |
-          node scripts/apply-weao-changelog-ui.js
-          node scripts/weao-cache.js
+          node --check scripts/apply-weao-changelog-ui.js
+          node --check scripts/weao-cache.js
+
+      - name: Apply changelog UI
+        run: node scripts/apply-weao-changelog-ui.js
+
+      - name: Generate WEAO cache
+        run: node scripts/weao-cache.js
 
       - name: Commit generated files
         run: |
