@@ -19,7 +19,7 @@ jobs:
 
       - name: Probe WEAO
         run: |
-          curl -fsSL https://raw.githubusercontent.com/ltseverydayyou/ltseverydayyou.github.io/main/scripts/weao-probe.js | node
+          curl -fsSL https://raw.githubusercontent.com/ltseverydayyou/ltseverydayyou.github.io/594c13cd91d7581d08ec3ddca27dec8fbf6a8560/scripts/weao-probe.js | node
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add probe-output.json
