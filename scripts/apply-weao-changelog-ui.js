@@ -216,8 +216,8 @@ insertAfter(
             const count = document.createElement("span");
             count.className = "executor-card__changelog-count";
             count.textContent = sorted.length > visible.length ?
-                `Latest \${visible.length} of \${sorted.length}` :
-                `\${sorted.length} update\${sorted.length === 1 ? "" : "s"}`;
+                "Latest " + visible.length + " of " + sorted.length :
+                sorted.length + " update" + (sorted.length === 1 ? "" : "s");
 
             heading.append(title, count);
 
