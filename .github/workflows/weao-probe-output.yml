@@ -3,7 +3,8 @@ name: Store WEAO probe output
 on:
   push:
     branches:
-      - chore/weao-probe-output-20260716
+      - main
+  workflow_dispatch:
 
 permissions:
   contents: write
