@@ -6,7 +6,6 @@ on:
       - main
     paths:
       - scripts/weao-cache.js
-      - scripts/apply-weao-changelog-ui.js
       - .github/workflows/weao-cache.yml
   schedule:
     - cron: "*/30 * * * *"
@@ -26,22 +25,37 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24
 
-      - name: Apply changelog UI support
-        run: node scripts/apply-weao-changelog-ui.js
+      - name: Validate cache script
+        run: node --check scripts/weao-cache.js
 
       - name: Update cached data
         run: node scripts/weao-cache.js
 
+      - name: Validate cached data
+        run: |
+          node <<'NODE'
+          const fs = require("node:fs");
+          const payload = JSON.parse(
+              fs.readFileSync(".well-known/weao/executor-changelogs.json", "utf8")
+          );
+          if (payload?.data?.mode !== "per-exploit") {
+              throw new Error("Invalid WEAO changelog cache mode.");
+          }
+          if (!payload?.data?.entries || typeof payload.data.entries !== "object") {
+              throw new Error("Invalid WEAO changelog cache entries.");
+          }
+          NODE
+
       - name: Commit changes
         run: |
-          if git diff --quiet index.html .well-known/weao; then
+          if git diff --quiet .well-known/weao; then
             echo "No changes to commit."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.html .well-known/weao/versions.json .well-known/weao/executors.json .well-known/weao/executor-changelogs.json
-          git commit -m "feat: add WEAO executor changelogs [skip ci]"
+          git add .well-known/weao/versions.json .well-known/weao/executors.json .well-known/weao/executor-changelogs.json
+          git commit -m "chore: refresh WEAO cache [skip ci]"
           git push
