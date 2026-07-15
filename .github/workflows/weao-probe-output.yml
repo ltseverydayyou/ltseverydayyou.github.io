@@ -13,12 +13,6 @@ jobs:
   probe:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-
       - name: Probe WEAO
         run: |
           node <<'NODE'
@@ -39,13 +33,13 @@ jobs:
           }
 
           const docs = await read("https://docs.weao.xyz/weao-api-reference/exploits");
-          const docsMatches = [];
           const docsLower = docs.text.toLowerCase();
+          const docsMatches = [];
           let docsOffset = 0;
-          while (docsMatches.length < 40) {
+          while (docsMatches.length < 12) {
               const index = docsLower.indexOf("changelog", docsOffset);
               if (index === -1) break;
-              docsMatches.push(docs.text.slice(Math.max(0, index - 1800), index + 3600));
+              docsMatches.push(docs.text.slice(Math.max(0, index - 900), index + 1800));
               docsOffset = index + 9;
           }
 
@@ -98,32 +92,32 @@ jobs:
           const candidates = [];
           for (const url of urls) {
               const result = await read(url, { headers });
-              candidates.push({
-                  url,
-                  status: result.status,
-                  contentType: result.contentType,
-                  body: result.text.slice(0, 10000)
-              });
+              if (result.status !== 404) {
+                  candidates.push({
+                      url,
+                      status: result.status,
+                      contentType: result.contentType,
+                      body: result.text.slice(0, 3000)
+                  });
+              }
           }
 
-          const output = {
-              generatedAt: new Date().toISOString(),
+          console.log("WEAO_RESULT=" + JSON.stringify({
               docs: {
                   status: docs.status,
-                  contentType: docs.contentType,
                   length: docs.text.length,
                   matches: docsMatches
               },
               statuses: {
                   status: statuses.status,
-                  contentType: statuses.contentType,
-                  preview: statuses.text.slice(0, 2500)
+                  count: entries.length
               },
-              sample,
+              sample: {
+                  title: sample.title,
+                  id: sample._id,
+                  trackerId: sample.trackerId,
+                  slug: sample.slug
+              },
               candidates
-          };
-
-          console.log("WEAO_PROBE_BEGIN");
-          console.log(JSON.stringify(output, null, 2));
-          console.log("WEAO_PROBE_END");
+          }));
           NODE
