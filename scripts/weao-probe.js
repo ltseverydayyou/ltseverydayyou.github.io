@@ -1,3 +1,5 @@
+import fs from "node:fs";
+
 const headers = { "User-Agent": "WEAO-3PService" };
 
 async function read(url, options = {}) {
@@ -45,7 +47,7 @@ const start = docs.text.indexOf(marker);
 const nextHeading = start === -1 ? -1 : docs.text.indexOf("<h2", start + marker.length);
 const rawSection = start === -1
     ? ""
-    : docs.text.slice(start, nextHeading === -1 ? start + 90000 : nextHeading);
+    : docs.text.slice(start, nextHeading === -1 ? start + 120000 : nextHeading);
 const decodedSection = decodeHtml(rawSection);
 const routes = new Set();
 
@@ -69,11 +71,7 @@ const identifiers = [sample.title, sample._id, sample.trackerId]
 const candidates = new Set();
 
 for (const route of routes) {
-    if (/^https?:\/\//i.test(route)) {
-        candidates.add(route);
-    } else {
-        candidates.add(`https://weao.xyz${route}`);
-    }
+    candidates.add(/^https?:\/\//i.test(route) ? route : `https://weao.xyz${route}`);
 }
 
 for (const identifier of identifiers) {
@@ -83,30 +81,56 @@ for (const identifier of identifiers) {
         `/api/status/exploits/${encoded}/changelog`,
         `/api/status/exploits/changelogs/${encoded}`,
         `/api/status/exploits/changelog/${encoded}`,
+        `/api/changelogs/exploits/${encoded}`,
+        `/api/changelog/exploits/${encoded}`,
+        `/api/exploits/${encoded}/changelogs`,
+        `/api/exploits/${encoded}/changelog`,
         `/api/changelogs/${encoded}`,
-        `/api/changelog/${encoded}`
+        `/api/changelog/${encoded}`,
+        `/api/status/changelogs/${encoded}`,
+        `/api/status/changelog/${encoded}`
     ]) {
         candidates.add(`https://weao.xyz${template}`);
     }
 }
 
-const results = [];
+const responses = [];
 for (const url of candidates) {
     if (/[{[:](?:id|tracker|exploit|name|slug)[}\]]/i.test(url)) {
         continue;
     }
     const result = await read(url, { headers });
     if (result.status !== 404) {
-        results.push({
+        responses.push({
             url,
             status: result.status,
             contentType: result.contentType,
-            body: result.text.slice(0, 1800)
+            body: result.text.slice(0, 12000)
         });
     }
 }
 
-console.log(`DOC_TEXT=${plainText(rawSection).slice(0, 6000)}`);
-console.log(`DOC_ROUTES=${JSON.stringify([...routes])}`);
-console.log(`SAMPLE=${JSON.stringify({ title: sample.title, id: sample._id, trackerId: sample.trackerId })}`);
-console.log(`RESPONSES=${JSON.stringify(results)}`);
+const output = {
+    generatedAt: new Date().toISOString(),
+    docs: {
+        status: docs.status,
+        contentType: docs.contentType,
+        length: docs.text.length,
+        sectionText: plainText(rawSection),
+        routes: [...routes],
+        rawSection
+    },
+    statuses: {
+        status: statuses.status,
+        count: entries.length
+    },
+    sample: {
+        title: sample.title,
+        id: sample._id,
+        trackerId: sample.trackerId
+    },
+    responses
+};
+
+fs.writeFileSync("probe-output.json", `${JSON.stringify(output, null, 2)}\n`, "utf8");
+console.log(`Stored ${responses.length} non-404 response candidates.`);
