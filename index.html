@@ -4878,6 +4878,72 @@
             gap: 12px;
         }
 
+        .executor-card__changelog {
+            display: grid;
+            gap: 10px;
+            padding-top: 4px;
+        }
+
+        .executor-card__changelog-title {
+            margin: 0;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--tx);
+        }
+
+        .executor-card__changelog-list {
+            display: grid;
+            gap: 8px;
+        }
+
+        .executor-card__changelog-entry {
+            display: grid;
+            gap: 7px;
+            padding: 11px 13px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.035);
+        }
+
+        .executor-card__changelog-meta {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .executor-card__changelog-version {
+            font-size: 12px;
+            font-weight: 800;
+            color: var(--ac);
+        }
+
+        .executor-card__changelog-date,
+        .executor-card__changelog-build {
+            font-size: 11px;
+            color: var(--mu);
+        }
+
+        .executor-card__changelog-date {
+            margin-left: auto;
+        }
+
+        .executor-card__changelog-build {
+            width: 100%;
+            overflow-wrap: anywhere;
+        }
+
+        .executor-card__changelog-body {
+            margin: 0;
+            color: rgba(231, 233, 238, 0.84);
+            font-size: 13px;
+            line-height: 1.55;
+            white-space: pre-wrap;
+            overflow-wrap: anywhere;
+        }
+
         .executor-card__description {
             margin: 0;
             padding: 12px 14px;
@@ -17117,6 +17183,7 @@
         const trackerVersionGuidUrl = `${trackerBaseUrl}/version-guid.txt`;
         const trackerVersionHistoryUrl = `${trackerBaseUrl}/version-history.json`;
         const executorCacheUrl = `${weaoCacheBase}/executors.json`;
+        const executorChangelogCacheUrl = `${weaoCacheBase}/executor-changelogs.json`;
         let versionCache = null;
         let versionCacheFetchedAt = null;
         let trackedVersionCache = null;
@@ -17634,6 +17701,8 @@
         let executorFilter = "all";
         let executorCache = [];
         let executorCacheFetchedAt = null;
+        let executorChangelogCache = null;
+        let executorChangelogCacheFetchedAt = null;
 
         function isInternalWindowsExecutor(entry) {
             return (entry?.extype || "").toLowerCase() === "wexecutor" && entry?.hidden !== true;
@@ -17827,6 +17896,141 @@
             return raw;
         }
 
+        function getExecutorChangelogEntry(executor) {
+            const entries = executorChangelogCache?.entries;
+            if (!entries || typeof entries !== "object") {
+                return null;
+            }
+
+            const identities = [executor?.trackerId, executor?._id, executor?.title]
+                .filter((value) => typeof value === "string" && value.trim())
+                .map((value) => value.trim());
+            const keys = Object.keys(entries);
+
+            for (const identity of identities) {
+                if (entries[identity]) {
+                    return entries[identity];
+                }
+                const matchedKey = keys.find(
+                    (key) => key.toLowerCase() === identity.toLowerCase()
+                );
+                if (matchedKey) {
+                    return entries[matchedKey];
+                }
+            }
+
+            return null;
+        }
+
+        function getExecutorChangelogTime(item) {
+            const timestamp = Number(item?.timestamp);
+            if (Number.isFinite(timestamp)) {
+                return timestamp;
+            }
+            const parsed = Date.parse(item?.date || "");
+            return Number.isFinite(parsed) ? parsed : 0;
+        }
+
+        function formatExecutorChangelogDate(item) {
+            const timestamp = getExecutorChangelogTime(item);
+            if (!timestamp) {
+                return String(item?.date || "").trim();
+            }
+            return new Date(timestamp).toLocaleString();
+        }
+
+        function createExecutorChangelogSection(executor) {
+            const cachedEntry = getExecutorChangelogEntry(executor);
+            const response = cachedEntry?.response;
+            const items = Array.isArray(response?.changelogs) ?
+                response.changelogs
+                    .filter((item) => item && typeof item === "object")
+                    .slice()
+                    .sort((a, b) => getExecutorChangelogTime(b) - getExecutorChangelogTime(a))
+                    .slice(0, 8) :
+                [];
+
+            if (!items.length) {
+                return null;
+            }
+
+            const section = document.createElement("section");
+            section.className = "executor-card__changelog";
+
+            const heading = document.createElement("h4");
+            heading.className = "executor-card__changelog-title";
+            const total = Number.isFinite(response.count) ? response.count : items.length;
+            heading.textContent = "Changelog (" + total + ")";
+
+            const list = document.createElement("div");
+            list.className = "executor-card__changelog-list";
+
+            items.forEach((item) => {
+                const entry = document.createElement("article");
+                entry.className = "executor-card__changelog-entry";
+
+                const meta = document.createElement("div");
+                meta.className = "executor-card__changelog-meta";
+
+                const version = document.createElement("span");
+                version.className = "executor-card__changelog-version";
+                version.textContent = String(item.version || "Update");
+                meta.appendChild(version);
+
+                const formattedDate = formatExecutorChangelogDate(item);
+                if (formattedDate) {
+                    const date = document.createElement("span");
+                    date.className = "executor-card__changelog-date";
+                    date.textContent = formattedDate;
+                    meta.appendChild(date);
+                }
+
+                const buildValue = String(item.supportedRobloxVersion || "").trim();
+                if (buildValue) {
+                    const build = document.createElement("span");
+                    build.className = "executor-card__changelog-build";
+                    build.textContent = "Roblox: " + buildValue;
+                    meta.appendChild(build);
+                }
+
+                entry.appendChild(meta);
+
+                const bodyValue = String(item.changelog || "").trim();
+                if (bodyValue) {
+                    const body = document.createElement("p");
+                    body.className = "executor-card__changelog-body";
+                    body.textContent = bodyValue;
+                    entry.appendChild(body);
+                }
+
+                list.appendChild(entry);
+            });
+
+            section.append(heading, list);
+            return section;
+        }
+
+        async function loadExecutorChangelogCache() {
+            try {
+                const response = await fetch(
+                    executorChangelogCacheUrl + "?t=" + Date.now()
+                );
+                if (!response.ok) {
+                    throw new Error(
+                        response.status + " " + (response.statusText || "Error")
+                    );
+                }
+                const payload = await response.json();
+                executorChangelogCacheFetchedAt =
+                    payload.fetchedAt || payload.updatedAt || null;
+                executorChangelogCache = payload.data ?? payload;
+            } catch (error) {
+                executorChangelogCache = null;
+                executorChangelogCacheFetchedAt = null;
+                console.warn("Unable to load executor changelogs:", error);
+            }
+        }
+
         function createExecutorStat(label, value, isBoolean = false) {
             const stat = document.createElement("span");
             stat.className = "executor-card__stat";
@@ -18016,6 +18220,11 @@
             }
             details.appendChild(stats);
 
+            const changelogSection = createExecutorChangelogSection(executor);
+            if (changelogSection) {
+                details.appendChild(changelogSection);
+            }
+
             card.append(summary);
             if (pills.childElementCount) {
                 details.appendChild(pills);
@@ -18115,6 +18324,7 @@
                 executorCacheFetchedAt = payload.fetchedAt || payload.updatedAt || null;
                 const data = payload.data ?? payload;
                 executorCache = Array.isArray(data) ? data : [];
+                await loadExecutorChangelogCache();
                 renderExecutorHashPicker();
                 renderExecutorCards();
                 updateHeroStats({
