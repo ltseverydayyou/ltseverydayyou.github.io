@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-07-15T22:04:24.561Z",
+  "fetchedAt": "2026-07-15T23:17:22.394Z",
   "data": [
     {
       "_id": "66633ac4b29bacaa7a568fdc",
@@ -1127,13 +1127,13 @@
     {
       "_id": "6a5095abbb457d55d62f8061",
       "title": "Real",
-      "version": "1.2.0",
-      "updatedDate": "07/15/2026 at 4:54 PM UTC",
+      "version": "1.2.1",
+      "updatedDate": "07/15/2026 at 11:13 PM UTC",
       "uncStatus": true,
       "free": true,
       "detected": true,
-      "rbxversion": "version-eb158392d1c84e6a",
-      "updateStatus": false,
+      "rbxversion": "version-ddf02245bdbb428c",
+      "updateStatus": true,
       "discordlink": "https://discord.gg/projectreal",
       "beta": false,
       "platform": "Windows",
