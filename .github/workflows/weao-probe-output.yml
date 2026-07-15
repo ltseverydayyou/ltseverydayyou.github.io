@@ -1,13 +1,13 @@
-name: Store WEAO probe output
+name: Probe WEAO changelog API
 
 on:
-  push:
+  pull_request:
     branches:
       - main
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   probe:
@@ -22,7 +22,6 @@ jobs:
       - name: Probe WEAO
         run: |
           node <<'NODE'
-          const fs = require("node:fs");
           const headers = { "User-Agent": "WEAO-3PService" };
 
           async function read(url, options = {}) {
@@ -43,10 +42,10 @@ jobs:
           const docsMatches = [];
           const docsLower = docs.text.toLowerCase();
           let docsOffset = 0;
-          while (docsMatches.length < 30) {
+          while (docsMatches.length < 40) {
               const index = docsLower.indexOf("changelog", docsOffset);
               if (index === -1) break;
-              docsMatches.push(docs.text.slice(Math.max(0, index - 1600), index + 3200));
+              docsMatches.push(docs.text.slice(Math.max(0, index - 1800), index + 3600));
               docsOffset = index + 9;
           }
 
@@ -58,15 +57,24 @@ jobs:
           } catch {}
 
           const sample = entries.find((entry) => entry?.title) || {};
-          const values = [sample.title, sample._id, sample.slug, sample.slug?.slug, sample.slug?.name]
-              .filter((value) => typeof value === "string" && value.trim());
+          const values = [
+              sample.title,
+              sample._id,
+              sample.trackerId,
+              sample.slug,
+              sample.slug?.slug,
+              sample.slug?.name
+          ].filter((value) => typeof value === "string" && value.trim());
+
           const urls = new Set([
               "https://weao.xyz/api/status/exploits/changelogs",
               "https://weao.xyz/api/status/exploits/changelog",
               "https://weao.xyz/api/changelogs/exploits",
               "https://weao.xyz/api/changelog/exploits",
               "https://weao.xyz/api/exploits/changelogs",
-              "https://weao.xyz/api/exploits/changelog"
+              "https://weao.xyz/api/exploits/changelog",
+              "https://weao.xyz/api/status/changelogs",
+              "https://weao.xyz/api/status/changelog"
           ]);
 
           for (const value of values) {
@@ -81,7 +89,9 @@ jobs:
                   `/api/exploits/${encoded}/changelogs`,
                   `/api/exploits/${encoded}/changelog`,
                   `/api/changelogs/${encoded}`,
-                  `/api/changelog/${encoded}`
+                  `/api/changelog/${encoded}`,
+                  `/api/status/changelogs/${encoded}`,
+                  `/api/status/changelog/${encoded}`
               ].forEach((path) => urls.add(`https://weao.xyz${path}`));
           }
 
@@ -92,7 +102,7 @@ jobs:
                   url,
                   status: result.status,
                   contentType: result.contentType,
-                  body: result.text.slice(0, 8000)
+                  body: result.text.slice(0, 10000)
               });
           }
 
@@ -107,17 +117,13 @@ jobs:
               statuses: {
                   status: statuses.status,
                   contentType: statuses.contentType,
-                  preview: statuses.text.slice(0, 2000)
+                  preview: statuses.text.slice(0, 2500)
               },
               sample,
               candidates
           };
 
-          fs.writeFileSync("probe-output.json", `${JSON.stringify(output, null, 2)}\n`, "utf8");
+          console.log("WEAO_PROBE_BEGIN");
+          console.log(JSON.stringify(output, null, 2));
+          console.log("WEAO_PROBE_END");
           NODE
-
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add probe-output.json
-          git commit -m "chore: store WEAO probe output [skip ci]"
-          git push
