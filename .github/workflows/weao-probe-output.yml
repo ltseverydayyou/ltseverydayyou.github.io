@@ -25,6 +25,16 @@ jobs:
       - name: Apply executor changelog UI
         run: |
           base64 --decode scripts/weao-ui-patch.b64 > /tmp/weao-ui-patch.mjs
+          python - <<'PY'
+          from pathlib import Path
+          path = Path('/tmp/weao-ui-patch.mjs')
+          source = path.read_text()
+          source = source.replace(
+              '`        let executorCache = [];\n        let executorCacheFetchedAt = null;`',
+              '"        let executorCacheFetchedAt = null;"'
+          )
+          path.write_text(source)
+          PY
           set +e
           {
             node --check /tmp/weao-ui-patch.mjs
