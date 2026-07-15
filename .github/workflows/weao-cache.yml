@@ -1,8 +1,15 @@
 name: Refresh WEAO cache
 
 on:
+  push:
+    branches:
+      - main
+    paths:
+      - scripts/weao-cache.js
+      - scripts/apply-weao-changelog-ui.js
+      - .github/workflows/weao-cache.yml
   schedule:
-    - cron: "*/30 * * * *" # every 30 minutes
+    - cron: "*/30 * * * *"
   workflow_dispatch:
 
 permissions:
@@ -20,17 +27,20 @@ jobs:
         with:
           node-version: 20
 
+      - name: Apply changelog UI support
+        run: node scripts/apply-weao-changelog-ui.js
+
       - name: Update cached data
         run: node scripts/weao-cache.js
 
       - name: Commit changes
         run: |
-          if git diff --quiet .well-known/weao; then
+          if git diff --quiet index.html .well-known/weao; then
             echo "No changes to commit."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add .well-known/weao/versions.json .well-known/weao/executors.json
-          git commit -m "chore: refresh WEAO cache [skip ci]"
+          git add index.html .well-known/weao/versions.json .well-known/weao/executors.json .well-known/weao/executor-changelogs.json
+          git commit -m "feat: add WEAO executor changelogs [skip ci]"
           git push
