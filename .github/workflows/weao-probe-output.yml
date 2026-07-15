@@ -1,0 +1,122 @@
+name: Store WEAO probe output
+
+on:
+  push:
+    branches:
+      - chore/weao-probe-output-20260716
+
+permissions:
+  contents: write
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Probe WEAO
+        run: |
+          node <<'NODE'
+          const fs = require("node:fs");
+          const headers = { "User-Agent": "WEAO-3PService" };
+
+          async function read(url, options = {}) {
+              try {
+                  const response = await fetch(url, options);
+                  return {
+                      url,
+                      status: response.status,
+                      contentType: response.headers.get("content-type") || "",
+                      text: await response.text()
+                  };
+              } catch (error) {
+                  return { url, status: 0, contentType: "", text: String(error) };
+              }
+          }
+
+          const docs = await read("https://docs.weao.xyz/weao-api-reference/exploits");
+          const docsMatches = [];
+          const docsLower = docs.text.toLowerCase();
+          let docsOffset = 0;
+          while (docsMatches.length < 30) {
+              const index = docsLower.indexOf("changelog", docsOffset);
+              if (index === -1) break;
+              docsMatches.push(docs.text.slice(Math.max(0, index - 1600), index + 3200));
+              docsOffset = index + 9;
+          }
+
+          const statuses = await read("https://weao.xyz/api/status/exploits", { headers });
+          let entries = [];
+          try {
+              const parsed = JSON.parse(statuses.text);
+              entries = Array.isArray(parsed) ? parsed : Array.isArray(parsed?.data) ? parsed.data : [];
+          } catch {}
+
+          const sample = entries.find((entry) => entry?.title) || {};
+          const values = [sample.title, sample._id, sample.slug, sample.slug?.slug, sample.slug?.name]
+              .filter((value) => typeof value === "string" && value.trim());
+          const urls = new Set([
+              "https://weao.xyz/api/status/exploits/changelogs",
+              "https://weao.xyz/api/status/exploits/changelog",
+              "https://weao.xyz/api/changelogs/exploits",
+              "https://weao.xyz/api/changelog/exploits",
+              "https://weao.xyz/api/exploits/changelogs",
+              "https://weao.xyz/api/exploits/changelog"
+          ]);
+
+          for (const value of values) {
+              const encoded = encodeURIComponent(value);
+              [
+                  `/api/status/exploits/${encoded}/changelogs`,
+                  `/api/status/exploits/${encoded}/changelog`,
+                  `/api/status/exploits/changelogs/${encoded}`,
+                  `/api/status/exploits/changelog/${encoded}`,
+                  `/api/changelogs/exploits/${encoded}`,
+                  `/api/changelog/exploits/${encoded}`,
+                  `/api/exploits/${encoded}/changelogs`,
+                  `/api/exploits/${encoded}/changelog`,
+                  `/api/changelogs/${encoded}`,
+                  `/api/changelog/${encoded}`
+              ].forEach((path) => urls.add(`https://weao.xyz${path}`));
+          }
+
+          const candidates = [];
+          for (const url of urls) {
+              const result = await read(url, { headers });
+              candidates.push({
+                  url,
+                  status: result.status,
+                  contentType: result.contentType,
+                  body: result.text.slice(0, 8000)
+              });
+          }
+
+          const output = {
+              generatedAt: new Date().toISOString(),
+              docs: {
+                  status: docs.status,
+                  contentType: docs.contentType,
+                  length: docs.text.length,
+                  matches: docsMatches
+              },
+              statuses: {
+                  status: statuses.status,
+                  contentType: statuses.contentType,
+                  preview: statuses.text.slice(0, 2000)
+              },
+              sample,
+              candidates
+          };
+
+          fs.writeFileSync("probe-output.json", `${JSON.stringify(output, null, 2)}\n`, "utf8");
+          NODE
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add probe-output.json
+          git commit -m "chore: store WEAO probe output [skip ci]"
+          git push
