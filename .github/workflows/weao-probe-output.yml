@@ -1,4 +1,4 @@
-name: Apply WEAO executor changelogs
+name: Apply WEAO changelog feature
 
 on:
   pull_request:
@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   apply:
-    if: github.head_ref == 'feat/weao-executor-changelogs-20260716'
+    if: github.head_ref == 'feature/weao-executor-changelogs'
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -22,25 +22,54 @@ jobs:
         with:
           node-version: 24
 
-      - name: Validate scripts
+      - name: Apply executor changelog UI
         run: |
-          node --check scripts/apply-weao-changelog-ui.js
+          base64 --decode scripts/weao-ui-patch.b64 > /tmp/weao-ui-patch.mjs
+          node --check /tmp/weao-ui-patch.mjs
+          node /tmp/weao-ui-patch.mjs
+
+      - name: Generate and validate WEAO cache
+        run: |
           node --check scripts/weao-cache.js
+          node scripts/weao-cache.js
+          node <<'NODE'
+          const fs = require("node:fs");
+          const html = fs.readFileSync("index.html", "utf8");
+          for (const marker of [
+              "executorChangelogCacheUrl",
+              "createExecutorChangelogSection",
+              "await loadExecutorChangelogCache();",
+              ".executor-card__changelog {"
+          ]) {
+              if (!html.includes(marker)) {
+                  throw new Error(`Missing UI marker: ${marker}`);
+              }
+          }
 
-      - name: Apply changelog UI
-        run: node scripts/apply-weao-changelog-ui.js
-
-      - name: Generate WEAO cache
-        run: node scripts/weao-cache.js
+          const payload = JSON.parse(
+              fs.readFileSync(".well-known/weao/executor-changelogs.json", "utf8")
+          );
+          const entries = Object.values(payload?.data?.entries || {});
+          if (payload?.data?.mode !== "per-exploit" || !entries.length) {
+              throw new Error("Invalid WEAO changelog cache.");
+          }
+          const populated = entries.some((entry) =>
+              Array.isArray(entry?.response?.changelogs) &&
+              entry.response.changelogs.length > 0
+          );
+          if (!populated) {
+              throw new Error("No populated WEAO changelog response was cached.");
+          }
+          NODE
 
       - name: Commit generated files
         run: |
+          if git diff --quiet index.html .well-known/weao; then
+            echo "Generated files are unchanged."
+            exit 0
+          fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add index.html .well-known/weao/versions.json .well-known/weao/executors.json .well-known/weao/executor-changelogs.json
-          if git diff --cached --quiet; then
-            echo "Generated files are already current."
-            exit 0
-          fi
-          git commit -m "feat: apply WEAO executor changelogs [skip ci]"
+          git commit -m "feat: generate WEAO executor changelogs [skip ci]"
           git push origin HEAD:${{ github.head_ref }}
