@@ -1,0 +1,10 @@
+file:///tmp/weao-ui-patch.mjs:23
+        throw new Error(`Missing marker: ${marker}`);
+              ^
+
+Error: Missing marker:         let executorCache = [];
+        let executorCacheFetchedAt = null;
+    at insertAfter (file:///tmp/weao-ui-patch.mjs:23:15)
+    at file:///tmp/weao-ui-patch.mjs:107:1
+
+Node.js v24.18.0
