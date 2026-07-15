@@ -37,13 +37,25 @@ insertAfter(
             padding-top: 4px;
         }
 
+        .executor-card__changelog-heading {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
         .executor-card__changelog-title {
             margin: 0;
+            color: var(--tx);
             font-size: 12px;
             font-weight: 800;
             letter-spacing: 0.1em;
             text-transform: uppercase;
-            color: var(--tx);
+        }
+
+        .executor-card__changelog-count {
+            color: var(--mu);
+            font-size: 11px;
         }
 
         .executor-card__changelog-list {
@@ -53,7 +65,7 @@ insertAfter(
 
         .executor-card__changelog-entry {
             display: grid;
-            gap: 5px;
+            gap: 6px;
             padding: 11px 13px;
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 12px;
@@ -69,14 +81,14 @@ insertAfter(
         }
 
         .executor-card__changelog-version {
+            color: var(--ac);
             font-size: 12px;
             font-weight: 800;
-            color: var(--ac);
         }
 
         .executor-card__changelog-date {
-            font-size: 11px;
             color: var(--mu);
+            font-size: 11px;
         }
 
         .executor-card__changelog-body {
@@ -84,17 +96,17 @@ insertAfter(
             color: rgba(231, 233, 238, 0.84);
             font-size: 13px;
             line-height: 1.55;
-            white-space: pre-wrap;
             overflow-wrap: anywhere;
+            white-space: pre-wrap;
         }
 `,
 ".executor-card__changelog {"
 );
 
 insertAfter(
-`        const executorCacheUrl = \`${"${weaoCacheBase}"}/executors.json\`;
+`        const executorCacheUrl = \`\${weaoCacheBase}/executors.json\`;
 `,
-`        const executorChangelogCacheUrl = \`${"${weaoCacheBase}"}/executor-changelogs.json\`;
+`        const executorChangelogCacheUrl = \`\${weaoCacheBase}/executor-changelogs.json\`;
 `,
 "const executorChangelogCacheUrl ="
 );
@@ -119,282 +131,100 @@ insertAfter(
         }
 `,
 `
-        function getExecutorIdentityValues(executor) {
-            const slug = typeof executor?.slug === "string" ?
-                executor.slug :
-                executor?.slug?.slug || executor?.slug?.name || "";
-            return [
+        function getExecutorChangelogRecord(executor) {
+            const entries = executorChangelogCache?.entries;
+            if (!entries || typeof entries !== "object") {
+                return null;
+            }
+
+            const identities = [
                 executor?.trackerId,
                 executor?._id,
-                executor?.title,
-                slug
-            ]
-                .filter((value) => typeof value === "string" && value.trim())
-                .flatMap((value) => {
-                    const trimmed = value.trim();
-                    const normalized = trimmed.toLowerCase();
-                    return normalized === trimmed ? [trimmed] : [trimmed, normalized];
-                });
-        }
+                executor?.title
+            ].filter((value) => typeof value === "string" && value.trim());
+            const keys = Object.keys(entries);
 
-        function matchesExecutorIdentity(value, executor) {
-            if (!value || typeof value !== "object") {
-                return false;
-            }
-
-            const candidateValues = [
-                value.trackerId,
-                value._id,
-                value.exploitId,
-                value.exploit,
-                value.executor,
-                value.title,
-                value.name,
-                value.slug
-            ]
-                .filter((entry) => typeof entry === "string" && entry.trim())
-                .map((entry) => entry.trim().toLowerCase());
-            const identities = new Set(
-                getExecutorIdentityValues(executor).map((entry) => entry.toLowerCase())
-            );
-            return candidateValues.some((entry) => identities.has(entry));
-        }
-
-        function getDirectChangelogValue(record) {
-            if (!record || typeof record !== "object") {
-                return record;
-            }
-
-            for (const key of [
-                "changelogs",
-                "changelog",
-                "history",
-                "logs",
-                "updates",
-                "releases",
-                "entries",
-                "items",
-                "data"
-            ]) {
-                if (record[key] !== undefined && record[key] !== record) {
-                    return record[key];
+            for (const identity of identities) {
+                if (entries[identity]) {
+                    return entries[identity];
                 }
-            }
-
-            return record;
-        }
-
-        function findExecutorChangelogPayload(executor) {
-            const cache = executorChangelogCache;
-            if (!cache || typeof cache !== "object") {
-                return null;
-            }
-
-            const identities = getExecutorIdentityValues(executor);
-            if (cache.mode === "per-exploit") {
-                const entries = cache.entries && typeof cache.entries === "object" ?
-                    cache.entries :
-                    {};
-                const entryKeys = Object.keys(entries);
-                for (const identity of identities) {
-                    const exact = entries[identity];
-                    if (exact) {
-                        return getDirectChangelogValue(exact);
-                    }
-                    const matchedKey = entryKeys.find(
-                        (key) => key.toLowerCase() === identity.toLowerCase()
-                    );
-                    if (matchedKey) {
-                        return getDirectChangelogValue(entries[matchedKey]);
-                    }
-                }
-                return null;
-            }
-
-            const root = cache.mode === "all" ? cache.payload : cache;
-            if (!root) {
-                return null;
-            }
-
-            if (root && typeof root === "object" && !Array.isArray(root)) {
-                const rootKeys = Object.keys(root);
-                for (const identity of identities) {
-                    if (root[identity] !== undefined) {
-                        return getDirectChangelogValue(root[identity]);
-                    }
-                    const matchedKey = rootKeys.find(
-                        (key) => key.toLowerCase() === identity.toLowerCase()
-                    );
-                    if (matchedKey) {
-                        return getDirectChangelogValue(root[matchedKey]);
-                    }
-                }
-            }
-
-            const collections = [
-                root?.data,
-                root?.changelogs,
-                root?.history,
-                root?.logs,
-                root?.updates,
-                root?.releases,
-                root?.entries,
-                root?.items,
-                root
-            ];
-
-            for (const collection of collections) {
-                if (!Array.isArray(collection)) {
-                    continue;
-                }
-                const matches = collection.filter((entry) =>
-                    matchesExecutorIdentity(entry, executor)
+                const normalized = identity.trim().toLowerCase();
+                const matchingKey = keys.find(
+                    (key) => key.trim().toLowerCase() === normalized
                 );
-                if (matches.length) {
-                    return matches.flatMap((entry) => {
-                        const value = getDirectChangelogValue(entry);
-                        return Array.isArray(value) ? value : [value];
-                    });
+                if (matchingKey) {
+                    return entries[matchingKey];
                 }
             }
 
             return null;
         }
 
-        function normalizeExecutorChangelogItems(value, depth = 0) {
-            if (value === null || value === undefined || depth > 5) {
-                return [];
+        function getExecutorChangelogTime(entry) {
+            const timestamp = Number(entry?.timestamp);
+            if (Number.isFinite(timestamp) && timestamp > 0) {
+                return timestamp;
             }
-
-            if (Array.isArray(value)) {
-                return value.flatMap((entry) =>
-                    normalizeExecutorChangelogItems(entry, depth + 1)
-                );
-            }
-
-            if (typeof value === "string" || typeof value === "number") {
-                const body = String(value).trim();
-                return body ? [{ body }] : [];
-            }
-
-            if (typeof value !== "object") {
-                return [];
-            }
-
-            const hasEntryMetadata = [
-                "version",
-                "title",
-                "name",
-                "date",
-                "createdAt",
-                "updatedAt",
-                "timestamp",
-                "body",
-                "description",
-                "content",
-                "message",
-                "notes",
-                "changes"
-            ].some((key) => value[key] !== undefined);
-
-            if (hasEntryMetadata) {
-                return [value];
-            }
-
-            for (const key of [
-                "changelogs",
-                "changelog",
-                "history",
-                "logs",
-                "updates",
-                "releases",
-                "entries",
-                "items",
-                "data"
-            ]) {
-                if (value[key] !== undefined && value[key] !== value) {
-                    const nested = normalizeExecutorChangelogItems(value[key], depth + 1);
-                    if (nested.length) {
-                        return nested;
-                    }
-                }
-            }
-
-            return Object.values(value).flatMap((entry) =>
-                normalizeExecutorChangelogItems(entry, depth + 1)
-            );
+            const parsed = Date.parse(entry?.date || "");
+            return Number.isFinite(parsed) ? parsed : 0;
         }
 
-        function stringifyChangelogValue(value) {
-            if (value === null || value === undefined) {
+        function formatExecutorChangelogDate(entry) {
+            const time = getExecutorChangelogTime(entry);
+            if (!time) {
                 return "";
             }
-            if (Array.isArray(value)) {
-                return value
-                    .map((entry) => stringifyChangelogValue(entry))
-                    .filter(Boolean)
-                    .join("\n");
-            }
-            if (typeof value === "object") {
-                return Object.values(value)
-                    .map((entry) => stringifyChangelogValue(entry))
-                    .filter(Boolean)
-                    .join("\n");
-            }
-            return String(value).trim();
+            return new Intl.DateTimeFormat(undefined, {
+                year: "numeric",
+                month: "short",
+                day: "numeric"
+            }).format(new Date(time));
         }
 
         function createExecutorChangelogSection(executor) {
-            const payload = findExecutorChangelogPayload(executor);
-            const items = normalizeExecutorChangelogItems(payload)
-                .map((entry) => {
-                    const objectEntry = entry && typeof entry === "object" ? entry : {};
-                    const version = String(
-                        objectEntry.version ||
-                        objectEntry.release ||
-                        objectEntry.title ||
-                        objectEntry.name ||
-                        "Update"
-                    ).trim();
-                    const date = String(
-                        objectEntry.date ||
-                        objectEntry.createdAt ||
-                        objectEntry.updatedAt ||
-                        objectEntry.updatedDate ||
-                        objectEntry.timestamp ||
-                        ""
-                    ).trim();
-                    const body = stringifyChangelogValue(
-                        objectEntry.body ??
-                        objectEntry.description ??
-                        objectEntry.content ??
-                        objectEntry.message ??
-                        objectEntry.notes ??
-                        objectEntry.changes ??
-                        objectEntry.changelog ??
-                        objectEntry.bodyText ??
-                        ""
-                    );
-                    return { version, date, body };
-                })
-                .filter((entry) => entry.body || entry.version !== "Update")
-                .slice(0, 8);
+            const record = getExecutorChangelogRecord(executor);
+            const response = record?.changelogs;
+            const changelogs = Array.isArray(response?.changelogs) ?
+                response.changelogs :
+                [];
 
-            if (!items.length) {
+            if (!changelogs.length) {
+                return null;
+            }
+
+            const sorted = [...changelogs]
+                .filter((entry) => entry && typeof entry === "object")
+                .sort((left, right) =>
+                    getExecutorChangelogTime(right) - getExecutorChangelogTime(left)
+                );
+            const visible = sorted.slice(0, 8);
+
+            if (!visible.length) {
                 return null;
             }
 
             const section = document.createElement("section");
             section.className = "executor-card__changelog";
 
-            const heading = document.createElement("h4");
-            heading.className = "executor-card__changelog-title";
-            heading.textContent = "Changelog";
+            const heading = document.createElement("div");
+            heading.className = "executor-card__changelog-heading";
+
+            const title = document.createElement("h4");
+            title.className = "executor-card__changelog-title";
+            title.textContent = "Changelog";
+
+            const count = document.createElement("span");
+            count.className = "executor-card__changelog-count";
+            count.textContent = sorted.length > visible.length ?
+                `Latest \${visible.length} of \${sorted.length}` :
+                `\${sorted.length} update\${sorted.length === 1 ? "" : "s"}`;
+
+            heading.append(title, count);
 
             const list = document.createElement("div");
             list.className = "executor-card__changelog-list";
 
-            items.forEach((item) => {
+            visible.forEach((item) => {
                 const entry = document.createElement("article");
                 entry.className = "executor-card__changelog-entry";
 
@@ -403,22 +233,24 @@ insertAfter(
 
                 const version = document.createElement("span");
                 version.className = "executor-card__changelog-version";
-                version.textContent = item.version;
+                version.textContent = String(item.version || "Update");
                 meta.appendChild(version);
 
-                if (item.date) {
+                const formattedDate = formatExecutorChangelogDate(item);
+                if (formattedDate) {
                     const date = document.createElement("span");
                     date.className = "executor-card__changelog-date";
-                    date.textContent = item.date;
+                    date.textContent = formattedDate;
                     meta.appendChild(date);
                 }
 
                 entry.appendChild(meta);
 
-                if (item.body) {
+                const bodyText = String(item.changelog || "").trim();
+                if (bodyText) {
                     const body = document.createElement("p");
                     body.className = "executor-card__changelog-body";
-                    body.textContent = item.body;
+                    body.textContent = bodyText;
                     entry.appendChild(body);
                 }
 
@@ -432,10 +264,12 @@ insertAfter(
         async function loadExecutorChangelogCache() {
             try {
                 const response = await fetch(
-                    \`${"${executorChangelogCacheUrl}"}?t=${"${Date.now()}"}\`
+                    \`\${executorChangelogCacheUrl}?t=\${Date.now()}\`
                 );
                 if (!response.ok) {
-                    throw new Error(\`${"${response.status}"} ${"${response.statusText || \"Error\"}"}\`);
+                    throw new Error(
+                        \`\${response.status} \${response.statusText || "Error"}\`
+                    );
                 }
                 const payload = await response.json();
                 executorChangelogCacheFetchedAt =
@@ -448,7 +282,7 @@ insertAfter(
             }
         }
 `,
-"function getExecutorIdentityValues(executor) {"
+"function getExecutorChangelogRecord(executor) {"
 );
 
 replaceOnce(
