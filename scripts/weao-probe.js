@@ -14,15 +14,46 @@ async function read(url, options = {}) {
     }
 }
 
+function decodeHtml(value) {
+    return value
+        .replace(/\\u002f/gi, "/")
+        .replace(/\\\//g, "/")
+        .replace(/&quot;|&#34;/gi, '"')
+        .replace(/&#39;|&apos;/gi, "'")
+        .replace(/&lt;/gi, "<")
+        .replace(/&gt;/gi, ">")
+        .replace(/&amp;/gi, "&")
+        .replace(/&#x2f;/gi, "/")
+        .replace(/&#x3a;/gi, ":")
+        .replace(/&#x3f;/gi, "?")
+        .replace(/&#x3d;/gi, "=")
+        .replace(/&#x26;/gi, "&");
+}
+
+function plainText(value) {
+    return decodeHtml(value)
+        .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, " ")
+        .replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, " ")
+        .replace(/<[^>]+>/g, " ")
+        .replace(/\s+/g, " ")
+        .trim();
+}
+
 const docs = await read("https://docs.weao.xyz/weao-api-reference/exploits");
-const docsLower = docs.text.toLowerCase();
-const docsMatches = [];
-let docsOffset = 0;
-while (docsMatches.length < 12) {
-    const index = docsLower.indexOf("changelog", docsOffset);
-    if (index === -1) break;
-    docsMatches.push(docs.text.slice(Math.max(0, index - 900), index + 1800));
-    docsOffset = index + 9;
+const marker = 'id="retrieving-exploit-changelogs"';
+const start = docs.text.indexOf(marker);
+const nextHeading = start === -1 ? -1 : docs.text.indexOf("<h2", start + marker.length);
+const rawSection = start === -1
+    ? ""
+    : docs.text.slice(start, nextHeading === -1 ? start + 90000 : nextHeading);
+const decodedSection = decodeHtml(rawSection);
+const routes = new Set();
+
+for (const match of decodedSection.matchAll(/https?:\/\/(?:www\.)?weao\.xyz\/api\/[A-Za-z0-9_~:?#[\]@!$&'()*+,;=%./{}-]+/gi)) {
+    routes.add(match[0].replace(/[),.;]+$/, ""));
+}
+for (const match of decodedSection.matchAll(/\/api\/[A-Za-z0-9_~:?#[\]@!$&'()*+,;=%./{}-]+/gi)) {
+    routes.add(match[0].replace(/[),.;]+$/, ""));
 }
 
 const statuses = await read("https://weao.xyz/api/status/exploits", { headers });
@@ -33,64 +64,49 @@ try {
 } catch {}
 
 const sample = entries.find((entry) => entry?.title) || {};
-const values = [sample.title, sample._id, sample.trackerId]
+const identifiers = [sample.title, sample._id, sample.trackerId]
     .filter((value) => typeof value === "string" && value.trim());
-const urls = new Set([
-    "https://weao.xyz/api/status/exploits/changelogs",
-    "https://weao.xyz/api/status/exploits/changelog",
-    "https://weao.xyz/api/changelogs/exploits",
-    "https://weao.xyz/api/changelog/exploits",
-    "https://weao.xyz/api/exploits/changelogs",
-    "https://weao.xyz/api/exploits/changelog",
-    "https://weao.xyz/api/status/changelogs",
-    "https://weao.xyz/api/status/changelog"
-]);
+const candidates = new Set();
 
-for (const value of values) {
-    const encoded = encodeURIComponent(value);
-    [
+for (const route of routes) {
+    if (/^https?:\/\//i.test(route)) {
+        candidates.add(route);
+    } else {
+        candidates.add(`https://weao.xyz${route}`);
+    }
+}
+
+for (const identifier of identifiers) {
+    const encoded = encodeURIComponent(identifier);
+    for (const template of [
         `/api/status/exploits/${encoded}/changelogs`,
         `/api/status/exploits/${encoded}/changelog`,
         `/api/status/exploits/changelogs/${encoded}`,
         `/api/status/exploits/changelog/${encoded}`,
-        `/api/changelogs/exploits/${encoded}`,
-        `/api/changelog/exploits/${encoded}`,
-        `/api/exploits/${encoded}/changelogs`,
-        `/api/exploits/${encoded}/changelog`,
         `/api/changelogs/${encoded}`,
-        `/api/changelog/${encoded}`,
-        `/api/status/changelogs/${encoded}`,
-        `/api/status/changelog/${encoded}`
-    ].forEach((path) => urls.add(`https://weao.xyz${path}`));
+        `/api/changelog/${encoded}`
+    ]) {
+        candidates.add(`https://weao.xyz${template}`);
+    }
 }
 
-const candidates = [];
-for (const url of urls) {
+const results = [];
+for (const url of candidates) {
+    if (/[{[:](?:id|tracker|exploit|name|slug)[}\]]/i.test(url)) {
+        continue;
+    }
     const result = await read(url, { headers });
     if (result.status !== 404) {
-        candidates.push({
+        results.push({
             url,
             status: result.status,
             contentType: result.contentType,
-            body: result.text.slice(0, 3000)
+            body: result.text.slice(0, 1800)
         });
     }
 }
 
-console.log("WEAO_RESULT=" + JSON.stringify({
-    docs: {
-        status: docs.status,
-        length: docs.text.length,
-        matches: docsMatches
-    },
-    statuses: {
-        status: statuses.status,
-        count: entries.length
-    },
-    sample: {
-        title: sample.title,
-        id: sample._id,
-        trackerId: sample.trackerId
-    },
-    candidates
-}));
+console.log(`DOC_TEXT=${plainText(rawSection).slice(0, 6000)}`);
+console.log(`DOC_ROUTES=${JSON.stringify([...routes])}`);
+console.log(`SAMPLE=${JSON.stringify({ title: sample.title, id: sample._id, trackerId: sample.trackerId })}`);
+console.log(`RESPONSES=${JSON.stringify(results)}`);
