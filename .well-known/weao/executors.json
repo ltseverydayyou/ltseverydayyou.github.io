@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-07-15T06:36:22.140Z",
+  "fetchedAt": "2026-07-15T12:52:15.386Z",
   "data": [
     {
       "_id": "66633ac4b29bacaa7a568fdc",
@@ -224,7 +224,7 @@
       "uncStatus": false,
       "free": false,
       "detected": false,
-      "rbxversion": "version-36a2600cebf1487d",
+      "rbxversion": "version-eb158392d1c84e6a",
       "updateStatus": true,
       "websitelink": "https://matrixhubs.shop/",
       "discordlink": "https://matrixhub.xyz/discord.html",
@@ -1061,13 +1061,13 @@
     {
       "_id": "6949f9ee0260ad9e36c73700",
       "title": "RbxCli",
-      "version": "1.9.15a-beta",
-      "updatedDate": "07/10/2026 at 3:01 PM UTC",
+      "version": "1.9.16-beta",
+      "updatedDate": "07/15/2026 at 11:36 AM UTC",
       "uncStatus": false,
       "free": false,
       "detected": false,
-      "rbxversion": "version-36a2600cebf1487d",
-      "updateStatus": false,
+      "rbxversion": "version-eb158392d1c84e6a",
+      "updateStatus": true,
       "discordlink": "https://discord.gg/RZgUP8UZQ3",
       "purchaselink": "https://bloxproducts.com/r/weao#RbxCli",
       "beta": false,
