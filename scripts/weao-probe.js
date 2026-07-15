@@ -1,136 +1,90 @@
 import fs from "node:fs";
 
 const headers = { "User-Agent": "WEAO-3PService" };
+const domains = ["https://weao.xyz", "https://whatexpsare.online", "https://weao.gg"];
 
-async function read(url, options = {}) {
+async function readJson(url) {
     try {
-        const response = await fetch(url, options);
+        const response = await fetch(url, { headers });
+        const text = await response.text();
+        let data = null;
+        try {
+            data = JSON.parse(text);
+        } catch {}
         return {
             url,
             status: response.status,
             contentType: response.headers.get("content-type") || "",
-            text: await response.text()
+            data,
+            body: data ? undefined : text.slice(0, 1000)
         };
     } catch (error) {
-        return { url, status: 0, contentType: "", text: String(error) };
+        return { url, status: 0, data: null, body: String(error) };
     }
 }
 
-function decodeHtml(value) {
-    return value
-        .replace(/\\u002f/gi, "/")
-        .replace(/\\\//g, "/")
-        .replace(/&quot;|&#34;/gi, '"')
-        .replace(/&#39;|&apos;/gi, "'")
-        .replace(/&lt;/gi, "<")
-        .replace(/&gt;/gi, ">")
-        .replace(/&amp;/gi, "&")
-        .replace(/&#x2f;/gi, "/")
-        .replace(/&#x3a;/gi, ":")
-        .replace(/&#x3f;/gi, "?")
-        .replace(/&#x3d;/gi, "=")
-        .replace(/&#x26;/gi, "&");
+function sleep(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-function plainText(value) {
-    return decodeHtml(value)
-        .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, " ")
-        .replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, " ")
-        .replace(/<[^>]+>/g, " ")
-        .replace(/\s+/g, " ")
-        .trim();
-}
+const statusResult = await readJson(`${domains[0]}/api/status/exploits`);
+const executors = Array.isArray(statusResult.data)
+    ? statusResult.data
+    : Array.isArray(statusResult.data?.data)
+        ? statusResult.data.data
+        : [];
+const attempts = [];
+const samples = [];
 
-const docs = await read("https://docs.weao.xyz/weao-api-reference/exploits");
-const marker = 'id="retrieving-exploit-changelogs"';
-const start = docs.text.indexOf(marker);
-const nextHeading = start === -1 ? -1 : docs.text.indexOf("<h2", start + marker.length);
-const rawSection = start === -1
-    ? ""
-    : docs.text.slice(start, nextHeading === -1 ? start + 120000 : nextHeading);
-const decodedSection = decodeHtml(rawSection);
-const routes = new Set();
-
-for (const match of decodedSection.matchAll(/https?:\/\/(?:www\.)?weao\.xyz\/api\/[A-Za-z0-9_~:?#[\]@!$&'()*+,;=%./{}-]+/gi)) {
-    routes.add(match[0].replace(/[),.;]+$/, ""));
-}
-for (const match of decodedSection.matchAll(/\/api\/[A-Za-z0-9_~:?#[\]@!$&'()*+,;=%./{}-]+/gi)) {
-    routes.add(match[0].replace(/[),.;]+$/, ""));
-}
-
-const statuses = await read("https://weao.xyz/api/status/exploits", { headers });
-let entries = [];
-try {
-    const parsed = JSON.parse(statuses.text);
-    entries = Array.isArray(parsed) ? parsed : Array.isArray(parsed?.data) ? parsed.data : [];
-} catch {}
-
-const sample = entries.find((entry) => entry?.title) || {};
-const identifiers = [sample.title, sample._id, sample.trackerId]
-    .filter((value) => typeof value === "string" && value.trim());
-const candidates = new Set();
-
-for (const route of routes) {
-    candidates.add(/^https?:\/\//i.test(route) ? route : `https://weao.xyz${route}`);
-}
-
-for (const identifier of identifiers) {
-    const encoded = encodeURIComponent(identifier);
-    for (const template of [
-        `/api/status/exploits/${encoded}/changelogs`,
-        `/api/status/exploits/${encoded}/changelog`,
-        `/api/status/exploits/changelogs/${encoded}`,
-        `/api/status/exploits/changelog/${encoded}`,
-        `/api/changelogs/exploits/${encoded}`,
-        `/api/changelog/exploits/${encoded}`,
-        `/api/exploits/${encoded}/changelogs`,
-        `/api/exploits/${encoded}/changelog`,
-        `/api/changelogs/${encoded}`,
-        `/api/changelog/${encoded}`,
-        `/api/status/changelogs/${encoded}`,
-        `/api/status/changelog/${encoded}`
-    ]) {
-        candidates.add(`https://weao.xyz${template}`);
-    }
-}
-
-const responses = [];
-for (const url of candidates) {
-    if (/[{[:](?:id|tracker|exploit|name|slug)[}\]]/i.test(url)) {
+for (const executor of executors) {
+    const identifier = executor?.trackerId || executor?.title;
+    if (!identifier) {
         continue;
     }
-    const result = await read(url, { headers });
-    if (result.status !== 404) {
-        responses.push({
-            url,
+
+    let accepted = null;
+    for (const domain of domains) {
+        const result = await readJson(
+            `${domain}/api/status/exploits/changelogs/${encodeURIComponent(identifier)}`
+        );
+        attempts.push({
+            title: executor.title,
+            trackerId: executor.trackerId,
+            url: result.url,
             status: result.status,
-            contentType: result.contentType,
-            body: result.text.slice(0, 12000)
+            count: result.data?.count,
+            changelogCount: Array.isArray(result.data?.changelogs)
+                ? result.data.changelogs.length
+                : null,
+            body: result.body
         });
+        if (result.status === 200 && result.data && typeof result.data === "object") {
+            accepted = result.data;
+            break;
+        }
+        await sleep(300);
     }
+
+    if (accepted && (accepted.count > 0 || accepted.changelogs?.length > 0)) {
+        samples.push({ executor, response: accepted });
+        if (samples.length >= 3) {
+            break;
+        }
+    }
+
+    await sleep(400);
 }
 
 const output = {
     generatedAt: new Date().toISOString(),
-    docs: {
-        status: docs.status,
-        contentType: docs.contentType,
-        length: docs.text.length,
-        sectionText: plainText(rawSection),
-        routes: [...routes],
-        rawSection
+    status: {
+        url: statusResult.url,
+        status: statusResult.status,
+        executorCount: executors.length
     },
-    statuses: {
-        status: statuses.status,
-        count: entries.length
-    },
-    sample: {
-        title: sample.title,
-        id: sample._id,
-        trackerId: sample.trackerId
-    },
-    responses
+    samples,
+    attempts
 };
 
 fs.writeFileSync("probe-output.json", `${JSON.stringify(output, null, 2)}\n`, "utf8");
-console.log(`Stored ${responses.length} non-404 response candidates.`);
+console.log(`Stored ${samples.length} non-empty changelog samples.`);
