@@ -1,0 +1,76 @@
+name: Validate WEAO changelog feature
+
+on:
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  validate:
+    if: github.head_ref == 'feat/weao-executor-changelogs-20260716'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Validate scripts
+        run: |
+          node --check scripts/apply-weao-changelog-ui.js
+          node --check scripts/weao-cache.js
+
+      - name: Apply changelog UI
+        run: node scripts/apply-weao-changelog-ui.js
+
+      - name: Generate WEAO cache
+        run: node scripts/weao-cache.js
+
+      - name: Validate generated files
+        run: |
+          node <<'NODE'
+          const fs = require("node:fs");
+          const html = fs.readFileSync("index.html", "utf8");
+          for (const marker of [
+              "executorChangelogCacheUrl",
+              "createExecutorChangelogSection",
+              "await loadExecutorChangelogCache();",
+              ".executor-card__changelog {"
+          ]) {
+              if (!html.includes(marker)) {
+                  throw new Error(`Missing UI marker: ${marker}`);
+              }
+          }
+
+          const payload = JSON.parse(
+              fs.readFileSync(".well-known/weao/executor-changelogs.json", "utf8")
+          );
+          const entries = Object.values(payload?.data?.entries || {});
+          if (payload?.data?.mode !== "per-exploit" || !entries.length) {
+              throw new Error("Invalid WEAO changelog cache.");
+          }
+          if (!entries.some((entry) =>
+              Array.isArray(entry?.changelogs?.changelogs)
+          )) {
+              throw new Error("Missing WEAO changelog response objects.");
+          }
+          NODE
+
+      - name: Commit generated files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html .well-known/weao/versions.json .well-known/weao/executors.json .well-known/weao/executor-changelogs.json
+          if git diff --cached --quiet; then
+            echo "Generated files are already current."
+            exit 0
+          fi
+          git commit -m "feat: generate WEAO executor changelogs [skip ci]"
+          git push origin HEAD:${{ github.head_ref }}
