@@ -1,0 +1,11 @@
+file:///home/runner/work/ltseverydayyou.github.io/ltseverydayyou.github.io/scripts/apply-weao-changelog-ui.js:11
+        throw new Error(`Unable to find insertion point for ${marker}`);
+              ^
+
+Error: Unable to find insertion point for .executor-card__changelog {
+    at insertAfter (file:///home/runner/work/ltseverydayyou.github.io/ltseverydayyou.github.io/scripts/apply-weao-changelog-ui.js:11:15)
+    at file:///home/runner/work/ltseverydayyou.github.io/ltseverydayyou.github.io/scripts/apply-weao-changelog-ui.js:26:1
+
+Node.js v24.18.0
+
+exit_code=1
