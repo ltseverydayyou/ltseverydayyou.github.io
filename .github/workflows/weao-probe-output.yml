@@ -4,14 +4,28 @@ on:
   pull_request:
     branches:
       - main
-  workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   probe:
+    if: github.head_ref == 'chore/run-weao-pr-probe-20260716'
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+
       - name: Probe WEAO
-        run: curl -fsSL https://raw.githubusercontent.com/ltseverydayyou/ltseverydayyou.github.io/main/scripts/weao-probe.js | node
+        run: |
+          if [ -f probe-output.json ]; then
+            echo "Probe output already exists."
+            exit 0
+          fi
+          curl -fsSL https://raw.githubusercontent.com/ltseverydayyou/ltseverydayyou.github.io/main/scripts/weao-probe.js | node
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add probe-output.json
+          git commit -m "chore: store WEAO probe output [skip ci]"
+          git push origin HEAD:${{ github.head_ref }}
