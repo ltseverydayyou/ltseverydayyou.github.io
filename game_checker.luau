@@ -504,6 +504,14 @@ local mods = {
 		u = "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/AbilityWarsAura.luau"
 	},
 	{
+		id = 3498637623,
+		u = "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/ZSS%20Autofarm.lua"
+	},
+	{
+		id = 3267012194,
+		u = "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/LOCOfficial%20autoplay.luau"
+	},
+	{
 		id = 2380077519,
 		u = "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/SlapAuraSB.luau"
 	},
