@@ -581,9 +581,7 @@ local forceDisabledCoreGuiTypes = {}
 for _, coreType in coreTypes do
 	local n = tostring(coreType.Name)
 
-	if n == "ExperienceShop" then
-		skippedCoreGuiTypes[coreType] = true
-	elseif n == "Captures" or n == "SelfView" then
+	if n == "Captures" or n == "SelfView" then
 		skippedCoreGuiTypes[coreType] = true
 		forceDisabledCoreGuiTypes[coreType] = true
 	end
