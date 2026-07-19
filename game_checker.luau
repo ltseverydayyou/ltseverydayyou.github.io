@@ -133,6 +133,7 @@ end
 local HTTP_RETRY_BASE_DELAY: number = 0.75
 local HTTP_RETRY_MAX_DELAY: number = 8
 local HTTP_RETRY_JITTER: number = 0.35
+local HTTP_RETRY_MAX_ATTEMPTS: number = 6
 
 type HttpRetryError = string?
 
@@ -165,7 +166,7 @@ local function httpGetText(url: string, noCache: boolean?): (string?, HttpRetryE
 	local attempt: number = 0
 	local lastErr: HttpRetryError = nil
 
-	while true do
+	while attempt < HTTP_RETRY_MAX_ATTEMPTS do
 		attempt += 1
 		local target: string = if noCache then cacheBustUrl(url) else url
 		local ok: boolean, srcOrErr: any = pcall(game.HttpGet, game, target)
@@ -180,8 +181,12 @@ local function httpGetText(url: string, noCache: boolean?): (string?, HttpRetryE
 			lastErr = tostring(srcOrErr)
 		end
 
-		task.wait(getHttpRetryDelay(attempt, lastErr))
+		if attempt < HTTP_RETRY_MAX_ATTEMPTS then
+			task.wait(getHttpRetryDelay(attempt, lastErr))
+		end
 	end
+
+	return nil, lastErr or "HttpGet failed"
 end
 local function runRemote(url, chunkName, noCache)
 	local src, fetchErr = httpGetText(url, noCache)
@@ -194,7 +199,13 @@ local function runRemote(url, chunkName, noCache)
 		warn("[remote] loadstring failed for:", url, compileErr)
 		return nil, compileErr
 	end
-	return fn()
+	local results = table.pack(pcall(fn))
+	if not results[1] then
+		local runtimeErr = tostring(results[2])
+		warn("[remote] runtime failed for:", url, runtimeErr)
+		return nil, runtimeErr
+	end
+	return table.unpack(results, 2, results.n)
 end
 local __lt = (function()
 	local globalEnv = getgenv and getgenv() or _G or {}
@@ -231,7 +242,7 @@ local pack = table.pack
 local unpack = table.unpack
 local function caller(fn, ...)
 	if typeof(fn) ~= "function" then
-		local rt = typeof and typeof(fn) or typeof(fn)
+		local rt = typeof(fn)
 		warn("[caller] Expected function, got " .. rt)
 		return nil, "invalid callback"
 	end
@@ -239,7 +250,11 @@ local function caller(fn, ...)
 	local r = pack(xpcall(function()
 		return fn(unpack(a, 1, a.n))
 	end, function(err)
-		local tr = debug.traceback("[caller] " .. tostring(err), 2)
+		local message = "[caller] " .. tostring(err)
+		local tr = message
+		if typeof(debug) == "table" and typeof(debug.traceback) == "function" then
+			tr = debug.traceback(message, 2)
+		end
 		warn(tr)
 		return tr
 	end))
@@ -545,22 +560,48 @@ caller(function()
 		repeat
 			task.wait()
 		until getChar()
-		local proxy = {}
-		if not workspaceService or (not runService) or (not playersService) then
+		if not workspaceService or not runService or not playersService then
 			return
 		end
-		for _, v in workspaceService:QueryDescendants("ProximityPrompt") do
-			if v.Parent and v.Parent.Name:lower() == "proxypart" then				table.insert(proxy, v)
+		local proxy = {}
+		local lastTriggered = setmetatable({}, {
+			__mode = "k"
+		})
+		local function isTargetPrompt(prompt)
+			return prompt:IsA("ProximityPrompt") and prompt.Parent and prompt.Parent.Name:lower() == "proxypart"
+		end
+		local function addPrompt(prompt)
+			if isTargetPrompt(prompt) then
+				proxy[#proxy + 1] = prompt
 			end
 		end
+		local function getPromptPosition(prompt)
+			local parent = prompt.Parent
+			if not parent then
+				return nil
+			end
+			if parent:IsA("Attachment") then
+				return parent.WorldPosition
+			end
+			if parent:IsA("BasePart") then
+				return parent.Position
+			end
+			local part = parent:FindFirstAncestorWhichIsA("BasePart")
+			return part and part.Position or nil
+		end
+		for _, prompt in workspaceService:QueryDescendants("ProximityPrompt") do
+			addPrompt(prompt)
+		end
 		workspaceService.DescendantAdded:Connect(function(cur)
-			caller(function()
-				if cur:IsA("ProximityPrompt") and cur.Parent and cur.Parent.Name:lower() == "proxypart" then
-					table.insert(proxy, cur)
-				end
-			end)
+			caller(addPrompt, cur)
 		end)
-		runService.RenderStepped:Connect(function()
+		local elapsed = 0
+		runService.Heartbeat:Connect(function(deltaTime)
+			elapsed += deltaTime
+			if elapsed < 0.1 then
+				return
+			end
+			elapsed = 0
 			caller(function()
 				local plr = playersService.LocalPlayer
 				local c = plr and plr.Character
@@ -568,14 +609,21 @@ caller(function()
 				if not root then
 					return
 				end
+				local now = os.clock()
 				for i = #proxy, 1, -1 do
-					local pr = proxy[i]
-					if not pr.Parent or (not pr:IsDescendantOf(workspaceService)) then
+					local prompt = proxy[i]
+					if not prompt.Parent or not prompt:IsDescendantOf(workspaceService) then
+						lastTriggered[prompt] = nil
 						table.remove(proxy, i)
 					else
-						local md = pr.MaxActivationDistance + 4
-						if (pr.Parent.Position - root.Position).Magnitude <= md then
-							fireproximityprompt(pr)
+						local position = getPromptPosition(prompt)
+						local previous = lastTriggered[prompt] or 0
+						if position and now - previous >= 0.2 then
+							local maxDistance = prompt.MaxActivationDistance + 4
+							if (position - root.Position).Magnitude <= maxDistance then
+								lastTriggered[prompt] = now
+								pcall(fireproximityprompt, prompt)
+							end
 						end
 					end
 				end
@@ -588,21 +636,6 @@ caller(function()
 		if not runService or (not playersService) or (not promptService) then
 			return
 		end
-		local blockedFNAZ = {
-			Storage_Killzone = true,
-			Vent_Killzone = true,
-			Freezer_Killzone = true,
-			BloxBull_Killzone = true,
-			GasGuardian_Killzone = true,
-			Outside_Killzone = true,
-			Checkout_Killzone = true,
-			Office_Killzone = true,
-			Toilet_Killzone = true,
-			CarBomb = true,
-			MirrorDimention = true,
-			Sewer = true,
-			GasGuardian = true
-		}
 		local fNAZAttrs = {
 			"Storage_Killzone",
 			"Vent_Killzone",
@@ -750,7 +783,7 @@ caller(function()
 				end)
 			end
 		end)
-		while task.wait() do
+		while task.wait(0.05) do
 			caller(keepFree)
 		end
 	end
@@ -781,6 +814,9 @@ caller(function()
 		local bi = 0
 		local cur = nil
 		local st = {}
+		local hookedSounds = setmetatable({}, {
+			__mode = "k"
+		})
 		local lock = false
 		local function isSnd(x)
 			return typeof(x) == "Instance" and x:IsA("Sound")
@@ -835,7 +871,7 @@ caller(function()
 			if not isSnd(s) then
 				return
 			end
-			for _, v in fld:QueryDescendants("Instance") do
+			for _, v in fld:QueryDescendants("Sound") do
 				if isSnd(v) and wl[v.Name] then
 					stopSnd(v)
 				end
@@ -858,57 +894,64 @@ caller(function()
 				return
 			end
 			lock = true
-			for s in st do
-				if not s.Parent or (not s:IsDescendantOf(fld)) then
-					st[s] = nil
+			local ok, err = xpcall(function()
+				for s in st do
+					if not s.Parent or not s:IsDescendantOf(fld) then
+						st[s] = nil
+					end
 				end
-			end
-			local list = {}
-			local now = os.clock()
-			for _, v in fld:QueryDescendants("Instance") do
-				if isSnd(v) then
+				local list = {}
+				local now = os.clock()
+				for _, v in fld:QueryDescendants("Sound") do
 					if wl[v.Name] then
 						setVol(v)
 						if v.Playing then
 							if not st[v] then
 								st[v] = now
 							end
-							list[(#list) + 1] = v
+							list[#list + 1] = v
 						end
 					elseif v.Playing then
 						stopSnd(v)
 					end
 				end
-			end
-			if #list > 1 then
-				local keep = list[1]
-				local kt = st[keep] or math.huge
-				for i = 2, #list do
-					local a = list[i]
-					local at = st[a] or math.huge
-					if at > kt then
-						keep, kt = a, at
+				if #list > 1 then
+					local keep = list[1]
+					local keepTime = st[keep] or 0
+					for i = 2, #list do
+						local sound = list[i]
+						local soundTime = st[sound] or 0
+						if soundTime > keepTime then
+							keep = sound
+							keepTime = soundTime
+						end
 					end
-				end
-				for i = 1, #list do
-					local a = list[i]
-					if a ~= keep then
-						stopSnd(a)
+					for i = 1, #list do
+						local sound = list[i]
+						if sound ~= keep then
+							stopSnd(sound)
+						end
 					end
+					cur = keep
+				elseif #list == 1 then
+					cur = list[1]
+				elseif not (cur and cur.Parent and cur.Playing) then
+					cur = nil
+					pickAndPlay()
 				end
-				cur = keep
-			elseif #list == 1 then
-				cur = list[1]
-			elseif not (cur and cur.Parent and cur.Playing) then
-				cur = nil
-				pickAndPlay()
-			end
+			end, function(runtimeErr)
+				return tostring(runtimeErr)
+			end)
 			lock = false
+			if not ok then
+				warn("[music] enforce failed:", err)
+			end
 		end
 		local function hookSnd(s)
-			if not isSnd(s) then
+			if not isSnd(s) or hookedSounds[s] then
 				return
 			end
+			hookedSounds[s] = true
 			if wl[s.Name] then
 				setVol(s)
 			end
@@ -927,7 +970,7 @@ caller(function()
 				end)
 			end
 		end
-		for _, v in fld:QueryDescendants("Instance") do
+		for _, v in fld:QueryDescendants("Sound") do
 			if isSnd(v) then
 				hookSnd(v)
 			end
@@ -1045,17 +1088,23 @@ caller(function()
 				pt_hookPair(item, claim)
 			end
 		end
+		local pt_listHooked = setmetatable({}, {
+			__mode = "k"
+		})
 		local function pt_setupPlaytimeRewards()
-			local rl = pt_getRewardsList()
-			if not rl then
-				return
+			while true do
+				local rl = pt_getRewardsList()
+				if rl and not pt_listHooked[rl] then
+					pt_listHooked[rl] = true
+					for _, item in rl:GetChildren() do
+						pt_tryHookItem(item)
+					end
+					rl.ChildAdded:Connect(function(c)
+						pt_tryHookItem(c)
+					end)
+				end
+				task.wait(1)
 			end
-			for _, item in rl:GetChildren() do
-				pt_tryHookItem(item)
-			end
-			rl.ChildAdded:Connect(function(c)
-				pt_tryHookItem(c)
-			end)
 		end
 		local function bp_getGrid()
 			if not rewardsPlayer then
@@ -1166,4 +1215,207 @@ caller(function()
 		task.spawn(pt_setupPlaytimeRewards)
 		bp_setupBattlepassRewards()
 	end
+end)
+caller(function()
+	if game.GameId ~= 245662005 then
+		return
+	end
+
+	local circleActionModule = replicatedStorage
+		and replicatedStorage:FindFirstChild("Module")
+		and replicatedStorage.Module:FindFirstChild("UI")
+	if not circleActionModule then
+		return
+	end
+
+	local requireOk, uiModule = pcall(require, circleActionModule)
+	if not requireOk or type(uiModule) ~= "table" or type(uiModule.CircleAction) ~= "table" then
+		return
+	end
+
+	local CircleAction = uiModule.CircleAction
+	local env = getgenv()
+	local previous = env.__CircleActionInstantV2
+	if type(previous) == "table" then
+		if type(previous.Originals) == "table" then
+			for spec, original in pairs(previous.Originals) do
+				if type(spec) == "table" and type(original) == "table" then
+					if type(original.Callback) == "function" then
+						spec.Callback = original.Callback
+					end
+					spec.ReleaseCallback = original.ReleaseCallback
+					spec.WhilePressedUpdate = original.WhilePressedUpdate
+				end
+			end
+		end
+		previous.Process = function(spec)
+			return spec
+		end
+	end
+
+	local state = env.__CircleActionInstantV3
+	if type(state) ~= "table" then
+		state = {}
+		env.__CircleActionInstantV3 = state
+	end
+	if type(state.Completed) ~= "table" then
+		state.Completed = setmetatable({}, {
+			__mode = "k"
+		})
+	end
+
+	local function callTimed(spec, callback, completed, ...)
+		if type(callback) ~= "function" then
+			return nil
+		end
+		local originalTimed = spec.Timed
+		local args = table.pack(...)
+		local results
+		spec.Timed = true
+		local ok, err = pcall(function()
+			results = table.pack(callback(spec, completed, table.unpack(args, 1, args.n)))
+		end)
+		spec.Timed = originalTimed
+		if not ok then
+			error(err, 0)
+		end
+		if not results then
+			return nil
+		end
+		return table.unpack(results, 1, results.n)
+	end
+
+	state.HandlePress = function(oldPress, ...)
+		local args = table.pack(...)
+		local spec = CircleAction.Spec
+		if type(spec) ~= "table" or spec.Timed ~= true then
+			return oldPress(table.unpack(args, 1, args.n))
+		end
+		if state.Completed[spec] then
+			return
+		end
+		state.Completed[spec] = true
+		spec.Pressed = false
+		spec.PressedAt = nil
+		spec.Animation = nil
+		local ok, err = pcall(function()
+			callTimed(spec, spec.Callback, false, table.unpack(args, 1, args.n))
+			if type(spec.WhilePressedUpdate) == "function" then
+				spec.WhilePressedUpdate(1)
+			end
+			callTimed(spec, spec.Callback, true, table.unpack(args, 1, args.n))
+			if type(spec.ReleaseCallback) == "function" then
+				callTimed(spec, spec.ReleaseCallback, true, table.unpack(args, 1, args.n))
+			end
+		end)
+		if not ok then
+			state.Completed[spec] = nil
+			error(err, 0)
+		end
+	end
+
+	state.HandleRelease = function(oldRelease, forceRelease, ...)
+		local args = table.pack(...)
+		local spec = CircleAction.Spec
+		if type(spec) == "table" and state.Completed[spec] then
+			state.Completed[spec] = nil
+			spec.Pressed = false
+			spec.PressedAt = nil
+			spec.Animation = nil
+			if forceRelease then
+				spec.ScreenPosition = nil
+				CircleAction.Spec = nil
+			end
+			return
+		end
+		return oldRelease(forceRelease, table.unpack(args, 1, args.n))
+	end
+
+	if type(hookfunction) == "function" then
+		if not state.PressHooked and type(CircleAction.Press) == "function" then
+			local oldPress
+			oldPress = hookfunction(CircleAction.Press, function(...)
+				return state.HandlePress(oldPress, ...)
+			end)
+			state.OldPress = oldPress
+			state.PressHooked = true
+		end
+		if not state.ReleaseHooked and type(CircleAction.Release) == "function" then
+			local oldRelease
+			oldRelease = hookfunction(CircleAction.Release, function(forceRelease, ...)
+				return state.HandleRelease(oldRelease, forceRelease, ...)
+			end)
+			state.OldRelease = oldRelease
+			state.ReleaseHooked = true
+		end
+	end
+
+	if state.VisualConnection then
+		pcall(function()
+			state.VisualConnection:Disconnect()
+		end)
+		state.VisualConnection = nil
+	end
+	if runService then
+		state.VisualConnection = runService.RenderStepped:Connect(function()
+			local frame = CircleAction.Frame
+			local hold = frame and frame:FindFirstChild("Hold")
+			if hold then
+				hold.Visible = false
+			end
+		end)
+	end
+
+	env.FastPunchWrapped = env.FastPunchWrapped or setmetatable({}, {
+		__mode = "k"
+	})
+	env.FastPunchGeneration = (env.FastPunchGeneration or 0) + 1
+	local generation = env.FastPunchGeneration
+
+	local function patch()
+		local debugLibrary = type(debug) == "table" and debug or nil
+		local setuv = debugLibrary and debugLibrary.setupvalue or type(setupvalue) == "function" and setupvalue or nil
+		if type(setuv) ~= "function" or type(getgc) ~= "function" then
+			return 0
+		end
+		local gcOk, objects = pcall(getgc, true)
+		if not gcOk or type(objects) ~= "table" then
+			return 0
+		end
+		local patched = 0
+		for _, object in ipairs(objects) do
+			if type(object) == "table" and not env.FastPunchWrapped[object] then
+				local original = rawget(object, "attemptPunch")
+				if type(original) == "function" then
+					local upvalueOk = pcall(setuv, original, 1, 0)
+					if upvalueOk then
+						local replacement = function(...)
+							pcall(setuv, original, 1, 0)
+							return original(...)
+						end
+						local assignOk = pcall(function()
+							object.attemptPunch = replacement
+						end)
+						if assignOk then
+							env.FastPunchWrapped[object] = true
+							patched += 1
+						end
+					end
+				end
+			end
+		end
+		return patched
+	end
+
+	env.FastPunchRescan = patch
+	patch()
+	task.spawn(function()
+		for _ = 1, 10 do
+			task.wait(3)
+			if env.FastPunchGeneration ~= generation then
+				return
+			end
+			patch()
+		end
+	end)
 end)
