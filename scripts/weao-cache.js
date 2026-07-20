@@ -10,24 +10,11 @@ const VERSION_ENDPOINTS = {
 };
 
 const EXECUTOR_ENDPOINT = "https://weao.xyz/api/status/exploits";
-const CHANGELOG_ALL_ENDPOINTS = [
-    "https://weao.xyz/api/status/exploits/changelogs",
-    "https://weao.xyz/api/changelogs/exploits",
-    "https://weao.xyz/api/exploits/changelogs"
-];
+const CHANGELOG_ALL_ENDPOINTS = [];
 const CHANGELOG_PATTERNS = [
-    "https://weao.xyz/api/status/exploits/{exploit}/changelogs",
-    "https://weao.xyz/api/status/exploits/{exploit}/changelog",
-    "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
-    "https://weao.xyz/api/status/exploits/changelog/{exploit}",
-    "https://weao.xyz/api/changelogs/exploits/{exploit}",
-    "https://weao.xyz/api/changelog/exploits/{exploit}",
-    "https://weao.xyz/api/exploits/{exploit}/changelogs",
-    "https://weao.xyz/api/exploits/{exploit}/changelog",
-    "https://weao.xyz/api/changelogs/{exploit}",
-    "https://weao.xyz/api/changelog/{exploit}"
+    "https://weao.xyz/api/status/exploits/changelogs/{exploit}"
 ];
-const CHANGELOG_IDENTIFIERS = ["title", "slug", "trackerId", "_id"];
+const CHANGELOG_IDENTIFIERS = ["title", "trackerId", "slug"];
 const CHANGELOG_REFRESH_INTERVAL = 6 * 60 * 60 * 1000;
 
 async function fetchJson(url) {
