@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-07-21T02:57:01.662Z",
+  "fetchedAt": "2026-07-21T06:02:54.113Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -1322,9 +1322,1504 @@
         "title": "Velocity",
         "trackerId": "WEAO4a1e0747",
         "_id": "680eaddf8b44717c060fcf8d",
-        "version": "1.2.2",
-        "updatedDate": "07/20/2026 at 7:00 PM UTC",
-        "changelogs": []
+        "version": "1.2.3",
+        "updatedDate": "07/21/2026 at 5:22 AM UTC",
+        "changelogs": {
+          "trackerId": "WEAO4a1e0747",
+          "name": "velocity",
+          "displayName": "Velocity",
+          "changelogs": [
+            {
+              "version": "0.2.8",
+              "changelog": "[*] Pre updated for version-b56286e823e04c25\nplease join discord.gg/velocityide",
+              "timestamp": 1753318397785,
+              "date": "2025-07-24T00:53:17.785Z",
+              "supportedRobloxVersion": "version-225e87fdb7254f64",
+              "updated": false
+            },
+            {
+              "version": "0.3.0",
+              "changelog": "[*] Fixed getconnections not working with signals setup with .Touched\n[*] Patched a crash method\n[*] Patched integer overflowing\nplease join discord.gg/velocityide",
+              "timestamp": 1753827988738,
+              "date": "2025-07-29T22:26:28.738Z",
+              "supportedRobloxVersion": "version-2a06298afe3947ab",
+              "updated": true
+            },
+            {
+              "version": "0.3.1",
+              "changelog": "[*] Updated to the latest Roblox version\n[*] Disabled drawing library and indicators due to crashing issues with rendering hook\nDisabled decompiler / getscriptbytecode due to a change in Roblox\nplease join discord.gg/velocityide",
+              "timestamp": 1753965470113,
+              "date": "2025-07-31T12:37:50.113Z",
+              "supportedRobloxVersion": "version-b8550645b8834e8a",
+              "updated": true
+            },
+            {
+              "version": "0.3.2",
+              "changelog": "[*] Updated to the latest Roblox version\n[*] sorry for long wait I was in a gooning session for 10 hours and I had to fix some techincal issues\n[*] Slightly rewrote some of the logic for injection\n[*] Disabled getscripthash for a rewrite\n[*] Slightly fixed lag issues\nplease join discord.gg/velocityide",
+              "timestamp": 1754562721461,
+              "date": "2025-08-07T10:32:01.461Z",
+              "supportedRobloxVersion": "version-3f74e22590714de4",
+              "updated": true
+            },
+            {
+              "version": "0.3.3",
+              "changelog": "[*] Added a lua drawing lib for the time being as I work on fixing the C++ one\n[*] Fixed getscripthash\n[*] Fixed bytecode related functions crashing\n[*] Made injection slightly better and faster\n[*] Fixed tp handler so you can inject from Home Page and transfer into multiple games\nplease join discord.gg/velocityide",
+              "timestamp": 1754666198617,
+              "date": "2025-08-08T15:16:38.617Z",
+              "supportedRobloxVersion": "version-3f74e22590714de4",
+              "updated": true
+            },
+            {
+              "version": "0.3.4",
+              "changelog": "[*] Updated to the latest Roblox version\n[*] Fixed drawing library\n[*] 99% unc again\n[*] Rewrote the entire rendering overlay\n[*] Made it so drawing lib doesn't show up on OBS / any capture applications\nplease join discord.gg/velocityide",
+              "timestamp": 1755117185806,
+              "date": "2025-08-13T20:33:05.806Z",
+              "supportedRobloxVersion": "version-ca90f2e615014a44",
+              "updated": true
+            },
+            {
+              "version": "0.3.5",
+              "changelog": "[*] Added better monitoring to the injector\n[*] Added failsafe to injection\nplease join discord.gg/velocityide",
+              "timestamp": 1755168477482,
+              "date": "2025-08-14T10:47:57.482Z",
+              "supportedRobloxVersion": "version-ca90f2e615014a44",
+              "updated": true
+            },
+            {
+              "version": "0.3.6",
+              "changelog": "[*] Updated to the latest Roblox version (LIVE)\n[*] Reopen the UI to recieve the update\nplease join discord.gg/velocityide",
+              "timestamp": 1755244404708,
+              "date": "2025-08-15T07:53:24.708Z",
+              "supportedRobloxVersion": "version-fe20d41d8fec4770",
+              "updated": true
+            },
+            {
+              "version": "0.3.7",
+              "changelog": "[+] Experimental bypass for Roblox's client modification check (possibly UD?)\nplease join discord.gg/velocityide",
+              "timestamp": 1755282385740,
+              "date": "2025-08-15T18:26:25.740Z",
+              "supportedRobloxVersion": "version-fe20d41d8fec4770",
+              "updated": true
+            },
+            {
+              "version": "0.3.8",
+              "changelog": "[*] Disable full screen optimization to fix blackscreening\n[*] Experimental injection method\n[+] New Injector\nplease join discord.gg/velocityide",
+              "timestamp": 1755453839685,
+              "date": "2025-08-17T18:03:59.685Z",
+              "supportedRobloxVersion": "version-fe20d41d8fec4770",
+              "updated": true
+            },
+            {
+              "version": "0.3.9",
+              "changelog": "[!] Disable full screen optimization to fix blackscreening\n[*] Fixed injector randomly freezing / crashing\n[*] Fixed a problem where the injector wasn't doing anything\nplease join discord.gg/velocityide",
+              "timestamp": 1755543240935,
+              "date": "2025-08-18T18:54:00.935Z",
+              "supportedRobloxVersion": "version-fe20d41d8fec4770",
+              "updated": true
+            },
+            {
+              "version": "0.4.0",
+              "changelog": "[!] Disable full screen optimization to fix blackscreening\n[*] Updated to the latest version of Roblox\nplease join discord.gg/velocityide",
+              "timestamp": 1755721383091,
+              "date": "2025-08-20T20:23:03.091Z",
+              "supportedRobloxVersion": "version-89b6c70d8f7f42ac",
+              "updated": true
+            },
+            {
+              "version": "0.4.1",
+              "changelog": "[!] Disable full screen optimization to fix blackscreening\n[*] Updated to the latest version of Roblox\n[*] Using a temp injection method as I work on my new one\n[*] if injection doesn't work the first time retry\nplease join discord.gg/velocityide",
+              "timestamp": 1756443983717,
+              "date": "2025-08-29T05:06:23.717Z",
+              "supportedRobloxVersion": "version-7b14ca0aa83149fa",
+              "updated": true
+            },
+            {
+              "version": "0.4.2",
+              "changelog": "[!] Disable full screen optimization to fix blackscreening\n[*] Updated to the latest version of Roblox\n[*] Using a temp injection method as I work on my new one\n[*] if injection doesn't work the first time retry\n[*] Fixed a mistake I made with injection sorry pookies :3\nplease join discord.gg/velocityide",
+              "timestamp": 1756444823795,
+              "date": "2025-08-29T05:20:23.795Z",
+              "supportedRobloxVersion": "version-7b14ca0aa83149fa",
+              "updated": true
+            },
+            {
+              "version": "0.4.3",
+              "changelog": "[!] Disable full screen optimization to fix blackscreening\n[*] New Injection Method\n[*] Slammed Hyperion\nplease join discord.gg/velocityide",
+              "timestamp": 1756486044115,
+              "date": "2025-08-29T16:47:24.115Z",
+              "supportedRobloxVersion": "version-7b14ca0aa83149fa",
+              "updated": true
+            },
+            {
+              "version": "0.4.4",
+              "changelog": "[!] Disable full screen optimization to fix blackscreening\n[*] Updated to the latest Roblox version\nplease join discord.gg/velocityide",
+              "timestamp": 1756532516720,
+              "date": "2025-08-30T05:41:56.720Z",
+              "supportedRobloxVersion": "version-65664807ac1d4e85",
+              "updated": true
+            },
+            {
+              "version": "0.4.5",
+              "changelog": "[!] Disable full screen optimization to fix blackscreening\n[*] Fixed a slight crash issue\nplease join discord.gg/velocityide",
+              "timestamp": 1756580023176,
+              "date": "2025-08-30T18:53:43.176Z",
+              "supportedRobloxVersion": "version-65664807ac1d4e85",
+              "updated": true
+            },
+            {
+              "version": "0.4.6",
+              "changelog": "[!] Disable full screen optimization to fix blackscreening\n[*] Fixed getcustomasset not working correctly\n[*] Fixed another problem with 'Roblox crashing' unexpectedly\n[!] 3rd time is a charm fr\nplease join discord.gg/velocityide",
+              "timestamp": 1756589323322,
+              "date": "2025-08-30T21:28:43.322Z",
+              "supportedRobloxVersion": "version-65664807ac1d4e85",
+              "updated": true
+            },
+            {
+              "version": "0.4.7",
+              "changelog": "[!] Disable full screen optimization to fix blackscreening\n[*] Fixed drawing lib erroring out when trying to apply properties\n[*] Fixed an issue with injection causing instruction mess ups (should fix crashing)\n[!] 4th time is a charm fr\nplease join discord.gg/velocityide",
+              "timestamp": 1756689884800,
+              "date": "2025-09-01T01:24:44.800Z",
+              "supportedRobloxVersion": "version-65664807ac1d4e85",
+              "updated": true
+            },
+            {
+              "version": "0.4.8",
+              "changelog": "[!] Disable full screen optimization to fix blackscreening\n[*] Updated for the latest Roblox version\n[*] Reverted to old injection\nplease join discord.gg/velocityide",
+              "timestamp": 1756991628445,
+              "date": "2025-09-04T13:13:48.445Z",
+              "supportedRobloxVersion": "version-c1ac69007bdc4e48",
+              "updated": true
+            },
+            {
+              "version": "0.4.9",
+              "changelog": "[!] Disable full screen optimization to fix blackscreening\n[*] Updated for the latest Roblox version\n[*] Fixed Injection\n[*] Fixed crashing on sunc\n[*] Rewrote debug library\n[*] Rewrote environment functions\n[!] if the auto update fails, redownload from our website: getvelocity.lol\nplease join discord.gg/velocityide",
+              "timestamp": 1757612161144,
+              "date": "2025-09-11T17:36:01.144Z",
+              "supportedRobloxVersion": "version-8afc5a7d5e894d22",
+              "updated": true
+            },
+            {
+              "version": "0.5.0",
+              "changelog": "[!] Disable full screen optimization to fix blackscreening\n[*] Fixed TLS setup crashing in the injector\n[!] if the auto update fails, redownload from our website: getvelocity.lol\nplease join discord.gg/velocityide",
+              "timestamp": 1757619977864,
+              "date": "2025-09-11T19:46:17.864Z",
+              "supportedRobloxVersion": "version-8afc5a7d5e894d22",
+              "updated": true
+            },
+            {
+              "version": "0.5.1",
+              "changelog": "[!] Disable full screen optimization to fix blackscreening\n[*] Updated for the latest Roblox client\n[!] if the auto update fails, redownload from our website: getvelocity.lol\n[!] I'm still standinggggg\nplease join discord.gg/velocityide",
+              "timestamp": 1759444056348,
+              "date": "2025-10-02T22:27:36.348Z",
+              "supportedRobloxVersion": "version-494828652c274712",
+              "updated": true
+            },
+            {
+              "version": "0.5.2",
+              "changelog": "[!] Disable full screen optimization to fix blackscreening\n[*] Updated for the latest Roblox client\n[!] if the auto update fails, redownload from our website: getvelocity.lol\n[!] Sorry we took so long, had to update bypasses n such :3\n[!] New injector coming soon kings & queens\nplease join discord.gg/velocityide",
+              "timestamp": 1759958242769,
+              "date": "2025-10-08T21:17:22.769Z",
+              "supportedRobloxVersion": "version-d34359a5577645e2",
+              "updated": true
+            },
+            {
+              "version": "0.5.3",
+              "changelog": "[!] Disable full screen optimization to fix blackscreening\n[!] Official website: getvelocity.lol\n[+] New Injector (if you have issues make sure to dm me as it's experimental)\nplease join discord.gg/velocityide",
+              "timestamp": 1760209011072,
+              "date": "2025-10-11T18:56:51.072Z",
+              "supportedRobloxVersion": "version-d34359a5577645e2",
+              "updated": true
+            },
+            {
+              "version": "0.5.5",
+              "changelog": "[!] Disable full screen optimization to fix blackscreening\n[!] Official website: getvelocity.lol\n[!] Man we thought to ourselfs and said hey lets come back for this halloween\n[*] Chance of getting banned is high, please only use alts and do not have multiple Roblox clients open at once as we're not using our standard injection with it's bypasses\nplease join discord.gg/velocityide",
+              "timestamp": 1761956083018,
+              "date": "2025-11-01T00:14:43.018Z",
+              "supportedRobloxVersion": "version-889d2588b25a43d1",
+              "updated": true
+            },
+            {
+              "version": "0.5.6",
+              "changelog": "[!] Disable full screen optimization to fix blackscreening\n[!] Official website: getvelocity.lol\n[+] Rewrote websocket library\n[+] Fixed getscripthash\n[*] Fixed yara detections\nplease join discord.gg/velocityide",
+              "timestamp": 1762284309251,
+              "date": "2025-11-04T19:25:09.251Z",
+              "supportedRobloxVersion": "version-889d2588b25a43d1",
+              "updated": true
+            },
+            {
+              "version": "0.5.7",
+              "changelog": "[!] Disable full screen optimization to fix blackscreening\n[!] Official website: getvelocity.lol\n[!] Expect some sort of random crash as this update uses some absolutely diabolical methods to get velocity working\nplease join discord.gg/velocityide",
+              "timestamp": 1762410616972,
+              "date": "2025-11-06T06:30:16.972Z",
+              "supportedRobloxVersion": "version-f6dd34ecac7b4642",
+              "updated": true
+            },
+            {
+              "version": "0.5.8",
+              "changelog": "[!] Disable full screen optimization to fix blackscreening\n[!] Official website: getvelocity.lol\n[!] This is the last update for the Velocity internal for awhile, some functions will appear broken on sunc because of some bugs on their end and mine. Enjoy!\nplease join discord.gg/velocityide",
+              "timestamp": 1766949951222,
+              "date": "2025-12-28T19:25:51.222Z",
+              "supportedRobloxVersion": "version-5b077c09380f4fe6",
+              "updated": true
+            },
+            {
+              "version": "0.5.9",
+              "changelog": "[!] Disable full screen optimization to fix blackscreening\n[!] Official website: getvelocity.lol\n[!] This is the last update for the Velocity internal for awhile, some functions will appear broken on sunc because of some bugs on their end and mine. Enjoy!\n[*] Sorry Roblox told me to leave a detection in on the last update, I'm being nice and removed it on this one <3\nplease join discord.gg/velocityide",
+              "timestamp": 1766951451639,
+              "date": "2025-12-28T19:50:51.639Z",
+              "supportedRobloxVersion": "version-5b077c09380f4fe6",
+              "updated": true
+            },
+            {
+              "version": "0.6.0",
+              "changelog": "[!] Disable full screen optimization to fix blackscreening\n[!] Official website: getvelocity.lol\n[!] This is the last update for the Velocity internal for awhile, some functions will appear broken on sunc because of some bugs on their end and mine. Enjoy!\n[*] Fixed multi-instance injection not working, you can now select and inject into multiple Roblox instances through the UI and API\nplease join discord.gg/velocityide",
+              "timestamp": 1767064679139,
+              "date": "2025-12-30T03:17:59.139Z",
+              "supportedRobloxVersion": "version-5b077c09380f4fe6",
+              "updated": true
+            },
+            {
+              "version": "0.6.1",
+              "changelog": "[!] Disable full screen optimization to fix blackscreening\n[!] Official website: getvelocity.lol\n[!] This is the last update for the Velocity internal for awhile, some functions will appear broken on sunc because of some bugs on their end and mine. Enjoy!\n[+] Raknet.desync (this function accepts 1 arg which is a boolean to toggle on and off, rejoining a game will toggle it off!)\n[!] Patched some new vulnerabilities\nplease join discord.gg/velocityide",
+              "timestamp": 1767189864060,
+              "date": "2025-12-31T14:04:24.060Z",
+              "supportedRobloxVersion": "version-5b077c09380f4fe6",
+              "updated": true
+            },
+            {
+              "version": "0.6.2",
+              "changelog": "[!] Updated for the latest Roblox client\n[!] Disable full screen optimization to fix blackscreening\n[!] Official website: getvelocity.lol\n[!] This is the last update for the Velocity internal for awhile, some functions will appear broken on sunc because of some bugs on their end and mine. Enjoy!\nplease join discord.gg/velocityide",
+              "timestamp": 1767211059308,
+              "date": "2025-12-31T19:57:39.308Z",
+              "supportedRobloxVersion": "version-f8f53a67efca4c34",
+              "updated": true
+            },
+            {
+              "version": "0.6.3",
+              "changelog": "[!] Official website: getvelocity.lol\n[+] Optimized drawing library\n[+] Fixed lag issues\n[!] This is the last update for the Velocity internal for awhile, some functions will appear broken on sunc because of some bugs on their end and mine. Enjoy!\nplease join discord.gg/velocityide",
+              "timestamp": 1767236818219,
+              "date": "2026-01-01T03:06:58.219Z",
+              "supportedRobloxVersion": "version-f8f53a67efca4c34",
+              "updated": true
+            },
+            {
+              "version": "0.6.4",
+              "changelog": "[!] Official website: realvelocity.xyz\n[!] Our old website 'getvelocity.lol' was taken down by cloudflare and our old APIs no longer work, if you have issues with the auto updater not working etc you'll need to grab the new file from our website or dc server or you can redownload velocity entirely from the site\n[*] Rewrote security check functions to be faster and more efficient\n[*] Tweaked getconnections to be more reliable\nplease join discord.gg/velocityide",
+              "timestamp": 1767391767830,
+              "date": "2026-01-02T22:09:27.830Z",
+              "supportedRobloxVersion": "version-f8f53a67efca4c34",
+              "updated": true
+            },
+            {
+              "version": "0.6.5",
+              "changelog": "[!] Official website: realvelocity.xyz\n[!] Our old website 'getvelocity.lol' was taken down by cloudflare and our old APIs no longer work, if you have issues with the auto updater not working etc you'll need to grab the new file from our website or dc server or you can redownload velocity entirely from the site\n\n[*] getconnections signal indexing lagging randomly fixed\n[*] TP Handler rewrote\n[*] debug.getinfo stack level passing and function passing fixed\n[*] Code optimizations\nplease join discord.gg/velocityide",
+              "timestamp": 1767489328944,
+              "date": "2026-01-04T01:15:28.944Z",
+              "supportedRobloxVersion": "version-f8f53a67efca4c34",
+              "updated": true
+            },
+            {
+              "version": "0.6.6",
+              "changelog": "[!] Official website: realvelocity.xyz\n[!] Our old website 'getvelocity.lol' was taken down by cloudflare and our old APIs no longer work, if you have issues with the auto updater not working etc you'll need to grab the new file from our website or dc server or you can redownload velocity entirely from the site\n\n[*] Fixed the horrible implementation of getactors & getactorthreads\n[*] Rewrote yielding implementation for httpget, request, http_post (experimental lmk if it crashes out)\n\nplease join discord.gg/velocityide",
+              "timestamp": 1767864014182,
+              "date": "2026-01-08T09:20:14.182Z",
+              "supportedRobloxVersion": "version-89d89cb2d6b649be",
+              "updated": true
+            },
+            {
+              "version": "0.6.7",
+              "changelog": "[!] Official website: realvelocity.xyz\n[!] Our old website 'getvelocity.lol' was taken down by cloudflare and our old APIs no longer work, if you have issues with the auto updater not working etc you'll need to grab the new file from our website or dc server or you can redownload velocity entirely from the site\n\n[+] Rewrote environment setup\n[+] Fixed stack detection on firesignal & defersignal also :Fire and :Defer methods on getconnections\n[+] Fixed request & firesignal failing on sunc\n\nplease join discord.gg/velocityide",
+              "timestamp": 1768110379201,
+              "date": "2026-01-11T05:46:19.201Z",
+              "supportedRobloxVersion": "version-89d89cb2d6b649be",
+              "updated": true
+            },
+            {
+              "version": "0.6.8",
+              "changelog": "[!] Official website: realvelocity.xyz\n[!] Our old website 'getvelocity.lol' was taken down by cloudflare and our old APIs no longer work, if you have issues with the auto updater not working etc you'll need to grab the new file from our website or dc server or you can redownload velocity entirely from the site\n\n[!] Rewrote isparallel / checkparallel / inparallel\n[!] Fixed isscriptable\n[!] Fixed setscriptable\n[!] Fixed gethiddenproperty\n[!] Fixed sethiddenproperty\n[!] Bypassed detection on getscriptclosure causing users to get banned on Roblox if used #UDFromTheCheck\n[+] Added filtergc\n[!] Fixed auto-execute (will only load .txt & .lua files)\n[!] isscriptable & setscriptable & filtergc now pass on sunc test, 96% sunc (technically 98% but sunc gethidden and sethidden tests are broke)\n\nplease join discord.gg/velocityide",
+              "timestamp": 1768138759915,
+              "date": "2026-01-11T13:39:19.915Z",
+              "supportedRobloxVersion": "version-89d89cb2d6b649be",
+              "updated": true
+            },
+            {
+              "version": "0.6.9",
+              "changelog": "[!] Official website: realvelocity.xyz\n[!] Our old website 'getvelocity.lol' was taken down by cloudflare and our old APIs no longer work, if you have issues with the auto updater not working etc you'll need to grab the new file from our website or dc server or you can redownload velocity entirely from the site\n\n[+] added getcallstack\n[!] Patched an RCE in function hooking\n\nplease join discord.gg/velocityide",
+              "timestamp": 1768260484924,
+              "date": "2026-01-12T23:28:04.924Z",
+              "supportedRobloxVersion": "version-89d89cb2d6b649be",
+              "updated": true
+            },
+            {
+              "version": "0.7.0 Experimental",
+              "changelog": "[!] Official website: realvelocity.xyz\n[!] Our old website 'getvelocity.lol' was taken down by cloudflare and our old APIs no longer work, if you have issues with the auto updater not working etc you'll need to grab the new file from our website or dc server or you can redownload velocity entirely from the site\n\n[*] Updated to the latest Roblox version\n[!] THIS VERSION IS EXPERIMENTAL, EXPECT CRASHES AND BUGS\n\nplease join discord.gg/velocityide",
+              "timestamp": 1768452781056,
+              "date": "2026-01-15T04:53:01.056Z",
+              "supportedRobloxVersion": "version-1588a9c58c674e38",
+              "updated": true
+            },
+            {
+              "version": "0.7.1",
+              "changelog": "[!] Official website: realvelocity.xyz\n[!] Our old website 'getvelocity.lol' was taken down by cloudflare and our old APIs no longer work, if you have issues with the auto updater not working etc you'll need to grab the new file from our website or dc server or you can redownload velocity entirely from the site\n\n[*] Slightly fixed the crash with replicatesignal (not 100% but better than before)\n[*] Rewrote script execution\n\nplease join discord.gg/velocityide",
+              "timestamp": 1768635686197,
+              "date": "2026-01-17T07:41:26.197Z",
+              "supportedRobloxVersion": "version-1588a9c58c674e38",
+              "updated": true
+            },
+            {
+              "version": "0.7.2",
+              "changelog": "[!] Official website: realvelocity.xyz\n[!] Our old website 'getvelocity.lol' was taken down by cloudflare and our old APIs no longer work, if you have issues with the auto updater not working etc you'll need to grab the new file from our website or dc server or you can redownload velocity entirely from the site\n\n[*] Reverted back to the old execution method\n[*] Updated our internal lua library to be more up-to date with Roblox's\n[*] Malice can you turn your auto link reporter bot off for the next hour thanks\n[*] Redone newcclosure\n[+] wrapclosure\n[+] newlclosure\n\nplease join discord.gg/velocityide",
+              "timestamp": 1768731642921,
+              "date": "2026-01-18T10:20:42.921Z",
+              "supportedRobloxVersion": "version-1588a9c58c674e38",
+              "updated": true
+            },
+            {
+              "version": "0.7.3",
+              "changelog": "[!] Official website: realvelocity.xyz\n[!] Our old website 'getvelocity.lol' was taken down by cloudflare and our old APIs no longer work, if you have issues with the auto updater not working etc you'll need to grab the new file from our website or dc server or you can redownload velocity entirely from the site\n\n[*] Updated to the latest version of Roblox\n[!] Please do not use your main account unless you want to get banned like a dumbass\n[!] Running sunc will now crash you instantly so don't even bother to try\n\nplease join discord.gg/velocityide",
+              "timestamp": 1769169065365,
+              "date": "2026-01-23T11:51:05.365Z",
+              "supportedRobloxVersion": "version-0f5223fb6e7e4955",
+              "updated": true
+            },
+            {
+              "version": "0.7.4",
+              "changelog": "[!] Official website: realvelocity.xyz\n[!] Our old website 'getvelocity.lol' was taken down by cloudflare and our old APIs no longer work, if you have issues with the auto updater not working etc you'll need to grab the new file from our website or dc server or you can redownload velocity entirely from the site\n\n[*] Updated to the latest version of Roblox\n[!] Please do not use your main account unless you want to get banned like a dumbass\n[!] Running sunc will now crash you instantly so don't even bother to try\n[*] Fixed filesystem blocking .json extensions for no reason\n[*] Also there's a banwave going on, they last for about a day or two\n\nplease join discord.gg/velocityide",
+              "timestamp": 1769171105789,
+              "date": "2026-01-23T12:25:05.789Z",
+              "supportedRobloxVersion": "version-0f5223fb6e7e4955",
+              "updated": true
+            },
+            {
+              "version": "0.7.5",
+              "changelog": "[!] Official website: realvelocity.xyz\n[!] Our old website 'getvelocity.lol' was taken down by cloudflare and our old APIs no longer work, if you have issues with the auto updater not working etc you'll need to grab the new file from our website or dc server or you can redownload velocity entirely from the site\n\n[*] Updated to the latest version of Roblox\n\nplease join discord.gg/velocityide",
+              "timestamp": 1769196958519,
+              "date": "2026-01-23T19:35:58.519Z",
+              "supportedRobloxVersion": "version-8b8c34790f814a73",
+              "updated": true
+            },
+            {
+              "version": "0.7.6",
+              "changelog": "[!] Official website: realvelocity.xyz\n[!] Our old website 'getvelocity.lol' was taken down by cloudflare and our old APIs no longer work, if you have issues with the auto updater not working etc you'll need to grab the new file from our website or dc server or you can redownload velocity entirely from the site\n\n[+] Patched basic debug.info stack detection on hooks made by hookfunction\n[+] Patched stack overflow detection in newcclosure\n[+] Fixed dex crashing\n[+] Fixed gethiddenproperty & sethiddenproperty\n\n\nplease join discord.gg/velocityide",
+              "timestamp": 1769269687394,
+              "date": "2026-01-24T15:48:07.394Z",
+              "supportedRobloxVersion": "version-8b8c34790f814a73",
+              "updated": true
+            },
+            {
+              "version": "0.7.7",
+              "changelog": "[!] Official website: realvelocity.xyz\n[!] Our old website 'getvelocity.lol' was taken down by cloudflare and our old APIs no longer work, if you have issues with the auto updater not working etc you'll need to grab the new file from our website or dc server or you can redownload velocity entirely from the site\n\n[!] Updated for the latest Roblox version\n[!] Son I'm crine\n\n\nplease join discord.gg/velocityide",
+              "timestamp": 1769876090401,
+              "date": "2026-01-31T16:14:50.401Z",
+              "supportedRobloxVersion": "version-db4634f0e27d4d36",
+              "updated": true
+            },
+            {
+              "version": "0.7.8",
+              "changelog": "[!] Official website: realvelocity.xyz\n[!] Our old website 'getvelocity.lol' was taken down by cloudflare and our old APIs no longer work, if you have issues with the auto updater not working etc you'll need to grab the new file from our website or dc server or you can redownload velocity entirely from the site\n\n[!] Updated for the latest Roblox version\n[!] Son I'm crine\n\n\nplease join discord.gg/velocityide",
+              "timestamp": 1770441467728,
+              "date": "2026-02-07T05:17:47.728Z",
+              "supportedRobloxVersion": "version-80c7b8e578f241ff",
+              "updated": true
+            },
+            {
+              "version": "0.7.9",
+              "changelog": "[!] Official website: realvelocity.xyz\n[!] Our old website 'getvelocity.lol' was taken down by cloudflare and our old APIs no longer work, if you have issues with the auto updater not working etc you'll need to grab the new file from our website or dc server or you can redownload velocity entirely from the site\n\n[!] Updated for the latest Roblox version\n[*] Fixed 10 minute crash\n[*] Rewrote tp handler\n[*] Fixed a random error with injection\n[!] Son I'm crine\n\n\nplease join discord.gg/velocityide",
+              "timestamp": 1770946407746,
+              "date": "2026-02-13T01:33:27.746Z",
+              "supportedRobloxVersion": "version-bd08027bb04e4045",
+              "updated": true
+            },
+            {
+              "version": "0.8.0",
+              "changelog": "[!] Official website: realvelocity.xyz\n[!] Our old website 'getvelocity.lol' was taken down by cloudflare and our old APIs no longer work, if you have issues with the auto updater not working etc you'll need to grab the new file from our website or dc server or you can redownload velocity entirely from the site\n\n[+] Fixed injector crashing aka it was being a bad boy 😠\n\nplease join discord.gg/velocityide",
+              "timestamp": 1770971408664,
+              "date": "2026-02-13T08:30:08.664Z",
+              "supportedRobloxVersion": "version-bd08027bb04e4045",
+              "updated": true
+            },
+            {
+              "version": "0.8.1",
+              "changelog": "[!] Updated for the latest Roblox version\n\nplease join discord.gg/velocityide",
+              "timestamp": 1771453430183,
+              "date": "2026-02-18T22:23:50.183Z",
+              "supportedRobloxVersion": "version-df7528517c6849f7",
+              "updated": true
+            },
+            {
+              "version": "0.8.2",
+              "changelog": "[!] Updated for the latest Roblox version\n\nplease join discord.gg/velocityide",
+              "timestamp": 1772140809911,
+              "date": "2026-02-26T21:20:09.911Z",
+              "supportedRobloxVersion": "version-760d064d05424689",
+              "updated": true
+            },
+            {
+              "version": "0.8.3",
+              "changelog": "[!] Updated for the latest Roblox version\n\nplease join discord.gg/velocityide",
+              "timestamp": 1772729818748,
+              "date": "2026-03-05T16:56:58.748Z",
+              "supportedRobloxVersion": "version-d599f7fc52a8404c",
+              "updated": true
+            },
+            {
+              "version": "0.8.4",
+              "changelog": "[!] Updated for the latest Roblox version\n[!] Velocity V3 Soon\n\nplease join discord.gg/velocityide",
+              "timestamp": 1773349097111,
+              "date": "2026-03-12T20:58:17.111Z",
+              "supportedRobloxVersion": "version-b130242ed064436f",
+              "updated": true
+            },
+            {
+              "version": "0.8.5",
+              "changelog": "[!] Updated for the latest Roblox version\n[!] Velocity V3 Soon\n\nplease join discord.gg/velocityide",
+              "timestamp": 1773857491098,
+              "date": "2026-03-18T18:11:31.098Z",
+              "supportedRobloxVersion": "version-ae421f0582e54718",
+              "updated": true
+            },
+            {
+              "version": "0.8.6",
+              "changelog": "[*] Fixed multi-injection & multi-execution\n[*] Fixed an issue with proto based functions and error line information being incorrect\n[!] Velocity V3 Soon\n\nplease join discord.gg/velocityide",
+              "timestamp": 1774117019574,
+              "date": "2026-03-21T18:16:59.574Z",
+              "supportedRobloxVersion": "version-ae421f0582e54718",
+              "updated": true
+            },
+            {
+              "version": "0.8.7",
+              "changelog": "[*] Updated for the latest Roblox\n[!] Velocity V3 Soon\n\nplease join discord.gg/velocityide",
+              "timestamp": 1774613070713,
+              "date": "2026-03-27T12:04:30.713Z",
+              "supportedRobloxVersion": "version-6776addb8fbc4d17",
+              "updated": true
+            },
+            {
+              "version": "0.8.8",
+              "changelog": "[*] Updated for the latest Roblox\n[!] Velocity V3 Soon\n\nplease join discord.gg/velocityide",
+              "timestamp": 1775206799228,
+              "date": "2026-04-03T08:59:59.228Z",
+              "supportedRobloxVersion": "version-689e359b09ad43b0",
+              "updated": true
+            },
+            {
+              "version": "0.8.9",
+              "changelog": "[*] Updated for the latest Roblox\n[*] Fixed execution (this does not fix the 10m / 20m crash)\n[!] Velocity V3 Soon\n\nplease join discord.gg/velocityide",
+              "timestamp": 1775370430837,
+              "date": "2026-04-05T06:27:10.837Z",
+              "supportedRobloxVersion": "version-689e359b09ad43b0",
+              "updated": true
+            },
+            {
+              "version": "0.9.1",
+              "changelog": "[!] Forgot to fix the rat my bad gang\n[!] Velocity V3 Soon\n\nplease join discord.gg/velocityide",
+              "timestamp": 1775610469344,
+              "date": "2026-04-08T01:07:49.344Z",
+              "supportedRobloxVersion": "version-689e359b09ad43b0",
+              "updated": true
+            },
+            {
+              "version": "0.9.1",
+              "changelog": "Nothing to see here rn",
+              "timestamp": 1776016809500,
+              "date": "2026-04-12T18:00:09.500Z",
+              "supportedRobloxVersion": "version-689e359b09ad43b0",
+              "updated": false
+            },
+            {
+              "version": "0.9.2",
+              "changelog": "Updated for the latest Roblox",
+              "timestamp": 1776595110947,
+              "date": "2026-04-19T10:38:30.947Z",
+              "supportedRobloxVersion": "version-9d412f44a6fe4081",
+              "updated": true
+            },
+            {
+              "version": "0.9.2",
+              "changelog": "Updated for the latest Roblox",
+              "timestamp": 1776618048356,
+              "date": "2026-04-19T17:00:48.356Z",
+              "supportedRobloxVersion": "version-9d412f44a6fe4081",
+              "updated": true
+            },
+            {
+              "version": "0.9.3",
+              "changelog": "Updated for the latest Roblox",
+              "timestamp": 1776899766626,
+              "date": "2026-04-22T23:16:06.626Z",
+              "supportedRobloxVersion": "version-2e6461290a3541f5",
+              "updated": true
+            },
+            {
+              "version": "0.9.4",
+              "changelog": "Updated for the latest Roblox",
+              "timestamp": 1777498898699,
+              "date": "2026-04-29T21:41:38.699Z",
+              "supportedRobloxVersion": "version-acc4b74f79e743b9",
+              "updated": true
+            },
+            {
+              "version": "0.9.4",
+              "changelog": "Updated for the latest Roblox",
+              "timestamp": 1778532709121,
+              "date": "2026-05-11T20:51:49.121Z",
+              "supportedRobloxVersion": "version-acc4b74f79e743b9",
+              "updated": false
+            },
+            {
+              "version": "0.9.4",
+              "changelog": "Updated for the latest Roblox",
+              "timestamp": 1778534687572,
+              "date": "2026-05-11T21:24:47.572Z",
+              "supportedRobloxVersion": "version-acc4b74f79e743b9",
+              "updated": false
+            },
+            {
+              "version": "0.9.4",
+              "changelog": "Updated for the latest Roblox",
+              "timestamp": 1778534698095,
+              "date": "2026-05-11T21:24:58.095Z",
+              "supportedRobloxVersion": "version-acc4b74f79e743b9",
+              "updated": false
+            },
+            {
+              "version": "0.9.4",
+              "changelog": "Updated for the latest Roblox",
+              "timestamp": 1778534711117,
+              "date": "2026-05-11T21:25:11.117Z",
+              "supportedRobloxVersion": "version-acc4b74f79e743b9",
+              "updated": false
+            },
+            {
+              "version": "0.9.5",
+              "changelog": "Feature entry test 1\nFeature entry test 2",
+              "timestamp": 1778570959594,
+              "date": "2026-05-12T07:29:19.594Z",
+              "supportedRobloxVersion": "version-acc4b74f79e743b9",
+              "updated": false
+            },
+            {
+              "version": "0.9.4",
+              "changelog": "Updated for the latest Roblox",
+              "timestamp": 1778571084644,
+              "date": "2026-05-12T07:31:24.644Z",
+              "supportedRobloxVersion": "version-acc4b74f79e743b9",
+              "updated": false
+            },
+            {
+              "version": "0.9.4",
+              "changelog": "Updated for the latest Roblox",
+              "timestamp": 1778576500296,
+              "date": "2026-05-12T09:01:40.296Z",
+              "supportedRobloxVersion": "version-acc4b74f79e743b9",
+              "updated": false
+            },
+            {
+              "version": "0.9.4",
+              "changelog": "Updated for the latest Roblox",
+              "timestamp": 1778599657637,
+              "date": "2026-05-12T15:27:37.637Z",
+              "supportedRobloxVersion": "version-acc4b74f79e743b9",
+              "updated": false
+            },
+            {
+              "version": "0.9.4",
+              "changelog": "Updated for the latest Roblox",
+              "timestamp": 1778609926765,
+              "date": "2026-05-12T18:18:46.765Z",
+              "supportedRobloxVersion": "version-acc4b74f79e743b9",
+              "updated": false
+            },
+            {
+              "version": "0.9.4",
+              "changelog": "Updated for the latest Roblox",
+              "timestamp": 1778609939383,
+              "date": "2026-05-12T18:18:59.383Z",
+              "supportedRobloxVersion": "version-acc4b74f79e743b9",
+              "updated": false
+            },
+            {
+              "version": "0.9.4",
+              "changelog": "Updated for the latest Roblox",
+              "timestamp": 1778609959443,
+              "date": "2026-05-12T18:19:19.443Z",
+              "supportedRobloxVersion": "version-acc4b74f79e743b9",
+              "updated": false
+            },
+            {
+              "version": "0.9.4",
+              "changelog": "Updated for the latest Roblox",
+              "timestamp": 1778643431069,
+              "date": "2026-05-13T03:37:11.069Z",
+              "supportedRobloxVersion": "version-acc4b74f79e743b9",
+              "updated": false
+            },
+            {
+              "version": "0.9.4",
+              "changelog": "Updated for the latest Roblox",
+              "timestamp": 1778643444443,
+              "date": "2026-05-13T03:37:24.443Z",
+              "supportedRobloxVersion": "version-acc4b74f79e743b9",
+              "updated": false
+            },
+            {
+              "version": "0.9.4",
+              "changelog": "Updated for the latest Roblox",
+              "timestamp": 1778643464421,
+              "date": "2026-05-13T03:37:44.421Z",
+              "supportedRobloxVersion": "version-acc4b74f79e743b9",
+              "updated": false
+            },
+            {
+              "version": "0.9.4",
+              "changelog": "Updated for the latest Roblox",
+              "timestamp": 1778644100204,
+              "date": "2026-05-13T03:48:20.204Z",
+              "supportedRobloxVersion": "version-acc4b74f79e743b9",
+              "updated": false
+            },
+            {
+              "version": "0.9.4",
+              "changelog": "Updated for the latest Roblox",
+              "timestamp": 1778647556740,
+              "date": "2026-05-13T04:45:56.740Z",
+              "supportedRobloxVersion": "version-acc4b74f79e743b9",
+              "updated": false
+            },
+            {
+              "version": "0.9.5",
+              "changelog": "This is not an actual update it's just me testing that the new endpoint works",
+              "timestamp": 1778755712168,
+              "date": "2026-05-14T10:48:32.168Z",
+              "supportedRobloxVersion": "version-ec412128eba3476e",
+              "updated": true
+            },
+            {
+              "version": "0.9.4",
+              "changelog": "Updated for the latest Roblox",
+              "timestamp": 1778755832783,
+              "date": "2026-05-14T10:50:32.783Z",
+              "supportedRobloxVersion": "version-acc4b74f79e743b9",
+              "updated": false
+            },
+            {
+              "version": "0.9.5",
+              "changelog": "Updated for the latest Roblox",
+              "timestamp": 1778992612749,
+              "date": "2026-05-17T04:36:52.749Z",
+              "supportedRobloxVersion": "version-ec412128eba3476e",
+              "updated": true
+            },
+            {
+              "version": "0.9.5",
+              "changelog": "Updated for the latest Roblox\nNew Injector",
+              "timestamp": 1779205894450,
+              "date": "2026-05-19T15:51:34.450Z",
+              "supportedRobloxVersion": "version-ec412128eba3476e",
+              "updated": false
+            },
+            {
+              "version": "0.9.5",
+              "changelog": "Updated for the latest Roblox\nNew Injector",
+              "timestamp": 1779205909597,
+              "date": "2026-05-19T15:51:49.597Z",
+              "supportedRobloxVersion": "version-ec412128eba3476e",
+              "updated": false
+            },
+            {
+              "version": "0.9.5",
+              "changelog": "Updated for the latest Roblox\nNew Injector",
+              "timestamp": 1779215206845,
+              "date": "2026-05-19T18:26:46.845Z",
+              "supportedRobloxVersion": "version-ec412128eba3476e",
+              "updated": false
+            },
+            {
+              "version": "0.9.5",
+              "changelog": "Updated for the latest Roblox\nNew Injector",
+              "timestamp": 1779215882312,
+              "date": "2026-05-19T18:38:02.312Z",
+              "supportedRobloxVersion": "version-ec412128eba3476e",
+              "updated": false
+            },
+            {
+              "version": "0.9.5",
+              "changelog": "Updated for the latest Roblox\nNew Injector",
+              "timestamp": 1779239673331,
+              "date": "2026-05-20T01:14:33.331Z",
+              "supportedRobloxVersion": "version-ec412128eba3476e",
+              "updated": false
+            },
+            {
+              "version": "0.9.5",
+              "changelog": "Updated for the latest Roblox\nNew Injector",
+              "timestamp": 1779239683728,
+              "date": "2026-05-20T01:14:43.728Z",
+              "supportedRobloxVersion": "version-ec412128eba3476e",
+              "updated": false
+            },
+            {
+              "version": "0.9.5",
+              "changelog": "Updated for the latest Roblox\nNew Injector",
+              "timestamp": 1779239694539,
+              "date": "2026-05-20T01:14:54.539Z",
+              "supportedRobloxVersion": "version-ec412128eba3476e",
+              "updated": false
+            },
+            {
+              "version": "0.9.5",
+              "changelog": "Updated for the latest Roblox\nNew Injector",
+              "timestamp": 1779256747866,
+              "date": "2026-05-20T05:59:07.866Z",
+              "supportedRobloxVersion": "version-ec412128eba3476e",
+              "updated": false
+            },
+            {
+              "version": "0.9.5",
+              "changelog": "Updated for the latest Roblox\nNew Injector",
+              "timestamp": 1779256762924,
+              "date": "2026-05-20T05:59:22.924Z",
+              "supportedRobloxVersion": "version-ec412128eba3476e",
+              "updated": false
+            },
+            {
+              "version": "0.9.5",
+              "changelog": "Updated for the latest Roblox\nNew Injector",
+              "timestamp": 1779268392304,
+              "date": "2026-05-20T09:13:12.304Z",
+              "supportedRobloxVersion": "version-ec412128eba3476e",
+              "updated": false
+            },
+            {
+              "version": "0.9.5",
+              "changelog": "Updated for the latest Roblox\nNew Injector",
+              "timestamp": 1779268407432,
+              "date": "2026-05-20T09:13:27.432Z",
+              "supportedRobloxVersion": "version-ec412128eba3476e",
+              "updated": false
+            },
+            {
+              "version": "0.9.5",
+              "changelog": "Updated for the latest Roblox\nNew Injector",
+              "timestamp": 1779321379459,
+              "date": "2026-05-20T23:56:19.459Z",
+              "supportedRobloxVersion": "version-ec412128eba3476e",
+              "updated": false
+            },
+            {
+              "version": "0.9.5",
+              "changelog": "Updated for the latest Roblox\nNew Injector",
+              "timestamp": 1779329479056,
+              "date": "2026-05-21T02:11:19.056Z",
+              "supportedRobloxVersion": "version-ec412128eba3476e",
+              "updated": false
+            },
+            {
+              "version": "0.9.5",
+              "changelog": "Updated for the latest Roblox\nNew Injector",
+              "timestamp": 1779329492262,
+              "date": "2026-05-21T02:11:32.262Z",
+              "supportedRobloxVersion": "version-ec412128eba3476e",
+              "updated": false
+            },
+            {
+              "version": "0.9.5",
+              "changelog": "Updated for the latest Roblox\nNew Injector",
+              "timestamp": 1779329506090,
+              "date": "2026-05-21T02:11:46.090Z",
+              "supportedRobloxVersion": "version-ec412128eba3476e",
+              "updated": false
+            },
+            {
+              "version": "0.9.5",
+              "changelog": "Updated for the latest Roblox\nNew Injector",
+              "timestamp": 1779387900124,
+              "date": "2026-05-21T18:25:00.124Z",
+              "supportedRobloxVersion": "version-ec412128eba3476e",
+              "updated": false
+            },
+            {
+              "version": "0.9.5",
+              "changelog": "Updated for the latest Roblox\nNew Injector",
+              "timestamp": 1779387913265,
+              "date": "2026-05-21T18:25:13.265Z",
+              "supportedRobloxVersion": "version-ec412128eba3476e",
+              "updated": false
+            },
+            {
+              "version": "0.9.5",
+              "changelog": "Updated for the latest Roblox\nNew Injector",
+              "timestamp": 1779387928382,
+              "date": "2026-05-21T18:25:28.382Z",
+              "supportedRobloxVersion": "version-ec412128eba3476e",
+              "updated": false
+            },
+            {
+              "version": "0.9.6",
+              "changelog": "Updated for the latest Roblox version\nFixed crash with infinite yield and dex and remote spy",
+              "timestamp": 1779402059918,
+              "date": "2026-05-21T22:20:59.918Z",
+              "supportedRobloxVersion": "version-4b6315bf1f0a4dbb",
+              "updated": true
+            },
+            {
+              "version": "0.9.6",
+              "changelog": "Updated for the latest Roblox version\nFixed crash with infinite yield and dex and remote spy",
+              "timestamp": 1779579043550,
+              "date": "2026-05-23T23:30:43.550Z",
+              "supportedRobloxVersion": "version-4b6315bf1f0a4dbb",
+              "updated": false
+            },
+            {
+              "version": "0.9.6",
+              "changelog": "Updated for the latest Roblox version\nFixed crash with infinite yield and dex and remote spy",
+              "timestamp": 1779646791216,
+              "date": "2026-05-24T18:19:51.216Z",
+              "supportedRobloxVersion": "version-4b6315bf1f0a4dbb",
+              "updated": false
+            },
+            {
+              "version": "0.9.6",
+              "changelog": "Updated for the latest Roblox version\nFixed crash with infinite yield and dex and remote spy",
+              "timestamp": 1779654930987,
+              "date": "2026-05-24T20:35:30.987Z",
+              "supportedRobloxVersion": "version-4b6315bf1f0a4dbb",
+              "updated": false
+            },
+            {
+              "version": "0.9.6",
+              "changelog": "Updated for the latest Roblox version\nFixed crash with infinite yield and dex and remote spy",
+              "timestamp": 1779656003812,
+              "date": "2026-05-24T20:53:23.812Z",
+              "supportedRobloxVersion": "version-4b6315bf1f0a4dbb",
+              "updated": false
+            },
+            {
+              "version": "0.9.6",
+              "changelog": "Updated for the latest Roblox version\nFixed crash with infinite yield and dex and remote spy",
+              "timestamp": 1779656319961,
+              "date": "2026-05-24T20:58:39.961Z",
+              "supportedRobloxVersion": "version-4b6315bf1f0a4dbb",
+              "updated": false
+            },
+            {
+              "version": "0.9.6",
+              "changelog": "Updated for the latest Roblox version\nFixed crash with infinite yield and dex and remote spy",
+              "timestamp": 1779719010899,
+              "date": "2026-05-25T14:23:30.899Z",
+              "supportedRobloxVersion": "version-4b6315bf1f0a4dbb",
+              "updated": false
+            },
+            {
+              "version": "0.9.6",
+              "changelog": "Updated for the latest Roblox version\nFixed crash with infinite yield and dex and remote spy",
+              "timestamp": 1779719156536,
+              "date": "2026-05-25T14:25:56.536Z",
+              "supportedRobloxVersion": "version-4b6315bf1f0a4dbb",
+              "updated": false
+            },
+            {
+              "version": "0.9.6",
+              "changelog": "Updated for the latest Roblox version\nFixed crash with infinite yield and dex and remote spy",
+              "timestamp": 1779719287553,
+              "date": "2026-05-25T14:28:07.553Z",
+              "supportedRobloxVersion": "version-4b6315bf1f0a4dbb",
+              "updated": false
+            },
+            {
+              "version": "0.9.6",
+              "changelog": "Updated for the latest Roblox version\nFixed crash with infinite yield and dex and remote spy",
+              "timestamp": 1779719363546,
+              "date": "2026-05-25T14:29:23.546Z",
+              "supportedRobloxVersion": "version-4b6315bf1f0a4dbb",
+              "updated": false
+            },
+            {
+              "version": "0.9.6",
+              "changelog": "Updated for the latest Roblox version\nFixed crash with infinite yield and dex and remote spy",
+              "timestamp": 1779724676574,
+              "date": "2026-05-25T15:57:56.574Z",
+              "supportedRobloxVersion": "version-4b6315bf1f0a4dbb",
+              "updated": false
+            },
+            {
+              "version": "0.9.6",
+              "changelog": "Updated for the latest Roblox version\nFixed crash with infinite yield and dex and remote spy",
+              "timestamp": 1779724686975,
+              "date": "2026-05-25T15:58:06.975Z",
+              "supportedRobloxVersion": "version-4b6315bf1f0a4dbb",
+              "updated": false
+            },
+            {
+              "version": "0.9.6",
+              "changelog": "Updated for the latest Roblox version\nFixed crash with infinite yield and dex and remote spy",
+              "timestamp": 1779724707031,
+              "date": "2026-05-25T15:58:27.031Z",
+              "supportedRobloxVersion": "version-4b6315bf1f0a4dbb",
+              "updated": false
+            },
+            {
+              "version": "0.9.6",
+              "changelog": "Updated for the latest Roblox version\nFixed crash with infinite yield and dex and remote spy",
+              "timestamp": 1779729908835,
+              "date": "2026-05-25T17:25:08.835Z",
+              "supportedRobloxVersion": "version-4b6315bf1f0a4dbb",
+              "updated": false
+            },
+            {
+              "version": "0.9.6",
+              "changelog": "Updated for the latest Roblox version\nFixed crash with infinite yield and dex and remote spy",
+              "timestamp": 1779729919405,
+              "date": "2026-05-25T17:25:19.405Z",
+              "supportedRobloxVersion": "version-4b6315bf1f0a4dbb",
+              "updated": false
+            },
+            {
+              "version": "0.9.6",
+              "changelog": "Updated for the latest Roblox version\nFixed crash with infinite yield and dex and remote spy",
+              "timestamp": 1779729939196,
+              "date": "2026-05-25T17:25:39.196Z",
+              "supportedRobloxVersion": "version-4b6315bf1f0a4dbb",
+              "updated": false
+            },
+            {
+              "version": "0.9.6",
+              "changelog": "Updated for the latest Roblox version\nFixed crash with infinite yield and dex and remote spy",
+              "timestamp": 1779730195037,
+              "date": "2026-05-25T17:29:55.037Z",
+              "supportedRobloxVersion": "version-4b6315bf1f0a4dbb",
+              "updated": false
+            },
+            {
+              "version": "0.9.6",
+              "changelog": "Updated for the latest Roblox version\nFixed crash with infinite yield and dex and remote spy",
+              "timestamp": 1779732846157,
+              "date": "2026-05-25T18:14:06.157Z",
+              "supportedRobloxVersion": "version-4b6315bf1f0a4dbb",
+              "updated": false
+            },
+            {
+              "version": "0.9.6",
+              "changelog": "Updated for the latest Roblox version\nFixed crash with infinite yield and dex and remote spy",
+              "timestamp": 1779733012022,
+              "date": "2026-05-25T18:16:52.022Z",
+              "supportedRobloxVersion": "version-4b6315bf1f0a4dbb",
+              "updated": false
+            },
+            {
+              "version": "0.9.6",
+              "changelog": "Updated for the latest Roblox version\nFixed crash with infinite yield and dex and remote spy",
+              "timestamp": 1779733712909,
+              "date": "2026-05-25T18:28:32.909Z",
+              "supportedRobloxVersion": "version-4b6315bf1f0a4dbb",
+              "updated": false
+            },
+            {
+              "version": "0.9.6",
+              "changelog": "Updated for the latest Roblox version\nFixed crash with infinite yield and dex and remote spy",
+              "timestamp": 1779738470190,
+              "date": "2026-05-25T19:47:50.190Z",
+              "supportedRobloxVersion": "version-4b6315bf1f0a4dbb",
+              "updated": false
+            },
+            {
+              "version": "0.9.6",
+              "changelog": "Updated for the latest Roblox version\nFixed crash with infinite yield and dex and remote spy",
+              "timestamp": 1779745045681,
+              "date": "2026-05-25T21:37:25.681Z",
+              "supportedRobloxVersion": "version-4b6315bf1f0a4dbb",
+              "updated": false
+            },
+            {
+              "version": "0.9.6",
+              "changelog": "Updated for the latest Roblox version\nFixed crash with infinite yield and dex and remote spy",
+              "timestamp": 1779745060807,
+              "date": "2026-05-25T21:37:40.807Z",
+              "supportedRobloxVersion": "version-4b6315bf1f0a4dbb",
+              "updated": false
+            },
+            {
+              "version": "0.9.6",
+              "changelog": "Updated for the latest Roblox version\nFixed crash with infinite yield and dex and remote spy",
+              "timestamp": 1779745075559,
+              "date": "2026-05-25T21:37:55.559Z",
+              "supportedRobloxVersion": "version-4b6315bf1f0a4dbb",
+              "updated": false
+            },
+            {
+              "version": "0.9.6",
+              "changelog": "Updated for the latest Roblox version\nFixed crash with infinite yield and dex and remote spy",
+              "timestamp": 1779766765568,
+              "date": "2026-05-26T03:39:25.568Z",
+              "supportedRobloxVersion": "version-4b6315bf1f0a4dbb",
+              "updated": false
+            },
+            {
+              "version": "0.9.6",
+              "changelog": "Updated for the latest Roblox version\nFixed crash with infinite yield and dex and remote spy",
+              "timestamp": 1779766777075,
+              "date": "2026-05-26T03:39:37.075Z",
+              "supportedRobloxVersion": "version-4b6315bf1f0a4dbb",
+              "updated": false
+            },
+            {
+              "version": "0.9.6",
+              "changelog": "Updated for the latest Roblox version\nFixed crash with infinite yield and dex and remote spy",
+              "timestamp": 1779792023412,
+              "date": "2026-05-26T10:40:23.412Z",
+              "supportedRobloxVersion": "version-4b6315bf1f0a4dbb",
+              "updated": false
+            },
+            {
+              "version": "0.9.6",
+              "changelog": "Updated for the latest Roblox version\nFixed crash with infinite yield and dex and remote spy",
+              "timestamp": 1779792043799,
+              "date": "2026-05-26T10:40:43.799Z",
+              "supportedRobloxVersion": "version-4b6315bf1f0a4dbb",
+              "updated": false
+            },
+            {
+              "version": "0.9.6",
+              "changelog": "Updated for the latest Roblox version\nFixed crash with infinite yield and dex and remote spy",
+              "timestamp": 1779795725349,
+              "date": "2026-05-26T11:42:05.349Z",
+              "supportedRobloxVersion": "version-4b6315bf1f0a4dbb",
+              "updated": false
+            },
+            {
+              "version": "0.9.6",
+              "changelog": "Updated for the latest Roblox version\nFixed crash with infinite yield and dex and remote spy",
+              "timestamp": 1779795745694,
+              "date": "2026-05-26T11:42:25.694Z",
+              "supportedRobloxVersion": "version-4b6315bf1f0a4dbb",
+              "updated": false
+            },
+            {
+              "version": "0.9.6",
+              "changelog": "Updated for the latest Roblox version\nFixed crash with infinite yield and dex and remote spy",
+              "timestamp": 1779795756296,
+              "date": "2026-05-26T11:42:36.296Z",
+              "supportedRobloxVersion": "version-4b6315bf1f0a4dbb",
+              "updated": false
+            },
+            {
+              "version": "0.9.6",
+              "changelog": "Updated for the latest Roblox version\nFixed crash with infinite yield and dex and remote spy",
+              "timestamp": 1779796256922,
+              "date": "2026-05-26T11:50:56.922Z",
+              "supportedRobloxVersion": "version-4b6315bf1f0a4dbb",
+              "updated": false
+            },
+            {
+              "version": "0.9.6",
+              "changelog": "Updated for the latest Roblox version\nFixed crash with infinite yield and dex and remote spy",
+              "timestamp": 1779796272382,
+              "date": "2026-05-26T11:51:12.382Z",
+              "supportedRobloxVersion": "version-4b6315bf1f0a4dbb",
+              "updated": false
+            },
+            {
+              "version": "0.9.6",
+              "changelog": "Updated for the latest Roblox version\nFixed crash with infinite yield and dex and remote spy",
+              "timestamp": 1779796287459,
+              "date": "2026-05-26T11:51:27.459Z",
+              "supportedRobloxVersion": "version-4b6315bf1f0a4dbb",
+              "updated": false
+            },
+            {
+              "version": "0.9.6",
+              "changelog": "Updated for the latest Roblox version\nFixed crash with infinite yield and dex and remote spy",
+              "timestamp": 1779796768427,
+              "date": "2026-05-26T11:59:28.427Z",
+              "supportedRobloxVersion": "version-4b6315bf1f0a4dbb",
+              "updated": false
+            },
+            {
+              "version": "0.9.6",
+              "changelog": "Updated for the latest Roblox version\nFixed crash with infinite yield and dex and remote spy",
+              "timestamp": 1779796778909,
+              "date": "2026-05-26T11:59:38.909Z",
+              "supportedRobloxVersion": "version-4b6315bf1f0a4dbb",
+              "updated": false
+            },
+            {
+              "version": "0.9.6",
+              "changelog": "Updated for the latest Roblox version\nFixed crash with infinite yield and dex and remote spy",
+              "timestamp": 1779796798805,
+              "date": "2026-05-26T11:59:58.805Z",
+              "supportedRobloxVersion": "version-4b6315bf1f0a4dbb",
+              "updated": false
+            },
+            {
+              "version": "0.9.6",
+              "changelog": "Updated for the latest Roblox version\nFixed crash with infinite yield and dex and remote spy",
+              "timestamp": 1779808911531,
+              "date": "2026-05-26T15:21:51.531Z",
+              "supportedRobloxVersion": "version-4b6315bf1f0a4dbb",
+              "updated": false
+            },
+            {
+              "version": "0.9.6",
+              "changelog": "Updated for the latest Roblox version\nFixed crash with infinite yield and dex and remote spy",
+              "timestamp": 1779810533789,
+              "date": "2026-05-26T15:48:53.789Z",
+              "supportedRobloxVersion": "version-4b6315bf1f0a4dbb",
+              "updated": false
+            },
+            {
+              "version": "0.9.6",
+              "changelog": "Updated for the latest Roblox version\nFixed crash with infinite yield and dex and remote spy",
+              "timestamp": 1779810548226,
+              "date": "2026-05-26T15:49:08.226Z",
+              "supportedRobloxVersion": "version-4b6315bf1f0a4dbb",
+              "updated": false
+            },
+            {
+              "version": "0.9.6",
+              "changelog": "Updated for the latest Roblox version\nFixed crash with infinite yield and dex and remote spy",
+              "timestamp": 1779810564262,
+              "date": "2026-05-26T15:49:24.262Z",
+              "supportedRobloxVersion": "version-4b6315bf1f0a4dbb",
+              "updated": false
+            },
+            {
+              "version": "0.9.6",
+              "changelog": "Updated for the latest Roblox version\nFixed crash with infinite yield and dex and remote spy",
+              "timestamp": 1779817378935,
+              "date": "2026-05-26T17:42:58.935Z",
+              "supportedRobloxVersion": "version-4b6315bf1f0a4dbb",
+              "updated": false
+            },
+            {
+              "version": "0.9.6",
+              "changelog": "Updated for the latest Roblox version\nFixed crash with infinite yield and dex and remote spy",
+              "timestamp": 1779830379282,
+              "date": "2026-05-26T21:19:39.282Z",
+              "supportedRobloxVersion": "version-4b6315bf1f0a4dbb",
+              "updated": false
+            },
+            {
+              "version": "0.9.6",
+              "changelog": "Updated for the latest Roblox version\nFixed crash with infinite yield and dex and remote spy",
+              "timestamp": 1779830475080,
+              "date": "2026-05-26T21:21:15.080Z",
+              "supportedRobloxVersion": "version-4b6315bf1f0a4dbb",
+              "updated": false
+            },
+            {
+              "version": "0.9.6",
+              "changelog": "Updated for the latest Roblox version\nFixed crash with infinite yield and dex and remote spy",
+              "timestamp": 1779830485455,
+              "date": "2026-05-26T21:21:25.455Z",
+              "supportedRobloxVersion": "version-4b6315bf1f0a4dbb",
+              "updated": false
+            },
+            {
+              "version": "0.9.6",
+              "changelog": "Updated for the latest Roblox version\nFixed crash with infinite yield and dex and remote spy",
+              "timestamp": 1779830505797,
+              "date": "2026-05-26T21:21:45.797Z",
+              "supportedRobloxVersion": "version-4b6315bf1f0a4dbb",
+              "updated": false
+            },
+            {
+              "version": "0.9.6",
+              "changelog": "Updated for the latest Roblox version\nFixed crash with infinite yield and dex and remote spy",
+              "timestamp": 1779888122856,
+              "date": "2026-05-27T13:22:02.856Z",
+              "supportedRobloxVersion": "version-4b6315bf1f0a4dbb",
+              "updated": false
+            },
+            {
+              "version": "0.9.6",
+              "changelog": "Updated for the latest Roblox version\nFixed crash with infinite yield and dex and remote spy",
+              "timestamp": 1779888123757,
+              "date": "2026-05-27T13:22:03.757Z",
+              "supportedRobloxVersion": "version-4b6315bf1f0a4dbb",
+              "updated": false
+            },
+            {
+              "version": "0.9.6",
+              "changelog": "Updated for the latest Roblox version\nFixed crash with infinite yield and dex and remote spy",
+              "timestamp": 1779888142662,
+              "date": "2026-05-27T13:22:22.662Z",
+              "supportedRobloxVersion": "version-4b6315bf1f0a4dbb",
+              "updated": false
+            },
+            {
+              "version": "0.9.6",
+              "changelog": "Updated for the latest Roblox version\nFixed crash with infinite yield and dex and remote spy",
+              "timestamp": 1779888278300,
+              "date": "2026-05-27T13:24:38.300Z",
+              "supportedRobloxVersion": "version-4b6315bf1f0a4dbb",
+              "updated": false
+            },
+            {
+              "version": "0.9.6",
+              "changelog": "Updated for the latest Roblox version\nFixed crash with infinite yield and dex and remote spy",
+              "timestamp": 1779888293396,
+              "date": "2026-05-27T13:24:53.396Z",
+              "supportedRobloxVersion": "version-4b6315bf1f0a4dbb",
+              "updated": false
+            },
+            {
+              "version": "0.9.6",
+              "changelog": "Updated for the latest Roblox version\nFixed crash with infinite yield and dex and remote spy",
+              "timestamp": 1779888308410,
+              "date": "2026-05-27T13:25:08.410Z",
+              "supportedRobloxVersion": "version-4b6315bf1f0a4dbb",
+              "updated": false
+            },
+            {
+              "version": "0.9.7",
+              "changelog": "Updated for the latest Roblox version\nRemoved isnetworkowner\nFixed decompiler",
+              "timestamp": 1779906779399,
+              "date": "2026-05-27T18:32:59.399Z",
+              "supportedRobloxVersion": "version-460909c4fe904aae",
+              "updated": true
+            },
+            {
+              "version": "0.9.8",
+              "changelog": "Fixed TP Handler\nUpdated luau compiler to 0.722\nFixed setfflag\nFixed getfflag",
+              "timestamp": 1780090758484,
+              "date": "2026-05-29T21:39:18.484Z",
+              "supportedRobloxVersion": "version-460909c4fe904aae",
+              "updated": true
+            },
+            {
+              "version": "0.9.9",
+              "changelog": "Rewrote TP Handler\nPatched getcustomasset detection\nAdded Roblox version checker to injector",
+              "timestamp": 1780139477957,
+              "date": "2026-05-30T11:11:17.957Z",
+              "supportedRobloxVersion": "version-460909c4fe904aae",
+              "updated": true
+            },
+            {
+              "version": "1.0.0",
+              "changelog": "• Rewrote yielding for stability and performance\n• Added extra safe guards and fixed up some old code to be performant and stable\n• Fixed error handling on execution\n• Rewrote script execution\n• Made the TP handler even more stupidly stable\n• Fixed tp handler cleanup\n• Fixed Roblox version checker on Injection\n• Identified a incorrect RVA in the source code which would cause random crashes and instability which is now fixed",
+              "timestamp": 1780265448976,
+              "date": "2026-05-31T22:10:48.976Z",
+              "supportedRobloxVersion": "version-460909c4fe904aae",
+              "updated": true
+            },
+            {
+              "version": "1.0.1",
+              "changelog": "• Fixed TP handler doing cleanup when a tp fails causing the environment to be terminated\n• Patched 4 detections on hookfunction\n• Fixed newcclosure not applying the original function name\n• Fixed ZIndexing on Drawing library",
+              "timestamp": 1780773932649,
+              "date": "2026-06-06T19:25:32.649Z",
+              "supportedRobloxVersion": "version-ad5d3e2906444472",
+              "updated": true
+            },
+            {
+              "version": "1.0.1",
+              "changelog": "• Fixed TP handler doing cleanup when a tp fails causing the environment to be terminated\n• Patched 4 detections on hookfunction\n• Fixed newcclosure not applying the original function name\n• Fixed ZIndexing on Drawing library",
+              "timestamp": 1781095353419,
+              "date": "2026-06-10T12:42:33.419Z",
+              "supportedRobloxVersion": "version-ad5d3e2906444472",
+              "updated": false
+            },
+            {
+              "version": "1.0.1",
+              "changelog": "• Fixed TP handler doing cleanup when a tp fails causing the environment to be terminated\n• Patched 4 detections on hookfunction\n• Fixed newcclosure not applying the original function name\n• Fixed ZIndexing on Drawing library",
+              "timestamp": 1781095804385,
+              "date": "2026-06-10T12:50:04.385Z",
+              "supportedRobloxVersion": "version-ad5d3e2906444472",
+              "updated": false
+            },
+            {
+              "version": "1.0.2",
+              "changelog": "Fixed delay crash with injection\nFixed instant crash on injection\nFixed crashing with remote spies\nFixed 10 minute crash",
+              "timestamp": 1781102543456,
+              "date": "2026-06-10T14:42:23.456Z",
+              "supportedRobloxVersion": "version-76173e47a79145c7",
+              "updated": true
+            },
+            {
+              "version": "1.0.3",
+              "changelog": "Downgraded the modules MSVC buildtools down to v143 as v145 would cause random crashes\nFixed instability and crashes on injection\nUpgraded something wink wink (oracle knows)\nYes I got off Counter Strike 2 just to push this update :3 (shout out to 0z0ns my #1 faceit carry)\nXRC can I suck your toes vro :3\nCredits to Azul for being useless <3\n-- < > --\nVelocity is now version 1.0.3\nClose the UI and reopen to apply the update.",
+              "timestamp": 1781477960421,
+              "date": "2026-06-14T22:59:20.421Z",
+              "supportedRobloxVersion": "version-76173e47a79145c7",
+              "updated": true
+            },
+            {
+              "version": "1.0.4",
+              "changelog": "Fixed BSOD issue on injection\nMade injection more stable\n-\nVelocity is now version 1.0.4\nClose the UI and reopen to apply the update.",
+              "timestamp": 1781551208859,
+              "date": "2026-06-15T19:20:08.859Z",
+              "supportedRobloxVersion": "version-76173e47a79145c7",
+              "updated": true
+            },
+            {
+              "version": "1.0.5",
+              "changelog": "Updated for the latest Roblox client version\n---------------\nVelocity is now version 1.0.5\nClose the UI and reopen to apply the update.",
+              "timestamp": 1781771805855,
+              "date": "2026-06-18T08:36:45.855Z",
+              "supportedRobloxVersion": "version-8884371d30284041",
+              "updated": true
+            },
+            {
+              "version": "1.0.6",
+              "changelog": "Fixed require bypass not working\n---------------\nVelocity is now version 1.0.6\nClose the UI and reopen to apply the update.",
+              "timestamp": 1781779489655,
+              "date": "2026-06-18T10:44:49.655Z",
+              "supportedRobloxVersion": "version-8884371d30284041",
+              "updated": true
+            },
+            {
+              "version": "1.0.7",
+              "changelog": "New injection\nFixed some bugs\nFixed all bsods\n---------------\nVelocity is now version 1.0.7\n**OLD UI WILL NOT WORK WITH THE INJECTION THIS UPDATE, YOU MUST REDOWNLOAD FROM OUR WORKINK ELSE YOUR UI WILL CRASH ON INJECTION**",
+              "timestamp": 1782592133567,
+              "date": "2026-06-27T20:28:53.567Z",
+              "supportedRobloxVersion": "version-1a951716f19e4638",
+              "updated": true
+            },
+            {
+              "version": "1.0.8",
+              "changelog": "Updated for the latest Roblox client (version-5cf2272675e145f5)\n---------------\nVelocity is now version 1.0.8\nClose the UI and reopen to apply the update. (Velocity Lite)",
+              "timestamp": 1783119953605,
+              "date": "2026-07-03T23:05:53.605Z",
+              "supportedRobloxVersion": "version-5cf2272675e145f5",
+              "updated": true
+            },
+            {
+              "version": "1.0.9",
+              "changelog": "Fixed execution\nFixed tphandler\n---------------\nVelocity is now version 1.0.9\nClose the UI and reopen to apply the update. (Velocity Lite)",
+              "timestamp": 1783250681399,
+              "date": "2026-07-05T11:24:41.399Z",
+              "supportedRobloxVersion": "version-5cf2272675e145f5",
+              "updated": true
+            },
+            {
+              "version": "1.0.9",
+              "changelog": "Fixed execution\nFixed tphandler\n---------------\nVelocity is now version 1.0.9\nClose the UI and reopen to apply the update. (Velocity Lite)",
+              "timestamp": 1783444772561,
+              "date": "2026-07-07T17:19:32.561Z",
+              "supportedRobloxVersion": "version-5cf2272675e145f5",
+              "updated": false
+            },
+            {
+              "version": "1.1.0",
+              "changelog": "Updated for the latest Roblox client (version-90f2fddd3b244ff6)\n---------------\nVelocity is now version 1.1.0\nClose the UI and reopen to apply the update. (Velocity Lite)",
+              "timestamp": 1783464384289,
+              "date": "2026-07-07T22:46:24.289Z",
+              "supportedRobloxVersion": "version-90f2fddd3b244ff6",
+              "updated": true
+            },
+            {
+              "version": "1.1.1",
+              "changelog": "Injector update\n---------------\nVelocity is now version 1.1.1\nClose the UI and reopen to apply the update. (Velocity Lite)",
+              "timestamp": 1783513008909,
+              "date": "2026-07-08T12:16:48.909Z",
+              "supportedRobloxVersion": "version-90f2fddd3b244ff6",
+              "updated": true
+            },
+            {
+              "version": "1.1.2",
+              "changelog": "Injector update\nKey system update, if you previously inputted a key and if that key is still valid the key prompt won't show and it will just skip past it now.\n---------------\nVelocity is now version 1.1.2\nClose the UI and reopen to apply the update. (Velocity Lite)",
+              "timestamp": 1783603272305,
+              "date": "2026-07-09T13:21:12.305Z",
+              "supportedRobloxVersion": "version-90f2fddd3b244ff6",
+              "updated": true
+            },
+            {
+              "version": "1.1.3",
+              "changelog": "Updated for the latest Roblox version\nFixed \"bad response\" on keysystem auth\n---------------\nVelocity is now version 1.1.3\nClose the UI and reopen to apply the update. (Velocity Lite)",
+              "timestamp": 1783629135956,
+              "date": "2026-07-09T20:32:15.956Z",
+              "supportedRobloxVersion": "version-36a2600cebf1487d",
+              "updated": true
+            },
+            {
+              "version": "1.1.3a",
+              "changelog": "Fixed injector\nModule Version: 1.1.3\nInjector Version: 1.1.3a\nVelocity UI Version: 1.1.3a\n---------------\nVelocity is now version 1.1.3a\nClose the UI and reopen to apply the update. (Velocity Lite)",
+              "timestamp": 1783676286183,
+              "date": "2026-07-10T09:38:06.183Z",
+              "supportedRobloxVersion": "version-36a2600cebf1487d",
+              "updated": true
+            },
+            {
+              "version": "1.1.4",
+              "changelog": "Fixed hookmetamethod and instance function hooking\nUpgraded luau compiler to luau 0.729 compiler\nAdded extra sanity checks\nDecreased module size a lot\nRewrote Crypt library to be more compact and performant\nModule Version: 1.1.4\nInjector Version: 1.1.4\nVelocity UI Version: 1.1.4\n---------------\nVelocity is now version 1.1.4\nClose the UI and reopen to apply the update. (Velocity Lite)",
+              "timestamp": 1783867244266,
+              "date": "2026-07-12T14:40:44.266Z",
+              "supportedRobloxVersion": "version-36a2600cebf1487d",
+              "updated": true
+            },
+            {
+              "version": "1.1.5",
+              "changelog": "Updated for version-ddf02245bdbb428c\nRewrote some of the environment\nModule Version: 1.1.5\nInjector Version: 1.1.5\nVelocity UI Version: 1.1.5\nRaknet lib and Actor lib are not included in this update as those are big libraries and will take some time\n---------------\nVelocity is now version 1.1.5\nClose the UI and reopen to apply the update. (Velocity Lite)",
+              "timestamp": 1784152782360,
+              "date": "2026-07-15T21:59:42.360Z",
+              "supportedRobloxVersion": "version-ddf02245bdbb428c",
+              "updated": true
+            },
+            {
+              "version": "1.1.6",
+              "changelog": "Patched key system bypass\nModule Version: 1.1.6\nInjector Version: 1.1.6\nVelocity UI Version: 1.1.6\n---------------\nVelocity is now version 1.1.6\nClose the UI and reopen to apply the update. (Velocity Lite)",
+              "timestamp": 1784166786325,
+              "date": "2026-07-16T01:53:06.325Z",
+              "supportedRobloxVersion": "version-ddf02245bdbb428c",
+              "updated": true
+            },
+            {
+              "version": "1.1.7",
+              "changelog": "Patched a detection causing client modification bans (very sorry)\nModule Version: 1.1.7\nInjector Version: 1.1.7\nVelocity UI Version: 1.1.7\n---------------\nVelocity is now version 1.1.7\nClose the UI and reopen to apply the update. (Velocity Lite)",
+              "timestamp": 1784279798808,
+              "date": "2026-07-17T09:16:38.808Z",
+              "supportedRobloxVersion": "version-ddf02245bdbb428c",
+              "updated": true
+            },
+            {
+              "version": "1.1.8",
+              "changelog": "Finally fixed the old tp handler, TP handler is stable again woo wee (thank you claude max 20x subscription)\nModule Version: 1.1.8\nInjector Version: 1.1.8\nVelocity UI Version: 1.1.8\n---------------\nVelocity is now version 1.1.8\nClose the UI and reopen to apply the update. (Velocity Lite)",
+              "timestamp": 1784301089878,
+              "date": "2026-07-17T15:11:29.878Z",
+              "supportedRobloxVersion": "version-ddf02245bdbb428c",
+              "updated": true
+            },
+            {
+              "version": "1.1.9",
+              "changelog": "Added support for promotion keys in the key system (yes this means a unlimited use free week key is probably going to drop in the discord announcements soon)\n---------------\nVelocity is now version 1.1.9\nClose the UI and reopen to apply the update. (Velocity Lite)",
+              "timestamp": 1784327419673,
+              "date": "2026-07-17T22:30:19.673Z",
+              "supportedRobloxVersion": "version-ddf02245bdbb428c",
+              "updated": true
+            },
+            {
+              "version": "1.2.0",
+              "changelog": "Made injection 3x faster\nMade injection a little more stable\n---------------\nVelocity is now version 1.2.0\nClose the UI and reopen to apply the update. (Velocity Lite)",
+              "timestamp": 1784391720955,
+              "date": "2026-07-18T16:22:00.955Z",
+              "supportedRobloxVersion": "version-ddf02245bdbb428c",
+              "updated": true
+            },
+            {
+              "version": "1.2.1",
+              "changelog": "Fixed the error auth error \"Free key is locked to a different device\"\n---------------\nVelocity is now version 1.2.1\nClose the UI and reopen to apply the update. (Velocity Lite)",
+              "timestamp": 1784423293021,
+              "date": "2026-07-19T01:08:13.021Z",
+              "supportedRobloxVersion": "version-ddf02245bdbb428c",
+              "updated": true
+            },
+            {
+              "version": "1.2.2",
+              "changelog": "Rewrote getrunningscripts (4x faster and more stable)\nRewrote gethiddenproperty ( will no longer crash on random properties ) ( no longer crashes on sunc or myriad )\nRewrote sethiddenproperty ( will no longer crash on random properties ) ( no longer crashes on sunc or myriad )\nRewrote getmenv / getsenv module support as the old method was crashing because Roblox made internal changes to how they store it.\nFixed getscripts returning server side scripts that weren't set to run on the client\nFixed client mod detection (there was 1 detection leftover, fuck you Roblox)\nFixed a slight bug in the TP Handler ( was a oversight in my eyes )\nFixed getscripthash returning a non nil value when finding no bytecode to hash\nFixed debug.getconstant and debug.setconstant not erroring when receiving out of bound indexs\nFixed crypt.encrypt\nFixed crypt.decrypt\nFixed upvalue crash in debug.setupvalue\nFixed clonefunction on LClosures, env wasn't being properly set to the original function env\nFixed firesignal not working with :Wait & :Once\nFixed multi-instance injection\nFixed cloneref not preserving metadata\nAdded missing size property on some drawing objects\nAdded image support to drawing library, data allows for raw image data and base64 encoded data\nAdded clearqueueonteleport / clear_teleport_queue / clearteleportqueue\nAdded missing alias's for functions\nAdded crypt.random\nAdded crypt.hmac\nAdded console library, it actually works now\nAdded second arg support to newcclosure (func, customDebugName)\nAdded FileDialog library (openfilesdialog, openfolderdialog, savefiledialog, openfiledialog)\nAdded getsignalarguments, getsignalargumentsinfo, getsignalwhitelist\nAdded full actor library\nAdded signal.new / Signal.new\nMyriad Test Score: 98%",
+              "timestamp": 1784574041451,
+              "date": "2026-07-20T19:00:41.451Z",
+              "supportedRobloxVersion": "version-ddf02245bdbb428c",
+              "updated": true
+            },
+            {
+              "version": "1.2.3",
+              "changelog": "Added full raknet library\nFixed exploit functions not being shared with actors\nFixed race condition in the module on injection which would cause a crash on fast and slow computers\n---------------\nVelocity is now version 1.2.3\nClose the UI and reopen to apply the update. (Velocity Lite)",
+              "timestamp": 1784611379559,
+              "date": "2026-07-21T05:22:59.559Z",
+              "supportedRobloxVersion": "version-ddf02245bdbb428c",
+              "updated": true
+            }
+          ],
+          "count": 186
+        }
       },
       "WEAO74bee327": {
         "title": "Delta",
