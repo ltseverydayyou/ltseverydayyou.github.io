@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-07-21T11:23:17.682Z",
+  "fetchedAt": "2026-07-21T23:00:18.027Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -2865,7 +2865,126 @@
         "_id": "688c1b3ccc42af0ea95977e3",
         "version": "v2",
         "updatedDate": "07/15/2026 at 4:56 PM UTC",
-        "changelogs": []
+        "changelogs": {
+          "trackerId": "WEAO30580ddb",
+          "name": "serotonin",
+          "displayName": "Serotonin",
+          "changelogs": [
+            {
+              "version": "v1",
+              "changelog": "hi",
+              "timestamp": 1754012688002,
+              "date": "2025-08-01T01:44:48.002Z",
+              "supportedRobloxVersion": "version-b8550645b8834e8a",
+              "updated": true
+            },
+            {
+              "version": "v1",
+              "changelog": "game update",
+              "timestamp": 1754516776662,
+              "date": "2025-08-06T21:46:16.662Z",
+              "supportedRobloxVersion": "version-3f74e22590714de4",
+              "updated": true
+            },
+            {
+              "version": "v1",
+              "changelog": "Game Update",
+              "timestamp": 1755118490911,
+              "date": "2025-08-13T20:54:50.911Z",
+              "supportedRobloxVersion": "version-ca90f2e615014a44",
+              "updated": true
+            },
+            {
+              "version": "v1",
+              "changelog": "version-7b14ca0aa83149fa",
+              "timestamp": 1756336132239,
+              "date": "2025-08-27T23:08:52.239Z",
+              "supportedRobloxVersion": "version-7b14ca0aa83149fa",
+              "updated": true
+            },
+            {
+              "version": "v1",
+              "changelog": "version-65664807ac1d4e85",
+              "timestamp": 1756512056524,
+              "date": "2025-08-30T00:00:56.524Z",
+              "supportedRobloxVersion": "version-65664807ac1d4e85",
+              "updated": true
+            },
+            {
+              "version": "v1",
+              "changelog": "version-c1ac69007bdc4e48",
+              "timestamp": 1756939194723,
+              "date": "2025-09-03T22:39:54.723Z",
+              "supportedRobloxVersion": "version-c1ac69007bdc4e48",
+              "updated": true
+            },
+            {
+              "version": "v1",
+              "changelog": "version-8afc5a7d5e894d22",
+              "timestamp": 1757543399213,
+              "date": "2025-09-10T22:29:59.213Z",
+              "supportedRobloxVersion": "version-8afc5a7d5e894d22",
+              "updated": true
+            },
+            {
+              "version": "v1",
+              "changelog": "version-31fc142272764f02",
+              "timestamp": 1758144410380,
+              "date": "2025-09-17T21:26:50.380Z",
+              "supportedRobloxVersion": "version-31fc142272764f02",
+              "updated": true
+            },
+            {
+              "version": "v1",
+              "changelog": "version-f6cd26d0e71b47c9",
+              "timestamp": 1758750337006,
+              "date": "2025-09-24T21:45:37.006Z",
+              "supportedRobloxVersion": "version-f6cd26d0e71b47c9",
+              "updated": true
+            },
+            {
+              "version": "v1",
+              "changelog": "version-494828652c274712",
+              "timestamp": 1759370958808,
+              "date": "2025-10-02T02:09:18.808Z",
+              "supportedRobloxVersion": "version-494828652c274712",
+              "updated": true
+            },
+            {
+              "version": "v1",
+              "changelog": "version-d34359a5577645e2",
+              "timestamp": 1759965693203,
+              "date": "2025-10-08T23:21:33.203Z",
+              "supportedRobloxVersion": "version-d34359a5577645e2",
+              "updated": true
+            },
+            {
+              "version": "6.7",
+              "changelog": "https://open.spotify.com/track/2ej1A2Ze6P2EOW7KfIosZR",
+              "timestamp": 1765505584123,
+              "date": "2025-12-12T02:13:04.123Z",
+              "supportedRobloxVersion": "version-eaebe135b3ec446b",
+              "updated": true
+            },
+            {
+              "version": "v2",
+              "changelog": "version-d0e8cfcd943d4ae2",
+              "timestamp": 1767765380450,
+              "date": "2026-01-07T05:56:20.450Z",
+              "supportedRobloxVersion": "version-d0e8cfcd943d4ae2",
+              "updated": false
+            },
+            {
+              "version": "v2",
+              "changelog": "version-390ba09e7e944154",
+              "timestamp": 1777234531637,
+              "date": "2026-04-26T20:15:31.637Z",
+              "supportedRobloxVersion": "version-390ba09e7e944154",
+              "updated": true
+            }
+          ],
+          "count": 14
+        }
       },
       "WEAO228206d0": {
         "title": "Synapse Z",
@@ -2921,7 +3040,254 @@
         "_id": "692794d789eb1e034ad699c3",
         "version": "730.142",
         "updatedDate": "07/19/2026 at 2:10 AM UTC",
-        "changelogs": []
+        "changelogs": {
+          "trackerId": "WEAO10179289",
+          "name": "macsploit",
+          "displayName": "Macsploit",
+          "changelogs": [
+            {
+              "version": "1.9.0",
+              "changelog": "1.9 -> op server desync exploit + major stability improvements",
+              "timestamp": 1758624940742,
+              "date": "2025-09-23T10:55:40.742Z",
+              "supportedRobloxVersion": "version-3360cc788ced462d",
+              "updated": true
+            },
+            {
+              "version": "1.9.1",
+              "changelog": "1.9 -> op server desync exploit + major stability improvements",
+              "timestamp": 1758668681314,
+              "date": "2025-09-23T23:04:41.314Z",
+              "supportedRobloxVersion": "version-3360cc788ced462d",
+              "updated": true
+            },
+            {
+              "version": "1.9.2",
+              "changelog": "1.9 -> op server desync exploit + major stability improvements",
+              "timestamp": 1759104548606,
+              "date": "2025-09-29T00:09:08.606Z",
+              "supportedRobloxVersion": "version-3360cc788ced462d",
+              "updated": false
+            },
+            {
+              "version": "1.9.3",
+              "changelog": "1.9 -> op server desync exploit + major stability improvements",
+              "timestamp": 1760486916149,
+              "date": "2025-10-15T00:08:36.149Z",
+              "supportedRobloxVersion": "version-707cf2ddcf024b32",
+              "updated": true
+            },
+            {
+              "version": "1.9.4",
+              "changelog": "1.9.4 -> implementing undetected modules for a ban-less experience",
+              "timestamp": 1760574995238,
+              "date": "2025-10-16T00:36:35.238Z",
+              "supportedRobloxVersion": "version-707cf2ddcf024b32",
+              "updated": true
+            },
+            {
+              "version": "1.9.5",
+              "changelog": "100% sunc + undetected execution",
+              "timestamp": 1760752770463,
+              "date": "2025-10-18T01:59:30.463Z",
+              "supportedRobloxVersion": "version-707cf2ddcf024b32",
+              "updated": false
+            },
+            {
+              "version": "1.9.6",
+              "changelog": "100% sunc + undetected execution + native injection",
+              "timestamp": 1761136198817,
+              "date": "2025-10-22T12:29:58.817Z",
+              "supportedRobloxVersion": "version-e0126463331444db",
+              "updated": true
+            },
+            {
+              "version": "1.9.6u",
+              "changelog": "100% sunc + undetected execution + native injection",
+              "timestamp": 1761436321778,
+              "date": "2025-10-25T23:52:01.778Z",
+              "supportedRobloxVersion": "version-df9924f3990d4a6a",
+              "updated": true
+            },
+            {
+              "version": "1.9.6s",
+              "changelog": "100% sunc + undetected execution + native injection",
+              "timestamp": 1762048610540,
+              "date": "2025-11-02T01:56:50.540Z",
+              "supportedRobloxVersion": "version-6e8186c3f6ce4303",
+              "updated": true
+            },
+            {
+              "version": "1.9.6h",
+              "changelog": "100% sunc + undetected execution + native injection",
+              "timestamp": 1762854524226,
+              "date": "2025-11-11T09:48:44.226Z",
+              "supportedRobloxVersion": "version-62bd1fb9b91e4653",
+              "updated": true
+            },
+            {
+              "version": "1.9.63",
+              "changelog": "100% sunc + undetected execution + native injection",
+              "timestamp": 1763847249241,
+              "date": "2025-11-22T21:34:09.241Z",
+              "supportedRobloxVersion": "version-b43017492eb44083",
+              "updated": true
+            },
+            {
+              "version": "1.9.6p",
+              "changelog": "100% sunc + undetected execution + native injection",
+              "timestamp": 1765083490170,
+              "date": "2025-12-07T04:58:10.170Z",
+              "supportedRobloxVersion": "version-b43017492eb44083",
+              "updated": false
+            },
+            {
+              "version": "1.9.6x",
+              "changelog": "100% sunc + undetected execution + native injection",
+              "timestamp": 1765320865361,
+              "date": "2025-12-09T22:54:25.361Z",
+              "supportedRobloxVersion": "version-138c1a7864754c2a",
+              "updated": false
+            },
+            {
+              "version": "1.9.7",
+              "changelog": "100% sunc + undetected execution + native injection + actors",
+              "timestamp": 1767640291052,
+              "date": "2026-01-05T19:11:31.052Z",
+              "supportedRobloxVersion": "version-cfe7460f53b444a5",
+              "updated": true
+            },
+            {
+              "version": "1.9.8",
+              "changelog": "new working actors lib + working setfflag",
+              "timestamp": 1768552579335,
+              "date": "2026-01-16T08:36:19.335Z",
+              "supportedRobloxVersion": "version-d695be9cd4a14e2c",
+              "updated": true
+            },
+            {
+              "version": "1.9.8b",
+              "changelog": "introduced experimental queue_on_join and queue_on_leave",
+              "timestamp": 1768965625374,
+              "date": "2026-01-21T03:20:25.374Z",
+              "supportedRobloxVersion": "version-d695be9cd4a14e2c",
+              "updated": true
+            },
+            {
+              "version": "1.9.8c",
+              "changelog": "updated sUNC rating to 100% again",
+              "timestamp": 1770853703315,
+              "date": "2026-02-11T23:48:23.315Z",
+              "supportedRobloxVersion": "version-82324853106949ff",
+              "updated": true
+            },
+            {
+              "version": "1.9.8d",
+              "changelog": "updated sUNC rating to 100% again",
+              "timestamp": 1771332854511,
+              "date": "2026-02-17T12:54:14.511Z",
+              "supportedRobloxVersion": "version-82324853106949ff",
+              "updated": true
+            },
+            {
+              "version": "1.9.8c",
+              "changelog": "updated sUNC rating to 100% again",
+              "timestamp": 1771364178139,
+              "date": "2026-02-17T21:36:18.139Z",
+              "supportedRobloxVersion": "version-82324853106949ff",
+              "updated": true
+            },
+            {
+              "version": "1.9.9",
+              "changelog": "updated sUNC rating to 100% again",
+              "timestamp": 1772848186913,
+              "date": "2026-03-07T01:49:46.913Z",
+              "supportedRobloxVersion": "version-f18963d432b94bd7",
+              "updated": true
+            },
+            {
+              "version": "716.142",
+              "changelog": "updated to latest roblox version -> major stability and websocket improvements",
+              "timestamp": 1776061713284,
+              "date": "2026-04-13T06:28:33.284Z",
+              "supportedRobloxVersion": "version-cf482a12325c4ed4",
+              "updated": true
+            },
+            {
+              "version": "719.142",
+              "changelog": "updated to the latest roblox version because .oliver1233 forced me to",
+              "timestamp": 1777793065168,
+              "date": "2026-05-03T07:24:25.168Z",
+              "supportedRobloxVersion": "version-1d604bb8b63849b4",
+              "updated": true
+            },
+            {
+              "version": "724.142",
+              "changelog": "complete update + bug fixes for macsploit to latest roblox version",
+              "timestamp": 1780487607810,
+              "date": "2026-06-03T11:53:27.810Z",
+              "supportedRobloxVersion": "version-b6bc8a3f6c184e6f",
+              "updated": true
+            },
+            {
+              "version": "724.143",
+              "changelog": "Let's Beat Opiumware: - Project auto and many other scripts now work on MacSploit because of fixes\n- MacSploit is now **FREE** for 4 days file functions have been fixed, leading to a fixed **100% UNC** result\n- Switching to MacSploit from Opiumware is now effortless - no need for hwid resets ANYMORE!\n- MacSploit branding now incorporates the colors of the pride flag for recognition :D\n- New UI Auto Updater works without a VPN now!!",
+              "timestamp": 1780557838903,
+              "date": "2026-06-04T07:23:58.903Z",
+              "supportedRobloxVersion": "version-b6bc8a3f6c184e6f",
+              "updated": true
+            },
+            {
+              "version": "724.144",
+              "changelog": "Let's Beat Opiumware:\n- vulnerabilitiy patch now live for new microprofilingservice exploit that leaks name info\n- added support for windows keycodes for easy scripting with keypress etc :sunglasses: \n- added new decompiler for looking at scripts in dex\n- added saveinstance for saving maps and other features",
+              "timestamp": 1780589286352,
+              "date": "2026-06-04T16:08:06.352Z",
+              "supportedRobloxVersion": "version-b6bc8a3f6c184e6f",
+              "updated": true
+            },
+            {
+              "version": "724.145",
+              "changelog": "Let's Beat Opiumware:\n- Brand new HWID Spoofer that bypasses roblox's hwid checks, and addresses recent ban api changes that aim to use device ids.",
+              "timestamp": 1780637235862,
+              "date": "2026-06-05T05:27:15.862Z",
+              "supportedRobloxVersion": "version-b6bc8a3f6c184e6f",
+              "updated": true
+            },
+            {
+              "version": "726.142",
+              "changelog": "Updated to the latest roblox verison and implemented bug fixes + patches",
+              "timestamp": 1782040267020,
+              "date": "2026-06-21T11:11:07.020Z",
+              "supportedRobloxVersion": "version-d9748b94acff4b5d",
+              "updated": true
+            },
+            {
+              "version": "727.142",
+              "changelog": "new update to the latest roblox version + changes to fix an fflag",
+              "timestamp": 1782788183854,
+              "date": "2026-06-30T02:56:23.854Z",
+              "supportedRobloxVersion": "version-e6241eed717840df",
+              "updated": true
+            },
+            {
+              "version": "727.143",
+              "changelog": "brand new macsploit presence system v2!! New icons + new backend :sunglasses:",
+              "timestamp": 1782981429221,
+              "date": "2026-07-02T08:37:09.221Z",
+              "supportedRobloxVersion": "version-e6241eed717840df",
+              "updated": false
+            },
+            {
+              "version": "730.142",
+              "changelog": "updated to the latest roblox version and identified crash issues with restorefunction implementation",
+              "timestamp": 1784427036594,
+              "date": "2026-07-19T02:10:36.594Z",
+              "supportedRobloxVersion": "version-f2083d2275244e01",
+              "updated": true
+            }
+          ],
+          "count": 30
+        }
       },
       "WEAO957nhh9s": {
         "title": "RbxCli",
