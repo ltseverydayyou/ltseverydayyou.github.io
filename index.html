@@ -11455,7 +11455,7 @@
                                         src="https://raw.githubusercontent.com/voidstrap/Voidstrap/refs/heads/main/Images/Voidstrap.png"
                                         alt="" />
                                     <img class="bootstrapper-card__logo"
-                                        src="https://voidstrapp.netlify.app/Image/Voidstrap.png"
+                                        src="https://raw.githubusercontent.com/voidstrap/Voidstrap/main/Bloxstrap/Voidstrap.png"
                                         alt="" />
                                 </div>
                                 <h4 class="bootstrapper-card__name">Voidstrap</h4>
@@ -11472,15 +11472,15 @@
                             <span class="bootstrapper-card__rank">Popular</span>
                             <div class="bootstrapper-card__brand">
                                 <img class="bootstrapper-card__logo"
-                                    src="https://raw.githubusercontent.com/fishstrap/fishstrap/refs/heads/main/Images/Fishstrap.png"
+                                    src="https://wiki.fishstrap.app/_astro/favicon.DD-fq8Ir.png"
                                     alt="Fishstrap logo" />
                                 <h4 class="bootstrapper-card__name">Fishstrap</h4>
                             </div>
                             <div class="bootstrapper-card__links">
                                 <a href="https://www.fishstrap.app" target="_blank"
                                     rel="noopener noreferrer">Website</a>
-                                <a href="https://github.com/fishstrap/fishstrap" target="_blank"
-                                    rel="noopener noreferrer">GitHub</a>
+                                <span class="bootstrapper-card__link--disabled" aria-disabled="true"
+                                    title="GitHub repository deleted">GitHub</span>
                             </div>
                         </article>
 
@@ -25704,7 +25704,26 @@ self.addEventListener("message", async (event) => {
         transition: none;
       }
     }
-  </style>
+  
+        #pu .bootstrapper-card__links .bootstrapper-card__link--disabled {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 110px;
+            padding: 10px 14px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.035);
+            color: var(--mu);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            cursor: not-allowed;
+            opacity: 0.5;
+            user-select: none;
+        }
+</style>
 
   <script>
     (() => {
