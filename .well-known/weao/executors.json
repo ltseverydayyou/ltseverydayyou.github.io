@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-07-20T22:23:58.825Z",
+  "fetchedAt": "2026-07-21T02:57:01.662Z",
   "data": [
     {
       "_id": "66633ac4b29bacaa7a568fdc",
@@ -727,13 +727,13 @@
     {
       "_id": "68899ac3e376f58c849e0e68",
       "title": "Delta",
-      "version": "2.725.1142",
+      "version": "2.729.838",
       "updatedDate": "06/17/2026 at 3:29 PM UTC",
       "uncStatus": true,
       "free": true,
       "detected": true,
-      "rbxversion": "2.725.1142",
-      "updateStatus": false,
+      "rbxversion": "2.729.838",
+      "updateStatus": true,
       "websitelink": "https://deltaexploits.gg/",
       "discordlink": "https://discord.gg/deltax",
       "beta": false,

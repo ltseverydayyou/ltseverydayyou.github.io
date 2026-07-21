@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-07-20T22:23:58.825Z",
+  "fetchedAt": "2026-07-21T02:57:01.662Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -1346,9 +1346,15 @@
         "title": "Delta",
         "trackerId": "WEAO719ba76e",
         "_id": "68899ac3e376f58c849e0e68",
-        "version": "2.725.1142",
+        "version": "2.729.838",
         "updatedDate": "06/17/2026 at 3:29 PM UTC",
-        "changelogs": []
+        "changelogs": {
+          "trackerId": "WEAO74bee327",
+          "name": "deltaandroid",
+          "displayName": "DeltaAndroid",
+          "changelogs": [],
+          "count": 0
+        }
       },
       "WEAO30580ddb": {
         "title": "Serotonin",
