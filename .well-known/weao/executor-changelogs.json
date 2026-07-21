@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-07-21T06:02:54.113Z",
+  "fetchedAt": "2026-07-21T11:23:17.682Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -1322,8 +1322,8 @@
         "title": "Velocity",
         "trackerId": "WEAO4a1e0747",
         "_id": "680eaddf8b44717c060fcf8d",
-        "version": "1.2.3",
-        "updatedDate": "07/21/2026 at 5:22 AM UTC",
+        "version": "1.2.4",
+        "updatedDate": "07/21/2026 at 10:07 AM UTC",
         "changelogs": {
           "trackerId": "WEAO4a1e0747",
           "name": "velocity",
@@ -2816,9 +2816,17 @@
               "date": "2026-07-21T05:22:59.559Z",
               "supportedRobloxVersion": "version-ddf02245bdbb428c",
               "updated": true
+            },
+            {
+              "version": "1.2.4",
+              "changelog": "Fixed execution not working, this was because I decided to change how execution was setup and I guess it didn't like to work on other peoples devices (real men test in production) (please do let me know in the Velocity general chat if this fixed your issue)\n---------------\nVelocity is now version 1.2.4\nClose the UI and reopen to apply the update. (Velocity Lite)",
+              "timestamp": 1784628428446,
+              "date": "2026-07-21T10:07:08.446Z",
+              "supportedRobloxVersion": "version-ddf02245bdbb428c",
+              "updated": true
             }
           ],
-          "count": 186
+          "count": 187
         }
       },
       "WEAO74bee327": {
