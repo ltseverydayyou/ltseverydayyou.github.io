@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-07-22T04:20:33.049Z",
+  "fetchedAt": "2026-07-22T11:58:08.744Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -226,7 +226,350 @@
         "_id": "67e0d0d87d091e8f8b6d2a35",
         "version": "v2",
         "updatedDate": "07/15/2026 at 5:22 PM UTC",
-        "changelogs": []
+        "changelogs": {
+          "trackerId": "WEAO7650fcf2",
+          "name": "matcha",
+          "displayName": "Matcha",
+          "changelogs": [
+            {
+              "version": "1.6.0",
+              "changelog": "Updated to version-2a06298afe3947ab. (forgot to update)",
+              "timestamp": 1753828207970,
+              "date": "2025-07-29T22:30:07.970Z",
+              "supportedRobloxVersion": "version-2a06298afe3947ab",
+              "updated": true
+            },
+            {
+              "version": "1.6.1",
+              "changelog": "Updated to version-b8550645b8834e8a",
+              "timestamp": 1753919539354,
+              "date": "2025-07-30T23:52:19.354Z",
+              "supportedRobloxVersion": "version-b8550645b8834e8a",
+              "updated": true
+            },
+            {
+              "version": "1.6.2",
+              "changelog": "Updated to version-3f74e22590714de4",
+              "timestamp": 1754517196506,
+              "date": "2025-08-06T21:53:16.506Z",
+              "supportedRobloxVersion": "version-3f74e22590714de4",
+              "updated": true
+            },
+            {
+              "version": "1.6.3",
+              "changelog": "Updated to version-ca90f2e615014a44",
+              "timestamp": 1755116300507,
+              "date": "2025-08-13T20:18:20.507Z",
+              "supportedRobloxVersion": "version-ca90f2e615014a44",
+              "updated": true
+            },
+            {
+              "version": "1.6.4",
+              "changelog": "Updated to version-fe20d41d8fec4770",
+              "timestamp": 1755224934362,
+              "date": "2025-08-15T02:28:54.362Z",
+              "supportedRobloxVersion": "version-fe20d41d8fec4770",
+              "updated": true
+            },
+            {
+              "version": "1.6.5",
+              "changelog": "Updated to version-89b6c70d8f7f42ac",
+              "timestamp": 1755722643153,
+              "date": "2025-08-20T20:44:03.153Z",
+              "supportedRobloxVersion": "version-89b6c70d8f7f42ac",
+              "updated": true
+            },
+            {
+              "version": "1.6.6",
+              "changelog": "Updated to version-7b14ca0aa83149fa",
+              "timestamp": 1756326891791,
+              "date": "2025-08-27T20:34:51.791Z",
+              "supportedRobloxVersion": "version-7b14ca0aa83149fa",
+              "updated": true
+            },
+            {
+              "version": "1.6.7",
+              "changelog": "Updated to version-65664807ac1d4e85",
+              "timestamp": 1756512536220,
+              "date": "2025-08-30T00:08:56.220Z",
+              "supportedRobloxVersion": "version-65664807ac1d4e85",
+              "updated": true
+            },
+            {
+              "version": "1.6.7",
+              "changelog": "Updated to version-c1ac69007bdc4e48",
+              "timestamp": 1756935534339,
+              "date": "2025-09-03T21:38:54.339Z",
+              "supportedRobloxVersion": "version-c1ac69007bdc4e48",
+              "updated": true
+            },
+            {
+              "version": "1.6.8",
+              "changelog": "Updated to version-c1ac69007bdc4e48",
+              "timestamp": 1756935894321,
+              "date": "2025-09-03T21:44:54.321Z",
+              "supportedRobloxVersion": "version-c1ac69007bdc4e48",
+              "updated": true
+            },
+            {
+              "version": "1.6.9",
+              "changelog": "Updated to version-8afc5a7d5e894d22",
+              "timestamp": 1757537518853,
+              "date": "2025-09-10T20:51:58.853Z",
+              "supportedRobloxVersion": "version-8afc5a7d5e894d22",
+              "updated": true
+            },
+            {
+              "version": "1.7.0",
+              "changelog": "Updated to version-31fc142272764f02",
+              "timestamp": 1758143420371,
+              "date": "2025-09-17T21:10:20.371Z",
+              "supportedRobloxVersion": "version-31fc142272764f02",
+              "updated": true
+            },
+            {
+              "version": "1.7.1",
+              "changelog": "Updated to version-f6cd26d0e71b47c9",
+              "timestamp": 1758747792480,
+              "date": "2025-09-24T21:03:12.480Z",
+              "supportedRobloxVersion": "version-f6cd26d0e71b47c9",
+              "updated": true
+            },
+            {
+              "version": "1.7.2",
+              "changelog": "Updated to version-494828652c274712",
+              "timestamp": 1759350340319,
+              "date": "2025-10-01T20:25:40.319Z",
+              "supportedRobloxVersion": "version-494828652c274712",
+              "updated": true
+            },
+            {
+              "version": "1.7.4",
+              "changelog": "Updated to version-d34359a5577645e2",
+              "timestamp": 1759954512558,
+              "date": "2025-10-08T20:15:12.558Z",
+              "supportedRobloxVersion": "version-d34359a5577645e2",
+              "updated": true
+            },
+            {
+              "version": "1.7.5",
+              "changelog": "Updated to version-7a4a5d7d1fb3449f",
+              "timestamp": 1760636684784,
+              "date": "2025-10-16T17:44:44.784Z",
+              "supportedRobloxVersion": "version-7a4a5d7d1fb3449f",
+              "updated": true
+            },
+            {
+              "version": "1.7.6",
+              "changelog": "Updated to version-7a4a5d7d1fb3449f",
+              "timestamp": 1761165203883,
+              "date": "2025-10-22T20:33:23.883Z",
+              "supportedRobloxVersion": "version-7a4a5d7d1fb3449f",
+              "updated": false
+            },
+            {
+              "version": "1.7.7",
+              "changelog": "Updated to version-4aeb17bd13994560",
+              "timestamp": 1761166114152,
+              "date": "2025-10-22T20:48:34.152Z",
+              "supportedRobloxVersion": "version-4aeb17bd13994560",
+              "updated": true
+            },
+            {
+              "version": "1.7.8",
+              "changelog": "Updated to version-889d2588b25a43d1",
+              "timestamp": 1761768880113,
+              "date": "2025-10-29T20:14:40.113Z",
+              "supportedRobloxVersion": "version-889d2588b25a43d1",
+              "updated": true
+            },
+            {
+              "version": "1.7.9",
+              "changelog": "Updated to version-f6dd34ecac7b4642",
+              "timestamp": 1762376893397,
+              "date": "2025-11-05T21:08:13.397Z",
+              "supportedRobloxVersion": "version-f6dd34ecac7b4642",
+              "updated": true
+            },
+            {
+              "version": "1.8.0",
+              "changelog": "Updated to version-b7e223555d904550",
+              "timestamp": 1762981876390,
+              "date": "2025-11-12T21:11:16.390Z",
+              "supportedRobloxVersion": "version-b7e223555d904550",
+              "updated": true
+            },
+            {
+              "version": "1.8.1",
+              "changelog": "Updated to version-8e6e698468a04d3f",
+              "timestamp": 1763157573873,
+              "date": "2025-11-14T21:59:33.873Z",
+              "supportedRobloxVersion": "version-8e6e698468a04d3f",
+              "updated": true
+            },
+            {
+              "version": "1.8.2",
+              "changelog": "Updated to version-fdda949d95e447e3",
+              "timestamp": 1763586998464,
+              "date": "2025-11-19T21:16:38.464Z",
+              "supportedRobloxVersion": "version-fdda949d95e447e3",
+              "updated": true
+            },
+            {
+              "version": "1.8.4",
+              "changelog": "Updated to version-e380c8edc8f6477c",
+              "timestamp": 1763805220377,
+              "date": "2025-11-22T09:53:40.377Z",
+              "supportedRobloxVersion": "version-e380c8edc8f6477c",
+              "updated": true
+            },
+            {
+              "version": "1.8.5",
+              "changelog": "Updated to version-1849ecbff0824113",
+              "timestamp": 1764797018914,
+              "date": "2025-12-03T21:23:38.914Z",
+              "supportedRobloxVersion": "version-1849ecbff0824113",
+              "updated": true
+            },
+            {
+              "version": "1.8.6",
+              "changelog": "Updated to version-5aed1822f52c4b03",
+              "timestamp": 1765232128477,
+              "date": "2025-12-08T22:15:28.477Z",
+              "supportedRobloxVersion": "version-5aed1822f52c4b03",
+              "updated": true
+            },
+            {
+              "version": "1.8.6.1",
+              "changelog": "Updated to version-5b077c09380f4fe6",
+              "timestamp": 1766083934217,
+              "date": "2025-12-18T18:52:14.217Z",
+              "supportedRobloxVersion": "version-5b077c09380f4fe6",
+              "updated": true
+            },
+            {
+              "version": "1.8.6.2",
+              "changelog": "Usermode still works currently on vacation lol",
+              "timestamp": 1767206355814,
+              "date": "2025-12-31T18:39:15.814Z",
+              "supportedRobloxVersion": "version-f8f53a67efca4c34",
+              "updated": true
+            },
+            {
+              "version": "1.8.6.3",
+              "changelog": "Updated to the latest version.",
+              "timestamp": 1767865925727,
+              "date": "2026-01-08T09:52:05.727Z",
+              "supportedRobloxVersion": "version-89d89cb2d6b649be",
+              "updated": true
+            },
+            {
+              "version": "1.8.6.4",
+              "changelog": "Updated to the latest version.",
+              "timestamp": 1768429374931,
+              "date": "2026-01-14T22:22:54.931Z",
+              "supportedRobloxVersion": "version-1588a9c58c674e38",
+              "updated": true
+            },
+            {
+              "version": "1.8.6.5",
+              "changelog": "Updated to the latest version.",
+              "timestamp": 1769030329146,
+              "date": "2026-01-21T21:18:49.146Z",
+              "supportedRobloxVersion": "version-0f5223fb6e7e4955",
+              "updated": true
+            },
+            {
+              "version": "1.8.6.6",
+              "changelog": "Updated to the latest version.",
+              "timestamp": 1769194497996,
+              "date": "2026-01-23T18:54:57.996Z",
+              "supportedRobloxVersion": "version-8b8c34790f814a73",
+              "updated": true
+            },
+            {
+              "version": "1.8.6.7",
+              "changelog": "Updated to the latest version.",
+              "timestamp": 1769536989067,
+              "date": "2026-01-27T18:03:09.067Z",
+              "supportedRobloxVersion": "version-f8734e043e1e40a2",
+              "updated": true
+            },
+            {
+              "version": "1.8.6.8",
+              "changelog": "Updated to the latest version.",
+              "timestamp": 1769720564528,
+              "date": "2026-01-29T21:02:44.528Z",
+              "supportedRobloxVersion": "version-4464ba36ceea461e",
+              "updated": true
+            },
+            {
+              "version": "1.8.6.9",
+              "changelog": "Updated to the latest version.",
+              "timestamp": 1769847856626,
+              "date": "2026-01-31T08:24:16.626Z",
+              "supportedRobloxVersion": "version-db4634f0e27d4d36",
+              "updated": true
+            },
+            {
+              "version": "1.8.7.0",
+              "changelog": "Updated to the latest version.",
+              "timestamp": 1770234905820,
+              "date": "2026-02-04T19:55:05.820Z",
+              "supportedRobloxVersion": "version-3e7a57d7e53b4881",
+              "updated": true
+            },
+            {
+              "version": "1.8.7.1",
+              "changelog": "Updated to the latest version.",
+              "timestamp": 1770291546828,
+              "date": "2026-02-05T11:39:06.828Z",
+              "supportedRobloxVersion": "version-4464ba36ceea461e",
+              "updated": true
+            },
+            {
+              "version": "1.8.7.2",
+              "changelog": "Updated to version-80c7b8e578f241ff",
+              "timestamp": 1770314288236,
+              "date": "2026-02-05T17:58:08.236Z",
+              "supportedRobloxVersion": "version-80c7b8e578f241ff",
+              "updated": true
+            },
+            {
+              "version": "1.8.7.3",
+              "changelog": "Updated to version-bd08027bb04e4045",
+              "timestamp": 1770847184088,
+              "date": "2026-02-11T21:59:44.088Z",
+              "supportedRobloxVersion": "version-bd08027bb04e4045",
+              "updated": true
+            },
+            {
+              "version": "v2",
+              "changelog": "Updated to version-df7528517c6849f7",
+              "timestamp": 1771446151702,
+              "date": "2026-02-18T20:22:31.702Z",
+              "supportedRobloxVersion": "version-df7528517c6849f7",
+              "updated": true
+            },
+            {
+              "version": "v2.0.1",
+              "changelog": "Updated to version-2e6461290a3541f5",
+              "timestamp": 1776887350529,
+              "date": "2026-04-22T19:49:10.529Z",
+              "supportedRobloxVersion": "version-2e6461290a3541f5",
+              "updated": true
+            },
+            {
+              "version": "v2",
+              "changelog": "Updated to version-390ba09e7e944154",
+              "timestamp": 1777235800444,
+              "date": "2026-04-26T20:36:40.444Z",
+              "supportedRobloxVersion": "version-390ba09e7e944154",
+              "updated": true
+            }
+          ],
+          "count": 42
+        }
       },
       "WEAO08b7927f": {
         "title": "Xeno",
@@ -234,7 +577,270 @@
         "_id": "679553cd2eea89d30d0dae57",
         "version": "1.3.55",
         "updatedDate": "07/15/2026 at 5:02 PM UTC",
-        "changelogs": []
+        "changelogs": {
+          "trackerId": "WEAO08b7927f",
+          "name": "xeno",
+          "displayName": "Xeno",
+          "changelogs": [
+            {
+              "version": "1.2.50",
+              "changelog": "Better stability and performance optimization\nExecution fixed and optimized\nFew vulnerabilities\nFix bytecode hashing\nFix Xeno data corruption\nOptimized client functions\nXeno initialization crash fix\nXeno directory missing fix\nFaster compilation & client to Xeno communication",
+              "timestamp": 1754936300181,
+              "date": "2025-08-11T18:18:20.181Z",
+              "supportedRobloxVersion": "version-3f74e22590714de4",
+              "updated": true
+            },
+            {
+              "version": "1.2.55",
+              "changelog": "Better stability and performance optimization.\nExecution fixed and optimized.\nPatched few vulnerabilities.\nFix bytecode hashing.\nFix Xeno data corruption.\nOptimized client functions.\nXeno initialization crash fix.\nXeno directory missing fix.\nFaster compilation & client to Xeno communication.",
+              "timestamp": 1755647612633,
+              "date": "2025-08-19T23:53:32.633Z",
+              "supportedRobloxVersion": "version-fe20d41d8fec4770",
+              "updated": true
+            },
+            {
+              "version": "1.2.60",
+              "changelog": "Stability has been improved.\nImproved setscriptbytecode & getscriptbytecode.\nImproved Cryptographic functions.\nImproved WebSocket library (no more data loss and faster polling).\nFixed Luarmor scripts being stuck at 90%\nFaster and optimized RBXClient checking & handling\nPatched all known In-game detections.\nOptimized multi-threaded attach process.\nOptimized  Xeno server function handler.\nOptimized automated multi instance compatible attach system.\nOptimized filesystem caching & saving.\nOptimized overall in-menu & in-game attach handling for efficiency and speed.\nOptimized and fixed all bugs regarding auto attach.",
+              "timestamp": 1756937172052,
+              "date": "2025-09-03T22:06:12.052Z",
+              "supportedRobloxVersion": "version-c1ac69007bdc4e48",
+              "updated": true
+            },
+            {
+              "version": "1.2.60",
+              "changelog": "Stability has been improved.\nImproved setscriptbytecode & getscriptbytecode.\nImproved Cryptographic functions.\nImproved WebSocket library (no more data loss and faster polling).\nFixed Luarmor scripts being stuck at 90%\nFaster and optimized RBXClient checking & handling\nPatched all known In-game detections.\nOptimized multi-threaded attach process.\nOptimized  Xeno server function handler.\nOptimized automated multi instance compatible attach system.\nOptimized filesystem caching & saving.\nOptimized overall in-menu & in-game attach handling for efficiency and speed.\nOptimized and fixed all bugs regarding auto attach.",
+              "timestamp": 1756938434280,
+              "date": "2025-09-03T22:27:14.280Z",
+              "supportedRobloxVersion": "version-c1ac69007bdc4e48",
+              "updated": true
+            },
+            {
+              "version": "1.2.65",
+              "changelog": "Stability has been improved.\nImproved setscriptbytecode & getscriptbytecode.\nImproved Cryptographic functions.\nImproved WebSocket library (no more data loss and faster polling).\nFixed Luarmor scripts being stuck at 90%\nFaster and optimized RBXClient checking & handling\nPatched all known In-game detections.\nOptimized multi-threaded attach process.\nOptimized  Xeno server function handler.\nOptimized automated multi instance compatible attach system.\nOptimized filesystem caching & saving.\nOptimized overall in-menu & in-game attach handling for efficiency and speed.\nOptimized and fixed all bugs regarding auto attach.",
+              "timestamp": 1757652763875,
+              "date": "2025-09-12T04:52:43.875Z",
+              "supportedRobloxVersion": "version-8afc5a7d5e894d22",
+              "updated": true
+            },
+            {
+              "version": "1.2.70",
+              "changelog": "New Xeno version 1.2.70\nOverall Stability improvement\nAdaptations to new Roblox changes\nImproved dependencies and library\nFixed and updated several unc functions\nBetter capability and platform upgrade",
+              "timestamp": 1759534612466,
+              "date": "2025-10-03T23:36:52.466Z",
+              "supportedRobloxVersion": "version-494828652c274712",
+              "updated": true
+            },
+            {
+              "version": "1.2.75",
+              "changelog": "New Xeno version 1.2.75\nAdaptation to future versions\nMultithreaded attach safety and speed improvements\nServer handling improvements\nBetter WebSocket client handling and fixes\ngetcustomasset improvement\nBetter Xeno cache system handler\nFixed Xeno sometimes freezing while attaching to certain versions\nImproved performance of crypographic functions in C\nMore efficient memory management and better allocation handling",
+              "timestamp": 1759954227195,
+              "date": "2025-10-08T20:10:27.195Z",
+              "supportedRobloxVersion": "version-d34359a5577645e2",
+              "updated": false
+            },
+            {
+              "version": "1.2.80",
+              "changelog": "New Xeno version 1.2.80\nAdaptation and stability update for future Roblox versions",
+              "timestamp": 1760567434526,
+              "date": "2025-10-15T22:30:34.526Z",
+              "supportedRobloxVersion": "version-d34359a5577645e2",
+              "updated": true
+            },
+            {
+              "version": "1.2.85",
+              "changelog": "New Xeno version 1.2.80\nAdaptation and stability update for future Roblox versions",
+              "timestamp": 1761164541631,
+              "date": "2025-10-22T20:22:21.631Z",
+              "supportedRobloxVersion": "version-4aeb17bd13994560",
+              "updated": false
+            },
+            {
+              "version": "1.2.90",
+              "changelog": "New Xeno version 1.2.90\nAdaptation and stability update for future Roblox versions",
+              "timestamp": 1762378874979,
+              "date": "2025-11-05T21:41:14.979Z",
+              "supportedRobloxVersion": "version-f6dd34ecac7b4642",
+              "updated": false
+            },
+            {
+              "version": "1.2.95",
+              "changelog": "New Xeno version 1.2.90\nAdaptation and stability update for future Roblox versions",
+              "timestamp": 1762992756622,
+              "date": "2025-11-13T00:12:36.622Z",
+              "supportedRobloxVersion": "version-b7e223555d904550",
+              "updated": true
+            },
+            {
+              "version": "1.3.00",
+              "changelog": "New Xeno version 1.2.95\nAdaptation and stability update for future Roblox versions",
+              "timestamp": 1763589625850,
+              "date": "2025-11-19T22:00:25.850Z",
+              "supportedRobloxVersion": "version-fdda949d95e447e3",
+              "updated": true
+            },
+            {
+              "version": "1.3.05",
+              "changelog": "No more crashes when attaching in-game or on menu\nBetter requests library with proper OpenSSL integration & fixed not supporting ports\nFaster C loadstring function with better memory optimization\nBetter getscriptbytecode with proper sanitization for all scripts and fixed not able to view scripts with run context client\nBetter Xeno caching service with all info's being cached so everything can be resumed if Xeno is reopened\nOptimized auto execute with all scripts being separate and with auto handling\nRevamped queue_on_teleport with now better functionality, proper serialization with Xeno caching\nOptimized execution function adapting to multiple thread with better checking to ensure stability\nFixed a lot of the UI text showing \"Roblox\" when attaching in-game\nFixed not being attached after leaving while attaching in-game, always stays attached\nRevamped in-game attach with better checks\nAdded back function 'Xeno.getinstanceaddress' \nRevamped function 'Xeno.hookinstance'\nDiscord RPC has been disabled by default\nAdded new setting option \"Redirect errors to Xeno console\"\nAdded new setting option \"Redirect output to Xeno console\"",
+              "timestamp": 1764796240858,
+              "date": "2025-12-03T21:10:40.858Z",
+              "supportedRobloxVersion": "version-1849ecbff0824113",
+              "updated": true
+            },
+            {
+              "version": "1.3.10",
+              "changelog": "Fixed any exception causing Xeno to crash\nAdded crash handler for RBXClient\nAdded RBXClient data retrieval from endpoint\nProper multiple versions support with better adaptation\nFixed not attaching in-game for many users\nFixed requests library OpenSSL issue\nMinor bug fixes to Xeno cdb\nBetter Xeno function optimizations\nFixed any issues causing crashes\nMore optimization and quality improvement on Xeno dll\nBetter Xeno Server with optimized exception handler\nFixed and optimized retrieving RBXClient data from the endpoint",
+              "timestamp": 1765458028653,
+              "date": "2025-12-11T13:00:28.653Z",
+              "supportedRobloxVersion": "version-5aed1822f52c4b03",
+              "updated": true
+            },
+            {
+              "version": "1.3.05",
+              "changelog": "Fixed any exception causing Xeno to crash\nAdded crash handler for RBXClient\nAdded RBXClient data retrieval from endpoint\nProper multiple versions support with better adaptation\nFixed not attaching in-game for many users\nFixed requests library OpenSSL issue\nMinor bug fixes to Xeno cdb\nBetter Xeno function optimizations\nFixed any issues causing crashes\nMore optimization and quality improvement on Xeno dll\nBetter Xeno Server with optimized exception handler\nFixed and optimized retrieving RBXClient data from the endpoint",
+              "timestamp": 1765489536322,
+              "date": "2025-12-11T21:45:36.322Z",
+              "supportedRobloxVersion": "version-eaebe135b3ec446b",
+              "updated": false
+            },
+            {
+              "version": "1.3.10",
+              "changelog": "Fixed any exception causing Xeno to crash\nAdded crash handler for RBXClient\nAdded RBXClient data retrieval from endpoint\nProper multiple versions support with better adaptation\nFixed not attaching in-game for many users\nFixed requests library OpenSSL issue\nMinor bug fixes to Xeno cdb\nBetter Xeno function optimizations\nFixed any issues causing crashes\nMore optimization and quality improvement on Xeno dll\nBetter Xeno Server with optimized exception handler\nFixed and optimized retrieving RBXClient data from the endpoint\nHighly improved and faster loadstring & requests function with bug fixes\nFixed games preventing Xeno from attaching such as Fisch and Bladeball",
+              "timestamp": 1765508019722,
+              "date": "2025-12-12T02:53:39.722Z",
+              "supportedRobloxVersion": "version-eaebe135b3ec446b",
+              "updated": true
+            },
+            {
+              "version": "1.3.15",
+              "changelog": "Better client garbage collector\nFix loadstring issue while DataModel is loading\nFixed Roblox randomly freezing while Xeno is attached\nFixed connecting to endpoint issues\nFixed Roblox memory being filled by time & any memory leak issues\nYou can now auto farm overnight without any issues/crashes or memory filling\nBetter performance based in-game optimizations\nFix random crashes while being attached to a client\nBetter queue_on_teleport script caching\nBetter Xeno caching handler (better restoring all states and infos about a client after restarting Xeno)\nBetter requests handling and proper proxying\nMany server functions improved and optimized\nAdditional Improvements and new features to both UIs of Xeno",
+              "timestamp": 1769039935330,
+              "date": "2026-01-21T23:58:55.330Z",
+              "supportedRobloxVersion": "version-0f5223fb6e7e4955",
+              "updated": true
+            },
+            {
+              "version": "1.3.20",
+              "changelog": "Luarmor & Luraph support (v1.3.20+)\nBetter client garbage collector\nFix loadstring issue while DataModel is loading\nFixed Roblox randomly freezing while Xeno is attached\nFixed connecting to endpoint issues\nFixed Roblox memory being filled by time & any memory leak issues\nYou can now auto farm overnight without any issues/crashes or memory filling\nBetter performance based in-game optimizations\nFix random crashes while being attached to a client\nBetter queue_on_teleport script caching\nBetter Xeno caching handler (better restoring all states and infos about a client after restarting Xeno)\nBetter requests handling and proper proxying\nMany server functions improved and optimized\nAdditional Improvements and new features to both UIs of Xeno",
+              "timestamp": 1769563575710,
+              "date": "2026-01-28T01:26:15.710Z",
+              "supportedRobloxVersion": "version-f8734e043e1e40a2",
+              "updated": true
+            },
+            {
+              "version": "1.3.25",
+              "changelog": "Major vulnerability patch and security update (v1.3.25+)\nBetter performance improvement (v1.3.25+)\nBetter function handling (v1.3.25+)\nimproved many executor functions (v1.3.25+)\nFixed request issues (v1.3.25+)\nFixed game:HttpPost bug (v1.3.25+)\nPatched and removed all known in-game detections (v1.3.25+)\nImproved Xenos capability for adapting to newer updates (v1.3.25+)\nRemoved warnings for versions that were already adapted (v1.3.20+)\nLuarmor & Luraph support (v1.3.20+)\nBetter client garbage collector\nFix loadstring issue while DataModel is loading\nFixed Roblox randomly freezing while Xeno is attached\nFixed connecting to endpoint issues\nFixed Roblox memory being filled by time & any memory leak issues\nYou can now auto farm overnight without any issues/crashes or memory filling\nBetter performance based in-game optimizations\nFix random crashes while being attached to a client\nBetter queue_on_teleport script caching\nBetter Xeno caching handler (better restoring all states and infos about a client after restarting Xeno)\nBetter requests handling and proper proxying\nMany server functions improved and optimized\nAdditional Improvements and new features to both UIs of Xeno",
+              "timestamp": 1770730307262,
+              "date": "2026-02-10T13:31:47.262Z",
+              "supportedRobloxVersion": "version-80c7b8e578f241ff",
+              "updated": true
+            },
+            {
+              "version": "1.3.30",
+              "changelog": "Updated to v1.3.30\nFixed & improved getscriptable & setscriptable\nFixed sethiddenproperty\nImproved writefile\nImproved makefolder\nImproved listfiles\nImproved WebSockets library & performance\nImproved requests library\nImproved overall filesystem library\nImproved attach through home page\nFixed crashing when entering Roblox home page from game\nOptimized and improved many client functions\nImproved sUNC & UNC (more accurate and better functions)\nFixed any crashing issues with client\nAdded additional security patches for vulnerability mitigations\nImproved Xeno & client stability with better client adaptation\nImproved Xenos internal instance functions with better performance\nBetter performance and stability on some UNC functions\nRemoved Redirect Errors & Output\nBetter debug logs management\nAdded client-status/counter toggle on sidebar and taskbar\nAdded sticky settings navigator\nAdded window lock and sidebar lock settings\nAdded editor settings\nFixed client manager error\nFixed editor bug\nFixed resizing bug\n(All changes are not listed here)",
+              "timestamp": 1775170217526,
+              "date": "2026-04-02T22:50:17.526Z",
+              "supportedRobloxVersion": "version-689e359b09ad43b0",
+              "updated": false
+            },
+            {
+              "version": "1.3.30",
+              "changelog": "Updated to v1.3.30\nSupport for Roblox Microsoft Version\nFixed & improved getscriptable & setscriptable\nFixed sethiddenproperty\nImproved writefile\nImproved makefolder\nImproved listfiles\nImproved WebSockets library & performance\nImproved requests library\nImproved overall filesystem library\nImproved attach through home page\nFixed crashing when entering Roblox home page from game\nOptimized and improved many client functions\nImproved sUNC & UNC (more accurate and better functions)\nFixed any crashing issues with client\nAdded additional security patches for vulnerability mitigations\nImproved Xeno & client stability with better client adaptation\nImproved Xenos internal instance functions with better performance\nBetter performance and stability on some UNC functions\nRemoved Redirect Errors & Output\nBetter debug logs management\nAdded client-status/counter toggle on sidebar and taskbar\nAdded sticky settings navigator\nAdded window lock and sidebar lock settings\nAdded editor settings\nFixed client manager error\nFixed editor bug\nFixed resizing bug\n(All changes are not listed here)",
+              "timestamp": 1777261628558,
+              "date": "2026-04-27T03:47:08.558Z",
+              "supportedRobloxVersion": "version-390ba09e7e944154",
+              "updated": true
+            },
+            {
+              "version": "1.3.35",
+              "changelog": "Updated to v1.3.35\nAdditional bug fixes and performance optimizations\nSupport for Roblox Microsoft Version\nFixed & improved getscriptable & setscriptable\nFixed sethiddenproperty\nImproved writefile\nImproved makefolder\nImproved listfiles\nImproved WebSockets library & performance\nImproved requests library\nImproved overall filesystem library\nImproved attach through home page\nFixed crashing when entering Roblox home page from game\nOptimized and improved many client functions\nImproved sUNC & UNC (more accurate and better functions)\nFixed any crashing issues with client\nAdded additional security patches for vulnerability mitigations\nImproved Xeno & client stability with better client adaptation\nImproved Xenos internal instance functions with better performance\nBetter performance and stability on some UNC functions\nRemoved Redirect Errors & Output\nBetter debug logs management\nAdded client-status/counter toggle on sidebar and taskbar\nAdded sticky settings navigator\nAdded window lock and sidebar lock settings\nAdded editor settings\nFixed client manager error\nFixed editor bug\nFixed resizing bug\n(All changes are not listed here)",
+              "timestamp": 1777496563740,
+              "date": "2026-04-29T21:02:43.740Z",
+              "supportedRobloxVersion": "version-acc4b74f79e743b9",
+              "updated": true
+            },
+            {
+              "version": "1.3.40",
+              "changelog": "Updated to v1.3.40 (Attach fix)\nAdditional bug fixes and performance optimizations\nSupport for Roblox Microsoft Version\nFixed & improved getscriptable & setscriptable\nFixed sethiddenproperty\nImproved writefile\nImproved makefolder\nImproved listfiles\nImproved WebSockets library & performance\nImproved requests library\nImproved overall filesystem library\nImproved attach through home page\nFixed crashing when entering Roblox home page from game\nOptimized and improved many client functions\nImproved sUNC & UNC (more accurate and better functions)\nFixed any crashing issues with client\nAdded additional security patches for vulnerability mitigations\nImproved Xeno & client stability with better client adaptation\nImproved Xenos internal instance functions with better performance\nBetter performance and stability on some UNC functions\nRemoved Redirect Errors & Output\nBetter debug logs management\nAdded client-status/counter toggle on sidebar and taskbar\nAdded sticky settings navigator\nAdded window lock and sidebar lock settings\nAdded editor settings\nFixed client manager error\nFixed editor bug\nFixed resizing bug\n(All changes are not listed here)",
+              "timestamp": 1777922142272,
+              "date": "2026-05-04T19:15:42.272Z",
+              "supportedRobloxVersion": "version-acc4b74f79e743b9",
+              "updated": true
+            },
+            {
+              "version": "1.3.45",
+              "changelog": "Updated to v1.3.45\nImproved attach performance\nFixed client flickering while attaching\nImproved caching stability and performance\nFixed all issues with Microsoft version of Roblox\nImproved websockets library\nImproved crypt library\nChanged attach, execution, and loadstring functions logic\nFixed not attaching\nImproved requests library\nFixed and improved filesystem library\nFixed issues regarding instances on c side\nImproved server performance\nFixed client stuttering while attaching\nImproved and changed RBXClient data endpoint\nFixed client not being removed after closing\nImproved execution performance\n(Not all changes are listed here)",
+              "timestamp": 1779751043798,
+              "date": "2026-05-25T23:17:23.798Z",
+              "supportedRobloxVersion": "version-2b1721d47abf49aa",
+              "updated": true
+            },
+            {
+              "version": "1.3.50",
+              "changelog": "Updated to v1.3.50 (Attach Fix & Performance Improvement)\nImproved attach performance\nFixed client flickering while attaching\nImproved caching stability and performance\nFixed all issues with Microsoft version of Roblox\nImproved websockets library\nImproved crypt library\nChanged attach, execution, and loadstring functions logic\nFixed not attaching\nImproved requests library\nFixed and improved filesystem library\nFixed issues regarding instances on c side\nImproved server performance\nFixed client stuttering while attaching\nImproved and changed RBXClient data endpoint\nFixed client not being removed after closing\nImproved execution performance\n(Not all changes are listed here)",
+              "timestamp": 1780011878440,
+              "date": "2026-05-28T23:44:38.440Z",
+              "supportedRobloxVersion": "version-460909c4fe904aae",
+              "updated": true
+            },
+            {
+              "version": "1.3.55",
+              "changelog": "Updated to v1.3.55\nImproved and changed attach logic\nFixed Roblox client breaking while attaching\nFixed Roblox modules failing to load while attaching\nImproved attaching speed\nImproved teleport handling\nImproved execution & loadstring\nChanged decompiler API\nImproved client to server communication\nImproved handling for Roblox Microsoft version\nImproved client worker functions\nChanged RBXClient data endpoint\nFixed RBXClient worker threads not stopping after closing\nImproved memory management & handling\nChanged execution method\n(Not all changes are listed here)",
+              "timestamp": 1780538962486,
+              "date": "2026-06-04T02:09:22.486Z",
+              "supportedRobloxVersion": "version-ad5d3e2906444472",
+              "updated": false
+            },
+            {
+              "version": "1.3.50",
+              "changelog": "Updated to v1.3.55\nImproved and changed attach logic\nFixed Roblox client breaking while attaching\nFixed Roblox modules failing to load while attaching\nImproved attaching speed\nImproved teleport handling\nImproved execution & loadstring\nChanged decompiler API\nImproved client to server communication\nImproved handling for Roblox Microsoft version\nImproved client worker functions\nChanged RBXClient data endpoint\nFixed RBXClient worker threads not stopping after closing\nImproved memory management & handling\nChanged execution method\n(Not all changes are listed here)",
+              "timestamp": 1780538965480,
+              "date": "2026-06-04T02:09:25.480Z",
+              "supportedRobloxVersion": "version-ad5d3e2906444472",
+              "updated": false
+            },
+            {
+              "version": "1.3.55",
+              "changelog": "Updated to v1.3.55\nImproved and changed attach logic\nFixed Roblox client breaking while attaching\nFixed Roblox modules failing to load while attaching\nImproved attaching speed\nImproved teleport handling\nImproved execution & loadstring\nChanged decompiler API\nImproved client to server communication\nImproved handling for Roblox Microsoft version\nImproved client worker functions\nChanged RBXClient data endpoint\nFixed RBXClient worker threads not stopping after closing\nImproved memory management & handling\nChanged execution method\n(Not all changes are listed here)",
+              "timestamp": 1780538968477,
+              "date": "2026-06-04T02:09:28.477Z",
+              "supportedRobloxVersion": "version-ad5d3e2906444472",
+              "updated": false
+            },
+            {
+              "version": "1.3.50",
+              "changelog": "Updated to v1.3.55\nImproved and changed attach logic\nFixed Roblox client breaking while attaching\nFixed Roblox modules failing to load while attaching\nImproved attaching speed\nImproved teleport handling\nImproved execution & loadstring\nChanged decompiler API\nImproved client to server communication\nImproved handling for Roblox Microsoft version\nImproved client worker functions\nChanged RBXClient data endpoint\nFixed RBXClient worker threads not stopping after closing\nImproved memory management & handling\nChanged execution method\n(Not all changes are listed here)",
+              "timestamp": 1780538971481,
+              "date": "2026-06-04T02:09:31.481Z",
+              "supportedRobloxVersion": "version-ad5d3e2906444472",
+              "updated": false
+            },
+            {
+              "version": "1.3.55",
+              "changelog": "Updated to v1.3.55\nImproved and changed attach logic\nFixed Roblox client breaking while attaching\nFixed Roblox modules failing to load while attaching\nImproved attaching speed\nImproved teleport handling\nImproved execution & loadstring\nChanged decompiler API\nImproved client to server communication\nImproved handling for Roblox Microsoft version\nImproved client worker functions\nChanged RBXClient data endpoint\nFixed RBXClient worker threads not stopping after closing\nImproved memory management & handling\nChanged execution method\n(Not all changes are listed here)",
+              "timestamp": 1780538980489,
+              "date": "2026-06-04T02:09:40.489Z",
+              "supportedRobloxVersion": "version-ad5d3e2906444472",
+              "updated": false
+            },
+            {
+              "version": "1.3.50",
+              "changelog": "Updated to v1.3.55\nImproved and changed attach logic\nFixed Roblox client breaking while attaching\nFixed Roblox modules failing to load while attaching\nImproved attaching speed\nImproved teleport handling\nImproved execution & loadstring\nChanged decompiler API\nImproved client to server communication\nImproved handling for Roblox Microsoft version\nImproved client worker functions\nChanged RBXClient data endpoint\nFixed RBXClient worker threads not stopping after closing\nImproved memory management & handling\nChanged execution method\n(Not all changes are listed here)",
+              "timestamp": 1780538983492,
+              "date": "2026-06-04T02:09:43.492Z",
+              "supportedRobloxVersion": "version-ad5d3e2906444472",
+              "updated": false
+            },
+            {
+              "version": "1.3.55",
+              "changelog": "Updated to v1.3.55\nImproved and changed attach logic\nFixed Roblox client breaking while attaching\nFixed Roblox modules failing to load while attaching\nImproved attaching speed\nImproved teleport handling\nImproved execution & loadstring\nChanged decompiler API\nImproved client to server communication\nImproved handling for Roblox Microsoft version\nImproved client worker functions\nChanged RBXClient data endpoint\nFixed RBXClient worker threads not stopping after closing\nImproved memory management & handling\nChanged execution method\n(Not all changes are listed here)",
+              "timestamp": 1780538989497,
+              "date": "2026-06-04T02:09:49.497Z",
+              "supportedRobloxVersion": "version-ad5d3e2906444472",
+              "updated": false
+            }
+          ],
+          "count": 32
+        }
       },
       "WEAO6c35cab4": {
         "title": "Photon",
@@ -465,7 +1071,614 @@
         "_id": "66837bf003fe5828bec91bc5",
         "version": "1.1.208",
         "updatedDate": "07/15/2026 at 5:14 PM UTC",
-        "changelogs": []
+        "changelogs": {
+          "trackerId": "WEAO1181f437",
+          "name": "dx9ware",
+          "displayName": "DX9WARE V2",
+          "changelogs": [
+            {
+              "version": "1.1.128",
+              "changelog": "[+] Updated.",
+              "timestamp": 1753919569502,
+              "date": "2025-07-30T23:52:49.502Z",
+              "supportedRobloxVersion": "version-b8550645b8834e8a",
+              "updated": true
+            },
+            {
+              "version": "1.1.129",
+              "changelog": "[+] FIxed teamcheck",
+              "timestamp": 1753981610371,
+              "date": "2025-07-31T17:06:50.371Z",
+              "supportedRobloxVersion": "version-b8550645b8834e8a",
+              "updated": true
+            },
+            {
+              "version": "1.1.130",
+              "changelog": "None",
+              "timestamp": 1754513986464,
+              "date": "2025-08-06T20:59:46.464Z",
+              "supportedRobloxVersion": "version-3f74e22590714de4",
+              "updated": true
+            },
+            {
+              "version": "1.1.131",
+              "changelog": "[+] Updated.",
+              "timestamp": 1755117500633,
+              "date": "2025-08-13T20:38:20.633Z",
+              "supportedRobloxVersion": "version-ca90f2e615014a44",
+              "updated": true
+            },
+            {
+              "version": "1.1.132",
+              "changelog": "None",
+              "timestamp": 1755725089625,
+              "date": "2025-08-20T21:24:49.625Z",
+              "supportedRobloxVersion": "version-89b6c70d8f7f42ac",
+              "updated": true
+            },
+            {
+              "version": "1.1.133",
+              "changelog": "[+] Updated.",
+              "timestamp": 1756325601906,
+              "date": "2025-08-27T20:13:21.906Z",
+              "supportedRobloxVersion": "version-7b14ca0aa83149fa",
+              "updated": true
+            },
+            {
+              "version": "1.1.134",
+              "changelog": "[+] Updated.",
+              "timestamp": 1756514364618,
+              "date": "2025-08-30T00:39:24.618Z",
+              "supportedRobloxVersion": "version-65664807ac1d4e85",
+              "updated": true
+            },
+            {
+              "version": "1.1.135",
+              "changelog": "[+] Updated.",
+              "timestamp": 1756935475350,
+              "date": "2025-09-03T21:37:55.350Z",
+              "supportedRobloxVersion": "version-c1ac69007bdc4e48",
+              "updated": true
+            },
+            {
+              "version": "1.1.136",
+              "changelog": "[+] Updated.",
+              "timestamp": 1757537894596,
+              "date": "2025-09-10T20:58:14.596Z",
+              "supportedRobloxVersion": "version-8afc5a7d5e894d22",
+              "updated": true
+            },
+            {
+              "version": "1.1.137",
+              "changelog": "[+] Updated.",
+              "timestamp": 1758144110711,
+              "date": "2025-09-17T21:21:50.711Z",
+              "supportedRobloxVersion": "version-31fc142272764f02",
+              "updated": true
+            },
+            {
+              "version": "1.1.138",
+              "changelog": "[+] Updated.",
+              "timestamp": 1758745812770,
+              "date": "2025-09-24T20:30:12.770Z",
+              "supportedRobloxVersion": "version-f6cd26d0e71b47c9",
+              "updated": true
+            },
+            {
+              "version": "1.1.139",
+              "changelog": "[+] Updated.",
+              "timestamp": 1759350794550,
+              "date": "2025-10-01T20:33:14.550Z",
+              "supportedRobloxVersion": "version-494828652c274712",
+              "updated": true
+            },
+            {
+              "version": "1.1.140",
+              "changelog": "[+] Updated. \r\n\r\nfixing desync as well as fly soon",
+              "timestamp": 1759956292529,
+              "date": "2025-10-08T20:44:52.529Z",
+              "supportedRobloxVersion": "version-d34359a5577645e2",
+              "updated": true
+            },
+            {
+              "version": "1.1.141",
+              "changelog": "None",
+              "timestamp": 1759959232922,
+              "date": "2025-10-08T21:33:52.922Z",
+              "supportedRobloxVersion": "version-d34359a5577645e2",
+              "updated": true
+            },
+            {
+              "version": "1.1.142",
+              "changelog": "[+] Updated.\r\n\r\nsoz i was asleep (irregular update day)",
+              "timestamp": 1760639064864,
+              "date": "2025-10-16T18:24:24.864Z",
+              "supportedRobloxVersion": "version-7a4a5d7d1fb3449f",
+              "updated": true
+            },
+            {
+              "version": "1.1.143",
+              "changelog": "[+] Update.",
+              "timestamp": 1761167100943,
+              "date": "2025-10-22T21:05:00.943Z",
+              "supportedRobloxVersion": "version-4aeb17bd13994560",
+              "updated": true
+            },
+            {
+              "version": "1.1.144",
+              "changelog": "None",
+              "timestamp": 1761167880945,
+              "date": "2025-10-22T21:18:00.945Z",
+              "supportedRobloxVersion": "version-4aeb17bd13994560",
+              "updated": true
+            },
+            {
+              "version": "1.1.145",
+              "changelog": "None",
+              "timestamp": 1761170580970,
+              "date": "2025-10-22T22:03:00.970Z",
+              "supportedRobloxVersion": "version-4aeb17bd13994560",
+              "updated": true
+            },
+            {
+              "version": "1.1.146",
+              "changelog": "None",
+              "timestamp": 1761768874545,
+              "date": "2025-10-29T20:14:34.545Z",
+              "supportedRobloxVersion": "version-889d2588b25a43d1",
+              "updated": true
+            },
+            {
+              "version": "1.1.147",
+              "changelog": "[+] Updated.",
+              "timestamp": 1761769414551,
+              "date": "2025-10-29T20:23:34.551Z",
+              "supportedRobloxVersion": "version-889d2588b25a43d1",
+              "updated": true
+            },
+            {
+              "version": "1.1.148",
+              "changelog": "None",
+              "timestamp": 1762378205487,
+              "date": "2025-11-05T21:30:05.487Z",
+              "supportedRobloxVersion": "version-f6dd34ecac7b4642",
+              "updated": true
+            },
+            {
+              "version": "1.1.149",
+              "changelog": "[+] Updated.",
+              "timestamp": 1762378565513,
+              "date": "2025-11-05T21:36:05.513Z",
+              "supportedRobloxVersion": "version-f6dd34ecac7b4642",
+              "updated": true
+            },
+            {
+              "version": "1.1.150",
+              "changelog": "None",
+              "timestamp": 1762802666814,
+              "date": "2025-11-10T19:24:26.814Z",
+              "supportedRobloxVersion": "version-f6dd34ecac7b4642",
+              "updated": true
+            },
+            {
+              "version": "1.1.151",
+              "changelog": "[+] Updated.",
+              "timestamp": 1762983988473,
+              "date": "2025-11-12T21:46:28.473Z",
+              "supportedRobloxVersion": "version-b7e223555d904550",
+              "updated": true
+            },
+            {
+              "version": "1.1.152",
+              "changelog": "[+] Updated.",
+              "timestamp": 1763155701991,
+              "date": "2025-11-14T21:28:21.991Z",
+              "supportedRobloxVersion": "version-8e6e698468a04d3f",
+              "updated": true
+            },
+            {
+              "version": "1.1.153",
+              "changelog": "[+] Updated.",
+              "timestamp": 1763590065634,
+              "date": "2025-11-19T22:07:45.634Z",
+              "supportedRobloxVersion": "version-fdda949d95e447e3",
+              "updated": true
+            },
+            {
+              "version": "1.1.154",
+              "changelog": "[+] Updated.",
+              "timestamp": 1763821240933,
+              "date": "2025-11-22T14:20:40.933Z",
+              "supportedRobloxVersion": "version-e380c8edc8f6477c",
+              "updated": true
+            },
+            {
+              "version": "1.1.155",
+              "changelog": "[+] Updated.",
+              "timestamp": 1764796652524,
+              "date": "2025-12-03T21:17:32.524Z",
+              "supportedRobloxVersion": "version-1849ecbff0824113",
+              "updated": true
+            },
+            {
+              "version": "1.1.155",
+              "changelog": "[+] Updated.",
+              "timestamp": 1765228019860,
+              "date": "2025-12-08T21:06:59.860Z",
+              "supportedRobloxVersion": "version-5aed1822f52c4b03",
+              "updated": true
+            },
+            {
+              "version": "1.1.156",
+              "changelog": "[+] Updated.",
+              "timestamp": 1765228820001,
+              "date": "2025-12-08T21:20:20.001Z",
+              "supportedRobloxVersion": "version-5aed1822f52c4b03",
+              "updated": true
+            },
+            {
+              "version": "1.1.157",
+              "changelog": "[+] Updated.",
+              "timestamp": 1765488653158,
+              "date": "2025-12-11T21:30:53.158Z",
+              "supportedRobloxVersion": "version-eaebe135b3ec446b",
+              "updated": true
+            },
+            {
+              "version": "1.1.158",
+              "changelog": "[+] Updated.",
+              "timestamp": 1766082744243,
+              "date": "2025-12-18T18:32:24.243Z",
+              "supportedRobloxVersion": "version-5b077c09380f4fe6",
+              "updated": true
+            },
+            {
+              "version": "1.1.159",
+              "changelog": "[+] Updated.",
+              "timestamp": 1767241251418,
+              "date": "2026-01-01T04:20:51.418Z",
+              "supportedRobloxVersion": "version-f8f53a67efca4c34",
+              "updated": true
+            },
+            {
+              "version": "1.1.160",
+              "changelog": "[+] Updated.",
+              "timestamp": 1767833350191,
+              "date": "2026-01-08T00:49:10.191Z",
+              "supportedRobloxVersion": "version-89d89cb2d6b649be",
+              "updated": true
+            },
+            {
+              "version": "1.1.161",
+              "changelog": "[+] Updated.",
+              "timestamp": 1768426925699,
+              "date": "2026-01-14T21:42:05.699Z",
+              "supportedRobloxVersion": "version-1588a9c58c674e38",
+              "updated": true
+            },
+            {
+              "version": "1.1.162",
+              "changelog": "[+] Updated.",
+              "timestamp": 1769033014241,
+              "date": "2026-01-21T22:03:34.241Z",
+              "supportedRobloxVersion": "version-0f5223fb6e7e4955",
+              "updated": true
+            },
+            {
+              "version": "1.1.163",
+              "changelog": "None",
+              "timestamp": 1769040694495,
+              "date": "2026-01-22T00:11:34.495Z",
+              "supportedRobloxVersion": "version-0f5223fb6e7e4955",
+              "updated": true
+            },
+            {
+              "version": "1.1.164",
+              "changelog": "[+] Updated.",
+              "timestamp": 1769193938480,
+              "date": "2026-01-23T18:45:38.480Z",
+              "supportedRobloxVersion": "version-8b8c34790f814a73",
+              "updated": true
+            },
+            {
+              "version": "1.1.165",
+              "changelog": "[+] Updated.",
+              "timestamp": 1769477497935,
+              "date": "2026-01-27T01:31:37.935Z",
+              "supportedRobloxVersion": "version-f8734e043e1e40a2",
+              "updated": true
+            },
+            {
+              "version": "1.1.166",
+              "changelog": "[+] Updated.",
+              "timestamp": 1769716797979,
+              "date": "2026-01-29T19:59:57.979Z",
+              "supportedRobloxVersion": "version-4464ba36ceea461e",
+              "updated": true
+            },
+            {
+              "version": "1.1.167",
+              "changelog": "[+] Updated.",
+              "timestamp": 1769829849746,
+              "date": "2026-01-31T03:24:09.746Z",
+              "supportedRobloxVersion": "version-db4634f0e27d4d36",
+              "updated": true
+            },
+            {
+              "version": "1.1.168",
+              "changelog": "[+] Updated.",
+              "timestamp": 1770233463934,
+              "date": "2026-02-04T19:31:03.934Z",
+              "supportedRobloxVersion": "version-3e7a57d7e53b4881",
+              "updated": true
+            },
+            {
+              "version": "1.1.169",
+              "changelog": "[+] Updated.",
+              "timestamp": 1770255766034,
+              "date": "2026-02-05T01:42:46.034Z",
+              "supportedRobloxVersion": "version-4464ba36ceea461e",
+              "updated": true
+            },
+            {
+              "version": "1.1.170",
+              "changelog": "[+] Updated.",
+              "timestamp": 1770316983748,
+              "date": "2026-02-05T18:43:03.748Z",
+              "supportedRobloxVersion": "version-80c7b8e578f241ff",
+              "updated": true
+            },
+            {
+              "version": "1.1.170",
+              "changelog": "[+] Updated.",
+              "timestamp": 1770836724172,
+              "date": "2026-02-11T19:05:24.172Z",
+              "supportedRobloxVersion": "version-bd08027bb04e4045",
+              "updated": true
+            },
+            {
+              "version": "1.1.171",
+              "changelog": "[+] Updated.",
+              "timestamp": 1770838524434,
+              "date": "2026-02-11T19:35:24.434Z",
+              "supportedRobloxVersion": "version-bd08027bb04e4045",
+              "updated": true
+            },
+            {
+              "version": "1.1.172",
+              "changelog": "[+] Updated.",
+              "timestamp": 1771446386674,
+              "date": "2026-02-18T20:26:26.674Z",
+              "supportedRobloxVersion": "version-df7528517c6849f7",
+              "updated": true
+            },
+            {
+              "version": "1.1.173",
+              "changelog": "[+] Added dx9.GetMaterial to lua env",
+              "timestamp": 1771720279566,
+              "date": "2026-02-22T00:31:19.566Z",
+              "supportedRobloxVersion": "version-df7528517c6849f7",
+              "updated": true
+            },
+            {
+              "version": "1.1.174",
+              "changelog": "[+] Updated.",
+              "timestamp": 1772142280613,
+              "date": "2026-02-26T21:44:40.613Z",
+              "supportedRobloxVersion": "version-760d064d05424689",
+              "updated": true
+            },
+            {
+              "version": "1.1.175",
+              "changelog": "[+] Updated.",
+              "timestamp": 1772654084684,
+              "date": "2026-03-04T19:54:44.684Z",
+              "supportedRobloxVersion": "version-d599f7fc52a8404c",
+              "updated": true
+            },
+            {
+              "version": "1.1.176",
+              "changelog": "[+] Updated.",
+              "timestamp": 1773341252944,
+              "date": "2026-03-12T18:47:32.944Z",
+              "supportedRobloxVersion": "version-b130242ed064436f",
+              "updated": true
+            },
+            {
+              "version": "1.1.177",
+              "changelog": "None",
+              "timestamp": 1773358673709,
+              "date": "2026-03-12T23:37:53.709Z",
+              "supportedRobloxVersion": "version-b130242ed064436f",
+              "updated": true
+            },
+            {
+              "version": "1.1.178",
+              "changelog": "[+] Fixed issues on newer security updates.",
+              "timestamp": 1773618934028,
+              "date": "2026-03-15T23:55:34.028Z",
+              "supportedRobloxVersion": "version-b130242ed064436f",
+              "updated": true
+            },
+            {
+              "version": "1.1.179",
+              "changelog": "[+] Updated.",
+              "timestamp": 1773858091982,
+              "date": "2026-03-18T18:21:31.982Z",
+              "supportedRobloxVersion": "version-ae421f0582e54718",
+              "updated": true
+            },
+            {
+              "version": "1.1.180",
+              "changelog": "[+] Updated.",
+              "timestamp": 1774562284631,
+              "date": "2026-03-26T21:58:04.631Z",
+              "supportedRobloxVersion": "version-6776addb8fbc4d17",
+              "updated": true
+            },
+            {
+              "version": "1.1.181",
+              "changelog": "[+] Updated.",
+              "timestamp": 1775169136044,
+              "date": "2026-04-02T22:32:16.044Z",
+              "supportedRobloxVersion": "version-689e359b09ad43b0",
+              "updated": true
+            },
+            {
+              "version": "1.1.182",
+              "changelog": "[+] Updated. (not ex)",
+              "timestamp": 1775677737012,
+              "date": "2026-04-08T19:48:57.012Z",
+              "supportedRobloxVersion": "version-695a88dd8425491f",
+              "updated": true
+            },
+            {
+              "version": "1.1.183",
+              "changelog": "None",
+              "timestamp": 1775724790820,
+              "date": "2026-04-09T08:53:10.820Z",
+              "supportedRobloxVersion": "version-689e359b09ad43b0",
+              "updated": true
+            },
+            {
+              "version": "1.1.184",
+              "changelog": "[+] Updated.",
+              "timestamp": 1775773284598,
+              "date": "2026-04-09T22:21:24.598Z",
+              "supportedRobloxVersion": "version-26c90be22e0d4758",
+              "updated": true
+            },
+            {
+              "version": "1.1.185",
+              "changelog": "[+] Updated.",
+              "timestamp": 1776288530487,
+              "date": "2026-04-15T21:28:50.487Z",
+              "supportedRobloxVersion": "version-9d412f44a6fe4081",
+              "updated": true
+            },
+            {
+              "version": "1.1.186",
+              "changelog": "[+] Updated.",
+              "timestamp": 1776887680873,
+              "date": "2026-04-22T19:54:40.873Z",
+              "supportedRobloxVersion": "version-2e6461290a3541f5",
+              "updated": true
+            },
+            {
+              "version": "1.1.186",
+              "changelog": "[+] Updated.",
+              "timestamp": 1777234531600,
+              "date": "2026-04-26T20:15:31.600Z",
+              "supportedRobloxVersion": "version-390ba09e7e944154",
+              "updated": true
+            },
+            {
+              "version": "1.1.187",
+              "changelog": "[+] Updated.",
+              "timestamp": 1777235800855,
+              "date": "2026-04-26T20:36:40.855Z",
+              "supportedRobloxVersion": "version-390ba09e7e944154",
+              "updated": true
+            },
+            {
+              "version": "1.1.189",
+              "changelog": "[+] Updated.",
+              "timestamp": 1777489500236,
+              "date": "2026-04-29T19:05:00.236Z",
+              "supportedRobloxVersion": "version-acc4b74f79e743b9",
+              "updated": true
+            },
+            {
+              "version": "1.1.190",
+              "changelog": "[+] Updated.",
+              "timestamp": 1778117319518,
+              "date": "2026-05-07T01:28:39.518Z",
+              "supportedRobloxVersion": "version-bf6344c9c23446bf",
+              "updated": true
+            },
+            {
+              "version": "1.1.191",
+              "changelog": "None",
+              "timestamp": 1778265036469,
+              "date": "2026-05-08T18:30:36.469Z",
+              "supportedRobloxVersion": "version-bf6344c9c23446bf",
+              "updated": true
+            },
+            {
+              "version": "1.1.192",
+              "changelog": "[+] Updated.",
+              "timestamp": 1778703365125,
+              "date": "2026-05-13T20:16:05.125Z",
+              "supportedRobloxVersion": "version-bf6344c9c23446bf",
+              "updated": false
+            },
+            {
+              "version": "1.1.193",
+              "changelog": "None",
+              "timestamp": 1778712036188,
+              "date": "2026-05-13T22:40:36.188Z",
+              "supportedRobloxVersion": "version-bf6344c9c23446bf",
+              "updated": false
+            },
+            {
+              "version": "1.1.194",
+              "changelog": "[+] Updated.",
+              "timestamp": 1779126910181,
+              "date": "2026-05-18T17:55:10.181Z",
+              "supportedRobloxVersion": "version-bf6344c9c23446bf",
+              "updated": false
+            },
+            {
+              "version": "1.1.195",
+              "changelog": "[+] Updated.",
+              "timestamp": 1779403032020,
+              "date": "2026-05-21T22:37:12.020Z",
+              "supportedRobloxVersion": "version-bf6344c9c23446bf",
+              "updated": false
+            },
+            {
+              "version": "1.1.196",
+              "changelog": "[+] Updated.",
+              "timestamp": 1779567016429,
+              "date": "2026-05-23T20:10:16.429Z",
+              "supportedRobloxVersion": "version-bf6344c9c23446bf",
+              "updated": false
+            },
+            {
+              "version": "1.1.197",
+              "changelog": "None",
+              "timestamp": 1779906234070,
+              "date": "2026-05-27T18:23:54.070Z",
+              "supportedRobloxVersion": "version-bf6344c9c23446bf",
+              "updated": false
+            },
+            {
+              "version": "1.1.198",
+              "changelog": "[+] Updated.",
+              "timestamp": 1780441953182,
+              "date": "2026-06-02T23:12:33.182Z",
+              "supportedRobloxVersion": "version-bf6344c9c23446bf",
+              "updated": false
+            },
+            {
+              "version": "1.1.199",
+              "changelog": "[+] Reverted update.",
+              "timestamp": 1780444959352,
+              "date": "2026-06-03T00:02:39.352Z",
+              "supportedRobloxVersion": "version-bf6344c9c23446bf",
+              "updated": false
+            },
+            {
+              "version": "1.1.200",
+              "changelog": "[+] Updated.",
+              "timestamp": 1780522279157,
+              "date": "2026-06-03T21:31:19.157Z",
+              "supportedRobloxVersion": "version-bf6344c9c23446bf",
+              "updated": false
+            }
+          ],
+          "count": 75
+        }
       },
       "WEAO5caeb4a7": {
         "title": "SirHurt",
@@ -495,7 +1708,13 @@
         "_id": "67576d22d9181811c292bb79",
         "version": "1.3.2.5",
         "updatedDate": "07/19/2026 at 6:43 AM UTC",
-        "changelogs": []
+        "changelogs": {
+          "trackerId": "WEAO0fc0936f",
+          "name": "awpgg",
+          "displayName": "AWP.GG",
+          "changelogs": [],
+          "count": 0
+        }
       },
       "WEAO4a1e0747": {
         "title": "Velocity",
@@ -2835,7 +4054,478 @@
         "_id": "681baa53ab565e11d3feba0e",
         "version": "v3.2.5.1",
         "updatedDate": "03/01/2026 at 8:42 PM UTC",
-        "changelogs": []
+        "changelogs": {
+          "trackerId": "WEAO57c866d0",
+          "name": "volcano",
+          "displayName": "Volcano",
+          "changelogs": [
+            {
+              "version": "v3.1.4",
+              "changelog": "[>] Fixed Teleporting Crashes/Errors\n[>] Fixed game detection\n[>] Fixed HttpGet, etc on runonactor",
+              "timestamp": 1753827989696,
+              "date": "2025-07-29T22:26:29.696Z",
+              "supportedRobloxVersion": "version-2a06298afe3947ab",
+              "updated": true
+            },
+            {
+              "version": "v3.1.4",
+              "changelog": "[>] Fixed Teleporting Crashes/Errors\n[>] Fixed game detection\n[>] Fixed HttpGet, etc on runonactor",
+              "timestamp": 1753828516008,
+              "date": "2025-07-29T22:35:16.008Z",
+              "supportedRobloxVersion": "version-2a06298afe3947ab",
+              "updated": true
+            },
+            {
+              "version": "v3.1.5",
+              "changelog": "[>] Updated for version-3f74e22590714de4",
+              "timestamp": 1754540071712,
+              "date": "2025-08-07T04:14:31.712Z",
+              "supportedRobloxVersion": "version-3f74e22590714de4",
+              "updated": true
+            },
+            {
+              "version": "v3.1.5.1",
+              "changelog": "[>] Fixed crashes",
+              "timestamp": 1754614233615,
+              "date": "2025-08-08T00:50:33.615Z",
+              "supportedRobloxVersion": "version-3f74e22590714de4",
+              "updated": true
+            },
+            {
+              "version": "v3.1.5.2",
+              "changelog": "[>] Fixed crashes while teleporting, loading, joining game\nFixed crashes crashes crashes crashes crashes crashes\nhttps://i.imgur.com/UlUtzsF.png",
+              "timestamp": 1754690435488,
+              "date": "2025-08-08T22:00:35.488Z",
+              "supportedRobloxVersion": "version-3f74e22590714de4",
+              "updated": true
+            },
+            {
+              "version": "v3.1.5.3",
+              "changelog": "[>] Updated for version-ca90f2e615014a44",
+              "timestamp": 1755134786941,
+              "date": "2025-08-14T01:26:26.941Z",
+              "supportedRobloxVersion": "version-ca90f2e615014a44",
+              "updated": true
+            },
+            {
+              "version": "v3.1.5.4",
+              "changelog": "[>] Updated for version-ca90f2e615014a44",
+              "timestamp": 1755134967903,
+              "date": "2025-08-14T01:29:27.903Z",
+              "supportedRobloxVersion": "version-ca90f2e615014a44",
+              "updated": true
+            },
+            {
+              "version": "v3.1.5.5",
+              "changelog": "[>] Updated for version-fe20d41d8fec4770",
+              "timestamp": 1755220127333,
+              "date": "2025-08-15T01:08:47.333Z",
+              "supportedRobloxVersion": "version-fe20d41d8fec4770",
+              "updated": true
+            },
+            {
+              "version": "v3.1.6",
+              "changelog": "[>] Released Client-Modification Bypass\nWe have tested the bypass and we confirmed Volcano is bypassed the checks\nRemember: Use at your own risk!",
+              "timestamp": 1755306597292,
+              "date": "2025-08-16T01:09:57.292Z",
+              "supportedRobloxVersion": "version-fe20d41d8fec4770",
+              "updated": true
+            },
+            {
+              "version": "v3.1.6.1",
+              "changelog": "[>] Updated for version-89b6c70d8f7f42ac",
+              "timestamp": 1755738664090,
+              "date": "2025-08-21T01:11:04.090Z",
+              "supportedRobloxVersion": "version-89b6c70d8f7f42ac",
+              "updated": true
+            },
+            {
+              "version": "v3.1.7",
+              "changelog": "[>] Updated for version-7b14ca0aa83149fa",
+              "timestamp": 1756374113486,
+              "date": "2025-08-28T09:41:53.486Z",
+              "supportedRobloxVersion": "version-7b14ca0aa83149fa",
+              "updated": true
+            },
+            {
+              "version": "v3.1.7.3",
+              "changelog": "[>] Improved injection",
+              "timestamp": 1756392954605,
+              "date": "2025-08-28T14:55:54.605Z",
+              "supportedRobloxVersion": "version-7b14ca0aa83149fa",
+              "updated": true
+            },
+            {
+              "version": "v3.1.8",
+              "changelog": "[>] Updated to version-65664807ac1d4e85 (Works on my machine)",
+              "timestamp": 1756642859255,
+              "date": "2025-08-31T12:20:59.255Z",
+              "supportedRobloxVersion": "version-65664807ac1d4e85",
+              "updated": true
+            },
+            {
+              "version": "v3.1.8.1",
+              "changelog": "[>] Updated to version-c1ac69007bdc4e48",
+              "timestamp": 1756991935852,
+              "date": "2025-09-04T13:18:55.852Z",
+              "supportedRobloxVersion": "version-c1ac69007bdc4e48",
+              "updated": true
+            },
+            {
+              "version": "v3.1.9",
+              "changelog": "[>] Improved injection\n(This should works for everyone now!)",
+              "timestamp": 1757064299322,
+              "date": "2025-09-05T09:24:59.322Z",
+              "supportedRobloxVersion": "version-c1ac69007bdc4e48",
+              "updated": true
+            },
+            {
+              "version": "v3.1.9.1",
+              "changelog": "[>] Fixed crashes at certain games!",
+              "timestamp": 1757076539927,
+              "date": "2025-09-05T12:48:59.927Z",
+              "supportedRobloxVersion": "version-c1ac69007bdc4e48",
+              "updated": true
+            },
+            {
+              "version": "v3.1.9.2",
+              "changelog": "[>] Fixed some scripts crashing\n[>] Fixed getconnections",
+              "timestamp": 1757248743025,
+              "date": "2025-09-07T12:39:03.025Z",
+              "supportedRobloxVersion": "version-c1ac69007bdc4e48",
+              "updated": true
+            },
+            {
+              "version": "v3.1.9.3",
+              "changelog": "[>] Fixed setthreadidentity (This should fix most scripts crashing, example: Vape v4)\n[>] Fixed crashing at certain games",
+              "timestamp": 1757344686216,
+              "date": "2025-09-08T15:18:06.216Z",
+              "supportedRobloxVersion": "version-c1ac69007bdc4e48",
+              "updated": true
+            },
+            {
+              "version": "v3.1.10",
+              "changelog": "[>] Updated for version-8afc5a7d5e894d22",
+              "timestamp": 1757550359474,
+              "date": "2025-09-11T00:25:59.474Z",
+              "supportedRobloxVersion": "version-8afc5a7d5e894d22",
+              "updated": true
+            },
+            {
+              "version": "v3.1.11",
+              "changelog": "[>] Updated for version-31fc142272764f02",
+              "timestamp": 1758388840195,
+              "date": "2025-09-20T17:20:40.195Z",
+              "supportedRobloxVersion": "version-31fc142272764f02",
+              "updated": true
+            },
+            {
+              "version": "v3.1.12",
+              "changelog": "[>] Updated for version-f6cd26d0e71b47c9",
+              "timestamp": 1758806923324,
+              "date": "2025-09-25T13:28:43.324Z",
+              "supportedRobloxVersion": "version-f6cd26d0e71b47c9",
+              "updated": true
+            },
+            {
+              "version": "v3.1.13",
+              "changelog": "[>] Updated for version-494828652c274712",
+              "timestamp": 1759446380845,
+              "date": "2025-10-02T23:06:20.845Z",
+              "supportedRobloxVersion": "version-494828652c274712",
+              "updated": true
+            },
+            {
+              "version": "v3.1.14",
+              "changelog": "[>] Fixed crashes (Volcano should works now!)",
+              "timestamp": 1759450341288,
+              "date": "2025-10-03T00:12:21.288Z",
+              "supportedRobloxVersion": "version-494828652c274712",
+              "updated": true
+            },
+            {
+              "version": "v3.1.15",
+              "changelog": "[>] Updated to version-d34359a5577645e2\n[>] Major fixes",
+              "timestamp": 1759956682604,
+              "date": "2025-10-08T20:51:22.604Z",
+              "supportedRobloxVersion": "version-d34359a5577645e2",
+              "updated": true
+            },
+            {
+              "version": "v3.1.16",
+              "changelog": "[>] Updated to version-7a4a5d7d1fb3449f\n[>] Added setstackhidden",
+              "timestamp": 1760639316058,
+              "date": "2025-10-16T18:28:36.058Z",
+              "supportedRobloxVersion": "version-7a4a5d7d1fb3449f",
+              "updated": true
+            },
+            {
+              "version": "v3.1.17",
+              "changelog": "[>] Updated to version-4aeb17bd13994560\n[>] Added closure option for setstackhidden\n[>] Enabled Drawing library for Actor environment",
+              "timestamp": 1761178276946,
+              "date": "2025-10-23T00:11:16.946Z",
+              "supportedRobloxVersion": "version-4aeb17bd13994560",
+              "updated": true
+            },
+            {
+              "version": "v3.1.18",
+              "changelog": "[>] oth library has reached stable version :tada:\n[>] Reworked entire logic of oth.hook\n[>] List of functions that run on original thread inside oth hook:\n- debug*(level)\n- getnamecallmethod and setnamecallmethod\n- getcallingscript\n- checkcaller\n- use debug.getfenv instead getfenv for oth hook\n[>] Usage of oth.hook\n- Undetected hook of metamethod such as __namecall, etc\n- Undetected hook of c function such as debug.info, etc\n- Best pratices include hooking specific function instead hooking entire __namecall",
+              "timestamp": 1761354618754,
+              "date": "2025-10-25T01:10:18.754Z",
+              "supportedRobloxVersion": "version-4aeb17bd13994560",
+              "updated": true
+            },
+            {
+              "version": "v3.1.19",
+              "changelog": "[>] Updated to version-889d2588b25a43d1\n[>] Improved setstackhidden\n[>] Improved run_on_actor\n[>] Small improvement on oth.hook\nNote: oth.hook is not yet reliable on __namecall hook due to gc!\nImprovement is being made on oth.hook!",
+              "timestamp": 1761794853344,
+              "date": "2025-10-30T03:27:33.344Z",
+              "supportedRobloxVersion": "version-889d2588b25a43d1",
+              "updated": true
+            },
+            {
+              "version": "v3.1.20",
+              "changelog": "[>] Updated to version-f6dd34ecac7b4642",
+              "timestamp": 1762437412946,
+              "date": "2025-11-06T13:56:52.946Z",
+              "supportedRobloxVersion": "version-f6dd34ecac7b4642",
+              "updated": true
+            },
+            {
+              "version": "v3.1.21",
+              "changelog": "[>] Updated to version-b7e223555d904550",
+              "timestamp": 1763043033727,
+              "date": "2025-11-13T14:10:33.727Z",
+              "supportedRobloxVersion": "version-b7e223555d904550",
+              "updated": true
+            },
+            {
+              "version": "v3.1.22",
+              "changelog": "[>] Updated to version-8e6e698468a04d3f",
+              "timestamp": 1763191836478,
+              "date": "2025-11-15T07:30:36.478Z",
+              "supportedRobloxVersion": "version-8e6e698468a04d3f",
+              "updated": true
+            },
+            {
+              "version": "v3.1.23",
+              "changelog": "[>] Updated for version-8e6e698468a04d3f\n[>] Fixed UI",
+              "timestamp": 1763192196506,
+              "date": "2025-11-15T07:36:36.506Z",
+              "supportedRobloxVersion": "version-8e6e698468a04d3f",
+              "updated": true
+            },
+            {
+              "version": "v3.1.25",
+              "changelog": "[>] Updated for version-e380c8edc8f6477c",
+              "timestamp": 1764430767256,
+              "date": "2025-11-29T15:39:27.256Z",
+              "supportedRobloxVersion": "version-e380c8edc8f6477c",
+              "updated": true
+            },
+            {
+              "version": "v3.1.26",
+              "changelog": "[>] Improved stability while attaching",
+              "timestamp": 1764435987673,
+              "date": "2025-11-29T17:06:27.673Z",
+              "supportedRobloxVersion": "version-e380c8edc8f6477c",
+              "updated": true
+            },
+            {
+              "version": "v3.1.27",
+              "changelog": "[>] Improved overall stability\n[>] Faster injection",
+              "timestamp": 1764591148943,
+              "date": "2025-12-01T12:12:28.943Z",
+              "supportedRobloxVersion": "version-e380c8edc8f6477c",
+              "updated": true
+            },
+            {
+              "version": "v3.1.30",
+              "changelog": "[>] Updated for version-5aed1822f52c4b03\nVolcano is now paid!",
+              "timestamp": 1765451949364,
+              "date": "2025-12-11T11:19:09.364Z",
+              "supportedRobloxVersion": "version-5aed1822f52c4b03",
+              "updated": true
+            },
+            {
+              "version": "v3.1.31",
+              "changelog": "[>] Updated for version-eaebe135b3ec446b",
+              "timestamp": 1765494483614,
+              "date": "2025-12-11T23:08:03.614Z",
+              "supportedRobloxVersion": "version-eaebe135b3ec446b",
+              "updated": true
+            },
+            {
+              "version": "v3.1.32",
+              "changelog": "[>] Fixed Windows 11 ompatibility\nAll licenses has been compensation for 3 days!",
+              "timestamp": 1765632194313,
+              "date": "2025-12-13T13:23:14.313Z",
+              "supportedRobloxVersion": "version-eaebe135b3ec446b",
+              "updated": true
+            },
+            {
+              "version": "v3.1.33",
+              "changelog": "[>] Fixed several minor issues",
+              "timestamp": 1765809890207,
+              "date": "2025-12-15T14:44:50.207Z",
+              "supportedRobloxVersion": "version-eaebe135b3ec446b",
+              "updated": true
+            },
+            {
+              "version": "v3.1.34",
+              "changelog": "[>] Fixed not responding after some time\n[>] Fixed crashes at some games (Ink Game, etc)\n[>] Fixed hookfunction crash while hooking yielded function\n[>] Improved getscriptfromfunction logic\nAll licenses has been compensated for 2 days!\nVolcano should be more stable than before!",
+              "timestamp": 1765859213268,
+              "date": "2025-12-16T04:26:53.268Z",
+              "supportedRobloxVersion": "version-eaebe135b3ec446b",
+              "updated": true
+            },
+            {
+              "version": "v3.1.35",
+              "changelog": "[>] Updated for version-5b077c09380f4fe6\n[>] Fixed minor issues\nAll licenses has been compensated for 8 hours!",
+              "timestamp": 1766106280463,
+              "date": "2025-12-19T01:04:40.463Z",
+              "supportedRobloxVersion": "version-5b077c09380f4fe6",
+              "updated": true
+            },
+            {
+              "version": "v3.1.40",
+              "changelog": "[>] Perfomance improvements",
+              "timestamp": 1766215694576,
+              "date": "2025-12-20T07:28:14.576Z",
+              "supportedRobloxVersion": "version-5b077c09380f4fe6",
+              "updated": true
+            },
+            {
+              "version": "v3.1.43",
+              "changelog": "Core Changes\n[>] Added multi instance support\n\nUI Changes\n[>] Added License expiration in Settings section.\n[>] Added Multi instance selection.\n[>] Preserved Editor state whenever changing tab.\n[>] Improved Tab management design (Move, Rename, Duplicate, Delete)\n\nInstance Limits\n[>] Weekly is 5 and Monthly is 10\n\nHow to use Multi instance with Volcano?\n1. Run Volcano first\n2. Open multiple Roblox, recommended using https://github.com/ic3w0lf22/Roblox-Account-Manager\n3. Attach Volcano\n4. Enjoy!",
+              "timestamp": 1766927370681,
+              "date": "2025-12-28T13:09:30.681Z",
+              "supportedRobloxVersion": "version-5b077c09380f4fe6",
+              "updated": true
+            },
+            {
+              "version": "v3.1.45",
+              "changelog": "[>] Updated for version-f8f53a67efca4c34\n[>] Improved run_on_actor logic for serial phase\nHappy new year!!",
+              "timestamp": 1767210019058,
+              "date": "2025-12-31T19:40:19.058Z",
+              "supportedRobloxVersion": "version-f8f53a67efca4c34",
+              "updated": true
+            },
+            {
+              "version": "v3.1.46",
+              "changelog": "[>] Updated for version-89d89cb2d6b649be\nAll licenses has been compensated for 9 hours!",
+              "timestamp": 1767857144250,
+              "date": "2026-01-08T07:25:44.250Z",
+              "supportedRobloxVersion": "version-89d89cb2d6b649be",
+              "updated": true
+            },
+            {
+              "version": "v3.1.47",
+              "changelog": "[>] Updated for version-1588a9c58c674e38\nAll licenses that hasnt expired since 14 January 2026 is compensated for 7 days!",
+              "timestamp": 1768831499270,
+              "date": "2026-01-19T14:04:59.270Z",
+              "supportedRobloxVersion": "version-1588a9c58c674e38",
+              "updated": true
+            },
+            {
+              "version": "v3.1.48",
+              "changelog": "[>] Updated for version-0f5223fb6e7e4955",
+              "timestamp": 1769029794010,
+              "date": "2026-01-21T21:09:54.010Z",
+              "supportedRobloxVersion": "version-0f5223fb6e7e4955",
+              "updated": true
+            },
+            {
+              "version": "v3.1.49",
+              "changelog": "[>] Fixed potential vulnerability\n[>] Improved replicatesignal & filtergc",
+              "timestamp": 1769162226047,
+              "date": "2026-01-23T09:57:06.047Z",
+              "supportedRobloxVersion": "version-0f5223fb6e7e4955",
+              "updated": true
+            },
+            {
+              "version": "v3.1.50",
+              "changelog": "[>] Updated for version-8b8c34790f814a73",
+              "timestamp": 1769193428194,
+              "date": "2026-01-23T18:37:08.194Z",
+              "supportedRobloxVersion": "version-8b8c34790f814a73",
+              "updated": true
+            },
+            {
+              "version": "v3.2.0",
+              "changelog": "[>] Fixed file library",
+              "timestamp": 1769211250351,
+              "date": "2026-01-23T23:34:10.351Z",
+              "supportedRobloxVersion": "version-8b8c34790f814a73",
+              "updated": true
+            },
+            {
+              "version": "v3.2.1",
+              "changelog": "[>] Stable oth library\n[>] Fixed file system",
+              "timestamp": 1769264597282,
+              "date": "2026-01-24T14:23:17.282Z",
+              "supportedRobloxVersion": "version-8b8c34790f814a73",
+              "updated": true
+            },
+            {
+              "version": "v3.2.2",
+              "changelog": "[>] Updated for version-f8734e043e1e40a2",
+              "timestamp": 1769478677423,
+              "date": "2026-01-27T01:51:17.423Z",
+              "supportedRobloxVersion": "version-f8734e043e1e40a2",
+              "updated": true
+            },
+            {
+              "version": "v3.2.3",
+              "changelog": "[>] Updated for version-db4634f0e27d4d36\nAll licenses that hasnt expired since 29 January 2026 is compensated for 4 days!",
+              "timestamp": 1769879901261,
+              "date": "2026-01-31T17:18:21.261Z",
+              "supportedRobloxVersion": "version-db4634f0e27d4d36",
+              "updated": true
+            },
+            {
+              "version": "v3.2.3.1",
+              "changelog": "[>] Fixed some scripts not running properly",
+              "timestamp": 1769888361721,
+              "date": "2026-01-31T19:39:21.721Z",
+              "supportedRobloxVersion": "version-db4634f0e27d4d36",
+              "updated": true
+            },
+            {
+              "version": "v3.2.4",
+              "changelog": "[>] Updated for version-df7528517c6849f7\n\nWe sincerely apologize for the recent downtime and have compensated all active users with 16 days added to their accounts. We are aware of some minor performance issues; however, we chose to bring the service back online rather than keep you waiting any longer. Our team is actively working to resolve these issues over the next few days. Thank you for your patience and understanding.\nAlso you can check Volcano documentation at docs.volcano.wtf",
+              "timestamp": 1771622798059,
+              "date": "2026-02-20T21:26:38.059Z",
+              "supportedRobloxVersion": "version-df7528517c6849f7",
+              "updated": true
+            },
+            {
+              "version": "v3.2.4.1",
+              "changelog": "[>] Fixed minor issue",
+              "timestamp": 1771709487407,
+              "date": "2026-02-21T21:31:27.407Z",
+              "supportedRobloxVersion": "version-df7528517c6849f7",
+              "updated": true
+            },
+            {
+              "version": "v3.2.5",
+              "changelog": "[>] Updated for version-760d064d05424689\nPerfomance improvement in progress!\nAll active subscriptions is compensated for 2 days!",
+              "timestamp": 1772280253852,
+              "date": "2026-02-28T12:04:13.852Z",
+              "supportedRobloxVersion": "version-760d064d05424689",
+              "updated": true
+            },
+            {
+              "version": "v3.2.5.1",
+              "changelog": "[>] Fixed crashes\nPerfomance improvement in progress!\nAll active subscriptions is compensated for 24 hours!",
+              "timestamp": 1772397747558,
+              "date": "2026-03-01T20:42:27.558Z",
+              "supportedRobloxVersion": "version-760d064d05424689",
+              "updated": true
+            }
+          ],
+          "count": 58
+        }
       },
       "WEAO622afd8b": {
         "title": "Ronin",
@@ -3271,7 +4961,13 @@
         "_id": "6949f6f40260ad9e36c736ff",
         "version": "2.729.840",
         "updatedDate": "07/20/2026 at 2:47 AM UTC",
-        "changelogs": []
+        "changelogs": {
+          "trackerId": "WEAO8c4f2b91",
+          "name": "vegax",
+          "displayName": "VegaX",
+          "changelogs": [],
+          "count": 0
+        }
       },
       "WEAO957nhh9s": {
         "title": "RbxCli",

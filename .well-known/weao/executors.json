@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-07-22T04:20:33.049Z",
+  "fetchedAt": "2026-07-22T11:58:08.744Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -1160,7 +1160,19 @@
       "websitelink": "https://realest.gg",
       "purchaselink": "https://rcheatz.com/product?id=real-executor&ref=weao",
       "keysystem": true,
-      "hidden": false
+      "hidden": false,
+      "slug": {
+        "fullDescription": "",
+        "logo": "https://cdn.weao.gg/slug/real/logo.png",
+        "owner": "Bytecode, marko",
+        "screenshots": [
+          "https://cdn.weao.gg/slug/real/screenshot1.png",
+          "https://cdn.weao.gg/slug/real/screenshot2.png",
+          "https://cdn.weao.gg/slug/real/screenshot3.png",
+          "https://cdn.weao.gg/slug/real/screenshot4.png",
+          "https://cdn.weao.gg/slug/real/screenshot5.png"
+        ]
+      }
     }
   ]
 }
