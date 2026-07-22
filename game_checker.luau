@@ -538,6 +538,10 @@ local mods = {
 		id = 10258128048,
 		u = "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/FNP%20Autoplayer.luau"
 	},
+	{
+		id = 16680835,
+		u = "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/Notoriety.luau"
+	},
 }
 for _, m in mods do
 	task.spawn(function()
