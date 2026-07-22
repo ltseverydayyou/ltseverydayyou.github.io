@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-07-22T20:38:56.811Z",
+  "fetchedAt": "2026-07-22T22:06:05.556Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -1720,8 +1720,8 @@
         "title": "Velocity",
         "trackerId": "WEAO4a1e0747",
         "_id": "680eaddf8b44717c060fcf8d",
-        "version": "1.2.6",
-        "updatedDate": "07/22/2026 at 5:43 PM UTC",
+        "version": "1.2.7",
+        "updatedDate": "07/22/2026 at 9:36 PM UTC",
         "changelogs": {
           "trackerId": "WEAO4a1e0747",
           "name": "velocity",
@@ -3238,9 +3238,17 @@
               "date": "2026-07-22T17:36:51.016Z",
               "supportedRobloxVersion": "version-ddf02245bdbb428c",
               "updated": false
+            },
+            {
+              "version": "1.2.7",
+              "changelog": "Fixed delayed crash\nFixed the UI giving out an error saying \"payment required\"\n---------------\nVelocity is now version 1.2.7\nClose the UI and reopen to apply the update. (Velocity Lite)",
+              "timestamp": 1784756205319,
+              "date": "2026-07-22T21:36:45.319Z",
+              "supportedRobloxVersion": "version-9affbe66b2624d20",
+              "updated": true
             }
           ],
-          "count": 189
+          "count": 190
         }
       },
       "WEAO1af938a2": {

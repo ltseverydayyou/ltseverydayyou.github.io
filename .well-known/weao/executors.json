@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-07-22T20:38:56.811Z",
+  "fetchedAt": "2026-07-22T22:06:05.556Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -334,8 +334,8 @@
     {
       "_id": "680eaddf8b44717c060fcf8d",
       "title": "Velocity",
-      "version": "1.2.6",
-      "updatedDate": "07/22/2026 at 5:43 PM UTC",
+      "version": "1.2.7",
+      "updatedDate": "07/22/2026 at 9:36 PM UTC",
       "uncStatus": true,
       "free": true,
       "detected": true,
