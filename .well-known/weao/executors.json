@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-07-22T19:25:11.902Z",
+  "fetchedAt": "2026-07-22T20:38:56.811Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -1018,8 +1018,8 @@
     {
       "_id": "69cace8670a25244103ea819",
       "title": "Cosmic",
-      "version": "0.731",
-      "updatedDate": "07/22/2026 at 5:30 PM UTC",
+      "version": "1.731",
+      "updatedDate": "07/22/2026 at 7:56 PM UTC",
       "uncStatus": true,
       "free": false,
       "detected": true,
@@ -1128,8 +1128,8 @@
     {
       "_id": "6a5095abbb457d55d62f8061",
       "title": "Real",
-      "version": "1.5.0",
-      "updatedDate": "07/22/2026 at 4:07 PM UTC",
+      "version": "1.5.1",
+      "updatedDate": "07/22/2026 at 7:47 PM UTC",
       "uncStatus": true,
       "free": true,
       "detected": true,

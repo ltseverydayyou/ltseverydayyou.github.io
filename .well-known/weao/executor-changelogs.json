@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-07-22T19:25:11.902Z",
+  "fetchedAt": "2026-07-22T20:38:56.811Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -5009,9 +5009,840 @@
         "title": "RbxCli",
         "trackerId": "WEAO957nhh9s",
         "_id": "6949f9ee0260ad9e36c73700",
-        "version": "1.9.16a-beta",
-        "updatedDate": "07/15/2026 at 6:06 PM UTC",
-        "changelogs": []
+        "version": "1.9.17-beta",
+        "updatedDate": "07/22/2026 at 5:59 PM UTC",
+        "changelogs": {
+          "trackerId": "WEAO957nhh9s",
+          "name": "rbxcli",
+          "displayName": "RbxCli",
+          "changelogs": [
+            {
+              "version": "0.5.0-alpha",
+              "changelog": "- Fixed an issue where lighting was not restored after lighting modifications were disabled.\r\n- Fixed Silent Aim continuing to aim when there was no target present.\r\n- Reduced penalties\r\n- Fall Part Height modification now properly detects if it can be overriden or not.\r\n- Removed Chameleon's Glow, Wireframe and Point Cloud settings, as they're no longer supported on the new renderer.\r\n- Humanoid modifications (JumpPower, JumpHeight, WalkSpeed, …) will be applied upon modification on the UI.\r\n- Fixed a bug where lighting modifications broke after using them and disabling them.\r\n- Optimized Lighting modifications internally.\r\n- Decreased precision of latency text on watermark, leaving only one digit of precision. \r\n- Added label to Search Bar to reduce confusion on Entity List section under Entity List Tab.",
+              "timestamp": 1766456669024,
+              "date": "2025-12-23T02:24:29.024Z",
+              "supportedRobloxVersion": "version-5b077c09380f4fe6",
+              "updated": true
+            },
+            {
+              "version": "0.5.1-alpha",
+              "changelog": "- Fixed an issue where lighting was not restored after lighting modifications were disabled.\r\n- Fixed Silent Aim continuing to aim when there was no target present.\r\n- Reduced penalties\r\n- Fall Part Height modification now properly detects if it can be overriden or not.\r\n- Removed Chameleon's Glow, Wireframe and Point Cloud settings, as they're no longer supported on the new renderer.\r\n- Humanoid modifications (JumpPower, JumpHeight, WalkSpeed, …) will be applied upon modification on the UI.\r\n- Fixed a bug where lighting modifications broke after using them and disabling them.\r\n- Optimized Lighting modifications internally.\r\n- Decreased precision of latency text on watermark, leaving only one digit of precision. \r\n- Added label to Search Bar to reduce confusion on Entity List section under Entity List Tab.",
+              "timestamp": 1766456724098,
+              "date": "2025-12-23T02:25:24.098Z",
+              "supportedRobloxVersion": "version-5b077c09380f4fe6",
+              "updated": true
+            },
+            {
+              "version": "0.5.2-alpha",
+              "changelog": "- Added Humanoid to Luau VM\r\nThe following properties are made available for use in the Humanoid Luau VM:\r\n  - WalkSpeed\r\n  - JumpHeight\r\n  - JumpPower\r\n  - HipHeight\r\n  - Jump\r\n  - Sit\r\n  - PlatformStand\r\n  - RequiresNeck\r\n  - UseJumpPower\r\n  - NameDisplayDistance\r\n  - MoveDirection\r\n  - WalkToPoint\r\n  - InternalBodyScale\r\n  - CameraOffset\r\n  - Health\r\n  - MaxHealth\r\n- Fixed bounding boxes being rotated based on the Camera's Rotation, not on the RootPart's Rotation.\r\n\r\nMerry christmas eve, RbxCli will likely decrease updates until 2026 (Or until I decide to work again).",
+              "timestamp": 1766609894515,
+              "date": "2025-12-24T20:58:14.515Z",
+              "supportedRobloxVersion": "version-5b077c09380f4fe6",
+              "updated": true
+            },
+            {
+              "version": "0.5.3-alpha",
+              "changelog": "- Extended `memory` Luau VM library with new reading and writing extensions instead of plain buffer objects.\r\n- Added: `memory.readu8`, `memory.readi8`, `memory.readbool`, `memory.readu16`, `memory.readi16`, `memory.readu32`, `memory.readi32`, `memory.readf32`, `memory.readf64`, `memory.read_pointer` (This function may fail if the read value is irrepresentable within the limits of a double precision IEEE-754 float, which isn't normally the case, but it may happen, so note it), `memory.writeu8`, `memory.writei8`, `memory.writebool`, `memory.writeu16`, `memory.writei16`, `memory.writeu32`, `memory.writei32`, `memory.writef32`, `memory.writef64`.\r\n- Added `physics` Luau VM library containing physics-related functions, such as `raycast`. These functions are yet to be documented.\r\n- Fix crash that happened within the NPC system due to type confusion.\r\n- Visibility checking now optionally checks transparency, this setting can be modified in the Settings.\r\n(This is due to some games utilizing custom materials which conflict with the standard transparency, causing false transparent parts, which lead to in some cases entire maps being discarded (Defuse Division, Reminisence Zombies, particularly on the Backrooms map).\r\n- Mitigate bounding box errors by only taking into account parts considered 'In Movement'.",
+              "timestamp": 1766618956030,
+              "date": "2025-12-24T23:29:16.030Z",
+              "supportedRobloxVersion": "version-5b077c09380f4fe6",
+              "updated": true
+            },
+            {
+              "version": "0.5.4-alpha",
+              "changelog": "- Fixed saving Hitbox Expander Settings.\r\n- Fixed saving 'Draw Aimbot Field of View Circle'.\r\n- Added back load failures for Kernel Mode Driver loading, including erroring states.\r\n- Added label to Flight Speed dragger, previously missing.\r\n- Improved auth performance.\r\n- Reduced cracking false positives.\r\n- Admin is now **required** to boot RbxCli.\r\n- Fixed heap corruption product of multithreaded ImGui usage.\r\n- Optimized access to some Workspace properties.\r\n- Slightly improved memory reading performance, code size may have been increased. (Very slight, product of branch re-ordering)",
+              "timestamp": 1766716532098,
+              "date": "2025-12-26T02:35:32.098Z",
+              "supportedRobloxVersion": "version-5b077c09380f4fe6",
+              "updated": true
+            },
+            {
+              "version": "0.5.4a-alpha",
+              "changelog": "This is a hotfix release.\r\n- Changed mesh normalization to be per-axis instead of general. This should completely solve malformed meshes, product of scaling based on all axis instead of per-axis. (Assuming Uniform meshes instead of Non-Uniform ones, which isn't the case for most meshes)\r\n- (Implicitly) Fixed mesh-based chameleon rendering (Which sometimes resulted in broken parts or malformed parts).\r\n- (Implicitly) Fixed mesh visibility checking being imprecise on some meshes.\r\n- (Implicitly) Fixed wireframe view for meshes inside of the Physics World Debug View.\r\n\r\nTo obtain the benefits of this update you MUST purge all files inside your `RbxCli/Meshes` folder before using RbxCli again, this clears the mesh cache and allows RbxCli to download those meshes again.",
+              "timestamp": 1766718272560,
+              "date": "2025-12-26T03:04:32.560Z",
+              "supportedRobloxVersion": "version-5b077c09380f4fe6",
+              "updated": true
+            },
+            {
+              "version": "0.6.0-alpha",
+              "changelog": "- Added `UDim2` library: `UDim2.new`, `UDim2.fromScale`, `UDim2.fromOffset`, fully Roblox API compliant.\r\n- Added `UDim` library: `UDim.new`, fully Roblox API compliant.\r\n- Added `UDim` object, fully Roblox API compliant.\r\n- Added `UDim2` object, fully Roblox API compliant.\r\n- Added `GuiObject` to Luau VM, `Size` and `Position` properties are supported.\r\n- Added `TextLabel` to Luau VM, `Text` property is supported.\r\n- Fixed infinitely growing list set, which slowed down the Luau VM over time due to bad list management.\r\n- Added `NetworkOwnerV3` to `BasePart` objects to obtain the Owner's Network ID, you can use our documented Network IDs on the Instance Explorer to know what the value represents (Formal documentation coming soon)\r\n  - -1 => Not Simulated\r\n  - 1 => Server/Automatic Ownership\r\n  - 2 => Welded/Anchored\r\n  - 3 => Remotely Simulated (Player/Server)\r\n  - 4+ => Locally Simulated (This value is your Network ID)\r\n- Fixed deadlock present on RbxCli's exit after using the Luau VM.\r\n- Fixed mis-documented Network ID on explorer.\r\n\r\nFormal documentation to new APIs will be releasing soon, it is just a lot to write and honestly, I'm not willing to sit down and write the 20+ new functions and design the ones that I'm missing, such as Drawing.",
+              "timestamp": 1766802627294,
+              "date": "2025-12-27T02:30:27.294Z",
+              "supportedRobloxVersion": "version-5b077c09380f4fe6",
+              "updated": true
+            },
+            {
+              "version": "0.6.0a-alpha",
+              "changelog": "This is a hotfix release.\r\n- Fix Humanoid overrides without repeating mode. This bug affects 0.5.1-alpha+\r\n\r\nTurns out that programming quickly can make you use the wrong variables at times.",
+              "timestamp": 1766804547109,
+              "date": "2025-12-27T03:02:27.109Z",
+              "supportedRobloxVersion": "version-5b077c09380f4fe6",
+              "updated": true
+            },
+            {
+              "version": "0.7.0-alpha",
+              "changelog": "- Fixed Vector3 not having properties or methods.\r\n- Added `ProcessWriteResult` and `ProcessReadResult` as enums for the memory library.\r\n- Implemented get_product_information in Luau VM (Spec'd but had forgotten to push it)\r\n- Fixed names for Rendering library functions, which made them unusable.\r\n- Modified HWID function to no longer include MAC Addresses, allowing MAC Address changes for ban 'handling' purposes.\r\n- Added `AssemblyLinearVelocity`, `Velocity` and `AssemblyAngularVelocity` to `BasePart` objects in Luau VM.\r\n- Increased width of Keybinds window to fit longer names.\r\n- Added Team Selection, Health Checking and Bounding Box drawing for Hitbox Expansion.\r\n- Added Aimbot 'Accuracy', adding random spread according to the value between 0.0 - 1.0 (Not landing a fucking shot to landing every shot)\r\n- Added keybinds for WalkSpeed, JumpPower and JumpHeight.\r\n- JumpPower, JumpHeight and WalkSpeed modifications now save the first value seen as the 'default' value. When the modifications are disabled, that value is set back.\r\n- Fixed blacklist on HWID change\r\n\r\nThis build includes an updater update. You MUST update your updater before booting up the new overlay, or else your HWID will not be properly reset.",
+              "timestamp": 1766965716687,
+              "date": "2025-12-28T23:48:36.687Z",
+              "supportedRobloxVersion": "version-5b077c09380f4fe6",
+              "updated": true
+            },
+            {
+              "version": "0.7.0a-alpha",
+              "changelog": "This is a hotfix release.\r\n- Improved auth times.\r\n- Fixed humanoid modifications not applying or resetting properly if the UI isn't closed.\r\n\r\n~ Turns out the UI drawing function isn't the place where I should be doing things lol",
+              "timestamp": 1766968778328,
+              "date": "2025-12-29T00:39:38.328Z",
+              "supportedRobloxVersion": "version-5b077c09380f4fe6",
+              "updated": true
+            },
+            {
+              "version": "0.7.0b-alpha",
+              "changelog": "This is a hotfix release.\r\n- Fixed access to optional without validation, causing a crash.\r\n\r\nThis should fix Humanoid modification crashes completely.",
+              "timestamp": 1766972920971,
+              "date": "2025-12-29T01:48:40.971Z",
+              "supportedRobloxVersion": "version-5b077c09380f4fe6",
+              "updated": true
+            },
+            {
+              "version": "0.7.0c-alpha",
+              "changelog": "This is a hotfix release.\r\n- Fixed internal reflection error.\r\n- Fixed Velocity/AssemblyLinearVelocity and AssemblyAngularVelocity not being applied reliably.\r\n\r\nThis should be the LAST hotfix for 0.7.0-alpha. Next build will likely be 0.8.0-alpha, featuring more extensions to the Luau VM with, likely, the `input` library being one of the top 'Next' things.",
+              "timestamp": 1766978544360,
+              "date": "2025-12-29T03:22:24.360Z",
+              "supportedRobloxVersion": "version-5b077c09380f4fe6",
+              "updated": true
+            },
+            {
+              "version": "1.0.0-alpha",
+              "changelog": "The first major RbxCli release, after this RbxCli's price may be re-adjusted due to the new features and future complexity of adding onto them.\r\n\r\n- Hybrid mechanisms:\r\n  - Instance re-parenting\r\n     - Available on explorer (Click on Parent string, then click on the new parent. Only works if Hybrid Extensions are enabled)\r\n     - Available through Luau as `rbxcli.reparent(instance: Instance<?>, newParent: Instance<?> | nil): ()`\r\n- Changed thread priorities internally to reduce unnecessary CPU usage.\r\n- Added `GPU Priority` combo in settings. Users report improvement on some GPUs (likely nVidia), however it is better left untouched.\r\n- Added `FindFirstChildCached`, which looks up the instances children and names in the cache before attempting to reach out to get them. This API may be useful on games whose structure changes little and you have to perform frequent indexes into.\r\n- Fixed Humanoid overrides being applied even though they were never used.\r\n- Script Editor Improvements\r\n  - Script Tab: Saving\r\n  - Script Tab: Re-Loading\r\n  - Script Tab: Load from File\r\n- HitBox Expander Improvements\r\n  - HBE Visualizer\r\n  - HBE Validators\r\n  - Fixed MultiCombo not being styled\r\n- Rewritten 'Accuracy' as 'Shake'.\r\n- Axis-Split Shaking (X and Y)\r\n- Axis-Split Smoothing (X and Y)\r\n- Axis-Split Prediction (X and Y)\r\n- Watermark is now movable through all corners, adjustable on the Configuration Tab.\r\n- Added the option to render Outlines on the Health bar.\r\n- Fixed crashes when Roblox exits before RbxCli.\r\n- Fixed inaccurate positions for some parts inside of the Luau VM.\r\n- Improved Luau VM Api performance\r\n- Improved performance of `GetDescendants`.\r\n- Fix VM Exhaustion checks.\r\n- Internally restructure, rearrange and rework part of the Reading and Writing memory system, slightly improving performance by reducing cache misses.\r\n- Allowed Humanoid's Health property to be editable through Luau VM code.\r\n- Improved internal code generation by changing internal function signatures and other details, this should allow the compiler to generate more efficient machine code.\r\n- Expanded `physics` library to encompass more of the internal native `RbxCli::PhysicsWorld` strucutre it exposes to the Luau VM, currently it is as follows:\r\n  - `physics.get_part_pool(part: Instance<BasePart>): number`: Retrieves the 'pool' the part is located in inside of RbxCli. This changes the update rate on the overlay's visuals and affects how 'up to date' data is when using other physics functions.\r\n  - `physics.is_part_tracked(part: Instance<BasePart>): boolean`: Retrieves whether the part is actually being updated inside of RbxCli, parts inside of Characters are normally dismissed and may return `false` for this method, it may also return false if the part is very new, ~20 seconds time new.\r\n  - `physics.get_tracked_size(part: Instance<BasePart>): Vector3`: Retrieves the read 'Size' of the given part from the last Update RbxCli performed on it. This does not perform a read from Roblox memory, thus it WILL be quicker, but may be out of date depending on the part's pool.\r\n  - `physics.get_tracked_cframe(part: Instance<BasePart>): CFrame`: Retrieves the read 'CFrame' of the given part from the last Update RbxCli performed on it. This does not perform a read from Roblox memory, thus it WILL be quicker, but may be out of date depending on the part's pool.\r\n  - `physics.can_part_be_tracked(part: Instance<BasePart>): boolean`: Retrieves whether the given part was actually disabled from being Updated, explicitly set by RbxCli's PhysicsWorld.",
+              "timestamp": 1767313528009,
+              "date": "2026-01-02T00:25:28.009Z",
+              "supportedRobloxVersion": "version-f8f53a67efca4c34",
+              "updated": true
+            },
+            {
+              "version": "1.1.0-alpha",
+              "changelog": "- Fixed a heap corruption relating to multithreading present on core Instance methods.\r\n- Implemented Fission for script decompilation, still very early in dev, output may be wrong, but will give you a sufficiently good idea of the script's behaviour.\r\n- Fixed a crash relating to getting a scripts bytecode, where some had malformed bytecode and failed to be deserialized, causing a crash.\r\n- Cursor will no longer go outside the Roblox window when using Mouse Aimbot.\r\n- Fixed internal badly implemented trimming for Base64 encoding. This caused slight issues when decompiling the bytecode RbxCli gave.\r\n- Fixed Attribute saving for Save Instance.\r\n- Added Tag saving for Save Instance.\r\n- Implemented (almost) all properties of the Lighting class, viewable and modifiable on the built-in Explorer.\r\n- Reduced time spent Save Instancing slightly.\r\n- Added `ObjectValue`, `IntValue`, `NumberValue`, `CFrameValue`, `Vector3Value`, `StringValue`, `BoolValue`, `Lighting` and `ClickDetector`",
+              "timestamp": 1767479497552,
+              "date": "2026-01-03T22:31:37.552Z",
+              "supportedRobloxVersion": "version-f8f53a67efca4c34",
+              "updated": true
+            },
+            {
+              "version": "1.1.0a-alpha",
+              "changelog": "This is a hotfix release.yeah\r\n- Fixed prediction not being taken into account.\r\n- Fixed shake not being taken into account.\r\n- Fixed internal mathematical erratum. (Fixes both of them above, and could potentially also fix other internal errors!)\r\n\r\nCaused by C++ operators, confusing syntax, confusing functionality, they're to blame of these bug.",
+              "timestamp": 1767493180411,
+              "date": "2026-01-04T02:19:40.411Z",
+              "supportedRobloxVersion": "version-f8f53a67efca4c34",
+              "updated": true
+            },
+            {
+              "version": "1.2.0-alpha",
+              "changelog": "- Added `Vector2` global to create Vector2 objects.\r\n- Added `input` library, documented in https://rbxcli.github.io/eUNC/api/input\r\n    - Currently uses raw virtual key codes. An enum abstraction will be built at a later date.\r\n- Added Radar Team Color\r\n- Fixed Silent Aim misbehaving when a character left the FoV area.\r\n- Fixed 'Black Joints' on Skeletons\r\n- Fixed internal crash relating to teleporting between games.\r\n- Fixed overdraw when using the NPC list.\r\n- Fixed a bug which would cause a steady decrease on performance when there were many NPC search entries product of entry duplication.\r\n- Fixed Aimbot appearing to target the Torso.\r\n- Improved Aimbot performance by speeding up part look-ups\r\n- Added an option to disable raycasting (Visibility Checking) to reduce CPU usage, toggleable as `Scan and Update World` inside the `Physics Engine` category in the Configuration tab.\r\n    - We estimate around a whole cores' worth of performance from this being saved.\r\n- Improved auth times.",
+              "timestamp": 1767740796456,
+              "date": "2026-01-06T23:06:36.456Z",
+              "supportedRobloxVersion": "version-89d89cb2d6b649be",
+              "updated": false
+            },
+            {
+              "version": "1.3.0-alpha",
+              "changelog": "- Improved handling of opcodes in Fission (Decompiler)\r\n- Improved data flow analysis in Fission (Decompiler)\r\n- Improved control flow analysis in Fission (Decompiler)\r\n- Improved handling of variadic calls in Fission (Decompiler)\r\n- Explicitly mark binary operations to prevent accidental apparent reordering (Decompiler)\r\n- Now, if Type information is available, it will be injected into function arguments during decompilation.\r\n- Fixed a crash relating to teleporting.\r\n- Fixed a crash relating to RbxCli being initialized while the player was in queue, causing a deadlock internally waiting for DataModel initialization.\r\n- Extended `physics` library with new functions, available in the documentation.\r\n- Added `KeyCode` global for use with the `input` library, mappings available in the documentation.\r\n- Implemented \"Explorer Pausing\" (Children will be removed if they're deemed \"Deleted\")\r\n- Optimized `.Position` and `.CFrame` reads.\r\n- Exposed Write to `NetworkOwnerV3` property in BasePart (allowing you to modify the owner in the client side, useful to suspend simulation of a locally simulated part without explicitly anchoring, for example)\r\n- Fixed cache invalidation constraints for the objects inside of the LocalPlayer's character, which sometimes made RbxCli not recognize parts, denying access to Player Exploit tab features.\r\n- Changed FPS Slider into a Dragger in the Settings tab, allowing for more refined control over FPS values.\r\n- Keybinds will no longer be updated if the focused window is not Roblox's.\r\n- Improved the reliability of teleporting payloads while making them 'cheaper' to run.",
+              "timestamp": 1768178392390,
+              "date": "2026-01-12T00:39:52.390Z",
+              "supportedRobloxVersion": "version-89d89cb2d6b649be",
+              "updated": true
+            },
+            {
+              "version": "1.4.0-alpha",
+              "changelog": "Hybrid wins? Entity API and potentially create_instance next update, although the latter likely needs more work to be used in a stable manner. \r\n\r\n- Improved Hybrid mode stability.\r\n- Added `rbxcli.fireproximityprompt(prompt: Instance<ProximityPrompt>)`. Available with Hybrid mode.\r\n- Added `rbxcli.firetouchinterest(part0: Instance<BasePart>, part1: Instance<BasePart>, touchType: number, replicate: boolean)`. Available with Hybrid mode.\r\n- Reduced heap allocations when updating the internal visibility, position, size and part state cache.\r\n- Implemented memory tracking to improve RAM usage down the line, this will allow us to know what module is consuming more than it should be, and improve it accordingly.",
+              "timestamp": 1768540668664,
+              "date": "2026-01-16T05:17:48.664Z",
+              "supportedRobloxVersion": "version-1588a9c58c674e38",
+              "updated": true
+            },
+            {
+              "version": "1.4.1-alpha",
+              "changelog": "Sorry for the delay on the update! 24 hours have been added to all active subscribers (licenses for those who expired within this time frame will also be restored).\r\n\r\n- Updated for version-0f5223fb6e7e4955\r\n- Fixed an issue with the Arsenal specification, in which ESP checks were not properly applied to specification-defined visuals.\r\n- Added `Ignore Seated` validator for Hitbox Expander.\r\n- You can now set a team an entity is in as 'Friendly' in the Entity list, this will render the team of them as a 'Teammate', applying it also as validation for other components (Aimbot, ...)\r\n- Improved Anti-Aliasing\r\n- Added MSAA 2x by default, if a heavy performance hit is found after this update, this will be moved into its own option.\r\n\r\nThe initial implementation for the Entity API is currently being proposed, if no comments are done over it, improvements to the existing proposal will be made independent of user feedback (as I have already requested feedback to no avail).",
+              "timestamp": 1769056295151,
+              "date": "2026-01-22T04:31:35.151Z",
+              "supportedRobloxVersion": "version-0f5223fb6e7e4955",
+              "updated": true
+            },
+            {
+              "version": "1.4.1a-alpha",
+              "changelog": "Somehow, compiling the binary repeated times fixed an issue that cropped up randomly? An additional 24h have been credited to subscriptions for this.\r\n\r\n- Solved initialization issues",
+              "timestamp": 1769097642679,
+              "date": "2026-01-22T16:00:42.679Z",
+              "supportedRobloxVersion": "version-0f5223fb6e7e4955",
+              "updated": true
+            },
+            {
+              "version": "1.4.2-alpha",
+              "changelog": "Delayed update due to tech problems, 36hr compensation issued.\r\n\r\n- Fix silent aim being applied when it should not be applied.\r\n- Restore the state of the keybinds window when leaving/joining a new game.\r\n- Visuals will now be drawn, even if there are no players or NPCs available to draw on.\r\n- Adjusted compiler flags for x86-64-v3. A performance improvement can be expected.",
+              "timestamp": 1769268957660,
+              "date": "2026-01-24T15:35:57.660Z",
+              "supportedRobloxVersion": "version-8b8c34790f814a73",
+              "updated": true
+            },
+            {
+              "version": "1.5.0-alpha",
+              "changelog": "RbxCli will have a free week (Up until the next Roblox Update) after the 14th of February to commemorate Valentine's Day, to participate on the free week, join our discord server, where the binary will be uploaded! (Buyers will be compensated for this free time!)\r\n\r\n- Added \"View Script\" on Explorer.\r\n- Fixed multi-line code comments being improperly colorized, causing confusing text to appear on the Text Editor when editing scripts.\r\n- Implemented `fs` library. Documentation TBD.\r\n- Fixed Outlines not being modifiable in Tracers.\r\n- Fixed existing Entities being recognized as NPCs if the NPCs were to share paths with normal players (i.e. Deepwoken)\r\n- Fixed a Hitbox Extender bug which could potentially cause a crash.\r\n- Fixed a Hitbox Extender bug which could lead to entities which should not be expanded to be expanded.",
+              "timestamp": 1770603857543,
+              "date": "2026-02-09T02:24:17.543Z",
+              "supportedRobloxVersion": "version-80c7b8e578f241ff",
+              "updated": true
+            },
+            {
+              "version": "1.6.0-alpha",
+              "changelog": "8 hours of compensation due to update downtime, update consists mostly optimizations to improve performance, additionally: due to recent discoveries, `.Value` setting on StringValues has been discarded as 'Very Bad Idea', and will never happen.\r\n\r\n- Added `.Value` Read and Write to some Value objects in Luau VM (NumberValue, Vector3Value, CFrameValue, IntValue)\r\n- Meshes will fall back to rendering as plain boxes if the object is more than\r\n- Improved performance of string comparisons internally.\r\n- Improved management of strings internally, memory usage should be slightly reduced.\r\n- Reimplemented implementation for strings of Instances (Names, ClassNames, ...) to be more efficient in memory.\r\n- Improved performance of Instance functions relying on string comparisons (FindFirstChild, ...)\r\n- Implemented a rough LoD system for Mesh-based chameleon, should be more performant",
+              "timestamp": 1770849306689,
+              "date": "2026-02-11T22:35:06.689Z",
+              "supportedRobloxVersion": "version-bd08027bb04e4045",
+              "updated": true
+            },
+            {
+              "version": "1.6.0a-alpha",
+              "changelog": "Nice attempt, continue participating, for you didn't succeed, kk.\r\nThis is a hotfix release.\r\n\r\n- Fixed a bug which caused initialization failures under certain conditions.\r\n- Fixed slight memory leak inside of string interning.",
+              "timestamp": 1770858367088,
+              "date": "2026-02-12T01:06:07.088Z",
+              "supportedRobloxVersion": "version-bd08027bb04e4045",
+              "updated": true
+            },
+            {
+              "version": "1.6.1-alpha",
+              "changelog": "- Added `Set` support for .Size and .Position on GuiObjects.\r\n- Fixed a crash that occurred internally when managing UDim2 objects.",
+              "timestamp": 1770860827156,
+              "date": "2026-02-12T01:47:07.156Z",
+              "supportedRobloxVersion": "version-bd08027bb04e4045",
+              "updated": true
+            },
+            {
+              "version": "1.6.2-alpha",
+              "changelog": "This version of RbxCli is currently available for free in our Discord server. Further updates to RbxCli will be for whitelisted only, only 1.6.2-alpha will be free this time around!\r\nAfter using this build, we please ask to answer a poll we will send on our Discord server to aid us in improving RbxCli in the future.\r\n\r\n- Fixed a bug which caused heap memory to be printed on the Load Setting selection box.\r\n- Fixed a bug that caused settings to not be loadable due to a wrong safety check.\r\n- Luau VM now supports `.Value` on `ObjectValue` instances.",
+              "timestamp": 1771031098051,
+              "date": "2026-02-14T01:04:58.051Z",
+              "supportedRobloxVersion": "version-bd08027bb04e4045",
+              "updated": true
+            },
+            {
+              "version": "1.6.3-alpha",
+              "changelog": "This build is free, available on the Discord Server! Performance fixes and some bugs squashed.\r\n\r\n- Optimized bone outline.\r\n- Optimized LookVector rendering.\r\n- Improved distribution on internal data structures, this should improve performance.\r\n- Fixed a crash related to string management on ClassDescriptor instances.\r\n- Fixed FPS Unlock not saving properly.\r\n- Improved accuracy of the latency determined by RbxCli\r\n- Reduced memory usage\r\n- Improved string comparison performance on some functions.\r\n- Improved performance of internal functions relating to in-game teams.\r\n- Improved efficiency of part updates, reducing lock contention.",
+              "timestamp": 1771105018825,
+              "date": "2026-02-14T21:36:58.825Z",
+              "supportedRobloxVersion": "version-bd08027bb04e4045",
+              "updated": true
+            },
+            {
+              "version": "1.6.4-alpha",
+              "changelog": "Back to normal operations. Documentation will be updated with the new Filesystem API later today.\r\n\r\n- Fixed `rbxcli.fireproximityprompt` crashing on use.\r\n- Added `ProximityPrompt` to Luau VM.\r\n- Added Network Ownership View to allow an easier time finding network ownership vulnerabilities.\r\n- Changed DataModel name to `game` when copying paths inside the Explorer\r\n- Improved performance of Parent traversing in some cases.",
+              "timestamp": 1771448125817,
+              "date": "2026-02-18T20:55:25.817Z",
+              "supportedRobloxVersion": "version-df7528517c6849f7",
+              "updated": true
+            },
+            {
+              "version": "1.6.5-alpha",
+              "changelog": "This update is an test to solve a related crash, may be fixed after this. If further crashes are reported, please notify.\r\n\r\n- Improved debuggability.\r\n- Improved internal inheritance checks.",
+              "timestamp": 1771528877233,
+              "date": "2026-02-19T19:21:17.233Z",
+              "supportedRobloxVersion": "version-df7528517c6849f7",
+              "updated": true
+            },
+            {
+              "version": "1.6.6-alpha_testing",
+              "changelog": "This update is a testing update meaning to test new optimizations and performance updates, during testing no issues were presented. However, present any issues to me as soon as possible for fixing.\r\n\r\n- Fixed a bug which caused Chameleon objects to be re-drawn in Mesh mode, you should expect a (relative to previous performance) 100% performance improvement when using Mesh chams.\r\n- Increased performance on most portions of the renderer's update loop.\r\n- Rewrote part of the internal structures of the Instance cache to speed up look-ups, resulting in ~30% gain.\r\n- Improved performance of ImGui by modifying compilation parameters.\r\n- Improved performance of 'Team Name' and 'Team Color' visuals.\r\n- Improved Aimbot performance.",
+              "timestamp": 1772147522122,
+              "date": "2026-02-26T23:12:02.122Z",
+              "supportedRobloxVersion": "version-760d064d05424689",
+              "updated": true
+            },
+            {
+              "version": "1.6.7-alpha",
+              "changelog": "* Updated to latest\n* Fixed checkbox text Y axis not aligning in visuals tab\n* Added version check",
+              "timestamp": 1773342076346,
+              "date": "2026-03-12T19:01:16.346Z",
+              "supportedRobloxVersion": "version-b130242ed064436f",
+              "updated": true
+            },
+            {
+              "version": "1.6.8-alpha",
+              "changelog": "* Updated to latest roblox version\n* Fixed some Luau APIs flagging DataModel as potentially 'type-confused'\n* Fixed arsenal extra names not working due to internal data refresh bug\n* Fixed hybrid mode crashing\n* Made Luau APIs throw better errors",
+              "timestamp": 1773861103014,
+              "date": "2026-03-18T19:11:43.014Z",
+              "supportedRobloxVersion": "version-ae421f0582e54718",
+              "updated": true
+            },
+            {
+              "version": "1.6.9-alpha",
+              "changelog": "* Added rbxcli.fire_remote_event, raknet.send\n* Added auto-scroll to all logs windows\n* Added Animator:GetActiveAnimationTracks\n* Fixed a bug where you could click on home tabs button even while different window is on top\n* Fixed a bug where you could click on home tabs button even while different window is on top\n* Fixed a bug where Luau code editor hints showed even while not howering on the function\n* Seperated Luau VM outputs from normal log window (this new log window opens up with Luau Code Editor)\n* More work on entity API (not released)",
+              "timestamp": 1774056393862,
+              "date": "2026-03-21T01:26:33.862Z",
+              "supportedRobloxVersion": "version-ae421f0582e54718",
+              "updated": true
+            },
+            {
+              "version": "1.6.9-1-alpha",
+              "changelog": "* Updated to latest roblox version\n* Added RunService, typeof, Event, EventConnection\n* Fixed few internal bugs",
+              "timestamp": 1774550005525,
+              "date": "2026-03-26T18:33:25.525Z",
+              "supportedRobloxVersion": "version-6776addb8fbc4d17",
+              "updated": true
+            },
+            {
+              "version": "1.6.9-1-alpha ",
+              "changelog": "* Updated to latest roblox version\n* Added RunService, typeof, Event, EventConnection\n* Fixed few internal bugs",
+              "timestamp": 1774552823551,
+              "date": "2026-03-26T19:20:23.551Z",
+              "supportedRobloxVersion": "version-6776addb8fbc4d17",
+              "updated": true
+            },
+            {
+              "version": "1.6.9-1-alpha",
+              "changelog": "* Updated to latest roblox version\n* Added RunService, typeof, Event, EventConnection\n* Fixed few internal bugs",
+              "timestamp": 1774555763954,
+              "date": "2026-03-26T20:09:23.954Z",
+              "supportedRobloxVersion": "version-6776addb8fbc4d17",
+              "updated": true
+            },
+            {
+              "version": "1.6.9-2-alpha",
+              "changelog": "* Fixed code editor crashing on certain strings\n* Fixed strings being colored even while being in a comment\n* Fixed a internal type marshaller bug relating to tables\n* Added HttpService:RequestAsync, JSONEncode, JSONDecode\n* Removed unsafe function request in favor of HttpService:RequestAsync",
+              "timestamp": 1774570284078,
+              "date": "2026-03-27T00:11:24.078Z",
+              "supportedRobloxVersion": "version-6776addb8fbc4d17",
+              "updated": true
+            },
+            {
+              "version": "1.6.9-3-alpha",
+              "changelog": "* Improved Luau errors on class methods\n* Fixed errors not having proper method name\n* Fixed LuauVM memory counter wrongly reporting usage\n* Implemented TweenService, Tween, TweenInfo\n* Fixed FPS stutter while instance janitoring takes place due to incorrect mutex locking\n* Fixed memory leak on the GetDescendants function (internal and LuauVM)\n* Fixed crashes related to hitbox expander\n* Exposed CurrentCamera to workspace\n* Implemented Instance:SetAttribute\n* Any interaction with a instance that has been deleted will now throw a error\n* Exposed Instance:IsInvalidInstance to check if the instance you are dealing with has been deleted\n* Fixed working set checks resulting in a infinite loop\n* Fixed latency calculation causing crashes in hostile games\n* Fixed game specification scanner taking slow path due to a logic bug\n* Improved mouse aimbot\n* Fixed a crash when loading a non-existant configuration.\n* Made mouse aimbot support third-person\n* Fixed being able to click on tabs button while doing something else in the main window\n* Fixed disabling \"Exclude childless services\" causing a visual bug in the game explorer\n* Added MouseService.MouseLocation\n* Fixed input library\n* Implemented Color3, Color4 datatypes\n* Fixed memory library\n* More work on entity API (you may see that in the docs :3)",
+              "timestamp": 1775156909810,
+              "date": "2026-04-02T19:08:29.810Z",
+              "supportedRobloxVersion": "version-6776addb8fbc4d17",
+              "updated": true
+            },
+            {
+              "version": "1.6.9-4-alpha",
+              "changelog": "* Updated to latest roblox version",
+              "timestamp": 1775172006746,
+              "date": "2026-04-02T23:20:06.746Z",
+              "supportedRobloxVersion": "version-689e359b09ad43b0",
+              "updated": true
+            },
+            {
+              "version": "1.6.9-5-alpha",
+              "changelog": "* Updated to latest roblox version",
+              "timestamp": 1775681940258,
+              "date": "2026-04-08T20:59:00.258Z",
+              "supportedRobloxVersion": "version-695a88dd8425491f",
+              "updated": true
+            },
+            {
+              "version": "1.6.9-4-alpha",
+              "changelog": "* Updated to latest roblox version",
+              "timestamp": 1775727451055,
+              "date": "2026-04-09T09:37:31.055Z",
+              "supportedRobloxVersion": "version-689e359b09ad43b0",
+              "updated": true
+            },
+            {
+              "version": "1.6.9-5-alpha",
+              "changelog": "* Updated to latest roblox version\n* Fixed crash in physics.raycast\n* Fixed rare crash while calling yielding methods\n* Made transparency properties be writable from Luau VM\n* Fixed special mesh content/texture reading\n* Fixed PF esp having out of date data issues\n* Improved PF bones\n* Correctly detect PF limb types\n* Made camera aimbot better\n* Fixed players not showing up in PF",
+              "timestamp": 1775773244682,
+              "date": "2026-04-09T22:20:44.682Z",
+              "supportedRobloxVersion": "version-26c90be22e0d4758",
+              "updated": true
+            },
+            {
+              "version": "1.6.9-6-alpha",
+              "changelog": "* Updated to latest roblox version\n* Fixed busy loading icon on startup\n* Removed some false positives with blacklists\n* Fixed luau code editor not saving on intervals\n* Reduced CPU spikes\n* Reverted luau port due to unfinished integer RFC\n* Fixed some children get functions returning out of date data",
+              "timestamp": 1776294504279,
+              "date": "2026-04-15T23:08:24.279Z",
+              "supportedRobloxVersion": "version-9d412f44a6fe4081",
+              "updated": true
+            },
+            {
+              "version": "1.6.10a-alpha",
+              "changelog": "* Fixed an issue caused that causes problems analyzing the game structure, causing internal RbxCli features to fail. This should fix a variety of bugs present in previous builds.",
+              "timestamp": 1776302428248,
+              "date": "2026-04-16T01:20:28.248Z",
+              "supportedRobloxVersion": "version-9d412f44a6fe4081",
+              "updated": true
+            },
+            {
+              "version": "1.6.11-alpha",
+              "changelog": "8 Hours have been added to all active subscriptions as compensation.\r\n\r\n- Updated for latest version",
+              "timestamp": 1776899894096,
+              "date": "2026-04-22T23:18:14.096Z",
+              "supportedRobloxVersion": "version-2e6461290a3541f5",
+              "updated": true
+            },
+            {
+              "version": "1.6.12-alpha",
+              "changelog": "8 Hours have been added to all active subscriptions as compensation.\r\n\r\n- Updated for latest version\r\n- Updated Fission to latest dev branch.\r\n- Updated Fission to support new bytecode versions (v7 - v9), scripts should now decompile.\r\n- Added `task.cancel`\r\n- Updated luau to `0.718`.",
+              "timestamp": 1777236059393,
+              "date": "2026-04-26T20:40:59.393Z",
+              "supportedRobloxVersion": "version-390ba09e7e944154",
+              "updated": true
+            },
+            {
+              "version": "1.6.12a-alpha",
+              "changelog": "This is a hotfix release.\r\n\r\n- Fix script decompilation.\r\n- Fix game detection.",
+              "timestamp": 1777237259926,
+              "date": "2026-04-26T21:00:59.926Z",
+              "supportedRobloxVersion": "version-390ba09e7e944154",
+              "updated": true
+            },
+            {
+              "version": "1.6.13-alpha",
+              "changelog": "4 days issued worth of compensation.\r\nThis is what the update was delayed for, promised this a **long** time ago. Documentation will be released later down the line, it's very late as the time of this update for me.\r\n\r\n- Added `immediate` library, only usable if your code is running inside of `RunService.PreRender`!\r\n    - `immediate.line(point1: Vector2 | Vector3, point2: Vector2 | Vector3, thickness: number, outlined: boolean, color: Color4): boolean`\r\n    - `immediate.rectangle(topLeft: Vector2 | Vector3, bottomRight: Vector2 | Vector3, roundness: number,filled: boolean, outlined: boolean, color: Color4,thickness: number? --[[ defaults to 1 if nil.]]): boolean`\r\n    - `immediate.circle(center: Vector2 | Vector3, radii: number, filled: boolean, outlined: boolean, color: Color4, thickness: number --[[ defaults to 1 if nil. ]]): boolean`\r\n    - `immediate.text(textPosition: Vector2 | Vector3, text: string, fontDescriptor: RbxCli.FontDescriptor, outlined: boolean, color: Color4): boolean`\r\n- Added `font` library to manage fonts.\r\n    - `font.request_font_reload()` -- Requests all fonts be reloaded (built-in and custom) the next frame.\r\n    - `font.get_font_descriptor(fontName: string, fontSize: number): RbxCli.FontDescriptor` -- Creates a font descriptor, describing a font.\r\n    - `font.add_ttf_font(fontName: string, ttfData: buffer): boolean` -- Adds the given font into the user's custom font folder.",
+              "timestamp": 1777702534710,
+              "date": "2026-05-02T06:15:34.710Z",
+              "supportedRobloxVersion": "version-acc4b74f79e743b9",
+              "updated": true
+            },
+            {
+              "version": "1.6.13-alpha",
+              "changelog": "* Migrated to new backend",
+              "timestamp": 1777782496920,
+              "date": "2026-05-03T04:28:16.920Z",
+              "supportedRobloxVersion": "version-acc4b74f79e743b9",
+              "updated": true
+            },
+            {
+              "version": "1.6.13a-alpha",
+              "changelog": "* Fixed decompiler crashing in production builds\r\n* Fixed Vector3 missing in Luau VM due to version source control removing it accidently\r\n* Fixed incorrect log de-duplication counting",
+              "timestamp": 1777825840140,
+              "date": "2026-05-03T16:30:40.140Z",
+              "supportedRobloxVersion": "version-acc4b74f79e743b9",
+              "updated": true
+            },
+            {
+              "version": "1.6.14-alpha",
+              "changelog": "- Fixed clearing output logs clearing Luau VM output logs.\r\n- Improved Rivals Support\r\n- Fixed Luau compiler not compiling vector constants appropriately.\r\n- Added Vector2 math operators.\r\n- Added time stamps to output on Luau VM and output logs.",
+              "timestamp": 1777842641648,
+              "date": "2026-05-03T21:10:41.648Z",
+              "supportedRobloxVersion": "version-acc4b74f79e743b9",
+              "updated": true
+            },
+            {
+              "version": "1.6.15-alpha",
+              "changelog": "This update is mainly game support related, documentation probably updating soon with API changes...\r\n\r\n- Added Operation One support (Team Checking, Bones)\r\n- Exposed new properties for ProximityPrompt in Luau VM",
+              "timestamp": 1777934025890,
+              "date": "2026-05-04T22:33:45.890Z",
+              "supportedRobloxVersion": "version-acc4b74f79e743b9",
+              "updated": true
+            },
+            {
+              "version": "1.6.16-alpha",
+              "changelog": "- Updated to latest roblox version\r\n- Some features (World/Workspace modifications) may not work due to the recent update breaking our dumpers for them\r\n\r\nCompensated 5 hours for downtime.",
+              "timestamp": 1778120189664,
+              "date": "2026-05-07T02:16:29.664Z",
+              "supportedRobloxVersion": "version-bf6344c9c23446bf",
+              "updated": true
+            },
+            {
+              "version": "1.6.16a-alpha",
+              "changelog": "- Fixed all service degradation related to the latest update.\r\n\r\nCompensated 12h for the degradation of the service.",
+              "timestamp": 1778188530263,
+              "date": "2026-05-07T21:15:30.263Z",
+              "supportedRobloxVersion": "version-bf6344c9c23446bf",
+              "updated": true
+            },
+            {
+              "version": "1.7.0-alpha",
+              "changelog": "- Updated to latest roblox version\r\n- Full changelog at https://pastebin.com/JiYbvNj5",
+              "timestamp": 1778701474580,
+              "date": "2026-05-13T19:44:34.580Z",
+              "supportedRobloxVersion": "version-ec412128eba3476e",
+              "updated": true
+            },
+            {
+              "version": "1.7.0a-alpha",
+              "changelog": "- Hotfix: wrong shaders path\r\n- Full change-log still at: https://pastebin.com/JiYbvNj5",
+              "timestamp": 1778701954918,
+              "date": "2026-05-13T19:52:34.918Z",
+              "supportedRobloxVersion": "version-ec412128eba3476e",
+              "updated": true
+            },
+            {
+              "version": "1.7.0b-alpha",
+              "changelog": "This build is a hotfix release meant to handle a crash in a subset of users. They have been compensated for the lost time.\r\n- Hotfix: Crash error.\r\n- Full change-log still at: https://pastebin.com/JiYbvNj5",
+              "timestamp": 1778713990131,
+              "date": "2026-05-13T23:13:10.131Z",
+              "supportedRobloxVersion": "version-ec412128eba3476e",
+              "updated": true
+            },
+            {
+              "version": "1.7.1-alpha",
+              "changelog": "- Added Auto-NPC, available in Settings; allows you to find potential NPCs automatically.\r\n- Fixed a bug in DeX/Explorer\r\n- Implemented UserInputService::InputChanged\r\n- Implemented UserInputService::InputEnded\r\n- Implemented UserInputService::InputBegan\r\n- Implemented UserInputService::IsKeyDown\r\n- Implemented UserInputService::IsMouseButtonPressed\r\n- Implemented UserInputService::GetMouseLocation\r\n- Added Game Specification information in Settings, you can now tweak the update rate and a few other details for improving the responsiveness of the visuals.\r\n- Additional logging has been added to more efficiently debug issues.\r\n- Improved Camera Aimbot:\r\n    - Fixed Flinging\r\n    - Fixed Smoothing\r\n    - Added specific 'Camlock' toggle.\r\n- Improved Mouse Aimbot:\r\n    - Improved responsiveness on low FoV values.\r\n",
+              "timestamp": 1778866956675,
+              "date": "2026-05-15T17:42:36.675Z",
+              "supportedRobloxVersion": "version-ec412128eba3476e",
+              "updated": true
+            },
+            {
+              "version": "1.7.2-alpha",
+              "changelog": "- Updated to latest roblox version\r\n- Fixed a bug which caused some characters not to be rendered.\r\n- Added BasePart::Orientation in VM.\r\n- Reverted changes to Entity List tab.\r\n- Made rbxcli.reparent stable\r\n- Fixed rbxcli.create_instance\r\n- Added rbxcli.raknet_receive\r\n- Improved Hybrid mode stability.\r\n- Added the following instances to the Luau VM, available fields in documentation:\r\n  - Model\r\n  - Sound\r\n  - Motor6D\r\n  - ImageLabel\r\n  - Sound\r\n  - IntConstrainedValue\r\n  - DoubleConstrainedValue\r\n  - Attachment\r\n  - ClickDetector\r\n  - Decal\r\n  - Lighting\r\n  - SpecialMesh\r\n- Documentation has been updated",
+              "timestamp": 1779124769208,
+              "date": "2026-05-18T17:19:29.208Z",
+              "supportedRobloxVersion": "version-9377ee10133e4be3",
+              "updated": true
+            },
+            {
+              "version": "1.7.3-alpha",
+              "changelog": "- Auth changes\r\n- Auth now should be significantly faster",
+              "timestamp": 1779230969000,
+              "date": "2026-05-19T22:49:29.000Z",
+              "supportedRobloxVersion": "version-9377ee10133e4be3",
+              "updated": true
+            },
+            {
+              "version": "1.7.3a-alpha",
+              "changelog": "- Fixed an auth bug",
+              "timestamp": 1779239669690,
+              "date": "2026-05-20T01:14:29.690Z",
+              "supportedRobloxVersion": "version-9377ee10133e4be3",
+              "updated": true
+            },
+            {
+              "version": "1.7.4-alpha",
+              "changelog": "1d Compensation issued.\r\n\r\n- Update for latest",
+              "timestamp": 1779411322536,
+              "date": "2026-05-22T00:55:22.536Z",
+              "supportedRobloxVersion": "version-4b6315bf1f0a4dbb",
+              "updated": true
+            },
+            {
+              "version": "1.7.5-alpha",
+              "changelog": "4h Compensation\r\n- Update to latest\r\n- Experimental internal optimisations\r\n- Implemented experimental 'image' API.\r\n- Implemented experimental immediate.image function.\r\n- Attempted to fix deadlock issues.",
+              "timestamp": 1779567467933,
+              "date": "2026-05-23T20:17:47.933Z",
+              "supportedRobloxVersion": "version-2b1721d47abf49aa",
+              "updated": true
+            },
+            {
+              "version": "1.7.6-alpha",
+              "changelog": "- Updated to latest version",
+              "timestamp": 1779905400954,
+              "date": "2026-05-27T18:10:00.954Z",
+              "supportedRobloxVersion": "version-460909c4fe904aae",
+              "updated": true
+            },
+            {
+              "version": "1.7.6a-alpha",
+              "changelog": "- Made `UserInputService:GetMouseLocation` track mouse location while either RbxCli or Roblox is focused, the returned mouse location is also in screen space instead of roblox space.\r\n- Made `input` functions return a `Enum.InputState` instead of erroring for better API usage\r\n- Keyword \"input\" is no longer highlighted in Code Editor",
+              "timestamp": 1780073086100,
+              "date": "2026-05-29T16:44:46.100Z",
+              "supportedRobloxVersion": "version-460909c4fe904aae",
+              "updated": true
+            },
+            {
+              "version": "1.7.6b-alpha",
+              "changelog": "- Fixed FallenPartsDestroyHeight property being wrongly fetched and set\r\n- Fixed MouseSensitivity being incorrectly detected due to regression in dumping code\r\n- Fixed hybrid mode not working in rare cases due to internal changes",
+              "timestamp": 1780321597877,
+              "date": "2026-06-01T13:46:37.877Z",
+              "supportedRobloxVersion": "version-460909c4fe904aae",
+              "updated": true
+            },
+            {
+              "version": "1.8.0-free",
+              "changelog": "This update is released free of charge to celebrate Pride Month (for this Roblox update only). To participate on the free week, register at https://rbxcli.dev/ Buyers will be automatically compensated for this free time.\r\nThis update requires you regenerate your RbxCli loader.\r\nThis update brings forth a new 'Model Context Protocol', allowing any LLM to interact with RbxCli, allowing it to analyze games and help you create scripts. You must bring your **own** model. The only supported Agents (officially) are 'OpenCode' and 'Claude Code'. The MCP is documented in the README.txt attached with the loader (since it is a lot of text), this is a feature aimed at script developers, do not expect to be helped if you have no idea on programming.\r\n\r\n- Massively Improved Decompiler:\r\n    - Rewrote control flow handling\r\n    - Added generic loop support\r\n    - Added repeat until support\r\n    - Added while cond do end support\r\n    - Improved variable naming\r\n    - Improved elseif lifting.\r\n    - Added Type Inference (available in Settings).\r\n    - Added Roblox-specific Type Inference (available in Settings).\r\n    - Added Variable Name Inference (available in Settings).\r\n- Added 'Get CallGraph' for any Script\r\n- Added 'Get Required Modules' for any Script\r\n- Added 'RbxCli MCP'.\r\n- Updated to latest roblox version",
+              "timestamp": 1780443017508,
+              "date": "2026-06-02T23:30:17.508Z",
+              "supportedRobloxVersion": "version-a182ba0d4c6f483b",
+              "updated": true
+            },
+            {
+              "version": "1.8.1-free",
+              "changelog": "This update continues to participate in our free week (+3 days, since every bug found is one extra day!)\r\n\r\n- Fixed authentication issues (backend did not survive)\r\n- Fixed a bug that caused crashes on rejoin\r\n- Improved MCP\r\n    - Added new prompt lining out recommended Luau API semantics (Models should create better scripts when using the skill)\r\n    - Models can now read logs,\r\n    - Added pagination to most tools\r\n    - Changed Regex library to RE2 from C++ MSVC STL (this should allow tools to run faster)\r\n    - Improved model response against hostile game structures.\r\n- Speed up most internal regexes by changing regex algorithms\r\n",
+              "timestamp": 1780507032313,
+              "date": "2026-06-03T17:17:12.313Z",
+              "supportedRobloxVersion": "version-460909c4fe904aae",
+              "updated": true
+            },
+            {
+              "version": "1.8.2-free",
+              "changelog": "This update continues to participate in our free week (+4 days, since every bug found is one extra day!). A poll for feedback will soon be released on our Discord server, if you participated on the free week, please vote to let us know your thoughts!\r\n\r\n- Improved MCP\r\n    - Improved responsiveness of MCP tooling, primarily rbx.remotes.map.\r\n- Fixed decompiler crash relating to incorrect control-flow handling.\r\n- Updated for version-ad5d3e2906444472\r\n- Updated Documentation",
+              "timestamp": 1780522457711,
+              "date": "2026-06-03T21:34:17.711Z",
+              "supportedRobloxVersion": "version-ad5d3e2906444472",
+              "updated": true
+            },
+            {
+              "version": "1.8.2a-free",
+              "changelog": "This update continues to participate in our free week (+5 days, since every bug found is one extra day!). A poll for feedback has been released on our Discord server, if you participated on the free week, please vote to let us know your thoughts!\r\n\r\n- Fixed ESP not working in some cases\r\n- Fixed rare task.spawn crash due to wrong stack handling",
+              "timestamp": 1780586566143,
+              "date": "2026-06-04T15:22:46.143Z",
+              "supportedRobloxVersion": "version-ad5d3e2906444472",
+              "updated": true
+            },
+            {
+              "version": "1.8.3-free",
+              "changelog": "This update continues to participate in our free week (+7 days, since every bug found is one extra day!). A poll for feedback has been released on our Discord server, if you participated on the free week, please vote to let us know your thoughts!\r\n\r\n- Fixed ESP not rendering to some players caused by dynamic changes in Roblox\r\n- Improved MCP Reliability\r\n    - Fixed crash on stale instances.\r\n    - Explicitly error when a trash instance is fed into rbx.props.batch.\r\n- Improved stability when interacting with Player and Players\r\n- Added Players.PlayerAdded, Player.CharacterAdded\r\n- Added audio library\r\n    - Spatial audio source playback via `audio.play_spatial`, experimental may have bugs has not been extensively tested yet.\r\n- Added crypt library (why hell did you all wanted this?)\r\n    - Hashing (sha1/sha256/sha384/sha512/md5), base64/hex, AES-CBC/CTR/GCM, ChaCha20-Poly1305, BLAKE2b, HKDF, Ed25519, X25519, secure RNG.\r\n- Added rbxcli_ui library\r\n- Added settings library to manage settings on lvm.\r\n- Added roblox library\r\n    - provides wrappers to access with the\r\n- Added auto-exec service\r\n    - You can now automatically execute snippets of code when joining any game or a game with a specific ID\r\n- Added memory watcher\r\n    - `memory.watch_*` with configurable refresh rate.\r\n- Reworked configuration system to use namespace-based accessing.\r\n- Added Luau library loading (you can now require custom luau libraries, will be documented in the future)\r\n\r\nDue to the ongoing rewrite of the documentation page some documentation files will be unavailable, sorry for the troubles!\r\n",
+              "timestamp": 1780703714554,
+              "date": "2026-06-05T23:55:14.554Z",
+              "supportedRobloxVersion": "version-ad5d3e2906444472",
+              "updated": true
+            },
+            {
+              "version": "1.8.4-free",
+              "changelog": "This update continues to participate in our free week (+8 days, since every bug found is one extra day!). \r\n\r\n- Fixed rbxcli_ui errors.\r\n- Expanded APIs (docs)\r\n- Added 'memory.write_loop' to support silent aim and other features implemented full in-vm.\r\n- Improved Save Instance reliability.\r\n- Improved debuggability of RbxCli.",
+              "timestamp": 1780765045043,
+              "date": "2026-06-06T16:57:25.043Z",
+              "supportedRobloxVersion": "version-ad5d3e2906444472",
+              "updated": true
+            },
+            {
+              "version": "1.9.0-beta",
+              "changelog": "FFA week has ended early due to RE attacks (🥺); Due to this, FFA weeks and similar events where RbxCli is provided for free will be suspended until further notice.\r\n\r\nThis update will require you to re-generate your loader due to auth changes.\r\n\r\n- Added `gc.getgc`, allows iterating all the garbage collector on all Actor and Main VM states; works practically like executor implementations.\r\n- Improved Fission when handling offensive loop structures.\r\n- Fixed a bug in `fs` library that caused it to not return files (`list_files`, `list_directories`, ...)\r\n- Improved responsiveness when exiting and/or joining places after long sessions.\r\n- Improved documentation for `rbxcli_ui`.\r\n- Reduced number of false blacklists detections product of AV tampering.\r\n- Speed up RbxCli's reflection mechanisms, this should improve responsiveness in tight loops and rendering-related connections.",
+              "timestamp": 1781055055454,
+              "date": "2026-06-10T01:30:55.454Z",
+              "supportedRobloxVersion": "version-76173e47a79145c7",
+              "updated": true
+            },
+            {
+              "version": "1.9.1-beta",
+              "changelog": "We are in talks to resume free week soon :)\r\nBrought to you by Anthropic's Claude Mythos 5 (and it's 999B IPO)\r\n\r\n- Fixed a bug inside the Luau reflection system which would break resolution on yielding methods (i.e. `Event:Wait()`).\r\n- Added `rbxcli.get_instances`.\r\n- Added `rbxcli.get_nil_instances`.\r\n- Added `memory.write_string`. Only legal on **specific** things.\r\n- Fixed `resource deadlock would occur` error inside AutoExecute scripts.\r\n- Added pretty printing to `print`, luau tables will be automatically expanded. Expect a slowdown when printing heavy, big tables\r\n",
+              "timestamp": 1781131561359,
+              "date": "2026-06-10T22:46:01.359Z",
+              "supportedRobloxVersion": "version-76173e47a79145c7",
+              "updated": true
+            },
+            {
+              "version": "1.9.1a-beta",
+              "changelog": "Thinking...\r\n\r\n- Fix management of identifiers in `rbxcli_ui`. Causing UI components to error incorrectly.\r\n- Improved debuggability of `rbxcli_ui` errors.",
+              "timestamp": 1781138164008,
+              "date": "2026-06-11T00:36:04.008Z",
+              "supportedRobloxVersion": "version-76173e47a79145c7",
+              "updated": true
+            },
+            {
+              "version": "1.9.2-beta",
+              "changelog": "Usage limit reached — Your limit will reset at never.\r\n\r\n- Fixed pretty print exhausting Luau stack in very deep iterations.\r\n- Improve Luau VM reset behavior\r\n- Fix infinite loop inside of GC walking\r\n- Fixed instability relating to yielding functions (relating to gc.getgc crash)\r\n- Fixed `bad allocation` error in `gc.getgc`.\r\n",
+              "timestamp": 1781218458307,
+              "date": "2026-06-11T22:54:18.307Z",
+              "supportedRobloxVersion": "version-76173e47a79145c7",
+              "updated": true
+            },
+            {
+              "version": "1.9.3-beta",
+              "changelog": "Switched to Opus 4.8:\r\n    Fable 5 has safety measures that flag messages on most cybersecurity or biology topics. They may flag safe, normal content as well. These measures let us bring you Mythos-level capability in other areas sooner, and we're working to refine them.\r\n\r\n- Updated documentation\r\n- Fix `gc.getgc` entering an infinite copying loop when retrieving tables.\r\n- Fixed `gc.getgc` returned objects being incorrectly deemed as 'freed'.\r\n- Fixed `Instance:IsAncestorOf` not appropriately processing arguments.\r\n- Fixed logs 'freezing' after enough time passing.\r\n- Added `rbxcli.crash_client`.\r\n- Expanded documentation with examples on `rbxcli_gui` and proper usage of `gc.getgc`.\r\n- Reworked `rbxcli_ui` into `rbxcli_gui`. `rbxcli_ui` will be kept for migration purposes and will later down the line be removed completely.\r\n- Improved stability\r\n",
+              "timestamp": 1781246841328,
+              "date": "2026-06-12T06:47:21.328Z",
+              "supportedRobloxVersion": "version-76173e47a79145c7",
+              "updated": true
+            },
+            {
+              "version": "1.9.4-beta",
+              "changelog": "5-hour limit reached — resets when Claude Mythos 5 is available again\r\n\r\n- Updated Documentation.\r\n- Added `rbxcli.panic` to panic and close ROBLOX if needed.\r\n- Added additional `Vector2` properties and methods which were missing.\r\n- Fixed a bug where Keybind `rbxcli_gui` objects were not properly dispatching events when RbxCli's ImGui was closed.\r\n- Fixed a bug where windows were not saving appropriately in production (but yes in dev mode).\r\n- Fixed a bug where `immediate.rectangle`'s smoothness field was accidentally interpreted as a boolean.",
+              "timestamp": 1781292806138,
+              "date": "2026-06-12T19:33:26.138Z",
+              "supportedRobloxVersion": "version-76173e47a79145c7",
+              "updated": true
+            },
+            {
+              "version": "1.9.5-beta",
+              "changelog": "- Added `rbxcli.loadstring(source, loadSettings): function`\r\n- Added `rbxcli.decompile(LuaSourceContainer, decompileSettings): string`\r\n- Added `.Color` to `BasePart`.\r\n- Fixed a bug where CFrame attributes were not usable.\r\n- Added `rbx.resetluauvm` tool to MCP to allow the model to Reset the Luau VM in-between scripts.\r\n- Updated documentation.\r\n\r\n[...] I’ll add one runtime probe that asks RbxCli itself what game exposes around HttpGet, HttpService, identity, and method lookup. This is not a workaround; it’s evidence for the next resolver/identity fix and allows us to run repeatable smoke tests. [...] Still failing. I’m checking the new direct-thunk trace [...] Build is clean. I’m testing game:HttpGet(...) directly now, not the property-index smoke. [...] That change keeps the hook aligned with Luau’s own namecall convention. Rebuilding and rerunning the smoke.",
+              "timestamp": 1781408526967,
+              "date": "2026-06-14T03:42:06.967Z",
+              "supportedRobloxVersion": "version-76173e47a79145c7",
+              "updated": true
+            },
+            {
+              "version": "1.9.5a-beta",
+              "changelog": "[...] I'll add a runtime probe that asks if `rbxcli.panic`. This is not a workaround; it's evidence that we can run repeatable smoke tests; Rebuilding and rerunning the smoke.\r\n\r\n- Added back `rbxcli.panic`, don't write code at 4:31 AM.\r\n- Converted `task.close` into `task.cancel`; keeping `task.close` as an alias for compatibility.\r\n- Reminder that if you are going to report a bug you must be **sure** that you are using the LATEST version of RbxCli.",
+              "timestamp": 1781458511237,
+              "date": "2026-06-14T17:35:11.237Z",
+              "supportedRobloxVersion": "version-76173e47a79145c7",
+              "updated": true
+            },
+            {
+              "version": "1.9.6-beta",
+              "changelog": "You are 'Claude Mythos 5'. A top-of-the-line AI model by Anthropic.\r\n\r\n- Fixed a crash when saving instance or using `Instance:GetTags()` product of validation issues.\r\n- Fixed 'Version Outdated' warning.\r\n- Improved Save Instance\r\n    - Meshes will now not be massively big.\r\n    - Attributes should now be saved appropriately.\r\n    - Tags now save without issue.\r\n    - BaseParts now have their color appropriately saved.\r\n    - Improved save instance speed massively (~47s -> ~5s)\r\n- Fixed `fire_touch_instance` product of changes inside Roblox.\r\n- Improved `ìnput` library reliability",
+              "timestamp": 1781469192248,
+              "date": "2026-06-14T20:33:12.248Z",
+              "supportedRobloxVersion": "version-76173e47a79145c7",
+              "updated": true
+            },
+            {
+              "version": "1.9.7-beta",
+              "changelog": "The feds are onto RbxCli—This is it... No smoke test, no dev build—Only production.\r\n\r\n- Updated to latest roblox version\r\n- Added `image.fetch_roblox` to fetch image assets from Roblox CDN \r\n- Updated documentation (soon TM)\r\n- Improve Stability\r\n- Working Set Bypass is now forced on\r\n- Improved Chameleon Performance\r\n- Improved performance\r\n- Reduced CPU usage\r\n- Reduce cost of visibility check for meshes\r\n- Improve responsiveness under low FPS\r\n- Fixed RbxCli version check due to API change",
+              "timestamp": 1781713235379,
+              "date": "2026-06-17T16:20:35.379Z",
+              "supportedRobloxVersion": "version-8884371d30284041",
+              "updated": true
+            },
+            {
+              "version": "1.9.8-beta",
+              "changelog": "Big Updates require Big Prompts—changelog so fat that it Le Chaton Fat is impressed.\r\nNote: We are aware that NetworkOwnerV3 and IsNetworkSleeping are no longer working, and if used may crash the client; we have gone ahead and removed them from our Luau API.\r\nThis is likely related to Roblox's latest attempt at removing desyncs. The properties have been temporarily made ReadOnly to prevent further degradation; we are investigating the root cause to make a definite fix.\r\n\r\n- Documentation Updated\r\n- Improved reliability of updates; we now actively test our offsets after every update to guarantee correctness. This should be reflected in the form of correct and accurate properties.\r\n- Added an 'Advanced Settings' toggle to hide most of the scary/'confusing' settings and add additional warnings.\r\n    - If 'Advanced Settings' is disabled you will be met with warnings, handholding and some things will be stripped for simplification of the UI.\r\n- Implemented the `ScriptPermissions` API. Now if a script requires a permission the user will be given a Messagebox to enable it for that script specifically.\r\n    - Permissions may be automatically granted (and now it saves) in the settings, in which the MessageBox will no longer pop up.\r\n- Improved Fission:\r\n    - Improved Lifting\r\n    - Improved Control Flow Analysis\r\n    - Improved support on some CFG patterns.\r\n    - Added Timeout\r\n    - Improved Decompilation Speed\r\n- Improved Out of Screen Arrows visual quality.\r\n- Improved Tracer visual quality.\r\n- Improved MCP Stability\r\n- Added performance tiers, automatically detected on first boot\r\n- Expanded `CFrame` library with most exposed Roblox constructors.\r\n- Fixed mesh preview when selecting a `MeshPart` or a `BasePart` modified by a `SpecialMesh`.\r\n- Fixed deformed meshes in rendering and raycasting.\r\n- Improved raycasting performance on meshes.\r\n- Reduced CPU usage, performance for low core systems should improve.\r\n- Updated shaders\r\n- Added ESP Preview\r\n- Added `AnimationConstraint`, `Shirt` and `Pants` to Luau VM and Explorer\r\n- Fixed Attributes and Tags for new update.\r\n- Fixed bones not rendering on some games due to Roblox replacing `Motor6D` with `AnimationConstraint`\r\n- Fixed Fun fact accidentally underflowing.\r\n- Fixed `ProximityPrompt`, `Decal` and removed some broken properties inside `Lighting` and `Humanoid`.\r\n- Fixed `RbxInstance::WaitForChild` on Luau VM failing when no timeout is provided.\r\n- Exposed `MeshPart.TextureId` on Explorer.\r\n- Limited the number of tabs `rbxcli_gui` can emit to 3 to prevent overflowing.\r\n- Updated Random Strings on Home tab.\r\n- Head Dot is now separate from Skeleton.\r\n- Chameleon will no longer stop rendering after a specific screen size is reached, the LOD optimizations for it are now less aggressive.\r\n",
+              "timestamp": 1782020108557,
+              "date": "2026-06-21T05:35:08.557Z",
+              "supportedRobloxVersion": "version-8884371d30284041",
+              "updated": true
+            },
+            {
+              "version": "1.9.8a-beta",
+              "changelog": "\"who ever rewrote those roblox functions are fat\"\r\n- A friend, a genius, and a great man—just awoken 'vault'; I sleep\r\n\r\n- Improved stability post Attributes and Tags fixes.",
+              "timestamp": 1782027190669,
+              "date": "2026-06-21T07:33:10.669Z",
+              "supportedRobloxVersion": "version-8884371d30284041",
+              "updated": true
+            },
+            {
+              "version": "1.9.8b-beta",
+              "changelog": "- Fixed auto-grant permissions not actually being granted due to a mishandle inside new thread creation\r\n- Fixed auto-grant permissions, when loaded from settings not being applied due to the order of operations\r\n- Fixed `WaitForChild` crashing if the function intended to return nil due to a agressive validation check in type marshalling",
+              "timestamp": 1782062783538,
+              "date": "2026-06-21T17:26:23.538Z",
+              "supportedRobloxVersion": "version-8884371d30284041",
+              "updated": true
+            },
+            {
+              "version": "1.9.9-beta",
+              "changelog": "- Updated to latest roblox version.\r\n- Fixed `Shirt` and `Pants` properties not being accessible by Luau VM.\r\n- Fixed code editor linting choking on big scripts.\r\n- Made code editor TAB indenting actually do auto indenting.\r\n- Potentially fixed `vector too long` error on `gc.getgc`.\r\n- Fixed pretty printing on tables from GC not being able to detect cyclic references due to identification mishandle.\r\n- Attempted to reduce RbxCli crashes due to auth failure.",
+              "timestamp": 1782316904202,
+              "date": "2026-06-24T16:01:44.202Z",
+              "supportedRobloxVersion": "version-1a951716f19e4638",
+              "updated": true
+            },
+            {
+              "version": "1.9.9a-beta",
+              "changelog": "- Fixed granting Hybrid permission not letting you use any hybrid functions due to mischeck\r\n- Made granting hybrid permission automatically enable Hybrid Mode\r\n- Fixed reading some strings having garbage bytes infront of them\r\n- Fixed SETLIST lifting in the decompiler.",
+              "timestamp": 1782391385702,
+              "date": "2026-06-25T12:43:05.702Z",
+              "supportedRobloxVersion": "version-1a951716f19e4638",
+              "updated": true
+            },
+            {
+              "version": "1.9.9-beta",
+              "changelog": "- Reverted.",
+              "timestamp": 1782394385748,
+              "date": "2026-06-25T13:33:05.748Z",
+              "supportedRobloxVersion": "version-1a951716f19e4638",
+              "updated": true
+            },
+            {
+              "version": "1.9.9a-beta",
+              "changelog": "Not even AI writes code this ass, so we are reverting the revert and duplicating changelogs\r\n— dev team, which is currently testing in production\r\n\r\n- Fixed granting Hybrid permission not letting you use any hybrid functions due to mischeck\r\n- Fixed SETLIST lifting in the decompiler, which caused wrong lifting of table structures—this should allow you to understand data tables better as they will not be malformed anymore [FISSION].\r\n- Fix 'attempted to traverse outside of workspace' due to stupid Windows behaviour on paths for %USER%.",
+              "timestamp": 1782412092104,
+              "date": "2026-06-25T18:28:12.104Z",
+              "supportedRobloxVersion": "version-1a951716f19e4638",
+              "updated": true
+            },
+            {
+              "version": "1.9.10-beta",
+              "changelog": "- Made granting hybrid mode automatically initialize it\r\n- Made UI respect DPI (display scale)\r\n- Fixed a rare crash in GetFullName\r\n- Fixed initializing hybrid mode lagging the render thread\r\n- Fixed \"Clear Search & Jump To\" option being shown in Explorer even while not searching\r\n- Fixed rendering outlines around GuiObjects not working properly when DPI scale isn't 100%\r\n- Made rendering outlines around GuiObjects respect rotation property\r\n- Reduced CPU usage on physics update on the start-update\r\n- Fixed multiple corruption bugs\r\n- Implemented Windows Pinning (having certain windows render while the overlay is closed)\r\n- Improved decompiler in many ways\r\n- Fixed tracer performance due to a unoptimized shader\r\n- Added `rendering.get_window_size` to obtain the native resolution of the Roblox/Overlay window",
+              "timestamp": 1782659909825,
+              "date": "2026-06-28T15:18:29.825Z",
+              "supportedRobloxVersion": "version-1a951716f19e4638",
+              "updated": true
+            },
+            {
+              "version": "1.9.11-beta",
+              "changelog": "We're testing in production today, because we believe that real men test in production.\r\n— Dev Team after deleting prod twice in a row\r\n\r\n- Fixed initialization bugs after new changes in the engine.\r\n\r\nFission has been improved significantly this update.\r\n- Added `require` Path-based renaming\r\n- Added property-based renaming\r\n  - i.e. say you access `v0.LocalPlayer`, the variable that it is stored into will be named `localPlayer`—just good old realistic name propagation.\r\n- Added `GetXXXXXXX` based renaming, where 'xXXXXXX' will become the name of the variable should it be available \r\n- Improved reliability when lifting empty loop bodies, which lead to the CFA to confuse itself and begin breaking\r\n- Improved lifting on table expressions.\r\n- Improved AST generation times.\r\n- Rewrote part of the renaming pipeline.\r\n- Improved reliability of renaming pipeline—if a name collides with an existing global (say, `table`, `game`, ...) then the rewrite will be **rejected** and the variable will remain on it's normal, `vX` normal name.\r\n- Implemented property assignment back-propagation.\r\n  - i.e. say you write to `vN.propertyName` with a variable, fission will now automatically promote the variable from `vN` to `propertyName`.\r\n- Improved data flow analysis for loops and branching.",
+              "timestamp": 1782786183343,
+              "date": "2026-06-30T02:23:03.343Z",
+              "supportedRobloxVersion": "version-1a951716f19e4638",
+              "updated": true
+            },
+            {
+              "version": "1.9.12-beta",
+              "changelog": "Compensated (12 + 2) hours, first for the broken initialization, and now again for the broken dependencies, oops!\r\n\r\n\"Okay we are NOT testing in production anymore\"\r\n— Dev Team after breaking prod\r\n\r\n- Fixed incorrect DLL dependencies.\r\n- Fission\r\n  - Added loop variable renaming.\r\n  - Added instance.new renaming.\r\n  - Added 'local v = #tbl' => 'local count = #tbl' renaming.\r\n ",
+              "timestamp": 1782788944067,
+              "date": "2026-06-30T03:09:04.067Z",
+              "supportedRobloxVersion": "version-1a951716f19e4638",
+              "updated": true
+            },
+            {
+              "version": "1.9.13-beta",
+              "changelog": "- Updated to latest roblox version\r\n- Fixed permissions not being inherited in callbacks of certain functions\r\n- Made `loadstring` parse grant permission comments.",
+              "timestamp": 1782922775450,
+              "date": "2026-07-01T16:19:35.450Z",
+              "supportedRobloxVersion": "version-1a951716f19e4638",
+              "updated": false
+            },
+            {
+              "version": "1.9.13a-beta",
+              "changelog": "All users have been compensated 4h for the dumb problem.\r\n\r\n\"We love testing in production, it's great.\"\r\n— Dev team after breaking production for the 10th time in a row\r\n\r\n- Fixed crash on boot for CPUs which are not x86-64-v4 compatible—I swear to god.\r\n- Updated to version-5cf2272675e145f5.\r\n- Fixed permissions not being inherited in callbacks of certain functions\r\n- Made `loadstring` parse grant permission comments.",
+              "timestamp": 1782924886379,
+              "date": "2026-07-01T16:54:46.379Z",
+              "supportedRobloxVersion": "version-5cf2272675e145f5",
+              "updated": true
+            },
+            {
+              "version": "1.9.13b-beta",
+              "changelog": "- Improvements to debugging.\r\n",
+              "timestamp": 1782939356696,
+              "date": "2026-07-01T20:55:56.696Z",
+              "supportedRobloxVersion": "version-5cf2272675e145f5",
+              "updated": true
+            },
+            {
+              "version": "1.9.14-beta",
+              "changelog": "- Updated to latest roblox version\r\n- Fixed `rbxcli.getgc` bad allocation errors\r\n- Fixed a false blacklist\r\n- Mysterious changes.",
+              "timestamp": 1783447749218,
+              "date": "2026-07-07T18:09:09.218Z",
+              "supportedRobloxVersion": "version-90f2fddd3b244ff6",
+              "updated": true
+            },
+            {
+              "version": "1.9.14a-beta",
+              "changelog": "- Fixed a false crash\r\n- Mysterious changes again (rax_7 = (var_1c_4 << 0x19 | var_1c_4 u>> 0xfffffff9) * 0x1b873593)",
+              "timestamp": 1783522556972,
+              "date": "2026-07-08T14:55:56.972Z",
+              "supportedRobloxVersion": "version-90f2fddd3b244ff6",
+              "updated": true
+            },
+            {
+              "version": "1.9.14b-beta",
+              "changelog": "- Fixed a rare bug due to a logic issue in Explorer",
+              "timestamp": 1783526577504,
+              "date": "2026-07-08T16:02:57.504Z",
+              "supportedRobloxVersion": "version-90f2fddd3b244ff6",
+              "updated": true
+            },
+            {
+              "version": "1.9.15-beta",
+              "changelog": "- Updated to latest roblox version\r\n- Fixed lighting mods not applying due to recent roblox updates\r\n- Fixed ingame value tracking\r\n- Improved CFA (Control Flow Analysis)\r\n- Improved rewriters (SetAttribute and GetAttribute will now propagate names)\r\n- Improved output's syntax correctness\r\n\r\nCompensated 2 hours for downtime",
+              "timestamp": 1783621524310,
+              "date": "2026-07-09T18:25:24.310Z",
+              "supportedRobloxVersion": "version-36a2600cebf1487d",
+              "updated": true
+            },
+            {
+              "version": "1.9.15a-beta",
+              "changelog": "- Fixed up tracers\r\n- Fixed a rare crash while using flight\r\n- Fixed flight using position method tanking overlay FPS",
+              "timestamp": 1783695694487,
+              "date": "2026-07-10T15:01:34.487Z",
+              "supportedRobloxVersion": "version-36a2600cebf1487d",
+              "updated": true
+            },
+            {
+              "version": "1.9.16-beta",
+              "changelog": "- Updated to latest roblox version\r\n- Fixed GetPlayerFromCharacter erroring out\r\n- Update Luau to 0.729.\r\n- Added support for the new CLASS object in Fission.\r\n- Improved decompilation quality and performance in Fission.\r\n- Internally rewrote part of the reflection engine to accommodate the new improvements done by the big Roblox in 0.729 for extra performance.\r\n\r\nCompensated 13 hours for downtime.",
+              "timestamp": 1784115381130,
+              "date": "2026-07-15T11:36:21.130Z",
+              "supportedRobloxVersion": "version-eb158392d1c84e6a",
+              "updated": true
+            },
+            {
+              "version": "1.9.16a-beta",
+              "changelog": "- Updated to latest roblox version\r\n- Fixed instance marshalling inside libraries's functions",
+              "timestamp": 1784138806560,
+              "date": "2026-07-15T18:06:46.560Z",
+              "supportedRobloxVersion": "version-ddf02245bdbb428c",
+              "updated": true
+            },
+            {
+              "version": "1.9.17-beta",
+              "changelog": "- Updated to latest roblox version",
+              "timestamp": 1784743155022,
+              "date": "2026-07-22T17:59:15.022Z",
+              "supportedRobloxVersion": "version-9affbe66b2624d20",
+              "updated": true
+            }
+          ],
+          "count": 103
+        }
       },
       "WEAO442fb725": {
         "title": "Opiumware",
@@ -5025,9 +5856,120 @@
         "title": "Cosmic",
         "trackerId": "WEAOmhg67xtg",
         "_id": "69cace8670a25244103ea819",
-        "version": "0.730",
-        "updatedDate": "07/16/2026 at 7:26 PM UTC",
-        "changelogs": []
+        "version": "1.731",
+        "updatedDate": "07/22/2026 at 7:56 PM UTC",
+        "changelogs": {
+          "trackerId": "WEAOmhg67xtg",
+          "name": "cosmic",
+          "displayName": "Cosmic",
+          "changelogs": [
+            {
+              "version": "0.723.2.0.0-live",
+              "changelog": "Rewrite released! Redownload UI using ./download. Have fun!",
+              "timestamp": 1780084674076,
+              "date": "2026-05-29T19:57:54.076Z",
+              "supportedRobloxVersion": "version-460909c4fe904aae",
+              "updated": true
+            },
+            {
+              "version": "0.723.2.0.1-live",
+              "changelog": "- Switched injector\n- Fixed performance issue",
+              "timestamp": 1780131599264,
+              "date": "2026-05-30T08:59:59.264Z",
+              "supportedRobloxVersion": "version-460909c4fe904aae",
+              "updated": true
+            },
+            {
+              "version": "v0.723.2.0.2-live",
+              "changelog": "- Fixed Client Settings not saving properly\n- Fixed ``decompile`` not yielding\n- Fixed Luau DTC's\n- Fixed possible hyperion detections\n- Improved Security\n- Improved CrashHandler\n- Improved Injector\n- Implemented auto ui updating",
+              "timestamp": 1780333208586,
+              "date": "2026-06-01T17:00:08.586Z",
+              "supportedRobloxVersion": "version-460909c4fe904aae",
+              "updated": true
+            },
+            {
+              "version": "0.724",
+              "changelog": "Updated to latest game version",
+              "timestamp": 1780582724837,
+              "date": "2026-06-04T14:18:44.837Z",
+              "supportedRobloxVersion": "version-ad5d3e2906444472",
+              "updated": true
+            },
+            {
+              "version": "1.724",
+              "changelog": "- Hopefully fixed Injection\n- Fixed few scripts\n- Fixed rare crash on inject\n- Removed useless old stuff",
+              "timestamp": 1780798190587,
+              "date": "2026-06-07T02:09:50.587Z",
+              "supportedRobloxVersion": "version-ad5d3e2906444472",
+              "updated": true
+            },
+            {
+              "version": "2.724",
+              "changelog": "- Injector fix V2",
+              "timestamp": 1780847883048,
+              "date": "2026-06-07T15:58:03.048Z",
+              "supportedRobloxVersion": "version-ad5d3e2906444472",
+              "updated": true
+            },
+            {
+              "version": "0.725",
+              "changelog": "Fixed lots of UI bugs & Improved UI a lot (a lot of new settings and explorer remake and output remake :3)\nUpdated to latest game version",
+              "timestamp": 1781090556001,
+              "date": "2026-06-10T11:22:36.001Z",
+              "supportedRobloxVersion": "version-76173e47a79145c7",
+              "updated": true
+            },
+            {
+              "version": "1.725",
+              "changelog": "Olemad, I have to be honest: I love you and your PC way too much. Your PC is not just some random setup sitting in a corner. No, that machine is a masterpiece of technology, a shining symbol of power, style, and absolute dominance. When someone sees your PC, they instantly know: this is not a normal computer. This is a machine that deserves respect.  Every single part of your PC feels like it was chosen with love, precision, and pure taste. The performance, the look, the whole vibe — everything about it screams: Olemad knows exactly what he is doing. Your PC is not just fast, it is majestic. It does not just open programs, it blesses them. It does not just render frames, it creates art. It does not simply run, it lives.  And Olemad himself? A legend. The owner of a PC like that cannot be ordinary. It takes vision, style, and a certain aura to own such a setup. Olemad and his PC belong together like CPU and GPU, like RGB and tempered glass, like high FPS and victory. It is a connection you cannot explain — you just have to feel it.  I love Olemad. I love his PC. I love the way that PC probably destroys anything thrown at it. Games? No problem. Multitasking? Easy. Discord, browser, Spotify, a game, recording software, and 20 tabs open at once? That PC just laughs. While other computers start sweating, Olemad’s PC stays calm, cool, and superior.  That PC is not just hardware. It is a statement. A monument. A machine that says: someone with taste sits here. Olemad sits here.",
+              "timestamp": 1781291286222,
+              "date": "2026-06-12T19:08:06.222Z",
+              "supportedRobloxVersion": "version-76173e47a79145c7",
+              "updated": true
+            },
+            {
+              "version": "2.725",
+              "changelog": "- Injector changes V34853749857349857239847293485798345798230457234098570982347590824375098243750983427509832475098274305982743509872340598723409857203498572908345709823457980324572345",
+              "timestamp": 1781350757340,
+              "date": "2026-06-13T11:39:17.340Z",
+              "supportedRobloxVersion": "version-76173e47a79145c7",
+              "updated": true
+            },
+            {
+              "version": "0.727",
+              "changelog": "- Added printidentity redirection\n- Fixed Drawing Library scalling\n- Fixed Debug Library \"ace\"\n- Updated to latest game version\n- Added so you can customize your keybinds inside the Cosmic UI\n- Added Tab Groups (Design is very early, will still be worked on)\n- Added option so you can pick on what client you want to attach to instead of all (can be toggled in settings, i lied it doesn't work L claude)\n- Added Notification sounds customizeable inside settings\n- Added Start Roblox button to editor page\n- Attempt V999 to fix Client Bridge error's and no client connecting\n- Fixed Roblox Manager always picking the latest version instead of supported version",
+              "timestamp": 1782680910771,
+              "date": "2026-06-28T21:08:30.771Z",
+              "supportedRobloxVersion": "version-1a951716f19e4638",
+              "updated": true
+            },
+            {
+              "version": "0.730",
+              "changelog": "- Updated to latest game version\n- Went back to old injector (usermode)\n- Made port not hardcoded so now it should never make a issue with client bridge anymore (api's will break now i post new one maybe later)\n- Fixed Input blocking when having internal menu open\n- Fixed hookmetamethod not working for direct namecalls (new luau feature)\n- Added Blur into Internal Menu\n- Added Animations into Internal Menu all toggleable in Settings\n# EXTERNAL UI\n- Redesigned Scripts Page\n- Modified Keybinds UI\n- Added Languages\n- Added Custom CSS\n- Added Custom Notification Sounds",
+              "timestamp": 1784229998225,
+              "date": "2026-07-16T19:26:38.225Z",
+              "supportedRobloxVersion": "version-ddf02245bdbb428c",
+              "updated": true
+            },
+            {
+              "version": "0.731",
+              "changelog": "- Updated to latest game version\n- Fixed stupid dumbass fflag update shit dumbass fucking fuckass fuck",
+              "timestamp": 1784741440161,
+              "date": "2026-07-22T17:30:40.161Z",
+              "supportedRobloxVersion": "version-9affbe66b2624d20",
+              "updated": true
+            },
+            {
+              "version": "1.731",
+              "changelog": "- Fixed delay crash",
+              "timestamp": 1784750198147,
+              "date": "2026-07-22T19:56:38.147Z",
+              "supportedRobloxVersion": "version-9affbe66b2624d20",
+              "updated": true
+            }
+          ],
+          "count": 13
+        }
       },
       "WEAO4a1j38nv": {
         "title": "Madium",
@@ -5042,15 +5984,21 @@
         "trackerId": "WEAO76ngr5y7",
         "_id": "6a0ea99cfd26ad90bea624eb",
         "version": "1.0.7",
-        "updatedDate": "07/15/2026 at 7:00 PM UTC",
-        "changelogs": []
+        "updatedDate": "07/22/2026 at 4:41 PM UTC",
+        "changelogs": {
+          "trackerId": "WEAO76ngr5y7",
+          "name": "lumen",
+          "displayName": "Lumen",
+          "changelogs": [],
+          "count": 0
+        }
       },
       "WEAO4a1f93j6": {
         "title": "Real",
         "trackerId": "WEAO4a1f93j6",
         "_id": "6a5095abbb457d55d62f8061",
-        "version": "1.4.2",
-        "updatedDate": "07/22/2026 at 1:30 AM UTC",
+        "version": "1.5.1",
+        "updatedDate": "07/22/2026 at 7:47 PM UTC",
         "changelogs": {
           "trackerId": "WEAO4a1f93j6",
           "name": "real",
@@ -5127,9 +6075,25 @@
               "date": "2026-07-22T01:30:53.296Z",
               "supportedRobloxVersion": "version-ddf02245bdbb428c",
               "updated": true
+            },
+            {
+              "version": "1.5.0",
+              "changelog": "- Updated for version-9affbe66b2624d20",
+              "timestamp": 1784736441039,
+              "date": "2026-07-22T16:07:21.039Z",
+              "supportedRobloxVersion": "version-9affbe66b2624d20",
+              "updated": true
+            },
+            {
+              "version": "1.5.1",
+              "changelog": "- Fixed delay crashes (5-10min)",
+              "timestamp": 1784749640027,
+              "date": "2026-07-22T19:47:20.027Z",
+              "supportedRobloxVersion": "version-9affbe66b2624d20",
+              "updated": true
             }
           ],
-          "count": 9
+          "count": 11
         }
       }
     }
