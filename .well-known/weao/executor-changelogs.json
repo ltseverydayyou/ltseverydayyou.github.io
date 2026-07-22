@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-07-22T11:58:08.744Z",
+  "fetchedAt": "2026-07-22T16:00:58.503Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -576,7 +576,7 @@
         "trackerId": "WEAO08b7927f",
         "_id": "679553cd2eea89d30d0dae57",
         "version": "1.3.55",
-        "updatedDate": "07/15/2026 at 5:02 PM UTC",
+        "updatedDate": "07/22/2026 at 4:00 PM UTC",
         "changelogs": {
           "trackerId": "WEAO08b7927f",
           "name": "xeno",
@@ -4554,7 +4554,7 @@
         "trackerId": "WEAO30580ddb",
         "_id": "688c1b3ccc42af0ea95977e3",
         "version": "v2",
-        "updatedDate": "07/15/2026 at 4:56 PM UTC",
+        "updatedDate": "07/22/2026 at 4:00 PM UTC",
         "changelogs": {
           "trackerId": "WEAO30580ddb",
           "name": "serotonin",
