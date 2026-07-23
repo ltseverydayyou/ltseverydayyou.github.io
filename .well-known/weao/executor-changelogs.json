@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-07-22T22:06:05.556Z",
+  "fetchedAt": "2026-07-23T09:07:50.827Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -1700,14 +1700,669 @@
         "_id": "671411144ca6cb25603cc3b0",
         "version": "2.4.9",
         "updatedDate": "05/23/2026 at 8:21 AM UTC",
-        "changelogs": []
+        "changelogs": {
+          "trackerId": "WEAO4916b797",
+          "name": "seliware",
+          "displayName": "Seliware",
+          "changelogs": [
+            {
+              "version": "destructivo-1.2.6.7",
+              "changelog": "[~] Updated for the latest Roblox version\r\n[~] Improved stability\r\n\r\nI love sunc :heart:",
+              "timestamp": 1753318397711,
+              "date": "2025-07-24T00:53:17.711Z",
+              "supportedRobloxVersion": "version-2a06298afe3947ab",
+              "updated": true
+            },
+            {
+              "version": "destructivo-1.2.6.9",
+              "changelog": "[~] Improved stability\r\n[~] Fixed bugs with injection in ui\r\n\r\nJagd auf den Jager",
+              "timestamp": 1753827988760,
+              "date": "2025-07-29T22:26:28.760Z",
+              "supportedRobloxVersion": "version-2a06298afe3947ab",
+              "updated": true
+            },
+            {
+              "version": "destructivo-1.2.7.0",
+              "changelog": "[~] Updated for the latest Roblox version\r\n[~] Improved stability\r\n\r\nBitdancer I'm already here",
+              "timestamp": 1754074849332,
+              "date": "2025-08-01T19:00:49.332Z",
+              "supportedRobloxVersion": "version-b8550645b8834e8a",
+              "updated": true
+            },
+            {
+              "version": "destructivo-1.2.7.1",
+              "changelog": "[~] Fixes of critical bugs\r\n\r\nWeiter Weiter Ins Verderben",
+              "timestamp": 1754149949291,
+              "date": "2025-08-02T15:52:29.291Z",
+              "supportedRobloxVersion": "version-b8550645b8834e8a",
+              "updated": true
+            },
+            {
+              "version": "destructivo-1.2.7.2",
+              "changelog": "[+] Firetouchinterest now supports bool in third argument\r\n[~] Fixed injector not working for some people",
+              "timestamp": 1754233831345,
+              "date": "2025-08-03T15:10:31.345Z",
+              "supportedRobloxVersion": "version-b8550645b8834e8a",
+              "updated": true
+            },
+            {
+              "version": "destructivo-1.2.7.3",
+              "changelog": "[~] Updated for the latest Roblox version",
+              "timestamp": 1754514167041,
+              "date": "2025-08-06T21:02:47.041Z",
+              "supportedRobloxVersion": "version-3f74e22590714de4",
+              "updated": true
+            },
+            {
+              "version": "destructivo-1.2.7.4",
+              "changelog": "[~] Updated for the latest Roblox version\r\n[~] Improved getconnections\r\n[~] Improved hookfunction\r\n[~] Some fixes restorefunction\r\n\r\nAnd a bunch of other small changes that I can't even remember",
+              "timestamp": 1755115747525,
+              "date": "2025-08-13T20:09:07.525Z",
+              "supportedRobloxVersion": "version-ca90f2e615014a44",
+              "updated": true
+            },
+            {
+              "version": "destructivo-1.2.7.5",
+              "changelog": "[~] Updated for the latest Roblox version",
+              "timestamp": 1755221717828,
+              "date": "2025-08-15T01:35:17.828Z",
+              "supportedRobloxVersion": "version-fe20d41d8fec4770",
+              "updated": true
+            },
+            {
+              "version": "destructivo-1.2.7.6",
+              "changelog": "[~] Improved stability\r\n[+] Added type checking to queue_on_teleport\r\n\r\nPuppenspieler",
+              "timestamp": 1755303926909,
+              "date": "2025-08-16T00:25:26.909Z",
+              "supportedRobloxVersion": "version-fe20d41d8fec4770",
+              "updated": true
+            },
+            {
+              "version": "destructivo-1.2.7.7",
+              "changelog": "[~] Improved authentication\r\n[~] Some fixes for queue_on_teleport\r\n\r\nYeah Yeah Ud",
+              "timestamp": 1755454169608,
+              "date": "2025-08-17T18:09:29.608Z",
+              "supportedRobloxVersion": "version-fe20d41d8fec4770",
+              "updated": true
+            },
+            {
+              "version": "destructivo-1.2.7.8",
+              "changelog": "[~] Updated for the latest Roblox version\r\n\r\nIch lebe noch und ich bin hier",
+              "timestamp": 1755720898433,
+              "date": "2025-08-20T20:14:58.433Z",
+              "supportedRobloxVersion": "version-89b6c70d8f7f42ac",
+              "updated": true
+            },
+            {
+              "version": "destructivo-1.2.7.9",
+              "changelog": "[~] Fixed teleport handler\r\n\r\nSorry about that",
+              "timestamp": 1755726178611,
+              "date": "2025-08-20T21:42:58.611Z",
+              "supportedRobloxVersion": "version-89b6c70d8f7f42ac",
+              "updated": true
+            },
+            {
+              "version": "destructivo-1.2.8.0",
+              "changelog": "[~] Some WebSocket fixes",
+              "timestamp": 1755791159487,
+              "date": "2025-08-21T15:45:59.487Z",
+              "supportedRobloxVersion": "version-89b6c70d8f7f42ac",
+              "updated": true
+            },
+            {
+              "version": "destructivo-1.2.8.1",
+              "changelog": "[~] Fixed the problem that caused crashes during server hops",
+              "timestamp": 1755800338900,
+              "date": "2025-08-21T18:18:58.900Z",
+              "supportedRobloxVersion": "version-89b6c70d8f7f42ac",
+              "updated": true
+            },
+            {
+              "version": "destructivo-1.2.8.2",
+              "changelog": "[~] Updated for the latest Roblox version\r\n[~] Fixed getscripthash\r\n\r\nIch bleibe am Leben",
+              "timestamp": 1756389803011,
+              "date": "2025-08-28T14:03:23.011Z",
+              "supportedRobloxVersion": "version-7b14ca0aa83149fa",
+              "updated": true
+            },
+            {
+              "version": "destructivo-1.2.8.3",
+              "changelog": "[~] Injector should work faster",
+              "timestamp": 1756392863139,
+              "date": "2025-08-28T14:54:23.139Z",
+              "supportedRobloxVersion": "version-7b14ca0aa83149fa",
+              "updated": true
+            },
+            {
+              "version": "destructivo-1.2.8.4",
+              "changelog": "[~] Now injector should work for everyone",
+              "timestamp": 1756402463207,
+              "date": "2025-08-28T17:34:23.207Z",
+              "supportedRobloxVersion": "version-7b14ca0aa83149fa",
+              "updated": true
+            },
+            {
+              "version": "destructivo-1.2.8.5",
+              "changelog": "[~] Updated for the latest Roblox version\r\n[+] Injector has been completely rewritten and now it should work for everyone\r\n\r\nAs compensation for the recent issues, all active subscriptions have been extended for 4 days",
+              "timestamp": 1756595098144,
+              "date": "2025-08-30T23:04:58.144Z",
+              "supportedRobloxVersion": "version-65664807ac1d4e85",
+              "updated": true
+            },
+            {
+              "version": "destructivo-1.2.8.6",
+              "changelog": "[~] Updated for the latest Roblox version",
+              "timestamp": 1756934871819,
+              "date": "2025-09-03T21:27:51.819Z",
+              "supportedRobloxVersion": "version-c1ac69007bdc4e48",
+              "updated": true
+            },
+            {
+              "version": "destructivo-1.2.8.7",
+              "changelog": "[~] Updated for the latest Roblox version",
+              "timestamp": 1757537339145,
+              "date": "2025-09-10T20:48:59.145Z",
+              "supportedRobloxVersion": "version-8afc5a7d5e894d22",
+              "updated": true
+            },
+            {
+              "version": "destructivo-1.2.8.8",
+              "changelog": "[~] Fixed injector\r\n\r\nAdded 2 hours to all subscriptions to compensate for the inconvenience",
+              "timestamp": 1757541179916,
+              "date": "2025-09-10T21:52:59.916Z",
+              "supportedRobloxVersion": "version-8afc5a7d5e894d22",
+              "updated": true
+            },
+            {
+              "version": "destructivo-1.2.8.9",
+              "changelog": "[~] Fixed residual injector issues",
+              "timestamp": 1757548860046,
+              "date": "2025-09-11T00:01:00.046Z",
+              "supportedRobloxVersion": "version-8afc5a7d5e894d22",
+              "updated": true
+            },
+            {
+              "version": "destructivo-1.2.9.0",
+              "changelog": "[~] Fixed many bugs in ui\r\n[~] Fixed drawing (juju should work now)",
+              "timestamp": 1757763437984,
+              "date": "2025-09-13T11:37:17.984Z",
+              "supportedRobloxVersion": "version-8afc5a7d5e894d22",
+              "updated": true
+            },
+            {
+              "version": "destructivo-1.2.9.1",
+              "changelog": "[~] Updated for the latest Roblox version\r\n\r\nAll subscriptions have been extended for 4 days due to recent update issues. Thank you!",
+              "timestamp": 1758355898862,
+              "date": "2025-09-20T08:11:38.862Z",
+              "supportedRobloxVersion": "version-31fc142272764f02",
+              "updated": true
+            },
+            {
+              "version": "destructivo-1.2.9.2",
+              "changelog": "[~] Updated for the latest Roblox version\r\n[~] Minor injection bugs have been fixed",
+              "timestamp": 1758745040379,
+              "date": "2025-09-24T20:17:20.379Z",
+              "supportedRobloxVersion": "version-f6cd26d0e71b47c9",
+              "updated": true
+            },
+            {
+              "version": "destructivo-1.2.9.2",
+              "changelog": "[~] Updated for the latest Roblox version\r\n[~] Minor injection bugs have been fixed",
+              "timestamp": 1758803797138,
+              "date": "2025-09-25T12:36:37.138Z",
+              "supportedRobloxVersion": "version-f6cd26d0e71b47c9",
+              "updated": true
+            },
+            {
+              "version": "destructivo-1.2.9.3",
+              "changelog": "_____________\r\n( upd upd moo )\r\n -------------\r\n        o   ^__^\r\n         o  (OO)\\_______\r\n            (__)\\       )\\/\\\r\n             U  ||----w |\r\n                ||     ||",
+              "timestamp": 1759165467959,
+              "date": "2025-09-29T17:04:27.959Z",
+              "supportedRobloxVersion": "version-f6cd26d0e71b47c9",
+              "updated": true
+            },
+            {
+              "version": "destructivo-1.2.9.4",
+              "changelog": "++++++++++[>+++++++>++++++++++>+++>+<<<<-]>++.>+.+++++++..+++.>++.<<+++++++++++++++.>.+++.------.--------.>+.>.",
+              "timestamp": 1759167087545,
+              "date": "2025-09-29T17:31:27.545Z",
+              "supportedRobloxVersion": "version-f6cd26d0e71b47c9",
+              "updated": true
+            },
+            {
+              "version": "destructivo-1.2.9.5",
+              "changelog": "[~] Updated for the latest Roblox version\r\n[~] Fixed run_on_actor\r\n\r\nKrieg der Wieder Überlebenden",
+              "timestamp": 1759350080901,
+              "date": "2025-10-01T20:21:20.901Z",
+              "supportedRobloxVersion": "version-494828652c274712",
+              "updated": true
+            },
+            {
+              "version": "destructivo-1.2.9.6",
+              "changelog": "[~] Fixed memory leaks",
+              "timestamp": 1759501341969,
+              "date": "2025-10-03T14:22:21.969Z",
+              "supportedRobloxVersion": "version-494828652c274712",
+              "updated": true
+            },
+            {
+              "version": "destructivo-1.2.9.7",
+              "changelog": "[~] Updated for the latest Roblox version\r\n\r\nWir kommen, wir sind schon nah",
+              "timestamp": 1759953822350,
+              "date": "2025-10-08T20:03:42.350Z",
+              "supportedRobloxVersion": "version-d34359a5577645e2",
+              "updated": true
+            },
+            {
+              "version": "destructivo-1.2.9.8",
+              "changelog": "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⠐⢂⠐⡒⠂⣐⡢⠤⣀⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\r\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡜⢁⣺⣿⣿⣿⣿⣿⣿⣿⣶⠈⡁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\r\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠞⠃⠼⢽⣿⣿⠿⠻⠛⠻⢿⣿⠀⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\r\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣵⠁⠀⠀⠀⠙⠁⠀⠀⢠⡀⠀⢬⠃⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\r\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡟⠀⠀⠻⡄⠀⣇⠀⠃⠀⠘⡇⠀⠄⢿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\r\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡞⠀⠀⠀⢈⢸⡿⣦⣀⢀⣀⣴⣷⡆⢸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\r\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⠙⠳⠞⠁⠸⠷⠦⠈⠉⠉⠉⠀⠀⢸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\r\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢫⣦⠀⠀⠆⠀⠀⠤⠿⠂⠀⠀⠀⠀⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\r\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢻⣧⡄⠀⠀⠀⠈⣠⡼⠃⠀⠀⠀⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\r\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⠃⠀⠀⠀⠛⠉⠀⢀⠠⠀⠀⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\r\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢾⠠⠀⠀⠀⠀⢤⠘⠤⠁⢰⡆⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\r\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠀⠀⠀⢠⠋⠤⡉⠐⡀⠀⢿⠸⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\r\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠀⠄⠀⠀⡘⢀⠆⠡⠀⠀⣈⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\r\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡐⠈⠤⢁⠂⠀⡟⢰⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\r\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⡀⠀⠀⠀⠠⠁⠂⠄⠀⣸⠁⣸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\r\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⠁⠀⠀⠀⠀⠀⠀⠀⠈⠁⢰⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\r\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡤⢁⠆⠀⠀⠀⢀⣐⠀⠀⠀⢀⣸⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\r\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠰⠐⡁⠁⣼⡇⠀⠀⣿⣿⠀⡀⢀⣷⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\r\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠰⠁⡔⠀⣼⣿⡇⣀⠀⣿⣿⡆⣡⠘⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\r\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡰⢠⡞⢀⣾⣿⣿⣇⠀⠀⢿⣿⡇⠁⠀⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 𝖙𝖚𝖓𝖌\r\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠄⣴⡇⢠⣾⠋⠠⢸⣿⠀⠀⢸⣿⣧⠀⠀⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀𝖙𝖚𝖓𝖌\r\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠌⣼⠍⢀⣿⡇⢐⠘⢸⣿⡀⠀⢸⣿⣿⡀⠀⣻⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀𝖙𝖚𝖓𝖌\r\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠰⠊⡸⠁⢀⣾⠟⣀⢂⠀⢰⣿⣇⢀⠈⣿⣿⡇⠀⢸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 𝖙𝖚𝖓𝖌\r\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠜⠁⠄⠀⢠⡾⠫⢀⠸⠠⣴⣿⣿⡟⠀⠀⢿⡿⠁⠀⠘⡾⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀𝖙𝖚𝖓𝖌⠀\r\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡴⠋⠀⠀⠀⣠⣾⢁⡆⢚⠼⠛⣛⣹⡏⠀⠀⠀⠀⢠⣾⣆⠀⢻⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 𝖙𝖚𝖓𝖌\r\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠢⢀⡀⠀⢰⡏⣴⢯⡂⠄⠤⡶⠋⠉⣁⣠⣴⡆⠰⠛⠻⠻⠢⠘⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 𝖙𝖚𝖓𝖌\r\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠑⠋⠘⢑⠻⣿⣷⣶⣶⣾⡿⢟⢩⣯⣁⣀⡊⣘⣀⣀⣤⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 𝖘𝖆𝖍𝖚𝖗",
+              "timestamp": 1759956592329,
+              "date": "2025-10-08T20:49:52.329Z",
+              "supportedRobloxVersion": "version-d34359a5577645e2",
+              "updated": true
+            },
+            {
+              "version": "insurreccion-1.3.0.0",
+              "changelog": "[~] Updated for the latest Roblox version\r\n[~] Improved stability\r\n[~] Improved run_on_actor\r\n[~] Rewritten debug library\r\n\r\nAlso, 4 hours have been added to all active subscriptions.",
+              "timestamp": 1760660893362,
+              "date": "2025-10-17T00:28:13.362Z",
+              "supportedRobloxVersion": "version-7a4a5d7d1fb3449f",
+              "updated": true
+            },
+            {
+              "version": "insurreccion-1.3.0.1",
+              "changelog": "[~] Updated for the latest Roblox version\r\n[~] Rewritten isscriptable, setscriptable, gethiddenproperty, sethiddenproperty\r\n[~] Fixed hookfunction\r\n\r\nAlso now 98% sUNC",
+              "timestamp": 1761164084080,
+              "date": "2025-10-22T20:14:44.080Z",
+              "supportedRobloxVersion": "version-4aeb17bd13994560",
+              "updated": true
+            },
+            {
+              "version": "insurreccion-1.3.0.2",
+              "changelog": "[~] Injection bug fixed",
+              "timestamp": 1761179744549,
+              "date": "2025-10-23T00:35:44.549Z",
+              "supportedRobloxVersion": "version-4aeb17bd13994560",
+              "updated": true
+            },
+            {
+              "version": "insurreccion-1.3.0.4",
+              "changelog": "[~] Yummy and other auto-rejoiners are working again",
+              "timestamp": 1761223605533,
+              "date": "2025-10-23T12:46:45.533Z",
+              "supportedRobloxVersion": "version-4aeb17bd13994560",
+              "updated": true
+            },
+            {
+              "version": "insurreccion-1.3.0.5",
+              "changelog": "[~] Updated for the latest Roblox version\r\n[~] Improved gethui (orion library should work)",
+              "timestamp": 1761768160638,
+              "date": "2025-10-29T20:02:40.638Z",
+              "supportedRobloxVersion": "version-889d2588b25a43d1",
+              "updated": true
+            },
+            {
+              "version": "insurreccion-1.3.0.6",
+              "changelog": "[~] Updated for the latest Roblox version\r\n\r\nAll subscriptions have been extended for 4 hours.",
+              "timestamp": 1762383827939,
+              "date": "2025-11-05T23:03:47.939Z",
+              "supportedRobloxVersion": "version-f6dd34ecac7b4642",
+              "updated": true
+            },
+            {
+              "version": "insurreccion-1.3.0.7",
+              "changelog": "[~] Updated for the latest Roblox version\r\n[~] Fixed require",
+              "timestamp": 1762981766391,
+              "date": "2025-11-12T21:09:26.391Z",
+              "supportedRobloxVersion": "version-b7e223555d904550",
+              "updated": true
+            },
+            {
+              "version": "insurreccion-1.3.0.8",
+              "changelog": "[~] Updated for the latest Roblox version",
+              "timestamp": 1763154792200,
+              "date": "2025-11-14T21:13:12.200Z",
+              "supportedRobloxVersion": "version-8e6e698468a04d3f",
+              "updated": true
+            },
+            {
+              "version": "insurreccion-1.3.0.9",
+              "changelog": "[~] Minor bug fixes",
+              "timestamp": 1763236420864,
+              "date": "2025-11-15T19:53:40.864Z",
+              "supportedRobloxVersion": "version-8e6e698468a04d3f",
+              "updated": true
+            },
+            {
+              "version": "insurreccion-1.3.1.0",
+              "changelog": "[~] Updated for the latest Roblox version\r\n\r\nAll subscriptions have been extended for 48 hours.",
+              "timestamp": 1763675590839,
+              "date": "2025-11-20T21:53:10.839Z",
+              "supportedRobloxVersion": "version-fdda949d95e447e3",
+              "updated": true
+            },
+            {
+              "version": "2.0.0",
+              "changelog": "[~] Updated for the latest Roblox version  All subscriptions have been extended for a week (even those that have already expired). And with this, the major Seliware 2.0 update is launching.",
+              "timestamp": 1764238943165,
+              "date": "2025-11-27T10:22:23.165Z",
+              "supportedRobloxVersion": "version-e380c8edc8f6477c",
+              "updated": true
+            },
+            {
+              "version": "2.0.1",
+              "changelog": "[~] Fixed is_parallel\n[~] Improved teleport handler",
+              "timestamp": 1764368112579,
+              "date": "2025-11-28T22:15:12.579Z",
+              "supportedRobloxVersion": "version-e380c8edc8f6477c",
+              "updated": true
+            },
+            {
+              "version": "2.0.6",
+              "changelog": "[~] Updated for the latest Roblox version\n\nAll active subscriptions receive a 4-hour compensation (this means that 4 hours will be added to your subscription end date)",
+              "timestamp": 1764804898323,
+              "date": "2025-12-03T23:34:58.323Z",
+              "supportedRobloxVersion": null,
+              "updated": false
+            },
+            {
+              "version": "2.0.8",
+              "changelog": "[~] Updated for the latest Roblox version\n[+] Added getsimulationradius and setsimulationradius\n\nAdded 12 hours to active subscriptions and also if your subscription expired within the last 12 hours",
+              "timestamp": 1765265458704,
+              "date": "2025-12-09T07:30:58.704Z",
+              "supportedRobloxVersion": "version-5aed1822f52c4b03",
+              "updated": true
+            },
+            {
+              "version": "2.0.9",
+              "changelog": "[~] Updated for the latest Roblox version",
+              "timestamp": 1765488089778,
+              "date": "2025-12-11T21:21:29.778Z",
+              "supportedRobloxVersion": "version-eaebe135b3ec446b",
+              "updated": true
+            },
+            {
+              "version": "2.1.0",
+              "changelog": "[~] Updated for the latest Roblox version\n[~] Improved hookfunction\n[+] Added getclipboard",
+              "timestamp": 1766082792598,
+              "date": "2025-12-18T18:33:12.598Z",
+              "supportedRobloxVersion": "version-5b077c09380f4fe6",
+              "updated": true
+            },
+            {
+              "version": "2.1.3",
+              "changelog": "[~] Updated for the latest Roblox version",
+              "timestamp": 1767217559539,
+              "date": "2025-12-31T21:45:59.539Z",
+              "supportedRobloxVersion": "version-f8f53a67efca4c34",
+              "updated": true
+            },
+            {
+              "version": "2.1.4",
+              "changelog": "[~] Updated for the latest Roblox version\r\n\r\nGeschichte der ruckkehr",
+              "timestamp": 1767831548368,
+              "date": "2026-01-08T00:19:08.368Z",
+              "supportedRobloxVersion": "version-89d89cb2d6b649be",
+              "updated": true
+            },
+            {
+              "version": "2.1.6",
+              "changelog": "[~] Updated for the latest Roblox version",
+              "timestamp": 1768425894959,
+              "date": "2026-01-14T21:24:54.959Z",
+              "supportedRobloxVersion": "version-1588a9c58c674e38",
+              "updated": true
+            },
+            {
+              "version": "2.1.7",
+              "changelog": "[~] Updated for the latest Roblox version",
+              "timestamp": 1769029850521,
+              "date": "2026-01-21T21:10:50.521Z",
+              "supportedRobloxVersion": "version-0f5223fb6e7e4955",
+              "updated": true
+            },
+            {
+              "version": "2.1.8",
+              "changelog": "[~] Minor bug fixes",
+              "timestamp": 1769083560045,
+              "date": "2026-01-22T12:06:00.045Z",
+              "supportedRobloxVersion": "version-0f5223fb6e7e4955",
+              "updated": true
+            },
+            {
+              "version": "2.1.9",
+              "changelog": "[~] Updated for the latest Roblox version\r\n[~] Improved writefile & appendfile\r\n[~] Improved filtergc\r\n\r\nCurrently, sUNC is 94% (r.sunc.su/04cOtlvxd9)",
+              "timestamp": 1769193403225,
+              "date": "2026-01-23T18:36:43.225Z",
+              "supportedRobloxVersion": "version-8b8c34790f814a73",
+              "updated": true
+            },
+            {
+              "version": "2.2.0",
+              "changelog": "[~] Updated for the latest Roblox version",
+              "timestamp": 1769476105903,
+              "date": "2026-01-27T01:08:25.903Z",
+              "supportedRobloxVersion": "version-f8734e043e1e40a2",
+              "updated": true
+            },
+            {
+              "version": "2.1.9",
+              "changelog": "[~] Updated for the latest Roblox version\n[~] Improved writefile & appendfile\n[~] Improved filtergc\n\nCurrently, sUNC is 94% (r.sunc.su/04cOtlvxd9)",
+              "timestamp": 1769476886085,
+              "date": "2026-01-27T01:21:26.085Z",
+              "supportedRobloxVersion": "version-f8734e043e1e40a2",
+              "updated": true
+            },
+            {
+              "version": "2.2.0",
+              "changelog": "[~] Updated for the latest Roblox version\r\n\r\nDie Erlösung liegt in der Vergangenheit",
+              "timestamp": 1769715376970,
+              "date": "2026-01-29T19:36:16.970Z",
+              "supportedRobloxVersion": "version-4464ba36ceea461e",
+              "updated": true
+            },
+            {
+              "version": "2.2.1",
+              "changelog": "[~] Updated for the latest Roblox version\r\n[~] Improved Drawing library\r\n\r\nAll active subscriptions have been extended by 3 hours",
+              "timestamp": 1769838624555,
+              "date": "2026-01-31T05:50:24.555Z",
+              "supportedRobloxVersion": "version-db4634f0e27d4d36",
+              "updated": true
+            },
+            {
+              "version": "2.2.2",
+              "changelog": "[~] Updated for the latest Roblox version\r\n[+] Added keyclick",
+              "timestamp": 1770232611920,
+              "date": "2026-02-04T19:16:51.920Z",
+              "supportedRobloxVersion": "version-3e7a57d7e53b4881",
+              "updated": true
+            },
+            {
+              "version": "2.1.9",
+              "changelog": "[~] Updated for the latest Roblox version\n[~] Improved writefile & appendfile\n[~] Improved filtergc\n\nCurrently, sUNC is 94% (r.sunc.su/04cOtlvxd9)",
+              "timestamp": 1770279827137,
+              "date": "2026-02-05T08:23:47.137Z",
+              "supportedRobloxVersion": "version-f8734e043e1e40a2",
+              "updated": false
+            },
+            {
+              "version": "2.2.0",
+              "changelog": "[~] Updated for the latest Roblox version\n\nAll active subscriptions have been extended for 7 hours",
+              "timestamp": 1770279867310,
+              "date": "2026-02-05T08:24:27.310Z",
+              "supportedRobloxVersion": "version-4464ba36ceea461e",
+              "updated": true
+            },
+            {
+              "version": "2.2.3",
+              "changelog": "[~] Updated for the latest Roblox version",
+              "timestamp": 1770314539628,
+              "date": "2026-02-05T18:02:19.628Z",
+              "supportedRobloxVersion": "version-80c7b8e578f241ff",
+              "updated": true
+            },
+            {
+              "version": "2.3.0",
+              "changelog": "[~] Updated for the latest Roblox version\r\n[~] Rewritten: crypt library, getconnections, cansignalreplicate, replicatesignal, firesignal, isnetworkowner, create_comm_channel, get_comm_channel, getactors\r\n[~] Improved: newcclosure, hookfunction, hookmetamethod, firetouchinterest, run_on_actor\r\n[+] Added: crypt.random, clear_teleport_queue, getrendersteppedlist\r\n\r\nCurrently sUNC 100% (r.sunc.su/C3kxFB5r78)\r\n\r\nWe appreciate your patience during the recent downtime. All users holding an active subscription on February 9, 2026, have been compensated for the lost time. Additionally, a complimentary bonus week has been applied to these accounts automatically",
+              "timestamp": 1776184170671,
+              "date": "2026-04-14T16:29:30.671Z",
+              "supportedRobloxVersion": "version-26c90be22e0d4758",
+              "updated": true
+            },
+            {
+              "version": "2.3.1",
+              "changelog": "[~] Fixed an issue that caused FPS drops in some games",
+              "timestamp": 1776227006075,
+              "date": "2026-04-15T04:23:26.075Z",
+              "supportedRobloxVersion": "version-26c90be22e0d4758",
+              "updated": true
+            },
+            {
+              "version": "2.3.2",
+              "changelog": "[~] Updated for the latest Roblox version",
+              "timestamp": 1776287239535,
+              "date": "2026-04-15T21:07:19.535Z",
+              "supportedRobloxVersion": "version-9d412f44a6fe4081",
+              "updated": true
+            },
+            {
+              "version": "2.3.3",
+              "changelog": "[~] Minor bug fixes",
+              "timestamp": 1776367059624,
+              "date": "2026-04-16T19:17:39.624Z",
+              "supportedRobloxVersion": "version-9d412f44a6fe4081",
+              "updated": true
+            },
+            {
+              "version": "2.3.4",
+              "changelog": "[~] Improved: request, hookfunction, hookmetamethod, newcclosure\r\n[+] Added raknet library",
+              "timestamp": 1776704175804,
+              "date": "2026-04-20T16:56:15.804Z",
+              "supportedRobloxVersion": "version-9d412f44a6fe4081",
+              "updated": true
+            },
+            {
+              "version": "2.3.5",
+              "changelog": "[~] Fixed run_on_actor",
+              "timestamp": 1776708859305,
+              "date": "2026-04-20T18:14:19.305Z",
+              "supportedRobloxVersion": "version-9d412f44a6fe4081",
+              "updated": true
+            },
+            {
+              "version": "2.3.6",
+              "changelog": "[~] Minor bug fixes",
+              "timestamp": 1776753904404,
+              "date": "2026-04-21T06:45:04.404Z",
+              "supportedRobloxVersion": "version-9d412f44a6fe4081",
+              "updated": true
+            },
+            {
+              "version": "2.3.7",
+              "changelog": "[~] Updated for the latest Roblox version",
+              "timestamp": 1776886439850,
+              "date": "2026-04-22T19:33:59.850Z",
+              "supportedRobloxVersion": "version-2e6461290a3541f5",
+              "updated": true
+            },
+            {
+              "version": "2.3.8",
+              "changelog": "[~] Fixed an issue where HttpGet would not work with Zapret\\GoodbyeDPI",
+              "timestamp": 1777105978383,
+              "date": "2026-04-25T08:32:58.383Z",
+              "supportedRobloxVersion": "version-2e6461290a3541f5",
+              "updated": true
+            },
+            {
+              "version": "2.3.9",
+              "changelog": "[~] Fixed isparallel\r\n[~] Improved decompile\r\n\r\nCurrently sUNC 100% (r.sunc.su/7PPFLlrMwf)",
+              "timestamp": 1777213310710,
+              "date": "2026-04-26T14:21:50.710Z",
+              "supportedRobloxVersion": "version-2e6461290a3541f5",
+              "updated": true
+            },
+            {
+              "version": "2.4.0",
+              "changelog": "[~] Updated for the latest Roblox version\r\n\r\n12 hours have been added to your subscription as compensation",
+              "timestamp": 1777274022659,
+              "date": "2026-04-27T07:13:42.659Z",
+              "supportedRobloxVersion": "version-390ba09e7e944154",
+              "updated": true
+            },
+            {
+              "version": "2.4.1",
+              "changelog": "[~] Minor bug fixes\r\n[+] Added setstackhidden",
+              "timestamp": 1777376846420,
+              "date": "2026-04-28T11:47:26.420Z",
+              "supportedRobloxVersion": "version-390ba09e7e944154",
+              "updated": true
+            },
+            {
+              "version": "2.4.2",
+              "changelog": "[~] Fixed an issue that caused crashes in some scripts",
+              "timestamp": 1777385186918,
+              "date": "2026-04-28T14:06:26.918Z",
+              "supportedRobloxVersion": "version-390ba09e7e944154",
+              "updated": true
+            },
+            {
+              "version": "2.4.4",
+              "changelog": "[~] Updated for the latest Roblox version",
+              "timestamp": 1777487784943,
+              "date": "2026-04-29T18:36:24.943Z",
+              "supportedRobloxVersion": "version-acc4b74f79e743b9",
+              "updated": true
+            },
+            {
+              "version": "2.4.5",
+              "changelog": "[~] Improved getcallbackvalue",
+              "timestamp": 1777568442110,
+              "date": "2026-04-30T17:00:42.110Z",
+              "supportedRobloxVersion": "version-acc4b74f79e743b9",
+              "updated": true
+            },
+            {
+              "version": "2.4.6",
+              "changelog": "[~] Minor bug fixes",
+              "timestamp": 1777655745582,
+              "date": "2026-05-01T17:15:45.582Z",
+              "supportedRobloxVersion": "version-acc4b74f79e743b9",
+              "updated": true
+            },
+            {
+              "version": "2.4.7",
+              "changelog": "[~] Improved raknet library",
+              "timestamp": 1777897052882,
+              "date": "2026-05-04T12:17:32.882Z",
+              "supportedRobloxVersion": "version-acc4b74f79e743b9",
+              "updated": true
+            },
+            {
+              "version": "2.4.8",
+              "changelog": "[~] Updated for the latest Roblox version\r\n[~] Improved getrunningscripts\n\nSubscriptions active during the 1 second 43 milliseconds downtime have been extended (pro-rated by time affected)",
+              "timestamp": 1779480263535,
+              "date": "2026-05-22T20:04:23.535Z",
+              "supportedRobloxVersion": "version-4b6315bf1f0a4dbb",
+              "updated": true
+            },
+            {
+              "version": "2.4.9",
+              "changelog": "[~] Minor bug fixes",
+              "timestamp": 1779524498606,
+              "date": "2026-05-23T08:21:38.606Z",
+              "supportedRobloxVersion": "version-4b6315bf1f0a4dbb",
+              "updated": true
+            }
+          ],
+          "count": 81
+        }
       },
       "WEAO0fc0936f": {
         "title": "Volt",
         "trackerId": "WEAO0fc0936f",
         "_id": "67576d22d9181811c292bb79",
-        "version": "1.3.2.5",
-        "updatedDate": "07/19/2026 at 6:43 AM UTC",
+        "version": "1.3.3.1",
+        "updatedDate": "07/23/2026 at 7:53 AM UTC",
         "changelogs": {
           "trackerId": "WEAO0fc0936f",
           "name": "awpgg",
@@ -4070,7 +4725,13 @@
         "_id": "66ee1eafe70ddffe81ca0f0b",
         "version": "2.729.840",
         "updatedDate": "06/08/2026 at 7:11 PM UTC",
-        "changelogs": []
+        "changelogs": {
+          "trackerId": "WEAO74bee327",
+          "name": "deltaandroid",
+          "displayName": "DeltaAndroid",
+          "changelogs": [],
+          "count": 0
+        }
       },
       "WEAO765cd973": {
         "title": "Codex",
@@ -4571,7 +5232,446 @@
         "_id": "6837e1ca5f37edc7f4ff0197",
         "version": "Version-4.1.4",
         "updatedDate": "07/16/2026 at 11:24 AM UTC",
-        "changelogs": []
+        "changelogs": {
+          "trackerId": "WEAO622afd8b",
+          "name": "ronin",
+          "displayName": "Ronin",
+          "changelogs": [
+            {
+              "version": "Version-3.5.9",
+              "changelog": "[+] Updated To Latest Roblox Version",
+              "timestamp": 1753827989707,
+              "date": "2025-07-29T22:26:29.707Z",
+              "supportedRobloxVersion": "version-2a06298afe3947ab",
+              "updated": true
+            },
+            {
+              "version": "Version-3.5.9d",
+              "changelog": "[+] Updated To Latest Roblox Version",
+              "timestamp": 1753986081336,
+              "date": "2025-07-31T18:21:21.336Z",
+              "supportedRobloxVersion": "version-b8550645b8834e8a",
+              "updated": true
+            },
+            {
+              "version": "Version-3.5.9f",
+              "changelog": "[+] Updated To Latest Roblox Version (Super Late Endpoint Update 🔥)",
+              "timestamp": 1754855288382,
+              "date": "2025-08-10T19:48:08.382Z",
+              "supportedRobloxVersion": "version-3f74e22590714de4",
+              "updated": true
+            },
+            {
+              "version": "Version-3.5.9g",
+              "changelog": "[+] Updated To Latest Roblox Version\n[+] Improved Thread Performance for Low End Devices\n[+] Optimized Chams\n[+] Optimized Skeletons\n[+] Improved Tracer Outlines\n[+] Improved Bhop (Works on Any Game That Fly Works In)",
+              "timestamp": 1755166078022,
+              "date": "2025-08-14T10:07:58.022Z",
+              "supportedRobloxVersion": "version-ca90f2e615014a44",
+              "updated": true
+            },
+            {
+              "version": "Version-3.5.9g",
+              "changelog": "-",
+              "timestamp": 1755433079901,
+              "date": "2025-08-17T12:17:59.901Z",
+              "supportedRobloxVersion": "version-fe20d41d8fec4770",
+              "updated": true
+            },
+            {
+              "version": "Version-3.5.9h",
+              "changelog": "[+] Updated To Latest Roblox Version\n[+] Added New Chams Method",
+              "timestamp": 1755753004471,
+              "date": "2025-08-21T05:10:04.471Z",
+              "supportedRobloxVersion": "version-89b6c70d8f7f42ac",
+              "updated": true
+            },
+            {
+              "version": "Version-3.6.0",
+              "changelog": "Core:\n[+] Updated To Latest Roblox Version\n\n[+] Added LuaVM\n\n[+] Improved Wallcheck\nAiming:\n[+] Added Snaplines\nVisuals:\n[+] Added Highlight Chams Type\nMovement:\n[+] Fixed No Clip\nGames:\n[+] Fixed Vehicle Fly\nMisc:\n[+] Added Desync\nSettings:\n[+] Added Alternate Icons\n[+] Added UI Radius Slider\n[+] Added Font Selector System\n[+] Added Tiled User Theme Image\n[+] Added UI Radius Offset Slider\n[+] Added Font Favouriting System\n[+] Added Full UI Color Customizability Capabilities\nUser Interface:\n[+] Added FPS Tracker Container\n[+] Added Ping Tracker Container\n\n[+] Replaced Default Font\n\n[+] Reworked Widgets Layout",
+              "timestamp": 1756380923399,
+              "date": "2025-08-28T11:35:23.399Z",
+              "supportedRobloxVersion": "version-7b14ca0aa83149fa",
+              "updated": true
+            },
+            {
+              "version": "Version-3.6.1",
+              "changelog": "Core:\n[+] Updated To Latest Roblox Version\n\n[+] Updated LuaVM\n\n[+] Fixed Wallcheck\nMovement:\nMoved Desync To Movement Tab\n\n[+] Fixed Flight\nEditor:\n[+] Added Mini-Map Toggle\n\n[+] Reworked Editor Layout\nSettings:\n[+] Fixed UI Toggle Keybind\n[+] Fixed Music Player\n\n (This is a delayed announcement)",
+              "timestamp": 1756581086291,
+              "date": "2025-08-30T19:11:26.291Z",
+              "supportedRobloxVersion": "version-65664807ac1d4e85",
+              "updated": true
+            },
+            {
+              "version": "Version-3.6.2",
+              "changelog": "Core:\n[+] Updated To Latest Roblox Version\n\n[+] Added 'utils.raycast(vec3 pos) -> bool' To LuaVM\n\n (This is a delayed announcement)",
+              "timestamp": 1756994096901,
+              "date": "2025-09-04T13:54:56.901Z",
+              "supportedRobloxVersion": "version-c1ac69007bdc4e48",
+              "updated": true
+            },
+            {
+              "version": "Version-3.6.3",
+              "changelog": "Core:\n[+] Added LuaVM Raycast\n\n[+] Reworked LuaVM In LuaU\n\nAiming:\n[+] Added Dynamic FOV\n[+] Added Hit Part Randomizer\n[+] Added Triggerbot Toggle Mode\n\nMovement:\n[+] Added Visualize Desync\n\nGames:\n[+] Added Auto Stomp (Da Hood)\n\nEditor:\n[+] Added Built-In Scripts Dropdown\n\nUser Interface:\n[+] Increased Optimization\n\n[+] Reworked Widgets Layout",
+              "timestamp": 1757373756716,
+              "date": "2025-09-08T23:22:36.716Z",
+              "supportedRobloxVersion": "version-c1ac69007bdc4e48",
+              "updated": true
+            },
+            {
+              "version": "Version-3.6.4",
+              "changelog": "Core:\n[+] Added Hypershot Support\n\n[+] Updated To Latest Roblox Version\n\nAiming:\n[+] Added Dynamic FOV Animations\n[+] Added Animated FOV Pulse Animation\n\n[+] Fixed Camera Smoothing\n[+] Fixed Random Hit Part Bugs\n[+] Improved uSilent\n\n[+] Reworked Deadzone\n\nUser Interface:\n[+] Added Editor Animations\n\n[+] Fixed Bugs\n\n(This is a delayed announcement)",
+              "timestamp": 1757689245865,
+              "date": "2025-09-12T15:00:45.865Z",
+              "supportedRobloxVersion": "version-8afc5a7d5e894d22",
+              "updated": true
+            },
+            {
+              "version": "Version-3.6.4",
+              "changelog": "Core:\n[+] Added Hypershot Support\n\n[+] Updated To Latest Roblox Version\n\nAiming:\n[+] Added Dynamic FOV Animations\n[+] Added Animated FOV Pulse Animation\n\n[+] Fixed Camera Smoothing\n[+] Fixed Random Hit Part Bugs\n[+] Improved uSilent\n\n[+] Reworked Deadzone\n\nUser Interface:\n[+] Added Editor Animations\n\n[+] Fixed Bugs\n\n(This is a delayed announcement)",
+              "timestamp": 1758014993792,
+              "date": "2025-09-16T09:29:53.792Z",
+              "supportedRobloxVersion": "version-8afc5a7d5e894d22",
+              "updated": true
+            },
+            {
+              "version": "Version-3.6.5",
+              "changelog": "Core:\n[+] Updated To Latest Roblox Version",
+              "timestamp": 1758150476585,
+              "date": "2025-09-17T23:07:56.585Z",
+              "supportedRobloxVersion": "version-31fc142272764f02",
+              "updated": true
+            },
+            {
+              "version": "Version-0.0.1",
+              "changelog": "[+] Updated To Latest Roblox Version",
+              "timestamp": 1758331132057,
+              "date": "2025-09-20T01:18:52.057Z",
+              "supportedRobloxVersion": "version-31fc142272764f02",
+              "updated": true
+            },
+            {
+              "version": "Version-3.6.5",
+              "changelog": "[+] Updated To Latest Roblox Version",
+              "timestamp": 1758331792784,
+              "date": "2025-09-20T01:29:52.784Z",
+              "supportedRobloxVersion": "version-31fc142272764f02",
+              "updated": true
+            },
+            {
+              "version": "Version-3.6.6",
+              "changelog": "Core:\n[+] Updated To Latest Roblox Version\n\nMovement:\n[+] Upgraded To Fully Server-Sided Desync\n\nNote: Our upgraded Desync is perfect for those Steal A Brainrot addicts. 😉",
+              "timestamp": 1758764852159,
+              "date": "2025-09-25T01:47:32.159Z",
+              "supportedRobloxVersion": "version-f6cd26d0e71b47c9",
+              "updated": true
+            },
+            {
+              "version": "Version-3.6.7",
+              "changelog": "Core:\n[+] Updated To Latest Roblox Version\n\n(This is a delayed announcement)",
+              "timestamp": 1759385114437,
+              "date": "2025-10-02T06:05:14.437Z",
+              "supportedRobloxVersion": "version-494828652c274712",
+              "updated": true
+            },
+            {
+              "version": "Version-3.6.8",
+              "changelog": "Core:\n[+] Updated To Latest Roblox Version\n\n(This is a delayed announcement)",
+              "timestamp": 1760089693105,
+              "date": "2025-10-10T09:48:13.105Z",
+              "supportedRobloxVersion": "version-d34359a5577645e2",
+              "updated": true
+            },
+            {
+              "version": "Version-3.6.9",
+              "changelog": "Core:\n[+] Updated To Latest Roblox Version\n[+]Updated Apocalypse Rising 2 Support\n\nAiming:\n[+]Fixed Silent Aim\n\nVisuals:\n[+] Improved Chams Optimization\n\n(This is a delayed announcement)",
+              "timestamp": 1760911663759,
+              "date": "2025-10-19T22:07:43.759Z",
+              "supportedRobloxVersion": "version-7a4a5d7d1fb3449f",
+              "updated": true
+            },
+            {
+              "version": "Version-3.7.0",
+              "changelog": "Core:\n[+] Updated To Latest Roblox Version\n[+] Fixed Apocalypse Rising 2 Support",
+              "timestamp": 1761174678692,
+              "date": "2025-10-22T23:11:18.692Z",
+              "supportedRobloxVersion": "version-4aeb17bd13994560",
+              "updated": true
+            },
+            {
+              "version": "Version-3.7.1",
+              "changelog": "Core:\n[+] Updated To Latest Roblox Version\n\n[+] Increased ViewMatrix Cache Speeds\n\n[+] Improved Visuals\n(This is a delayed announcement)",
+              "timestamp": 1761814455220,
+              "date": "2025-10-30T08:54:15.220Z",
+              "supportedRobloxVersion": "version-889d2588b25a43d1",
+              "updated": true
+            },
+            {
+              "version": "Version-3.7.2",
+              "changelog": "Core:\n[+] Updated To Latest Roblox Version\n\n[+] Updated Desync\n\n(This is a delayed announcement)",
+              "timestamp": 1762650893032,
+              "date": "2025-11-09T01:14:53.032Z",
+              "supportedRobloxVersion": "version-f6dd34ecac7b4642",
+              "updated": true
+            },
+            {
+              "version": "Version-3.7.3",
+              "changelog": "Core:\n[+] Updated To Latest Roblox Version\n\n(This is a delayed announcement)",
+              "timestamp": 1763043328326,
+              "date": "2025-11-13T14:15:28.326Z",
+              "supportedRobloxVersion": "version-b7e223555d904550",
+              "updated": true
+            },
+            {
+              "version": "Version-3.7.4",
+              "changelog": "Core:\n[+] Updated To Latest Roblox Version",
+              "timestamp": 1763605815561,
+              "date": "2025-11-20T02:30:15.561Z",
+              "supportedRobloxVersion": "version-fdda949d95e447e3",
+              "updated": true
+            },
+            {
+              "version": "Version-3.7.5",
+              "changelog": "Core:\n[+] Updated To Latest Roblox Version\n\n(This is a delayed announcement)",
+              "timestamp": 1763888129543,
+              "date": "2025-11-23T08:55:29.543Z",
+              "supportedRobloxVersion": "version-e380c8edc8f6477c",
+              "updated": true
+            },
+            {
+              "version": "Version-3.7.6",
+              "changelog": "Core:\n[+] Updated To Latest Roblox Version\n\n(This is a delayed announcement)",
+              "timestamp": 1764982987340,
+              "date": "2025-12-06T01:03:07.340Z",
+              "supportedRobloxVersion": "version-1849ecbff0824113",
+              "updated": true
+            },
+            {
+              "version": "Version-3.7.7",
+              "changelog": "Core:\n[+] Updated To Latest Roblox Version\n\n(This is a delayed announcement)",
+              "timestamp": 1765459100788,
+              "date": "2025-12-11T13:18:20.788Z",
+              "supportedRobloxVersion": "version-5aed1822f52c4b03",
+              "updated": true
+            },
+            {
+              "version": "Version-3.7.8",
+              "changelog": "Core:\n[+] Updated To Latest Roblox Version\n\n(This is a delayed announcement)",
+              "timestamp": 1766226316830,
+              "date": "2025-12-20T10:25:16.830Z",
+              "supportedRobloxVersion": "version-5b077c09380f4fe6",
+              "updated": true
+            },
+            {
+              "version": "Version-3.7.9",
+              "changelog": "Core:\n[+] Updated To Latest Roblox Version",
+              "timestamp": 1768362577501,
+              "date": "2026-01-14T03:49:37.501Z",
+              "supportedRobloxVersion": "version-89d89cb2d6b649be",
+              "updated": true
+            },
+            {
+              "version": "Version-3.8.1",
+              "changelog": "Core:\n[+] Updated To Latest Roblox Version\n\nMovement:\n[+] Fixed Desync",
+              "timestamp": 1768582926667,
+              "date": "2026-01-16T17:02:06.667Z",
+              "supportedRobloxVersion": "version-1588a9c58c674e38",
+              "updated": true
+            },
+            {
+              "version": "Version-3.8.2",
+              "changelog": "Core:\n[+] Updated To Latest Roblox Version\n\nAiming:\n[+] Fixed uSilent",
+              "timestamp": 1769263417439,
+              "date": "2026-01-24T14:03:37.439Z",
+              "supportedRobloxVersion": "version-8b8c34790f814a73",
+              "updated": true
+            },
+            {
+              "version": "Version-3.8.3",
+              "changelog": "Core:\n[+] Updated To Latest Roblox Version\n\n(This is a delayed announcement)",
+              "timestamp": 1769794172177,
+              "date": "2026-01-30T17:29:32.177Z",
+              "supportedRobloxVersion": "version-4464ba36ceea461e",
+              "updated": true
+            },
+            {
+              "version": "Version-3.8.4",
+              "changelog": "Core:\n[+] Updated To Latest Roblox Version\n\n[+] Users Successfully Migrated",
+              "timestamp": 1770242919020,
+              "date": "2026-02-04T22:08:39.020Z",
+              "supportedRobloxVersion": "version-3e7a57d7e53b4881",
+              "updated": true
+            },
+            {
+              "version": "Version-3.8.5",
+              "changelog": "Core:\n[+] Updated To Latest Roblox Version",
+              "timestamp": 1770588555933,
+              "date": "2026-02-08T22:09:15.933Z",
+              "supportedRobloxVersion": "version-80c7b8e578f241ff",
+              "updated": true
+            },
+            {
+              "version": "Version-3.8.6",
+              "changelog": "Core:\n[+] Fixed Authentication Bugs",
+              "timestamp": 1770740910361,
+              "date": "2026-02-10T16:28:30.361Z",
+              "supportedRobloxVersion": "version-80c7b8e578f241ff",
+              "updated": true
+            },
+            {
+              "version": "Version-3.8.7",
+              "changelog": "Core:\n[+] Updated To Latest Roblox Version",
+              "timestamp": 1771111729975,
+              "date": "2026-02-14T23:28:49.975Z",
+              "supportedRobloxVersion": "version-bd08027bb04e4045",
+              "updated": true
+            },
+            {
+              "version": "Version-3.8.8",
+              "changelog": "Core:\n[+] Updated To Latest Roblox Version",
+              "timestamp": 1771465132788,
+              "date": "2026-02-19T01:38:52.788Z",
+              "supportedRobloxVersion": "version-df7528517c6849f7",
+              "updated": true
+            },
+            {
+              "version": "Version-3.8.9",
+              "changelog": "Core:\n[+] Updated To Latest Roblox Version",
+              "timestamp": 1772508998998,
+              "date": "2026-03-03T03:36:38.998Z",
+              "supportedRobloxVersion": "version-760d064d05424689",
+              "updated": true
+            },
+            {
+              "version": "Version-3.9.0",
+              "changelog": "Core:\n[+] Updated To Latest Roblox Version",
+              "timestamp": 1772932317986,
+              "date": "2026-03-08T01:11:57.986Z",
+              "supportedRobloxVersion": "version-d599f7fc52a8404c",
+              "updated": true
+            },
+            {
+              "version": "Version-3.9.1",
+              "changelog": "Core:\n[+] Updated To Latest Roblox Version",
+              "timestamp": 1773463524150,
+              "date": "2026-03-14T04:45:24.150Z",
+              "supportedRobloxVersion": "version-b130242ed064436f",
+              "updated": true
+            },
+            {
+              "version": "Version-4.0.0",
+              "changelog": "Core:\n[+] Updated To Latest Roblox Version",
+              "timestamp": 1780605587181,
+              "date": "2026-06-04T20:39:47.181Z",
+              "supportedRobloxVersion": "version-ad5d3e2906444472",
+              "updated": true
+            },
+            {
+              "version": "Version-4.0.1",
+              "changelog": "Core:\n[+] Fixed New Fast Flag Issues\n Settings:\n[+] Added M1 Binding",
+              "timestamp": 1780741999181,
+              "date": "2026-06-06T10:33:19.181Z",
+              "supportedRobloxVersion": "version-ad5d3e2906444472",
+              "updated": true
+            },
+            {
+              "version": "Version-4.0.2",
+              "changelog": "Core:\n[+] Added Game-Specific Auto-Saving\n\nAiming:\n[+] Added Target Orbiting\n\nPlayer List:\n[+] Added Player List\n[+] Added Player Spectate\n[+] Added Player Teleport",
+              "timestamp": 1780863666916,
+              "date": "2026-06-07T20:21:06.916Z",
+              "supportedRobloxVersion": "version-ad5d3e2906444472",
+              "updated": true
+            },
+            {
+              "version": "Version-4.0.4",
+              "changelog": "Aiming:\n[+] Added Hit Sounds\n[+] Added Priority Target Override\n[+] Added Friendly Target Filtering\n\nVisuals:\n[+] Added View Vector\n[+] Added Player Trails\n[+] Added Breathing Glow\n\nPlayer List:\n[+] Fixed Priority Highlighting Consistency\n[+] Fixed Friendly Highlighting Consistency",
+              "timestamp": 1781311440769,
+              "date": "2026-06-13T00:44:00.769Z",
+              "supportedRobloxVersion": "version-76173e47a79145c7",
+              "updated": true
+            },
+            {
+              "version": "Version-4.0.5",
+              "changelog": "Visuals\n[+] Added Tool ESP\n[+] Added Radar ESP\n\nSettings:\n[+] Added Crosshairs\n\nUser Interface:\n[+] Reorganized Features",
+              "timestamp": 1781667061013,
+              "date": "2026-06-17T03:31:01.013Z",
+              "supportedRobloxVersion": "version-76173e47a79145c7",
+              "updated": true
+            },
+            {
+              "version": "Version-4.0.6",
+              "changelog": "Core:\n[+] Updated To Latest Roblox Version\n\nNote:\nUpdate was deployed ~4 hours ago. An endpoint issue delayed the version notification.",
+              "timestamp": 1781723415688,
+              "date": "2026-06-17T19:10:15.688Z",
+              "supportedRobloxVersion": "version-8884371d30284041",
+              "updated": true
+            },
+            {
+              "version": "Version-4.0.7",
+              "changelog": "Core:\n[+] Updated To Latest Roblox Version",
+              "timestamp": 1782317331712,
+              "date": "2026-06-24T16:08:51.712Z",
+              "supportedRobloxVersion": "version-1a951716f19e4638",
+              "updated": true
+            },
+            {
+              "version": "Version-4.0.8",
+              "changelog": "Core:\n[+] [+] Fixed Initialization Error\n\nSettings:\n[+] Fixed Raycasting",
+              "timestamp": 1782473385876,
+              "date": "2026-06-26T11:29:45.876Z",
+              "supportedRobloxVersion": "version-1a951716f19e4638",
+              "updated": true
+            },
+            {
+              "version": "Version-4.0.9",
+              "changelog": "Core:\n[+] Fixed Initialization Error",
+              "timestamp": 1782857155172,
+              "date": "2026-06-30T22:05:55.172Z",
+              "supportedRobloxVersion": "version-1a951716f19e4638",
+              "updated": true
+            },
+            {
+              "version": "Version-4.1.0",
+              "changelog": "Core:\n[+] Updated To Latest Roblox Version",
+              "timestamp": 1782939507077,
+              "date": "2026-07-01T20:58:27.077Z",
+              "supportedRobloxVersion": "version-5cf2272675e145f5",
+              "updated": true
+            },
+            {
+              "version": "Version-4.1.1",
+              "changelog": "Core:\n[+] Updated To Latest Roblox Version",
+              "timestamp": 1783453435006,
+              "date": "2026-07-07T19:43:55.006Z",
+              "supportedRobloxVersion": "version-90f2fddd3b244ff6",
+              "updated": true
+            },
+            {
+              "version": "Version-4.1.2",
+              "changelog": "Core:\n[+] Updated To Latest Roblox Version",
+              "timestamp": 1783616574913,
+              "date": "2026-07-09T17:02:54.913Z",
+              "supportedRobloxVersion": "version-36a2600cebf1487d",
+              "updated": true
+            },
+            {
+              "version": "Version-4.1.3",
+              "changelog": "Core:\n[+] Updated To Latest Roblox Version",
+              "timestamp": 1784143466834,
+              "date": "2026-07-15T19:24:26.834Z",
+              "supportedRobloxVersion": "version-eb158392d1c84e6a",
+              "updated": false
+            },
+            {
+              "version": "Version-4.1.4",
+              "changelog": "Core:\n[+] Updated To Latest Roblox Version",
+              "timestamp": 1784201075120,
+              "date": "2026-07-16T11:24:35.120Z",
+              "supportedRobloxVersion": "version-ddf02245bdbb428c",
+              "updated": true
+            }
+          ],
+          "count": 54
+        }
       },
       "WEAO719ba76e": {
         "title": "Delta",
