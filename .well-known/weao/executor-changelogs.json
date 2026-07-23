@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-07-23T21:35:40.169Z",
+  "fetchedAt": "2026-07-23T22:59:01.196Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -7121,8 +7121,8 @@
         "title": "Real",
         "trackerId": "WEAO4a1f93j6",
         "_id": "6a5095abbb457d55d62f8061",
-        "version": "1.6.0",
-        "updatedDate": "07/23/2026 at 8:19 PM UTC",
+        "version": "1.6.1",
+        "updatedDate": "07/23/2026 at 9:46 PM UTC",
         "changelogs": {
           "trackerId": "WEAO4a1f93j6",
           "name": "real",
@@ -7223,9 +7223,17 @@
               "date": "2026-07-23T20:19:18.463Z",
               "supportedRobloxVersion": "version-9affbe66b2624d20",
               "updated": true
+            },
+            {
+              "version": "1.6.1",
+              "changelog": "- Reverted autoexecute because it was too fast\r\n- getfflag now returns \"true\" and \"false\" for booleans (who the fuck thought of this bullshit string returning)",
+              "timestamp": 1784843183655,
+              "date": "2026-07-23T21:46:23.655Z",
+              "supportedRobloxVersion": "version-9affbe66b2624d20",
+              "updated": true
             }
           ],
-          "count": 12
+          "count": 13
         }
       }
     }
