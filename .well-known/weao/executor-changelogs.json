@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-07-23T17:25:41.940Z",
+  "fetchedAt": "2026-07-23T21:35:40.169Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -7121,8 +7121,8 @@
         "title": "Real",
         "trackerId": "WEAO4a1f93j6",
         "_id": "6a5095abbb457d55d62f8061",
-        "version": "1.5.1",
-        "updatedDate": "07/22/2026 at 7:47 PM UTC",
+        "version": "1.6.0",
+        "updatedDate": "07/23/2026 at 8:19 PM UTC",
         "changelogs": {
           "trackerId": "WEAO4a1f93j6",
           "name": "real",
@@ -7215,9 +7215,17 @@
               "date": "2026-07-22T19:47:20.027Z",
               "supportedRobloxVersion": "version-9affbe66b2624d20",
               "updated": true
+            },
+            {
+              "version": "1.6.0",
+              "changelog": "* Added Actor Lib\r\n* Real now initializes before the game has fully loaded (autoexec is now stupidly fast)\r\n* Real now syncs with roblox's flags at all times to prevent crashes when roblox remotely activates a flag\r\n* getfflag now only returns strings (debunc)\r\n* Removed crash hooking\r\n* Optimized internal DataModel functions and fixed a very rare crash\r\n* Switched toolset to v143 (idk who made it v145) to prevent delay crashes for people on win11\r\n* Added stricter type checking (fixed a firetouchinterest crash)\r\n* Fixed an issue with property lookups (getcallbackvalue, get/sethiddenproperty and is/setscriptable)\r\n* Fixed cloneref not preserving the original metadata\r\n* Added a safety check to getcallbackvalue to not return callbacks from different VMs\r\n* Fixed getcustomasset not preserving subfolder paths (fixed cobalt overwriting IY logo)\r\n* gethwid now returns a hex encoded HWID",
+              "timestamp": 1784837958463,
+              "date": "2026-07-23T20:19:18.463Z",
+              "supportedRobloxVersion": "version-9affbe66b2624d20",
+              "updated": true
             }
           ],
-          "count": 11
+          "count": 12
         }
       }
     }
