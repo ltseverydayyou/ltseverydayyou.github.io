@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-07-23T13:02:47.376Z",
+  "fetchedAt": "2026-07-23T17:25:41.940Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -2375,8 +2375,8 @@
         "title": "Velocity",
         "trackerId": "WEAO4a1e0747",
         "_id": "680eaddf8b44717c060fcf8d",
-        "version": "1.2.7",
-        "updatedDate": "07/22/2026 at 9:36 PM UTC",
+        "version": "1.2.8",
+        "updatedDate": "07/23/2026 at 5:22 PM UTC",
         "changelogs": {
           "trackerId": "WEAO4a1e0747",
           "name": "velocity",
@@ -3901,9 +3901,17 @@
               "date": "2026-07-22T21:36:45.319Z",
               "supportedRobloxVersion": "version-9affbe66b2624d20",
               "updated": true
+            },
+            {
+              "version": "1.2.8",
+              "changelog": "Fixed decompile failing because yielding (thanks daddy claude)\nFixed simplespy crashing the fuck out when using clonefunction on old metamethods probably the same for other assholes who use it when hooking shit\nAdded run_on_thread / runonthread\nAdded getactorthreads / get_actor_threads\nAdded a place holder function (Raknet.receive) so Colbalt spy's raknet hook can stop yapping about it not being there until I actually implement it\n---------------\nVelocity is now version 1.2.8\nClose the UI and reopen to apply the update. (Velocity Lite)",
+              "timestamp": 1784827341596,
+              "date": "2026-07-23T17:22:21.596Z",
+              "supportedRobloxVersion": "version-9affbe66b2624d20",
+              "updated": true
             }
           ],
-          "count": 190
+          "count": 191
         }
       },
       "WEAO1af938a2": {
