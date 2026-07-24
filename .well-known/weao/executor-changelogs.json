@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-07-24T18:59:12.354Z",
+  "fetchedAt": "2026-07-24T20:36:08.993Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -7337,8 +7337,8 @@
         "title": "Real",
         "trackerId": "WEAO4a1f93j6",
         "_id": "6a5095abbb457d55d62f8061",
-        "version": "1.6.1",
-        "updatedDate": "07/23/2026 at 9:46 PM UTC",
+        "version": "1.7.0",
+        "updatedDate": "07/24/2026 at 7:13 PM UTC",
         "changelogs": {
           "trackerId": "WEAO4a1f93j6",
           "name": "real",
@@ -7447,9 +7447,17 @@
               "date": "2026-07-23T21:46:23.655Z",
               "supportedRobloxVersion": "version-9affbe66b2624d20",
               "updated": true
+            },
+            {
+              "version": "1.7.0",
+              "changelog": "* **Added our own MCP for all Vibecoders!**\r\n* **Reworked the entire LSP and added missing functions**\r\n\r\n* Added a loading animation when Real takes longer than usual to load\r\n* The Cat logo in the title bar is no longer pixelated\r\n* When no script tab is open, fewer keybinds are displayed and the layout now resizes dynamically\r\n* The injected UI now correctly retains its injected state after restarting\r\n* Added a centralized customization system: all colors, layout, typography, and motion tokens are now adjustable\r\n* Removed dynamic positioning of the icon and keybind preview when no script tab is open\r\n* Various design improvements\r\n* Fixed the \"Close Roblox\" button in the Accounts tab not adapting to the selected theme\r\n* Added more color themes and replaced cards with boxes\r\n* Fixed console redirection not working until it was re-enabled\r\n* Fixed login failures for some users\r\n* Fixed Streamer Mode not hiding certain sensitive information + added a banner\r\n* Added tab spacing for the Monaco Editor\r\n* Added auto-enable for Streamer Mode when capture software is detected\r\n* Added the Accounts tab to the Tutorial\r\n* Fixed the Monaco suggestions overlay appearing behind the panel",
+              "timestamp": 1784920407396,
+              "date": "2026-07-24T19:13:27.396Z",
+              "supportedRobloxVersion": "version-9affbe66b2624d20",
+              "updated": true
             }
           ],
-          "count": 13
+          "count": 14
         }
       }
     }
