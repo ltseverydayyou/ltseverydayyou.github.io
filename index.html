@@ -11560,7 +11560,7 @@
                             </button>
                         </div>
                         <p class="script-searcher__hint">
-                            Searches ScriptBlox and Rscripts.
+                            Searches ScriptBlox, Rscripts, and RobloxScripts.com.
                         </p>
                         <div class="script-searcher__tabs" role="tablist" aria-label="Script search engines">
                             <button class="script-searcher__tab is-active" id="script-search-tab-scriptblox"
@@ -11572,6 +11572,11 @@
                                 role="tab" aria-selected="false" aria-controls="script-search-panel-rscripts"
                                 data-script-search-tab="rscripts">
                                 Rscripts
+                            </button>
+                            <button class="script-searcher__tab" id="script-search-tab-robloxscripts" type="button"
+                                role="tab" aria-selected="false" aria-controls="script-search-panel-robloxscripts"
+                                data-script-search-tab="robloxscripts">
+                                RobloxScripts
                             </button>
                         </div>
                         <div class="script-searcher__panels">
@@ -11625,6 +11630,33 @@
                                 <div id="script-search-rscripts-error" class="script-searcher__error"
                                     aria-live="polite"></div>
                                 <div id="script-search-rscripts" class="script-searcher__grid"></div>
+                            </div>
+                            <div class="script-searcher__panel" id="script-search-panel-robloxscripts" role="tabpanel"
+                                aria-labelledby="script-search-tab-robloxscripts"
+                                data-script-search-panel="robloxscripts">
+                                <div class="script-searcher__panel-head">
+                                    <div class="script-searcher__panel-head-group">
+                                        <h3>RobloxScripts</h3>
+                                        <span id="script-search-robloxscripts-meta"></span>
+                                    </div>
+                                    <div class="script-searcher__panel-controls">
+                                        <button type="button" id="script-search-robloxscripts-prev"
+                                            aria-label="Previous RobloxScripts page">
+                                            Prev
+                                        </button>
+                                        <span id="script-search-robloxscripts-page"
+                                            class="script-searcher__panel-page">
+                                            Page 1
+                                        </span>
+                                        <button type="button" id="script-search-robloxscripts-next"
+                                            aria-label="Next RobloxScripts page">
+                                            Next
+                                        </button>
+                                    </div>
+                                </div>
+                                <div id="script-search-robloxscripts-error" class="script-searcher__error"
+                                    aria-live="polite"></div>
+                                <div id="script-search-robloxscripts" class="script-searcher__grid"></div>
                             </div>
                         </div>
                     </div>
@@ -12468,6 +12500,10 @@
             scriptblox: {
                 page: 1,
                 maxPages: 1
+            },
+            robloxscripts: {
+                page: 1,
+                maxPages: 1
             }
         };
         const scriptSearcherUiState = {
@@ -12496,6 +12532,17 @@
                 pageLabel: q("#script-search-scriptblox-page"),
                 prev: q("#script-search-scriptblox-prev"),
                 next: q("#script-search-scriptblox-next")
+            },
+            robloxscripts: {
+                panelEl: q("#script-search-panel-robloxscripts"),
+                tab: q("#script-search-tab-robloxscripts"),
+                container: q("#script-search-robloxscripts"),
+                meta: q("#script-search-robloxscripts-meta"),
+                error: q("#script-search-robloxscripts-error"),
+                label: "RobloxScripts",
+                pageLabel: q("#script-search-robloxscripts-page"),
+                prev: q("#script-search-robloxscripts-prev"),
+                next: q("#script-search-robloxscripts-next")
             }
         };
         const MAX_SCRIPT_RESULTS = 8;
@@ -12558,6 +12605,7 @@
         function resolveScriptImage(entry, source) {
             const candidates = [
                 entry.image,
+                entry.game?.iconUrl,
                 entry.game?.imgurl,
                 entry.game?.imageUrl,
                 entry.game?.gameLogo
@@ -12574,6 +12622,9 @@
             }
             if (source === "ScriptBlox") {
                 return `https://scriptblox.com${picked.startsWith("/") ? "" : "/"}${picked}`;
+            }
+            if (source === "RobloxScripts") {
+                return `https://robloxscripts.com${picked.startsWith("/") ? "" : "/"}${picked}`;
             }
             return picked;
         }
@@ -12613,17 +12664,18 @@
                 (likes ?? 0) + (dislikes ?? 0) > 0 ?
                     Math.round(((likes ?? 0) / ((likes ?? 0) + (dislikes ?? 0))) * 100) :
                     null;
-            const keyRequired = entry.keySystem ?? entry.key ?? false;
-            const scriptType = entry.scriptType || "";
+            const keyRequired = entry.keySystem ?? entry.key ?? entry.accessType === "key";
+            const scriptType = entry.scriptType || entry.accessType || "";
             const universal = Boolean(entry.isUniversal);
             const patched = Boolean(entry.isPatched);
             const verified =
                 entry.user?.verified ??
+                entry.author?.verified ??
                 entry.verified ??
                 false;
             const author =
                 entry.user?.username ||
-                entry.author ||
+                (typeof entry.author === "string" ? entry.author : entry.author?.username) ||
                 entry.creator ||
                 entry.owner?.username ||
                 entry.ownerName ||
@@ -12658,7 +12710,7 @@
             if (keyRequired) {
                 pills.push("Key required");
             }
-            if (scriptType) {
+            if (scriptType && !(keyRequired && String(scriptType).toLowerCase() === "key")) {
                 pills.push(scriptType);
             }
             if (universal) {
@@ -12701,8 +12753,12 @@
             titleLink.textContent = title;
 
             const customUrl =
+                entry.scriptPageUrl ||
                 entry.url ||
                 entry.link ||
+                (source === "RobloxScripts" && entry.slug ?
+                    `https://robloxscripts.com/script/${entry.slug}` :
+                    null) ||
                 (source === "Rscripts" && entry.slug ?
                     `https://rscripts.net/script/${entry.slug}` :
                     null) ||
@@ -12938,6 +12994,13 @@
                     maxPages: Math.max(info.maxPages || 1, 1)
                 };
             }
+            if (panelKey === "robloxscripts") {
+                const pagination = payload?.pagination || {};
+                return {
+                    scripts: Array.isArray(payload?.data) ? payload.data : [],
+                    maxPages: Math.max(pagination.totalPages || pagination.pages || 1, 1)
+                };
+            }
             const result = payload?.result || {};
             return {
                 scripts: Array.isArray(result.scripts) ? result.scripts : [],
@@ -12980,11 +13043,35 @@
             return response.json();
         }
 
+        async function fetchRobloxScripts(query = "", page = 1) {
+            const url = new URL("https://robloxscripts.com/api/v1/scripts");
+            url.searchParams.set("page", Math.min(Math.max(page, 1), 200).toString());
+            url.searchParams.set("limit", MAX_SCRIPT_RESULTS.toString());
+            url.searchParams.set("sort", "newest");
+            if (query) {
+                url.searchParams.set("q", query.slice(0, 100));
+            }
+            const response = await fetch(url.toString(), {
+                mode: "cors"
+            });
+            if (!response.ok) {
+                if (response.status === 429) {
+                    throw new Error("RobloxScripts rate limit reached. Try again shortly.");
+                }
+                if (response.status === 503) {
+                    throw new Error("RobloxScripts API is temporarily unavailable.");
+                }
+                throw new Error(`RobloxScripts API error (${response.status})`);
+            }
+            return response.json();
+        }
+
         async function copyScriptCode(entry, source) {
             let scriptBody = entry.script;
-            if (!scriptBody && entry.rawScript) {
+            const rawScriptUrl = entry.rawScript || entry.rawScriptUrl;
+            if (!scriptBody && rawScriptUrl) {
                 try {
-                    const resp = await fetch(entry.rawScript, {
+                    const resp = await fetch(rawScriptUrl, {
                         mode: "cors"
                     });
                     if (!resp.ok) {
@@ -13023,10 +13110,14 @@
             try {
                 const pagination = scriptSearcherState[panelKey];
                 const page = pagination?.page || 1;
-                const payload =
-                    panelKey === "rscripts" ?
-                        await fetchRscripts(scriptSearcherState.query, page) :
-                        await fetchScriptblox(scriptSearcherState.query, page);
+                let payload;
+                if (panelKey === "rscripts") {
+                    payload = await fetchRscripts(scriptSearcherState.query, page);
+                } else if (panelKey === "robloxscripts") {
+                    payload = await fetchRobloxScripts(scriptSearcherState.query, page);
+                } else {
+                    payload = await fetchScriptblox(scriptSearcherState.query, page);
+                }
                 const parsed = parsePanelPayload(panelKey, payload);
                 scriptSearcherState[panelKey].maxPages = parsed.maxPages || 1;
                 updatePanelControls(panelKey);
@@ -13036,7 +13127,9 @@
                 const friendlyMessage =
                     panelKey === "scriptblox" ?
                         "ScriptBlox data requires direct API access. Try again shortly." :
-                        "Unable to load scripts.";
+                        panelKey === "robloxscripts" && error instanceof Error ?
+                            error.message :
+                            "Unable to load scripts.";
                 setPanelError(panel, friendlyMessage);
                 renderPanelMessage(panel, "Results could not be loaded.");
             } finally {
@@ -13068,18 +13161,17 @@
 
         async function performScriptSearch(term, button) {
             scriptSearcherState.query = (term || "").trim();
-            scriptSearcherState.rscripts.page = 1;
-            scriptSearcherState.rscripts.maxPages = 1;
-            scriptSearcherState.scriptblox.page = 1;
-            scriptSearcherState.scriptblox.maxPages = 1;
-            updatePanelControls("rscripts");
-            updatePanelControls("scriptblox");
+            Object.keys(scriptSearchPanels).forEach((panelKey) => {
+                scriptSearcherState[panelKey].page = 1;
+                scriptSearcherState[panelKey].maxPages = 1;
+                updatePanelControls(panelKey);
+            });
             if (button) {
                 button.disabled = true;
                 button.textContent = "Searching...";
             }
             try {
-                await Promise.allSettled([loadPanel("rscripts"), loadPanel("scriptblox")]);
+                await Promise.allSettled(Object.keys(scriptSearchPanels).map((panelKey) => loadPanel(panelKey)));
             } finally {
                 if (button) {
                     button.disabled = false;
@@ -20527,7 +20619,7 @@
             bindEggTapCombo("#roblox-user-results-meta", 4, "robloxMatchesPoked", "staticMint");
             bindEggLongPress("#executor-refresh", "executorRefreshHeld", "refreshBruise");
             bindEggTapCombo('[data-script-filter="pinned"]', 4, "pinnedFilterPoked");
-            bindEggTapCombo("#script-search-tab-scriptblox, #script-search-tab-rscripts", 5, "scriptTabTapper");
+            bindEggTapCombo("#script-search-tab-scriptblox, #script-search-tab-rscripts, #script-search-tab-robloxscripts", 5, "scriptTabTapper");
             bindEggTapCombo("#text-diff-edited-only", 6, "diffToggleSpam", "diffHeat");
             bindEggLongPress("#rdd-download-future", "futureHeld");
             bindEggTapCombo("#bi-total-stat", 5, "builderCounterPoked", "iconRain");
