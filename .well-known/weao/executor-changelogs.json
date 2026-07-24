@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-07-23T22:59:01.196Z",
+  "fetchedAt": "2026-07-24T11:17:49.265Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -5844,7 +5844,198 @@
         "_id": "66a679cc5b36b46c9327b0a7",
         "version": "1.0.3.3",
         "updatedDate": "07/14/2026 at 7:54 PM UTC",
-        "changelogs": []
+        "changelogs": {
+          "trackerId": "WEAO228206d0",
+          "name": "synapsez",
+          "displayName": "SynapseZ",
+          "changelogs": [
+            {
+              "version": "0.5.0.3",
+              "changelog": "+ added unwanted process hiding\r\n+ added internal multi instance\r\n+ added more internal identifier spoofing\r\n+ fixed drawing text outline transparency/opacity\r\n+ added csv lib",
+              "timestamp": 1759959782787,
+              "date": "2025-10-08T21:43:02.787Z",
+              "supportedRobloxVersion": "version-d34359a5577645e2",
+              "updated": true
+            },
+            {
+              "version": "1.0.1.1",
+              "changelog": "+ zzz",
+              "timestamp": 1772912830259,
+              "date": "2026-03-07T19:47:10.259Z",
+              "supportedRobloxVersion": "version-d599f7fc52a8404c",
+              "updated": true
+            },
+            {
+              "version": "1.0.1.2",
+              "changelog": "+ fix makefolder failing when path was ending with \"\\\"\r\n+ fix getting bytecode of core scripts\r\n+ debug.validlevel now have second argument (thread)\r\n+ fix debug.setinfo currentline/linedefined\r\n+ default internal ui key is now insert\r\n+ fix SynSignal:Once connections deallocation",
+              "timestamp": 1772945461845,
+              "date": "2026-03-08T04:51:01.845Z",
+              "supportedRobloxVersion": "version-d599f7fc52a8404c",
+              "updated": true
+            },
+            {
+              "version": "1.0.1.3",
+              "changelog": "+ made debug.setupvalue not require 3rd arg to be the same type as old upvalue type\r\n+ ImGui.LoadImage can now be called outside of ImGui.OnRender\r\n+ ImGui.GetFont, ImGui.CalcTextSize\r\n+ fixed one windows incompability\r\n+ fix VirtualUser\r\n+ added request response StatusMessage\r\n+ fix hookmetamethod on tables\r\n+ fix env protection causing issues in hooks\r\n+ GradientRectDynamic, XAlignment, YAlignment\r\n\r\n7 day compensation will be applied after this update",
+              "timestamp": 1773089008009,
+              "date": "2026-03-09T20:43:28.009Z",
+              "supportedRobloxVersion": "version-d599f7fc52a8404c",
+              "updated": true
+            },
+            {
+              "version": "1.0.1.4",
+              "changelog": "+ fixed one crash\r\n+ made newcclosure \"C stack overflow\" chill a bit\r\n+ fix yieldable method blocking breaking the thread instead of returning nothing\r\n+ TextDynamic.TextXAlignment\r\n+ fix http request issue\r\n+ fix enabling unrestricted replicatesignal\r\n+ settings.syn is now json\r\n+ some communication work\r\n+ fix debug.traceback hook being faulty\r\n+ hwid algorithm was changed, you will have to reset hwid on your luarmor panels if you used any luarmor scripts",
+              "timestamp": 1773341446181,
+              "date": "2026-03-12T18:50:46.181Z",
+              "supportedRobloxVersion": "version-b130242ed064436f",
+              "updated": true
+            },
+            {
+              "version": "1.0.1.5",
+              "changelog": "+ fix white screen\r\n+ fix settings.syn issue",
+              "timestamp": 1773345588305,
+              "date": "2026-03-12T19:59:48.305Z",
+              "supportedRobloxVersion": "version-b130242ed064436f",
+              "updated": true
+            },
+            {
+              "version": "1.0.1.6",
+              "changelog": "+ delayed\r\n+ 14 day compensation yay",
+              "timestamp": 1774151024159,
+              "date": "2026-03-22T03:43:44.159Z",
+              "supportedRobloxVersion": "version-ae421f0582e54718",
+              "updated": true
+            },
+            {
+              "version": "1.0.1.7",
+              "changelog": "remember to",
+              "timestamp": 1775947575721,
+              "date": "2026-04-11T22:46:15.721Z",
+              "supportedRobloxVersion": "version-26c90be22e0d4758",
+              "updated": true
+            },
+            {
+              "version": "1.0.1.8",
+              "changelog": "+ fix tp issue\r\n+ fix getcallbackvalue check for callback being set\r\n+ fix synz compiler tags\r\n+ fix autoexec\r\n+ fix globals not being marked as mutable",
+              "timestamp": 1776020143532,
+              "date": "2026-04-12T18:55:43.532Z",
+              "supportedRobloxVersion": "version-26c90be22e0d4758",
+              "updated": true
+            },
+            {
+              "version": "1.0.1.9",
+              "changelog": "+ fix some crashes\r\n+ fix writefile extension check bypass, blocked vulnerable service",
+              "timestamp": 1776625272760,
+              "date": "2026-04-19T19:01:12.760Z",
+              "supportedRobloxVersion": "version-9d412f44a6fe4081",
+              "updated": true
+            },
+            {
+              "version": "1.0.1.9",
+              "changelog": "+ fix some crashes\r\n+ fix writefile extension check bypass, blocked vulnerable service",
+              "timestamp": 1776626206751,
+              "date": "2026-04-19T19:16:46.751Z",
+              "supportedRobloxVersion": "version-9d412f44a6fe4081",
+              "updated": true
+            },
+            {
+              "version": "1.0.2.0",
+              "changelog": "+ fix black websocket entering gated white community, causing a crash\r\n+ fixed some misclenclaanciotuns crashes",
+              "timestamp": 1776759587398,
+              "date": "2026-04-21T08:19:47.398Z",
+              "supportedRobloxVersion": "version-9d412f44a6fe4081",
+              "updated": true
+            },
+            {
+              "version": "1.0.2.1",
+              "changelog": "+ bought 70% of $RBLX stock\r\n+ hired shade and gogo1000\r\n\r\n~ All use of Roblox services must comply with Roblox's Terms of Use, Privacy Policy, Community Standards, and applicable laws. Processing of User personal information is limited to the purposes expressly permitted therein.\r\n\r\n~ Copyright (c) Roblox Corporation. Hyperion anti-tamper technology and the Roblox client are protected under 17 U.S.C. Section 1201. Development, distribution, or use of circumvention tools constitutes willful infringement, including violation of terms of use (User Terms, Section 6.a; see also 17 U.S.C. Section 106).\r\n\r\n~ luau updates be hitting harder than hyperion updates 😭",
+              "timestamp": 1778704182513,
+              "date": "2026-05-13T20:29:42.513Z",
+              "supportedRobloxVersion": "version-ec412128eba3476e",
+              "updated": true
+            },
+            {
+              "version": "1.0.2.4",
+              "changelog": "+ fix uh",
+              "timestamp": 1779042012854,
+              "date": "2026-05-17T18:20:12.854Z",
+              "supportedRobloxVersion": "version-ec412128eba3476e",
+              "updated": true
+            },
+            {
+              "version": "1.0.2.5",
+              "changelog": "module:\r\n+ added ability to blacklist roblox accounts from launching with synz\r\n+ fix crash i artificially created (∑)\r\n+ fix debug.traceback hook\r\n\r\nui ( redownload from https://z.synapse.do [ will update itself in somewhere sometime maybe { haha more brackets } ] ):\r\n+ fixed ui content disappearing when pressing internal ui toggle key\r\n+ added topmost toggle, account blacklist tab\r\n\r\ngeneral:\r\n+ fixed obfuscation issue",
+              "timestamp": 1779409014147,
+              "date": "2026-05-22T00:16:54.147Z",
+              "supportedRobloxVersion": "version-4b6315bf1f0a4dbb",
+              "updated": true
+            },
+            {
+              "version": "1.0.2.6",
+              "changelog": "module:\r\n+ oth should bypass most detections now\r\n+ sync luau to 722\r\n+ fix crash\r\n\r\nui:\r\n+ fix redeem\r\n\r\nplz update to latest (just press install in the ui), the update check on previous previous version was kinda bogus",
+              "timestamp": 1779535621522,
+              "date": "2026-05-23T11:27:01.522Z",
+              "supportedRobloxVersion": "version-4b6315bf1f0a4dbb",
+              "updated": true
+            },
+            {
+              "version": "1.0.2.7",
+              "changelog": "module:\r\n+ oth.wrap, raknet.get_instance_by_id, raknet.get_network_schema, raknet.get_peer_id\r\n+ several raknet related fixes\r\n+ fixed 1 more oth detection\r\n+ fix internal ui letting input go through to roblox\r\n+ fix cfiresignal/replicatesignal with instance args being nil\r\n\r\nyo",
+              "timestamp": 1781388136517,
+              "date": "2026-06-13T22:02:16.517Z",
+              "supportedRobloxVersion": "version-76173e47a79145c7",
+              "updated": true
+            },
+            {
+              "version": "1.0.2.8",
+              "changelog": "Ò\r\n```\r\n\r\nsup? maybe?\r\n\r\n```diff\r\nmodule:\r\n+ fix some things\r\n+ force graphics to d3d11\r\n+ fix oops\r\n+ improved spyware\r\n```",
+              "timestamp": 1781556346715,
+              "date": "2026-06-15T20:45:46.715Z",
+              "supportedRobloxVersion": "version-76173e47a79145c7",
+              "updated": true
+            },
+            {
+              "version": "1.0.2.9",
+              "changelog": "#make weao support diff codeblock\r\n```\r\n\r\nthe following ping wont work cuz its embed: @everyone\r\n\r\n```diff\r\nmodule:\r\n+ updated ye\r\n```",
+              "timestamp": 1781730365904,
+              "date": "2026-06-17T21:06:05.904Z",
+              "supportedRobloxVersion": "version-8884371d30284041",
+              "updated": true
+            },
+            {
+              "version": "1.0.3.0",
+              "changelog": "#make weao support diff codeblock\r\n```\r\n\r\ntext\r\n\r\n```diff\r\n+ switched target roblox channel from production to zenginecontextclaude2\r\n+ roblox updates too soon smh!\r\n```",
+              "timestamp": 1782329344590,
+              "date": "2026-06-24T19:29:04.590Z",
+              "supportedRobloxVersion": "version-1a951716f19e4638",
+              "updated": true
+            },
+            {
+              "version": "1.0.3.1",
+              "changelog": "#make weao support diff codeblock\r\n```\r\n\r\ntext\r\n\r\n```diff\r\n+ fix 268\r\n```",
+              "timestamp": 1782765502624,
+              "date": "2026-06-29T20:38:22.624Z",
+              "supportedRobloxVersion": "version-1a951716f19e4638",
+              "updated": true
+            },
+            {
+              "version": "1.0.3.2",
+              "changelog": "#make weao support diff codeblock\r\n```\r\n\r\ntext\r\n\r\n```diff\r\nmodule:\r\n+ improved spyware\r\n```",
+              "timestamp": 1784039596803,
+              "date": "2026-07-14T14:33:16.803Z",
+              "supportedRobloxVersion": "version-d66094bc9ae84754",
+              "updated": false
+            },
+            {
+              "version": "1.0.3.3",
+              "changelog": "#make weao support diff codeblock\r\n```\r\n\r\ntext\r\n\r\n```diff\r\nmodule:\r\n+ improved spyware\r\n```",
+              "timestamp": 1784058865131,
+              "date": "2026-07-14T19:54:25.131Z",
+              "supportedRobloxVersion": "version-b97752d576e341ae",
+              "updated": false
+            }
+          ],
+          "count": 23
+        }
       },
       "WEAO4ef92j18": {
         "title": "Severe",
@@ -7101,7 +7292,24 @@
         "_id": "69f25c438d1db84cb50c8cfe",
         "version": "1.6.8",
         "updatedDate": "07/16/2026 at 10:41 AM UTC",
-        "changelogs": []
+        "changelogs": {
+          "trackerId": "WEAO4a1j38nv",
+          "name": "madium",
+          "displayName": "Madium",
+          "changelogs": [
+            {
+              "version": "1.4.0",
+              "changelog": [
+                "- Check discord"
+              ],
+              "timestamp": 1777491238935,
+              "date": "2026-04-29T19:33:58.935Z",
+              "supportedRobloxVersion": "version-acc4b74f79e743b9",
+              "updated": true
+            }
+          ],
+          "count": 1
+        }
       },
       "WEAO76ngr5y7": {
         "title": "Lumen",
