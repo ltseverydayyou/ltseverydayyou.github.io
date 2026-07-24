@@ -758,8 +758,7 @@ safeCall(function()
 				end
 
 				if localPlayer and localPlayer:FindFirstChildWhichIsA("PlayerGui") then
-					local tg = localPlayer.PlayerGui:FindFirstChild("TouchGui")
-					local jb = tg and tg:FindFirstChild("JumpButton", true)
+					local jb = localPlayer:FindFirstChildWhichIsA("PlayerGui"):FindFirstChild("JumpButton", true)
 					if jb then
 						jb.Size = UDim2.new(0, 85, 0, 85)
 						jb.Position = UDim2.new(1, -135, 1, -105)
