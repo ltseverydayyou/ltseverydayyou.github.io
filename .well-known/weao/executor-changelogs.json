@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-07-24T11:17:49.265Z",
+  "fetchedAt": "2026-07-24T12:59:29.712Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -2375,8 +2375,8 @@
         "title": "Velocity",
         "trackerId": "WEAO4a1e0747",
         "_id": "680eaddf8b44717c060fcf8d",
-        "version": "1.2.8",
-        "updatedDate": "07/23/2026 at 5:22 PM UTC",
+        "version": "1.2.9",
+        "updatedDate": "07/24/2026 at 8:43 AM UTC",
         "changelogs": {
           "trackerId": "WEAO4a1e0747",
           "name": "velocity",
@@ -3909,9 +3909,17 @@
               "date": "2026-07-23T17:22:21.596Z",
               "supportedRobloxVersion": "version-9affbe66b2624d20",
               "updated": true
+            },
+            {
+              "version": "1.2.9",
+              "changelog": "Fixed Drawing text object text boundries not actually being populated causing unnamed esp's text offset to be wonky\nFixed Drawing objects zindex being messed up\nFixed run_on_actor / run_on_thread overwriting Roblox's globals causing errors like \"attempt to call thread value\"\nFixed Roblox GC Collection system, these dumbasses left their threads reffed even though they were full dead and just sitting there for an hour without cleanup (W Roblox development team)\nFixed yielding freaking the fuck out when introduced into an actor\n---------------\nVelocity is now version 1.2.9\nClose the UI and reopen to apply the update. (Velocity Lite)",
+              "timestamp": 1784882628811,
+              "date": "2026-07-24T08:43:48.811Z",
+              "supportedRobloxVersion": "version-9affbe66b2624d20",
+              "updated": true
             }
           ],
-          "count": 191
+          "count": 192
         }
       },
       "WEAO1af938a2": {
