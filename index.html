@@ -4327,6 +4327,32 @@
                 bootstrapperFrameGlow 4.6s ease-in-out infinite -0.9s;
         }
 
+        .bootstrapper-card--exploitstrap {
+            --bootstrapper-surface:
+                radial-gradient(circle at 16% 14%,
+                    rgba(34, 211, 238, 0.24),
+                    transparent 28%),
+                radial-gradient(circle at 84% 16%,
+                    rgba(74, 222, 128, 0.2),
+                    transparent 30%),
+                radial-gradient(circle at 74% 88%,
+                    rgba(168, 85, 247, 0.2),
+                    transparent 34%),
+                linear-gradient(145deg, #121821, #0b0f14);
+            --bootstrapper-frame:
+                conic-gradient(from 0deg,
+                    #22d3ee,
+                    #4ade80,
+                    #a855f7,
+                    #22d3ee);
+            box-shadow: 0 18px 44px rgba(0, 0, 0, 0.34);
+        }
+
+        .bootstrapper-card--exploitstrap::before {
+            animation:
+                bootstrapperFrameSpin 9.2s linear infinite,
+                bootstrapperFrameGlow 3.8s ease-in-out infinite -0.5s;
+        }
         .bootstrapper-card--legacy {
             --bootstrapper-surface:
                 radial-gradient(circle at 20% 20%,
@@ -4386,6 +4412,18 @@
             color: #dcfbff;
         }
 
+        .bootstrapper-card--exploitstrap .bootstrapper-card__rank {
+            background: rgba(34, 211, 238, 0.16);
+            color: #baf7ff;
+            border: 1px solid rgba(74, 222, 128, 0.22);
+        }
+
+        .bootstrapper-card--exploitstrap .bootstrapper-card__name {
+            background: linear-gradient(90deg, #22d3ee, #4ade80 58%, #a855f7);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
         .bootstrapper-card--legacy .bootstrapper-card__rank {
             background: rgba(235, 104, 255, 0.18);
             color: #ffe4ff;
@@ -4506,6 +4544,14 @@
             box-shadow: 0 10px 26px rgba(88, 218, 255, 0.16);
         }
 
+        .bootstrapper-card--exploitstrap .bootstrapper-card__links a:hover {
+            border-color: rgba(74, 222, 128, 0.46);
+            background: linear-gradient(135deg,
+                    rgba(34, 211, 238, 0.13),
+                    rgba(74, 222, 128, 0.12),
+                    rgba(168, 85, 247, 0.12));
+            box-shadow: 0 10px 26px rgba(34, 211, 238, 0.15);
+        }
         .bootstrapper-card--legacy .bootstrapper-card__links a:hover {
             border-color: rgba(235, 104, 255, 0.4);
             background: rgba(235, 104, 255, 0.14);
@@ -11465,6 +11511,22 @@
                                     rel="noopener noreferrer">Website</a>
                                 <a href="https://github.com/voidstrap/Voidstrap" target="_blank"
                                     rel="noopener noreferrer">GitHub</a>
+                            </div>
+                        </article>
+
+                        <article class="bootstrapper-card bootstrapper-card--exploitstrap">
+                            <span class="bootstrapper-card__rank">Executor focused</span>
+                            <div class="bootstrapper-card__brand">
+                                <img class="bootstrapper-card__logo"
+                                    src="https://sirmemegithub.com/RealSlimShady2000/MrExLiveChannelForcer/raw/branch/main/MrExStrap/Resources/ExploitStrapIcon.png"
+                                    alt="ExploitStrap logo" />
+                                <h4 class="bootstrapper-card__name">ExploitStrap</h4>
+                            </div>
+                            <div class="bootstrapper-card__links">
+                                <a href="https://github.com/RealSlimShady2000/MrExLiveChannelForcer/releases"
+                                    target="_blank" rel="noopener noreferrer">Downloads</a>
+                                <a href="https://github.com/RealSlimShady2000/MrExLiveChannelForcer"
+                                    target="_blank" rel="noopener noreferrer">GitHub</a>
                             </div>
                         </article>
 
