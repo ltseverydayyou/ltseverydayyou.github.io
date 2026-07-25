@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-07-25T02:55:14.655Z",
+  "fetchedAt": "2026-07-25T08:10:40.179Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -1101,7 +1101,20 @@
       "hasIssues": false,
       "hidden": false,
       "websitelink": "https://getmadium.net/",
-      "detectionReason": "Last banwave: May 26"
+      "detectionReason": "Last banwave: May 26",
+      "slug": {
+        "fullDescription": "",
+        "logo": "https://cdn.weao.gg/slug/madium/logo.png",
+        "owner": "Olemad",
+        "screenshots": [
+          "https://cdn.weao.gg/slug/madium/screenshot1.png",
+          "https://cdn.weao.gg/slug/madium/screenshot2.png",
+          "https://cdn.weao.gg/slug/madium/screenshot3.png",
+          "https://cdn.weao.gg/slug/madium/screenshot4.png",
+          "https://cdn.weao.gg/slug/madium/screenshot5.png",
+          "https://cdn.weao.gg/slug/madium/screenshot6.png"
+        ]
+      }
     },
     {
       "_id": "6a0ea99cfd26ad90bea624eb",
