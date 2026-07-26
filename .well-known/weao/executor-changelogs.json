@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-07-26T21:27:23.879Z",
+  "fetchedAt": "2026-07-26T22:31:57.511Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -7338,8 +7338,8 @@
         "title": "Madium",
         "trackerId": "WEAO4a1j38nv",
         "_id": "69f25c438d1db84cb50c8cfe",
-        "version": "1.7.3",
-        "updatedDate": "07/26/2026 at 8:28 PM UTC",
+        "version": "1.7.4",
+        "updatedDate": "07/26/2026 at 10:13 PM UTC",
         "changelogs": {
           "trackerId": "WEAO4a1j38nv",
           "name": "madium",
