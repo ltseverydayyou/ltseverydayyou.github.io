@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-07-26T20:10:52.312Z",
+  "fetchedAt": "2026-07-26T21:27:23.879Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -7338,8 +7338,8 @@
         "title": "Madium",
         "trackerId": "WEAO4a1j38nv",
         "_id": "69f25c438d1db84cb50c8cfe",
-        "version": "1.6.9",
-        "updatedDate": "07/24/2026 at 6:27 PM UTC",
+        "version": "1.7.3",
+        "updatedDate": "07/26/2026 at 8:28 PM UTC",
         "changelogs": {
           "trackerId": "WEAO4a1j38nv",
           "name": "madium",
@@ -7364,7 +7364,7 @@
         "trackerId": "WEAO76ngr5y7",
         "_id": "6a0ea99cfd26ad90bea624eb",
         "version": "1.0.7",
-        "updatedDate": "07/22/2026 at 4:41 PM UTC",
+        "updatedDate": "07/26/2026 at 6:14 PM UTC",
         "changelogs": {
           "trackerId": "WEAO76ngr5y7",
           "name": "lumen",
@@ -7377,8 +7377,8 @@
         "title": "Real",
         "trackerId": "WEAO4a1f93j6",
         "_id": "6a5095abbb457d55d62f8061",
-        "version": "1.7.0",
-        "updatedDate": "07/24/2026 at 7:13 PM UTC",
+        "version": "1.7.3",
+        "updatedDate": "07/26/2026 at 6:28 PM UTC",
         "changelogs": {
           "trackerId": "WEAO4a1f93j6",
           "name": "real",
@@ -7495,9 +7495,33 @@
               "date": "2026-07-24T19:13:27.396Z",
               "supportedRobloxVersion": "version-9affbe66b2624d20",
               "updated": true
+            },
+            {
+              "version": "1.7.1",
+              "changelog": "* Fixed typed parameter handling across all tools (`boolean`, `number`, `array`)\r\n* Fixed `get-script-content` path resolution for dotted module names and improved line-range support\r\n* Fixed multiple tool issues affecting `script-grep`, `gc-scan`, `search-api`, `get-descendants-tree`, `get-game-info`, and `get-console-output`\r\n* Fixed memory truncation in game and global memory responses\r\n* Added `get-script-strings` to extract string literals directly from bytecode\r\n* Added `watch-value` for monitoring Luau expressions over time\r\n* Added `response` capture for `InvokeServer` calls in Remote Spy\r\n* Added Remote Spy `probe` mode to safely verify hook availability without installing hooks\r\n* Added `seq` and `since` support to `get-console-output` for efficient incremental log polling\r\n* Expanded `search-api` documentation with networking, drawing, camera, performance, and executor-specific notes\r\n* Added documentation for `spy-closure` and recommended investigation workflows\r\n* Cleaned up outdated and resolved entries from the global memory store\r\n",
+              "timestamp": 1785065590407,
+              "date": "2026-07-26T11:33:10.407Z",
+              "supportedRobloxVersion": "version-9affbe66b2624d20",
+              "updated": true
+            },
+            {
+              "version": "1.7.2",
+              "changelog": "- Updated for version-ed2b47b81f08484a\r\n- C++ Drawing lib (no more stupid ass lua drawing)\r\nplease ignore the internal ui 💀💀",
+              "timestamp": 1785090056374,
+              "date": "2026-07-26T18:20:56.374Z",
+              "supportedRobloxVersion": "version-ed2b47b81f08484a",
+              "updated": true
+            },
+            {
+              "version": "1.7.3",
+              "changelog": "bump",
+              "timestamp": 1785090537932,
+              "date": "2026-07-26T18:28:57.932Z",
+              "supportedRobloxVersion": "version-ed2b47b81f08484a",
+              "updated": true
             }
           ],
-          "count": 14
+          "count": 17
         }
       }
     }
