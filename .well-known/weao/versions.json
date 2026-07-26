@@ -1,14 +1,14 @@
 {
-  "fetchedAt": "2026-07-26T08:57:05.030Z",
+  "fetchedAt": "2026-07-26T17:05:32.501Z",
   "data": {
     "current": {
-      "Windows": "version-9affbe66b2624d20",
-      "WindowsDate": "7/22/2026, 4:00:21 PM UTC",
+      "Windows": "version-ed2b47b81f08484a",
+      "WindowsDate": "7/26/2026, 4:10:06 PM UTC",
       "WindowsResponse": {
-        "version": "0.731.0.7310943",
-        "clientVersionUpload": "version-9affbe66b2624d20",
+        "version": "0.731.23.7310943",
+        "clientVersionUpload": "version-ed2b47b81f08484a",
         "bootstrapperVersion": "",
-        "timestamp": 1784736021,
+        "timestamp": 1785082206,
         "type": "new"
       },
       "Mac": "version-614a8fd6f9294c9b",
@@ -52,13 +52,13 @@
       }
     },
     "past": {
-      "Windows": "version-ddf02245bdbb428c",
-      "WindowsDate": "7/15/2026, 4:55:50 PM UTC",
+      "Windows": "version-9affbe66b2624d20",
+      "WindowsDate": "7/22/2026, 4:00:21 PM UTC",
       "WindowsResponse": {
-        "version": "0.730.23.7300792",
-        "clientVersionUpload": "version-ddf02245bdbb428c",
+        "version": "0.731.0.7310943",
+        "clientVersionUpload": "version-9affbe66b2624d20",
         "bootstrapperVersion": "",
-        "timestamp": 1784134550,
+        "timestamp": 1784736021,
         "type": "new"
       },
       "Mac": "version-f2083d2275244e01",
