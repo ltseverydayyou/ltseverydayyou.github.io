@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-07-26T22:31:57.511Z",
+  "fetchedAt": "2026-07-27T00:02:17.957Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -9,8 +9,8 @@
         "title": "Potassium",
         "trackerId": "WEAO00393718",
         "_id": "67d6005efa8c791236079278",
-        "version": "2.3.3",
-        "updatedDate": "07/22/2026 at 7:18 PM UTC",
+        "version": "2.3.4",
+        "updatedDate": "07/26/2026 at 10:42 PM UTC",
         "changelogs": {
           "trackerId": "WEAO00393718",
           "name": "potassium",
