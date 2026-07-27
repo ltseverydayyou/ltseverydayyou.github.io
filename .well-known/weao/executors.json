@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-07-27T00:02:17.957Z",
+  "fetchedAt": "2026-07-27T08:02:24.446Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -314,7 +314,7 @@
       "hidden": false,
       "trackerId": "WEAO0fc0936f",
       "slug": {
-        "fullDescription": "Volt (previously AWP.GG) is a premium Windows script executor costing $5.99 weekly, featuring: \n\n* Working Hyperion Emulation\n* VSCode IDE Style UI\n* 98% sUNC\n* Optimized Multi-Instance (Be sure to check out Volt’s tiers or consider purchasing the farmer package directly on [VOLTBZ.NET](https://voltbz.net), as they have an instance cap on their normal tiers!)\n* Fast updates under normal Roblox update conditions\n* Comes with a account manager built in\n* Comes with a decompiler built in\n\n! Things to keep in mind: \n\n! While under the AWP.GG name, this exploit had a **long downtime period**, but after rebranding (And possibly switching developers), all existing users were compensated, and it has been reliably updating ever since. ",
+        "fullDescription": "Volt (previously AWP.GG) is a premium Windows script executor costing $5.99 weekly, featuring: \n\n* Working Hyperion Emulation\n* VSCode IDE Style UI\n* 100% sUNC\n* Optimized Multi-Instance (Be sure to check out Volt’s tiers or consider purchasing the farmer package directly on [VOLTBZ.NET](https://voltbz.net), as they have an instance cap on their normal tiers!)\n* Fast updates under normal Roblox update conditions\n* Comes with a account manager built in\n* Comes with a Decompiler built in\n\n! Things to keep in mind: \n\n! While under the AWP.GG name, this exploit had a **long downtime period**, but after rebranding (And possibly switching developers), all existing users were compensated, and it has been reliably updating ever since. ",
         "logo": "https://cdn.weao.gg/slug/volt/logo.png",
         "owner": "Volt Team",
         "screenshots": [
@@ -350,11 +350,11 @@
       "elementCertified": true,
       "decompiler": true,
       "multiInject": true,
-      "suncPercentage": 98,
-      "uncPercentage": 99,
+      "suncPercentage": 93,
+      "uncPercentage": 98,
       "sunc": {
-        "suncScrap": "5I1madr4AMUokAXy",
-        "suncKey": "wLh17n11DHS67RsJWYA70vFdZHnqtVNN"
+        "suncScrap": "Nq85ySgjPqwHlTaF",
+        "suncKey": "OLvaXspQ6UTlY9pecPPINyVBIMC3Rc6Q"
       },
       "__v": 1,
       "recommendedReason": {
