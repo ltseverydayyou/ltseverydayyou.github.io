@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-07-27T00:02:17.957Z",
+  "fetchedAt": "2026-07-27T14:43:46.447Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -7213,7 +7213,182 @@
         "_id": "69a4acadfa8a3af13c8930a9",
         "version": "v2.4.4",
         "updatedDate": "07/17/2026 at 2:08 AM UTC",
-        "changelogs": []
+        "changelogs": {
+          "trackerId": "WEAO442fb725",
+          "name": "opiumware",
+          "displayName": "Opiumware",
+          "changelogs": [
+            {
+              "version": "v2.2.1",
+              "changelog": "- Drawing lib is now fully in C! there may be bugs initially i did test though\n- autoexecute fixes\n- clonefunction env fixes\n- firetouchinterest now accepts booleans and numbers\n- other function improvements\n- decompiler improvements (removed partial usage of goto statements and fixed a bug where medal could not decompile a specific loop)\n- Yielding requests have been fixed\n- Added crypt.hmac and crypt.random\n- Fixed run_on_actor comm channel error\n- Added back rconsole lib\n- Various UI improvements\n- Auto Update will no longer prompt if you are using silicon vers\n- Fixed codesign issues i think",
+              "timestamp": 1772400169913,
+              "date": "2026-03-01T21:22:49.913Z",
+              "supportedRobloxVersion": "version-99769ee4146d4ccf",
+              "updated": true
+            },
+            {
+              "version": "v2.2.1",
+              "changelog": "- Drawing lib is now fully in C! there may be bugs initially i did test though\n- autoexecute fixes\n- clonefunction env fixes\n- firetouchinterest now accepts booleans and numbers\n- other function improvements\n- decompiler improvements (removed partial usage of goto statements and fixed a bug where medal could not decompile a specific loop)\n- Yielding requests have been fixed\n- Added crypt.hmac and crypt.random\n- Fixed run_on_actor comm channel error\n- Added back rconsole lib\n- Various UI improvements\n- Auto Update will no longer prompt if you are using silicon vers\n- Fixed codesign issues i think",
+              "timestamp": 1772400230324,
+              "date": "2026-03-01T21:23:50.324Z",
+              "supportedRobloxVersion": "version-99769ee4146d4ccf",
+              "updated": true
+            },
+            {
+              "version": "v2.2.2",
+              "changelog": "- Drawing lib is now fully in C! there may be bugs initially i did test though\n- autoexecute fixes\n- clonefunction env fixes\n- firetouchinterest now accepts booleans and numbers\n- other function improvements\n- decompiler improvements (removed partial usage of goto statements and fixed a bug where medal could not decompile a specific loop)\n- Yielding requests have been fixed\n- Added crypt.hmac and crypt.random\n- Fixed run_on_actor comm channel error\n- Added back rconsole lib\n- Various UI improvements\n- Auto Update will no longer prompt if you are using silicon vers\n- Fixed codesign issues i think",
+              "timestamp": 1772400278901,
+              "date": "2026-03-01T21:24:38.901Z",
+              "supportedRobloxVersion": "version-99769ee4146d4ccf",
+              "updated": true
+            },
+            {
+              "version": "v2.2.20",
+              "changelog": "- updated to version-f18963d432b94bd7\n- fixed a classname parsing issue causing getloadedmodules and getscripts to fail on intel\nhttps://r.sunc.su/g4DgUDaBhy",
+              "timestamp": 1772688978044,
+              "date": "2026-03-05T05:36:18.044Z",
+              "supportedRobloxVersion": "version-f18963d432b94bd7",
+              "updated": true
+            },
+            {
+              "version": "v2.2.3",
+              "changelog": "- Bug fixes\n- Added overridemalicious() per request of some sab players\n- run_on_actor now accept tables as arguments\n- rconsole print functions now accept multiple arguments",
+              "timestamp": 1773548084340,
+              "date": "2026-03-15T04:14:44.340Z",
+              "supportedRobloxVersion": "version-f18963d432b94bd7",
+              "updated": false
+            },
+            {
+              "version": "v2.2.4",
+              "changelog": "0",
+              "timestamp": 1774150603250,
+              "date": "2026-03-22T03:36:43.250Z",
+              "supportedRobloxVersion": "version-f18963d432b94bd7",
+              "updated": false
+            },
+            {
+              "version": "v2.2.5",
+              "changelog": "0",
+              "timestamp": 1774385310699,
+              "date": "2026-03-24T20:48:30.699Z",
+              "supportedRobloxVersion": "version-f18963d432b94bd7",
+              "updated": false
+            },
+            {
+              "version": "v2.2.67",
+              "changelog": "- pushed the ui update\n- fixed loadstring crashing sometimes\n- fixed getscripts not returning client runcontext scripts\n- bug fixes",
+              "timestamp": 1775106690710,
+              "date": "2026-04-02T05:11:30.710Z",
+              "supportedRobloxVersion": "version-f18963d432b94bd7",
+              "updated": false
+            },
+            {
+              "version": "v2.2.67890",
+              "changelog": "- fixed getactors\n- added new function getsignalwhitelist()\n- bug fixes\n- websocket revamp",
+              "timestamp": 1775362868311,
+              "date": "2026-04-05T04:21:08.311Z",
+              "supportedRobloxVersion": "version-f18963d432b94bd7",
+              "updated": false
+            },
+            {
+              "version": "v2.3.0",
+              "changelog": "- bug fixes\n- updated to version-08d2b9589bf14135\n\nI lowkey forgot about ts (this)",
+              "timestamp": 1775705122395,
+              "date": "2026-04-09T03:25:22.395Z",
+              "supportedRobloxVersion": "version-08d2b9589bf14135",
+              "updated": true
+            },
+            {
+              "version": "v2.3.1",
+              "changelog": "- gethiddenproperty does not throw errors on write-only properties anymore\n- decompiler improvements & added support for luau bytecode version 7\n- fixed getconnections crash in myriad\n- cloneref gc thing in myriad is now fixed\n- ui now saves scripts, new autoexec tab feature, and layout improvements, new server joiner feature\n- added openfiledialog, openfilesdialog, openfolderdialog, savefiledialog\n(check https://github.com/Standard-2/Myriad/issues/18 for usage examples)",
+              "timestamp": 1777221451875,
+              "date": "2026-04-26T16:37:31.875Z",
+              "supportedRobloxVersion": "version-f0d1b413481b4d96",
+              "updated": true
+            },
+            {
+              "version": "v2.3.2",
+              "changelog": "- fixed setfpscap\n- added setstackhidden\n- Fixed UE ragebot\n- Various UI additions and improvements\n- Updated to version-1d604bb8b63849b4",
+              "timestamp": 1777522949640,
+              "date": "2026-04-30T04:22:29.640Z",
+              "supportedRobloxVersion": "version-1d604bb8b63849b4",
+              "updated": true
+            },
+            {
+              "version": "v2.3.3",
+              "changelog": "- saveinstance now yields until the output file is written\n- firesignal improvements\n- fix on run_on_actor arguments \n- removed init script\n- rewrote filtergc & getcallbackvalue & others\n- performance optimizations\n- fixed deepwoken & fallen dtc (special thx to @vaultt. for sacrificing his accs to test)\n- stuff",
+              "timestamp": 1777790345163,
+              "date": "2026-05-03T06:39:05.163Z",
+              "supportedRobloxVersion": "version-1d604bb8b63849b4",
+              "updated": true
+            },
+            {
+              "version": "v2.3.4",
+              "changelog": "- updated to version-4a858a3a05c64f79\n\nFuck you Roblox",
+              "timestamp": 1778136014734,
+              "date": "2026-05-07T06:40:14.734Z",
+              "supportedRobloxVersion": "version-4a858a3a05c64f79",
+              "updated": true
+            },
+            {
+              "version": "v2.3.5",
+              "changelog": "- updated to version-9e55b34566734c3b",
+              "timestamp": 1778190946148,
+              "date": "2026-05-07T21:55:46.148Z",
+              "supportedRobloxVersion": "version-9e55b34566734c3b",
+              "updated": true
+            },
+            {
+              "version": "v2.3.7",
+              "changelog": "- bug fixes\n- updated to version-2f00787ab023453e",
+              "timestamp": 1779428891456,
+              "date": "2026-05-22T05:48:11.456Z",
+              "supportedRobloxVersion": "version-2f00787ab023453e",
+              "updated": true
+            },
+            {
+              "version": "v2.3.8",
+              "changelog": "- updated to version-789d64d8ac264b79",
+              "timestamp": 1779936331127,
+              "date": "2026-05-28T02:45:31.127Z",
+              "supportedRobloxVersion": "version-789d64d8ac264b79",
+              "updated": true
+            },
+            {
+              "version": "v2.4.0",
+              "changelog": "- cloneref fix\n- full raknet lib (turn on in UI settings)\n(funcs consist of raknet.add_send_hook, raknet.remove_send_hook, raknet.sendraw, raknet.send, raknet.sendbytes, raknet.sendhex, raknet.sendposition, raknet.setposition, raknet.clearposition)\n- streamproof drawing\n(turn on in UI settings or call setstreamproof)\n- stability fixes",
+              "timestamp": 1780783207430,
+              "date": "2026-06-06T22:00:07.430Z",
+              "supportedRobloxVersion": "version-b6bc8a3f6c184e6f",
+              "updated": true
+            },
+            {
+              "version": "v2.4.1",
+              "changelog": "- updated to version-5e5ddbfddbdf4c6c",
+              "timestamp": 1781066471466,
+              "date": "2026-06-10T04:41:11.466Z",
+              "supportedRobloxVersion": "version-5e5ddbfddbdf4c6c",
+              "updated": true
+            },
+            {
+              "version": "v2.4.2",
+              "changelog": "- updated to version-d9748b94acff4b5d\n- ports are now 8390-8420 \n- more stability fixes\n- fixed decompiler spitting out UNNAMED_x & function names are now part of the actual function instead of being a comment\n- added error redirection (enable in ui settings)",
+              "timestamp": 1781912582621,
+              "date": "2026-06-19T23:43:02.621Z",
+              "supportedRobloxVersion": "version-d9748b94acff4b5d",
+              "updated": true
+            },
+            {
+              "version": "v2.4.4",
+              "changelog": "Updated",
+              "timestamp": 1784254111672,
+              "date": "2026-07-17T02:08:31.672Z",
+              "supportedRobloxVersion": "version-f2083d2275244e01",
+              "updated": true
+            }
+          ],
+          "count": 21
+        }
       },
       "WEAOmhg67xtg": {
         "title": "Cosmic",
