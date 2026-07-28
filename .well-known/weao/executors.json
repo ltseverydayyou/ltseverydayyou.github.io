@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-07-28T20:02:01.553Z",
+  "fetchedAt": "2026-07-28T21:39:45.880Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -327,8 +327,8 @@
     {
       "_id": "6a5095abbb457d55d62f8061",
       "title": "Real",
-      "version": "1.7.4",
-      "updatedDate": "07/28/2026 at 7:49 PM UTC",
+      "version": "1.7.5",
+      "updatedDate": "07/28/2026 at 8:32 PM UTC",
       "uncStatus": true,
       "free": true,
       "detected": true,
@@ -420,13 +420,13 @@
     {
       "_id": "662ae7576238b7f2082f253b",
       "title": "Wave",
-      "version": "NEW-1.4.3",
-      "updatedDate": "07/26/2026 at 7:26 PM UTC",
+      "version": "NEW-1.4.4",
+      "updatedDate": "07/28/2026 at 8:50 PM UTC",
       "uncStatus": true,
       "free": false,
       "detected": true,
-      "rbxversion": "version-ed2b47b81f08484a",
-      "updateStatus": false,
+      "rbxversion": "version-145f189a6a974303",
+      "updateStatus": true,
       "websitelink": "https://getwave.gg",
       "discordlink": "https://discord.gg/rARhPpN7fY",
       "beta": false,
