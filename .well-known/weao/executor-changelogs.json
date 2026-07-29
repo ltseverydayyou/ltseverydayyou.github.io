@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-07-28T23:02:36.904Z",
+  "fetchedAt": "2026-07-29T04:20:02.541Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -948,8 +948,8 @@
         "title": "Opiumware",
         "trackerId": "WEAO442fb725",
         "_id": "69a4acadfa8a3af13c8930a9",
-        "version": "v2.4.4",
-        "updatedDate": "07/17/2026 at 2:08 AM UTC",
+        "version": "v2.4.6",
+        "updatedDate": "07/29/2026 at 3:38 AM UTC",
         "changelogs": {
           "trackerId": "WEAO442fb725",
           "name": "opiumware",
@@ -1122,9 +1122,17 @@
               "date": "2026-07-17T02:08:31.672Z",
               "supportedRobloxVersion": "version-f2083d2275244e01",
               "updated": true
+            },
+            {
+              "version": "v2.4.6",
+              "changelog": "Updated.",
+              "timestamp": 1785296317685,
+              "date": "2026-07-29T03:38:37.685Z",
+              "supportedRobloxVersion": "version-d2cc326811844e9e",
+              "updated": true
             }
           ],
-          "count": 21
+          "count": 22
         }
       },
       "WEAOmhg67xtg": {
@@ -1417,8 +1425,8 @@
         "title": "Solara",
         "trackerId": "WEAO1af938a2",
         "_id": "66633ac4b29bacaa7a568fdc",
-        "version": "0.1.4",
-        "updatedDate": "07/28/2026 at 6:48 PM UTC",
+        "version": "0.1.4b",
+        "updatedDate": "07/29/2026 at 3:48 AM UTC",
         "changelogs": {
           "trackerId": "WEAO1af938a2",
           "name": "solara",
@@ -2207,9 +2215,17 @@
               "date": "2026-07-26T19:49:47.392Z",
               "supportedRobloxVersion": "version-ed2b47b81f08484a",
               "updated": true
+            },
+            {
+              "version": "0.1.4b",
+              "changelog": "[+] added fixes for infinite yellow status",
+              "timestamp": 1785296890298,
+              "date": "2026-07-29T03:48:10.298Z",
+              "supportedRobloxVersion": "version-145f189a6a974303",
+              "updated": true
             }
           ],
-          "count": 98
+          "count": 99
         }
       },
       "WEAO2c8e5827": {
@@ -6624,8 +6640,8 @@
         "title": "MacSploit",
         "trackerId": "WEAO10179289",
         "_id": "692794d789eb1e034ad699c3",
-        "version": "731.142b",
-        "updatedDate": "07/28/2026 at 8:35 AM UTC",
+        "version": "731.142",
+        "updatedDate": "07/29/2026 at 3:42 AM UTC",
         "changelogs": {
           "trackerId": "WEAO10179289",
           "name": "macsploit",
@@ -6878,9 +6894,17 @@
               "date": "2026-07-28T08:35:57.738Z",
               "supportedRobloxVersion": "version-614a8fd6f9294c9b",
               "updated": true
+            },
+            {
+              "version": "731.142",
+              "changelog": "updated macsploit arm to latest roblox version and redone raknet library with sendphysics",
+              "timestamp": 1785296537987,
+              "date": "2026-07-29T03:42:17.987Z",
+              "supportedRobloxVersion": "version-614a8fd6f9294c9b",
+              "updated": false
             }
           ],
-          "count": 31
+          "count": 32
         }
       },
       "WEAO957nhh9s": {

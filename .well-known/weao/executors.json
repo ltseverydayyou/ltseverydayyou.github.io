@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-07-28T23:02:36.904Z",
+  "fetchedAt": "2026-07-29T04:20:02.541Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -232,13 +232,13 @@
     {
       "_id": "69a4acadfa8a3af13c8930a9",
       "title": "Opiumware",
-      "version": "v2.4.4",
-      "updatedDate": "07/17/2026 at 2:08 AM UTC",
+      "version": "v2.4.6",
+      "updatedDate": "07/29/2026 at 3:38 AM UTC",
       "uncStatus": true,
       "free": true,
       "detected": false,
-      "rbxversion": "version-f2083d2275244e01",
-      "updateStatus": false,
+      "rbxversion": "version-d2cc326811844e9e",
+      "updateStatus": true,
       "websitelink": "https://use.opiumware.today/",
       "discordlink": "https://discord.gg/opiumware",
       "beta": false,
@@ -376,8 +376,8 @@
     {
       "_id": "66633ac4b29bacaa7a568fdc",
       "title": "Solara",
-      "version": "0.1.4",
-      "updatedDate": "07/28/2026 at 6:48 PM UTC",
+      "version": "0.1.4b",
+      "updatedDate": "07/29/2026 at 3:48 AM UTC",
       "uncStatus": true,
       "free": true,
       "detected": true,
@@ -1079,12 +1079,12 @@
     {
       "_id": "692794d789eb1e034ad699c3",
       "title": "MacSploit",
-      "version": "731.142b",
-      "updatedDate": "07/28/2026 at 8:35 AM UTC",
+      "version": "731.142",
+      "updatedDate": "07/29/2026 at 3:42 AM UTC",
       "uncStatus": true,
       "free": false,
       "detected": false,
-      "rbxversion": "version-614a8fd6f9294c9b",
+      "rbxversion": "version-d2cc326811844e9e",
       "updateStatus": false,
       "websitelink": "https://www.raptor.fun/",
       "discordlink": "https://discord.gg/macsploit",
