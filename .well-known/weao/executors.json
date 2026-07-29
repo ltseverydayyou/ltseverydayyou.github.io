@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-07-29T12:29:40.926Z",
+  "fetchedAt": "2026-07-29T19:21:33.618Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -376,8 +376,8 @@
     {
       "_id": "66633ac4b29bacaa7a568fdc",
       "title": "Solara",
-      "version": "0.1.4b",
-      "updatedDate": "07/29/2026 at 3:48 AM UTC",
+      "version": "0.1.4c",
+      "updatedDate": "07/29/2026 at 6:51 PM UTC",
       "uncStatus": true,
       "free": true,
       "detected": true,
@@ -413,7 +413,10 @@
           "https://cdn.weao.gg/slug/solara/screenshot1.png",
           "https://cdn.weao.gg/slug/solara/screenshot2.png",
           "https://cdn.weao.gg/slug/solara/screenshot3.png",
-          "https://cdn.weao.gg/slug/solara/screenshot4.png"
+          "https://cdn.weao.gg/slug/solara/screenshot4.png",
+          "https://cdn.weao.gg/slug/solara/screenshot5.png",
+          "https://cdn.weao.gg/slug/solara/screenshot6.png",
+          "https://cdn.weao.gg/slug/solara/screenshot7.png"
         ]
       }
     },

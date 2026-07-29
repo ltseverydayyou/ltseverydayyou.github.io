@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-07-29T12:29:40.926Z",
+  "fetchedAt": "2026-07-29T19:21:33.618Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -1425,8 +1425,8 @@
         "title": "Solara",
         "trackerId": "WEAO1af938a2",
         "_id": "66633ac4b29bacaa7a568fdc",
-        "version": "0.1.4b",
-        "updatedDate": "07/29/2026 at 3:48 AM UTC",
+        "version": "0.1.4c",
+        "updatedDate": "07/29/2026 at 6:51 PM UTC",
         "changelogs": {
           "trackerId": "WEAO1af938a2",
           "name": "solara",
@@ -2223,9 +2223,17 @@
               "date": "2026-07-29T03:48:10.298Z",
               "supportedRobloxVersion": "version-145f189a6a974303",
               "updated": true
+            },
+            {
+              "version": "0.1.4c",
+              "changelog": "exec:\n    [+] updated stuff that i didnt realize i needed to update so if u were having any weird issues this should fix them\nui:\n    [+] u can set img urls for themes now",
+              "timestamp": 1785351103873,
+              "date": "2026-07-29T18:51:43.873Z",
+              "supportedRobloxVersion": "version-145f189a6a974303",
+              "updated": true
             }
           ],
-          "count": 99
+          "count": 100
         }
       },
       "WEAO2c8e5827": {
