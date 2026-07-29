@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-07-29T07:20:39.020Z",
+  "fetchedAt": "2026-07-29T12:29:40.926Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -547,13 +547,13 @@
     {
       "_id": "67576d22d9181811c292bb79",
       "title": "Volt",
-      "version": "1.3.4.2",
-      "updatedDate": "07/27/2026 at 2:15 PM UTC",
+      "version": "1.3.5.1",
+      "updatedDate": "07/29/2026 at 10:38 AM UTC",
       "uncStatus": true,
       "free": false,
       "detected": true,
-      "rbxversion": "version-ed2b47b81f08484a",
-      "updateStatus": false,
+      "rbxversion": "version-145f189a6a974303",
+      "updateStatus": true,
       "websitelink": "https://voltbz.net/",
       "discordlink": "https://discord.com/invite/voltbz",
       "beta": false,
@@ -599,8 +599,8 @@
     {
       "_id": "680eaddf8b44717c060fcf8d",
       "title": "Velocity",
-      "version": "1.3.4",
-      "updatedDate": "07/28/2026 at 7:54 PM UTC",
+      "version": "1.3.5",
+      "updatedDate": "07/29/2026 at 10:35 AM UTC",
       "uncStatus": true,
       "free": true,
       "detected": true,
