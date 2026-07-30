@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-07-30T05:44:10.366Z",
+  "fetchedAt": "2026-07-30T17:38:28.438Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -35,7 +35,7 @@
       "clientmods": true,
       "trackerId": "WEAO00393718",
       "slug": {
-        "fullDescription": "Potassium is a lifetime premium Windows script executor costing $22.99, featuring: \n\n* Simple, clean executor interface/internal executor\n* 100% sUNC\n* Fast updates under normal Roblox update conditions\n* Comes with a decompiler built in and supports Multi-Instance\n\n! Things to keep in mind: \n\n! This exploit uses **kernel-level injection**, meaning that after using it, you will need to restart your PC to play games with kernel-level anticheats. This could also cause rare issues you wouldn’t normally see on a user-mode executor (BSODs, weird memory errors, etc.).\n\n! This exploit has been **detected** in the past due to certain exploit functions, but those functions have been fixed. You should still keep this in mind when testing sUNC scores.\n\nOtherwise, this exploit is a very good deal compared to other subscription-based exploits. A good exploit environment for developers on a budget. Offers decent stability for most users, but for the best experience, we recommend using [Windows 11](https://www.microsoft.com/en-us/software-download/windows11).",
+        "fullDescription": "Potassium is a lifetime premium Windows script executor costing $22.99, featuring: \n\n* Simple, clean executor interface/internal executor\n* 100% sUNC\n* Fast updates under normal Roblox update conditions\n* Comes with a Decompiler built in and supports Multi-Instance\n\n! Things to keep in mind: \n\n! This exploit uses **kernel-level injection**, meaning that after using it, you will need to restart your PC to play games with kernel-level anticheats. This could also cause rare issues you wouldn’t normally see on a user-mode executor (BSODs, weird memory errors, etc.).\n\n! This exploit has been **detected** in the past due to certain exploit functions, but those functions have been fixed. You should still keep this in mind when testing sUNC scores.\n\nOtherwise, this exploit is a very good deal compared to other subscription-based exploits. A good exploit environment for developers on a budget. Offers decent stability for most users, but for the best experience, we recommend using [Windows 11](https://www.microsoft.com/en-us/software-download/windows11).",
         "logo": "https://cdn.weao.gg/slug/potassium/logo.png",
         "owner": "perm, v03",
         "screenshots": [
@@ -582,7 +582,7 @@
       "hidden": false,
       "trackerId": "WEAO0fc0936f",
       "slug": {
-        "fullDescription": "Volt (previously AWP.GG) is a premium Windows script executor costing $5.99 weekly, featuring: \n\n* Working Hyperion Emulation\n* VSCode IDE Style UI\n* 100% sUNC\n* Optimized Multi-Instance (Be sure to check out Volt’s tiers or consider purchasing the farmer package directly on [VOLTBZ.NET](https://voltbz.net), as they have an instance cap on their normal tiers!)\n* Fast updates under normal Roblox update conditions\n* Comes with a account manager built in\n* Comes with a Decompiler built in\n\n! Things to keep in mind: \n\n! While under the AWP.GG name, this exploit had a **long downtime period**, but after rebranding (And possibly switching developers), all existing users were compensated, and it has been reliably updating ever since. ",
+        "fullDescription": "Volt (previously AWP.GG) is a premium Windows script executor costing $5.99 weekly, featuring: \n\n* Working Hyperion Emulation\n* VSCode IDE Style UI\n* 100% sUNC\n* Optimized Multi-Instance (Be sure to check out Volt’s tiers or consider purchasing the farmer package directly on [VOLTBZ.NET](https://voltbz.net), as they have an instance cap on their normal tiers!)\n* Fast updates under normal Roblox update conditions\n* Comes with a Account Manager built in\n* Comes with a Decompiler built in\n\n! Things to keep in mind: \n\n! While under the AWP.GG name, this exploit had a **long downtime period**, but after rebranding (And possibly switching developers), all existing users were compensated, and it has been reliably updating ever since. ",
         "logo": "https://cdn.weao.gg/slug/volt/logo.png",
         "owner": "Volt Team",
         "screenshots": [
@@ -618,11 +618,11 @@
       "elementCertified": true,
       "decompiler": true,
       "multiInject": true,
-      "suncPercentage": 93,
-      "uncPercentage": 98,
+      "suncPercentage": 98,
+      "uncPercentage": 99,
       "sunc": {
-        "suncScrap": "Nq85ySgjPqwHlTaF",
-        "suncKey": "OLvaXspQ6UTlY9pecPPINyVBIMC3Rc6Q"
+        "suncScrap": "xCHG6srSWRb8t5OY",
+        "suncKey": "DR9cyu4nTolMlDMsGfQwXr07F21RVNOz"
       },
       "__v": 1,
       "recommendedReason": {
@@ -1151,8 +1151,8 @@
     {
       "_id": "69f25c438d1db84cb50c8cfe",
       "title": "Madium",
-      "version": "1.7.5",
-      "updatedDate": "07/29/2026 at 4:52 AM UTC",
+      "version": "1.7.6",
+      "updatedDate": "07/30/2026 at 5:20 PM UTC",
       "uncStatus": true,
       "free": true,
       "detected": true,
