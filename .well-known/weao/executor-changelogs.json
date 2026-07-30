@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-07-30T11:09:58.757Z",
+  "fetchedAt": "2026-07-30T13:06:50.293Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -1425,8 +1425,8 @@
         "title": "Solara",
         "trackerId": "WEAO1af938a2",
         "_id": "66633ac4b29bacaa7a568fdc",
-        "version": "0.1.4c",
-        "updatedDate": "07/29/2026 at 6:51 PM UTC",
+        "version": "0.1.4d",
+        "updatedDate": "07/30/2026 at 2:08 AM UTC",
         "changelogs": {
           "trackerId": "WEAO1af938a2",
           "name": "solara",
@@ -2231,9 +2231,17 @@
               "date": "2026-07-29T18:51:43.873Z",
               "supportedRobloxVersion": "version-145f189a6a974303",
               "updated": true
+            },
+            {
+              "version": "0.1.4d",
+              "changelog": "[+] fixed mouse / input lib just not working sometimes",
+              "timestamp": 1785377281257,
+              "date": "2026-07-30T02:08:01.257Z",
+              "supportedRobloxVersion": "version-145f189a6a974303",
+              "updated": true
             }
           ],
-          "count": 100
+          "count": 101
         }
       },
       "WEAO2c8e5827": {
