@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-07-29T19:21:33.618Z",
+  "fetchedAt": "2026-07-30T11:09:58.757Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -2897,8 +2897,8 @@
         "title": "Velocity",
         "trackerId": "WEAO4a1e0747",
         "_id": "680eaddf8b44717c060fcf8d",
-        "version": "1.3.5",
-        "updatedDate": "07/29/2026 at 10:35 AM UTC",
+        "version": "1.3.6",
+        "updatedDate": "07/30/2026 at 3:06 AM UTC",
         "changelogs": {
           "trackerId": "WEAO4a1e0747",
           "name": "velocity",
@@ -4487,9 +4487,17 @@
               "date": "2026-07-29T10:35:11.399Z",
               "supportedRobloxVersion": "version-145f189a6a974303",
               "updated": true
+            },
+            {
+              "version": "1.3.6",
+              "changelog": "Swapped old decompiler for a custom velocity decompiler which can decompile 100k + line scripts in under 1 second (decompile func uses velocity decompiler)\nFixed execution not being in sync with Roblox which would cause crashes on execution\nFixed yielding causing stack corruptions and issues with functions under the yielded function not being able to error properly\nAdded decompile_legacy which just uses lua.expert decompiler incase you find issues with the velocity decompiler (decompile)\n---------------\nVelocity is now version 1.3.6\nClose the UI and reopen to apply the update. (Velocity Lite)",
+              "timestamp": 1785380765757,
+              "date": "2026-07-30T03:06:05.757Z",
+              "supportedRobloxVersion": "version-145f189a6a974303",
+              "updated": true
             }
           ],
-          "count": 198
+          "count": 199
         }
       },
       "WEAO74bee327": {
