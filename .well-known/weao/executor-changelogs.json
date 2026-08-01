@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-08-01T01:03:42.903Z",
+  "fetchedAt": "2026-08-01T04:53:21.036Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -6943,8 +6943,8 @@
         "title": "RbxCli",
         "trackerId": "WEAO957nhh9s",
         "_id": "6949f9ee0260ad9e36c73700",
-        "version": "1.9.18-beta",
-        "updatedDate": "07/26/2026 at 7:27 PM UTC",
+        "version": "1.9.19-beta",
+        "updatedDate": "08/01/2026 at 1:43 AM UTC",
         "changelogs": {
           "trackerId": "WEAO957nhh9s",
           "name": "rbxcli",
@@ -7781,9 +7781,17 @@
               "date": "2026-07-26T19:27:12.131Z",
               "supportedRobloxVersion": "version-ed2b47b81f08484a",
               "updated": true
+            },
+            {
+              "version": "1.9.19-beta",
+              "changelog": "Compensated 2 week(s) w/Account Reactivation.\r\n\r\nNo more tokens for you\r\n— Claude Fable 5 Max\r\n\r\n- Added back setting NetworkOwnerV3",
+              "timestamp": 1785548639580,
+              "date": "2026-08-01T01:43:59.580Z",
+              "supportedRobloxVersion": "version-145f189a6a974303",
+              "updated": true
             }
           ],
-          "count": 104
+          "count": 105
         }
       },
       "WEAO4a1j38nv": {
