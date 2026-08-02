@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-08-02T17:03:19.242Z",
+  "fetchedAt": "2026-08-02T18:30:21.208Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -1139,8 +1139,8 @@
         "title": "Cosmic",
         "trackerId": "WEAOmhg67xtg",
         "_id": "69cace8670a25244103ea819",
-        "version": "1.731",
-        "updatedDate": "07/22/2026 at 7:56 PM UTC",
+        "version": "1.732",
+        "updatedDate": "08/02/2026 at 6:28 PM UTC",
         "changelogs": {
           "trackerId": "WEAOmhg67xtg",
           "name": "cosmic",
@@ -1249,9 +1249,25 @@
               "date": "2026-07-22T19:56:38.147Z",
               "supportedRobloxVersion": "version-9affbe66b2624d20",
               "updated": true
+            },
+            {
+              "version": "0.732",
+              "changelog": "- Updated to latest game version\n- Implemented Hyperion Emulator (not a troll np hf!)",
+              "timestamp": 1785694801752,
+              "date": "2026-08-02T18:20:01.752Z",
+              "supportedRobloxVersion": "version-145f189a6a974303",
+              "updated": true
+            },
+            {
+              "version": "1.732",
+              "changelog": "- UI Hotfix, didn't change module version so homepage will say 0.732 js ignore that thx",
+              "timestamp": 1785695282367,
+              "date": "2026-08-02T18:28:02.367Z",
+              "supportedRobloxVersion": "version-145f189a6a974303",
+              "updated": true
             }
           ],
-          "count": 13
+          "count": 15
         }
       },
       "WEAO4a1f93j6": {
@@ -1433,8 +1449,8 @@
         "title": "Solara",
         "trackerId": "WEAO1af938a2",
         "_id": "66633ac4b29bacaa7a568fdc",
-        "version": "0.1.4d",
-        "updatedDate": "07/30/2026 at 2:08 AM UTC",
+        "version": "0.1.5",
+        "updatedDate": "08/02/2026 at 7:01 AM UTC",
         "changelogs": {
           "trackerId": "WEAO1af938a2",
           "name": "solara",
@@ -2247,9 +2263,17 @@
               "date": "2026-07-30T02:08:01.257Z",
               "supportedRobloxVersion": "version-145f189a6a974303",
               "updated": true
+            },
+            {
+              "version": "0.1.5",
+              "changelog": "[+] firetouchinterest & fireclickdetector are now real and pass sUNC\n[+] rare crash fix\n[+] ui bug fixes",
+              "timestamp": 1785654090678,
+              "date": "2026-08-02T07:01:30.678Z",
+              "supportedRobloxVersion": "version-145f189a6a974303",
+              "updated": true
             }
           ],
-          "count": 101
+          "count": 102
         }
       },
       "WEAO2c8e5827": {
@@ -7806,8 +7830,8 @@
         "title": "Madium",
         "trackerId": "WEAO4a1j38nv",
         "_id": "69f25c438d1db84cb50c8cfe",
-        "version": "1.7.8",
-        "updatedDate": "08/01/2026 at 12:57 AM UTC",
+        "version": "1.7.9",
+        "updatedDate": "08/01/2026 at 11:37 PM UTC",
         "changelogs": {
           "trackerId": "WEAO4a1j38nv",
           "name": "madium",

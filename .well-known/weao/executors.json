@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-08-02T08:55:05.268Z",
+  "fetchedAt": "2026-08-02T18:30:21.208Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -275,13 +275,13 @@
     {
       "_id": "69cace8670a25244103ea819",
       "title": "Cosmic",
-      "version": "1.731",
-      "updatedDate": "07/22/2026 at 7:56 PM UTC",
+      "version": "1.732",
+      "updatedDate": "08/02/2026 at 6:28 PM UTC",
       "uncStatus": true,
       "free": false,
       "detected": true,
-      "rbxversion": "version-9affbe66b2624d20",
-      "updateStatus": false,
+      "rbxversion": "version-145f189a6a974303",
+      "updateStatus": true,
       "discordlink": "https://discord.gg/getcosmic",
       "beta": false,
       "platform": "Windows",
