@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-08-02T18:30:21.208Z",
+  "fetchedAt": "2026-08-02T21:25:38.783Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -2294,8 +2294,8 @@
         "title": "Codex",
         "trackerId": "WEAO765cd973",
         "_id": "66ee1fcae70ddffe81ca0f0c",
-        "version": "2.729.840",
-        "updatedDate": "07/27/2026 at 6:54 PM UTC",
+        "version": "2.731.944",
+        "updatedDate": "08/02/2026 at 8:11 PM UTC",
         "changelogs": {
           "trackerId": "WEAO765cd973",
           "name": "codexandroid",
