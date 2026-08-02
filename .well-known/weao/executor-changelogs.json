@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-08-01T04:53:21.036Z",
+  "fetchedAt": "2026-08-02T17:03:19.242Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -1258,8 +1258,8 @@
         "title": "Real",
         "trackerId": "WEAO4a1f93j6",
         "_id": "6a5095abbb457d55d62f8061",
-        "version": "1.7.5",
-        "updatedDate": "07/28/2026 at 8:32 PM UTC",
+        "version": "1.8.0",
+        "updatedDate": "08/01/2026 at 2:42 PM UTC",
         "changelogs": {
           "trackerId": "WEAO4a1f93j6",
           "name": "real",
@@ -1416,9 +1416,17 @@
               "date": "2026-07-28T20:32:06.293Z",
               "supportedRobloxVersion": "version-145f189a6a974303",
               "updated": true
+            },
+            {
+              "version": "1.8.0",
+              "changelog": "* Performance Optimization\r\n* Redesigned Tooltips + Toast Notifications\r\n* Fixed Injector running multiple times\r\n* Added Grok preset for the MCP\r\n* Added `check-hook`, `inbound-spy`, `decode-buffer`, `record-session`, `update-game-memory`, `get-ui-library` to MCP\r\n* Added Device Reset flow (App -> Website)\r\n* Added Launch Roblox when opening Real\r\n* Fixed some installation issues + added fallbacks\r\n* Added the ability to drag the Sidebar in every tab\r\n* Added the ability to adjust the size of every Sidebar\r\n* Added the ability to set a RAM cap for every instance\r\n* Fixed Auto Cookie Refresh\r\n* Added button sounds\r\n* Added Auto-Execute for Account Groups\r\n* Updated test results inside the UI\r\n* Changed Monaco from LUA to Luau\r\n* Fixed MCP losing connection while in use\r\n* Added exclude `%temp%` (because of `Real.dll` getting flagged)\r\n* Smaller UI adjustments / redesigns\r\n",
+              "timestamp": 1785595365205,
+              "date": "2026-08-01T14:42:45.205Z",
+              "supportedRobloxVersion": "version-145f189a6a974303",
+              "updated": true
             }
           ],
-          "count": 19
+          "count": 20
         }
       },
       "WEAO1af938a2": {
