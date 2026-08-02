@@ -1,0 +1,53 @@
+name: Validate script catalog
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - scripts/catalog.json
+      - scripts/sync-script-catalog.js
+      - .github/workflows/script-catalog.yml
+  pull_request:
+    paths:
+      - scripts/catalog.json
+      - scripts/sync-script-catalog.js
+      - .github/workflows/script-catalog.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Validate pull request catalog
+        if: github.event_name == 'pull_request'
+        run: node scripts/sync-script-catalog.js
+
+      - name: Refresh universe mappings
+        if: github.event_name != 'pull_request'
+        run: node scripts/sync-script-catalog.js --write
+
+      - name: Commit refreshed mappings
+        if: github.event_name != 'pull_request'
+        run: |
+          if git diff --quiet scripts/catalog.json; then
+            echo "No changes to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add scripts/catalog.json
+          git commit -m "chore: refresh script catalog mappings [skip ci]"
+          git push
