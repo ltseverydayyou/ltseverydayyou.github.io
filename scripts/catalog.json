@@ -1,5 +1,33 @@
 {
   "schemaVersion": 1,
+  "_documentation": {
+    "note": "This object documents the catalog format. The website and Nameless Admin ignore it.",
+    "fields": {
+      "id": "Required. Unique lowercase kebab-case identifier, for example my-new-script.",
+      "name": "Required. Display name shown on the website and in Nameless Admin.",
+      "scriptUrl": "Required. HTTPS URL containing the raw Lua or Luau script.",
+      "status": "Required. Use supported, maintenance, or retired. Only supported entries trigger Nameless Admin alerts. Retired entries are hidden from the website.",
+      "placeIds": "Optional. Array of Roblox place ID strings. Used for website Play links and as a fallback when GameId matching finds nothing.",
+      "universeIds": "Optional for game scripts. Array of Roblox universe ID strings, which are the values returned by game.GameId. The sync workflow generates these from placeIds.",
+      "imageUrl": "Optional. HTTPS image URL used for the website card. Game scripts without one automatically use the Roblox game icon.",
+      "featured": "Optional boolean. Set true to pin the script near the top of the website catalog. Defaults to false."
+    },
+    "statusValues": {
+      "supported": "Visible on the website and eligible for Nameless Admin game alerts.",
+      "maintenance": "Visible on the website but excluded from Nameless Admin game alerts.",
+      "retired": "Hidden from the website and excluded from Nameless Admin game alerts."
+    },
+    "example": {
+      "id": "my-new-script",
+      "name": "My New Script",
+      "scriptUrl": "https://raw.githubusercontent.com/username/repository/main/script.luau",
+      "placeIds": ["123456789"],
+      "universeIds": ["987654321"],
+      "imageUrl": "https://example.com/image.png",
+      "featured": true,
+      "status": "supported"
+    }
+  },
   "scripts": [
     {
       "id": "na-main-version",
