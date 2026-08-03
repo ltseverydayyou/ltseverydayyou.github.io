@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-08-02T22:27:59.904Z",
+  "fetchedAt": "2026-08-03T03:21:12.300Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -103,11 +103,11 @@
       "cost": "$2.80 Weekly",
       "decompiler": true,
       "multiInject": true,
-      "suncPercentage": 94,
+      "suncPercentage": 100,
       "uncPercentage": 99,
       "sunc": {
-        "suncScrap": "IZ2ozXNNm5IkW94m",
-        "suncKey": "KGgWvHlfq08uaeB9yHt2eSKDBLraYAqO"
+        "suncScrap": "VQZS8tU1Lh4wFmXZ",
+        "suncKey": "ujbP8LPdMQcaSKWCFeGw2u3HadpgAnOI"
       },
       "__v": 1,
       "recommendedReason": {
