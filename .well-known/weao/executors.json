@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-08-04T12:26:03.238Z",
+  "fetchedAt": "2026-08-04T19:08:34.201Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -1074,8 +1074,8 @@
     {
       "_id": "69f25c438d1db84cb50c8cfe",
       "title": "Madium",
-      "version": "1.7.9",
-      "updatedDate": "08/01/2026 at 11:37 PM UTC",
+      "version": "2.0.0",
+      "updatedDate": "08/04/2026 at 6:28 PM UTC",
       "uncStatus": true,
       "free": true,
       "detected": true,
@@ -1118,7 +1118,8 @@
           "https://cdn.weao.gg/slug/madium/screenshot5.png",
           "https://cdn.weao.gg/slug/madium/screenshot6.png"
         ]
-      }
+      },
+      "keysystem": true
     },
     {
       "_id": "6a0ea99cfd26ad90bea624eb",
