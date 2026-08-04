@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-08-04T10:11:47.460Z",
+  "fetchedAt": "2026-08-04T12:26:03.238Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -7329,8 +7329,8 @@
         "title": "Opiumware",
         "trackerId": "WEAO442fb725",
         "_id": "69a4acadfa8a3af13c8930a9",
-        "version": "v2.4.6",
-        "updatedDate": "07/29/2026 at 3:38 AM UTC",
+        "version": "v2.4.8",
+        "updatedDate": "08/04/2026 at 4:24 AM UTC",
         "changelogs": {
           "trackerId": "WEAO442fb725",
           "name": "opiumware",
@@ -7511,9 +7511,17 @@
               "date": "2026-07-29T03:38:37.685Z",
               "supportedRobloxVersion": "version-d2cc326811844e9e",
               "updated": true
+            },
+            {
+              "version": "v2.4.8",
+              "changelog": "Updated.",
+              "timestamp": 1785817463736,
+              "date": "2026-08-04T04:24:23.736Z",
+              "supportedRobloxVersion": "version-d2cc326811844e9e",
+              "updated": true
             }
           ],
-          "count": 22
+          "count": 23
         }
       },
       "WEAOmhg67xtg": {
@@ -7694,8 +7702,8 @@
         "title": "Real",
         "trackerId": "WEAO4a1f93j6",
         "_id": "6a5095abbb457d55d62f8061",
-        "version": "1.8.0",
-        "updatedDate": "08/01/2026 at 2:42 PM UTC",
+        "version": "1.8.4",
+        "updatedDate": "08/04/2026 at 12:13 PM UTC",
         "changelogs": {
           "trackerId": "WEAO4a1f93j6",
           "name": "real",
@@ -7860,9 +7868,41 @@
               "date": "2026-08-01T14:42:45.205Z",
               "supportedRobloxVersion": "version-145f189a6a974303",
               "updated": true
+            },
+            {
+              "version": "1.8.1",
+              "changelog": "* Fixed system tray behavior on close\r\n* Fixed sidebar resizing being inverted\r\n* Added OpenCode MCP preset\r\n* Changed exclude path from `%temp%` to `%temp%\\Real.dll`\r\n* Added more secrets to Streamer Mode\r\n* Fixed render quality and FPS capping\r\n* More UI performance optimizations\r\n* Fixed more installation issues\r\n* Fixed Spoofer Auth + Loader issues (open a ticket if there are still problems)\r\n* Added Poison Script Theme + changed MIRKO KING Theme\r\n* Added lower CPU usage for background clients\r\n* Added LM Studio, OpenClaw, and ZCode AI Agent presets for MCP\r\n* Added music visualizer\r\n* Added the ability to add multiple accounts to multiple groups\r\n* Added syntax theme builder\r\n* Added `.md` preview\r\n* Added Windows notifications\r\n* Fixed a vulnerability that allowed bypassing the reset cooldown",
+              "timestamp": 1785763575919,
+              "date": "2026-08-03T13:26:15.919Z",
+              "supportedRobloxVersion": "version-145f189a6a974303",
+              "updated": true
+            },
+            {
+              "version": "1.8.2",
+              "changelog": "- Fixed Real not opening / failing to open",
+              "timestamp": 1785765021681,
+              "date": "2026-08-03T13:50:21.681Z",
+              "supportedRobloxVersion": "version-145f189a6a974303",
+              "updated": true
+            },
+            {
+              "version": "1.8.3",
+              "changelog": "- Fixed LAUNCH_PROCESS_EXITED",
+              "timestamp": 1785767549591,
+              "date": "2026-08-03T14:32:29.591Z",
+              "supportedRobloxVersion": "version-145f189a6a974303",
+              "updated": true
+            },
+            {
+              "version": "1.8.4",
+              "changelog": "- Added more diagnostic logs\r\n- More AV related fixes",
+              "timestamp": 1785845638640,
+              "date": "2026-08-04T12:13:58.640Z",
+              "supportedRobloxVersion": "version-145f189a6a974303",
+              "updated": true
             }
           ],
-          "count": 20
+          "count": 24
         }
       }
     }
