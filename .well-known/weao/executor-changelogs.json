@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-08-05T08:40:47.018Z",
+  "fetchedAt": "2026-08-05T11:23:00.584Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -6474,8 +6474,8 @@
         "title": "RbxCli",
         "trackerId": "WEAO957nhh9s",
         "_id": "6949f9ee0260ad9e36c73700",
-        "version": "1.9.19-beta",
-        "updatedDate": "08/01/2026 at 1:43 AM UTC",
+        "version": "1.9.19a-beta",
+        "updatedDate": "08/05/2026 at 2:32 AM UTC",
         "changelogs": {
           "trackerId": "WEAO957nhh9s",
           "name": "rbxcli",
@@ -7320,9 +7320,17 @@
               "date": "2026-08-01T01:43:59.580Z",
               "supportedRobloxVersion": "version-145f189a6a974303",
               "updated": true
+            },
+            {
+              "version": "1.9.19a-beta",
+              "changelog": "Compensated 4 hours.\r\n\r\n- Fixed authentication downtime.",
+              "timestamp": 1785897145015,
+              "date": "2026-08-05T02:32:25.015Z",
+              "supportedRobloxVersion": "version-145f189a6a974303",
+              "updated": true
             }
           ],
-          "count": 105
+          "count": 106
         }
       },
       "WEAO442fb725": {
@@ -7663,8 +7671,8 @@
         "title": "Madium",
         "trackerId": "WEAO4a1j38nv",
         "_id": "69f25c438d1db84cb50c8cfe",
-        "version": "1.7.9",
-        "updatedDate": "08/01/2026 at 11:37 PM UTC",
+        "version": "2.0.0",
+        "updatedDate": "08/04/2026 at 6:28 PM UTC",
         "changelogs": {
           "trackerId": "WEAO4a1j38nv",
           "name": "madium",
@@ -7679,9 +7687,17 @@
               "date": "2026-04-29T19:33:58.935Z",
               "supportedRobloxVersion": "version-acc4b74f79e743b9",
               "updated": true
+            },
+            {
+              "version": "2.0.0",
+              "changelog": "Initial V2 release",
+              "timestamp": 1785868102495,
+              "date": "2026-08-04T18:28:22.495Z",
+              "supportedRobloxVersion": "version-145f189a6a974303",
+              "updated": true
             }
           ],
-          "count": 1
+          "count": 2
         }
       },
       "WEAO76ngr5y7": {
