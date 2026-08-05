@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-08-04T12:26:03.238Z",
+  "fetchedAt": "2026-08-05T08:40:47.018Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -6460,8 +6460,8 @@
         "title": "Vega X",
         "trackerId": "WEAO8c4f2b91",
         "_id": "6949f6f40260ad9e36c736ff",
-        "version": "2.730.790",
-        "updatedDate": "07/28/2026 at 10:27 PM UTC",
+        "version": "2.732.1043",
+        "updatedDate": "08/05/2026 at 1:23 AM UTC",
         "changelogs": {
           "trackerId": "WEAO8c4f2b91",
           "name": "vegax",
