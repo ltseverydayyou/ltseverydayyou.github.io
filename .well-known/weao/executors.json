@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-08-05T05:48:37.850Z",
+  "fetchedAt": "2026-08-05T15:39:44.542Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -1073,8 +1073,8 @@
     {
       "_id": "69f25c438d1db84cb50c8cfe",
       "title": "Madium",
-      "version": "2.0.0",
-      "updatedDate": "08/04/2026 at 6:28 PM UTC",
+      "version": "2.0.2",
+      "updatedDate": "08/05/2026 at 2:55 PM UTC",
       "uncStatus": true,
       "free": true,
       "detected": true,

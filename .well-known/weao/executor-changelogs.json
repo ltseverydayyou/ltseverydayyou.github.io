@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-08-05T11:23:00.584Z",
+  "fetchedAt": "2026-08-05T15:39:44.542Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -7671,8 +7671,8 @@
         "title": "Madium",
         "trackerId": "WEAO4a1j38nv",
         "_id": "69f25c438d1db84cb50c8cfe",
-        "version": "2.0.0",
-        "updatedDate": "08/04/2026 at 6:28 PM UTC",
+        "version": "2.0.2",
+        "updatedDate": "08/05/2026 at 2:55 PM UTC",
         "changelogs": {
           "trackerId": "WEAO4a1j38nv",
           "name": "madium",
@@ -7695,9 +7695,25 @@
               "date": "2026-08-04T18:28:22.495Z",
               "supportedRobloxVersion": "version-145f189a6a974303",
               "updated": true
+            },
+            {
+              "version": "2.0.1",
+              "changelog": "+ fixed debug library functions not behaving as called under original oth thread\n+ improved oth\n+ added autoexec\n+ fixed drawing scaling\n+ fixed getcustomasset\n+ fixed hookfunction\n+ reworked console redirection",
+              "timestamp": 1785941010872,
+              "date": "2026-08-05T14:43:30.872Z",
+              "supportedRobloxVersion": "version-145f189a6a974303",
+              "updated": true
+            },
+            {
+              "version": "2.0.2",
+              "changelog": "Forgot To Update Madium Ui Lol",
+              "timestamp": 1785941730957,
+              "date": "2026-08-05T14:55:30.957Z",
+              "supportedRobloxVersion": "version-145f189a6a974303",
+              "updated": true
             }
           ],
-          "count": 2
+          "count": 4
         }
       },
       "WEAO76ngr5y7": {
