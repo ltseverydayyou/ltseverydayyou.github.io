@@ -11060,6 +11060,976 @@
             }
         }
 
+        /* Match script entries to the compact pinned-project card system. */
+        #ps .scripts-showcase__grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        #ps .scripts-showcase__grid > .sc {
+            border-radius: 8px;
+            border-color: rgba(255, 255, 255, 0.10);
+            background: rgba(7, 11, 20, 0.88);
+        }
+
+        #ps .scripts-showcase__grid > .sc.featured {
+            grid-column: auto;
+        }
+
+        #ps .scripts-showcase__grid > .sc:hover,
+        #ps .scripts-showcase__grid > .sc:focus-within {
+            transform: translateY(-4px);
+            border-color: rgba(114, 243, 182, 0.30);
+            box-shadow: 0 22px 46px rgba(0, 0, 0, 0.34), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+        }
+
+        #ps .scripts-showcase .sc_media {
+            aspect-ratio: 16 / 9;
+            border-radius: 7px 7px 0 0;
+        }
+
+        #ps .scripts-showcase .sc_badge,
+        #ps .sc_catalog-index,
+        #ps .sc_meta span,
+        #ps .sc_chip {
+            border-radius: 6px;
+        }
+
+        #ps .scripts-showcase .sc_body {
+            gap: 12px;
+            padding: 18px;
+        }
+
+        #ps .sc_source-row {
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        #ps .sc_source-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+        }
+
+        #ps .sc_title-row {
+            align-items: center;
+        }
+
+        #ps .sc_title-identity {
+            display: grid;
+            grid-template-columns: 42px minmax(0, 1fr);
+            align-items: center;
+            gap: 10px;
+            min-width: 0;
+        }
+
+        #ps .sc_title-icon {
+            display: block;
+            width: 42px;
+            height: 42px;
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            border-radius: 6px;
+            object-fit: cover;
+            background: #07101f;
+            box-shadow: 0 7px 16px rgba(0, 0, 0, 0.30);
+        }
+
+        #ps .sc_title-icon--fallback {
+            display: grid;
+            place-items: center;
+            color: rgba(255, 255, 255, 0.84);
+            font-size: 10px;
+            font-weight: 900;
+        }
+
+        #ps .scripts-showcase .sc .nm {
+            font-family: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+            font-size: clamp(20px, 2.5vw, 26px);
+            line-height: 1.08;
+            letter-spacing: 0;
+            overflow-wrap: anywhere;
+        }
+
+        #ps .scripts-showcase .sc_desc {
+            min-height: 38px;
+            font-size: 13px;
+        }
+
+        #ps .sc_meta span {
+            padding: 5px 7px;
+        }
+
+        #ps .scripts-showcase .sc_footer {
+            padding-top: 12px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        #ps .scripts-showcase .brw {
+            gap: 7px;
+        }
+
+        #ps .scripts-showcase .bn {
+            min-height: 36px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 6px;
+            box-shadow: none;
+        }
+
+        #ps .scripts-showcase .bn.cp,
+        #ps .scripts-showcase .bn.vw {
+            color: rgba(255, 255, 255, 0.90);
+            background: rgba(255, 255, 255, 0.07);
+        }
+
+        #ps .scripts-showcase .bn.gm {
+            color: #07130f;
+            background: var(--ok);
+        }
+
+        #ps .scripts-showcase[data-script-view="compact"] .scripts-showcase__grid > .sc {
+            grid-template-columns: minmax(220px, 300px) minmax(0, 1fr);
+        }
+
+        #ps .scripts-showcase[data-script-view="compact"] .sc_media {
+            border-radius: 7px 0 0 7px;
+        }
+
+        @media (max-width: 760px) {
+            #ps .scripts-showcase__grid {
+                grid-template-columns: 1fr;
+            }
+
+            #ps .scripts-showcase[data-script-view="compact"] .scripts-showcase__grid > .sc {
+                grid-template-columns: 1fr;
+            }
+
+            #ps .scripts-showcase[data-script-view="compact"] .sc_media {
+                aspect-ratio: 16 / 9;
+                border-radius: 7px 7px 0 0;
+            }
+        }
+
+        @media (max-width: 420px) {
+            #ps .sc_title-identity {
+                grid-template-columns: 38px minmax(0, 1fr);
+            }
+
+            #ps .sc_title-icon {
+                width: 38px;
+                height: 38px;
+            }
+        }
+
+        /* Personal social directory on the Home view. */
+        .home-social-hub {
+            position: relative;
+            display: grid;
+            gap: 22px;
+            width: min(1180px, 92%);
+            margin: clamp(24px, 4vw, 46px) auto;
+            padding: clamp(20px, 3.5vw, 34px);
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.10);
+            border-radius: 8px;
+            background:
+                linear-gradient(135deg, rgba(24, 32, 45, 0.74), rgba(8, 12, 20, 0.94) 46%),
+                #080c14;
+            box-shadow: 0 22px 54px rgba(0, 0, 0, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        }
+
+        .home-social-hub::before {
+            content: "";
+            position: absolute;
+            inset: 0 0 auto;
+            height: 3px;
+            background: linear-gradient(90deg, #58d7b6, #5f8cff, #ff6f91, #f5c451);
+        }
+
+        .home-social-hub__header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 22px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+        }
+
+        .home-social-hub__identity {
+            display: grid;
+            grid-template-columns: 72px minmax(0, 1fr);
+            align-items: center;
+            gap: 16px;
+            min-width: 0;
+        }
+
+        .home-social-hub__avatar {
+            display: block;
+            width: 72px;
+            height: 72px;
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            border-radius: 8px;
+            object-fit: cover;
+            background: #0b111c;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.34);
+        }
+
+        .home-social-hub__copy {
+            display: grid;
+            gap: 4px;
+            min-width: 0;
+        }
+
+        .home-social-hub__eyebrow {
+            color: #72f3b6;
+            font-size: 10px;
+            font-weight: 900;
+            letter-spacing: 0.10em;
+            text-transform: uppercase;
+        }
+
+        .home-social-hub__copy h2 {
+            margin: 0;
+            color: #fff;
+            font-family: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+            font-size: clamp(28px, 4vw, 42px);
+            line-height: 1.04;
+            letter-spacing: 0;
+        }
+
+        .home-social-hub__copy p {
+            margin: 0;
+            color: rgba(231, 233, 238, 0.62);
+            font-size: 13px;
+            overflow-wrap: anywhere;
+        }
+
+        .home-social-hub__count {
+            flex: 0 0 auto;
+            display: grid;
+            min-width: 96px;
+            padding-left: 22px;
+            border-left: 1px solid rgba(255, 255, 255, 0.10);
+        }
+
+        .home-social-hub__count strong {
+            color: #fff;
+            font: 700 32px/1 "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+        }
+
+        .home-social-hub__count span {
+            color: rgba(231, 233, 238, 0.48);
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .home-social-hub__grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 10px;
+        }
+
+        .home-social-hub .home-social-card {
+            --social-accent: #80a7c7;
+            position: relative;
+            grid-column: auto;
+            display: grid;
+            grid-template-columns: 46px minmax(0, 1fr) 28px;
+            align-items: center;
+            gap: 11px;
+            min-height: 110px;
+            padding: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            border-radius: 8px;
+            color: var(--tx);
+            text-decoration: none;
+            background: color-mix(in srgb, var(--social-accent) 7%, rgba(255, 255, 255, 0.035));
+            box-shadow: none;
+            transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+        }
+
+        .home-social-hub .home-social-card:first-child {
+            grid-column: auto;
+            min-height: 110px;
+            background: color-mix(in srgb, var(--social-accent) 7%, rgba(255, 255, 255, 0.035));
+        }
+
+        .home-social-hub .home-social-card::before {
+            display: none;
+        }
+
+        .home-social-hub .home-social-card::after {
+            content: "";
+            position: absolute;
+            inset: 0 auto 0 0;
+            width: 3px;
+            background: var(--social-accent);
+            opacity: 0.78;
+            transition: width 0.2s ease, opacity 0.2s ease;
+        }
+
+        .home-social-hub .home-social-card:hover,
+        .home-social-hub .home-social-card:focus-visible {
+            transform: translateY(-3px);
+            border-color: color-mix(in srgb, var(--social-accent) 45%, rgba(255, 255, 255, 0.12));
+            background: color-mix(in srgb, var(--social-accent) 13%, rgba(255, 255, 255, 0.045));
+            box-shadow: 0 16px 30px rgba(0, 0, 0, 0.24);
+        }
+
+        .home-social-hub .home-social-card:focus-visible {
+            outline: 2px solid var(--social-accent);
+            outline-offset: 3px;
+        }
+
+        .home-social-hub .home-social-card:hover::after,
+        .home-social-hub .home-social-card:focus-visible::after {
+            width: 5px;
+            opacity: 1;
+        }
+
+        .home-social-hub .home-social-card__icon {
+            width: 46px;
+            height: 46px;
+            border-color: color-mix(in srgb, var(--social-accent) 38%, rgba(255, 255, 255, 0.10));
+            border-radius: 6px;
+            background: color-mix(in srgb, var(--social-accent) 18%, rgba(5, 8, 16, 0.88));
+            box-shadow: none;
+        }
+
+        .home-social-hub .home-social-card__icon img {
+            width: 28px;
+            height: 28px;
+        }
+
+        .home-social-hub .home-social-card__copy {
+            gap: 5px;
+        }
+
+        .home-social-hub .home-social-card__copy strong {
+            font-family: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+            font-size: 15px;
+            letter-spacing: 0;
+        }
+
+        .home-social-hub .home-social-card__copy span {
+            width: auto;
+            padding: 0;
+            border-radius: 0;
+            color: rgba(231, 233, 238, 0.52);
+            background: transparent;
+            font-size: 10px;
+            line-height: 1.35;
+        }
+
+        .home-social-hub .home-social-card__arrow {
+            display: grid;
+            place-items: center;
+            width: 28px;
+            height: 28px;
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            border-radius: 6px;
+            color: var(--social-accent);
+            background: rgba(255, 255, 255, 0.04);
+            font-size: 14px;
+            transform: none;
+        }
+
+        .home-social-hub .home-social-card:hover .home-social-card__arrow {
+            color: #fff;
+            transform: translate(2px, -2px);
+        }
+
+        .home-social-card[data-social="scriptblox"] { --social-accent: #62e6d0; }
+        .home-social-card[data-social="rscripts"] { --social-accent: #a6e36d; }
+        .home-social-card[data-social="discord"] { --social-accent: #8793ff; }
+        .home-social-card[data-social="guns"] { --social-accent: #63b3ed; }
+        .home-social-card[data-social="github"] { --social-accent: #d6d8dc; }
+        .home-social-card[data-social="kofi"] { --social-accent: #ff6f7d; }
+        .home-social-card[data-social="spotify"] { --social-accent: #5ee883; }
+        .home-social-card[data-social="steam"] { --social-accent: #6db7e8; }
+
+        .home-social-hub__footer {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            padding-top: 18px;
+            border-top: 1px solid rgba(255, 255, 255, 0.09);
+        }
+
+        .home-social-hub__footer > div {
+            display: grid;
+            gap: 2px;
+            min-width: 0;
+            padding: 0 18px;
+            border-right: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .home-social-hub__footer > div:first-child {
+            padding-left: 0;
+        }
+
+        .home-social-hub__footer > div:last-child {
+            padding-right: 0;
+            border-right: 0;
+        }
+
+        .home-social-hub__footer strong {
+            color: #fff;
+            font: 700 18px/1.2 "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+            overflow-wrap: anywhere;
+        }
+
+        .home-social-hub__footer span {
+            color: rgba(231, 233, 238, 0.46);
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        @media (max-width: 980px) {
+            .home-social-hub__grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 640px) {
+            .home-social-hub {
+                width: min(100%, calc(100% - 20px));
+                gap: 18px;
+                padding: 18px;
+            }
+
+            .home-social-hub__header {
+                align-items: flex-start;
+            }
+
+            .home-social-hub__identity {
+                grid-template-columns: 56px minmax(0, 1fr);
+                gap: 12px;
+            }
+
+            .home-social-hub__avatar {
+                width: 56px;
+                height: 56px;
+            }
+
+            .home-social-hub__copy h2 {
+                font-size: 27px;
+            }
+
+            .home-social-hub__count {
+                min-width: 52px;
+                padding-left: 12px;
+            }
+
+            .home-social-hub__count strong {
+                font-size: 24px;
+            }
+
+            .home-social-hub__grid {
+                grid-template-columns: 1fr;
+            }
+
+            .home-social-hub .home-social-card,
+            .home-social-hub .home-social-card:first-child {
+                min-height: 88px;
+            }
+        }
+
+        @media (max-width: 440px) {
+            .home-social-hub__header {
+                display: grid;
+            }
+
+            .home-social-hub__count {
+                display: flex;
+                align-items: baseline;
+                gap: 7px;
+                padding: 10px 0 0;
+                border-top: 1px solid rgba(255, 255, 255, 0.08);
+                border-left: 0;
+            }
+
+            .home-social-hub__footer {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .home-social-hub__footer > div,
+            .home-social-hub__footer > div:first-child,
+            .home-social-hub__footer > div:last-child {
+                padding: 0 0 10px;
+                border-right: 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+            }
+
+            .home-social-hub__footer > div:last-child {
+                padding-bottom: 0;
+                border-bottom: 0;
+            }
+        }
+
+        /* Active Roblox projects pinned to the Home view. */
+        .pinned-games {
+            position: relative;
+            margin: clamp(26px, 5vw, 54px) 0;
+            padding: clamp(24px, 4vw, 40px) 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .pinned-games__header {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            gap: 20px;
+            align-items: end;
+            margin-bottom: 20px;
+        }
+
+        .pinned-games__eyebrow {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 0 0 10px;
+            color: var(--ok);
+            font-size: 11px;
+            font-weight: 900;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .pinned-games__eyebrow::before {
+            content: "";
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--ok);
+            box-shadow: 0 0 14px rgba(114, 243, 182, 0.72);
+        }
+
+        .pinned-games h2 {
+            margin: 0;
+            color: #fff;
+            font-family: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+            font-size: clamp(30px, 5vw, 54px);
+            line-height: 1;
+            letter-spacing: 0;
+        }
+
+        .pinned-games__intro {
+            max-width: 62ch;
+            margin: 12px 0 0;
+            color: rgba(231, 233, 238, 0.66);
+            font-size: 14px;
+        }
+
+        .pinned-games__count {
+            display: grid;
+            justify-items: end;
+            gap: 2px;
+            min-width: 120px;
+        }
+
+        .pinned-games__count strong {
+            color: #fff;
+            font: 700 32px/1 "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+        }
+
+        .pinned-games__count span {
+            color: rgba(231, 233, 238, 0.48);
+            font-size: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .pinned-games__grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px;
+        }
+
+        .pinned-game-card {
+            position: relative;
+            display: grid;
+            grid-template-rows: auto 1fr;
+            min-width: 0;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: var(--tx);
+            text-decoration: none;
+            background: rgba(7, 11, 20, 0.78);
+            box-shadow: 0 18px 46px rgba(0, 0, 0, 0.24);
+            transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+        }
+
+        .pinned-game-card:hover,
+        .pinned-game-card:focus-within {
+            transform: translateY(-4px);
+            border-color: rgba(114, 243, 182, 0.42);
+            box-shadow: 0 26px 58px rgba(0, 0, 0, 0.34);
+        }
+
+        .pinned-game-card__media {
+            position: relative;
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+            background: #07101f;
+        }
+
+        .pinned-game-card__media img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+            transition: transform 0.35s ease, filter 0.35s ease;
+        }
+
+        .pinned-game-card:hover .pinned-game-card__media img,
+        .pinned-game-card:focus-within .pinned-game-card__media img {
+            transform: scale(1.025);
+            filter: saturate(1.08);
+        }
+
+        .pinned-game-card__media::after {
+            content: "";
+            position: absolute;
+            inset: 42% 0 0;
+            background: linear-gradient(180deg, transparent, rgba(7, 11, 20, 0.92));
+            pointer-events: none;
+        }
+
+        .pinned-game-card__status {
+            position: absolute;
+            z-index: 1;
+            top: 12px;
+            left: 12px;
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 7px 9px;
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            border-radius: 6px;
+            color: #fff;
+            background: rgba(5, 10, 16, 0.78);
+            backdrop-filter: blur(10px);
+            font-size: 10px;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        .pinned-game-card__status::before {
+            content: "";
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--ok);
+            box-shadow: 0 0 10px rgba(114, 243, 182, 0.74);
+        }
+
+        .pinned-game-card__body {
+            display: grid;
+            grid-template-rows: auto auto 1fr auto;
+            gap: 10px;
+            min-width: 0;
+            padding: 18px;
+        }
+
+        .pinned-game-card__overline {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            color: rgba(231, 233, 238, 0.46);
+            font-size: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .pinned-game-card__overline span:last-child {
+            overflow: hidden;
+            text-align: right;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .pinned-game-card h3 {
+            margin: 0;
+            color: #fff;
+            font-family: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+            font-size: clamp(22px, 3vw, 30px);
+            line-height: 1.08;
+            letter-spacing: 0;
+            overflow-wrap: anywhere;
+        }
+
+        .pinned-game-card__title-row {
+            display: grid;
+            grid-template-columns: 42px minmax(0, 1fr);
+            gap: 10px;
+            align-items: center;
+        }
+
+        .pinned-game-card__icon {
+            display: block;
+            width: 42px;
+            height: 42px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 6px;
+            object-fit: cover;
+            background: #07101f;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.26);
+        }
+
+        .pinned-game-card__description {
+            margin: 0;
+            color: rgba(231, 233, 238, 0.62);
+            font-size: 13px;
+        }
+
+        .pinned-game-card__footer {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 14px;
+            padding-top: 12px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .pinned-game-card__id {
+            display: grid;
+            gap: 2px;
+            min-width: 0;
+        }
+
+        .pinned-game-card__id span {
+            color: rgba(231, 233, 238, 0.4);
+            font-size: 9px;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .pinned-game-card__id strong {
+            color: rgba(255, 255, 255, 0.82);
+            font: 700 12px/1.3 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        }
+
+        .pinned-game-card__cta {
+            display: flex;
+            flex: 0 0 auto;
+            gap: 7px;
+        }
+
+        .pinned-game-card__action {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            min-height: 36px;
+            padding: 0 12px;
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            border-radius: 6px;
+            color: rgba(255, 255, 255, 0.82);
+            text-decoration: none;
+            background: rgba(255, 255, 255, 0.06);
+            font-size: 11px;
+            font-weight: 900;
+            transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+        }
+
+        .pinned-game-card__action:hover,
+        .pinned-game-card__action:focus-visible {
+            transform: translateY(-2px);
+            border-color: rgba(255, 255, 255, 0.26);
+            background: rgba(255, 255, 255, 0.1);
+            outline: none;
+        }
+
+        .pinned-game-card__action--play {
+            border-color: rgba(114, 243, 182, 0.38);
+            color: #07130f;
+            background: var(--ok);
+        }
+
+        .pinned-game-card__action--play:hover,
+        .pinned-game-card__action--play:focus-visible {
+            border-color: var(--ok);
+            background: #9ff8cf;
+        }
+
+        .pinned-game-card__places {
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .pinned-game-card__places summary {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto 18px;
+            gap: 8px;
+            align-items: center;
+            min-height: 42px;
+            color: rgba(255, 255, 255, 0.84);
+            cursor: pointer;
+            font-size: 11px;
+            font-weight: 900;
+            list-style: none;
+        }
+
+        .pinned-game-card__places summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .pinned-game-card__places-count {
+            color: rgba(231, 233, 238, 0.46);
+            font-size: 9px;
+            text-transform: uppercase;
+        }
+
+        .pinned-game-card__places-chevron {
+            color: var(--ok);
+            font-size: 16px;
+            text-align: center;
+            transition: transform 0.2s ease;
+        }
+
+        .pinned-game-card__places[open] .pinned-game-card__places-chevron {
+            transform: rotate(180deg);
+        }
+
+        .pinned-game-card__places-list {
+            display: grid;
+            gap: 2px;
+            max-height: 250px;
+            padding: 2px 0 4px;
+            overflow-y: auto;
+            scrollbar-color: rgba(114, 243, 182, 0.32) rgba(255, 255, 255, 0.04);
+            scrollbar-width: thin;
+        }
+
+        .pinned-game-place {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            gap: 10px;
+            align-items: center;
+            min-height: 46px;
+            padding: 7px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .pinned-game-place__copy {
+            display: grid;
+            min-width: 0;
+            gap: 2px;
+        }
+
+        .pinned-game-place__copy strong {
+            overflow: hidden;
+            color: rgba(255, 255, 255, 0.84);
+            font-size: 11px;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .pinned-game-place__copy span,
+        .pinned-game-card__places-empty {
+            color: rgba(231, 233, 238, 0.42);
+            font-size: 9px;
+            font-weight: 700;
+        }
+
+        .pinned-game-place__actions {
+            display: flex;
+            gap: 5px;
+        }
+
+        .pinned-game-place__action {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 48px;
+            min-height: 30px;
+            padding: 0 8px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 5px;
+            color: rgba(255, 255, 255, 0.76);
+            text-decoration: none;
+            background: rgba(255, 255, 255, 0.05);
+            font-size: 9px;
+            font-weight: 900;
+        }
+
+        .pinned-game-place__action--play {
+            border-color: rgba(114, 243, 182, 0.28);
+            color: #07130f;
+            background: var(--ok);
+        }
+
+        .pinned-game-place__action:hover,
+        .pinned-game-place__action:focus-visible {
+            border-color: rgba(255, 255, 255, 0.28);
+            filter: brightness(1.06);
+            outline: none;
+        }
+
+        .pinned-game-card__places-empty {
+            margin: 0;
+            padding: 10px 0;
+        }
+
+        @media (max-width: 760px) {
+            .pinned-games__header {
+                grid-template-columns: 1fr;
+                align-items: start;
+            }
+
+            .pinned-games__count {
+                grid-auto-flow: column;
+                align-items: baseline;
+                justify-content: start;
+                justify-items: start;
+            }
+
+            .pinned-games__count strong {
+                font-size: 22px;
+            }
+
+            .pinned-games__grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .pinned-game-card__footer {
+                align-items: start;
+                flex-direction: column;
+            }
+
+            .pinned-game-card__cta {
+                width: 100%;
+            }
+
+            .pinned-game-card__action {
+                flex: 1 1 0;
+            }
+
+            .pinned-game-place {
+                grid-template-columns: 1fr;
+            }
+
+            .pinned-game-place__actions {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .pinned-game-card,
+            .pinned-game-card__media img,
+            .pinned-game-card__action,
+            .pinned-game-card__places-chevron {
+                transition: none !important;
+            }
+        }
+
 </style>
 </head>
 
@@ -11168,14 +12138,27 @@
             </div>
 
             <section id="ph" class="pp on">
-                <div class="g home-dashboard home-dashboard--socials">
-                    <span class="home-dashboard__orb home-dashboard__orb--one" aria-hidden="true"></span>
-                    <span class="home-dashboard__orb home-dashboard__orb--two" aria-hidden="true"></span>
-                    <div class="home-dashboard__copy home-dashboard__copy--socials">
-                        <span class="home-dashboard__label">Socials</span>
-                    </div>
-                    <div class="home-dashboard__visual home-dashboard__visual--socials" id="home_socials" aria-label="Social links"></div>
-                    <div class="home-dashboard__stats" aria-label="Home summary">
+                <section class="g home-social-hub" aria-labelledby="home-social-title">
+                    <header class="home-social-hub__header">
+                        <div class="home-social-hub__identity">
+                            <img class="home-social-hub__avatar"
+                                src="https://avatars.githubusercontent.com/u/117316014?v=4"
+                                alt="Vyperia" />
+                            <div class="home-social-hub__copy">
+                                <span class="home-social-hub__eyebrow">Socials</span>
+                                <h2 id="home-social-title">useless mf</h2>
+                                <p>@ltseverydayyou · Roblox developer and script creator</p>
+                            </div>
+                        </div>
+                        <div class="home-social-hub__count" aria-label="Social link count">
+                            <strong id="hero-link-count">0</strong>
+                            <span>profiles</span>
+                        </div>
+                    </header>
+
+                    <nav class="home-social-hub__grid" id="home_socials" aria-label="Vyperia social profiles"></nav>
+
+                    <footer class="home-social-hub__footer" aria-label="Site summary">
                         <div>
                             <strong id="hero-script-count">0</strong>
                             <span>scripts ready</span>
@@ -11185,11 +12168,128 @@
                             <span>executors tracked</span>
                         </div>
                         <div>
-                            <strong id="hero-link-count">0</strong>
-                            <span>quick links</span>
+                            <strong>Always</strong>
+                            <span>building something</span>
+                        </div>
+                    </footer>
+                </section>
+                <section class="pinned-games" id="pinned-games" aria-labelledby="pinned-games-title">
+                    <div class="pinned-games__header">
+                        <div>
+                            <p class="pinned-games__eyebrow">Roblox development</p>
+                            <h2 id="pinned-games-title">Pinned Games</h2>
+                            <p class="pinned-games__intro">
+                                Games I am actively developing, working on, or contributing to.
+                            </p>
+                        </div>
+                        <div class="pinned-games__count" aria-label="2 active games">
+                            <strong>02</strong>
+                            <span>Active games</span>
                         </div>
                     </div>
-                </div>
+
+                    <div class="pinned-games__grid">
+                        <article class="pinned-game-card" data-pinned-universe-id="2059834811"
+                            data-pinned-root-place-id="5804022192"
+                            aria-labelledby="pinned-game-pfe-title">
+                            <div class="pinned-game-card__media">
+                                <img data-pinned-game-banner
+                                    src="https://tr.rbxcdn.com/180DAY-b9bc2dc9af5abef05d9759c21fcf7d0b/768/432/Image/Png/noFilter"
+                                    alt="Pro Flood Escape Roblox game" loading="lazy" />
+                                <span class="pinned-game-card__status">Active project</span>
+                            </div>
+                            <div class="pinned-game-card__body">
+                                <div class="pinned-game-card__overline">
+                                    <span>01 / Pinned</span>
+                                    <span>PRØ GAM€RS</span>
+                                </div>
+                                <div class="pinned-game-card__title-row">
+                                    <img class="pinned-game-card__icon" data-pinned-game-icon
+                                        src="https://tr.rbxcdn.com/180DAY-43d78cf92faddbd031bf9e0ebde99748/512/512/Image/Png/noFilter"
+                                        alt="" loading="lazy" />
+                                    <h3 id="pinned-game-pfe-title">Pro Flood Escape</h3>
+                                </div>
+                                <p class="pinned-game-card__description">
+                                    Race rising water, unlock escape routes, and master a growing collection of community maps.
+                                </p>
+                                <div class="pinned-game-card__footer">
+                                    <span class="pinned-game-card__id">
+                                        <span>Universe ID</span>
+                                        <strong>2059834811</strong>
+                                    </span>
+                                    <span class="pinned-game-card__cta">
+                                        <a class="pinned-game-card__action"
+                                            href="https://www.roblox.com/games/5804022192/Pro-Flood-Escape"
+                                            target="_blank" rel="noopener noreferrer">View <span aria-hidden="true">↗</span></a>
+                                        <a class="pinned-game-card__action pinned-game-card__action--play"
+                                            href="https://www.roblox.com/games/start?placeId=5804022192&amp;launchData="
+                                            aria-label="Play Pro Flood Escape in Roblox"><span aria-hidden="true">▶</span> Play</a>
+                                    </span>
+                                </div>
+                                <details class="pinned-game-card__places">
+                                    <summary>
+                                        <span>Places</span>
+                                        <span class="pinned-game-card__places-count" data-pinned-places-count>Loading</span>
+                                        <span class="pinned-game-card__places-chevron" aria-hidden="true">⌄</span>
+                                    </summary>
+                                    <div class="pinned-game-card__places-list" data-pinned-places-list>
+                                        <p class="pinned-game-card__places-empty">Loading places...</p>
+                                    </div>
+                                </details>
+                            </div>
+                        </article>
+
+                        <article class="pinned-game-card" data-pinned-universe-id="7783377071"
+                            data-pinned-root-place-id="89581504544697"
+                            aria-labelledby="pinned-game-dreadborne-title">
+                            <div class="pinned-game-card__media">
+                                <img data-pinned-game-banner
+                                    src="https://tr.rbxcdn.com/180DAY-2db260113ece7786e9046c8153e73cd2/768/432/GameMediaItem10/Png/noFilter"
+                                    alt="DREADBORNE Roblox game" loading="lazy" />
+                                <span class="pinned-game-card__status">Active project</span>
+                            </div>
+                            <div class="pinned-game-card__body">
+                                <div class="pinned-game-card__overline">
+                                    <span>02 / Pinned</span>
+                                    <span>Dreadborne DEV-TEAM</span>
+                                </div>
+                                <div class="pinned-game-card__title-row">
+                                    <img class="pinned-game-card__icon" data-pinned-game-icon
+                                        src="https://tr.rbxcdn.com/180DAY-e3e674dbd89e2c152762fe6fffe0590a/512/512/Image/Png/noFilter"
+                                        alt="" loading="lazy" />
+                                    <h3 id="pinned-game-dreadborne-title">DREADBORNE</h3>
+                                </div>
+                                <p class="pinned-game-card__description">
+                                    An in-development Roblox game built with the Dreadborne development team.
+                                </p>
+                                <div class="pinned-game-card__footer">
+                                    <span class="pinned-game-card__id">
+                                        <span>Universe ID</span>
+                                        <strong>7783377071</strong>
+                                    </span>
+                                    <span class="pinned-game-card__cta">
+                                        <a class="pinned-game-card__action"
+                                            href="https://www.roblox.com/games/89581504544697/DREADBORNE"
+                                            target="_blank" rel="noopener noreferrer">View <span aria-hidden="true">↗</span></a>
+                                        <a class="pinned-game-card__action pinned-game-card__action--play"
+                                            href="https://www.roblox.com/games/start?placeId=89581504544697&amp;launchData="
+                                            aria-label="Play DREADBORNE in Roblox"><span aria-hidden="true">▶</span> Play</a>
+                                    </span>
+                                </div>
+                                <details class="pinned-game-card__places">
+                                    <summary>
+                                        <span>Places</span>
+                                        <span class="pinned-game-card__places-count" data-pinned-places-count>Loading</span>
+                                        <span class="pinned-game-card__places-chevron" aria-hidden="true">⌄</span>
+                                    </summary>
+                                    <div class="pinned-game-card__places-list" data-pinned-places-list>
+                                        <p class="pinned-game-card__places-empty">Loading places...</p>
+                                    </div>
+                                </details>
+                            </div>
+                        </article>
+                    </div>
+                </section>
                 <div id="home_sections"></div>
             </section>
 
@@ -11488,76 +12588,146 @@
             </section>
 
             <section id="pu" class="pp">
-                <div class="g ed">
-                    <div class="versions-panel__header">
-                        <h3>Roblox Bootstrappers</h3>
+                <div class="g ed bootstrapper-catalog">
+                    <header class="bootstrapper-catalog__header">
+                        <div>
+                            <p class="bootstrapper-catalog__eyebrow">Client launchers</p>
+                            <h3>Roblox Bootstrappers</h3>
+                            <p class="bootstrapper-catalog__intro">
+                                A focused directory of alternative Roblox launchers and their official project links.
+                            </p>
+                        </div>
+                        <div class="bootstrapper-catalog__count" aria-label="4 bootstrappers listed">
+                            <strong>04</strong>
+                            <span>tracked tools</span>
+                        </div>
+                    </header>
+
+                    <div class="bootstrapper-catalog__summary" aria-label="Bootstrapper directory summary">
+                        <span>Windows tools</span>
+                        <span>4 websites</span>
+                        <span>3 source links</span>
                     </div>
+
                     <div class="bootstrappers-grid">
                         <article class="bootstrapper-card bootstrapper-card--featured">
-                            <span class="bootstrapper-card__rank">Recommended</span>
-                            <div class="bootstrapper-card__brand">
-                                <div class="bootstrapper-card__logo-cycle" aria-hidden="true">
-                                    <img class="bootstrapper-card__logo"
-                                        src="https://raw.githubusercontent.com/KloBraticc/Voidstrap/refs/heads/main/Images/Voidstrap.png"
-                                        alt="" />
-                                    <img class="bootstrapper-card__logo"
-                                        src="https://raw.githubusercontent.com/KloBraticc/Voidstrap/refs/heads/main/Bloxstrap/Voidstrap.png"
-                                        alt="" />
+                            <div class="bootstrapper-card__top">
+                                <div class="bootstrapper-card__brand">
+                                    <div class="bootstrapper-card__logo-cycle" aria-hidden="true">
+                                        <img class="bootstrapper-card__logo"
+                                            src="https://raw.githubusercontent.com/KloBraticc/Voidstrap/refs/heads/main/Images/Voidstrap.png"
+                                            alt="" />
+                                        <img class="bootstrapper-card__logo"
+                                            src="https://raw.githubusercontent.com/KloBraticc/Voidstrap/refs/heads/main/Bloxstrap/Voidstrap.png"
+                                            alt="" />
+                                    </div>
+                                    <div>
+                                        <span class="bootstrapper-card__type">Roblox bootstrapper</span>
+                                        <h4 class="bootstrapper-card__name">Voidstrap</h4>
+                                    </div>
                                 </div>
-                                <h4 class="bootstrapper-card__name">Voidstrap</h4>
+                                <span class="bootstrapper-card__rank">Recommended</span>
                             </div>
+
+                            <p class="bootstrapper-card__description">The recommended starting point from this collection.</p>
+
+                            <dl class="bootstrapper-card__facts">
+                                <div><dt>Website</dt><dd>Available</dd></div>
+                                <div><dt>Source</dt><dd>Available</dd></div>
+                            </dl>
+
                             <div class="bootstrapper-card__links">
-                                <a href="https://voidstrapp.pages.dev" target="_blank"
-                                    rel="noopener noreferrer">Website</a>
+                                <a class="bootstrapper-card__link--primary" href="https://voidstrapp.pages.dev"
+                                    target="_blank" rel="noopener noreferrer">Website <span aria-hidden="true">↗</span></a>
                                 <a href="https://github.com/KloBraticc/Voidstrap" target="_blank"
-                                    rel="noopener noreferrer">GitHub</a>
+                                    rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
                             </div>
                         </article>
 
                         <article class="bootstrapper-card bootstrapper-card--exploitstrap">
-                            <span class="bootstrapper-card__rank">Executor Focused</span>
-                            <div class="bootstrapper-card__brand">
-                                <img class="bootstrapper-card__logo"
-                                    src="https://sirmemegithub.com/RealSlimShady2000/MrExLiveChannelForcer/raw/branch/main/MrExStrap/Resources/ExploitStrapIcon.png"
-                                    alt="ExploitStrap logo" />
-                                <h4 class="bootstrapper-card__name">ExploitStrap</h4>
+                            <div class="bootstrapper-card__top">
+                                <div class="bootstrapper-card__brand">
+                                    <img class="bootstrapper-card__logo"
+                                        src="https://sirmemegithub.com/RealSlimShady2000/MrExLiveChannelForcer/raw/branch/main/MrExStrap/Resources/ExploitStrapIcon.png"
+                                        alt="ExploitStrap logo" />
+                                    <div>
+                                        <span class="bootstrapper-card__type">Roblox bootstrapper</span>
+                                        <h4 class="bootstrapper-card__name">ExploitStrap</h4>
+                                    </div>
+                                </div>
+                                <span class="bootstrapper-card__rank">Executor focused</span>
                             </div>
+
+                            <p class="bootstrapper-card__description">The executor-focused option in this collection.</p>
+
+                            <dl class="bootstrapper-card__facts">
+                                <div><dt>Website</dt><dd>Available</dd></div>
+                                <div><dt>Source</dt><dd>Available</dd></div>
+                            </dl>
+
                             <div class="bootstrapper-card__links">
-                                <a href="https://exploitstrap.com"
-                                    target="_blank" rel="noopener noreferrer">Website</a>
+                                <a class="bootstrapper-card__link--primary" href="https://exploitstrap.com"
+                                    target="_blank" rel="noopener noreferrer">Website <span aria-hidden="true">↗</span></a>
                                 <a href="https://sirmemegithub.com/RealSlimShady2000/MrExLiveChannelForcer"
-                                    target="_blank" rel="noopener noreferrer">GitHub</a>
+                                    target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
                             </div>
                         </article>
 
                         <article class="bootstrapper-card bootstrapper-card--secondary">
-                            <span class="bootstrapper-card__rank">Popular</span>
-                            <div class="bootstrapper-card__brand">
-                                <img class="bootstrapper-card__logo"
-                                    src="https://wiki.fishstrap.app/_astro/favicon.DD-fq8Ir.png"
-                                    alt="Fishstrap logo" />
-                                <h4 class="bootstrapper-card__name">Fishstrap</h4>
+                            <div class="bootstrapper-card__top">
+                                <div class="bootstrapper-card__brand">
+                                    <img class="bootstrapper-card__logo"
+                                        src="https://wiki.fishstrap.app/_astro/favicon.DD-fq8Ir.png"
+                                        alt="Fishstrap logo" />
+                                    <div>
+                                        <span class="bootstrapper-card__type">Roblox bootstrapper</span>
+                                        <h4 class="bootstrapper-card__name">Fishstrap</h4>
+                                    </div>
+                                </div>
+                                <span class="bootstrapper-card__rank">Popular</span>
                             </div>
+
+                            <p class="bootstrapper-card__description">A popular alternative with its public website still available.</p>
+
+                            <dl class="bootstrapper-card__facts">
+                                <div><dt>Website</dt><dd>Available</dd></div>
+                                <div><dt>Source</dt><dd class="is-unavailable">Unavailable</dd></div>
+                            </dl>
+
                             <div class="bootstrapper-card__links">
-                                <a href="https://www.fishstrap.app" target="_blank"
-                                    rel="noopener noreferrer">Website</a>
+                                <a class="bootstrapper-card__link--primary" href="https://www.fishstrap.app"
+                                    target="_blank" rel="noopener noreferrer">Website <span aria-hidden="true">↗</span></a>
                                 <span class="bootstrapper-card__link--disabled" aria-disabled="true"
-                                    title="GitHub repository deleted">GitHub</span>
+                                    title="GitHub repository deleted">GitHub unavailable</span>
                             </div>
                         </article>
 
                         <article class="bootstrapper-card bootstrapper-card--legacy">
-                            <div class="bootstrapper-card__brand">
-                                <img class="bootstrapper-card__logo"
-                                    src="https://raw.githubusercontent.com/bloxstraplabs/bloxstrap/refs/heads/main/Images/Bloxstrap.png"
-                                    alt="Bloxstrap logo" />
-                                <h4 class="bootstrapper-card__name">Bloxstrap</h4>
+                            <div class="bootstrapper-card__top">
+                                <div class="bootstrapper-card__brand">
+                                    <img class="bootstrapper-card__logo"
+                                        src="https://raw.githubusercontent.com/bloxstraplabs/bloxstrap/refs/heads/main/Images/Bloxstrap.png"
+                                        alt="Bloxstrap logo" />
+                                    <div>
+                                        <span class="bootstrapper-card__type">Roblox bootstrapper</span>
+                                        <h4 class="bootstrapper-card__name">Bloxstrap</h4>
+                                    </div>
+                                </div>
+                                <span class="bootstrapper-card__rank">Open source</span>
                             </div>
+
+                            <p class="bootstrapper-card__description">The established open-source option in this collection.</p>
+
+                            <dl class="bootstrapper-card__facts">
+                                <div><dt>Website</dt><dd>Available</dd></div>
+                                <div><dt>Source</dt><dd>Available</dd></div>
+                            </dl>
+
                             <div class="bootstrapper-card__links">
-                                <a href="https://bloxstraplabs.com" target="_blank"
-                                    rel="noopener noreferrer">Website</a>
+                                <a class="bootstrapper-card__link--primary" href="https://bloxstraplabs.com"
+                                    target="_blank" rel="noopener noreferrer">Website <span aria-hidden="true">↗</span></a>
                                 <a href="https://github.com/bloxstraplabs/bloxstrap" target="_blank"
-                                    rel="noopener noreferrer">GitHub</a>
+                                    rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
                             </div>
                         </article>
                     </div>
@@ -12320,6 +13490,16 @@
 
             const socialSection = homeSections.find(isSocialSection);
             const links = Array.isArray(socialSection?.links) ? socialSection.links : [];
+            const socialDetails = {
+                "Scriptblox": { key: "scriptblox", meta: "Scripts and releases" },
+                "rscripts": { key: "rscripts", meta: "Script creator profile" },
+                "Discord Profile": { key: "discord", meta: "@ltseverydayyou" },
+                "guns.lol": { key: "guns", meta: "Personal profile hub" },
+                "GitHub": { key: "github", meta: "Code and projects" },
+                "Ko-fi": { key: "kofi", meta: "Support my work" },
+                "Spotify": { key: "spotify", meta: "Listening profile" },
+                "Steam": { key: "steam", meta: "Gaming profile" }
+            };
             root.innerHTML = "";
 
             if (!links.length) {
@@ -12333,11 +13513,16 @@
             const fragment = document.createDocumentFragment();
             links.forEach((item, index) => {
                 const itemHost = host(item.link);
+                const detail = socialDetails[item.title] || {
+                    key: "default",
+                    meta: itemHost || "Profile"
+                };
                 const link = document.createElement("a");
                 link.className = "home-social-card";
                 link.href = item.link;
                 link.target = "_blank";
                 link.rel = "noopener noreferrer";
+                link.dataset.social = detail.key;
                 link.style.setProperty("--i", String(index));
                 link.setAttribute(
                     "aria-label",
@@ -12361,7 +13546,7 @@
                 const title = document.createElement("strong");
                 title.textContent = item.title;
                 const meta = document.createElement("span");
-                meta.textContent = itemHost || "open link";
+                meta.textContent = detail.meta;
                 copy.append(title, meta);
 
                 const arrow = document.createElement("span");
@@ -12489,6 +13674,202 @@
             list.appendChild(fragment);
             bindPointerGlow(list);
             initMotionFx();
+        }
+
+        async function hydratePinnedGameThumbnails() {
+            const cards = Array.from(qa("[data-pinned-universe-id]"));
+            const universeIds = cards
+                .map((card) => card.dataset.pinnedUniverseId)
+                .filter(Boolean);
+
+            if (!universeIds.length) {
+                return;
+            }
+
+            const fetchFirstPayload = async (endpoints) => {
+                for (const endpoint of endpoints) {
+                    try {
+                        const response = await fetch(endpoint);
+                        if (response.ok) {
+                            return await response.json();
+                        }
+                    } catch {
+                        // Keep the embedded image and try the next endpoint.
+                    }
+                }
+                return null;
+            };
+
+            const bannerQuery =
+                `universeIds=${encodeURIComponent(universeIds.join(","))}` +
+                "&countPerUniverse=1&defaults=true&size=768x432&format=Png&isCircular=false";
+            const payload = await fetchFirstPayload([
+                `https://thumbnails.roproxy.com/v1/games/multiget/thumbnails?${bannerQuery}`,
+                `https://thumbnails.rotunnel.com/v1/games/multiget/thumbnails?${bannerQuery}`,
+                `https://thumbnails.roblox.com/v1/games/multiget/thumbnails?${bannerQuery}`
+            ]);
+
+            const banners = new Map();
+            (payload?.data || []).forEach((entry) => {
+                const thumbnail = entry?.thumbnails?.find(
+                    (item) => item?.state === "Completed" && item?.imageUrl
+                );
+                if (thumbnail) {
+                    banners.set(String(entry.universeId), thumbnail.imageUrl);
+                }
+            });
+
+            cards.forEach((card) => {
+                const image = card.querySelector("[data-pinned-game-banner]");
+                const imageUrl = banners.get(card.dataset.pinnedUniverseId);
+                if (image && imageUrl && image.src !== imageUrl) {
+                    image.src = imageUrl;
+                }
+            });
+
+            const iconQuery =
+                `universeIds=${encodeURIComponent(universeIds.join(","))}` +
+                "&returnPolicy=PlaceHolder&size=150x150&format=Png&isCircular=false";
+            const iconPayload = await fetchFirstPayload([
+                `https://thumbnails.roproxy.com/v1/games/icons?${iconQuery}`,
+                `https://thumbnails.rotunnel.com/v1/games/icons?${iconQuery}`,
+                `https://thumbnails.roblox.com/v1/games/icons?${iconQuery}`
+            ]);
+            const icons = new Map(
+                (iconPayload?.data || [])
+                    .filter((entry) => entry?.state === "Completed" && entry?.imageUrl)
+                    .map((entry) => [String(entry.targetId), entry.imageUrl])
+            );
+
+            cards.forEach((card) => {
+                const image = card.querySelector("[data-pinned-game-icon]");
+                const imageUrl = icons.get(card.dataset.pinnedUniverseId);
+                if (image && imageUrl && image.src !== imageUrl) {
+                    image.src = imageUrl;
+                }
+            });
+        }
+
+        const pinnedGamePlaceFallbacks = {
+            "2059834811": [
+                { id: 5804022192, name: "Pro Flood Escape" },
+                { id: 14579481010, name: "PFE Pro Server" },
+                { id: 14579483526, name: "PFE Chaos Server" },
+                { id: 89696756175611, name: "PFE Mirror Madness" },
+                { id: 95586026288807, name: "PFE Chill Server" },
+                { id: 99442798534629, name: "PFE Moon Server" },
+                { id: 113194876259271, name: "DEVGROUNDS" },
+                { id: 134290352504641, name: "PFE Clipping Server" }
+            ],
+            "7783377071": [
+                { id: 89581504544697, name: "DREADBORNE" }
+            ]
+        };
+
+        function renderPinnedGamePlaces(card, places) {
+            const list = card.querySelector("[data-pinned-places-list]");
+            const count = card.querySelector("[data-pinned-places-count]");
+            const rootPlaceId = String(card.dataset.pinnedRootPlaceId || "");
+            if (!list || !count) {
+                return;
+            }
+
+            const seen = new Set();
+            const normalizedPlaces = (Array.isArray(places) ? places : [])
+                .map((place) => ({
+                    id: String(place?.id || "").trim(),
+                    name: String(place?.name || "Untitled place").trim() || "Untitled place"
+                }))
+                .filter((place) => /^\d+$/.test(place.id) && !seen.has(place.id) && seen.add(place.id));
+
+            normalizedPlaces.sort((a, b) => {
+                if (a.id === rootPlaceId) return -1;
+                if (b.id === rootPlaceId) return 1;
+                return 0;
+            });
+
+            count.textContent = `${normalizedPlaces.length} total`;
+            list.innerHTML = "";
+
+            if (!normalizedPlaces.length) {
+                const empty = document.createElement("p");
+                empty.className = "pinned-game-card__places-empty";
+                empty.textContent = "No places are currently available.";
+                list.appendChild(empty);
+                return;
+            }
+
+            normalizedPlaces.forEach((place) => {
+                const row = document.createElement("div");
+                row.className = "pinned-game-place";
+
+                const copy = document.createElement("span");
+                copy.className = "pinned-game-place__copy";
+                const name = document.createElement("strong");
+                name.textContent = place.name;
+                const meta = document.createElement("span");
+                meta.textContent = `${place.id === rootPlaceId ? "Start place" : "Subplace"} · ${place.id}`;
+                copy.append(name, meta);
+
+                const actions = document.createElement("span");
+                actions.className = "pinned-game-place__actions";
+                const view = document.createElement("a");
+                view.className = "pinned-game-place__action";
+                view.href = `https://www.roblox.com/games/${place.id}`;
+                view.target = "_blank";
+                view.rel = "noopener noreferrer";
+                view.textContent = "View";
+                const play = document.createElement("a");
+                play.className = "pinned-game-place__action pinned-game-place__action--play";
+                play.href = `https://www.roblox.com/games/start?placeId=${place.id}&launchData=`;
+                play.setAttribute("aria-label", `Play ${place.name} in Roblox`);
+                play.textContent = "Play";
+                actions.append(view, play);
+
+                row.append(copy, actions);
+                list.appendChild(row);
+            });
+        }
+
+        async function fetchPinnedGamePlaces(universeId) {
+            if (!/^\d+$/.test(universeId)) {
+                return null;
+            }
+
+            const path = `/v1/universes/${universeId}/places?isUniverseCreation=false&limit=100&sortOrder=Asc`;
+            const endpoints = [
+                `https://develop.roproxy.com${path}`,
+                `https://develop.rotunnel.com${path}`,
+                `https://develop.roblox.com${path}`
+            ];
+
+            for (const endpoint of endpoints) {
+                try {
+                    const response = await fetch(endpoint);
+                    if (response.ok) {
+                        const payload = await response.json();
+                        if (Array.isArray(payload?.data)) {
+                            return payload.data;
+                        }
+                    }
+                } catch {
+                    // The fallback remains visible while the next endpoint is tried.
+                }
+            }
+            return null;
+        }
+
+        function initPinnedGamePlaces() {
+            const cards = Array.from(qa("[data-pinned-universe-id]"));
+            cards.forEach((card) => {
+                const universeId = card.dataset.pinnedUniverseId || "";
+                renderPinnedGamePlaces(card, pinnedGamePlaceFallbacks[universeId] || []);
+                fetchPinnedGamePlaces(universeId).then((places) => {
+                    if (places) {
+                        renderPinnedGamePlaces(card, places);
+                    }
+                });
+            });
         }
 
         window.AddHeader = AddHeader;
@@ -19017,13 +20398,31 @@
 
                 const titleRow = document.createElement("div");
                 titleRow.className = "sc_title-row";
+                const titleIdentity = document.createElement("div");
+                titleIdentity.className = "sc_title-identity";
+                if (item.image) {
+                    const titleIcon = document.createElement("img");
+                    titleIcon.className = "sc_title-icon";
+                    titleIcon.src = item.image;
+                    titleIcon.alt = "";
+                    titleIcon.loading = "lazy";
+                    titleIcon.decoding = "async";
+                    titleIdentity.appendChild(titleIcon);
+                } else {
+                    const titleIconFallback = document.createElement("span");
+                    titleIconFallback.className = "sc_title-icon sc_title-icon--fallback";
+                    titleIconFallback.setAttribute("aria-hidden", "true");
+                    titleIconFallback.textContent = initials || "SC";
+                    titleIdentity.appendChild(titleIconFallback);
+                }
                 const title = document.createElement("span");
                 title.className = "nm";
                 title.textContent = item.name;
+                titleIdentity.appendChild(title);
                 const chip = document.createElement("span");
                 chip.className = `sc_chip sc_chip--${kind.toLowerCase()}`;
                 chip.textContent = kind;
-                titleRow.append(title, chip);
+                titleRow.append(titleIdentity, chip);
                 text.appendChild(titleRow);
 
                 const description = document.createElement("p");
@@ -24034,6 +25433,8 @@ self.addEventListener("message", async (event) => {
             }
 
             renderHome();
+            hydratePinnedGameThumbnails();
+            initPinnedGamePlaces();
             renderScripts();
             initScriptsShowcaseControls();
             initScriptSearcher();
@@ -24859,21 +26260,21 @@ self.addEventListener("message", async (event) => {
           <p class="private-servers__eyebrow"><span aria-hidden="true"></span>Roblox private servers</p>
           <h2 id="private-servers-title">Private Servers</h2>
           <p class="private-servers__intro">
-            Private server links I created for Roblox experiences. The experiences are not mine; this section only lists my private-server invite links.
+            Private server links I created for Roblox games. The games are not mine; this section only lists my private-server invite links.
           </p>
         </div>
 
         <div class="private-servers__panel" aria-label="Private server summary">
-          <div class="private-servers__panel-row"><span>Experiences listed</span><strong data-private-server-games>10</strong></div>
+          <div class="private-servers__panel-row"><span>Games listed</span><strong data-private-server-games>10</strong></div>
           <div class="private-servers__panel-row"><span>Invite links</span><strong data-private-server-links>28</strong></div>
-          <div class="private-servers__panel-status" data-private-server-status>Ready: 10 experiences and 28 invite links.</div>
+          <div class="private-servers__panel-status" data-private-server-status>Ready: 10 games and 28 invite links.</div>
         </div>
       </div>
 
       <div class="private-servers__toolbar" aria-label="Private server tools">
         <label class="private-servers__search">
           <span>Search</span>
-          <input type="search" data-private-server-search placeholder="Search experience name, creator, universe ID, or server count">
+          <input type="search" data-private-server-search placeholder="Search game name, creator, universe ID, or server count">
         </label>
         <div class="private-servers__chips" aria-label="Section details">
           <span>Private servers I created</span>
@@ -24886,7 +26287,7 @@ self.addEventListener("message", async (event) => {
       <div class="private-servers__grid" data-private-server-list>
           <article class="private-server-card" data-game-id="245662005" data-place-id="606849621" data-title="Jailbreak" data-search="jailbreak badimo 245662005 606849621 2 private server servers invite link links" style="--i:0">
             <div class="private-server-card__media">
-              <img class="private-server-card__icon" src="https://placehold.co/512x512/07101f/5eead4?text=J" alt="Jailbreak Roblox experience icon placeholder" loading="lazy">
+              <img class="private-server-card__icon" src="https://placehold.co/512x512/07101f/5eead4?text=J" alt="Jailbreak Roblox game icon placeholder" loading="lazy">
               <div class="private-server-card__media-shade" aria-hidden="true"></div>
               <span class="private-server-card__badge">2 links</span>
             </div>
@@ -24915,7 +26316,7 @@ self.addEventListener("message", async (event) => {
           </article>
           <article class="private-server-card" data-game-id="323675642" data-place-id="738339342" data-title="Flood Escape 2" data-search="flood escape 2 crazyblox games 323675642 738339342 6 private server servers invite link links" style="--i:1">
             <div class="private-server-card__media">
-              <img class="private-server-card__icon" src="https://placehold.co/512x512/07101f/5eead4?text=FE2" alt="Flood Escape 2 Roblox experience icon placeholder" loading="lazy">
+              <img class="private-server-card__icon" src="https://placehold.co/512x512/07101f/5eead4?text=FE2" alt="Flood Escape 2 Roblox game icon placeholder" loading="lazy">
               <div class="private-server-card__media-shade" aria-hidden="true"></div>
               <span class="private-server-card__badge">6 links</span>
             </div>
@@ -24964,7 +26365,7 @@ self.addEventListener("message", async (event) => {
           </article>
           <article class="private-server-card" data-game-id="703124385" data-place-id="1962086868" data-title="Tower of Hell" data-search="tower of hell yxceptional studios 703124385 1962086868 3 private server servers invite link links" style="--i:2">
             <div class="private-server-card__media">
-              <img class="private-server-card__icon" src="https://placehold.co/512x512/07101f/5eead4?text=TOH" alt="Tower of Hell Roblox experience icon placeholder" loading="lazy">
+              <img class="private-server-card__icon" src="https://placehold.co/512x512/07101f/5eead4?text=TOH" alt="Tower of Hell Roblox game icon placeholder" loading="lazy">
               <div class="private-server-card__media-shade" aria-hidden="true"></div>
               <span class="private-server-card__badge">3 links</span>
             </div>
@@ -24998,7 +26399,7 @@ self.addEventListener("message", async (event) => {
           </article>
           <article class="private-server-card" data-game-id="761462079" data-place-id="2181746027" data-title="Flood Escape Mission: Legacy" data-search="flood escape mission: legacy fem development 761462079 2181746027 1 private server servers invite link links" style="--i:3">
             <div class="private-server-card__media">
-              <img class="private-server-card__icon" src="https://placehold.co/512x512/07101f/5eead4?text=FEM" alt="Flood Escape Mission: Legacy Roblox experience icon placeholder" loading="lazy">
+              <img class="private-server-card__icon" src="https://placehold.co/512x512/07101f/5eead4?text=FEM" alt="Flood Escape Mission: Legacy Roblox game icon placeholder" loading="lazy">
               <div class="private-server-card__media-shade" aria-hidden="true"></div>
               <span class="private-server-card__badge">1 link</span>
             </div>
@@ -25022,7 +26423,7 @@ self.addEventListener("message", async (event) => {
           </article>
           <article class="private-server-card" data-game-id="847722000" data-place-id="2413927524" data-title="The Rake REMASTERED" data-search="the rake remastered @rvvz 847722000 2413927524 3 private server servers invite link links" style="--i:4">
             <div class="private-server-card__media">
-              <img class="private-server-card__icon" src="https://placehold.co/512x512/07101f/5eead4?text=TRR" alt="The Rake REMASTERED Roblox experience icon placeholder" loading="lazy">
+              <img class="private-server-card__icon" src="https://placehold.co/512x512/07101f/5eead4?text=TRR" alt="The Rake REMASTERED Roblox game icon placeholder" loading="lazy">
               <div class="private-server-card__media-shade" aria-hidden="true"></div>
               <span class="private-server-card__badge">3 links</span>
             </div>
@@ -25056,7 +26457,7 @@ self.addEventListener("message", async (event) => {
           </article>
           <article class="private-server-card" data-game-id="3647333358" data-place-id="9872472334" data-title="Evade" data-search="evade hexagon development community 3647333358 9872472334 3 private server servers invite link links" style="--i:5">
             <div class="private-server-card__media">
-              <img class="private-server-card__icon" src="https://placehold.co/512x512/07101f/5eead4?text=E" alt="Evade Roblox experience icon placeholder" loading="lazy">
+              <img class="private-server-card__icon" src="https://placehold.co/512x512/07101f/5eead4?text=E" alt="Evade Roblox game icon placeholder" loading="lazy">
               <div class="private-server-card__media-shade" aria-hidden="true"></div>
               <span class="private-server-card__badge">3 links</span>
             </div>
@@ -25090,7 +26491,7 @@ self.addEventListener("message", async (event) => {
           </article>
           <article class="private-server-card" data-game-id="5611522097" data-place-id="16261605398" data-title="Airsoft Battles" data-search="airsoft battles stealth developers 5611522097 16261605398 2 private server servers invite link links" style="--i:6">
             <div class="private-server-card__media">
-              <img class="private-server-card__icon" src="https://placehold.co/512x512/07101f/5eead4?text=AB" alt="Airsoft Battles Roblox experience icon placeholder" loading="lazy">
+              <img class="private-server-card__icon" src="https://placehold.co/512x512/07101f/5eead4?text=AB" alt="Airsoft Battles Roblox game icon placeholder" loading="lazy">
               <div class="private-server-card__media-shade" aria-hidden="true"></div>
               <span class="private-server-card__badge">2 links</span>
             </div>
@@ -25119,7 +26520,7 @@ self.addEventListener("message", async (event) => {
           </article>
           <article class="private-server-card" data-game-id="9068117107" data-place-id="117297631008682" data-title="Automatic Transit Operations of Greater Figglehorn" data-search="automatic transit operations of greater figglehorn automatic transit operations of greater figglehorn 9068117107 117297631008682 3 private server servers invite link links" style="--i:7">
             <div class="private-server-card__media">
-              <img class="private-server-card__icon" src="https://placehold.co/512x512/07101f/5eead4?text=ATO" alt="Automatic Transit Operations of Greater Figglehorn Roblox experience icon placeholder" loading="lazy">
+              <img class="private-server-card__icon" src="https://placehold.co/512x512/07101f/5eead4?text=ATO" alt="Automatic Transit Operations of Greater Figglehorn Roblox game icon placeholder" loading="lazy">
               <div class="private-server-card__media-shade" aria-hidden="true"></div>
               <span class="private-server-card__badge">3 links</span>
             </div>
@@ -25153,7 +26554,7 @@ self.addEventListener("message", async (event) => {
           </article>
           <article class="private-server-card" data-game-id="10093833731" data-place-id="97387256206808" data-title="Broken Blade" data-search="broken blade skyrift devs 10093833731 97387256206808 2 private server servers invite link links" style="--i:8">
             <div class="private-server-card__media">
-              <img class="private-server-card__icon" src="https://placehold.co/512x512/07101f/5eead4?text=BB" alt="Broken Blade Roblox experience icon placeholder" loading="lazy">
+              <img class="private-server-card__icon" src="https://placehold.co/512x512/07101f/5eead4?text=BB" alt="Broken Blade Roblox game icon placeholder" loading="lazy">
               <div class="private-server-card__media-shade" aria-hidden="true"></div>
               <span class="private-server-card__badge">2 links</span>
             </div>
@@ -25182,7 +26583,7 @@ self.addEventListener("message", async (event) => {
           </article>
           <article class="private-server-card" data-game-id="3706757136" data-place-id="10082031223" data-title="British Railway" data-search="british railway fourth rail 3706757136 10082031223 3 private server servers invite link links" style="--i:9">
             <div class="private-server-card__media">
-              <img class="private-server-card__icon" src="https://placehold.co/512x512/07101f/5eead4?text=BR" alt="British Railway Roblox experience icon placeholder" loading="lazy">
+              <img class="private-server-card__icon" src="https://placehold.co/512x512/07101f/5eead4?text=BR" alt="British Railway Roblox game icon placeholder" loading="lazy">
               <div class="private-server-card__media-shade" aria-hidden="true"></div>
               <span class="private-server-card__badge">3 links</span>
             </div>
@@ -25474,8 +26875,8 @@ self.addEventListener("message", async (event) => {
 
     .private-servers__grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(min(100%, 350px), 1fr));
-      gap: 1rem;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.9rem;
     }
 
     .private-server-card {
@@ -25483,15 +26884,16 @@ self.addEventListener("message", async (event) => {
       overflow: hidden;
       display: grid;
       grid-template-rows: auto 1fr;
-      min-height: 390px;
-      border-radius: 24px;
+      min-height: 0;
+      border-radius: 8px;
       opacity: 1;
       transform: none;
       transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
     }
 
-    .private-server-card:hover {
-      transform: translateY(-6px);
+    .private-server-card:hover,
+    .private-server-card:focus-within {
+      transform: translateY(-4px);
       border-color: rgba(94, 234, 212, 0.34);
       box-shadow: 0 30px 86px rgba(0, 0, 0, 0.42), 0 0 32px rgba(94, 234, 212, 0.08);
     }
@@ -25525,33 +26927,42 @@ self.addEventListener("message", async (event) => {
     .private-server-card__media-shade {
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, transparent 24%, rgba(2, 6, 23, 0.78)), linear-gradient(90deg, rgba(255, 255, 255, 0.055) 1px, transparent 1px);
-      background-size: auto, 48px 100%;
+      background: linear-gradient(180deg, transparent 42%, rgba(2, 6, 23, 0.92));
       pointer-events: none;
     }
 
     .private-server-card__badge {
       position: absolute;
-      right: 0.85rem;
-      top: 0.85rem;
+      left: 0.75rem;
+      top: 0.75rem;
       display: inline-flex;
       align-items: center;
+      gap: 0.42rem;
       min-height: 32px;
       padding: 0 0.72rem;
       border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 999px;
+      border-radius: 6px;
       color: #dffef9;
-      background: rgba(2, 6, 23, 0.54);
+      background: rgba(2, 6, 23, 0.74);
       backdrop-filter: blur(12px);
       font-size: 0.75rem;
       font-weight: 900;
     }
 
+    .private-server-card__badge::before {
+      content: "";
+      width: 0.4rem;
+      height: 0.4rem;
+      border-radius: 50%;
+      background: #5eead4;
+      box-shadow: 0 0 12px rgba(94, 234, 212, 0.8);
+    }
+
     .private-server-card__body {
       display: grid;
       grid-template-rows: auto auto minmax(0, 1fr);
-      gap: 0.8rem;
-      padding: 1rem;
+      gap: 0.7rem;
+      padding: 1.1rem;
       min-width: 0;
     }
 
@@ -25569,18 +26980,37 @@ self.addEventListener("message", async (event) => {
       width: 2.4rem;
       height: 2.4rem;
       border: 1px solid rgba(94, 234, 212, 0.2);
-      border-radius: 14px;
+      border-radius: 6px;
       color: #99f6e4;
       background: rgba(94, 234, 212, 0.08);
       font-weight: 950;
     }
 
+    .private-server-card__title-row {
+      display: grid;
+      grid-template-columns: 42px minmax(0, 1fr);
+      gap: 0.65rem;
+      align-items: center;
+    }
+
+    .private-server-card__tiny-icon {
+      display: block;
+      width: 42px;
+      height: 42px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 6px;
+      object-fit: cover;
+      background: #07101f;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.26);
+    }
+
     .private-server-card__title {
       margin: 0;
       color: #ffffff;
-      font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+      font-size: clamp(1.2rem, 2.5vw, 1.55rem);
       line-height: 1.1;
-      letter-spacing: -0.025em;
+      letter-spacing: 0;
+      overflow-wrap: anywhere;
     }
 
     .private-server-card__creator,
@@ -25613,8 +27043,8 @@ self.addEventListener("message", async (event) => {
       align-items: center;
       padding: 0.55rem;
       border: 1px solid rgba(255, 255, 255, 0.09);
-      border-radius: 16px;
-      background: rgba(255, 255, 255, 0.04);
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.035);
     }
 
     .private-server-link__label {
@@ -25629,7 +27059,7 @@ self.addEventListener("message", async (event) => {
       min-height: 34px;
       padding: 0 0.78rem;
       border: 1px solid rgba(94, 234, 212, 0.2);
-      border-radius: 12px;
+      border-radius: 6px;
       color: #04111f;
       background: linear-gradient(135deg, #5eead4, #99f6e4);
       box-shadow: 0 10px 24px rgba(94, 234, 212, 0.12);
@@ -25672,6 +27102,10 @@ self.addEventListener("message", async (event) => {
       .private-server-card {
         min-height: 0;
       }
+
+      .private-servers__grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (max-width: 520px) {
@@ -25698,23 +27132,495 @@ self.addEventListener("message", async (event) => {
       }
     }
   
-        #pu .bootstrapper-card__links .bootstrapper-card__link--disabled {
+        /* Practical Bootstrapper catalog. */
+        #pu .g.ed.bootstrapper-catalog {
+            gap: 18px;
+            width: min(1180px, 94%);
+            padding: clamp(20px, 3.2vw, 34px);
+            border-radius: 8px;
+            background:
+                linear-gradient(145deg, rgba(21, 29, 40, 0.82), rgba(7, 11, 18, 0.96) 48%),
+                #080c13;
+            box-shadow: 0 24px 62px rgba(0, 0, 0, 0.34), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        }
+
+        #pu .g.ed.bootstrapper-catalog::before {
+            background:
+                linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+                linear-gradient(180deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 64px 64px;
+            opacity: 0.32;
+            animation: none;
+        }
+
+        #pu .g.ed.bootstrapper-catalog::after {
+            display: none;
+        }
+
+        .bootstrapper-catalog__header {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            gap: 22px;
+            align-items: end;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+        }
+
+        .bootstrapper-catalog__eyebrow {
+            margin: 0 0 8px;
+            color: #72f3b6;
+            font-size: 10px;
+            font-weight: 900;
+            letter-spacing: 0.10em;
+            text-transform: uppercase;
+        }
+
+        .bootstrapper-catalog__header h3 {
+            margin: 0;
+            color: #fff;
+            font-family: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+            font-size: clamp(30px, 5vw, 52px);
+            line-height: 1;
+            letter-spacing: 0;
+        }
+
+        .bootstrapper-catalog__intro {
+            max-width: 64ch;
+            margin: 10px 0 0;
+            color: rgba(231, 233, 238, 0.62);
+            font-size: 13px;
+            line-height: 1.55;
+        }
+
+        .bootstrapper-catalog__count {
+            display: grid;
+            justify-items: end;
+            min-width: 112px;
+            padding-left: 22px;
+            border-left: 1px solid rgba(255, 255, 255, 0.10);
+        }
+
+        .bootstrapper-catalog__count strong {
+            color: #fff;
+            font: 700 32px/1 "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+        }
+
+        .bootstrapper-catalog__count span {
+            color: rgba(231, 233, 238, 0.46);
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+        }
+
+        .bootstrapper-catalog__summary {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 18px;
+            color: rgba(231, 233, 238, 0.52);
+            font-size: 11px;
+            font-weight: 750;
+        }
+
+        .bootstrapper-catalog__summary span {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .bootstrapper-catalog__summary span::before {
+            content: "";
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #72f3b6;
+            box-shadow: 0 0 10px rgba(114, 243, 182, 0.48);
+        }
+
+        #pu .bootstrapper-catalog .bootstrappers-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+            margin-top: 2px;
+            perspective: none;
+        }
+
+        #pu .g.ed.bootstrapper-catalog .bootstrapper-card {
+            --boot-accent: #9db1c5;
+            display: grid;
+            grid-template-rows: auto auto auto 1fr;
+            gap: 14px;
+            min-height: 300px;
+            padding: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            border-radius: 8px;
+            background: rgba(8, 13, 21, 0.84);
+            box-shadow: none;
+            filter: none;
+            animation: bootstrapperCardRise 0.42s cubic-bezier(0.18, 0.84, 0.24, 1) both !important;
+            transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        #pu .g.ed.bootstrapper-catalog .bootstrapper-card.bootstrapper-card--featured {
+            --boot-accent: #9f8cff;
+            --boot-theme:
+                repeating-conic-gradient(from 18deg at 82% 22%, rgba(159, 140, 255, 0.17) 0 8deg, transparent 8deg 19deg),
+                linear-gradient(135deg, rgba(63, 43, 112, 0.54), rgba(7, 10, 18, 0.96) 52%, rgba(34, 20, 66, 0.64));
+            --boot-theme-speed: 11s;
+        }
+
+        #pu .g.ed.bootstrapper-catalog .bootstrapper-card.bootstrapper-card--exploitstrap {
+            --boot-accent: #55dca8;
+            --boot-theme:
+                repeating-linear-gradient(125deg, rgba(85, 220, 168, 0.13) 0 2px, transparent 2px 30px),
+                linear-gradient(135deg, rgba(13, 76, 70, 0.56), rgba(7, 12, 18, 0.96) 54%, rgba(58, 25, 86, 0.34));
+            --boot-theme-speed: 9s;
+        }
+
+        #pu .g.ed.bootstrapper-catalog .bootstrapper-card.bootstrapper-card--secondary {
+            --boot-accent: #61c9e8;
+            --boot-theme:
+                repeating-linear-gradient(165deg, rgba(97, 201, 232, 0.13) 0 2px, transparent 2px 25px),
+                linear-gradient(135deg, rgba(12, 67, 93, 0.62), rgba(6, 13, 22, 0.96) 56%, rgba(18, 45, 78, 0.55));
+            --boot-theme-speed: 12s;
+        }
+
+        #pu .g.ed.bootstrapper-catalog .bootstrapper-card.bootstrapper-card--legacy {
+            --boot-accent: #ff7da6;
+            --boot-theme:
+                repeating-linear-gradient(35deg, rgba(255, 125, 166, 0.12) 0 3px, transparent 3px 29px),
+                linear-gradient(135deg, rgba(89, 27, 72, 0.62), rgba(11, 10, 24, 0.96) 52%, rgba(63, 34, 112, 0.52));
+            --boot-theme-speed: 10s;
+        }
+
+        #pu .bootstrapper-catalog .bootstrapper-card::before {
+            content: "";
+            position: absolute;
+            inset: 0 auto 0 0;
+            width: 3px;
+            z-index: 2;
+            background: var(--boot-accent);
+            opacity: 0.82;
+            filter: none;
+            box-shadow: 0 0 13px color-mix(in srgb, var(--boot-accent) 58%, transparent);
+            animation: bootstrapperAccentPulse 2.8s ease-in-out infinite !important;
+            transition: width 0.2s ease, opacity 0.2s ease;
+        }
+
+        #pu .bootstrapper-catalog .bootstrapper-card::after {
+            inset: 0;
+            border-radius: 7px;
+            background: var(--boot-theme);
+            background-size: 170% 170%, 100% 100%;
+            background-position: 0% 0%, 0 0;
+            transform: scale(1.015);
+            transform-origin: center;
+            animation: bootstrapperThemeDrift var(--boot-theme-speed, 10s) ease-in-out infinite alternate;
+            will-change: background-position, transform, filter;
+        }
+
+        #pu .bootstrapper-catalog .bootstrapper-card:hover,
+        #pu .bootstrapper-catalog .bootstrapper-card:focus-within {
+            transform: translateY(-4px);
+            border-color: color-mix(in srgb, var(--boot-accent) 42%, rgba(255, 255, 255, 0.10));
+            background: rgba(11, 17, 27, 0.92);
+            box-shadow: 0 20px 42px rgba(0, 0, 0, 0.28);
+            filter: none;
+        }
+
+        #pu .bootstrapper-catalog .bootstrapper-card:hover::before,
+        #pu .bootstrapper-catalog .bootstrapper-card:focus-within::before {
+            width: 5px;
+            opacity: 1;
+            filter: none;
+        }
+
+        #pu .bootstrapper-catalog .bootstrapper-card:hover::after,
+        #pu .bootstrapper-catalog .bootstrapper-card:focus-within::after {
+            filter: saturate(1.24) brightness(1.08);
+        }
+
+        .bootstrapper-card__top {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 14px;
+        }
+
+        #pu .bootstrapper-catalog .bootstrapper-card__brand {
+            align-items: center;
+            gap: 13px;
+        }
+
+        #pu .bootstrapper-catalog .bootstrapper-card__logo,
+        #pu .bootstrapper-catalog .bootstrapper-card__logo-cycle,
+        #pu .g.ed.bootstrapper-catalog .bootstrapper-card__logo-cycle .bootstrapper-card__logo {
+            width: 54px;
+            height: 54px;
+            border-radius: 8px;
+        }
+
+        #pu .bootstrapper-catalog .bootstrapper-card__logo,
+        #pu .g.ed.bootstrapper-catalog .bootstrapper-card__logo-cycle .bootstrapper-card__logo {
+            padding: 7px;
+            object-fit: contain;
+            background: color-mix(in srgb, var(--boot-accent) 12%, rgba(255, 255, 255, 0.035));
+            border: 1px solid color-mix(in srgb, var(--boot-accent) 28%, rgba(255, 255, 255, 0.08));
+            box-shadow: none;
+        }
+
+        #pu .bootstrapper-catalog .bootstrapper-card__top > .bootstrapper-card__brand > .bootstrapper-card__logo,
+        #pu .bootstrapper-catalog .bootstrapper-card__logo-cycle {
+            animation: bootstrapperLogoFloat 4.2s ease-in-out infinite;
+        }
+
+        #pu .bootstrapper-catalog .bootstrapper-card:nth-child(2) .bootstrapper-card__logo {
+            animation-delay: -0.8s;
+        }
+
+        #pu .bootstrapper-catalog .bootstrapper-card:nth-child(3) .bootstrapper-card__logo {
+            animation-delay: -1.6s;
+        }
+
+        #pu .bootstrapper-catalog .bootstrapper-card:nth-child(4) .bootstrapper-card__logo {
+            animation-delay: -2.4s;
+        }
+
+        .bootstrapper-card__type {
+            display: block;
+            margin-bottom: 3px;
+            color: rgba(231, 233, 238, 0.42);
+            font-size: 9px;
+            font-weight: 850;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+        }
+
+        #pu .bootstrapper-catalog .bootstrapper-card__name,
+        #pu .bootstrapper-catalog .bootstrapper-card--exploitstrap .bootstrapper-card__name {
+            margin: 0;
+            color: #fff;
+            background: none;
+            font-family: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+            font-size: clamp(20px, 3vw, 26px);
+            line-height: 1.05;
+            letter-spacing: 0;
+            -webkit-text-fill-color: currentColor;
+            overflow-wrap: anywhere;
+        }
+
+        #pu .bootstrapper-catalog .bootstrapper-card__rank {
+            flex: 0 0 auto;
+            align-self: flex-start;
+            max-width: 132px;
+            padding: 6px 8px;
+            border: 1px solid color-mix(in srgb, var(--boot-accent) 30%, rgba(255, 255, 255, 0.08));
+            border-radius: 6px;
+            color: color-mix(in srgb, var(--boot-accent) 82%, #fff);
+            background: color-mix(in srgb, var(--boot-accent) 11%, rgba(255, 255, 255, 0.025));
+            font-size: 9px;
+            line-height: 1.2;
+            letter-spacing: 0.06em;
+            text-align: center;
+        }
+
+        .bootstrapper-card__description {
+            min-height: 42px;
+            margin: 0;
+            color: rgba(231, 233, 238, 0.62);
+            font-size: 12px;
+            line-height: 1.55;
+        }
+
+        .bootstrapper-card__facts {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 8px;
+            margin: 0;
+        }
+
+        .bootstrapper-card__facts > div {
+            display: grid;
+            gap: 3px;
+            min-width: 0;
+            padding: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .bootstrapper-card__facts dt {
+            color: rgba(231, 233, 238, 0.38);
+            font-size: 9px;
+            font-weight: 850;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+        }
+
+        .bootstrapper-card__facts dd {
+            margin: 0;
+            color: color-mix(in srgb, var(--boot-accent) 78%, #fff);
+            font-size: 11px;
+            font-weight: 800;
+        }
+
+        .bootstrapper-card__facts dd.is-unavailable {
+            color: #ff9ba8;
+        }
+
+        #pu .bootstrapper-catalog .bootstrapper-card__links {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 8px;
+            align-self: end;
+            margin-top: 0;
+            padding-top: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        #pu .bootstrapper-catalog .bootstrapper-card__links a,
+        #pu .bootstrapper-catalog .bootstrapper-card__links .bootstrapper-card__link--disabled {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            min-width: 110px;
-            padding: 10px 14px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 12px;
-            background: rgba(255, 255, 255, 0.035);
-            color: var(--mu);
-            font-size: 12px;
-            font-weight: 700;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
+            gap: 6px;
+            min-width: 0;
+            min-height: 38px;
+            padding: 8px 11px;
+            border: 1px solid rgba(255, 255, 255, 0.11);
+            border-radius: 6px;
+            color: rgba(255, 255, 255, 0.86);
+            background: rgba(255, 255, 255, 0.055);
+            box-shadow: none;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 0;
+            text-transform: none;
+            text-decoration: none;
+        }
+
+        #pu .bootstrapper-catalog .bootstrapper-card__links a.bootstrapper-card__link--primary {
+            border-color: color-mix(in srgb, var(--boot-accent) 42%, rgba(255, 255, 255, 0.10));
+            color: #07110f;
+            background: var(--boot-accent);
+        }
+
+        #pu .bootstrapper-catalog .bootstrapper-card__links a:hover,
+        #pu .bootstrapper-catalog .bootstrapper-card__links a:focus-visible {
+            transform: translateY(-2px);
+            border-color: color-mix(in srgb, var(--boot-accent) 55%, #fff);
+            box-shadow: none;
+            filter: brightness(1.08);
+        }
+
+        #pu .bootstrapper-catalog .bootstrapper-card__links a:focus-visible {
+            outline: 2px solid var(--boot-accent);
+            outline-offset: 2px;
+        }
+
+        #pu .bootstrapper-catalog .bootstrapper-card__links .bootstrapper-card__link--disabled {
+            color: rgba(231, 233, 238, 0.36);
             cursor: not-allowed;
-            opacity: 0.5;
+            opacity: 1;
             user-select: none;
+        }
+
+        @keyframes bootstrapperThemeDrift {
+            0% {
+                background-position: 0% 0%, 0 0;
+                transform: scale(1.015) translate3d(0, 0, 0);
+                filter: saturate(0.96) brightness(0.96);
+            }
+
+            50% {
+                background-position: 80% 45%, 0 0;
+                transform: scale(1.055) translate3d(-0.7%, 0.5%, 0);
+                filter: saturate(1.12) brightness(1.03);
+            }
+
+            100% {
+                background-position: 18% 100%, 0 0;
+                transform: scale(1.035) translate3d(0.6%, -0.4%, 0);
+                filter: saturate(1.04) brightness(0.99);
+            }
+        }
+
+        @keyframes bootstrapperAccentPulse {
+            0%, 100% {
+                opacity: 0.68;
+                box-shadow: 0 0 9px color-mix(in srgb, var(--boot-accent) 42%, transparent);
+            }
+
+            50% {
+                opacity: 1;
+                box-shadow: 0 0 18px color-mix(in srgb, var(--boot-accent) 72%, transparent);
+            }
+        }
+
+        @keyframes bootstrapperLogoFloat {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+                filter: saturate(1);
+            }
+
+            50% {
+                transform: translateY(-4px) rotate(-2deg);
+                filter: saturate(1.18) brightness(1.08);
+            }
+        }
+
+        @media (max-width: 760px) {
+            #pu .g.ed.bootstrapper-catalog {
+                width: min(100%, calc(100% - 20px));
+                padding: 18px;
+            }
+
+            #pu .bootstrapper-catalog .bootstrappers-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .bootstrapper-catalog__header {
+                grid-template-columns: 1fr;
+                align-items: start;
+            }
+
+            .bootstrapper-catalog__count {
+                display: flex;
+                align-items: baseline;
+                justify-items: start;
+                gap: 7px;
+                padding: 10px 0 0;
+                border-top: 1px solid rgba(255, 255, 255, 0.08);
+                border-left: 0;
+            }
+
+            .bootstrapper-card__top {
+                display: grid;
+            }
+
+            #pu .bootstrapper-catalog .bootstrapper-card__rank {
+                max-width: none;
+            }
+
+            #pu .bootstrapper-catalog .bootstrapper-card__links {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            #pu .g.ed.bootstrapper-catalog .bootstrapper-card,
+            #pu .g.ed.bootstrapper-catalog .bootstrapper-card::before,
+            #pu .g.ed.bootstrapper-catalog .bootstrapper-card::after,
+            #pu .g.ed.bootstrapper-catalog .bootstrapper-card__logo,
+            #pu .g.ed.bootstrapper-catalog .bootstrapper-card__logo-cycle,
+            #pu .g.ed.bootstrapper-catalog .bootstrapper-card__logo-cycle .bootstrapper-card__logo {
+                animation: none !important;
+                transition: none !important;
+                transform: none !important;
+                filter: none !important;
+            }
         }
 </style>
 
@@ -25757,8 +27663,8 @@ self.addEventListener("message", async (event) => {
         updateCounts(visible);
         setStatus(
           query
-            ? `Showing ${visible} of ${cards.length} experiences.`
-            : `Ready: ${cards.length} experiences and ${totalLinks} invite links.`
+            ? `Showing ${visible} of ${cards.length} games.`
+            : `Ready: ${cards.length} games and ${totalLinks} invite links.`
         );
       };
 
@@ -25798,26 +27704,81 @@ self.addEventListener("message", async (event) => {
         throw lastError;
       };
 
-      const hydrateRobloxIcons = async () => {
-        const placeIds = cards.map((card) => card.dataset.placeId).filter(Boolean);
-        if (!placeIds.length) return;
-
-        const thumbnailPayload = await fetchJson([
-          `https://thumbnails.roproxy.com/v1/places/gameicons?placeIds=${placeIds.join(',')}&size=512x512&format=Png&isCircular=false`,
-          `https://thumbnails.rotunnel.com/v1/places/gameicons?placeIds=${placeIds.join(',')}&size=512x512&format=Png&isCircular=false`,
-          `https://thumbnails.roblox.com/v1/places/gameicons?placeIds=${placeIds.join(',')}&size=512x512&format=Png&isCircular=false`
-        ]);
-
-        const thumbnails = new Map((thumbnailPayload.data || []).map((item) => [String(item.targetId), item.imageUrl]));
-
+      const ensurePrivateServerTitleIcons = () => {
         cards.forEach((card) => {
-          const icon = card.querySelector('.private-server-card__icon');
-          const thumbnail = thumbnails.get(String(card.dataset.placeId));
-          if (thumbnail && icon) icon.src = thumbnail;
+          const title = card.querySelector('.private-server-card__title');
+          const media = card.querySelector('.private-server-card__icon');
+          if (!title || title.closest('.private-server-card__title-row')) return;
+
+          const row = document.createElement('div');
+          row.className = 'private-server-card__title-row';
+          const icon = document.createElement('img');
+          icon.className = 'private-server-card__tiny-icon';
+          icon.alt = '';
+          icon.loading = 'lazy';
+          icon.src = media?.src || '';
+          title.before(row);
+          row.append(icon, title);
+
+          if (media) {
+            media.dataset.privateServerBanner = '';
+            media.alt = `${card.dataset.title || 'Roblox'} game artwork`;
+          }
         });
       };
 
+      const hydrateRobloxArtwork = async () => {
+        const placeIds = cards.map((card) => card.dataset.placeId).filter(Boolean);
+        const universeIds = cards.map((card) => card.dataset.gameId).filter(Boolean);
+        if (!placeIds.length || !universeIds.length) return;
+
+        const bannerQuery = `universeIds=${universeIds.join(',')}&countPerUniverse=1&defaults=true&size=768x432&format=Png&isCircular=false`;
+        const [bannerResult, iconResult] = await Promise.allSettled([
+          fetchJson([
+            `https://thumbnails.roproxy.com/v1/games/multiget/thumbnails?${bannerQuery}`,
+            `https://thumbnails.rotunnel.com/v1/games/multiget/thumbnails?${bannerQuery}`,
+            `https://thumbnails.roblox.com/v1/games/multiget/thumbnails?${bannerQuery}`
+          ]),
+          fetchJson([
+            `https://thumbnails.roproxy.com/v1/places/gameicons?placeIds=${placeIds.join(',')}&size=150x150&format=Png&isCircular=false`,
+            `https://thumbnails.rotunnel.com/v1/places/gameicons?placeIds=${placeIds.join(',')}&size=150x150&format=Png&isCircular=false`,
+            `https://thumbnails.roblox.com/v1/places/gameicons?placeIds=${placeIds.join(',')}&size=150x150&format=Png&isCircular=false`
+          ])
+        ]);
+
+        const banners = new Map();
+        if (bannerResult.status === 'fulfilled') {
+          (bannerResult.value.data || []).forEach((entry) => {
+            const thumbnail = entry?.thumbnails?.find((item) => item?.state === 'Completed' && item?.imageUrl);
+            if (thumbnail) banners.set(String(entry.universeId), thumbnail.imageUrl);
+          });
+        }
+
+        const icons = new Map();
+        if (iconResult.status === 'fulfilled') {
+          (iconResult.value.data || []).forEach((item) => {
+            if (item?.state === 'Completed' && item?.imageUrl) {
+              icons.set(String(item.targetId), item.imageUrl);
+            }
+          });
+        }
+
+        cards.forEach((card) => {
+          const banner = card.querySelector('[data-private-server-banner]');
+          const tinyIcon = card.querySelector('.private-server-card__tiny-icon');
+          const bannerUrl = banners.get(String(card.dataset.gameId));
+          const iconUrl = icons.get(String(card.dataset.placeId));
+          if (banner && (bannerUrl || iconUrl)) banner.src = bannerUrl || iconUrl;
+          if (tinyIcon && iconUrl) tinyIcon.src = iconUrl;
+        });
+
+        if (!banners.size && !icons.size) {
+          throw new Error('Roblox artwork unavailable.');
+        }
+      };
+
       window.PrivateServerAdd = null;
+      ensurePrivateServerTitleIcons();
       updateCounts();
       applyFilter();
       search?.addEventListener('input', applyFilter);
@@ -25829,8 +27790,8 @@ self.addEventListener("message", async (event) => {
         });
       }
 
-      hydrateRobloxIcons().catch(() => {
-        setStatus('Loaded private server links. Roblox icons could not be fetched.', true);
+      hydrateRobloxArtwork().catch(() => {
+        setStatus('Loaded private server links. Roblox artwork could not be fetched.', true);
       });
     })();
   </script>
