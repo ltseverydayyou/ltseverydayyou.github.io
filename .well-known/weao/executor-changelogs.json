@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-08-07T10:55:17.319Z",
+  "fetchedAt": "2026-08-07T11:48:46.090Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -1716,8 +1716,8 @@
         "title": "SirHurt",
         "trackerId": "WEAO5caeb4a7",
         "_id": "67c8a2cb376f9e598b466705",
-        "version": "V5.456",
-        "updatedDate": "08/06/2026 at 8:49 AM UTC",
+        "version": "V5.457",
+        "updatedDate": "08/06/2026 at 10:46 PM UTC",
         "changelogs": {
           "trackerId": "WEAO5caeb4a7",
           "name": "sirhurt",
@@ -6216,7 +6216,7 @@
         "trackerId": "WEAO4ef92j18",
         "_id": "6907cafc4b9bde193883d902",
         "version": "v2",
-        "updatedDate": "07/28/2026 at 7:16 PM UTC",
+        "updatedDate": "08/07/2026 at 3:52 AM UTC",
         "changelogs": {
           "trackerId": "WEAO4ef92j18",
           "name": "severe",
@@ -7576,8 +7576,8 @@
         "title": "Cosmic",
         "trackerId": "WEAOmhg67xtg",
         "_id": "69cace8670a25244103ea819",
-        "version": "1.732",
-        "updatedDate": "08/02/2026 at 6:28 PM UTC",
+        "version": "0.733",
+        "updatedDate": "08/07/2026 at 11:23 AM UTC",
         "changelogs": {
           "trackerId": "WEAOmhg67xtg",
           "name": "cosmic",
@@ -7702,9 +7702,17 @@
               "date": "2026-08-02T18:28:02.367Z",
               "supportedRobloxVersion": "version-145f189a6a974303",
               "updated": true
+            },
+            {
+              "version": "0.733",
+              "changelog": "everything exotic in my narcotics everything exotic in my narcotics everything exotic in my narcotics everything exotic in my narcotics the car im drivin, the bitch Im fuckin plain watches diamonds busting sippin straight drop no this not Robitussin middle fingers up to the haters i said fuck em",
+              "timestamp": 1786101819516,
+              "date": "2026-08-07T11:23:39.516Z",
+              "supportedRobloxVersion": "version-d584fb6c717a43d9",
+              "updated": true
             }
           ],
-          "count": 15
+          "count": 16
         }
       },
       "WEAO4a1j38nv": {
