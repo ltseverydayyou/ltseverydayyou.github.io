@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-08-07T18:22:05.095Z",
+  "fetchedAt": "2026-08-07T19:30:27.399Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -7719,8 +7719,8 @@
         "title": "Madium",
         "trackerId": "WEAO4a1j38nv",
         "_id": "69f25c438d1db84cb50c8cfe",
-        "version": "2.0.3",
-        "updatedDate": "08/06/2026 at 5:20 PM UTC",
+        "version": "2.0.4",
+        "updatedDate": "08/07/2026 at 6:16 PM UTC",
         "changelogs": {
           "trackerId": "WEAO4a1j38nv",
           "name": "madium",
@@ -7767,9 +7767,17 @@
               "date": "2026-08-06T17:20:32.435Z",
               "supportedRobloxVersion": "version-d584fb6c717a43d9",
               "updated": true
+            },
+            {
+              "version": "2.0.4",
+              "changelog": "+ added getactorsthreads\n+ added getdeletedactors\n+ added anti afk\n+ improved startup performance",
+              "timestamp": 1786126612723,
+              "date": "2026-08-07T18:16:52.723Z",
+              "supportedRobloxVersion": "version-d584fb6c717a43d9",
+              "updated": true
             }
           ],
-          "count": 5
+          "count": 6
         }
       },
       "WEAO76ngr5y7": {
