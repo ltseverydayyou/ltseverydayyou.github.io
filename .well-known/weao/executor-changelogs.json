@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-08-07T11:48:46.090Z",
+  "fetchedAt": "2026-08-07T18:22:05.095Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -7790,8 +7790,8 @@
         "title": "Real",
         "trackerId": "WEAO4a1f93j6",
         "_id": "6a5095abbb457d55d62f8061",
-        "version": "1.8.4",
-        "updatedDate": "08/04/2026 at 12:13 PM UTC",
+        "version": "1.9.0",
+        "updatedDate": "08/07/2026 at 5:43 PM UTC",
         "changelogs": {
           "trackerId": "WEAO4a1f93j6",
           "name": "real",
@@ -7988,9 +7988,17 @@
               "date": "2026-08-04T12:13:58.640Z",
               "supportedRobloxVersion": "version-145f189a6a974303",
               "updated": true
+            },
+            {
+              "version": "1.9.0",
+              "changelog": "* Updated for version-d584fb6c717a43d9\r\n* Luau 0.731 -> 0.733\r\n* Fixed a very specific Luau opcode issue\r\n* Fixed actors not working (wrong offset last update)\r\n* Fixed a crash when using restorefunction in a hooked closure\r\n* Fixed firetouchinterest not working for all BaseParts\r\n* Fixed a filesystem vulnerability that would allow you to bypass blacklisted extensions",
+              "timestamp": 1786124620593,
+              "date": "2026-08-07T17:43:40.593Z",
+              "supportedRobloxVersion": "version-d584fb6c717a43d9",
+              "updated": true
             }
           ],
-          "count": 24
+          "count": 25
         }
       }
     }
