@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-08-08T14:34:30.324Z",
+  "fetchedAt": "2026-08-08T19:32:49.711Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -282,13 +282,13 @@
     {
       "_id": "67576d22d9181811c292bb79",
       "title": "Volt",
-      "version": "1.3.5.1",
-      "updatedDate": "07/29/2026 at 10:38 AM UTC",
+      "version": "1.3.6.3",
+      "updatedDate": "08/08/2026 at 6:46 PM UTC",
       "uncStatus": true,
       "free": false,
       "detected": true,
-      "rbxversion": "version-145f189a6a974303",
-      "updateStatus": false,
+      "rbxversion": "version-d584fb6c717a43d9",
+      "updateStatus": true,
       "websitelink": "https://voltbz.net/",
       "discordlink": "https://discord.com/invite/voltbz",
       "beta": false,
@@ -1029,7 +1029,7 @@
       "detected": true,
       "rbxversion": "version-d584fb6c717a43d9",
       "updateStatus": true,
-      "discordlink": "https://stt.gg/ECafsS1y",
+      "discordlink": "https://discord.gg/realcosmic",
       "beta": false,
       "platform": "Windows",
       "extype": "wexecutor",
