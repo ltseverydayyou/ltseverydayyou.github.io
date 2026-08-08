@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-08-08T21:33:12.509Z",
+  "fetchedAt": "2026-08-08T22:32:39.374Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -7576,8 +7576,8 @@
         "title": "Cosmic",
         "trackerId": "WEAOmhg67xtg",
         "_id": "69cace8670a25244103ea819",
-        "version": "0.733",
-        "updatedDate": "08/07/2026 at 11:23 AM UTC",
+        "version": "1.733",
+        "updatedDate": "08/08/2026 at 9:41 PM UTC",
         "changelogs": {
           "trackerId": "WEAOmhg67xtg",
           "name": "cosmic",
@@ -7710,9 +7710,17 @@
               "date": "2026-08-07T11:23:39.516Z",
               "supportedRobloxVersion": "version-d584fb6c717a43d9",
               "updated": true
+            },
+            {
+              "version": "1.733",
+              "changelog": "Improved UI for special type of people",
+              "timestamp": 1786225315219,
+              "date": "2026-08-08T21:41:55.219Z",
+              "supportedRobloxVersion": "version-d584fb6c717a43d9",
+              "updated": true
             }
           ],
-          "count": 16
+          "count": 17
         }
       },
       "WEAO4a1j38nv": {

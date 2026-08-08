@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-08-08T19:32:49.711Z",
+  "fetchedAt": "2026-08-08T22:32:39.374Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -1022,14 +1022,14 @@
     {
       "_id": "69cace8670a25244103ea819",
       "title": "Cosmic",
-      "version": "0.733",
-      "updatedDate": "08/07/2026 at 11:23 AM UTC",
+      "version": "1.733",
+      "updatedDate": "08/08/2026 at 9:41 PM UTC",
       "uncStatus": true,
       "free": false,
       "detected": true,
       "rbxversion": "version-d584fb6c717a43d9",
       "updateStatus": true,
-      "discordlink": "https://discord.gg/realcosmic",
+      "discordlink": "https://discord.gg/cosmicbest",
       "beta": false,
       "platform": "Windows",
       "extype": "wexecutor",
