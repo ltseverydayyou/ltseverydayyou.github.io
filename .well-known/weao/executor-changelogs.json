@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-08-07T21:41:32.379Z",
+  "fetchedAt": "2026-08-08T20:33:29.229Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -7719,8 +7719,8 @@
         "title": "Madium",
         "trackerId": "WEAO4a1j38nv",
         "_id": "69f25c438d1db84cb50c8cfe",
-        "version": "2.0.4",
-        "updatedDate": "08/07/2026 at 6:16 PM UTC",
+        "version": "2.0.5",
+        "updatedDate": "08/08/2026 at 2:01 PM UTC",
         "changelogs": {
           "trackerId": "WEAO4a1j38nv",
           "name": "madium",
@@ -7775,9 +7775,17 @@
               "date": "2026-08-07T18:16:52.723Z",
               "supportedRobloxVersion": "version-d584fb6c717a43d9",
               "updated": true
+            },
+            {
+              "version": "2.0.5",
+              "changelog": "Hello, it’s me, Crewmate. I am the good guy on the spaceship. I complete all the tasks. My wish is to complete all the tasks before the impostor tries to destroy us",
+              "timestamp": 1786197673591,
+              "date": "2026-08-08T14:01:13.591Z",
+              "supportedRobloxVersion": "version-d584fb6c717a43d9",
+              "updated": true
             }
           ],
-          "count": 6
+          "count": 7
         }
       },
       "WEAO76ngr5y7": {
