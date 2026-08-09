@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-08-09T21:35:27.333Z",
+  "fetchedAt": "2026-08-09T22:34:14.684Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -1090,7 +1090,7 @@
       "multiInject": true,
       "raknet": true,
       "suncPercentage": 100,
-      "uncPercentage": 96,
+      "uncPercentage": 98,
       "sunc": {
         "suncScrap": "itclqwmStq450Yq6",
         "suncKey": "u5sTWaLCPgSUsE6GV1b5kejBtX4Va6YF"
