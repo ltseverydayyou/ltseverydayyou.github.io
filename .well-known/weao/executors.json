@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-08-08T22:32:39.374Z",
+  "fetchedAt": "2026-08-09T19:35:38.380Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -42,7 +42,9 @@
           "https://cdn.weao.gg/slug/potassium/screenshot1.png",
           "https://cdn.weao.gg/slug/potassium/screenshot2.png",
           "https://cdn.weao.gg/slug/potassium/screenshot3.png",
-          "https://cdn.weao.gg/slug/potassium/screenshot4.png"
+          "https://cdn.weao.gg/slug/potassium/screenshot4.png",
+          "https://cdn.weao.gg/slug/potassium/screenshot5.png",
+          "https://cdn.weao.gg/slug/potassium/screenshot6.png"
         ]
       },
       "hasIssues": false,
@@ -500,9 +502,7 @@
           "https://cdn.weao.gg/slug/wave/screenshot2.png",
           "https://cdn.weao.gg/slug/wave/screenshot3.png",
           "https://cdn.weao.gg/slug/wave/screenshot4.png",
-          "https://cdn.weao.gg/slug/wave/screenshot5.png",
-          "https://cdn.weao.gg/slug/wave/screenshot6.png",
-          "https://cdn.weao.gg/slug/wave/screenshot7.png"
+          "https://cdn.weao.gg/slug/wave/screenshot5.png"
         ]
       },
       "detectionReason": "Last banwave: May 26"
