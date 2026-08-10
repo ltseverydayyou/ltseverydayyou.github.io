@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-08-08T22:32:39.374Z",
+  "fetchedAt": "2026-08-10T21:44:46.626Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -6229,8 +6229,8 @@
         "title": "MacSploit",
         "trackerId": "WEAO10179289",
         "_id": "692794d789eb1e034ad699c3",
-        "version": "731.142",
-        "updatedDate": "07/29/2026 at 3:42 AM UTC",
+        "version": "733.1",
+        "updatedDate": "08/10/2026 at 1:25 AM UTC",
         "changelogs": {
           "trackerId": "WEAO10179289",
           "name": "macsploit",
@@ -6491,9 +6491,17 @@
               "date": "2026-07-29T03:42:17.987Z",
               "supportedRobloxVersion": "version-614a8fd6f9294c9b",
               "updated": false
+            },
+            {
+              "version": "733.1",
+              "changelog": " - updated luau\n - updated to latest roblox\n - added raknet send_hooks\n - new hwid spoofer for bypassing device ban\n - vuln patches",
+              "timestamp": 1786325158900,
+              "date": "2026-08-10T01:25:58.900Z",
+              "supportedRobloxVersion": "version-897f957153bd4d18",
+              "updated": true
             }
           ],
-          "count": 32
+          "count": 33
         }
       },
       "WEAO8c4f2b91": {
