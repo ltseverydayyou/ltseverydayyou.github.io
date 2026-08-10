@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-08-10T02:03:29.047Z",
+  "fetchedAt": "2026-08-10T04:12:57.778Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -383,8 +383,8 @@
     {
       "_id": "66633ac4b29bacaa7a568fdc",
       "title": "Solara",
-      "version": "0.1.5b",
-      "updatedDate": "08/06/2026 at 6:05 AM UTC",
+      "version": "0.1.6",
+      "updatedDate": "08/10/2026 at 3:59 AM UTC",
       "uncStatus": true,
       "free": true,
       "detected": true,
