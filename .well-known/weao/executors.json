@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-08-10T21:44:46.626Z",
+  "fetchedAt": "2026-08-11T16:24:15.182Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -797,12 +797,12 @@
     {
       "_id": "66a679cc5b36b46c9327b0a7",
       "title": "Synapse Z",
-      "version": "1.0.3.3",
-      "updatedDate": "07/14/2026 at 7:54 PM UTC",
+      "version": "1.0.3.4",
+      "updatedDate": "08/11/2026 at 3:16 PM UTC",
       "uncStatus": true,
       "free": false,
       "detected": true,
-      "rbxversion": "version-36a2600cebf1487d",
+      "rbxversion": "version-d584fb6c717a43d9",
       "updateStatus": false,
       "websitelink": "https://z.synapse.do",
       "discordlink": "https://discord.gg/synz",
