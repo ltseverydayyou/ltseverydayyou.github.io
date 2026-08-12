@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-08-12T17:29:37.729Z",
+  "fetchedAt": "2026-08-12T18:29:36.798Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -1536,7 +1536,7 @@
         "trackerId": "WEAO1af938a2",
         "_id": "66633ac4b29bacaa7a568fdc",
         "version": "0.1.6",
-        "updatedDate": "08/10/2026 at 3:59 AM UTC",
+        "updatedDate": "08/12/2026 at 4:54 PM UTC",
         "changelogs": {
           "trackerId": "WEAO1af938a2",
           "name": "solara",
@@ -2382,8 +2382,8 @@
         "title": "Wave",
         "trackerId": "WEAO2c8e5827",
         "_id": "662ae7576238b7f2082f253b",
-        "version": "NEW-1.4.5",
-        "updatedDate": "08/06/2026 at 9:20 AM UTC",
+        "version": "NEW-1.4.6",
+        "updatedDate": "08/12/2026 at 4:03 PM UTC",
         "changelogs": {
           "trackerId": "WEAO2c8e5827",
           "name": "wave",
@@ -2410,8 +2410,8 @@
         "title": "DX9WARE V2",
         "trackerId": "WEAO1181f437",
         "_id": "66837bf003fe5828bec91bc5",
-        "version": "1.1.212",
-        "updatedDate": "08/06/2026 at 12:17 AM UTC",
+        "version": "1.1.213",
+        "updatedDate": "08/12/2026 at 4:31 PM UTC",
         "changelogs": {
           "trackerId": "WEAO1181f437",
           "name": "dx9ware",
@@ -5154,7 +5154,7 @@
         "trackerId": "WEAO30580ddb",
         "_id": "688c1b3ccc42af0ea95977e3",
         "version": "v2",
-        "updatedDate": "08/05/2026 at 11:11 PM UTC",
+        "updatedDate": "08/12/2026 at 4:01 PM UTC",
         "changelogs": {
           "trackerId": "WEAO30580ddb",
           "name": "serotonin",
