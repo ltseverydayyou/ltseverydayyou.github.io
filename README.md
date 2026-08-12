@@ -229,6 +229,8 @@ Put this in autoexec if you want `stuffs.luau` and `game_checker.luau` to load a
 
 ```luau
 -- ltseverydayyou's autoexec shit lol
+local queueOnTeleport = true
+
 local urls = {
 	"https://raw.githubusercontent.com/ltseverydayyou/ltseverydayyou.github.io/refs/heads/main/stuffs.luau",
 	"https://raw.githubusercontent.com/ltseverydayyou/ltseverydayyou.github.io/refs/heads/main/game_checker.luau",
@@ -277,5 +279,46 @@ end
 
 for _, url in urls do
 	run(url)
+end
+
+if queueOnTeleport then
+	local queue =
+		queue_on_teleport
+		or queueonteleport
+		or (syn and syn.queue_on_teleport)
+
+	if type(queue) == "function" then
+		local queuedUrls = {}
+
+		for i, url in urls do
+			queuedUrls[i] = string.format("%q", url)
+		end
+
+		queue(([[
+local urls = {
+	%s
+}
+
+if not game:IsLoaded() then
+	game.Loaded:Wait()
+end
+
+for _, url in urls do
+	task.spawn(function()
+		local okSrc, src = pcall(game.HttpGet, game, url)
+
+		if not okSrc or type(src) ~= "string" or #src == 0 then
+			return
+		end
+
+		local fn = loadstring(src)
+
+		if type(fn) == "function" then
+			pcall(fn)
+		end
+	end)
+end
+]]):format("\t" .. table.concat(queuedUrls, ",\n\t")))
+	end
 end
 ```
