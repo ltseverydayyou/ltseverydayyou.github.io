@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-08-12T04:22:09.744Z",
+  "fetchedAt": "2026-08-12T17:29:37.729Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -225,7 +225,7 @@
         "trackerId": "WEAO6c35cab4",
         "_id": "680ab721b50548f01fd62715",
         "version": "6.8",
-        "updatedDate": "08/06/2026 at 12:08 AM UTC",
+        "updatedDate": "08/12/2026 at 4:51 PM UTC",
         "changelogs": {
           "trackerId": "WEAO6c35cab4",
           "name": "photon",
@@ -455,8 +455,8 @@
         "title": "SirHurt",
         "trackerId": "WEAO5caeb4a7",
         "_id": "67c8a2cb376f9e598b466705",
-        "version": "V5.458",
-        "updatedDate": "08/10/2026 at 5:20 AM UTC",
+        "version": "V5.459",
+        "updatedDate": "08/12/2026 at 4:01 PM UTC",
         "changelogs": {
           "trackerId": "WEAO5caeb4a7",
           "name": "sirhurt",
@@ -5502,7 +5502,7 @@
         "trackerId": "WEAO76ngr5y7",
         "_id": "6a0ea99cfd26ad90bea624eb",
         "version": "1.0.8",
-        "updatedDate": "08/06/2026 at 7:14 AM UTC",
+        "updatedDate": "08/12/2026 at 4:48 PM UTC",
         "changelogs": {
           "trackerId": "WEAO76ngr5y7",
           "name": "lumen",
@@ -7980,8 +7980,8 @@
         "title": "Madium",
         "trackerId": "WEAO4a1j38nv",
         "_id": "69f25c438d1db84cb50c8cfe",
-        "version": "2.0.5",
-        "updatedDate": "08/08/2026 at 2:01 PM UTC",
+        "version": "2.0.6",
+        "updatedDate": "08/12/2026 at 4:57 PM UTC",
         "changelogs": {
           "trackerId": "WEAO4a1j38nv",
           "name": "madium",
@@ -8044,9 +8044,17 @@
               "date": "2026-08-08T14:01:13.591Z",
               "supportedRobloxVersion": "version-d584fb6c717a43d9",
               "updated": true
+            },
+            {
+              "version": "2.0.6",
+              "changelog": "genuinely think diarrhea gets an unfairly bad reputation.\nIf we're judging poops purely on efficiency, diarrhea wins.\nSolid poop has you sitting there for 20–60 minutes, pushing like you're trying to give birth, repositioning yourself 14 times, scrolling through your phone, and eventually your legs are completely numb.\nMeanwhile, diarrhea is basically a high-speed evacuation.",
+              "timestamp": 1786553831316,
+              "date": "2026-08-12T16:57:11.316Z",
+              "supportedRobloxVersion": "version-d584fb6c717a43d9",
+              "updated": false
             }
           ],
-          "count": 7
+          "count": 8
         }
       }
     }
