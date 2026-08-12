@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-08-12T20:50:10.035Z",
+  "fetchedAt": "2026-08-12T21:50:12.112Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -477,8 +477,8 @@
         "title": "Ronin",
         "trackerId": "WEAO622afd8b",
         "_id": "6837e1ca5f37edc7f4ff0197",
-        "version": "Version-4.1.7",
-        "updatedDate": "07/28/2026 at 5:57 PM UTC",
+        "version": "Version-4.1.8",
+        "updatedDate": "08/12/2026 at 9:02 PM UTC",
         "changelogs": {
           "trackerId": "WEAO622afd8b",
           "name": "ronin",
@@ -939,9 +939,17 @@
               "date": "2026-07-28T17:57:25.942Z",
               "supportedRobloxVersion": "version-145f189a6a974303",
               "updated": true
+            },
+            {
+              "version": "Version-4.1.8",
+              "changelog": "Core:\n[+] Updated To Latest Roblox Version\n\nWe'd like to briefly apologize for the recent downtime. Nekros has suffered the loss of a family member and has been taking some time off social media, thank you.\nAll buyers have been compensated for the downtime.",
+              "timestamp": 1786568526529,
+              "date": "2026-08-12T21:02:06.529Z",
+              "supportedRobloxVersion": "version-ddf602d9cfe44005",
+              "updated": true
             }
           ],
-          "count": 57
+          "count": 58
         }
       },
       "WEAO4e37a618": {
