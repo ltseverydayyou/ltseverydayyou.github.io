@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-08-13T22:45:47.925Z",
+  "fetchedAt": "2026-08-13T23:44:43.795Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -8020,8 +8020,8 @@
         "title": "Madium",
         "trackerId": "WEAO4a1j38nv",
         "_id": "69f25c438d1db84cb50c8cfe",
-        "version": "2.0.7",
-        "updatedDate": "08/13/2026 at 6:10 PM UTC",
+        "version": "2.0.8",
+        "updatedDate": "08/13/2026 at 11:24 PM UTC",
         "changelogs": {
           "trackerId": "WEAO4a1j38nv",
           "name": "madium",
@@ -8100,9 +8100,17 @@
               "date": "2026-08-13T18:10:04.272Z",
               "supportedRobloxVersion": "version-ddf602d9cfe44005",
               "updated": true
+            },
+            {
+              "version": "2.0.8",
+              "changelog": "+ Changed Get Key Link on ui to [www.getmadium.xyz](https://www.getmadium.xyz) I am a pregnant male living in Singapore. I work 10 hours a day, 5 days a week at a call center. Sometimes I am called in to work weekends. I provide high quality customer support to Microsoft users. I am not a scammer. I became pregnant due to a mistake made by my brother, and my pregnancy has resulted in many hardships. My wife has left me for my grandmother. My grandmother disowned me from her will, from which I was set to inherit a small boat, which I would use to take my future daughter fishing. It is very heartbreaking to know that my brother’s mistake got me pregnant. I must remember along this difficult journey that he did not intend for this to happen, and I must love my to-be daughter as my own.",
+              "timestamp": 1786663450398,
+              "date": "2026-08-13T23:24:10.398Z",
+              "supportedRobloxVersion": "version-ddf602d9cfe44005",
+              "updated": true
             }
           ],
-          "count": 9
+          "count": 10
         }
       }
     }
