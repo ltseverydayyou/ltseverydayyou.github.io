@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-08-13T13:18:43.392Z",
+  "fetchedAt": "2026-08-13T14:37:39.216Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -6841,7 +6841,7 @@
         "trackerId": "WEAO4ef92j18",
         "_id": "6907cafc4b9bde193883d902",
         "version": "v2",
-        "updatedDate": "08/07/2026 at 3:52 AM UTC",
+        "updatedDate": "08/13/2026 at 4:21 AM UTC",
         "changelogs": {
           "trackerId": "WEAO4ef92j18",
           "name": "severe",
