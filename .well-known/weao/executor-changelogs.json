@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-08-13T23:44:43.795Z",
+  "fetchedAt": "2026-08-14T11:46:51.938Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -1559,8 +1559,8 @@
         "title": "Solara",
         "trackerId": "WEAO1af938a2",
         "_id": "66633ac4b29bacaa7a568fdc",
-        "version": "0.1.6a",
-        "updatedDate": "08/13/2026 at 9:54 PM UTC",
+        "version": "0.1.6b",
+        "updatedDate": "08/14/2026 at 6:31 AM UTC",
         "changelogs": {
           "trackerId": "WEAO1af938a2",
           "name": "solara",
@@ -2405,9 +2405,17 @@
               "date": "2026-08-13T21:54:47.117Z",
               "supportedRobloxVersion": "version-ddf602d9cfe44005",
               "updated": true
+            },
+            {
+              "version": "0.1.6b",
+              "changelog": "[+] slight visual improvements to ui\n[+] slight improvement to teleport handling\n\nREACT TO THIS EMBED WITH 🐀 IF YOU SUPPORT THE BIG YAHU",
+              "timestamp": 1786689071810,
+              "date": "2026-08-14T06:31:11.810Z",
+              "supportedRobloxVersion": "version-ddf602d9cfe44005",
+              "updated": true
             }
           ],
-          "count": 105
+          "count": 106
         }
       },
       "WEAO2c8e5827": {
