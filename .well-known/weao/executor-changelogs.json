@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-08-15T15:24:19.967Z",
+  "fetchedAt": "2026-08-16T03:03:08.782Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -1567,8 +1567,8 @@
         "title": "Solara",
         "trackerId": "WEAO1af938a2",
         "_id": "66633ac4b29bacaa7a568fdc",
-        "version": "0.1.6b",
-        "updatedDate": "08/14/2026 at 6:31 AM UTC",
+        "version": "0.1.6c",
+        "updatedDate": "08/16/2026 at 2:22 AM UTC",
         "changelogs": {
           "trackerId": "WEAO1af938a2",
           "name": "solara",
@@ -2421,9 +2421,17 @@
               "date": "2026-08-14T06:31:11.810Z",
               "supportedRobloxVersion": "version-ddf602d9cfe44005",
               "updated": true
+            },
+            {
+              "version": "0.1.6c",
+              "changelog": "[+] solara will now proactively blacklist scripts/creators from the script search that are deemed malicious, in case we catch it faster than the platform (you can report such cases to quiving@getsolara.dev)\n[+] setclipboard will no longer allow domains that are blocked on solara\n[+] lz4 funcs fixes\n[+] base64 & lz4 funcs now accept buffer | string\n[+] added zstdcompress & zstddecompress (which also accept buffer | string)",
+              "timestamp": 1786846939891,
+              "date": "2026-08-16T02:22:19.891Z",
+              "supportedRobloxVersion": "version-ddf602d9cfe44005",
+              "updated": true
             }
           ],
-          "count": 106
+          "count": 107
         }
       },
       "WEAO2c8e5827": {
