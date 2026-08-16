@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-08-16T03:03:08.782Z",
+  "fetchedAt": "2026-08-16T21:22:55.847Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -1328,8 +1328,8 @@
         "title": "Real",
         "trackerId": "WEAO4a1f93j6",
         "_id": "6a5095abbb457d55d62f8061",
-        "version": "1.9.3",
-        "updatedDate": "08/15/2026 at 2:43 PM UTC",
+        "version": "2.0.0",
+        "updatedDate": "08/16/2026 at 8:04 PM UTC",
         "changelogs": {
           "trackerId": "WEAO4a1f93j6",
           "name": "real",
@@ -1558,9 +1558,17 @@
               "date": "2026-08-15T14:43:12.637Z",
               "supportedRobloxVersion": "version-ddf602d9cfe44005",
               "updated": true
+            },
+            {
+              "version": "2.0.0",
+              "changelog": "* Luau 0.733 -> 0.734\r\n* Updated dependencies to the latest version, enabled cryptopp asm and changed compiler settings for compatibility and optimization purposes\r\n* Made tphandler fast again (runs immediately after replicatedfirst)\r\n* Fixed isparallel not working\r\n* Removed the limit for setfpscap\r\n* Fixed gethiddenproperty erroring with \"can't get value\" for specific vector3 values (myriad expects nil instead of the value but i won't return nil because that's retarded)\r\n* Added cansignalreplicate, getsignalwhitelist, getsignalarguments, getsignalargumentsinfo\r\n* Added missing console redirection for printidentity\r\n* Added FileDialog lib\r\nUI:\r\n* Fixed Account sessions \r\n* Fixed more login issues\r\n* Improved Script Hub provider data\r\n* Added Cloud Scripts\r\n* Added Auth failure diagnostics\r\n* Fixed missing Featured Script details",
+              "timestamp": 1786910649955,
+              "date": "2026-08-16T20:04:09.955Z",
+              "supportedRobloxVersion": "version-ddf602d9cfe44005",
+              "updated": true
             }
           ],
-          "count": 28
+          "count": 29
         }
       },
       "WEAO1af938a2": {
