@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-08-17T19:30:20.209Z",
+  "fetchedAt": "2026-08-17T20:30:09.953Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -1328,8 +1328,8 @@
         "title": "Real",
         "trackerId": "WEAO4a1f93j6",
         "_id": "6a5095abbb457d55d62f8061",
-        "version": "2.0.2",
-        "updatedDate": "08/17/2026 at 6:59 PM UTC",
+        "version": "2.0.3",
+        "updatedDate": "08/17/2026 at 7:47 PM UTC",
         "changelogs": {
           "trackerId": "WEAO4a1f93j6",
           "name": "real",
@@ -1582,9 +1582,17 @@
               "date": "2026-08-17T18:59:41.281Z",
               "supportedRobloxVersion": "version-ddf602d9cfe44005",
               "updated": true
+            },
+            {
+              "version": "2.0.3",
+              "changelog": "- Fixed exit code 1",
+              "timestamp": 1786996066148,
+              "date": "2026-08-17T19:47:46.148Z",
+              "supportedRobloxVersion": "version-ddf602d9cfe44005",
+              "updated": true
             }
           ],
-          "count": 31
+          "count": 32
         }
       },
       "WEAO1af938a2": {
