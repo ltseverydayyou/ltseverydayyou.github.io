@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-08-17T13:40:54.913Z",
+  "fetchedAt": "2026-08-17T19:30:20.209Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -1328,8 +1328,8 @@
         "title": "Real",
         "trackerId": "WEAO4a1f93j6",
         "_id": "6a5095abbb457d55d62f8061",
-        "version": "2.0.1",
-        "updatedDate": "08/17/2026 at 3:08 AM UTC",
+        "version": "2.0.2",
+        "updatedDate": "08/17/2026 at 6:59 PM UTC",
         "changelogs": {
           "trackerId": "WEAO4a1f93j6",
           "name": "real",
@@ -1574,9 +1574,17 @@
               "date": "2026-08-17T03:08:09.937Z",
               "supportedRobloxVersion": "version-ddf602d9cfe44005",
               "updated": true
+            },
+            {
+              "version": "2.0.2",
+              "changelog": "• Fixed browser login session issues  \r\n• Fixed app sign-out affecting website login  \r\n• Fixed login timeout during key redemption  \r\n• Fixed multiple injector auth failures  \r\n• Improved auth error messages  \r\n• Improved device binding stability  \r\n• Improved auth server connection handling  \r\n• Added installer/repair time sync",
+              "timestamp": 1786993181281,
+              "date": "2026-08-17T18:59:41.281Z",
+              "supportedRobloxVersion": "version-ddf602d9cfe44005",
+              "updated": true
             }
           ],
-          "count": 30
+          "count": 31
         }
       },
       "WEAO1af938a2": {
