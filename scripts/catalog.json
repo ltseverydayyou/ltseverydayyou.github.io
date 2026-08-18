@@ -21,8 +21,12 @@
       "id": "my-new-script",
       "name": "My New Script",
       "scriptUrl": "https://raw.githubusercontent.com/username/repository/main/script.luau",
-      "placeIds": ["123456789"],
-      "universeIds": ["987654321"],
+      "placeIds": [
+        "123456789"
+      ],
+      "universeIds": [
+        "987654321"
+      ],
       "imageUrl": "https://example.com/image.png",
       "featured": true,
       "status": "supported"
@@ -48,160 +52,252 @@
       "id": "fnb-autoplayer",
       "name": "FNB Autoplayer",
       "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/FNB-playerrrr/refs/heads/main/AutoPlayerRevived.luau",
-      "placeIds": ["7603193259"],
-      "universeIds": ["2953945619"],
+      "placeIds": [
+        "7603193259"
+      ],
+      "universeIds": [
+        "2953945619"
+      ],
       "status": "supported"
     },
     {
       "id": "fnp-autoplayer",
       "name": "FNP Autoplayer",
       "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/FNP%20Autoplayer.luau",
-      "placeIds": ["97923943452128"],
-      "universeIds": ["10258128048"],
+      "placeIds": [
+        "97923943452128"
+      ],
+      "universeIds": [
+        "10258128048"
+      ],
       "status": "supported"
     },
     {
       "id": "delusional-office",
       "name": "Delusional Office",
       "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/Delulu%20Office.lua",
-      "placeIds": ["18749553947"],
-      "universeIds": ["6352299542"],
+      "placeIds": [
+        "18749553947"
+      ],
+      "universeIds": [
+        "6352299542"
+      ],
       "status": "supported"
     },
     {
       "id": "notoriety-rapid-fire",
       "name": "Rapid Fire + No Recoil + Inf Ammo",
       "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/Notoriety.luau",
-      "placeIds": ["21532277"],
-      "universeIds": ["16680835"],
+      "placeIds": [
+        "21532277"
+      ],
+      "universeIds": [
+        "16680835"
+      ],
       "status": "supported"
     },
     {
       "id": "zss-autofarm",
       "name": "ZSS Autofarm",
       "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/ZSS%20Autofarm.lua",
-      "placeIds": ["9359839118"],
-      "universeIds": ["3498637623"],
+      "placeIds": [
+        "9359839118"
+      ],
+      "universeIds": [
+        "3498637623"
+      ],
       "status": "supported"
     },
     {
       "id": "card-autoplayer",
       "name": "Card Autoplayer",
       "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/LOCOfficial%20autoplay.luau",
-      "placeIds": ["8571687919"],
-      "universeIds": ["3267012194"],
+      "placeIds": [
+        "8571687919"
+      ],
+      "universeIds": [
+        "3267012194"
+      ],
       "status": "supported"
     },
     {
       "id": "endless-doors",
       "name": "Endless Doors",
       "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/endless-doors/main/endless%20madness%20buster",
-      "placeIds": ["17324251852"],
-      "universeIds": ["5927366432"],
+      "placeIds": [
+        "17324251852"
+      ],
+      "universeIds": [
+        "5927366432"
+      ],
       "status": "supported"
     },
     {
       "id": "deadcoin-farm",
       "name": "DeadCoin Farm",
       "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/Be%20Dead%20Forever%20Farm.lua",
-      "placeIds": ["2882332175"],
-      "universeIds": ["1042702539"],
+      "placeIds": [
+        "2882332175"
+      ],
+      "universeIds": [
+        "1042702539"
+      ],
       "status": "supported"
     },
     {
       "id": "project-the-rake",
       "name": "Project The Rake",
       "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/main/the%20rake",
-      "placeIds": ["2413927524"],
-      "universeIds": ["847722000"],
+      "placeIds": [
+        "2413927524"
+      ],
+      "universeIds": [
+        "847722000"
+      ],
       "status": "supported"
     },
     {
       "id": "slap-aura-hub",
       "name": "Slap Aura Hub",
       "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/SlapAuraSB.luau",
-      "placeIds": ["6403373529"],
-      "universeIds": ["2380077519"],
+      "placeIds": [
+        "6403373529"
+      ],
+      "universeIds": [
+        "2380077519"
+      ],
       "status": "supported"
     },
     {
       "id": "ability-wars-aura",
       "name": "Ability Wars Aura",
       "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/AbilityWarsAura.luau",
-      "placeIds": ["8260276694"],
-      "universeIds": ["3168615253"],
+      "placeIds": [
+        "8260276694"
+      ],
+      "universeIds": [
+        "3168615253"
+      ],
       "status": "supported"
     },
     {
       "id": "get-almost-all-badges",
       "name": "get (almost all) badges",
       "scriptUrl": "https://rawscripts.net/raw/SPREAD-THE-LOVE-Grace-get-all-badges-46219",
-      "placeIds": ["138837502355157"],
-      "universeIds": ["6508759464"],
+      "placeIds": [
+        "138837502355157"
+      ],
+      "universeIds": [
+        "6508759464"
+      ],
       "status": "supported"
     },
     {
       "id": "fe2-helper",
       "name": "FE2 Helper",
       "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/Fe2AutoFarm.luau",
-      "placeIds": ["738339342"],
-      "universeIds": ["323675642"],
+      "placeIds": [
+        "738339342"
+      ],
+      "universeIds": [
+        "323675642"
+      ],
       "status": "supported"
     },
     {
       "id": "fem-helper",
       "name": "FEM Helper",
       "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/Fe2AutoFarm.luau",
-      "placeIds": ["2181746027"],
-      "universeIds": ["761462079"],
+      "placeIds": [
+        "2181746027"
+      ],
+      "universeIds": [
+        "761462079"
+      ],
       "status": "supported"
     },
     {
       "id": "tunneler",
       "name": "TUNNELER",
       "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/tunneler",
-      "placeIds": ["4635669637"],
-      "universeIds": ["1524368576"],
+      "placeIds": [
+        "4635669637"
+      ],
+      "universeIds": [
+        "1524368576"
+      ],
       "status": "supported"
     },
     {
       "id": "rosu-autoplayer-beta",
       "name": "Autoplayer (BETA)",
       "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/RosuPlayer.lua",
-      "placeIds": ["9051087354"],
-      "universeIds": ["3405992067"],
+      "placeIds": [
+        "9051087354"
+      ],
+      "universeIds": [
+        "3405992067"
+      ],
       "status": "supported"
     },
     {
       "id": "rusher-autoplayer",
       "name": "Autoplayer",
       "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/RusherAutoPlayer.lua",
-      "placeIds": ["106809703371658"],
-      "universeIds": ["6596003198"],
+      "placeIds": [
+        "106809703371658"
+      ],
+      "universeIds": [
+        "6596003198"
+      ],
       "status": "supported"
     },
     {
       "id": "auto-parry-beta",
       "name": "Auto Parry (BETA)",
       "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/PhantomBallz.luau",
-      "placeIds": ["12979690461"],
-      "universeIds": ["4538598064"],
+      "placeIds": [
+        "12979690461"
+      ],
+      "universeIds": [
+        "4538598064"
+      ],
       "status": "supported"
     },
     {
       "id": "evader",
       "name": "Evader",
       "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/Evader.luau",
-      "placeIds": ["9872472334"],
-      "universeIds": ["3647333358"],
+      "placeIds": [
+        "9872472334"
+      ],
+      "universeIds": [
+        "3647333358"
+      ],
       "status": "supported"
     },
     {
       "id": "anime-ball",
       "name": "Anime Ball",
       "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/main/AnimeBallParry.lua",
-      "placeIds": ["14861721759"],
-      "universeIds": ["5120885191"],
+      "placeIds": [
+        "14861721759"
+      ],
+      "universeIds": [
+        "5120885191"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "dig-clean-hub",
+      "name": "Dig & Clean Hub",
+      "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/DigCleanHub.luau",
+      "placeIds": [
+        "83038462357724"
+      ],
+      "universeIds": [
+        "10475794799"
+      ],
       "status": "supported"
     },
     {
@@ -212,26 +308,131 @@
       "featured": true,
       "status": "supported"
     },
-    {"id": "auto-parry-red-circle", "name": "Auto Parry (Red Circle Rework)", "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/AutoParry.lua", "status": "supported"},
-    {"id": "simple-spy-reworked", "name": "Simple Spy Reworked", "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/SimpleSpyRework.luau", "status": "supported"},
-    {"id": "dex-plus-plus-backup", "name": "Dex ++ (Backup)", "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/DexPlusBackup.luau", "status": "supported"},
-    {"id": "dex", "name": "Dex", "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/DexByMoonMobile", "status": "supported"},
-    {"id": "minimap", "name": "Minimap", "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/minimap.luau", "status": "supported"},
-    {"id": "delta-customization-module", "name": "Delta Customization Module", "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/DeltaCustomizationModule.luau", "status": "supported"},
-    {"id": "vyperia-aimbot", "name": "Vyperia Aimbot", "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/NewAimbot.lua", "status": "supported"},
-    {"id": "autoclicker", "name": "Autoclicker", "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/AutoClicker.luau", "status": "supported"},
-    {"id": "prompt-buttons", "name": "Prompt Buttons", "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/PromptButtons.luau", "status": "supported"},
-    {"id": "tail-sway", "name": "Tail Sway", "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/TailSway.luau", "status": "supported"},
-    {"id": "chat-translator", "name": "Chat Translator", "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/translatoooor", "status": "supported"},
-    {"id": "image-scanner", "name": "Image Scanner", "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/ImageScanner.lua", "status": "supported"},
-    {"id": "virtual-keyboard", "name": "Virtual Keyboard", "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/VirtualKeyboard.lua", "status": "supported"},
-    {"id": "old-f9-console", "name": "old F9 console", "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/OldConsole.lua", "status": "supported"},
-    {"id": "turtle-spy", "name": "Turtle Spy", "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/main/Turtle%20Spy.lua", "status": "supported"},
-    {"id": "unc-test", "name": "UNC Test", "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/UNC%20test", "status": "supported"},
-    {"id": "vulnerability-test", "name": "Vulnerability Test", "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/VulnTest.lua", "status": "supported"},
-    {"id": "game-universe-viewer", "name": "Game Universe Viewer", "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/main/Universe%20Viewer", "status": "supported"},
-    {"id": "mobile-shiftlock", "name": "Mobile Shiftlock", "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/shiftlock", "status": "supported"},
-    {"id": "custom-backpack", "name": "Custom Backpack", "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/mobileBACKPACK.lua", "status": "supported"},
-    {"id": "animation-spoofer", "name": "Animation Spoofer", "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/Nameless-Admin/refs/heads/main/Animation%20Spoofer", "status": "supported"}
+    {
+      "id": "auto-parry-red-circle",
+      "name": "Auto Parry (Red Circle Rework)",
+      "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/AutoParry.lua",
+      "status": "supported"
+    },
+    {
+      "id": "simple-spy-reworked",
+      "name": "Simple Spy Reworked",
+      "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/SimpleSpyRework.luau",
+      "status": "supported"
+    },
+    {
+      "id": "dex-plus-plus-backup",
+      "name": "Dex ++ (Backup)",
+      "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/DexPlusBackup.luau",
+      "status": "supported"
+    },
+    {
+      "id": "dex",
+      "name": "Dex",
+      "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/DexByMoonMobile",
+      "status": "supported"
+    },
+    {
+      "id": "minimap",
+      "name": "Minimap",
+      "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/minimap.luau",
+      "status": "supported"
+    },
+    {
+      "id": "delta-customization-module",
+      "name": "Delta Customization Module",
+      "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/DeltaCustomizationModule.luau",
+      "status": "supported"
+    },
+    {
+      "id": "vyperia-aimbot",
+      "name": "Vyperia Aimbot",
+      "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/NewAimbot.lua",
+      "status": "supported"
+    },
+    {
+      "id": "autoclicker",
+      "name": "Autoclicker",
+      "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/AutoClicker.luau",
+      "status": "supported"
+    },
+    {
+      "id": "prompt-buttons",
+      "name": "Prompt Buttons",
+      "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/PromptButtons.luau",
+      "status": "supported"
+    },
+    {
+      "id": "tail-sway",
+      "name": "Tail Sway",
+      "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/TailSway.luau",
+      "status": "supported"
+    },
+    {
+      "id": "chat-translator",
+      "name": "Chat Translator",
+      "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/translatoooor",
+      "status": "supported"
+    },
+    {
+      "id": "image-scanner",
+      "name": "Image Scanner",
+      "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/ImageScanner.lua",
+      "status": "supported"
+    },
+    {
+      "id": "virtual-keyboard",
+      "name": "Virtual Keyboard",
+      "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/VirtualKeyboard.lua",
+      "status": "supported"
+    },
+    {
+      "id": "old-f9-console",
+      "name": "old F9 console",
+      "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/OldConsole.lua",
+      "status": "supported"
+    },
+    {
+      "id": "turtle-spy",
+      "name": "Turtle Spy",
+      "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/main/Turtle%20Spy.lua",
+      "status": "supported"
+    },
+    {
+      "id": "unc-test",
+      "name": "UNC Test",
+      "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/UNC%20test",
+      "status": "supported"
+    },
+    {
+      "id": "vulnerability-test",
+      "name": "Vulnerability Test",
+      "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/VulnTest.lua",
+      "status": "supported"
+    },
+    {
+      "id": "game-universe-viewer",
+      "name": "Game Universe Viewer",
+      "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/main/Universe%20Viewer",
+      "status": "supported"
+    },
+    {
+      "id": "mobile-shiftlock",
+      "name": "Mobile Shiftlock",
+      "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/shiftlock",
+      "status": "supported"
+    },
+    {
+      "id": "custom-backpack",
+      "name": "Custom Backpack",
+      "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/mobileBACKPACK.lua",
+      "status": "supported"
+    },
+    {
+      "id": "animation-spoofer",
+      "name": "Animation Spoofer",
+      "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/Nameless-Admin/refs/heads/main/Animation%20Spoofer",
+      "status": "supported"
+    }
   ]
 }
