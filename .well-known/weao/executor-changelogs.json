@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-08-18T17:57:16.432Z",
+  "fetchedAt": "2026-08-18T23:24:32.141Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -1608,7 +1608,7 @@
         "trackerId": "WEAO1af938a2",
         "_id": "66633ac4b29bacaa7a568fdc",
         "version": "0.1.6c",
-        "updatedDate": "08/16/2026 at 2:22 AM UTC",
+        "updatedDate": "08/18/2026 at 11:03 PM UTC",
         "changelogs": {
           "trackerId": "WEAO1af938a2",
           "name": "solara",
