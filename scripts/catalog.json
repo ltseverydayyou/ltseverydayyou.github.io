@@ -181,6 +181,30 @@
       "status": "supported"
     },
     {
+      "id": "borger",
+      "name": "Burgerz Hub (BETA)",
+      "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/Burgerz.luau",
+      "placeIds": [
+        "99817148924004"
+      ],
+      "universeIds": [
+        "7498898979"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "kitty-autofarm",
+      "name": "Autofarm W.I.P",
+      "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/Kitty%20AutoFarm.luau",
+      "placeIds": [
+        "5002210114"
+      ],
+      "universeIds": [
+        "1724021330"
+      ],
+      "status": "supported"
+    },
+    {
       "id": "get-almost-all-badges",
       "name": "get (almost all) badges",
       "scriptUrl": "https://rawscripts.net/raw/SPREAD-THE-LOVE-Grace-get-all-badges-46219",
