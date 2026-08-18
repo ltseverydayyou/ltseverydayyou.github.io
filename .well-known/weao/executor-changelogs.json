@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-08-17T22:27:13.250Z",
+  "fetchedAt": "2026-08-18T16:34:43.674Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -225,7 +225,7 @@
         "trackerId": "WEAO6c35cab4",
         "_id": "680ab721b50548f01fd62715",
         "version": "6.8",
-        "updatedDate": "08/12/2026 at 4:51 PM UTC",
+        "updatedDate": "08/18/2026 at 4:15 PM UTC",
         "changelogs": {
           "trackerId": "WEAO6c35cab4",
           "name": "photon",
@@ -455,8 +455,8 @@
         "title": "SirHurt",
         "trackerId": "WEAO5caeb4a7",
         "_id": "67c8a2cb376f9e598b466705",
-        "version": "V5.460",
-        "updatedDate": "08/15/2026 at 4:23 AM UTC",
+        "version": "V5.461",
+        "updatedDate": "08/18/2026 at 4:02 PM UTC",
         "changelogs": {
           "trackerId": "WEAO5caeb4a7",
           "name": "sirhurt",
