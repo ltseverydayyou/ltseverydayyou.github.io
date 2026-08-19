@@ -157,6 +157,18 @@
       "status": "supported"
     },
     {
+      "id": "tsb-auto-combat",
+      "name": "TSB Auto Combat (BETA AND LAGGY)",
+      "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/TSB%20AutoCombat.luau",
+      "placeIds": [
+        "10449761463"
+      ],
+      "universeIds": [
+        "3808081382"
+      ],
+      "status": "supported"
+    },
+    {
       "id": "slap-aura-hub",
       "name": "Slap Aura Hub",
       "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/SlapAuraSB.luau",
