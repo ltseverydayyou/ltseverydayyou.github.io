@@ -229,6 +229,18 @@
       "status": "supported"
     },
     {
+      "id": "toh-win-farm",
+      "name": "TOH Autofarm",
+      "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/TOH.luau",
+      "placeIds": [
+        "1962086868"
+      ],
+      "universeIds": [
+        "703124385"
+      ],
+      "status": "supported"
+    },
+    {
       "id": "fe2-helper",
       "name": "FE2 Helper",
       "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/Fe2AutoFarm.luau",
