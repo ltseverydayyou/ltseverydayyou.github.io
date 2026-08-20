@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-08-20T22:30:30.999Z",
+  "fetchedAt": "2026-08-20T23:27:52.559Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -85,8 +85,8 @@
     {
       "_id": "67c8a2cb376f9e598b466705",
       "title": "SirHurt",
-      "version": "V5.461",
-      "updatedDate": "08/18/2026 at 4:02 PM UTC",
+      "version": "V5.462",
+      "updatedDate": "08/20/2026 at 10:50 PM UTC",
       "uncStatus": true,
       "free": false,
       "detected": true,
