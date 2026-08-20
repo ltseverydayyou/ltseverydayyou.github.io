@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-08-20T01:24:10.282Z",
+  "fetchedAt": "2026-08-20T02:38:46.690Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -1336,8 +1336,8 @@
         "title": "Real",
         "trackerId": "WEAO4a1f93j6",
         "_id": "6a5095abbb457d55d62f8061",
-        "version": "2.0.3",
-        "updatedDate": "08/17/2026 at 7:47 PM UTC",
+        "version": "2.1.0",
+        "updatedDate": "08/19/2026 at 7:09 PM UTC",
         "changelogs": {
           "trackerId": "WEAO4a1f93j6",
           "name": "real",
@@ -1598,9 +1598,17 @@
               "date": "2026-08-17T19:47:46.148Z",
               "supportedRobloxVersion": "version-ddf602d9cfe44005",
               "updated": true
+            },
+            {
+              "version": "2.1.0",
+              "changelog": "* Updated for version-ce0bcd0fbd484804\r\n* Fixed Drawing lib scaling issue\r\n* Added cleanup on game leave (no more remaining drawing items after leaving game)\r\n* Fixed a capability issue\r\nUI:\r\n* Fixed CSRF auth failures\r\n* Fixed stale device binding\r\n* Improved auth retry handling for device verification",
+              "timestamp": 1787166566697,
+              "date": "2026-08-19T19:09:26.697Z",
+              "supportedRobloxVersion": "version-ce0bcd0fbd484804",
+              "updated": true
             }
           ],
-          "count": 32
+          "count": 33
         }
       },
       "WEAO1af938a2": {
