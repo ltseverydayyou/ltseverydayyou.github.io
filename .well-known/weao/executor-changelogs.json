@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-08-20T02:38:46.690Z",
+  "fetchedAt": "2026-08-20T22:30:30.999Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -2486,8 +2486,8 @@
         "title": "Wave",
         "trackerId": "WEAO2c8e5827",
         "_id": "662ae7576238b7f2082f253b",
-        "version": "NEW-1.4.7",
-        "updatedDate": "08/18/2026 at 5:13 PM UTC",
+        "version": "NEW-1.4.8",
+        "updatedDate": "08/20/2026 at 10:29 PM UTC",
         "changelogs": {
           "trackerId": "WEAO2c8e5827",
           "name": "wave",
