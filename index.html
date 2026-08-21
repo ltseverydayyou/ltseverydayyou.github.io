@@ -21,7 +21,7 @@
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-lua.min.js"></script>
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
-    <!-- BuilderIcons font parser -->
+
     <script defer src="https://cdn.jsdelivr.net/npm/opentype.js@1.3.4/dist/opentype.min.js"></script>
     <style>
         :root {
@@ -34,7 +34,7 @@
             --ok: #72f3b6;
             --bdA: 0.12;
             --glA: 0.06;
-            /* Shape system: rounded rectangles by default; circles only for non-panel decoration. */
+
             --radius-panel: 10px;
             --radius-control: 8px;
             --radius-compact: 6px;
@@ -5144,7 +5144,7 @@
             margin: 0;
         }
 
-        /* BuilderIcons tab styling */
+
 
         #bi-root {
             margin-top: 10px;
@@ -6791,7 +6791,7 @@
         }
 
 
-        /* Home + Scripts redesign refresh */
+
         .home-dashboard,
         .scripts-showcase {
             position: relative;
@@ -8575,7 +8575,7 @@
             }
         }
 
-        /* Tool tab redesign refresh: Lua, Manifest, HTML, Diff, Versions, Bootstrappers, Executors, Assets, Converter, Searcher */
+
         #pl .g.ed,
         #pm .g.ed,
         #pw .g.ed,
@@ -9386,8 +9386,8 @@
             }
         }
 
-    
-        /* Codex Editor refresh + topbar layout rework */
+
+
         .as {
             grid-template-columns: minmax(220px, auto) minmax(0, 1fr);
             align-items: stretch;
@@ -10095,7 +10095,7 @@
         }
 
 
-        /* Bootstrapper card animation restore */
+
         #pu .bootstrappers-grid {
             perspective: 900px;
         }
@@ -10541,9 +10541,9 @@
         }
 
 
-        /* Rscripts-inspired catalog interaction layer
-           Recreates the high-level interaction language only: compact filters,
-           keyboard search, progressive results, dark cards and restrained motion. */
+
+
+
         #ps {
             --catalog-surface: rgba(7, 9, 15, 0.92);
             --catalog-surface-soft: rgba(255, 255, 255, 0.045);
@@ -11058,7 +11058,7 @@
             }
         }
 
-        /* Match script entries to the compact pinned-project card system. */
+
         #ps .scripts-showcase__grid {
             grid-template-columns: repeat(2, minmax(0, 1fr));
         }
@@ -11217,7 +11217,7 @@
             }
         }
 
-        /* Personal social directory on the Home view. */
+
         .home-social-hub {
             position: relative;
             display: grid;
@@ -11665,7 +11665,7 @@
             }
         }
 
-        /* Active Roblox projects pinned to the Home view. */
+
         .pinned-games {
             position: relative;
             margin: clamp(26px, 5vw, 54px) 0;
@@ -12848,18 +12848,18 @@
                                 <span class="bootstrapper-card__rank">Popular</span>
                             </div>
 
-                            <p class="bootstrapper-card__description">A popular alternative with its public website still available.</p>
+                            <p class="bootstrapper-card__description">A popular Roblox bootstrapper with its website and public source repository available.</p>
 
                             <dl class="bootstrapper-card__facts">
                                 <div><dt>Website</dt><dd>Available</dd></div>
-                                <div><dt>Source</dt><dd class="is-unavailable">Unavailable</dd></div>
+                                <div><dt>Source</dt><dd>Available</dd></div>
                             </dl>
 
                             <div class="bootstrapper-card__links">
                                 <a class="bootstrapper-card__link--primary" href="https://www.fishstrap.app"
                                     target="_blank" rel="noopener noreferrer">Website <span aria-hidden="true">↗</span></a>
-                                <span class="bootstrapper-card__link--disabled" aria-disabled="true"
-                                    title="GitHub repository deleted">GitHub unavailable</span>
+                                <a href="https://github.com/fishstrap/fishstrap" target="_blank"
+                                    rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
                             </div>
                         </article>
 
@@ -13380,7 +13380,7 @@
                 </div>
             </section>
 
-            <!-- RDD tab -->
+
             <section id="pr" class="pp">
                 <div class="g ed rdd rdd-redesign">
                     <div class="rdd-hero">
@@ -13480,7 +13480,7 @@
                 </div>
             </section>
 
-            <!-- Roblox BuilderIcons tab -->
+
             <section id="pb" class="pp">
                 <div class="g ed bi-shell">
                     <div class="bi-hero">
@@ -13874,7 +13874,7 @@
                             return await response.json();
                         }
                     } catch {
-                        // Keep the embedded image and try the next endpoint.
+
                     }
                 }
                 return null;
@@ -14033,7 +14033,7 @@
                         }
                     }
                 } catch {
-                    // The fallback remains visible while the next endpoint is tried.
+
                 }
             }
             return null;
@@ -16988,7 +16988,7 @@
                     }
                 }
             } catch {
-                // Ignore parsing issues and fall back to inline extraction.
+
             }
             const match = raw.match(/\b(\d{2,})\b/);
             return match ? match[1] : "";
@@ -27098,8 +27098,8 @@ self.addEventListener("message", async (event) => {
         transition: none;
       }
     }
-  
-        /* Practical Bootstrapper catalog. */
+
+
         #pu .g.ed.bootstrapper-catalog {
             gap: 18px;
             width: min(1180px, 94%);
