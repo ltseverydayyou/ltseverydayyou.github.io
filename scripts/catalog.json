@@ -366,24 +366,28 @@
       "id": "simple-spy-reworked",
       "name": "Simple Spy Reworked",
       "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/SimpleSpyRework.luau",
+      "imageUrl": "https://raw.githubusercontent.com/ltseverydayyou/ltseverydayyou.github.io/refs/heads/main/images/SSpy.png",
       "status": "supported"
     },
     {
       "id": "dex-plus-plus-backup",
       "name": "Dex ++ (Backup)",
       "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/DexPlusBackup.luau",
+      "imageUrl": "https://raw.githubusercontent.com/ltseverydayyou/ltseverydayyou.github.io/refs/heads/main/images/DexPlusPlus.png",
       "status": "supported"
     },
     {
       "id": "dex",
       "name": "Dex",
       "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/DexByMoonMobile",
+      "imageUrl": "https://raw.githubusercontent.com/ltseverydayyou/ltseverydayyou.github.io/refs/heads/main/images/oldDex.png",
       "status": "supported"
     },
     {
       "id": "minimap",
       "name": "Minimap",
       "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/minimap.luau",
+      "imageUrl": "https://raw.githubusercontent.com/ltseverydayyou/ltseverydayyou.github.io/refs/heads/main/images/minimap.png",
       "status": "supported"
     },
     {
@@ -396,12 +400,14 @@
       "id": "vyperia-aimbot",
       "name": "Vyperia Aimbot",
       "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/NewAimbot.lua",
+      "imageUrl": "https://raw.githubusercontent.com/ltseverydayyou/ltseverydayyou.github.io/refs/heads/main/images/VyperiaAimbot.png",
       "status": "supported"
     },
     {
       "id": "autoclicker",
       "name": "Autoclicker",
       "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/AutoClicker.luau",
+      "imageUrl": "https://raw.githubusercontent.com/ltseverydayyou/ltseverydayyou.github.io/refs/heads/main/images/clicker.png",
       "status": "supported"
     },
     {
@@ -426,24 +432,28 @@
       "id": "image-scanner",
       "name": "Image Scanner",
       "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/ImageScanner.lua",
+      "imageUrl": "https://raw.githubusercontent.com/ltseverydayyou/ltseverydayyou.github.io/refs/heads/main/images/ImgScan.png",
       "status": "supported"
     },
     {
       "id": "virtual-keyboard",
       "name": "Virtual Keyboard",
       "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/VirtualKeyboard.lua",
+      "imageUrl": "https://raw.githubusercontent.com/ltseverydayyou/ltseverydayyou.github.io/refs/heads/main/images/Keyboard.png",
       "status": "supported"
     },
     {
       "id": "old-f9-console",
       "name": "old F9 console",
       "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/OldConsole.lua",
+      "imageUrl": "https://raw.githubusercontent.com/ltseverydayyou/ltseverydayyou.github.io/refs/heads/main/images/oldConsole.png",
       "status": "supported"
     },
     {
       "id": "turtle-spy",
       "name": "Turtle Spy",
       "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/main/Turtle%20Spy.lua",
+      "imageUrl": "https://raw.githubusercontent.com/ltseverydayyou/ltseverydayyou.github.io/refs/heads/main/images/tSpy.png",
       "status": "supported"
     },
     {
@@ -462,6 +472,7 @@
       "id": "game-universe-viewer",
       "name": "Game Universe Viewer",
       "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/main/Universe%20Viewer",
+      "imageUrl": "https://raw.githubusercontent.com/ltseverydayyou/ltseverydayyou.github.io/refs/heads/main/images/UniverseViewer.png",
       "status": "supported"
     },
     {
@@ -480,6 +491,7 @@
       "id": "animation-spoofer",
       "name": "Animation Spoofer",
       "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/Nameless-Admin/refs/heads/main/Animation%20Spoofer",
+      "imageUrl": "https://raw.githubusercontent.com/ltseverydayyou/ltseverydayyou.github.io/refs/heads/main/images/AnimSpoof.png",
       "status": "supported"
     }
   ]
