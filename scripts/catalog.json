@@ -169,6 +169,18 @@
       "status": "supported"
     },
     {
+      "id": "dueling-grounds",
+      "name": "Auto Combat, Auto Dodge/Parry, and others",
+      "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/DuelingGrounds.luau",
+      "placeIds": [
+        "94217045453265"
+      ],
+      "universeIds": [
+        "9051406594"
+      ],
+      "status": "supported"
+    },
+    {
       "id": "slap-aura-hub",
       "name": "Slap Aura Hub",
       "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/SlapAuraSB.luau",
