@@ -229,6 +229,18 @@
       "status": "supported"
     },
     {
+      "id": "sound-space-autoplayer",
+      "name": "Autoplayer",
+      "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/SoundSpaceAutoPlayer.luau",
+      "placeIds": [
+        "2677609345"
+      ],
+      "universeIds": [
+        "964540701"
+      ],
+      "status": "supported"
+    },
+    {
       "id": "toh-win-farm",
       "name": "TOH Autofarm",
       "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/TOH.luau",
