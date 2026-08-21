@@ -494,10 +494,6 @@ local function getPlrHum(p)
 end
 local mods = {
 	{
-		id = 2443177453,
-		u = "https://raw.githubusercontent.com/Waza80/scripts-new/main/BasicallyFNF.lua"
-	},
-	{
 		u = "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/main/the%20rake"
 	},
 	{
