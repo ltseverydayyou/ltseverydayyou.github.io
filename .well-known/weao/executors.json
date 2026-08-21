@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-08-21T19:49:53.931Z",
+  "fetchedAt": "2026-08-21T20:53:15.805Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -70,7 +70,7 @@
       "platform": "Windows",
       "extype": "wexternal",
       "roleId": "1365085484455428147",
-      "index": 9,
+      "index": 7,
       "elementCertified": true,
       "cost": "$20 Lifetime",
       "__v": 1,
@@ -146,7 +146,7 @@
       "platform": "Windows",
       "extype": "wexternal",
       "roleId": "1293413270388215879",
-      "index": 8,
+      "index": 5,
       "purchaselink": "https://rsware.store/products/matrix-hub-roblox-external-win-10--11?ref=weao",
       "elementCertified": false,
       "cost": "$4.99 Lifetime",
@@ -176,7 +176,7 @@
       "platform": "Windows",
       "extype": "wexternal",
       "roleId": "1377502396770684968",
-      "index": 6,
+      "index": 8,
       "elementCertified": true,
       "cost": "$9.59 Lifetime",
       "__v": 1,
@@ -535,7 +535,7 @@
       "platform": "Windows",
       "extype": "wexternal",
       "roleId": "1257546124844208208",
-      "index": 11,
+      "index": 9,
       "elementCertified": true,
       "cost": "$15 Lifetime",
       "__v": 1,
@@ -916,7 +916,7 @@
       "platform": "Windows",
       "extype": "wexternal",
       "roleId": "1506909341410656376",
-      "index": 5,
+      "index": 4,
       "hidden": false,
       "cost": "$9.99 Lifetime",
       "__v": 1,
@@ -945,7 +945,7 @@
       "platform": "Windows",
       "extype": "wexternal",
       "roleId": "1353570443461660693",
-      "index": 6,
+      "index": 2,
       "elementCertified": true,
       "cost": "$9.99 Lifetime",
       "__v": 1,
@@ -1067,7 +1067,7 @@
       "platform": "Windows",
       "extype": "wexternal",
       "roleId": "1434652536811556975",
-      "index": 2,
+      "index": 3,
       "elementCertified": true,
       "cost": "$19.99 Lifetime",
       "__v": 1,
@@ -1118,36 +1118,6 @@
         "fullDescription": "No description currently available. Check back soon!"
       },
       "raknet": true
-    },
-    {
-      "_id": "6949f9ee0260ad9e36c73700",
-      "title": "RbxCli",
-      "version": "1.9.19a-beta",
-      "updatedDate": "08/05/2026 at 2:32 AM UTC",
-      "uncStatus": false,
-      "free": false,
-      "detected": false,
-      "rbxversion": "version-145f189a6a974303",
-      "updateStatus": false,
-      "discordlink": "https://discord.gg/RZgUP8UZQ3",
-      "purchaselink": "https://bloxproducts.com/r/weao#RbxCli",
-      "beta": false,
-      "platform": "Windows",
-      "extype": "wexternal",
-      "roleId": "1452844812234391562",
-      "index": 3,
-      "elementCertified": true,
-      "cost": "$3.99 Weekly",
-      "__v": 1,
-      "recommendedReason": {
-        "features": []
-      },
-      "trackerId": "WEAO957nhh9s",
-      "websitelink": "https://discord.gg/RZgUP8UZQ3",
-      "slug": {
-        "fullDescription": "No description currently available. Check back soon!"
-      },
-      "hidden": true
     },
     {
       "_id": "69f25c438d1db84cb50c8cfe",
