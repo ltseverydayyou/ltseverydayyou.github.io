@@ -12188,6 +12188,290 @@
             border-color: rgba(170, 145, 255, 0.12);
         }
 
+        .mcp-spotlight {
+            --mcp-red: #ff304d;
+            --mcp-red-deep: #a40822;
+            position: relative;
+            width: min(1180px, 92%);
+            margin: clamp(28px, 5vw, 54px) auto;
+            overflow: hidden;
+            border: 1px solid rgba(255, 76, 103, 0.28);
+            border-radius: 24px;
+            background:
+                radial-gradient(circle at 10% 15%, rgba(255, 48, 77, 0.18), transparent 32%),
+                radial-gradient(circle at 88% 12%, rgba(139, 124, 255, 0.18), transparent 30%),
+                linear-gradient(145deg, rgba(19, 14, 31, 0.98), rgba(8, 6, 16, 0.99));
+            box-shadow: 0 28px 72px rgba(0, 0, 0, 0.42), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+        }
+
+        .mcp-spotlight::before {
+            content: "";
+            position: absolute;
+            inset: 0 0 auto;
+            height: 3px;
+            background: linear-gradient(90deg, var(--mcp-red-deep), var(--mcp-red), #fff, var(--ac), var(--mcp-red));
+            background-size: 220% 100%;
+            animation: socialGradientShift 7s linear infinite;
+        }
+
+        .mcp-spotlight__inner {
+            display: grid;
+            grid-template-columns: 172px minmax(0, 1fr) minmax(250px, 310px);
+            align-items: center;
+            gap: clamp(24px, 4vw, 44px);
+            padding: clamp(28px, 5vw, 52px);
+        }
+
+        .mcp-spotlight__logo {
+            display: grid;
+            place-items: center;
+            aspect-ratio: 1;
+            overflow: hidden;
+            border: 1px solid rgba(255, 86, 109, 0.3);
+            border-radius: 32px;
+            background: #030207;
+            box-shadow: 0 18px 42px rgba(129, 4, 31, 0.34), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+        }
+
+        .mcp-spotlight__logo img {
+            width: 126%;
+            height: 126%;
+            object-fit: contain;
+        }
+
+        .mcp-spotlight__copy {
+            min-width: 0;
+        }
+
+        .mcp-spotlight__eyebrow {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            margin: 0 0 10px;
+            color: #ff7388;
+            font-size: 11px;
+            font-weight: 900;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+
+        .mcp-spotlight__eyebrow::before {
+            content: "";
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #ff405d;
+            box-shadow: 0 0 16px rgba(255, 64, 93, 0.9);
+        }
+
+        .mcp-spotlight h2 {
+            margin: 0;
+            color: #fff;
+            font: 800 clamp(30px, 4vw, 48px)/1.02 "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+            letter-spacing: -0.035em;
+        }
+
+        .mcp-spotlight__description {
+            max-width: 62ch;
+            margin: 16px 0 20px;
+            color: rgba(235, 232, 244, 0.7);
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .mcp-spotlight__tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .mcp-spotlight__tags span {
+            padding: 7px 10px;
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.045);
+            color: rgba(242, 239, 250, 0.72);
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        .mcp-spotlight__actions {
+            display: grid;
+            gap: 10px;
+        }
+
+        .mcp-download,
+        .mcp-link {
+            text-decoration: none;
+            transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+        }
+
+        .mcp-download {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            align-items: center;
+            gap: 14px;
+            min-height: 66px;
+            padding: 13px 16px;
+            border: 1px solid rgba(255, 255, 255, 0.11);
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.045);
+            color: #fff;
+        }
+
+        .mcp-download:hover,
+        .mcp-download:focus-visible,
+        .mcp-link:hover,
+        .mcp-link:focus-visible {
+            transform: translateY(-2px);
+        }
+
+        .mcp-download--windows:hover,
+        .mcp-download--windows:focus-visible {
+            border-color: rgba(139, 124, 255, 0.58);
+            background: rgba(139, 124, 255, 0.12);
+        }
+
+        .mcp-download--android:hover,
+        .mcp-download--android:focus-visible {
+            border-color: rgba(255, 64, 93, 0.6);
+            background: rgba(255, 48, 77, 0.12);
+        }
+
+        .mcp-download:focus-visible,
+        .mcp-link:focus-visible {
+            outline: 2px solid #ff526d;
+            outline-offset: 3px;
+        }
+
+        .mcp-download__copy {
+            display: grid;
+            gap: 3px;
+        }
+
+        .mcp-download__copy strong {
+            font-size: 14px;
+        }
+
+        .mcp-download__copy span {
+            color: rgba(242, 239, 250, 0.48);
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .mcp-download__arrow {
+            color: rgba(255, 255, 255, 0.72);
+            font-size: 18px;
+        }
+
+        .mcp-link-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .mcp-link {
+            display: grid;
+            place-items: center;
+            min-height: 42px;
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.025);
+            color: rgba(242, 239, 250, 0.68);
+            font-size: 11px;
+            font-weight: 800;
+        }
+
+        .mcp-details {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 14px;
+            width: min(1180px, 92%);
+            margin: -20px auto 54px;
+        }
+
+        .mcp-detail-card {
+            min-height: 180px;
+            padding: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 18px;
+            background: linear-gradient(145deg, rgba(23, 17, 37, 0.8), rgba(10, 8, 18, 0.92));
+        }
+
+        .mcp-detail-card__number {
+            color: #ff5c74;
+            font: 800 11px/1 "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+            letter-spacing: 0.16em;
+        }
+
+        .mcp-detail-card h3 {
+            margin: 22px 0 9px;
+            color: #fff;
+            font: 700 19px/1.15 "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+        }
+
+        .mcp-detail-card p {
+            margin: 0;
+            color: rgba(231, 228, 240, 0.58);
+            font-size: 13px;
+            line-height: 1.65;
+        }
+
+        @media (max-width: 980px) {
+            .mcp-spotlight__inner {
+                grid-template-columns: 140px minmax(0, 1fr);
+            }
+
+            .mcp-spotlight__actions {
+                grid-column: 1 / -1;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .mcp-link-row {
+                grid-column: 1 / -1;
+            }
+        }
+
+        @media (max-width: 700px) {
+            .mcp-spotlight {
+                width: min(100%, calc(100% - 20px));
+                border-radius: 19px;
+            }
+
+            .mcp-spotlight__inner {
+                grid-template-columns: 82px minmax(0, 1fr);
+                gap: 18px;
+                padding: 22px;
+            }
+
+            .mcp-spotlight__logo {
+                border-radius: 20px;
+            }
+
+            .mcp-spotlight h2 {
+                font-size: clamp(27px, 8vw, 38px);
+            }
+
+            .mcp-spotlight__description,
+            .mcp-spotlight__tags,
+            .mcp-spotlight__actions {
+                grid-column: 1 / -1;
+            }
+
+            .mcp-spotlight__actions,
+            .mcp-details {
+                grid-template-columns: 1fr;
+            }
+
+            .mcp-details {
+                width: min(100%, calc(100% - 20px));
+            }
+        }
+
         ::selection {
             background: rgba(139, 124, 255, 0.34);
             color: #fff;
@@ -12210,6 +12494,7 @@
             </div>
             <nav class="nb" id="nb">
                 <button class="tb act" data-t="h">Home</button>
+                <button class="tb" data-t="q">MCP Bridge</button>
                 <button class="tb" data-t="s">Scripts</button>
                 <button class="tb" data-t="x">Script Searcher</button>
                 <button class="tb" data-t="y">Roblox Users</button>
@@ -12334,6 +12619,46 @@
                         </div>
                     </footer>
                 </section>
+                <section class="mcp-spotlight" aria-labelledby="home-mcp-title">
+                    <div class="mcp-spotlight__inner">
+                        <div class="mcp-spotlight__logo" aria-hidden="true">
+                            <img src="https://raw.githubusercontent.com/ltseverydayyou/roblox-mcp-bridge/main/android-manager/artwork/roblox-mcp-icon-source.png"
+                                alt="" loading="lazy" />
+                        </div>
+                        <div class="mcp-spotlight__copy">
+                            <p class="mcp-spotlight__eyebrow">Featured project · MCP v2.4.4</p>
+                            <h2 id="home-mcp-title">Roblox MCP Bridge</h2>
+                            <p class="mcp-spotlight__description">
+                                Connect a live Roblox client to ChatGPT and other MCP-compatible hosts. The manager
+                                handles the local bridge, updates, reconnection, and the OpenAI tunnel on desktop or Android.
+                            </p>
+                            <div class="mcp-spotlight__tags" aria-label="Project highlights">
+                                <span>Windows manager</span>
+                                <span>Standalone Android</span>
+                                <span>Auto reconnect</span>
+                                <span>Open source</span>
+                            </div>
+                        </div>
+                        <div class="mcp-spotlight__actions" aria-label="Roblox MCP Bridge downloads">
+                            <a class="mcp-download mcp-download--windows"
+                                href="https://github.com/ltseverydayyou/roblox-mcp-bridge/releases/download/v2.4.4/RobloxMcpManager-v2.4.4.exe">
+                                <span class="mcp-download__copy"><strong>Download for Windows</strong><span>.exe · v2.4.4</span></span>
+                                <span class="mcp-download__arrow" aria-hidden="true">↓</span>
+                            </a>
+                            <a class="mcp-download mcp-download--android"
+                                href="https://github.com/ltseverydayyou/roblox-mcp-bridge/releases/download/v2.4.4/RobloxMcpManager-Android-v0.4.7.apk">
+                                <span class="mcp-download__copy"><strong>Download for Android</strong><span>.apk · v0.4.7</span></span>
+                                <span class="mcp-download__arrow" aria-hidden="true">↓</span>
+                            </a>
+                            <div class="mcp-link-row">
+                                <a class="mcp-link" href="https://github.com/ltseverydayyou/roblox-mcp-bridge/releases/tag/v2.4.4"
+                                    target="_blank" rel="noopener noreferrer">Release notes ↗</a>
+                                <a class="mcp-link" href="https://github.com/ltseverydayyou/roblox-mcp-bridge"
+                                    target="_blank" rel="noopener noreferrer">Source code ↗</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
                 <section class="pinned-games" id="pinned-games" aria-labelledby="pinned-games-title">
                     <div class="pinned-games__header">
                         <div>
@@ -12452,6 +12777,68 @@
                     </div>
                 </section>
                 <div id="home_sections"></div>
+            </section>
+
+            <section id="pq" class="pp">
+                <section class="mcp-spotlight" aria-labelledby="mcp-page-title">
+                    <div class="mcp-spotlight__inner">
+                        <div class="mcp-spotlight__logo" aria-hidden="true">
+                            <img src="https://raw.githubusercontent.com/ltseverydayyou/roblox-mcp-bridge/main/android-manager/artwork/roblox-mcp-icon-source.png"
+                                alt="" />
+                        </div>
+                        <div class="mcp-spotlight__copy">
+                            <p class="mcp-spotlight__eyebrow">Roblox tooling · MCP v2.4.4</p>
+                            <h2 id="mcp-page-title">Your Roblox client, connected.</h2>
+                            <p class="mcp-spotlight__description">
+                                Roblox MCP Bridge exposes a connected client through the Model Context Protocol. Use the
+                                Windows manager or the standalone Android app to run the bridge, keep it updated, and
+                                connect through a local network or OpenAI tunnel.
+                            </p>
+                            <div class="mcp-spotlight__tags" aria-label="Supported capabilities">
+                                <span>37 HTTP routes</span>
+                                <span>WebSocket transport</span>
+                                <span>Built-in updater</span>
+                                <span>Background service</span>
+                            </div>
+                        </div>
+                        <div class="mcp-spotlight__actions" aria-label="Roblox MCP Bridge downloads">
+                            <a class="mcp-download mcp-download--windows"
+                                href="https://github.com/ltseverydayyou/roblox-mcp-bridge/releases/download/v2.4.4/RobloxMcpManager-v2.4.4.exe">
+                                <span class="mcp-download__copy"><strong>Windows manager</strong><span>Download .exe · v2.4.4</span></span>
+                                <span class="mcp-download__arrow" aria-hidden="true">↓</span>
+                            </a>
+                            <a class="mcp-download mcp-download--android"
+                                href="https://github.com/ltseverydayyou/roblox-mcp-bridge/releases/download/v2.4.4/RobloxMcpManager-Android-v0.4.7.apk">
+                                <span class="mcp-download__copy"><strong>Android manager</strong><span>Download .apk · v0.4.7</span></span>
+                                <span class="mcp-download__arrow" aria-hidden="true">↓</span>
+                            </a>
+                            <div class="mcp-link-row">
+                                <a class="mcp-link" href="https://github.com/ltseverydayyou/roblox-mcp-bridge/releases/tag/v2.4.4"
+                                    target="_blank" rel="noopener noreferrer">View release ↗</a>
+                                <a class="mcp-link" href="https://github.com/ltseverydayyou/roblox-mcp-bridge"
+                                    target="_blank" rel="noopener noreferrer">GitHub repo ↗</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="mcp-details" aria-label="How Roblox MCP Bridge works">
+                    <article class="mcp-detail-card">
+                        <span class="mcp-detail-card__number">01 · RUN</span>
+                        <h3>Start the manager</h3>
+                        <p>Launch the desktop or Android manager. It hosts the Node-powered bridge and keeps the bundled MCP repository current.</p>
+                    </article>
+                    <article class="mcp-detail-card">
+                        <span class="mcp-detail-card__number">02 · CONNECT</span>
+                        <h3>Connect Roblox</h3>
+                        <p>Copy the reconnecting loader into your executor. Your client appears in the dashboard when the local bridge is reachable.</p>
+                    </article>
+                    <article class="mcp-detail-card">
+                        <span class="mcp-detail-card__number">03 · CONTROL</span>
+                        <h3>Use your MCP host</h3>
+                        <p>Connect ChatGPT through an OpenAI tunnel, or point another MCP-compatible host at the bridge on your local network.</p>
+                    </article>
+                </section>
             </section>
 
             <section id="ps" class="pp">
