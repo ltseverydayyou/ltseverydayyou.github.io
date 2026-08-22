@@ -12297,6 +12297,26 @@
             text-transform: uppercase;
         }
 
+        .mcp-origin {
+            margin: 15px 0 0;
+            color: rgba(235, 232, 244, 0.5);
+            font-size: 11px;
+            line-height: 1.5;
+        }
+
+        .mcp-origin a {
+            color: #ff7388;
+            font-weight: 800;
+            text-decoration: none;
+        }
+
+        .mcp-origin a:hover,
+        .mcp-origin a:focus-visible {
+            color: #fff;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
         .mcp-spotlight__actions {
             display: grid;
             gap: 10px;
@@ -12626,7 +12646,7 @@
                                 alt="" loading="lazy" />
                         </div>
                         <div class="mcp-spotlight__copy">
-                            <p class="mcp-spotlight__eyebrow">Featured project · MCP v2.4.4</p>
+                            <p class="mcp-spotlight__eyebrow">Featured project · MCP <span data-mcp-release-version>v2.4.5</span></p>
                             <h2 id="home-mcp-title">Roblox MCP Bridge</h2>
                             <p class="mcp-spotlight__description">
                                 Connect a live Roblox client to ChatGPT and other MCP-compatible hosts. The manager
@@ -12638,20 +12658,24 @@
                                 <span>Auto reconnect</span>
                                 <span>Open source</span>
                             </div>
+                            <p class="mcp-origin">
+                                Forked from <a href="https://gitlab.com/upio/roblox-executor-mcp" target="_blank"
+                                    rel="noopener noreferrer">notpoiu/upio's original Roblox Executor MCP ↗</a>
+                            </p>
                         </div>
                         <div class="mcp-spotlight__actions" aria-label="Roblox MCP Bridge downloads">
-                            <a class="mcp-download mcp-download--windows"
-                                href="https://github.com/ltseverydayyou/roblox-mcp-bridge/releases/download/v2.4.4/RobloxMcpManager-v2.4.4.exe">
-                                <span class="mcp-download__copy"><strong>Download for Windows</strong><span>.exe · v2.4.4</span></span>
+                            <a class="mcp-download mcp-download--windows" data-mcp-platform="windows"
+                                href="https://github.com/ltseverydayyou/roblox-mcp-bridge/releases/download/v2.4.5/RobloxMcpManager-v2.4.5.exe">
+                                <span class="mcp-download__copy"><strong>Download for Windows</strong><span data-mcp-asset-version>.exe · v2.4.5</span></span>
                                 <span class="mcp-download__arrow" aria-hidden="true">↓</span>
                             </a>
-                            <a class="mcp-download mcp-download--android"
+                            <a class="mcp-download mcp-download--android" data-mcp-platform="android"
                                 href="https://github.com/ltseverydayyou/roblox-mcp-bridge/releases/download/v2.4.4/RobloxMcpManager-Android-v0.4.7.apk">
-                                <span class="mcp-download__copy"><strong>Download for Android</strong><span>.apk · v0.4.7</span></span>
+                                <span class="mcp-download__copy"><strong>Download for Android</strong><span data-mcp-asset-version>.apk · v0.4.7</span></span>
                                 <span class="mcp-download__arrow" aria-hidden="true">↓</span>
                             </a>
                             <div class="mcp-link-row">
-                                <a class="mcp-link" href="https://github.com/ltseverydayyou/roblox-mcp-bridge/releases/tag/v2.4.4"
+                                <a class="mcp-link" data-mcp-release-link href="https://github.com/ltseverydayyou/roblox-mcp-bridge/releases/latest"
                                     target="_blank" rel="noopener noreferrer">Release notes ↗</a>
                                 <a class="mcp-link" href="https://github.com/ltseverydayyou/roblox-mcp-bridge"
                                     target="_blank" rel="noopener noreferrer">Source code ↗</a>
@@ -12787,7 +12811,7 @@
                                 alt="" />
                         </div>
                         <div class="mcp-spotlight__copy">
-                            <p class="mcp-spotlight__eyebrow">Roblox tooling · MCP v2.4.4</p>
+                            <p class="mcp-spotlight__eyebrow">Roblox tooling · MCP <span data-mcp-release-version>v2.4.5</span></p>
                             <h2 id="mcp-page-title">Your Roblox client, connected.</h2>
                             <p class="mcp-spotlight__description">
                                 Roblox MCP Bridge exposes a connected client through the Model Context Protocol. Use the
@@ -12800,20 +12824,25 @@
                                 <span>Built-in updater</span>
                                 <span>Background service</span>
                             </div>
+                            <p class="mcp-origin">
+                                This project is a fork and continuation of
+                                <a href="https://gitlab.com/upio/roblox-executor-mcp" target="_blank"
+                                    rel="noopener noreferrer">the original MCP by notpoiu (@upio) ↗</a>
+                            </p>
                         </div>
                         <div class="mcp-spotlight__actions" aria-label="Roblox MCP Bridge downloads">
-                            <a class="mcp-download mcp-download--windows"
-                                href="https://github.com/ltseverydayyou/roblox-mcp-bridge/releases/download/v2.4.4/RobloxMcpManager-v2.4.4.exe">
-                                <span class="mcp-download__copy"><strong>Windows manager</strong><span>Download .exe · v2.4.4</span></span>
+                            <a class="mcp-download mcp-download--windows" data-mcp-platform="windows"
+                                href="https://github.com/ltseverydayyou/roblox-mcp-bridge/releases/download/v2.4.5/RobloxMcpManager-v2.4.5.exe">
+                                <span class="mcp-download__copy"><strong>Windows manager</strong><span data-mcp-asset-version>Download .exe · v2.4.5</span></span>
                                 <span class="mcp-download__arrow" aria-hidden="true">↓</span>
                             </a>
-                            <a class="mcp-download mcp-download--android"
+                            <a class="mcp-download mcp-download--android" data-mcp-platform="android"
                                 href="https://github.com/ltseverydayyou/roblox-mcp-bridge/releases/download/v2.4.4/RobloxMcpManager-Android-v0.4.7.apk">
-                                <span class="mcp-download__copy"><strong>Android manager</strong><span>Download .apk · v0.4.7</span></span>
+                                <span class="mcp-download__copy"><strong>Android manager</strong><span data-mcp-asset-version>Download .apk · v0.4.7</span></span>
                                 <span class="mcp-download__arrow" aria-hidden="true">↓</span>
                             </a>
                             <div class="mcp-link-row">
-                                <a class="mcp-link" href="https://github.com/ltseverydayyou/roblox-mcp-bridge/releases/tag/v2.4.4"
+                                <a class="mcp-link" data-mcp-release-link href="https://github.com/ltseverydayyou/roblox-mcp-bridge/releases/latest"
                                     target="_blank" rel="noopener noreferrer">View release ↗</a>
                                 <a class="mcp-link" href="https://github.com/ltseverydayyou/roblox-mcp-bridge"
                                     target="_blank" rel="noopener noreferrer">GitHub repo ↗</a>
@@ -25763,7 +25792,58 @@ self.addEventListener("message", async (event) => {
             })();
         }
 
+        async function syncMcpReleaseDownloads() {
+            const releaseApi = "https://api.github.com/repos/ltseverydayyou/roblox-mcp-bridge/releases/latest";
+
+            try {
+                const response = await fetch(releaseApi, {
+                    headers: { Accept: "application/vnd.github+json" }
+                });
+                if (!response.ok) {
+                    throw new Error(`GitHub release API returned ${response.status}`);
+                }
+
+                const release = await response.json();
+                const assets = Array.isArray(release.assets) ? release.assets : [];
+                const releaseVersion = release.tag_name || "latest";
+                const releaseUrl = release.html_url || "https://github.com/ltseverydayyou/roblox-mcp-bridge/releases/latest";
+
+                const assetFor = {
+                    windows: assets.find((asset) => /^RobloxMcpManager(?:-v[\d.]+)?\.exe$/i.test(asset.name || "")),
+                    android: assets.find((asset) => /^RobloxMcpManager-Android-.*\.apk$/i.test(asset.name || ""))
+                };
+
+                document.querySelectorAll("[data-mcp-platform]").forEach((link) => {
+                    const platform = link.dataset.mcpPlatform;
+                    const asset = assetFor[platform];
+                    if (!asset || !asset.browser_download_url) {
+                        return;
+                    }
+
+                    link.href = asset.browser_download_url;
+                    const versionMatch = (asset.name || "").match(/v\d+(?:\.\d+)+/gi);
+                    const assetVersion = versionMatch ? versionMatch[versionMatch.length - 1] : releaseVersion;
+                    const extension = platform === "android" ? ".apk" : ".exe";
+                    const versionLabel = link.querySelector("[data-mcp-asset-version]");
+                    if (versionLabel) {
+                        const prefix = versionLabel.textContent.trim().toLowerCase().startsWith("download") ? "Download " : "";
+                        versionLabel.textContent = `${prefix}${extension} · ${assetVersion}`;
+                    }
+                });
+
+                document.querySelectorAll("[data-mcp-release-version]").forEach((label) => {
+                    label.textContent = releaseVersion;
+                });
+                document.querySelectorAll("[data-mcp-release-link]").forEach((link) => {
+                    link.href = releaseUrl;
+                });
+            } catch (error) {
+                console.info("Using verified fallback MCP release links.", error);
+            }
+        }
+
         window.addEventListener("DOMContentLoaded", () => {
+            syncMcpReleaseDownloads();
             const brandLabel = q(".brand-label");
             if (brandLabel) {
                 brandLabel.textContent = "Vyperia's Dungeon";
