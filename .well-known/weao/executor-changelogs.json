@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-08-22T01:23:44.250Z",
+  "fetchedAt": "2026-08-22T02:35:45.754Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -1631,8 +1631,8 @@
         "title": "Solara",
         "trackerId": "WEAO1af938a2",
         "_id": "66633ac4b29bacaa7a568fdc",
-        "version": "0.1.6d",
-        "updatedDate": "08/22/2026 at 12:52 AM UTC",
+        "version": "0.1.6e",
+        "updatedDate": "08/22/2026 at 1:38 AM UTC",
         "changelogs": {
           "trackerId": "WEAO1af938a2",
           "name": "solara",
@@ -2501,9 +2501,17 @@
               "date": "2026-08-22T00:52:13.609Z",
               "supportedRobloxVersion": "version-ddf602d9cfe44005",
               "updated": true
+            },
+            {
+              "version": "0.1.6e",
+              "changelog": "[+] fixed fireproximityprompt crashing",
+              "timestamp": 1787362695076,
+              "date": "2026-08-22T01:38:15.076Z",
+              "supportedRobloxVersion": "version-ddf602d9cfe44005",
+              "updated": true
             }
           ],
-          "count": 108
+          "count": 109
         }
       },
       "WEAO2c8e5827": {
