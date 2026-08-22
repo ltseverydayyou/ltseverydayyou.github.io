@@ -1,14 +1,14 @@
 {
-  "fetchedAt": "2026-08-21T23:50:46.042Z",
+  "fetchedAt": "2026-08-22T01:23:44.250Z",
   "data": {
     "current": {
       "Windows": "version-ddf602d9cfe44005",
-      "WindowsDate": "8/21/2026, 11:47:45 PM UTC",
+      "WindowsDate": "8/22/2026, 12:46:11 AM UTC",
       "WindowsResponse": {
         "version": "0.734.0.7340917",
         "clientVersionUpload": "version-ddf602d9cfe44005",
         "bootstrapperVersion": "",
-        "timestamp": 1787356065,
+        "timestamp": 1787359571,
         "type": "revert"
       },
       "Mac": "version-31dba3b2537245ce",

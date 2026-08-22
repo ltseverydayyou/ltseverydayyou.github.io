@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-08-21T23:50:46.042Z",
+  "fetchedAt": "2026-08-22T01:23:44.250Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -1336,8 +1336,8 @@
         "title": "Real",
         "trackerId": "WEAO4a1f93j6",
         "_id": "6a5095abbb457d55d62f8061",
-        "version": "2.1.0",
-        "updatedDate": "08/19/2026 at 7:09 PM UTC",
+        "version": "2.1.2",
+        "updatedDate": "08/21/2026 at 11:58 PM UTC",
         "changelogs": {
           "trackerId": "WEAO4a1f93j6",
           "name": "real",
@@ -1606,17 +1606,33 @@
               "date": "2026-08-19T19:09:26.697Z",
               "supportedRobloxVersion": "version-ce0bcd0fbd484804",
               "updated": true
+            },
+            {
+              "version": "2.1.1",
+              "changelog": "- Roblox reverted, so we revert too",
+              "timestamp": 1787356520524,
+              "date": "2026-08-21T23:55:20.524Z",
+              "supportedRobloxVersion": "version-ddf602d9cfe44005",
+              "updated": true
+            },
+            {
+              "version": "2.1.2",
+              "changelog": "Uploaded the Injector as UI 💀",
+              "timestamp": 1787356700391,
+              "date": "2026-08-21T23:58:20.391Z",
+              "supportedRobloxVersion": "version-ddf602d9cfe44005",
+              "updated": true
             }
           ],
-          "count": 33
+          "count": 35
         }
       },
       "WEAO1af938a2": {
         "title": "Solara",
         "trackerId": "WEAO1af938a2",
         "_id": "66633ac4b29bacaa7a568fdc",
-        "version": "0.1.6c",
-        "updatedDate": "08/18/2026 at 11:03 PM UTC",
+        "version": "0.1.6d",
+        "updatedDate": "08/22/2026 at 12:52 AM UTC",
         "changelogs": {
           "trackerId": "WEAO1af938a2",
           "name": "solara",
@@ -2477,9 +2493,17 @@
               "date": "2026-08-16T02:22:19.891Z",
               "supportedRobloxVersion": "version-ddf602d9cfe44005",
               "updated": true
+            },
+            {
+              "version": "0.1.6d",
+              "changelog": "[+] updated for revert",
+              "timestamp": 1787359933609,
+              "date": "2026-08-22T00:52:13.609Z",
+              "supportedRobloxVersion": "version-ddf602d9cfe44005",
+              "updated": true
             }
           ],
-          "count": 107
+          "count": 108
         }
       },
       "WEAO2c8e5827": {
@@ -2514,8 +2538,8 @@
         "title": "DX9WARE V2",
         "trackerId": "WEAO1181f437",
         "_id": "66837bf003fe5828bec91bc5",
-        "version": "1.1.214",
-        "updatedDate": "08/18/2026 at 4:36 PM UTC",
+        "version": "1.1.215",
+        "updatedDate": "08/22/2026 at 12:15 AM UTC",
         "changelogs": {
           "trackerId": "WEAO1181f437",
           "name": "dx9ware",
@@ -7229,8 +7253,8 @@
         "title": "Madium",
         "trackerId": "WEAO4a1j38nv",
         "_id": "69f25c438d1db84cb50c8cfe",
-        "version": "2.0.8",
-        "updatedDate": "08/13/2026 at 11:24 PM UTC",
+        "version": "2.0.9",
+        "updatedDate": "08/22/2026 at 12:00 AM UTC",
         "changelogs": {
           "trackerId": "WEAO4a1j38nv",
           "name": "madium",
@@ -7317,9 +7341,17 @@
               "date": "2026-08-13T23:24:10.398Z",
               "supportedRobloxVersion": "version-ddf602d9cfe44005",
               "updated": true
+            },
+            {
+              "version": "2.0.9",
+              "changelog": "Roblox Reverted to the previous version hi lol ok lol wow lol this is ok wow me ok this is my kind of misery the kind where you were nice to me",
+              "timestamp": 1787356800162,
+              "date": "2026-08-22T00:00:00.162Z",
+              "supportedRobloxVersion": "version-ddf602d9cfe44005",
+              "updated": true
             }
           ],
-          "count": 10
+          "count": 11
         }
       }
     }
