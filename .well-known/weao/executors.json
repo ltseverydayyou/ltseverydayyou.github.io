@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-08-22T13:33:47.789Z",
+  "fetchedAt": "2026-08-22T15:24:23.124Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -57,7 +57,7 @@
       "_id": "680ab721b50548f01fd62715",
       "title": "Photon",
       "version": "6.8",
-      "updatedDate": "08/18/2026 at 4:15 PM UTC",
+      "updatedDate": "08/22/2026 at 2:57 PM UTC",
       "uncStatus": false,
       "free": false,
       "detected": false,
