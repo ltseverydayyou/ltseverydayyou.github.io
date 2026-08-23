@@ -1,0 +1,78 @@
+name: ltseverydayyou Hub Windows
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - index.html
+      - windows/**
+      - .github/workflows/hub-windows.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ltseverydayyou-hub-windows-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Fetch GitHub profile icon
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force -Path windows/Assets | Out-Null
+          Invoke-WebRequest -Uri 'https://avatars.githubusercontent.com/u/117316014?s=512&v=4' -OutFile windows/Assets/profile.png
+          Add-Type -AssemblyName System.Drawing
+          $bmp = [System.Drawing.Bitmap]::FromFile((Resolve-Path 'windows/Assets/profile.png'))
+          $resized = New-Object System.Drawing.Bitmap 256,256
+          $g = [System.Drawing.Graphics]::FromImage($resized)
+          $g.DrawImage($bmp,0,0,256,256)
+          $g.Dispose()
+          $icon = [System.Drawing.Icon]::FromHandle($resized.GetHicon())
+          $fs = [System.IO.File]::Create((Join-Path (Resolve-Path 'windows/Assets').Path 'app.ico'))
+          $icon.Save($fs)
+          $fs.Close()
+          $icon.Dispose()
+          $resized.Dispose()
+          $bmp.Dispose()
+
+      - name: Restore
+        run: dotnet restore windows/ltseverydayyou.Hub.csproj
+
+      - name: Publish Windows app
+        shell: pwsh
+        run: |
+          dotnet publish windows/ltseverydayyou.Hub.csproj -c Release -r win-x64 --self-contained false -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -o dist/windows
+          New-Item -ItemType Directory -Force -Path dist/release | Out-Null
+          Copy-Item 'dist/windows/ltseverydayyou Hub.exe' 'dist/release/ltseverydayyou-Hub-Windows.exe'
+          $hash=(Get-FileHash 'dist/release/ltseverydayyou-Hub-Windows.exe' -Algorithm SHA256).Hash.ToLower()
+          "$hash  ltseverydayyou-Hub-Windows.exe" | Set-Content -NoNewline 'dist/release/ltseverydayyou-Hub-Windows.exe.sha256'
+
+      - name: Upload workflow artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ltseverydayyou-Hub-Windows-v1.1.1
+          path: |
+            dist/release/ltseverydayyou-Hub-Windows.exe
+            dist/release/ltseverydayyou-Hub-Windows.exe.sha256
+
+      - name: Upload to v1.1.1 release
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          $tag='dungeon-1.1'
+          gh release upload $tag 'dist/release/ltseverydayyou-Hub-Windows.exe' 'dist/release/ltseverydayyou-Hub-Windows.exe.sha256' --clobber

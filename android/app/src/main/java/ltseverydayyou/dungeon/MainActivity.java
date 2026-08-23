@@ -83,8 +83,8 @@ public final class MainActivity extends Activity {
                 "img,video{animation:hubPop .32s ease both}" +
                 "dialog,[role=dialog],[class*=modal],[class*=popup],[class*=menu]{animation:hubPop .22s ease both}" +
                 "@keyframes hubFade{from{opacity:0}to{opacity:1}}@keyframes hubPop{from{opacity:0;transform:translateY(7px) scale(.985)}to{opacity:1;transform:none}}" +
-                "#hubAppSettings{position:fixed;right:14px;bottom:14px;z-index:2147483647;width:46px;height:46px;border:0;border-radius:15px;background:rgba(20,20,24,.88);color:white;font-size:22px;box-shadow:0 8px 28px rgba(0,0,0,.32);backdrop-filter:blur(12px)}" +
-                "#hubIconPanel{position:fixed;right:14px;bottom:70px;z-index:2147483647;padding:10px;border-radius:16px;background:rgba(20,20,24,.94);color:white;box-shadow:0 10px 32px rgba(0,0,0,.38);font:14px system-ui;display:none;animation:hubPop .2s ease both}" +
+                "#hubAppSettings{position:fixed;left:14px;bottom:14px;right:auto;z-index:2147483647;width:46px;height:46px;border:0;border-radius:15px;background:rgba(20,20,24,.88);color:white;font-size:22px;box-shadow:0 8px 28px rgba(0,0,0,.32);backdrop-filter:blur(12px)}" +
+                "#hubIconPanel{position:fixed;left:14px;bottom:70px;right:auto;z-index:2147483647;padding:10px;border-radius:16px;background:rgba(20,20,24,.94);color:white;box-shadow:0 10px 32px rgba(0,0,0,.38);font:14px system-ui;display:none;animation:hubPop .2s ease both}" +
                 "#hubIconPanel button{display:block;width:180px;margin:5px 0;padding:10px 12px;border:0;border-radius:11px;background:#2b2b31;color:white;text-align:left}`;document.head.appendChild(s);" +
                 "const panel=document.createElement('div');panel.id='hubIconPanel';panel.innerHTML='<b>App icon</b><button data-i=profile>GitHub profile</button><button data-i=dark>Hub Dark</button><button data-i=light>Hub Light</button>';" +
                 "const gear=document.createElement('button');gear.id='hubAppSettings';gear.textContent='⚙';gear.setAttribute('aria-label','Hub app settings');" +
