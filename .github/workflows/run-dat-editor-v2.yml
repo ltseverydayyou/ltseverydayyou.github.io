@@ -1,0 +1,29 @@
+name: Run DAT editor v2 installer
+on:
+  push:
+    paths:
+      - '.github/workflows/run-dat-editor-v2.yml'
+permissions:
+  contents: write
+jobs:
+  install:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Extract and install editor assets
+        shell: bash
+        run: |
+          sed -n "/<<'JSB64'/,/^JSB64$/p" .github/workflows/install-dat-editor-v2.yml | sed '1d;$d' > /tmp/dat-editor.js.gz.b64
+          sed -n "/<<'CSSB64'/,/^CSSB64$/p" .github/workflows/install-dat-editor-v2.yml | sed '1d;$d' > /tmp/dat-editor.css.gz.b64
+          base64 -d /tmp/dat-editor.js.gz.b64 | gzip -d > tools/dat-editor.js
+          base64 -d /tmp/dat-editor.css.gz.b64 | gzip -d > tools/dat-editor.css
+          node --check tools/dat-editor.js
+      - name: Commit changes
+        shell: bash
+        run: |
+          git config user.name "Vyperia"
+          git config user.email "117316014+ltseverydayyou@users.noreply.github.com"
+          git add tools/dat-editor.js tools/dat-editor.css
+          git diff --cached --quiet && exit 0
+          git commit -m "Upgrade DAT hex editor with inspector history and search tools"
+          git push
