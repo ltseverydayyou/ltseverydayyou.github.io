@@ -11,21 +11,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Show MCP/download context
+      - name: Show MCP card context
         run: |
           python3 - <<'PY'
           from pathlib import Path
-          p = Path('index.html')
-          lines = p.read_text(encoding='utf-8').splitlines()
-          needles = ('mcp', 'bridge', 'download')
-          hits = [i for i,l in enumerate(lines) if any(n in l.lower() for n in needles)]
-          shown = set()
+          lines = Path('index.html').read_text(encoding='utf-8').splitlines()
+          hits = [i for i,l in enumerate(lines) if 'data-mcp-' in l.lower() or 'roblox mcp' in l.lower() or 'mcp bridge' in l.lower()]
+          seen=set()
           for i in hits:
-              a=max(0,i-8); b=min(len(lines),i+9)
-              if any(j in shown for j in range(a,b)):
-                  continue
+              a=max(0,i-20); b=min(len(lines),i+21)
+              if (a,b) in seen: continue
+              seen.add((a,b))
               print(f'--- lines {a+1}-{b} ---')
-              for j in range(a,b):
-                  print(f'{j+1}: {lines[j]}')
-                  shown.add(j)
+              for j in range(a,b): print(f'{j+1}: {lines[j]}')
           PY
