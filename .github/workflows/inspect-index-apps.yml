@@ -1,0 +1,31 @@
+name: Inspect website download section
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Show MCP/download context
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path('index.html')
+          lines = p.read_text(encoding='utf-8').splitlines()
+          needles = ('mcp', 'bridge', 'download')
+          hits = [i for i,l in enumerate(lines) if any(n in l.lower() for n in needles)]
+          shown = set()
+          for i in hits:
+              a=max(0,i-8); b=min(len(lines),i+9)
+              if any(j in shown for j in range(a,b)):
+                  continue
+              print(f'--- lines {a+1}-{b} ---')
+              for j in range(a,b):
+                  print(f'{j+1}: {lines[j]}')
+                  shown.add(j)
+          PY
