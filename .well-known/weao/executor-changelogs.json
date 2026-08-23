@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-08-22T17:23:27.747Z",
+  "fetchedAt": "2026-08-23T22:25:08.993Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -7269,8 +7269,8 @@
         "title": "Madium",
         "trackerId": "WEAO4a1j38nv",
         "_id": "69f25c438d1db84cb50c8cfe",
-        "version": "2.0.9",
-        "updatedDate": "08/22/2026 at 12:00 AM UTC",
+        "version": "2.1.0",
+        "updatedDate": "08/23/2026 at 5:57 PM UTC",
         "changelogs": {
           "trackerId": "WEAO4a1j38nv",
           "name": "madium",
@@ -7365,9 +7365,17 @@
               "date": "2026-08-22T00:00:00.162Z",
               "supportedRobloxVersion": "version-ddf602d9cfe44005",
               "updated": true
+            },
+            {
+              "version": "2.1.0",
+              "changelog": "module:\n+ fixed crash on game leave\n+ fixed getcallbackvalue\n+ fixed multi instance\n+ fixed luau issues\n+ fixed client modification detection\n+ fixed actors issue\n+ improved saveinstance binary serializer\n+ major decompiler bug fixes, readability and speed improvements\n\nui:\n+ added custom madium mcp\n+ added decompiler settings\n+ improved download speeds of all files significantly",
+              "timestamp": 1787507871469,
+              "date": "2026-08-23T17:57:51.469Z",
+              "supportedRobloxVersion": "version-ddf602d9cfe44005",
+              "updated": true
             }
           ],
-          "count": 11
+          "count": 12
         }
       }
     }
