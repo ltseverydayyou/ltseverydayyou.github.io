@@ -17,10 +17,18 @@ public partial class MainWindow : Window
 
     public MainWindow()
     {
-        InitializeComponent();
-        Loaded += OnLoaded;
-        Opacity = 0;
-        BeginAnimation(OpacityProperty, new System.Windows.Media.Animation.DoubleAnimation(0, 1, TimeSpan.FromMilliseconds(320)));
+        try
+        {
+            InitializeComponent();
+            Loaded += OnLoaded;
+            Opacity = 0;
+            BeginAnimation(OpacityProperty, new System.Windows.Media.Animation.DoubleAnimation(0, 1, TimeSpan.FromMilliseconds(320)));
+        }
+        catch (Exception ex)
+        {
+            App.WriteCrash("MainWindow constructor", ex);
+            throw;
+        }
     }
 
     private static HttpClient CreateHttpClient()
@@ -35,34 +43,62 @@ public partial class MainWindow : Window
     {
         try
         {
-            await Browser.EnsureCoreWebView2Async();
+            App.WriteText("WebView2", "Initializing embedded browser");
+            var userDataFolder = Path.Combine(
+                Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+                "ltseverydayyou Hub",
+                "WebView2");
+            Directory.CreateDirectory(userDataFolder);
+
+            var environment = await CoreWebView2Environment.CreateAsync(userDataFolder: userDataFolder);
+            await Browser.EnsureCoreWebView2Async(environment);
+
+            Browser.CoreWebView2.Settings.AreDevToolsEnabled = false;
+            Browser.CoreWebView2.Settings.AreDefaultContextMenusEnabled = true;
+            Browser.CoreWebView2.NavigationCompleted += OnNavigationCompleted;
+            Browser.CoreWebView2.WebMessageReceived += OnWebMessageReceived;
+            Browser.CoreWebView2.ProcessFailed += OnWebViewProcessFailed;
+            Browser.CoreWebView2.NewWindowRequested += (_, args) =>
+            {
+                args.Handled = true;
+                OpenExternal(args.Uri);
+            };
+
+            Browser.Source = new Uri(HomeUrl + "?hub_windows=1&ts=" + DateTimeOffset.UtcNow.ToUnixTimeMilliseconds());
+            _ = CheckForUpdateAsync();
+            App.WriteText("WebView2", "Initialized successfully");
         }
         catch (Exception ex)
         {
+            App.WriteCrash("WebView2 initialization", ex);
             var result = MessageBox.Show(
                 "ltseverydayyou Hub could not start its embedded browser.\n\n" +
-                "Microsoft Edge WebView2 Runtime may be missing or damaged.\n\n" +
-                ex.Message + "\n\nOpen the official WebView2 download page?",
+                "Microsoft Edge WebView2 Runtime may be missing, damaged, or blocked.\n\n" +
+                ex.GetType().Name + ": " + ex.Message + "\n\n" +
+                "A crash log was saved under %LOCALAPPDATA%\\ltseverydayyou Hub\\crash.log.\n\n" +
+                "Open the official WebView2 download page?",
                 "ltseverydayyou Hub",
                 MessageBoxButton.YesNo,
                 MessageBoxImage.Error);
             if (result == MessageBoxResult.Yes)
                 OpenExternal("https://developer.microsoft.com/microsoft-edge/webview2/");
             Close();
-            return;
         }
+    }
 
-        Browser.CoreWebView2.Settings.AreDevToolsEnabled = false;
-        Browser.CoreWebView2.Settings.AreDefaultContextMenusEnabled = true;
-        Browser.CoreWebView2.NavigationCompleted += OnNavigationCompleted;
-        Browser.CoreWebView2.WebMessageReceived += OnWebMessageReceived;
-        Browser.CoreWebView2.NewWindowRequested += (_, args) =>
+    private void OnWebViewProcessFailed(object? sender, CoreWebView2ProcessFailedEventArgs e)
+    {
+        App.WriteText("WebView2 process failed", $"Kind={e.ProcessFailedKind}; Reason={e.Reason}; ExitCode={e.ExitCode}");
+        Dispatcher.Invoke(() =>
         {
-            args.Handled = true;
-            OpenExternal(args.Uri);
-        };
-        Browser.Source = new Uri(HomeUrl + "?hub_windows=1&ts=" + DateTimeOffset.UtcNow.ToUnixTimeMilliseconds());
-        _ = CheckForUpdateAsync();
+            MessageBox.Show(
+                "The embedded browser process crashed.\n\n" +
+                "A diagnostic log was saved to %LOCALAPPDATA%\\ltseverydayyou Hub\\crash.log.\n\n" +
+                "Try reopening the app. If it repeats, send that crash.log file.",
+                "ltseverydayyou Hub browser crash",
+                MessageBoxButton.OK,
+                MessageBoxImage.Error);
+        });
     }
 
     private async Task CheckForUpdateAsync()
@@ -98,15 +134,27 @@ public partial class MainWindow : Window
                 return;
             }
         }
-        catch
+        catch (Exception ex)
         {
+            App.WriteCrash("Update check", ex);
         }
     }
 
     private async void OnNavigationCompleted(object? sender, CoreWebView2NavigationCompletedEventArgs e)
     {
-        if (!e.IsSuccess) return;
-        await Browser.CoreWebView2.ExecuteScriptAsync(EnhancementScript);
+        if (!e.IsSuccess)
+        {
+            App.WriteText("Navigation failed", $"WebErrorStatus={e.WebErrorStatus}");
+            return;
+        }
+        try
+        {
+            await Browser.CoreWebView2.ExecuteScriptAsync(EnhancementScript);
+        }
+        catch (Exception ex)
+        {
+            App.WriteCrash("Enhancement script", ex);
+        }
     }
 
     private void OnWebMessageReceived(object? sender, CoreWebView2WebMessageReceivedEventArgs e)
@@ -128,18 +176,20 @@ public partial class MainWindow : Window
                     OpenExternal(Browser.Source?.ToString() ?? HomeUrl);
                     break;
                 case "updates":
-                    OpenExternal(ReleasePage);
+                    _ = CheckForUpdateAsync();
                     break;
             }
         }
-        catch
+        catch (Exception ex)
         {
+            App.WriteCrash("Web message", ex);
         }
     }
 
     private static void OpenExternal(string url)
     {
-        try { Process.Start(new ProcessStartInfo(url) { UseShellExecute = true }); } catch { }
+        try { Process.Start(new ProcessStartInfo(url) { UseShellExecute = true }); }
+        catch (Exception ex) { App.WriteCrash("Open external URL", ex); }
     }
 
     private const string EnhancementScript = """
