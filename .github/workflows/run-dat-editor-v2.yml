@@ -1,5 +1,6 @@
 name: Run DAT editor v2 installer
 on:
+  workflow_dispatch:
   push:
     paths:
       - '.github/workflows/run-dat-editor-v2.yml'
