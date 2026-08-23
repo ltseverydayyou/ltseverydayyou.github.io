@@ -1,0 +1,135 @@
+name: Dungeon APK
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - index.html
+      - android/**
+      - .github/workflows/dungeon-apk.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: dungeon-apk-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.5.0'
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Install Android SDK packages
+        run: sdkmanager "platforms;android-36" "build-tools;36.0.0"
+
+      - name: Restore fallback signing key
+        uses: actions/cache@v4
+        with:
+          path: ~/.android/debug.keystore
+          key: dungeon-debug-signing-v1
+
+      - name: Prepare signing
+        shell: bash
+        env:
+          DUNGEON_KEYSTORE_B64: ${{ secrets.DUNGEON_KEYSTORE_B64 }}
+          DUNGEON_KEYSTORE_PASSWORD: ${{ secrets.DUNGEON_KEYSTORE_PASSWORD }}
+          DUNGEON_KEY_ALIAS: ${{ secrets.DUNGEON_KEY_ALIAS }}
+          DUNGEON_KEY_PASSWORD: ${{ secrets.DUNGEON_KEY_PASSWORD }}
+        run: |
+          set -euo pipefail
+
+          if [[ -n "${DUNGEON_KEYSTORE_B64}" && -n "${DUNGEON_KEYSTORE_PASSWORD}" && -n "${DUNGEON_KEY_ALIAS}" && -n "${DUNGEON_KEY_PASSWORD}" ]]; then
+            printf '%s' "${DUNGEON_KEYSTORE_B64}" | base64 --decode > "${GITHUB_WORKSPACE}/android/dungeon-release.jks"
+            echo "DUNGEON_KEYSTORE_PATH=${GITHUB_WORKSPACE}/android/dungeon-release.jks" >> "${GITHUB_ENV}"
+            echo "SIGNED_RELEASE=true" >> "${GITHUB_ENV}"
+          else
+            mkdir -p "${HOME}/.android"
+            if [[ ! -f "${HOME}/.android/debug.keystore" ]]; then
+              keytool -genkeypair -noprompt \
+                -keystore "${HOME}/.android/debug.keystore" \
+                -storepass android \
+                -alias androiddebugkey \
+                -keypass android \
+                -dname "CN=ltseverydayyou.dungeon,O=ltseverydayyou" \
+                -keyalg RSA \
+                -keysize 2048 \
+                -validity 10000
+            fi
+            echo "SIGNED_RELEASE=false" >> "${GITHUB_ENV}"
+          fi
+
+      - name: Build APK
+        shell: bash
+        env:
+          DUNGEON_KEYSTORE_PASSWORD: ${{ secrets.DUNGEON_KEYSTORE_PASSWORD }}
+          DUNGEON_KEY_ALIAS: ${{ secrets.DUNGEON_KEY_ALIAS }}
+          DUNGEON_KEY_PASSWORD: ${{ secrets.DUNGEON_KEY_PASSWORD }}
+        run: |
+          set -euo pipefail
+
+          VERSION_CODE=$((GITHUB_RUN_NUMBER * 100 + GITHUB_RUN_ATTEMPT))
+          VERSION_NAME="1.${GITHUB_RUN_NUMBER}.${GITHUB_RUN_ATTEMPT}"
+          export VERSION_CODE VERSION_NAME
+
+          mkdir -p dist
+
+          if [[ "${SIGNED_RELEASE}" == "true" ]]; then
+            gradle -p android :app:assembleRelease --no-daemon
+            cp android/app/build/outputs/apk/release/app-release.apk dist/Dungeon.apk
+            APK_KIND="release-signed"
+          else
+            gradle -p android :app:assembleDebug --no-daemon
+            cp android/app/build/outputs/apk/debug/app-debug.apk dist/Dungeon.apk
+            APK_KIND="debug-signed"
+          fi
+
+          sha256sum dist/Dungeon.apk > dist/Dungeon.apk.sha256
+          echo "VERSION_NAME=${VERSION_NAME}" >> "${GITHUB_ENV}"
+          echo "VERSION_CODE=${VERSION_CODE}" >> "${GITHUB_ENV}"
+          echo "APK_KIND=${APK_KIND}" >> "${GITHUB_ENV}"
+
+      - name: Upload workflow artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Dungeon-${{ env.VERSION_NAME }}
+          path: |
+            dist/Dungeon.apk
+            dist/Dungeon.apk.sha256
+
+      - name: Publish GitHub Release
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+
+          TAG="dungeon-${GITHUB_RUN_NUMBER}.${GITHUB_RUN_ATTEMPT}"
+          NOTES="Automated Dungeon Android build from commit ${GITHUB_SHA}.\n\nPackage: ltseverydayyou.dungeon\nVersion: ${VERSION_NAME} (${VERSION_CODE})\nSigning: ${APK_KIND}\n\nThe app loads https://ltseverydayyou.github.io/ directly, so website changes are visible in the installed app without reinstalling."
+
+          gh release create "${TAG}" \
+            dist/Dungeon.apk \
+            dist/Dungeon.apk.sha256 \
+            --target "${GITHUB_SHA}" \
+            --title "Dungeon APK ${VERSION_NAME}" \
+            --notes "${NOTES}" \
+            --latest

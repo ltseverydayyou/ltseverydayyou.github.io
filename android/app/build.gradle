@@ -1,0 +1,53 @@
+plugins {
+    id 'com.android.application'
+}
+
+def versionCodeValue = (System.getenv('VERSION_CODE') ?: '1') as Integer
+def versionNameValue = System.getenv('VERSION_NAME') ?: '1.0.0'
+def keystorePath = System.getenv('DUNGEON_KEYSTORE_PATH')
+def keystorePassword = System.getenv('DUNGEON_KEYSTORE_PASSWORD')
+def keyAliasValue = System.getenv('DUNGEON_KEY_ALIAS')
+def keyPasswordValue = System.getenv('DUNGEON_KEY_PASSWORD')
+def hasReleaseSigning = keystorePath && keystorePassword && keyAliasValue && keyPasswordValue && file(keystorePath).exists()
+
+android {
+    namespace 'ltseverydayyou.dungeon'
+    compileSdk 36
+
+    defaultConfig {
+        applicationId 'ltseverydayyou.dungeon'
+        minSdk 23
+        targetSdk 36
+        versionCode versionCodeValue
+        versionName versionNameValue
+    }
+
+    if (hasReleaseSigning) {
+        signingConfigs {
+            release {
+                storeFile file(keystorePath)
+                storePassword keystorePassword
+                keyAlias keyAliasValue
+                keyPassword keyPasswordValue
+            }
+        }
+    }
+
+    buildTypes {
+        debug {
+            debuggable false
+        }
+        release {
+            minifyEnabled false
+            shrinkResources false
+            if (hasReleaseSigning) {
+                signingConfig signingConfigs.release
+            }
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}
