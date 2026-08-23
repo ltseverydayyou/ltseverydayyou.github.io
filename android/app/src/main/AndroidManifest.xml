@@ -5,20 +5,58 @@
     <application
         android:allowBackup="false"
         android:hardwareAccelerated="true"
-        android:icon="@drawable/ic_launcher"
-        android:label="Dungeon"
-        android:roundIcon="@drawable/ic_launcher"
+        android:icon="@drawable/ic_profile"
+        android:label="ltseverydayyou Hub"
+        android:roundIcon="@drawable/ic_profile"
         android:supportsRtl="true"
         android:theme="@android:style/Theme.Material.Light.NoActionBar"
         android:usesCleartextTraffic="false">
+
         <activity
             android:name=".MainActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
-            android:exported="true">
+            android:exported="true" />
+
+        <activity-alias
+            android:name=".ProfileIcon"
+            android:enabled="true"
+            android:exported="true"
+            android:icon="@drawable/ic_profile"
+            android:label="ltseverydayyou Hub"
+            android:roundIcon="@drawable/ic_profile"
+            android:targetActivity=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
+        </activity-alias>
+
+        <activity-alias
+            android:name=".DarkIcon"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@drawable/ic_hub_dark"
+            android:label="ltseverydayyou Hub"
+            android:roundIcon="@drawable/ic_hub_dark"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+
+        <activity-alias
+            android:name=".LightIcon"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@drawable/ic_hub_light"
+            android:label="ltseverydayyou Hub"
+            android:roundIcon="@drawable/ic_hub_light"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
     </application>
 </manifest>

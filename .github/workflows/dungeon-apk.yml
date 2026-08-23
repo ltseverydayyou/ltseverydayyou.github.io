@@ -1,4 +1,4 @@
-name: Dungeon APK
+name: ltseverydayyou Hub APK
 
 on:
   push:
@@ -14,11 +14,11 @@ permissions:
   contents: write
 
 concurrency:
-  group: dungeon-apk-${{ github.ref }}
+  group: ltseverydayyou-hub-apk-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  build-and-release:
+  build-and-replace-release:
     runs-on: ubuntu-latest
 
     steps:
@@ -42,11 +42,33 @@ jobs:
       - name: Install Android SDK packages
         run: sdkmanager "platforms;android-36" "build-tools;36.0.0"
 
-      - name: Restore fallback signing key
+      - name: Fetch GitHub profile icon
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p android/app/src/main/res/drawable
+          curl -fL --retry 3 "https://avatars.githubusercontent.com/u/117316014?s=512&v=4" -o /tmp/profile-avatar
+          python3 - <<'PY'
+          from pathlib import Path
+          import struct
+          p = Path('/tmp/profile-avatar').read_bytes()
+          if p[:8] == b'\x89PNG\r\n\x1a\n':
+              Path('android/app/src/main/res/drawable/ic_profile.png').write_bytes(p)
+          elif p[:2] == b'\xff\xd8':
+              Path('android/app/src/main/res/drawable/ic_profile.jpg').write_bytes(p)
+              manifest = Path('android/app/src/main/AndroidManifest.xml')
+              text = manifest.read_text()
+              text = text.replace('@drawable/ic_profile', '@drawable/ic_profile')
+              manifest.write_text(text)
+          else:
+              raise SystemExit('Unsupported avatar image format')
+          PY
+
+      - name: Restore signing key
         uses: actions/cache@v4
         with:
           path: ~/.android/debug.keystore
-          key: dungeon-debug-signing-v1
+          key: ltseverydayyou-hub-debug-signing-v1
 
       - name: Prepare signing
         shell: bash
@@ -57,7 +79,6 @@ jobs:
           DUNGEON_KEY_PASSWORD: ${{ secrets.DUNGEON_KEY_PASSWORD }}
         run: |
           set -euo pipefail
-
           if [[ -n "${DUNGEON_KEYSTORE_B64}" && -n "${DUNGEON_KEYSTORE_PASSWORD}" && -n "${DUNGEON_KEY_ALIAS}" && -n "${DUNGEON_KEY_PASSWORD}" ]]; then
             printf '%s' "${DUNGEON_KEYSTORE_B64}" | base64 --decode > "${GITHUB_WORKSPACE}/android/dungeon-release.jks"
             echo "DUNGEON_KEYSTORE_PATH=${GITHUB_WORKSPACE}/android/dungeon-release.jks" >> "${GITHUB_ENV}"
@@ -65,20 +86,12 @@ jobs:
           else
             mkdir -p "${HOME}/.android"
             if [[ ! -f "${HOME}/.android/debug.keystore" ]]; then
-              keytool -genkeypair -noprompt \
-                -keystore "${HOME}/.android/debug.keystore" \
-                -storepass android \
-                -alias androiddebugkey \
-                -keypass android \
-                -dname "CN=ltseverydayyou.dungeon,O=ltseverydayyou" \
-                -keyalg RSA \
-                -keysize 2048 \
-                -validity 10000
+              keytool -genkeypair -noprompt -keystore "${HOME}/.android/debug.keystore" -storepass android -alias androiddebugkey -keypass android -dname "CN=ltseverydayyou.dungeon,O=ltseverydayyou" -keyalg RSA -keysize 2048 -validity 10000
             fi
             echo "SIGNED_RELEASE=false" >> "${GITHUB_ENV}"
           fi
 
-      - name: Build APK
+      - name: Build replacement APK
         shell: bash
         env:
           DUNGEON_KEYSTORE_PASSWORD: ${{ secrets.DUNGEON_KEYSTORE_PASSWORD }}
@@ -86,50 +99,44 @@ jobs:
           DUNGEON_KEY_PASSWORD: ${{ secrets.DUNGEON_KEY_PASSWORD }}
         run: |
           set -euo pipefail
-
-          VERSION_CODE=$((GITHUB_RUN_NUMBER * 100 + GITHUB_RUN_ATTEMPT))
-          VERSION_NAME="1.${GITHUB_RUN_NUMBER}.${GITHUB_RUN_ATTEMPT}"
-          export VERSION_CODE VERSION_NAME
-
+          export VERSION_CODE=$((110100 + GITHUB_RUN_NUMBER))
+          export VERSION_NAME="1.1.1"
           mkdir -p dist
-
           if [[ "${SIGNED_RELEASE}" == "true" ]]; then
             gradle -p android :app:assembleRelease --no-daemon
-            cp android/app/build/outputs/apk/release/app-release.apk dist/Dungeon.apk
+            cp android/app/build/outputs/apk/release/app-release.apk "dist/ltseverydayyou-Hub.apk"
             APK_KIND="release-signed"
           else
             gradle -p android :app:assembleDebug --no-daemon
-            cp android/app/build/outputs/apk/debug/app-debug.apk dist/Dungeon.apk
+            cp android/app/build/outputs/apk/debug/app-debug.apk "dist/ltseverydayyou-Hub.apk"
             APK_KIND="debug-signed"
           fi
-
-          sha256sum dist/Dungeon.apk > dist/Dungeon.apk.sha256
-          echo "VERSION_NAME=${VERSION_NAME}" >> "${GITHUB_ENV}"
-          echo "VERSION_CODE=${VERSION_CODE}" >> "${GITHUB_ENV}"
+          sha256sum "dist/ltseverydayyou-Hub.apk" > "dist/ltseverydayyou-Hub.apk.sha256"
           echo "APK_KIND=${APK_KIND}" >> "${GITHUB_ENV}"
+          echo "VERSION_CODE=${VERSION_CODE}" >> "${GITHUB_ENV}"
 
       - name: Upload workflow artifact
         uses: actions/upload-artifact@v4
         with:
-          name: Dungeon-${{ env.VERSION_NAME }}
+          name: ltseverydayyou-Hub-v1.1.1
           path: |
-            dist/Dungeon.apk
-            dist/Dungeon.apk.sha256
+            dist/ltseverydayyou-Hub.apk
+            dist/ltseverydayyou-Hub.apk.sha256
 
-      - name: Publish GitHub Release
+      - name: Replace v1.1.1 GitHub Release
         shell: bash
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
-
-          TAG="dungeon-${GITHUB_RUN_NUMBER}.${GITHUB_RUN_ATTEMPT}"
-          NOTES="Automated Dungeon Android build from commit ${GITHUB_SHA}.\n\nPackage: ltseverydayyou.dungeon\nVersion: ${VERSION_NAME} (${VERSION_CODE})\nSigning: ${APK_KIND}\n\nThe app loads https://ltseverydayyou.github.io/ directly, so website changes are visible in the installed app without reinstalling."
-
-          gh release create "${TAG}" \
-            dist/Dungeon.apk \
-            dist/Dungeon.apk.sha256 \
-            --target "${GITHUB_SHA}" \
-            --title "Dungeon APK ${VERSION_NAME}" \
-            --notes "${NOTES}" \
-            --latest
+          TAG="dungeon-1.1"
+          NOTES="ltseverydayyou Hub v1.1.1\n\nPackage: ltseverydayyou.dungeon\nVersion: 1.1.1 (${VERSION_CODE})\nSigning: ${APK_KIND}\n\nReplaces the original Dungeon APK. Includes GitHub-profile branding, APK-only interface animations, app-icon switching, and live loading from https://ltseverydayyou.github.io/."
+          if gh release view "${TAG}" >/dev/null 2>&1; then
+            gh release edit "${TAG}" --title "ltseverydayyou Hub v1.1.1" --notes "${NOTES}" --latest
+          else
+            gh release create "${TAG}" --target "${GITHUB_SHA}" --title "ltseverydayyou Hub v1.1.1" --notes "${NOTES}" --latest
+          fi
+          gh release upload "${TAG}" "dist/ltseverydayyou-Hub.apk" "dist/ltseverydayyou-Hub.apk.sha256" --clobber
+          gh api "repos/${GITHUB_REPOSITORY}/releases/tags/${TAG}" --jq '.assets[] | select(.name == "Dungeon.apk" or .name == "Dungeon.apk.sha256") | .id' | while read -r id; do
+            [[ -n "${id}" ]] && gh api -X DELETE "repos/${GITHUB_REPOSITORY}/releases/assets/${id}"
+          done
