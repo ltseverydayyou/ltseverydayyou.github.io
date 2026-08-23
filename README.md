@@ -294,7 +294,7 @@ if queueOnTeleport then
 			queuedUrls[i] = string.format("%q", url)
 		end
 
-		queue(([=[
+		queue(([[
 local urls = {
 	%s
 }
@@ -318,7 +318,7 @@ for _, url in urls do
 		end
 	end)
 end
-]=]):format("\t" .. table.concat(queuedUrls, ",\n\t")))
+]]):format("\t" .. table.concat(queuedUrls, ",\n\t")))
 	end
 end
 ```
