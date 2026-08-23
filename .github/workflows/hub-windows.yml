@@ -50,24 +50,20 @@ jobs:
           $bmp.Dispose()
 
       - name: Restore
-        run: dotnet restore windows/ltseverydayyou.Hub.csproj
+        run: dotnet restore windows/ltseverydayyou.Hub.csproj -r win-x64
 
-      - name: Publish Windows app
+      - name: Publish self-contained Windows app
         shell: pwsh
         run: |
-          dotnet publish windows/ltseverydayyou.Hub.csproj -c Release -r win-x64 --self-contained false -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -o dist/windows
+          dotnet publish windows/ltseverydayyou.Hub.csproj -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -p:EnableCompressionInSingleFile=true -o dist/windows
           New-Item -ItemType Directory -Force -Path dist/release | Out-Null
           Copy-Item 'dist/windows/ltseverydayyou Hub.exe' 'dist/release/ltseverydayyou-Hub-Windows.exe'
-          $hash=(Get-FileHash 'dist/release/ltseverydayyou-Hub-Windows.exe' -Algorithm SHA256).Hash.ToLower()
-          "$hash  ltseverydayyou-Hub-Windows.exe" | Set-Content -NoNewline 'dist/release/ltseverydayyou-Hub-Windows.exe.sha256'
 
       - name: Upload workflow artifact
         uses: actions/upload-artifact@v4
         with:
           name: ltseverydayyou-Hub-Windows-v1.1.1
-          path: |
-            dist/release/ltseverydayyou-Hub-Windows.exe
-            dist/release/ltseverydayyou-Hub-Windows.exe.sha256
+          path: dist/release/ltseverydayyou-Hub-Windows.exe
 
       - name: Upload to v1.1.1 release
         shell: pwsh
@@ -75,4 +71,8 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           $tag='dungeon-1.1'
-          gh release upload $tag 'dist/release/ltseverydayyou-Hub-Windows.exe' 'dist/release/ltseverydayyou-Hub-Windows.exe.sha256' --clobber
+          gh release upload $tag 'dist/release/ltseverydayyou-Hub-Windows.exe' --clobber
+          $ids = gh api "repos/$env:GITHUB_REPOSITORY/releases/tags/$tag" --jq '.assets[] | select(.name | endswith(".sha256")) | .id'
+          foreach ($id in $ids) {
+            if ($id) { gh api -X DELETE "repos/$env:GITHUB_REPOSITORY/releases/assets/$id" }
+          }

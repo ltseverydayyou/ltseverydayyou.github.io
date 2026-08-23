@@ -2,9 +2,11 @@ package ltseverydayyou.dungeon;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
 import android.content.ComponentName;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
@@ -15,8 +17,19 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public final class MainActivity extends Activity {
     private static final String HOME_URL = "https://ltseverydayyou.github.io/";
+    private static final String RELEASE_API = "https://api.github.com/repos/ltseverydayyou/ltseverydayyou.github.io/releases/tags/dungeon-1.1";
+    private static final String RELEASE_PAGE = "https://github.com/ltseverydayyou/ltseverydayyou.github.io/releases/tag/dungeon-1.1";
     private static final String PROFILE_ALIAS = "ltseverydayyou.dungeon.ProfileIcon";
     private static final String DARK_ALIAS = "ltseverydayyou.dungeon.DarkIcon";
     private static final String LIGHT_ALIAS = "ltseverydayyou.dungeon.LightIcon";
@@ -71,6 +84,64 @@ public final class MainActivity extends Activity {
         } else {
             webView.restoreState(savedInstanceState);
         }
+
+        checkForAppUpdate();
+    }
+
+    private void checkForAppUpdate() {
+        new Thread(() -> {
+            HttpURLConnection connection = null;
+            try {
+                connection = (HttpURLConnection) new URL(RELEASE_API).openConnection();
+                connection.setConnectTimeout(7000);
+                connection.setReadTimeout(7000);
+                connection.setRequestProperty("Accept", "application/vnd.github+json");
+                connection.setRequestProperty("User-Agent", "ltseverydayyou-Hub-Android");
+
+                try (BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()))) {
+                    StringBuilder json = new StringBuilder();
+                    String line;
+                    while ((line = reader.readLine()) != null) json.append(line);
+                    String body = new JSONObject(json.toString()).optString("body", "");
+                    Matcher matcher = Pattern.compile("Android build:\\s*(\\d+)").matcher(body);
+                    if (!matcher.find()) return;
+
+                    long remoteBuild = Long.parseLong(matcher.group(1));
+                    long localBuild = getInstalledVersionCode();
+                    if (remoteBuild > localBuild) {
+                        runOnUiThread(() -> showUpdateDialog("A newer Android build is available.", remoteBuild, localBuild));
+                    }
+                }
+            } catch (Exception ignored) {
+            } finally {
+                if (connection != null) connection.disconnect();
+            }
+        }, "HubUpdateCheck").start();
+    }
+
+    private long getInstalledVersionCode() {
+        try {
+            PackageInfo info = getPackageManager().getPackageInfo(getPackageName(), 0);
+            if (android.os.Build.VERSION.SDK_INT >= 28) return info.getLongVersionCode();
+            return info.versionCode;
+        } catch (Exception ignored) {
+            return 0;
+        }
+    }
+
+    private void showUpdateDialog(String message, long remoteBuild, long localBuild) {
+        if (isFinishing() || isDestroyed()) return;
+        new AlertDialog.Builder(this)
+                .setTitle("ltseverydayyou Hub update")
+                .setMessage(message + "\n\nInstalled build: " + localBuild + "\nLatest build: " + remoteBuild)
+                .setNegativeButton("Later", null)
+                .setPositiveButton("View update", (dialog, which) -> {
+                    try {
+                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(RELEASE_PAGE)));
+                    } catch (ActivityNotFoundException ignored) {
+                    }
+                })
+                .show();
     }
 
     private void injectHubEnhancements(WebView view) {

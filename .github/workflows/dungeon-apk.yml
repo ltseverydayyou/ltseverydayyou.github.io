@@ -50,16 +50,11 @@ jobs:
           curl -fL --retry 3 "https://avatars.githubusercontent.com/u/117316014?s=512&v=4" -o /tmp/profile-avatar
           python3 - <<'PY'
           from pathlib import Path
-          import struct
           p = Path('/tmp/profile-avatar').read_bytes()
           if p[:8] == b'\x89PNG\r\n\x1a\n':
               Path('android/app/src/main/res/drawable/ic_profile.png').write_bytes(p)
           elif p[:2] == b'\xff\xd8':
               Path('android/app/src/main/res/drawable/ic_profile.jpg').write_bytes(p)
-              manifest = Path('android/app/src/main/AndroidManifest.xml')
-              text = manifest.read_text()
-              text = text.replace('@drawable/ic_profile', '@drawable/ic_profile')
-              manifest.write_text(text)
           else:
               raise SystemExit('Unsupported avatar image format')
           PY
@@ -111,7 +106,6 @@ jobs:
             cp android/app/build/outputs/apk/debug/app-debug.apk "dist/ltseverydayyou-Hub.apk"
             APK_KIND="debug-signed"
           fi
-          sha256sum "dist/ltseverydayyou-Hub.apk" > "dist/ltseverydayyou-Hub.apk.sha256"
           echo "APK_KIND=${APK_KIND}" >> "${GITHUB_ENV}"
           echo "VERSION_CODE=${VERSION_CODE}" >> "${GITHUB_ENV}"
 
@@ -119,9 +113,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: ltseverydayyou-Hub-v1.1.1
-          path: |
-            dist/ltseverydayyou-Hub.apk
-            dist/ltseverydayyou-Hub.apk.sha256
+          path: dist/ltseverydayyou-Hub.apk
 
       - name: Replace v1.1.1 GitHub Release
         shell: bash
@@ -130,13 +122,23 @@ jobs:
         run: |
           set -euo pipefail
           TAG="dungeon-1.1"
-          NOTES="ltseverydayyou Hub v1.1.1\n\nPackage: ltseverydayyou.dungeon\nVersion: 1.1.1 (${VERSION_CODE})\nSigning: ${APK_KIND}\n\nReplaces the original Dungeon APK. Includes GitHub-profile branding, APK-only interface animations, app-icon switching, and live loading from https://ltseverydayyou.github.io/."
+          cat > release-notes.md <<EOF_NOTES
+          ltseverydayyou Hub v1.1.1
+
+          Android package: ltseverydayyou.dungeon
+          Android build: ${VERSION_CODE}
+          Android signing: ${APK_KIND}
+
+          Includes GitHub-profile branding, app-only interface animations, customizable Android launcher icons, live loading from https://ltseverydayyou.github.io/, Windows support, and in-app update notifications.
+          EOF_NOTES
+
           if gh release view "${TAG}" >/dev/null 2>&1; then
-            gh release edit "${TAG}" --title "ltseverydayyou Hub v1.1.1" --notes "${NOTES}" --latest
+            gh release edit "${TAG}" --title "ltseverydayyou Hub v1.1.1" --notes-file release-notes.md --latest
           else
-            gh release create "${TAG}" --target "${GITHUB_SHA}" --title "ltseverydayyou Hub v1.1.1" --notes "${NOTES}" --latest
+            gh release create "${TAG}" --target "${GITHUB_SHA}" --title "ltseverydayyou Hub v1.1.1" --notes-file release-notes.md --latest
           fi
-          gh release upload "${TAG}" "dist/ltseverydayyou-Hub.apk" "dist/ltseverydayyou-Hub.apk.sha256" --clobber
-          gh api "repos/${GITHUB_REPOSITORY}/releases/tags/${TAG}" --jq '.assets[] | select(.name == "Dungeon.apk" or .name == "Dungeon.apk.sha256") | .id' | while read -r id; do
+
+          gh release upload "${TAG}" "dist/ltseverydayyou-Hub.apk" --clobber
+          gh api "repos/${GITHUB_REPOSITORY}/releases/tags/${TAG}" --jq '.assets[] | select((.name == "Dungeon.apk") or (.name | endswith(".sha256"))) | .id' | while read -r id; do
             [[ -n "${id}" ]] && gh api -X DELETE "repos/${GITHUB_REPOSITORY}/releases/assets/${id}"
           done

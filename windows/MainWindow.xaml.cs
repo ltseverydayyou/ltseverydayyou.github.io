@@ -1,5 +1,7 @@
 using Microsoft.Web.WebView2.Core;
 using System.Diagnostics;
+using System.Net.Http;
+using System.Security.Cryptography;
 using System.Text.Json;
 using System.Windows;
 
@@ -8,6 +10,9 @@ namespace LtseverydayyouHub;
 public partial class MainWindow : Window
 {
     private const string HomeUrl = "https://ltseverydayyou.github.io/";
+    private const string ReleaseApi = "https://api.github.com/repos/ltseverydayyou/ltseverydayyou.github.io/releases/tags/dungeon-1.1";
+    private const string ReleasePage = "https://github.com/ltseverydayyou/ltseverydayyou.github.io/releases/tag/dungeon-1.1";
+    private static readonly HttpClient Http = CreateHttpClient();
 
     public MainWindow()
     {
@@ -17,9 +22,35 @@ public partial class MainWindow : Window
         BeginAnimation(OpacityProperty, new System.Windows.Media.Animation.DoubleAnimation(0, 1, TimeSpan.FromMilliseconds(320)));
     }
 
+    private static HttpClient CreateHttpClient()
+    {
+        var client = new HttpClient { Timeout = TimeSpan.FromSeconds(8) };
+        client.DefaultRequestHeaders.UserAgent.ParseAdd("ltseverydayyou-Hub-Windows/1.1.1");
+        client.DefaultRequestHeaders.Accept.ParseAdd("application/vnd.github+json");
+        return client;
+    }
+
     private async void OnLoaded(object sender, RoutedEventArgs e)
     {
-        await Browser.EnsureCoreWebView2Async();
+        try
+        {
+            await Browser.EnsureCoreWebView2Async();
+        }
+        catch (Exception ex)
+        {
+            var result = MessageBox.Show(
+                "ltseverydayyou Hub could not start its embedded browser.\n\n" +
+                "Microsoft Edge WebView2 Runtime may be missing or damaged.\n\n" +
+                ex.Message + "\n\nOpen the official WebView2 download page?",
+                "ltseverydayyou Hub",
+                MessageBoxButton.YesNo,
+                MessageBoxImage.Error);
+            if (result == MessageBoxResult.Yes)
+                OpenExternal("https://developer.microsoft.com/microsoft-edge/webview2/");
+            Close();
+            return;
+        }
+
         Browser.CoreWebView2.Settings.AreDevToolsEnabled = false;
         Browser.CoreWebView2.Settings.AreDefaultContextMenusEnabled = true;
         Browser.CoreWebView2.NavigationCompleted += OnNavigationCompleted;
@@ -27,9 +58,48 @@ public partial class MainWindow : Window
         Browser.CoreWebView2.NewWindowRequested += (_, args) =>
         {
             args.Handled = true;
-            Process.Start(new ProcessStartInfo(args.Uri) { UseShellExecute = true });
+            OpenExternal(args.Uri);
         };
         Browser.Source = new Uri(HomeUrl + "?hub_windows=1&ts=" + DateTimeOffset.UtcNow.ToUnixTimeMilliseconds());
+        _ = CheckForUpdateAsync();
+    }
+
+    private async Task CheckForUpdateAsync()
+    {
+        try
+        {
+            var json = await Http.GetStringAsync(ReleaseApi);
+            using var doc = JsonDocument.Parse(json);
+            if (!doc.RootElement.TryGetProperty("assets", out var assets)) return;
+
+            foreach (var asset in assets.EnumerateArray())
+            {
+                if (asset.GetProperty("name").GetString() != "ltseverydayyou-Hub-Windows.exe") continue;
+                if (!asset.TryGetProperty("digest", out var digestValue)) return;
+                var remoteDigest = digestValue.GetString();
+                if (string.IsNullOrWhiteSpace(remoteDigest) || !remoteDigest.StartsWith("sha256:", StringComparison.OrdinalIgnoreCase)) return;
+
+                var executablePath = Environment.ProcessPath;
+                if (string.IsNullOrWhiteSpace(executablePath) || !File.Exists(executablePath)) return;
+                using var stream = File.OpenRead(executablePath);
+                var localDigest = "sha256:" + Convert.ToHexString(SHA256.HashData(stream)).ToLowerInvariant();
+                if (string.Equals(remoteDigest, localDigest, StringComparison.OrdinalIgnoreCase)) return;
+
+                await Dispatcher.InvokeAsync(() =>
+                {
+                    var answer = MessageBox.Show(
+                        "A newer ltseverydayyou Hub Windows build is available.\n\nOpen the release page to update?",
+                        "ltseverydayyou Hub update",
+                        MessageBoxButton.YesNo,
+                        MessageBoxImage.Information);
+                    if (answer == MessageBoxResult.Yes) OpenExternal(ReleasePage);
+                });
+                return;
+            }
+        }
+        catch
+        {
+        }
     }
 
     private async void OnNavigationCompleted(object? sender, CoreWebView2NavigationCompletedEventArgs e)
@@ -54,13 +124,21 @@ public partial class MainWindow : Window
                     Browser.Reload();
                     break;
                 case "browser":
-                    Process.Start(new ProcessStartInfo(Browser.Source?.ToString() ?? HomeUrl) { UseShellExecute = true });
+                    OpenExternal(Browser.Source?.ToString() ?? HomeUrl);
+                    break;
+                case "updates":
+                    OpenExternal(ReleasePage);
                     break;
             }
         }
         catch
         {
         }
+    }
+
+    private static void OpenExternal(string url)
+    {
+        try { Process.Start(new ProcessStartInfo(url) { UseShellExecute = true }); } catch { }
     }
 
     private const string EnhancementScript = """
@@ -83,7 +161,7 @@ public partial class MainWindow : Window
   document.head.appendChild(style);
   const panel = document.createElement('div');
   panel.id = 'hubWinPanel';
-  panel.innerHTML = '<b>ltseverydayyou Hub</b><button data-a="home">Home</button><button data-a="reload">Reload</button><button data-a="browser">Open in browser</button>';
+  panel.innerHTML = '<b>ltseverydayyou Hub</b><button data-a="home">Home</button><button data-a="reload">Reload</button><button data-a="updates">Check updates</button><button data-a="browser">Open in browser</button>';
   const gear = document.createElement('button');
   gear.id = 'hubWinSettings'; gear.textContent = '⚙'; gear.setAttribute('aria-label','Hub desktop settings');
   gear.onclick = () => panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
