@@ -1,4 +1,4 @@
-name: Apply corrected HaxHell API integration
+name: Apply HaxHell fix
 
 on:
   workflow_dispatch:
@@ -11,26 +11,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
       - name: Patch HaxHell integration
-        shell: python
+        shell: bash
         run: |
+          python - <<'PY'
           from pathlib import Path
-
           path = Path('index.html')
           text = path.read_text(encoding='utf-8')
-
           old_search = 'https://haxhell.com/api/v1/search/scripts'
           new_search = 'https://api.haxhell.com/api/v1/search/scripts'
           old_list = 'https://haxhell.com/api/v1/scripts'
           new_list = 'https://api.haxhell.com/api/v1/scripts'
-
-          assert text.count(old_search) == 1, f'Unexpected search endpoint count: {text.count(old_search)}'
-          assert text.count(old_list) == 1, f'Unexpected list endpoint count: {text.count(old_list)}'
-          text = text.replace(old_search, new_search)
-          text = text.replace(old_list, new_list)
-
-          old_parser = '''            if (panelKey === "robloxscripts" || panelKey === "haxhell") {
+          assert text.count(old_search) == 1
+          assert text.count(old_list) == 1
+          text = text.replace(old_search, new_search).replace(old_list, new_list)
+          old = '''            if (panelKey === "robloxscripts" || panelKey === "haxhell") {
                 const pagination = payload?.pagination || {};
                 return {
                     scripts: Array.isArray(payload?.data) ? payload.data : [],
@@ -38,7 +33,7 @@ jobs:
                 };
             }
 '''
-          new_parser = '''            if (panelKey === "haxhell") {
+          new = '''            if (panelKey === "haxhell") {
                 const pagination = payload?.pagination || {};
                 const currentPage = scriptSearcherState.haxhell?.page || 1;
                 const reportedPages = Number(pagination.totalPages ?? pagination.pages);
@@ -58,15 +53,11 @@ jobs:
                 };
             }
 '''
-          assert old_parser in text, 'Expected shared HaxHell/RobloxScripts parser block was not found'
-          text = text.replace(old_parser, new_parser, 1)
-
+          assert old in text
+          text = text.replace(old, new, 1)
           path.write_text(text, encoding='utf-8')
-          assert new_search in text
-          assert new_list in text
-          assert 'pagination.hasMore ? currentPage + 1 : currentPage' in text
-
-      - name: Commit fix and remove one-shot workflow
+          PY
+      - name: Commit
         shell: bash
         run: |
           set -euo pipefail
