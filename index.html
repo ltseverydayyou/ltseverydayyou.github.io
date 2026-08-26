@@ -15122,7 +15122,19 @@
                     maxPages: Math.max(info.maxPages || 1, 1)
                 };
             }
-            if (panelKey === "robloxscripts" || panelKey === "haxhell") {
+            if (panelKey === "haxhell") {
+                const pagination = payload?.pagination || {};
+                const currentPage = scriptSearcherState.haxhell?.page || 1;
+                const reportedPages = Number(pagination.totalPages ?? pagination.pages);
+                const maxPages = Number.isFinite(reportedPages) && reportedPages > 0 ?
+                    reportedPages :
+                    pagination.hasMore ? currentPage + 1 : currentPage;
+                return {
+                    scripts: Array.isArray(payload?.data) ? payload.data : [],
+                    maxPages: Math.max(maxPages, 1)
+                };
+            }
+            if (panelKey === "robloxscripts") {
                 const pagination = payload?.pagination || {};
                 return {
                     scripts: Array.isArray(payload?.data) ? payload.data : [],
@@ -15196,8 +15208,8 @@
 
         async function fetchHaxHell(query = "", page = 1) {
             const endpoint = query ?
-                "https://haxhell.com/api/v1/search/scripts" :
-                "https://haxhell.com/api/v1/scripts";
+                "https://api.haxhell.com/api/v1/search/scripts" :
+                "https://api.haxhell.com/api/v1/scripts";
             const url = new URL(endpoint);
             url.searchParams.set("page", page.toString());
             url.searchParams.set("limit", MAX_SCRIPT_RESULTS.toString());
