@@ -18,7 +18,8 @@ jobs:
       - name: Patch layout
         run: python scripts/fix-script-searcher-layout.py
       - name: Verify
-        run: grep -q 'grid-template-columns: repeat(4, minmax(0, 1fr));' index.html
+        run: |
+          grep -q 'grid-template-columns: repeat(4, minmax(0, 1fr));' index.html
       - name: Commit
         shell: bash
         run: |
