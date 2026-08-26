@@ -1,0 +1,30 @@
+name: Apply HaxHell provider
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Apply provider patch
+        run: python scripts/add-haxhell-provider.py
+      - name: Verify patch
+        run: |
+          grep -q 'script-search-tab-haxhell' index.html
+          grep -q 'async function fetchHaxHell' index.html
+          grep -q 'entry.links?.raw' index.html
+      - name: Commit patch and cleanup
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git rm scripts/add-haxhell-provider.py .github/workflows/apply-haxhell-provider.yml
+          git commit -m "Add HaxHell to script search providers"
+          git push
