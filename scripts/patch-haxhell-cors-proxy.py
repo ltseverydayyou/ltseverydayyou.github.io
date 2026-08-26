@@ -24,8 +24,8 @@ old_fetch = '''        async function fetchHaxHell(query = "", page = 1) {
         }
 '''
 
-new_fetch = '''        function getHaxHellProxyUrl(targetUrl) {
-            return `https://corsproxy.io/?url=${encodeURIComponent(targetUrl)}`;
+new_fetch = '''        function getHaxHellReaderUrl(targetUrl) {
+            return `https://r.jina.ai/${targetUrl}`;
         }
 
         async function fetchHaxHell(query = "", page = 1) {
@@ -39,16 +39,25 @@ new_fetch = '''        function getHaxHellProxyUrl(targetUrl) {
             if (query) {
                 url.searchParams.set("q", query);
             }
-            const response = await fetch(getHaxHellProxyUrl(url.toString()), {
+            const response = await fetch(getHaxHellReaderUrl(url.toString()), {
                 mode: "cors",
                 headers: {
                     "Accept": "application/json"
                 }
             });
             if (!response.ok) {
-                throw new Error(`HaxHell API error (${response.status})`);
+                throw new Error(`HaxHell relay error (${response.status})`);
             }
-            return response.json();
+            const readerPayload = await response.json();
+            const content = readerPayload?.data?.content;
+            if (typeof content !== "string") {
+                throw new Error("HaxHell relay returned an unexpected response.");
+            }
+            try {
+                return JSON.parse(content);
+            } catch (error) {
+                throw new Error("HaxHell returned invalid JSON through the relay.");
+            }
         }
 '''
 
@@ -60,24 +69,41 @@ old_raw = '''            if (!scriptBody && rawScriptUrl) {
                     const resp = await fetch(rawScriptUrl, {
                         mode: "cors"
                     });
+                    if (!resp.ok) {
+                        throw new Error("Failed to fetch script");
+                    }
+                    scriptBody = await resp.text();
 '''
 
 new_raw = '''            if (!scriptBody && rawScriptUrl) {
                 try {
-                    const isHaxHellSource = source === "HaxHell" || /(^|\\.)haxhell\\.com$/i.test(new URL(rawScriptUrl).hostname);
-                    const requestUrl = isHaxHellSource ? getHaxHellProxyUrl(rawScriptUrl) : rawScriptUrl;
+                    const isHaxHellSource = source === "HaxHell" || /^https:\/\/(?:www\.)?haxhell\.com\//i.test(rawScriptUrl);
+                    const requestUrl = isHaxHellSource ? getHaxHellReaderUrl(rawScriptUrl) : rawScriptUrl;
                     const resp = await fetch(requestUrl, {
-                        mode: "cors"
+                        mode: "cors",
+                        headers: isHaxHellSource ? {
+                            "Accept": "application/json"
+                        } : undefined
                     });
+                    if (!resp.ok) {
+                        throw new Error("Failed to fetch script");
+                    }
+                    if (isHaxHellSource) {
+                        const readerPayload = await resp.json();
+                        scriptBody = readerPayload?.data?.content;
+                    } else {
+                        scriptBody = await resp.text();
+                    }
 '''
 
 assert old_raw in text, 'raw script fetch block not found'
 text = text.replace(old_raw, new_raw, 1)
 
 assert 'https://api.haxhell.com/api/v1/' not in text, 'old HaxHell API host still present'
-assert 'https://corsproxy.io/?url=' in text
+assert 'https://r.jina.ai/' in text
 assert 'https://haxhell.com/api/v1/search/scripts' in text
-assert 'getHaxHellProxyUrl(rawScriptUrl)' in text
+assert 'getHaxHellReaderUrl(rawScriptUrl)' in text
+assert 'readerPayload?.data?.content' in text
 
 path.write_text(text, encoding='utf-8')
-print('HaxHell CORS proxy integration applied')
+print('HaxHell Jina relay integration applied')
