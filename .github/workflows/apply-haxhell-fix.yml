@@ -1,0 +1,29 @@
+name: Apply HaxHell fix
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Apply patch
+        run: python scripts/fix-haxhell-api.py
+      - name: Verify patch
+        run: |
+          grep -q 'https://api.haxhell.com/api/v1/search/scripts' index.html
+          grep -q 'https://api.haxhell.com/api/v1/scripts' index.html
+      - name: Commit
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git rm scripts/fix-haxhell-api.py
+          git rm .github/workflows/apply-haxhell-fix.yml
+          git rm -f .github/workflows/fix-haxhell-api.yml
+          git add index.html
+          git commit -m 'Fix HaxHell API integration'
+          git push
