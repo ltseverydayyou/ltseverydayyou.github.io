@@ -546,6 +546,10 @@ local mods = {
 		id = 9051406594,
 		u = "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/DuelingGrounds.luau"
 	},
+	{
+		id = 1058298434,
+		u = "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/BuildingSimulator.luau"
+	},
 }
 for _, m in mods do
 	task.spawn(function()
