@@ -1,4 +1,4 @@
-name: Probe Jina relay for HaxHell
+name: Probe HaxHell through Jina
 
 on:
   workflow_dispatch:
@@ -10,14 +10,32 @@ jobs:
   probe:
     runs-on: ubuntu-latest
     steps:
-      - name: Probe Jina Reader
+      - name: Probe list and raw endpoints
         shell: bash
         run: |
-          set -u
-          URL='https://r.jina.ai/https://haxhell.com/api/v1/scripts?page=1&limit=2&sort=latest'
-          status=$(curl -sS -D /tmp/headers -o /tmp/body -A 'Mozilla/5.0' -H 'Origin: https://ltseverydayyou.github.io' -H 'Accept: application/json' -w '%{http_code}' "$URL" || true)
-          echo "HTTP $status"
-          grep -Ei '^(content-type|access-control-allow-origin|server):' /tmp/headers || true
-          echo '--- BODY ---'
-          head -c 3000 /tmp/body || true
-          echo
+          set -euo pipefail
+          LIST='https://r.jina.ai/https://haxhell.com/api/v1/scripts?page=1&limit=2&sort=latest'
+          curl -fsS -A 'Mozilla/5.0' -H 'Origin: https://ltseverydayyou.github.io' -H 'Accept: application/json' "$LIST" -o /tmp/list-reader.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          outer = json.loads(Path('/tmp/list-reader.json').read_text())
+          content = outer['data']['content']
+          payload = json.loads(content)
+          assert isinstance(payload.get('data'), list) and payload['data'], payload
+          raw = payload['data'][0]['links']['raw']
+          Path('/tmp/raw-url').write_text(raw)
+          print('List OK:', len(payload['data']), 'entries')
+          print('Raw URL:', raw)
+          PY
+          RAW=$(cat /tmp/raw-url)
+          curl -fsS -A 'Mozilla/5.0' -H 'Origin: https://ltseverydayyou.github.io' -H 'Accept: application/json' "https://r.jina.ai/$RAW" -o /tmp/raw-reader.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          outer = json.loads(Path('/tmp/raw-reader.json').read_text())
+          content = outer['data']['content']
+          assert isinstance(content, str) and content.strip(), outer
+          print('Raw content chars:', len(content))
+          print('Raw preview:', repr(content[:300]))
+          PY
