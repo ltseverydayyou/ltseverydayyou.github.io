@@ -15206,10 +15206,14 @@
             return response.json();
         }
 
+        function getHaxHellReaderUrl(targetUrl) {
+            return `https://r.jina.ai/${targetUrl}`;
+        }
+
         async function fetchHaxHell(query = "", page = 1) {
             const endpoint = query ?
-                "https://api.haxhell.com/api/v1/search/scripts" :
-                "https://api.haxhell.com/api/v1/scripts";
+                "https://haxhell.com/api/v1/search/scripts" :
+                "https://haxhell.com/api/v1/scripts";
             const url = new URL(endpoint);
             url.searchParams.set("page", page.toString());
             url.searchParams.set("limit", MAX_SCRIPT_RESULTS.toString());
@@ -15217,13 +15221,25 @@
             if (query) {
                 url.searchParams.set("q", query);
             }
-            const response = await fetch(url.toString(), {
-                mode: "cors"
+            const response = await fetch(getHaxHellReaderUrl(url.toString()), {
+                mode: "cors",
+                headers: {
+                    "Accept": "application/json"
+                }
             });
             if (!response.ok) {
-                throw new Error(`HaxHell API error (${response.status})`);
+                throw new Error(`HaxHell relay error (${response.status})`);
             }
-            return response.json();
+            const readerPayload = await response.json();
+            const content = readerPayload?.data?.content;
+            if (typeof content !== "string") {
+                throw new Error("HaxHell relay returned an unexpected response.");
+            }
+            try {
+                return JSON.parse(content);
+            } catch (error) {
+                throw new Error("HaxHell returned invalid JSON through the relay.");
+            }
         }
 
         async function copyScriptCode(entry, source) {
@@ -15231,13 +15247,23 @@
             const rawScriptUrl = entry.rawScript || entry.rawScriptUrl || entry.links?.raw;
             if (!scriptBody && rawScriptUrl) {
                 try {
-                    const resp = await fetch(rawScriptUrl, {
-                        mode: "cors"
+                    const isHaxHellSource = source === "HaxHell" || /^https:\/\/(?:www\.)?haxhell\.com\//i.test(rawScriptUrl);
+                    const requestUrl = isHaxHellSource ? getHaxHellReaderUrl(rawScriptUrl) : rawScriptUrl;
+                    const resp = await fetch(requestUrl, {
+                        mode: "cors",
+                        headers: isHaxHellSource ? {
+                            "Accept": "application/json"
+                        } : undefined
                     });
                     if (!resp.ok) {
                         throw new Error("Failed to fetch script");
                     }
-                    scriptBody = await resp.text();
+                    if (isHaxHellSource) {
+                        const readerPayload = await resp.json();
+                        scriptBody = readerPayload?.data?.content;
+                    } else {
+                        scriptBody = await resp.text();
+                    }
                 } catch (error) {
                     console.error(error);
                     toast("Unable to fetch script content");
