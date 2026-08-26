@@ -1,33 +1,78 @@
-name: Probe HaxHell API
+name: Apply corrected HaxHell API integration
 
 on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
-  probe:
+  patch:
     runs-on: ubuntu-latest
     steps:
-      - name: Probe API hosts
+      - uses: actions/checkout@v4
+
+      - name: Patch HaxHell integration
+        shell: python
+        run: |
+          from pathlib import Path
+
+          path = Path('index.html')
+          text = path.read_text(encoding='utf-8')
+
+          old_search = 'https://haxhell.com/api/v1/search/scripts'
+          new_search = 'https://api.haxhell.com/api/v1/search/scripts'
+          old_list = 'https://haxhell.com/api/v1/scripts'
+          new_list = 'https://api.haxhell.com/api/v1/scripts'
+
+          assert text.count(old_search) == 1, f'Unexpected search endpoint count: {text.count(old_search)}'
+          assert text.count(old_list) == 1, f'Unexpected list endpoint count: {text.count(old_list)}'
+          text = text.replace(old_search, new_search)
+          text = text.replace(old_list, new_list)
+
+          old_parser = '''            if (panelKey === "robloxscripts" || panelKey === "haxhell") {
+                const pagination = payload?.pagination || {};
+                return {
+                    scripts: Array.isArray(payload?.data) ? payload.data : [],
+                    maxPages: Math.max(pagination.totalPages || pagination.pages || 1, 1)
+                };
+            }
+'''
+          new_parser = '''            if (panelKey === "haxhell") {
+                const pagination = payload?.pagination || {};
+                const currentPage = scriptSearcherState.haxhell?.page || 1;
+                const reportedPages = Number(pagination.totalPages ?? pagination.pages);
+                const maxPages = Number.isFinite(reportedPages) && reportedPages > 0 ?
+                    reportedPages :
+                    pagination.hasMore ? currentPage + 1 : currentPage;
+                return {
+                    scripts: Array.isArray(payload?.data) ? payload.data : [],
+                    maxPages: Math.max(maxPages, 1)
+                };
+            }
+            if (panelKey === "robloxscripts") {
+                const pagination = payload?.pagination || {};
+                return {
+                    scripts: Array.isArray(payload?.data) ? payload.data : [],
+                    maxPages: Math.max(pagination.totalPages || pagination.pages || 1, 1)
+                };
+            }
+'''
+          assert old_parser in text, 'Expected shared HaxHell/RobloxScripts parser block was not found'
+          text = text.replace(old_parser, new_parser, 1)
+
+          path.write_text(text, encoding='utf-8')
+          assert new_search in text
+          assert new_list in text
+          assert 'pagination.hasMore ? currentPage + 1 : currentPage' in text
+
+      - name: Commit fix and remove one-shot workflow
         shell: bash
         run: |
-          set -u
-          UA='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/142.0.0.0 Safari/537.36'
-          for host in api.haxhell.com haxhell.com; do
-            for with_origin in no yes; do
-              echo "===== $host origin=$with_origin ====="
-              args=(-sS -D /tmp/headers -o /tmp/body -A "$UA" -H 'Accept: application/json')
-              if [ "$with_origin" = yes ]; then
-                args+=(-H 'Origin: https://ltseverydayyou.github.io')
-              fi
-              status=$(curl "${args[@]}" -w '%{http_code}' "https://$host/api/v1/scripts?page=1&limit=1&sort=latest" || true)
-              echo "HTTP $status"
-              grep -Ei '^(content-type|access-control-allow-origin|access-control-allow-credentials|server|cf-ray):' /tmp/headers || true
-              echo 'BODY:'
-              head -c 500 /tmp/body || true
-              echo
-              echo
-            done
-          done
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git rm .github/workflows/fix-haxhell-api.yml
+          git add index.html
+          git commit -m 'Fix HaxHell API integration'
+          git push
