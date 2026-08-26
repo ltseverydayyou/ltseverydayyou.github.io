@@ -217,6 +217,18 @@
       "status": "supported"
     },
     {
+      "id": "build-build",
+      "name": "Autofarm",
+      "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/BuildingSimulator.luau",
+      "placeIds": [
+        "2928583865"
+      ],
+      "universeIds": [
+        "1058298434"
+      ],
+      "status": "supported"
+    },
+    {
       "id": "kitty-autofarm",
       "name": "Autofarm W.I.P",
       "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/Kitty%20AutoFarm.luau",
