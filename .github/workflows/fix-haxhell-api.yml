@@ -1,0 +1,65 @@
+name: Fix HaxHell API host
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Verify HaxHell API and CORS
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -fsS -D /tmp/haxhell-headers -o /tmp/haxhell-body \
+            -H 'Origin: https://ltseverydayyou.github.io' \
+            'https://api.haxhell.com/api/v1/scripts?page=1&limit=1&sort=latest'
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          payload = json.loads(Path('/tmp/haxhell-body').read_text())
+          assert isinstance(payload.get('data'), list), payload
+          print('API response OK:', len(payload['data']), 'row(s)')
+          PY
+          echo '--- response headers ---'
+          cat /tmp/haxhell-headers
+          grep -Eiq '^access-control-allow-origin:[[:space:]]*(\*|https://ltseverydayyou\.github\.io)' /tmp/haxhell-headers
+
+      - name: Patch index.html
+        shell: python
+        run: |
+          from pathlib import Path
+
+          path = Path('index.html')
+          text = path.read_text(encoding='utf-8')
+
+          old_search = 'https://haxhell.com/api/v1/search/scripts'
+          new_search = 'https://api.haxhell.com/api/v1/search/scripts'
+          old_list = 'https://haxhell.com/api/v1/scripts'
+          new_list = 'https://api.haxhell.com/api/v1/scripts'
+
+          assert text.count(old_search) == 1, text.count(old_search)
+          assert text.count(old_list) == 1, text.count(old_list)
+
+          text = text.replace(old_search, new_search)
+          text = text.replace(old_list, new_list)
+          path.write_text(text, encoding='utf-8')
+
+          assert new_search in text
+          assert new_list in text
+
+      - name: Commit fix and remove one-shot workflow
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git rm .github/workflows/fix-haxhell-api.yml
+          git add index.html
+          git commit -m 'Fix HaxHell API host'
+          git push
