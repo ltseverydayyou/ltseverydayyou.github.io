@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-08-26T18:16:56.094Z",
+  "fetchedAt": "2026-08-26T20:38:44.520Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -9,8 +9,8 @@
         "title": "Potassium",
         "trackerId": "WEAO00393718",
         "_id": "67d6005efa8c791236079278",
-        "version": "2.4.4",
-        "updatedDate": "08/22/2026 at 1:21 PM UTC",
+        "version": "2.4.5",
+        "updatedDate": "08/26/2026 at 6:34 PM UTC",
         "changelogs": {
           "trackerId": "WEAO00393718",
           "name": "potassium",
@@ -1716,8 +1716,8 @@
         "title": "SirHurt",
         "trackerId": "WEAO5caeb4a7",
         "_id": "67c8a2cb376f9e598b466705",
-        "version": "V5.463",
-        "updatedDate": "08/21/2026 at 11:48 PM UTC",
+        "version": "V5.464",
+        "updatedDate": "08/26/2026 at 4:01 PM UTC",
         "changelogs": {
           "trackerId": "WEAO5caeb4a7",
           "name": "sirhurt",
@@ -4014,8 +4014,8 @@
         "title": "Solara",
         "trackerId": "WEAO1af938a2",
         "_id": "66633ac4b29bacaa7a568fdc",
-        "version": "0.1.6e",
-        "updatedDate": "08/25/2026 at 5:50 PM UTC",
+        "version": "0.1.7",
+        "updatedDate": "08/26/2026 at 4:15 PM UTC",
         "changelogs": {
           "trackerId": "WEAO1af938a2",
           "name": "solara",
@@ -4908,9 +4908,17 @@
               "date": "2026-08-25T17:50:27.354Z",
               "supportedRobloxVersion": "version-ddf602d9cfe44005",
               "updated": true
+            },
+            {
+              "version": "0.1.7",
+              "changelog": "[+] updated version-37a6cf8c67114d6d\n[+] added crypt.hmac, crypt.random\n[+] updated/added cloneref, compareinstances, cache lib\n[+] get_process_identifier (why nottt)\n[+] added :wait and :once to websocket signal\n[+] added harkinianXenoSingal\n\nunc 67%->75% , sUNC 53%->59%",
+              "timestamp": 1787760931210,
+              "date": "2026-08-26T16:15:31.210Z",
+              "supportedRobloxVersion": "version-17d504d2c9544583",
+              "updated": true
             }
           ],
-          "count": 111
+          "count": 112
         }
       },
       "WEAO6ee0e3b5": {
@@ -4925,8 +4933,8 @@
         "title": "Wave",
         "trackerId": "WEAO2c8e5827",
         "_id": "662ae7576238b7f2082f253b",
-        "version": "NEW-1.4.8",
-        "updatedDate": "08/22/2026 at 3:54 AM UTC",
+        "version": "NEW-1.4.9",
+        "updatedDate": "08/26/2026 at 4:15 PM UTC",
         "changelogs": {
           "trackerId": "WEAO2c8e5827",
           "name": "wave",
