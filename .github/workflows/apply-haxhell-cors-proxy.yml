@@ -1,45 +1,23 @@
-name: Apply HaxHell CORS proxy
+name: Probe Jina relay for HaxHell
 
 on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  apply:
+  probe:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - name: Verify relay can reach HaxHell
+      - name: Probe Jina Reader
         shell: bash
         run: |
-          set -euo pipefail
-          TARGET='https://haxhell.com/api/v1/scripts?page=1&limit=2&sort=latest'
-          ENCODED=$(python -c "import urllib.parse; print(urllib.parse.quote('''$TARGET''', safe=''))")
-          curl -fsS -A 'Mozilla/5.0' -H 'Origin: https://ltseverydayyou.github.io' -H 'Accept: application/json' "https://corsproxy.io/?url=$ENCODED" -o /tmp/haxhell.json
-          python - <<'PY'
-          import json
-          from pathlib import Path
-          data = json.loads(Path('/tmp/haxhell.json').read_text())
-          assert isinstance(data.get('data'), list), data
-          print('Relay returned', len(data['data']), 'HaxHell script(s)')
-          PY
-      - name: Patch index
-        run: python scripts/patch-haxhell-cors-proxy.py
-      - name: Verify patch
-        run: |
-          grep -q 'https://corsproxy.io/?url=' index.html
-          grep -q 'https://haxhell.com/api/v1/search/scripts' index.html
-          grep -q 'getHaxHellProxyUrl(rawScriptUrl)' index.html
-      - name: Commit
-        shell: bash
-        run: |
-          set -euo pipefail
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git rm scripts/patch-haxhell-cors-proxy.py
-          git rm .github/workflows/apply-haxhell-cors-proxy.yml
-          git add index.html
-          git commit -m 'Route HaxHell through CORS proxy'
-          git push
+          set -u
+          URL='https://r.jina.ai/https://haxhell.com/api/v1/scripts?page=1&limit=2&sort=latest'
+          status=$(curl -sS -D /tmp/headers -o /tmp/body -A 'Mozilla/5.0' -H 'Origin: https://ltseverydayyou.github.io' -H 'Accept: application/json' -w '%{http_code}' "$URL" || true)
+          echo "HTTP $status"
+          grep -Ei '^(content-type|access-control-allow-origin|server):' /tmp/headers || true
+          echo '--- BODY ---'
+          head -c 3000 /tmp/body || true
+          echo
