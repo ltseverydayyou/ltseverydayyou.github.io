@@ -1,0 +1,33 @@
+name: Apply Script Searcher desktop layout v2
+
+on:
+  push:
+    paths:
+      - '.github/workflows/auto-fix-script-searcher-layout-v2.yml'
+      - 'scripts/fix-script-searcher-layout-v2.py'
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Patch layout
+        run: python scripts/fix-script-searcher-layout-v2.py
+      - name: Verify
+        run: |
+          grep -q '@media (min-width: 1100px)' index.html
+          grep -q '#px .script-searcher__panels' index.html
+      - name: Commit
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git rm -f scripts/fix-script-searcher-layout-v2.py
+          git rm -f .github/workflows/auto-fix-script-searcher-layout-v2.yml
+          git add index.html
+          git commit -m 'Fix Script Searcher desktop four-column layout'
+          git push
