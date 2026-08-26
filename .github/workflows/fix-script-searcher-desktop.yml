@@ -1,0 +1,68 @@
+name: Fix Script Searcher desktop layout
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Patch desktop layout
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          path = Path('index.html')
+          text = path.read_text(encoding='utf-8')
+          marker = '''        @media (max-width: 820px) {
+            .script-searcher__tabs {
+'''
+          patch = '''        @media (min-width: 1100px) {
+            #px .script-searcher__panels {
+                grid-template-columns: repeat(4, minmax(0, 1fr));
+                gap: 12px;
+            }
+
+            #px .script-searcher__panel {
+                min-width: 0;
+                padding: 14px;
+            }
+
+            #px .script-searcher__panel-controls {
+                gap: 4px;
+            }
+
+            #px .script-searcher__panel-controls button {
+                padding: 4px 8px;
+            }
+
+            #px .script-searcher__panel-page {
+                min-width: 58px;
+            }
+        }
+
+'''
+          assert marker in text, 'responsive Script Searcher marker not found'
+          assert '@media (min-width: 1100px) {\n            #px .script-searcher__panels {' not in text, 'desktop fix already present'
+          text = text.replace(marker, patch + marker, 1)
+          path.write_text(text, encoding='utf-8')
+          PY
+      - name: Verify
+        shell: bash
+        run: |
+          grep -q 'grid-template-columns: repeat(4, minmax(0, 1fr));' index.html
+          grep -q '@media (max-width: 820px)' index.html
+      - name: Commit
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git rm .github/workflows/fix-script-searcher-desktop.yml
+          git add index.html
+          git commit -m 'Keep all Script Searcher providers on one desktop row'
+          git push
