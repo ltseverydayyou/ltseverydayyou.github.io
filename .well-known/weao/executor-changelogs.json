@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-08-26T20:38:44.520Z",
+  "fetchedAt": "2026-08-27T00:33:24.101Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -7111,8 +7111,8 @@
         "title": "Real",
         "trackerId": "WEAO4a1f93j6",
         "_id": "6a5095abbb457d55d62f8061",
-        "version": "2.1.2",
-        "updatedDate": "08/21/2026 at 11:58 PM UTC",
+        "version": "2.2.0",
+        "updatedDate": "08/26/2026 at 8:15 PM UTC",
         "changelogs": {
           "trackerId": "WEAO4a1f93j6",
           "name": "real",
@@ -7397,9 +7397,17 @@
               "date": "2026-08-21T23:58:20.391Z",
               "supportedRobloxVersion": "version-ddf602d9cfe44005",
               "updated": true
+            },
+            {
+              "version": "2.2.0",
+              "changelog": "* Updated for version-17d504d2c9544583 (thanks Gang Jeong Hyeok <3)\n* Added RakNet (yes, cobalt is supported)\n* Added Signal.new (RealSignal)\n* Added getrendersteppedlist\n* Added saveinstance\n* Luau 0.734 -> 0.735 and fully repulled luau\n* Fully rewrote WebSocket, fixing \"WebSocket client is not available\" and binary support\n* Fixed gethiddenproperty on ModelInstances for Vector3 properties\n* Fixed firesignal not firing :Wait connections\n* Fixed arg 2 in httpget being `cache` instead of 'nocache`\n* Fixed isnewcclosure crashing\n* Fixed a get/create_comm_channel crash\n* Fixed Drawing Images only having write-only data\n* Fixed a get/sethiddenproperty crash\n* Fixed hookfunction not being able to hook hookfunction\n* Fixed a crash when erroring in a yieldable function\n* Fixed isscriptable and setscriptable returning wrong results in special cases\n* Extended extension blacklist in filesystem\nUI:\n* Reworked the whole LSP based on our Module\n* Added Runtime DataModel support to the LSP\n* Added Syntax Highlighting to script tab preview\n* Fixed gap between actionbar and Script tabs\n* Added Monaco Hover + Diagnostic popups\n* Added auto close Roblox when uninstalling\n* Creating files in explorer will now create .luau files.\n* Added Reload button in Problems Tab to reload Diagnostics for current script\n* Fixed opening File in VS Code",
+              "timestamp": 1787775318103,
+              "date": "2026-08-26T20:15:18.103Z",
+              "supportedRobloxVersion": "version-17d504d2c9544583",
+              "updated": true
             }
           ],
-          "count": 35
+          "count": 36
         }
       }
     }
