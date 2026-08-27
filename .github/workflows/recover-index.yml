@@ -12,11 +12,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 2
+          fetch-depth: 0
       - name: Restore and patch homepage
         shell: bash
         run: |
-          git show HEAD^:index.html > index.html
+          git show 6267ecc95c13ea05087e922dfc1bb84fff1cb472:index.html > index.html
           python3 - <<'PY'
           from pathlib import Path
           p = Path('index.html')
@@ -63,10 +63,9 @@ jobs:
           }
 
           '''
-          if 'mcp-spotlight--compressor {' not in s:
-              if css_anchor not in s:
-                  raise SystemExit('CSS anchor not found')
-              s = s.replace(css_anchor, modifier + css_anchor, 1)
+          if css_anchor not in s:
+              raise SystemExit('CSS anchor not found')
+          s = s.replace(css_anchor, modifier + css_anchor, 1)
 
           html_anchor = '''                <section class="pinned-games" id="pinned-games" aria-labelledby="pinned-games-title">'''
           compressor = '''                <section class="mcp-spotlight mcp-spotlight--compressor" aria-labelledby="home-compressor-title">
@@ -108,10 +107,9 @@ jobs:
                       </div>
                   </section>
           '''
-          if 'home-compressor-title' not in s:
-              if html_anchor not in s:
-                  raise SystemExit('HTML anchor not found')
-              s = s.replace(html_anchor, compressor + html_anchor, 1)
+          if html_anchor not in s:
+              raise SystemExit('HTML anchor not found')
+          s = s.replace(html_anchor, compressor + html_anchor, 1)
 
           p.write_text(s, encoding='utf-8')
           PY
