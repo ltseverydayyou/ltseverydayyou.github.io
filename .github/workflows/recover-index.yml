@@ -1,0 +1,125 @@
+name: Recover homepage and add WindowsCompressor
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  recover:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - name: Restore and patch homepage
+        shell: bash
+        run: |
+          git show HEAD^:index.html > index.html
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path('index.html')
+          s = p.read_text(encoding='utf-8')
+
+          css_anchor = '''        .mcp-spotlight::before {
+              content: "";
+          '''
+          modifier = '''        .mcp-spotlight--compressor {
+              --mcp-red: #a96cff;
+              --mcp-red-deep: #5f2a98;
+              border-color: rgba(169, 108, 255, 0.3);
+              background:
+                  radial-gradient(circle at 10% 15%, rgba(132, 72, 210, 0.24), transparent 34%),
+                  radial-gradient(circle at 88% 12%, rgba(191, 116, 255, 0.19), transparent 30%),
+                  linear-gradient(145deg, rgba(20, 12, 33, 0.98), rgba(8, 5, 15, 0.99));
+          }
+
+          .mcp-spotlight--compressor .mcp-spotlight__logo {
+              border-color: rgba(169, 108, 255, 0.32);
+              box-shadow: 0 18px 42px rgba(74, 28, 125, 0.38), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+          }
+
+          .mcp-spotlight--compressor .mcp-spotlight__logo img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+          }
+
+          .mcp-spotlight--compressor .mcp-spotlight__eyebrow,
+          .mcp-spotlight--compressor .mcp-origin a {
+              color: #bd8cff;
+          }
+
+          .mcp-spotlight--compressor .mcp-spotlight__eyebrow::before {
+              background: #a96cff;
+              box-shadow: 0 0 16px rgba(169, 108, 255, 0.9);
+          }
+
+          .mcp-spotlight--compressor .mcp-download--windows:hover,
+          .mcp-spotlight--compressor .mcp-download--windows:focus-visible {
+              border-color: rgba(169, 108, 255, 0.62);
+              background: rgba(169, 108, 255, 0.13);
+          }
+
+          '''
+          if 'mcp-spotlight--compressor {' not in s:
+              if css_anchor not in s:
+                  raise SystemExit('CSS anchor not found')
+              s = s.replace(css_anchor, modifier + css_anchor, 1)
+
+          html_anchor = '''                <section class="pinned-games" id="pinned-games" aria-labelledby="pinned-games-title">'''
+          compressor = '''                <section class="mcp-spotlight mcp-spotlight--compressor" aria-labelledby="home-compressor-title">
+                      <div class="mcp-spotlight__inner">
+                          <div class="mcp-spotlight__logo" aria-hidden="true">
+                              <img src="https://raw.githubusercontent.com/ltseverydayyou/WindowsCompressor/main/Imgs/maxwell.png"
+                                  alt="" loading="lazy" />
+                          </div>
+                          <div class="mcp-spotlight__copy">
+                              <p class="mcp-spotlight__eyebrow">Featured project · Windows <span>v0.3.1</span></p>
+                              <h2 id="home-compressor-title">WindowsCompressor</h2>
+                              <p class="mcp-spotlight__description">
+                                  A compact Windows desktop compressor for shrinking videos, images, audio, and regular files.
+                                  Queue individual files or folders, pick a quality preset or target size, and keep the originals untouched.
+                              </p>
+                              <div class="mcp-spotlight__tags" aria-label="Compressor highlights">
+                                  <span>Target file size</span>
+                                  <span>Batch queue</span>
+                                  <span>Video · image · audio</span>
+                                  <span>Single-file EXE</span>
+                              </div>
+                              <p class="mcp-origin">
+                                  Built for Windows with automatic FFmpeg setup, compression progress, saved-space reporting, and a midnight-purple UI.
+                              </p>
+                          </div>
+                          <div class="mcp-spotlight__actions" aria-label="WindowsCompressor downloads">
+                              <a class="mcp-download mcp-download--windows"
+                                  href="https://github.com/ltseverydayyou/WindowsCompressor/releases/download/v0.3.1/Compressor.exe">
+                                  <span class="mcp-download__copy"><strong>Download Compressor</strong><span>.exe · v0.3.1</span></span>
+                                  <span class="mcp-download__arrow" aria-hidden="true">↓</span>
+                              </a>
+                              <div class="mcp-link-row">
+                                  <a class="mcp-link" href="https://github.com/ltseverydayyou/WindowsCompressor/releases/latest"
+                                      target="_blank" rel="noopener noreferrer">Release notes ↗</a>
+                                  <a class="mcp-link" href="https://github.com/ltseverydayyou/WindowsCompressor"
+                                      target="_blank" rel="noopener noreferrer">Source code ↗</a>
+                              </div>
+                          </div>
+                      </div>
+                  </section>
+          '''
+          if 'home-compressor-title' not in s:
+              if html_anchor not in s:
+                  raise SystemExit('HTML anchor not found')
+              s = s.replace(html_anchor, compressor + html_anchor, 1)
+
+          p.write_text(s, encoding='utf-8')
+          PY
+      - name: Commit recovery
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "Advertise WindowsCompressor on homepage"
+          git push
