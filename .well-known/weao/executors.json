@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-08-26T20:38:44.520Z",
+  "fetchedAt": "2026-08-27T11:00:54.442Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -284,13 +284,13 @@
     {
       "_id": "67576d22d9181811c292bb79",
       "title": "Volt",
-      "version": "1.3.8.1",
-      "updatedDate": "08/19/2026 at 5:53 AM UTC",
+      "version": "1.3.9.2",
+      "updatedDate": "08/27/2026 at 5:34 AM UTC",
       "uncStatus": true,
       "free": false,
       "detected": true,
-      "rbxversion": "version-ddf602d9cfe44005",
-      "updateStatus": false,
+      "rbxversion": "version-17d504d2c9544583",
+      "updateStatus": true,
       "websitelink": "https://voltbz.net/",
       "discordlink": "https://discord.com/invite/voltbz",
       "beta": false,
@@ -1167,6 +1167,35 @@
           "https://cdn.weao.gg/slug/real/screenshot4.png",
           "https://cdn.weao.gg/slug/real/screenshot5.png"
         ]
+      }
+    },
+    {
+      "_id": "6a8fee3adb361db6523cd934",
+      "title": "Axis",
+      "version": "0.4.0-38be179b",
+      "updatedDate": "08/27/2026 at 8:22 AM UTC",
+      "uncStatus": false,
+      "free": false,
+      "detected": false,
+      "rbxversion": "version-17d504d2c9544583",
+      "updateStatus": true,
+      "websitelink": "https://useaxis.cc/",
+      "discordlink": "https://discord.com/invite/universal",
+      "beta": false,
+      "platform": "Windows",
+      "extype": "wexternal",
+      "roleId": "1540452964395647008",
+      "index": 6,
+      "purchaselink": "https://bloxproducts.com/r/weao#Axis",
+      "elementCertified": false,
+      "cost": "$9.99 Monthly",
+      "__v": 1,
+      "recommendedReason": {
+        "features": []
+      },
+      "trackerId": "WEAO4ef9k768",
+      "slug": {
+        "fullDescription": "No description currently available. Check back soon!"
       }
     }
   ]

@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-08-27T00:33:24.101Z",
+  "fetchedAt": "2026-08-27T11:00:54.442Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -7409,6 +7409,14 @@
           ],
           "count": 36
         }
+      },
+      "WEAO4ef9k768": {
+        "title": "Axis",
+        "trackerId": "WEAO4ef9k768",
+        "_id": "6a8fee3adb361db6523cd934",
+        "version": "0.4.0-38be179b",
+        "updatedDate": "08/27/2026 at 8:22 AM UTC",
+        "changelogs": []
       }
     }
   }
