@@ -22,10 +22,8 @@ jobs:
           p = Path('index.html')
           s = p.read_text(encoding='utf-8')
 
-          css_anchor = '''        .mcp-spotlight::before {
-              content: "";
-          '''
-          modifier = '''        .mcp-spotlight--compressor {
+          css_key = '.mcp-spotlight::before {'
+          modifier = '''.mcp-spotlight--compressor {
               --mcp-red: #a96cff;
               --mcp-red-deep: #5f2a98;
               border-color: rgba(169, 108, 255, 0.3);
@@ -47,9 +45,7 @@ jobs:
           }
 
           .mcp-spotlight--compressor .mcp-spotlight__eyebrow,
-          .mcp-spotlight--compressor .mcp-origin a {
-              color: #bd8cff;
-          }
+          .mcp-spotlight--compressor .mcp-origin a { color: #bd8cff; }
 
           .mcp-spotlight--compressor .mcp-spotlight__eyebrow::before {
               background: #a96cff;
@@ -63,16 +59,16 @@ jobs:
           }
 
           '''
-          if css_anchor not in s:
-              raise SystemExit('CSS anchor not found')
-          s = s.replace(css_anchor, modifier + css_anchor, 1)
+          pos = s.find(css_key)
+          if pos < 0:
+              raise SystemExit('CSS key not found')
+          s = s[:pos] + modifier + s[pos:]
 
-          html_anchor = '''                <section class="pinned-games" id="pinned-games" aria-labelledby="pinned-games-title">'''
-          compressor = '''                <section class="mcp-spotlight mcp-spotlight--compressor" aria-labelledby="home-compressor-title">
+          html_key = '<section class="pinned-games" id="pinned-games" aria-labelledby="pinned-games-title">'
+          compressor = '''<section class="mcp-spotlight mcp-spotlight--compressor" aria-labelledby="home-compressor-title">
                       <div class="mcp-spotlight__inner">
                           <div class="mcp-spotlight__logo" aria-hidden="true">
-                              <img src="https://raw.githubusercontent.com/ltseverydayyou/WindowsCompressor/main/Imgs/maxwell.png"
-                                  alt="" loading="lazy" />
+                              <img src="https://raw.githubusercontent.com/ltseverydayyou/WindowsCompressor/main/Imgs/maxwell.png" alt="" loading="lazy" />
                           </div>
                           <div class="mcp-spotlight__copy">
                               <p class="mcp-spotlight__eyebrow">Featured project · Windows <span>v0.3.1</span></p>
@@ -87,29 +83,25 @@ jobs:
                                   <span>Video · image · audio</span>
                                   <span>Single-file EXE</span>
                               </div>
-                              <p class="mcp-origin">
-                                  Built for Windows with automatic FFmpeg setup, compression progress, saved-space reporting, and a midnight-purple UI.
-                              </p>
+                              <p class="mcp-origin">Built for Windows with automatic FFmpeg setup, compression progress, saved-space reporting, and a midnight-purple UI.</p>
                           </div>
                           <div class="mcp-spotlight__actions" aria-label="WindowsCompressor downloads">
-                              <a class="mcp-download mcp-download--windows"
-                                  href="https://github.com/ltseverydayyou/WindowsCompressor/releases/download/v0.3.1/Compressor.exe">
+                              <a class="mcp-download mcp-download--windows" href="https://github.com/ltseverydayyou/WindowsCompressor/releases/download/v0.3.1/Compressor.exe">
                                   <span class="mcp-download__copy"><strong>Download Compressor</strong><span>.exe · v0.3.1</span></span>
                                   <span class="mcp-download__arrow" aria-hidden="true">↓</span>
                               </a>
                               <div class="mcp-link-row">
-                                  <a class="mcp-link" href="https://github.com/ltseverydayyou/WindowsCompressor/releases/latest"
-                                      target="_blank" rel="noopener noreferrer">Release notes ↗</a>
-                                  <a class="mcp-link" href="https://github.com/ltseverydayyou/WindowsCompressor"
-                                      target="_blank" rel="noopener noreferrer">Source code ↗</a>
+                                  <a class="mcp-link" href="https://github.com/ltseverydayyou/WindowsCompressor/releases/latest" target="_blank" rel="noopener noreferrer">Release notes ↗</a>
+                                  <a class="mcp-link" href="https://github.com/ltseverydayyou/WindowsCompressor" target="_blank" rel="noopener noreferrer">Source code ↗</a>
                               </div>
                           </div>
                       </div>
                   </section>
-          '''
-          if html_anchor not in s:
-              raise SystemExit('HTML anchor not found')
-          s = s.replace(html_anchor, compressor + html_anchor, 1)
+                  '''
+          pos = s.find(html_key)
+          if pos < 0:
+              raise SystemExit('HTML key not found')
+          s = s[:pos] + compressor + s[pos:]
 
           p.write_text(s, encoding='utf-8')
           PY
