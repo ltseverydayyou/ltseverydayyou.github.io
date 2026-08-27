@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-08-26T20:38:44.520Z",
+  "fetchedAt": "2026-08-27T21:05:25.530Z",
   "data": {
     "current": {
       "Windows": "version-17d504d2c9544583",
@@ -11,14 +11,14 @@
         "timestamp": 1787760012,
         "type": "new"
       },
-      "Mac": "version-31dba3b2537245ce",
-      "MacDate": "8/25/2026, 7:34:01 PM UTC",
+      "Mac": "version-4c4fc877ca9b4c61",
+      "MacDate": "8/27/2026, 5:04:44 PM UTC",
       "MacResponse": {
-        "version": "0.735.0.7351131",
-        "clientVersionUpload": "version-31dba3b2537245ce",
+        "version": "0.736.0.7361346",
+        "clientVersionUpload": "version-4c4fc877ca9b4c61",
         "bootstrapperVersion": "",
-        "timestamp": 1787686441,
-        "type": "revert"
+        "timestamp": 1787850284,
+        "type": "new"
       },
       "Android": "2.735.1138",
       "AndroidDate": "8/20/2026, 4:42:39 PM UTC",
@@ -34,13 +34,13 @@
       }
     },
     "future": {
-      "Windows": "version-17d504d2c9544583",
-      "WindowsDate": "8/25/2026, 2:56:37 PM UTC",
+      "Windows": "version-f5a60436d48947d3",
+      "WindowsDate": "8/27/2026, 2:14:11 PM UTC",
       "WindowsResponse": {
-        "version": "0.735.3.7351147",
-        "clientVersionUpload": "version-17d504d2c9544583",
-        "bootstrapperVersion": "0, 735, 3, 7351147",
-        "timestamp": 1787669797
+        "version": "0.736.0.7361348",
+        "clientVersionUpload": "version-f5a60436d48947d3",
+        "bootstrapperVersion": "0, 736, 0, 7361348",
+        "timestamp": 1787840051
       },
       "Mac": "version-4c4fc877ca9b4c61",
       "MacDate": "8/26/2026, 4:48:41 PM UTC",
@@ -61,14 +61,14 @@
         "timestamp": 1787359571,
         "type": "revert"
       },
-      "Mac": "version-e2eb38281d264ca4",
-      "MacDate": "8/25/2026, 5:31:43 PM UTC",
+      "Mac": "version-31dba3b2537245ce",
+      "MacDate": "8/25/2026, 7:34:01 PM UTC",
       "MacResponse": {
-        "version": "0.736.0.7361342",
-        "clientVersionUpload": "version-e2eb38281d264ca4",
+        "version": "0.735.0.7351131",
+        "clientVersionUpload": "version-31dba3b2537245ce",
         "bootstrapperVersion": "",
-        "timestamp": 1787679103,
-        "type": "new"
+        "timestamp": 1787686441,
+        "type": "revert"
       }
     }
   }
