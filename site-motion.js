@@ -196,21 +196,19 @@
   function bindLiveUpdates() {
     var rootNode = document.querySelector('#l');
     if (!rootNode || !window.MutationObserver) return;
+    var queued = false;
     var observer = new MutationObserver(function (records) {
-      var changed = false;
-      records.forEach(function (record) {
-        if (record.type === 'attributes' && record.attributeName === 'class') changed = true;
+      var added = records.some(function (record) {
+        return record.type === 'childList' && record.addedNodes.length > 0;
       });
-      if (!changed) return;
-      enhanceCards();
-      var active = document.querySelector('.pp.on');
-      if (active && !reduced) {
-        active.classList.remove('motion-v2-page-surge');
-        void active.offsetWidth;
-        active.classList.add('motion-v2-page-surge');
-      }
+      if (!added || queued) return;
+      queued = true;
+      window.requestAnimationFrame(function () {
+        queued = false;
+        enhanceCards();
+      });
     });
-    observer.observe(rootNode, { subtree: true, attributes: true, attributeFilter: ['class'] });
+    observer.observe(rootNode, { subtree: true, childList: true });
   }
 
   function bindLiveLog() {
