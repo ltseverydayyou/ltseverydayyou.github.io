@@ -5,7 +5,6 @@ on:
     branches:
       - main
     paths:
-      - index.html
       - android/**
       - .github/workflows/dungeon-apk.yml
   workflow_dispatch:
@@ -59,11 +58,13 @@ jobs:
               raise SystemExit('Unsupported avatar image format')
           PY
 
-      - name: Restore signing key
+      - name: Restore stable debug signing key
+        id: signing-cache
         uses: actions/cache@v4
         with:
           path: ~/.android/debug.keystore
           key: ltseverydayyou-hub-debug-signing-v1
+          fail-on-cache-miss: false
 
       - name: Prepare signing
         shell: bash
@@ -78,20 +79,23 @@ jobs:
             printf '%s' "${DUNGEON_KEYSTORE_B64}" | base64 --decode > "${GITHUB_WORKSPACE}/android/dungeon-release.jks"
             echo "DUNGEON_KEYSTORE_PATH=${GITHUB_WORKSPACE}/android/dungeon-release.jks" >> "${GITHUB_ENV}"
             echo "SIGNED_RELEASE=true" >> "${GITHUB_ENV}"
+            echo "APK_KIND=release-secret-signed" >> "${GITHUB_ENV}"
           else
-            mkdir -p "${HOME}/.android"
             if [[ ! -f "${HOME}/.android/debug.keystore" ]]; then
-              keytool -genkeypair -noprompt -keystore "${HOME}/.android/debug.keystore" -storepass android -alias androiddebugkey -keypass android -dname "CN=ltseverydayyou.dungeon,O=ltseverydayyou" -keyalg RSA -keysize 2048 -validity 10000
+              echo "::error::No stable APK signing identity is available. Configure DUNGEON_KEYSTORE_B64, DUNGEON_KEYSTORE_PASSWORD, DUNGEON_KEY_ALIAS, and DUNGEON_KEY_PASSWORD as repository secrets before rebuilding."
+              exit 1
             fi
+            keytool -list -keystore "${HOME}/.android/debug.keystore" -storepass android -alias androiddebugkey >/dev/null
+            echo "DUNGEON_KEYSTORE_PATH=${HOME}/.android/debug.keystore" >> "${GITHUB_ENV}"
+            echo "DUNGEON_KEYSTORE_PASSWORD=android" >> "${GITHUB_ENV}"
+            echo "DUNGEON_KEY_ALIAS=androiddebugkey" >> "${GITHUB_ENV}"
+            echo "DUNGEON_KEY_PASSWORD=android" >> "${GITHUB_ENV}"
             echo "SIGNED_RELEASE=false" >> "${GITHUB_ENV}"
+            echo "APK_KIND=stable-debug-signed" >> "${GITHUB_ENV}"
           fi
 
       - name: Build replacement APK
         shell: bash
-        env:
-          DUNGEON_KEYSTORE_PASSWORD: ${{ secrets.DUNGEON_KEYSTORE_PASSWORD }}
-          DUNGEON_KEY_ALIAS: ${{ secrets.DUNGEON_KEY_ALIAS }}
-          DUNGEON_KEY_PASSWORD: ${{ secrets.DUNGEON_KEY_PASSWORD }}
         run: |
           set -euo pipefail
           export VERSION_CODE=$((110100 + GITHUB_RUN_NUMBER))
@@ -108,6 +112,21 @@ jobs:
           fi
           echo "APK_KIND=${APK_KIND}" >> "${GITHUB_ENV}"
           echo "VERSION_CODE=${VERSION_CODE}" >> "${GITHUB_ENV}"
+
+      - name: Verify APK signing identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          APKSIGNER="${ANDROID_HOME}/build-tools/36.0.0/apksigner"
+          APK_PATH="dist/ltseverydayyou-Hub.apk"
+          "${APKSIGNER}" verify "${APK_PATH}"
+          CERT_SHA256="$("${APKSIGNER}" verify --print-certs "${APK_PATH}" 2>/dev/null | awk -F': ' '/Signer #1 certificate SHA-256 digest:/{print $2; exit}')"
+          if [[ -z "${CERT_SHA256}" ]]; then
+            echo "::error::Could not read the APK signing certificate fingerprint."
+            exit 1
+          fi
+          echo "CERT_SHA256=${CERT_SHA256}" >> "${GITHUB_ENV}"
+          echo "APK signing certificate: ${CERT_SHA256}"
 
       - name: Upload workflow artifact
         uses: actions/upload-artifact@v4
@@ -128,6 +147,7 @@ jobs:
           Android package: ltseverydayyou.dungeon
           Android build: ${VERSION_CODE}
           Android signing: ${APK_KIND}
+          Signing certificate SHA-256: ${CERT_SHA256}
 
           Includes GitHub-profile branding, app-only interface animations, customizable Android launcher icons, live loading from https://ltseverydayyou.github.io/, Windows support, and in-app update notifications.
           EOF_NOTES
