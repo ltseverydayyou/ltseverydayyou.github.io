@@ -263,8 +263,8 @@ public final class MainActivity extends Activity {
         if (isFinishing() || isDestroyed()) return;
         new AlertDialog.Builder(this)
                 .setTitle("About ltseverydayyou Hub")
-                .setMessage("Android WebView wrapper\\n\\nInstalled build: " + getInstalledVersionCode() +
-                        "\\n\\nThe app loads the live GitHub Pages hub.")
+                .setMessage("Android WebView wrapper\n\nInstalled build: " + getInstalledVersionCode() +
+                        "\n\nThe app loads the live GitHub Pages hub.")
                 .setPositiveButton("OK", null)
                 .show();
     }
