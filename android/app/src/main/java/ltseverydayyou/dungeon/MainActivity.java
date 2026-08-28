@@ -253,7 +253,10 @@ public final class MainActivity extends Activity {
         Intent share = new Intent(Intent.ACTION_SEND);
         share.setType("text/plain");
         share.putExtra(Intent.EXTRA_TEXT, url);
-        startActivity(Intent.createChooser(share, "Share Hub page"));
+        try {
+            startActivity(Intent.createChooser(share, "Share Hub page"));
+        } catch (ActivityNotFoundException ignored) {
+        }
     }
 
     private void showAboutDialog() {
