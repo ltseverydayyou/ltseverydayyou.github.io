@@ -5,7 +5,6 @@ on:
     branches:
       - main
     paths:
-      - index.html
       - windows/**
       - .github/workflows/hub-windows.yml
   workflow_dispatch:
@@ -18,7 +17,28 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  check-windows-source:
+    runs-on: ubuntu-latest
+    outputs:
+      available: ${{ steps.source.outputs.available }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check Windows project
+        id: source
+        shell: bash
+        run: |
+          if [[ -f "windows/ltseverydayyou.Hub.csproj" ]]; then
+            echo "available=true" >> "${GITHUB_OUTPUT}"
+          else
+            echo "available=false" >> "${GITHUB_OUTPUT}"
+            echo "::notice::Windows build skipped because windows/ltseverydayyou.Hub.csproj is not present."
+          fi
+
   build-windows:
+    needs: check-windows-source
+    if: needs.check-windows-source.outputs.available == 'true'
     runs-on: windows-latest
 
     steps:
@@ -36,18 +56,18 @@ jobs:
           New-Item -ItemType Directory -Force -Path windows/Assets | Out-Null
           Invoke-WebRequest -Uri 'https://avatars.githubusercontent.com/u/117316014?s=512&v=4' -OutFile windows/Assets/profile.png
           Add-Type -AssemblyName System.Drawing
-          $bmp = [System.Drawing.Bitmap]::FromFile((Resolve-Path 'windows/Assets/profile.png'))
-          $resized = New-Object System.Drawing.Bitmap 256,256
-          $g = [System.Drawing.Graphics]::FromImage($resized)
-          $g.DrawImage($bmp,0,0,256,256)
-          $g.Dispose()
-          $icon = [System.Drawing.Icon]::FromHandle($resized.GetHicon())
-          $fs = [System.IO.File]::Create((Join-Path (Resolve-Path 'windows/Assets').Path 'app.ico'))
-          $icon.Save($fs)
-          $fs.Close()
-          $icon.Dispose()
-          $resized.Dispose()
-          $bmp.Dispose()
+          ${bmp} = [System.Drawing.Bitmap]::FromFile((Resolve-Path 'windows/Assets/profile.png'))
+          ${resized} = New-Object System.Drawing.Bitmap 256,256
+          ${g} = [System.Drawing.Graphics]::FromImage(${resized})
+          ${g}.DrawImage(${bmp},0,0,256,256)
+          ${g}.Dispose()
+          ${icon} = [System.Drawing.Icon]::FromHandle(${resized}.GetHicon())
+          ${fs} = [System.IO.File]::Create((Join-Path (Resolve-Path 'windows/Assets').Path 'app.ico'))
+          ${icon}.Save(${fs})
+          ${fs}.Close()
+          ${icon}.Dispose()
+          ${resized}.Dispose()
+          ${bmp}.Dispose()
 
       - name: Restore
         run: dotnet restore windows/ltseverydayyou.Hub.csproj -r win-x64
@@ -70,9 +90,9 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          $tag='dungeon-1.1'
-          gh release upload $tag 'dist/release/ltseverydayyou-Hub-Windows.exe' --clobber
-          $ids = gh api "repos/$env:GITHUB_REPOSITORY/releases/tags/$tag" --jq '.assets[] | select(.name | endswith(".sha256")) | .id'
-          foreach ($id in $ids) {
-            if ($id) { gh api -X DELETE "repos/$env:GITHUB_REPOSITORY/releases/assets/$id" }
+          ${tag}='dungeon-1.1'
+          gh release upload ${tag} 'dist/release/ltseverydayyou-Hub-Windows.exe' --clobber
+          ${ids} = gh api "repos/$env:GITHUB_REPOSITORY/releases/tags/${tag}" --jq '.assets[] | select(.name | endswith(".sha256")) | .id'
+          foreach (${id} in ${ids}) {
+            if (${id}) { gh api -X DELETE "repos/$env:GITHUB_REPOSITORY/releases/assets/${id}" }
           }
