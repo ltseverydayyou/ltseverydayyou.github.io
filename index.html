@@ -12558,6 +12558,332 @@
     </style>
     <link rel="stylesheet" href="/tools/dat-editor.css" />
     <script defer src="/tools/dat-editor.js"></script>
+
+    <style id="vyperia-motion-overhaul">
+        :root {
+            --motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
+            --motion-ease-soft: cubic-bezier(0.2, 0.7, 0.2, 1);
+            --motion-fast: 180ms;
+            --motion-base: 420ms;
+            --motion-slow: 680ms;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            isolation: isolate;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: -18%;
+            z-index: 0;
+            pointer-events: none;
+            background:
+                radial-gradient(34% 38% at 14% 14%, rgba(102, 227, 255, 0.11), transparent 72%),
+                radial-gradient(32% 40% at 86% 76%, rgba(167, 139, 250, 0.12), transparent 72%);
+            opacity: 0.72;
+            transform: translate3d(0, 0, 0) scale(1);
+            animation: motionAmbient 22s var(--motion-ease-soft) infinite alternate;
+            will-change: transform;
+        }
+
+        body > .l {
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes motionAmbient {
+            0% {
+                transform: translate3d(-1.5%, -1%, 0) scale(1);
+            }
+
+            100% {
+                transform: translate3d(1.5%, 1%, 0) scale(1.045);
+            }
+        }
+
+        @keyframes motionFadeUp {
+            from {
+                opacity: 0;
+                transform: translate3d(0, 16px, 0);
+            }
+
+            to {
+                opacity: 1;
+                transform: translate3d(0, 0, 0);
+            }
+        }
+
+        @keyframes motionPageIn {
+            from {
+                opacity: 0;
+                transform: translate3d(0, 12px, 0) scale(0.992);
+                filter: blur(2px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translate3d(0, 0, 0) scale(1);
+                filter: blur(0);
+            }
+        }
+
+        @keyframes motionSoftPop {
+            from {
+                opacity: 0;
+                transform: translate3d(0, 10px, 0) scale(0.985);
+            }
+
+            to {
+                opacity: 1;
+                transform: translate3d(0, 0, 0) scale(1);
+            }
+        }
+
+        .as {
+            transition:
+                background var(--motion-base) var(--motion-ease-soft),
+                border-color var(--motion-base) var(--motion-ease-soft),
+                box-shadow var(--motion-base) var(--motion-ease-soft);
+        }
+
+        .brand-block {
+            animation: motionFadeUp 680ms var(--motion-ease) both;
+        }
+
+        .nb {
+            perspective: 700px;
+        }
+
+        .tb {
+            border-radius: var(--radius-control);
+            transition:
+                color var(--motion-fast) var(--motion-ease-soft),
+                background var(--motion-base) var(--motion-ease-soft),
+                border-color var(--motion-base) var(--motion-ease-soft),
+                box-shadow var(--motion-base) var(--motion-ease-soft),
+                transform var(--motion-fast) var(--motion-ease);
+        }
+
+        .tb:hover {
+            transform: translate3d(5px, 0, 0);
+            background: rgba(255, 255, 255, 0.055);
+        }
+
+        .tb.act {
+            background:
+                linear-gradient(105deg, rgba(102, 227, 255, 0.12), rgba(167, 139, 250, 0.13)),
+                rgba(255, 255, 255, 0.035);
+            box-shadow:
+                inset 3px 0 0 var(--ac),
+                0 10px 24px rgba(0, 0, 0, 0.13);
+        }
+
+        .tt {
+            animation: motionTitleShimmer 7s var(--motion-ease-soft) infinite;
+        }
+
+        @keyframes motionTitleShimmer {
+            0%, 100% {
+                filter: brightness(1);
+            }
+
+            50% {
+                filter: brightness(1.16);
+            }
+        }
+
+        .hero-shell {
+            animation: motionFadeUp 760ms var(--motion-ease) both;
+        }
+
+        .hero__copy > * {
+            animation: motionFadeUp 680ms var(--motion-ease) both;
+        }
+
+        .hero__copy > :nth-child(2) {
+            animation-delay: 90ms;
+        }
+
+        .hero__actions > * {
+            transition:
+                transform var(--motion-fast) var(--motion-ease),
+                filter var(--motion-fast) var(--motion-ease),
+                box-shadow var(--motion-base) var(--motion-ease-soft);
+        }
+
+        .hero__actions > *:hover {
+            transform: translate3d(0, -3px, 0);
+            filter: brightness(1.06);
+        }
+
+        .hero-strip {
+            overflow: hidden;
+            mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+        }
+
+        .hero-strip__track {
+            will-change: transform;
+        }
+
+        .pp {
+            display: none;
+            opacity: 0;
+        }
+
+        .pp.on {
+            display: block;
+            animation: motionPageIn 520ms var(--motion-ease) both;
+        }
+
+        .pp.on > :not(.motion-reveal) {
+            animation: motionSoftPop 520ms var(--motion-ease) both;
+        }
+
+        .pp.on > :nth-child(2):not(.motion-reveal) {
+            animation-delay: 55ms;
+        }
+
+        .pp.on > :nth-child(3):not(.motion-reveal) {
+            animation-delay: 105ms;
+        }
+
+        .motion-reveal {
+            opacity: 0;
+            transform: translate3d(0, 20px, 0) scale(0.988);
+            transition:
+                opacity var(--motion-slow) var(--motion-ease),
+                transform var(--motion-slow) var(--motion-ease);
+            transition-delay: calc(var(--motion-index, 0) * 42ms);
+            will-change: opacity, transform;
+        }
+
+        .motion-reveal.is-visible {
+            opacity: 1;
+            transform: translate3d(0, 0, 0) scale(1);
+        }
+
+        .g,
+        .mcp-spotlight,
+        .pinned-games,
+        .private-server-card,
+        .bootstrapper-catalog {
+            transition:
+                transform var(--motion-base) var(--motion-ease),
+                border-color var(--motion-base) var(--motion-ease-soft),
+                box-shadow var(--motion-base) var(--motion-ease-soft),
+                filter var(--motion-base) var(--motion-ease-soft);
+        }
+
+        .mcp-spotlight:hover,
+        .pinned-games:hover,
+        .private-server-card:hover {
+            transform: translate3d(0, -4px, 0);
+            filter: saturate(1.04);
+        }
+
+        .pinned-game-card,
+        .private-server-card,
+        .mcp-download,
+        .script-card__button,
+        .btn,
+        button,
+        a {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .pinned-game-card,
+        .private-server-card,
+        .mcp-download,
+        .script-card__button,
+        .btn {
+            transition:
+                transform var(--motion-fast) var(--motion-ease),
+                border-color var(--motion-base) var(--motion-ease-soft),
+                box-shadow var(--motion-base) var(--motion-ease-soft),
+                filter var(--motion-fast) var(--motion-ease);
+        }
+
+        .pinned-game-card:hover,
+        .private-server-card:hover,
+        .mcp-download:hover,
+        .script-card__button:hover,
+        .btn:hover {
+            transform: translate3d(0, -3px, 0);
+            filter: brightness(1.05);
+        }
+
+        .pinned-game-card:active,
+        .private-server-card:active,
+        .mcp-download:active,
+        .script-card__button:active,
+        .btn:active,
+        .tb:active {
+            transform: translate3d(0, 0, 0) scale(0.985);
+            transition-duration: 90ms;
+        }
+
+        :where(button, a, input, select, textarea, summary):focus-visible {
+            outline: 2px solid color-mix(in srgb, var(--ac) 78%, #fff);
+            outline-offset: 3px;
+        }
+
+        @media (max-width: 760px) {
+            body::before {
+                opacity: 0.48;
+                animation-duration: 30s;
+            }
+
+            .pp.on {
+                animation-duration: 430ms;
+            }
+
+            .motion-reveal {
+                transform: translate3d(0, 14px, 0) scale(0.994);
+            }
+
+            .hero__actions > *:hover,
+            .mcp-spotlight:hover,
+            .pinned-games:hover,
+            .private-server-card:hover {
+                transform: none;
+                filter: none;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            body::before,
+            .brand-block,
+            .tt,
+            .hero-shell,
+            .hero__copy > *,
+            .pp.on,
+            .pp.on > :not(.motion-reveal),
+            .motion-reveal,
+            .motion-reveal.is-visible {
+                animation: none !important;
+                transition: none !important;
+                transform: none !important;
+                filter: none !important;
+            }
+
+            .motion-reveal,
+            .motion-reveal.is-visible,
+            .pp,
+            .pp.on {
+                opacity: 1 !important;
+            }
+        }
+    </style>
+
 </head>
 
 <body>
@@ -28568,6 +28894,84 @@ self.addEventListener("message", async (event) => {
       });
     })();
   </script>
+
+
+    <script id="vyperia-motion-controller">
+        (() => {
+            const root = document.documentElement;
+            const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+            const revealSelectors = [
+                ".hero-shell",
+                ".hero-strip",
+                ".home-social-hub",
+                ".mcp-spotlight",
+                ".pinned-games",
+                ".g:not(.scripts-showcase)",
+                ".private-server-card",
+                ".bootstrapper-catalog"
+            ];
+
+            const nodes = [];
+            const seen = new Set();
+
+            const collect = () => {
+                revealSelectors.forEach((selector) => {
+                    document.querySelectorAll(selector).forEach((node) => {
+                        if (seen.has(node)) return;
+                        seen.add(node);
+                        node.classList.add("motion-reveal");
+                        node.style.setProperty("--motion-index", String(nodes.length % 8));
+                        nodes.push(node);
+                    });
+                });
+            };
+
+            collect();
+            root.classList.add("motion-ready");
+
+            if (reduceMotion.matches || !("IntersectionObserver" in window)) {
+                nodes.forEach((node) => node.classList.add("is-visible"));
+                return;
+            }
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (!entry.isIntersecting) return;
+                    entry.target.classList.add("is-visible");
+                    observer.unobserve(entry.target);
+                });
+            }, {
+                rootMargin: "0px 0px -8% 0px",
+                threshold: 0.08
+            });
+
+            nodes.forEach((node) => observer.observe(node));
+
+            const motionCards = document.querySelectorAll(
+                ".pinned-game-card, .private-server-card, .mcp-download, .script-card__button, .btn"
+            );
+
+            motionCards.forEach((card) => {
+                card.addEventListener("pointermove", (event) => {
+                    const bounds = card.getBoundingClientRect();
+                    const x = ((event.clientX - bounds.left) / Math.max(bounds.width, 1)) * 100;
+                    const y = ((event.clientY - bounds.top) / Math.max(bounds.height, 1)) * 100;
+                    card.style.setProperty("--motion-pointer-x", x.toFixed(2) + "%");
+                    card.style.setProperty("--motion-pointer-y", y.toFixed(2) + "%");
+                }, { passive: true });
+
+                card.addEventListener("pointerleave", () => {
+                    card.style.removeProperty("--motion-pointer-x");
+                    card.style.removeProperty("--motion-pointer-y");
+                }, { passive: true });
+            });
+
+            window.addEventListener("pageshow", () => {
+                document.body.classList.add("motion-ready");
+            }, { once: true });
+        })();
+    </script>
 
 </body>
 
