@@ -16,3 +16,8 @@ For Android to accept future native APK builds as updates, configure these repos
 - `DUNGEON_KEY_PASSWORD`
 
 When all four are present, CI publishes a release-signed APK. Until then, CI uses a cached debug signing key so the APK is installable. The cached key is suitable for testing/personal distribution but is not a durable production signing strategy.
+
+
+## Android settings
+
+The APK settings button now includes the same navigation and update actions as the Windows hub, plus mobile-friendly controls for sharing the current page, clearing the WebView cache, viewing app/build information, and switching between the available launcher icons.

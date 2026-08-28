@@ -146,7 +146,7 @@ public final class MainActivity extends Activity {
 
     private void injectHubEnhancements(WebView view) {
         String js = "(function(){if(window.__hubEnhanced)return;window.__hubEnhanced=true;" +
-                "const s=document.createElement('style');s.textContent=`" +
+                "const s=document.createElement('style');s.textContent=\`" +
                 "html{scroll-behavior:smooth}body{animation:hubFade .42s ease both}" +
                 "*:not(html):not(body){transition:opacity .18s ease,transform .18s ease,filter .18s ease,background-color .22s ease,border-color .22s ease,box-shadow .22s ease!important}" +
                 "a,button,[role=button],input,select,textarea,.card,[class*=card],[class*=button],[class*=item],[class*=tile]{will-change:transform}" +
@@ -154,13 +154,34 @@ public final class MainActivity extends Activity {
                 "img,video{animation:hubPop .32s ease both}" +
                 "dialog,[role=dialog],[class*=modal],[class*=popup],[class*=menu]{animation:hubPop .22s ease both}" +
                 "@keyframes hubFade{from{opacity:0}to{opacity:1}}@keyframes hubPop{from{opacity:0;transform:translateY(7px) scale(.985)}to{opacity:1;transform:none}}" +
-                "#hubAppSettings{position:fixed;left:14px;bottom:14px;right:auto;z-index:2147483647;width:46px;height:46px;border:0;border-radius:15px;background:rgba(20,20,24,.88);color:white;font-size:22px;box-shadow:0 8px 28px rgba(0,0,0,.32);backdrop-filter:blur(12px)}" +
-                "#hubIconPanel{position:fixed;left:14px;bottom:70px;right:auto;z-index:2147483647;padding:10px;border-radius:16px;background:rgba(20,20,24,.94);color:white;box-shadow:0 10px 32px rgba(0,0,0,.38);font:14px system-ui;display:none;animation:hubPop .2s ease both}" +
-                "#hubIconPanel button{display:block;width:180px;margin:5px 0;padding:10px 12px;border:0;border-radius:11px;background:#2b2b31;color:white;text-align:left}`;document.head.appendChild(s);" +
-                "const panel=document.createElement('div');panel.id='hubIconPanel';panel.innerHTML='<b>App icon</b><button data-i=profile>GitHub profile</button><button data-i=dark>Hub Dark</button><button data-i=light>Hub Light</button>';" +
+                "#hubAppSettings{position:fixed;left:14px;bottom:14px;right:auto;z-index:2147483647;width:46px;height:46px;border:0;border-radius:15px;background:rgba(20,20,24,.9);color:#fff;font-size:22px;box-shadow:0 8px 28px rgba(0,0,0,.32);backdrop-filter:blur(12px)}" +
+                "#hubAppPanel{position:fixed;left:14px;bottom:70px;right:auto;z-index:2147483647;width:250px;max-width:calc(100vw - 28px);max-height:calc(100vh - 96px);overflow-y:auto;padding:11px;border-radius:16px;background:rgba(20,20,24,.96);color:white;box-shadow:0 10px 32px rgba(0,0,0,.38);font:14px system-ui;display:none;animation:hubPop .2s ease both;-webkit-overflow-scrolling:touch}" +
+                "#hubAppPanel button{display:block;width:100%;margin:5px 0;padding:10px 12px;border:0;border-radius:11px;background:#2b2b31;color:white;text-align:left}" +
+                "#hubAppPanel button:active{background:#3b3b44}" +
+                ".hub-panel-title{padding:3px 4px 9px;font-size:15px;font-weight:800}" +
+                ".hub-panel-section{margin:10px 4px 4px;color:#aeb0b8;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase}" +
+                ".hub-panel-divider{height:1px;margin:10px 0;background:rgba(255,255,255,.12)}" +
+                "\`;document.head.appendChild(s);" +
+                "const panel=document.createElement('div');panel.id='hubAppPanel';panel.innerHTML=\`<div class='hub-panel-title'>ltseverydayyou Hub</div>" +
+                "<div class='hub-panel-section'>Navigation</div>" +
+                "<button data-action='home'>Home</button>" +
+                "<button data-action='reload'>Reload page</button>" +
+                "<button data-action='updates'>Check for updates</button>" +
+                "<button data-action='browser'>Open in browser</button>" +
+                "<button data-action='share'>Share current page</button>" +
+                "<button data-action='clear-cache'>Clear cached page</button>" +
+                "<div class='hub-panel-divider'></div>" +
+                "<div class='hub-panel-section'>App icon</div>" +
+                "<button data-action='icon-profile'>GitHub profile icon</button>" +
+                "<button data-action='icon-dark'>Hub dark icon</button>" +
+                "<button data-action='icon-light'>Hub light icon</button>" +
+                "<div class='hub-panel-divider'></div>" +
+                "<button data-action='about'>About this app</button>\`;" +
                 "const gear=document.createElement('button');gear.id='hubAppSettings';gear.textContent='⚙';gear.setAttribute('aria-label','Hub app settings');" +
-                "gear.onclick=()=>panel.style.display=panel.style.display==='block'?'none':'block';panel.onclick=e=>{const b=e.target.closest('button[data-i]');if(!b)return;try{HubApp.setAppIcon(b.dataset.i)}catch(_){ }panel.style.display='none'};" +
+                "gear.onclick=()=>{panel.style.display=panel.style.display==='block'?'none':'block'};" +
+                "panel.onclick=e=>{const b=e.target.closest('button[data-action]');if(!b)return;try{HubApp.performAction(b.dataset.action)}catch(_){ }panel.style.display='none'};" +
                 "document.body.append(panel,gear);" +
+                "document.addEventListener('pointerdown',e=>{if(panel.style.display==='block'&&!panel.contains(e.target)&&e.target!==gear)panel.style.display='none'},{passive:true});" +
                 "document.addEventListener('pointerdown',e=>{const t=e.target.closest('a,button,[role=button]');if(!t)return;t.animate([{filter:'brightness(1)'},{filter:'brightness(1.18)'},{filter:'brightness(1)'}],{duration:260,easing:'ease-out'})},{passive:true});" +
                 "new MutationObserver(ms=>{for(const m of ms)for(const n of m.addedNodes)if(n.nodeType===1)n.animate([{opacity:0,transform:'translateY(4px)'},{opacity:1,transform:'none'}],{duration:220,easing:'ease-out'})}).observe(document.documentElement,{childList:true,subtree:true});" +
                 "})();";
@@ -169,9 +190,80 @@ public final class MainActivity extends Activity {
 
     public final class HubBridge {
         @JavascriptInterface
+        public void performAction(String action) {
+            runOnUiThread(() -> handleAction(action));
+        }
+
+        @JavascriptInterface
         public void setAppIcon(String icon) {
             runOnUiThread(() -> switchIcon(icon));
         }
+    }
+
+    private void handleAction(String action) {
+        if (action == null) return;
+        switch (action) {
+            case "home":
+                if (webView != null) webView.loadUrl(HOME_URL + "?hub_app=1&ts=" + System.currentTimeMillis());
+                break;
+            case "reload":
+                if (webView != null) webView.reload();
+                break;
+            case "updates":
+                checkForAppUpdate();
+                break;
+            case "browser":
+                openExternal(webView != null && webView.getUrl() != null ? webView.getUrl() : HOME_URL);
+                break;
+            case "share":
+                shareCurrentPage();
+                break;
+            case "clear-cache":
+                if (webView != null) {
+                    webView.clearCache(true);
+                    webView.reload();
+                }
+                break;
+            case "icon-profile":
+                switchIcon("profile");
+                break;
+            case "icon-dark":
+                switchIcon("dark");
+                break;
+            case "icon-light":
+                switchIcon("light");
+                break;
+            case "about":
+                showAboutDialog();
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void openExternal(String url) {
+        try {
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
+        } catch (ActivityNotFoundException ignored) {
+        }
+    }
+
+    private void shareCurrentPage() {
+        String url = webView != null && webView.getUrl() != null ? webView.getUrl() : HOME_URL;
+        Intent share = new Intent(Intent.ACTION_SEND);
+        share.setType("text/plain");
+        share.putExtra(Intent.EXTRA_TEXT, url);
+        startActivity(Intent.createChooser(share, "Share Hub page"));
+    }
+
+    private void showAboutDialog() {
+        if (isFinishing() || isDestroyed()) return;
+        new AlertDialog.Builder(this)
+                .setTitle("About ltseverydayyou Hub")
+                .setMessage("Android WebView wrapper\\n\\nInstalled build: " + getInstalledVersionCode() +
+                        "\\n\\nThe app loads the live GitHub Pages hub.")
+                .setPositiveButton("OK", null)
+                .show();
     }
 
     private void switchIcon(String icon) {
