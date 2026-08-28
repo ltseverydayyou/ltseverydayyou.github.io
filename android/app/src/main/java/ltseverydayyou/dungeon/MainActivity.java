@@ -146,7 +146,7 @@ public final class MainActivity extends Activity {
 
     private void injectHubEnhancements(WebView view) {
         String js = "(function(){if(window.__hubEnhanced)return;window.__hubEnhanced=true;" +
-                "const s=document.createElement('style');s.textContent=\`" +
+                "const s=document.createElement('style');s.textContent=`" +
                 "html{scroll-behavior:smooth}body{animation:hubFade .42s ease both}" +
                 "*:not(html):not(body){transition:opacity .18s ease,transform .18s ease,filter .18s ease,background-color .22s ease,border-color .22s ease,box-shadow .22s ease!important}" +
                 "a,button,[role=button],input,select,textarea,.card,[class*=card],[class*=button],[class*=item],[class*=tile]{will-change:transform}" +
@@ -161,8 +161,8 @@ public final class MainActivity extends Activity {
                 ".hub-panel-title{padding:3px 4px 9px;font-size:15px;font-weight:800}" +
                 ".hub-panel-section{margin:10px 4px 4px;color:#aeb0b8;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase}" +
                 ".hub-panel-divider{height:1px;margin:10px 0;background:rgba(255,255,255,.12)}" +
-                "\`;document.head.appendChild(s);" +
-                "const panel=document.createElement('div');panel.id='hubAppPanel';panel.innerHTML=\`<div class='hub-panel-title'>ltseverydayyou Hub</div>" +
+                "`;document.head.appendChild(s);" +
+                "const panel=document.createElement('div');panel.id='hubAppPanel';panel.innerHTML=`<div class='hub-panel-title'>ltseverydayyou Hub</div>" +
                 "<div class='hub-panel-section'>Navigation</div>" +
                 "<button data-action='home'>Home</button>" +
                 "<button data-action='reload'>Reload page</button>" +
@@ -176,7 +176,7 @@ public final class MainActivity extends Activity {
                 "<button data-action='icon-dark'>Hub dark icon</button>" +
                 "<button data-action='icon-light'>Hub light icon</button>" +
                 "<div class='hub-panel-divider'></div>" +
-                "<button data-action='about'>About this app</button>\`;" +
+                "<button data-action='about'>About this app</button>`;" +
                 "const gear=document.createElement('button');gear.id='hubAppSettings';gear.textContent='⚙';gear.setAttribute('aria-label','Hub app settings');" +
                 "gear.onclick=()=>{panel.style.display=panel.style.display==='block'?'none':'block'};" +
                 "panel.onclick=e=>{const b=e.target.closest('button[data-action]');if(!b)return;try{HubApp.performAction(b.dataset.action)}catch(_){ }panel.style.display='none'};" +
