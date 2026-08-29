@@ -61,6 +61,18 @@
       "status": "supported"
     },
     {
+      "id": "fnf-multiverse",
+      "name": "Autoplayer",
+      "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/FNF%20Multiverse.luau",
+      "placeIds": [
+        "9747421530"
+      ],
+      "universeIds": [
+        "3613094755"
+      ],
+      "status": "supported"
+    },
+    {
       "id": "fnp-autoplayer",
       "name": "FNP Autoplayer",
       "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/FNP%20Autoplayer.luau",
