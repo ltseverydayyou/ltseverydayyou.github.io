@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-08-30T13:55:30.481Z",
+  "fetchedAt": "2026-08-30T17:59:12.026Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -7097,8 +7097,8 @@
         "title": "Lumen",
         "trackerId": "WEAO76ngr5y7",
         "_id": "6a0ea99cfd26ad90bea624eb",
-        "version": "1.0.8",
-        "updatedDate": "08/18/2026 at 5:11 PM UTC",
+        "version": "1.0.9",
+        "updatedDate": "08/28/2026 at 8:53 PM UTC",
         "changelogs": {
           "trackerId": "WEAO76ngr5y7",
           "name": "lumen",
@@ -7111,8 +7111,8 @@
         "title": "Real",
         "trackerId": "WEAO4a1f93j6",
         "_id": "6a5095abbb457d55d62f8061",
-        "version": "2.2.0",
-        "updatedDate": "08/26/2026 at 8:15 PM UTC",
+        "version": "2.3.2",
+        "updatedDate": "08/30/2026 at 3:39 PM UTC",
         "changelogs": {
           "trackerId": "WEAO4a1f93j6",
           "name": "real",
@@ -7405,18 +7405,89 @@
               "date": "2026-08-26T20:15:18.103Z",
               "supportedRobloxVersion": "version-17d504d2c9544583",
               "updated": true
+            },
+            {
+              "version": "2.2.1",
+              "changelog": "- Small Hotfix",
+              "timestamp": 1787852888123,
+              "date": "2026-08-27T17:48:08.123Z",
+              "supportedRobloxVersion": "version-17d504d2c9544583",
+              "updated": true
+            },
+            {
+              "version": "2.3.0",
+              "changelog": "* Updated for version-f5a60436d48947d3\r\n* Luau 0.735 -> 0.735\r\n* Fixed an **ingame script detection** caused by the UI's runtime LSP\r\n* Fixed WebSocket redirections\r\n* Fixed RakNet overwriting `Enum` type which would break scripts (e.g dex)\r\n* Added Anti AFK\r\nUI:\r\n* Added Cursor + Antigravity Extension\r\n* Fixed Live sync between IDE and Real\r\n* Added option to add custom Roblox installation for launch\r\n* Made HWID binding more stable\r\n* Added keybind for Internal UI\r\n* Added option to disable Internal UI\r\n* Added more Options to the Discord RPC",
+              "timestamp": 1788022101062,
+              "date": "2026-08-29T16:48:21.062Z",
+              "supportedRobloxVersion": "version-f5a60436d48947d3",
+              "updated": true
+            },
+            {
+              "version": "2.3.1",
+              "changelog": "- Hide reg.exe CMD when opening Real",
+              "timestamp": 1788023782564,
+              "date": "2026-08-29T17:16:22.564Z",
+              "supportedRobloxVersion": "version-f5a60436d48947d3",
+              "updated": true
+            },
+            {
+              "version": "2.3.2",
+              "changelog": "- Improved session checks to reduce backend load and keep the app more stable during high traffic.",
+              "timestamp": 1788104364018,
+              "date": "2026-08-30T15:39:24.018Z",
+              "supportedRobloxVersion": "version-f5a60436d48947d3",
+              "updated": true
             }
           ],
-          "count": 36
+          "count": 40
         }
       },
       "WEAO4ef9k768": {
         "title": "Axis",
         "trackerId": "WEAO4ef9k768",
         "_id": "6a8fee3adb361db6523cd934",
-        "version": "0.4.0-38be179b",
-        "updatedDate": "08/27/2026 at 8:22 AM UTC",
-        "changelogs": []
+        "version": "0.4.1-1ec191873b834455",
+        "updatedDate": "08/28/2026 at 10:12 AM UTC",
+        "changelogs": {
+          "trackerId": "WEAO4ef9k768",
+          "name": "axis",
+          "displayName": "Axis",
+          "changelogs": [
+            {
+              "version": "0.4.0-38be179b",
+              "changelog": "- Fixed ignore fov if locked for client",
+              "timestamp": 1787818296037,
+              "date": "2026-08-27T08:11:36.037Z",
+              "supportedRobloxVersion": "version-17d504d2c9544583",
+              "updated": false
+            },
+            {
+              "version": "0.4.0-38be179b",
+              "changelog": "- Fixed ignore fov if locked for client",
+              "timestamp": 1787818932408,
+              "date": "2026-08-27T08:22:12.408Z",
+              "supportedRobloxVersion": "version-17d504d2c9544583",
+              "updated": true
+            },
+            {
+              "version": "0.4.1-1ec19187",
+              "changelog": "━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n AXIS UPDATE\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\nSILENT AIM\n • Raycast silent aim now survives Roblox updates,  fully on auto-update\n • Stability pass across the silent aim path\n • Mouse lock no longer jitters on low smoothness\n\nVOICE ASSISTANT\n • Configs actually apply now\n • Character rendering fixed (again)\n • Lag spikes from the assistant are gone\n\nLUA — FIRESERVER (Also auto-updated)\n Fire a remote:\n\n    local rs     = game.get_replicated_storage()\n    local remote = rs:FindFirstChild(\"MainEvent\")\n    local ws     = game.get_workspace()\n    local part   = ws:FindFirstChild(\"SomePart\")\n\n    remote:FireServer(\n        \"ShootGun\",\n        part,\n        part:GetPosition(),\n        Vector3.new(0, 0, -1),\n        true,\n        1.5,\n        nil\n    )\n\n Probe every remote:\n\n    print(\"resolved remotes:\", fireserver.probe())\n\n Resolve a specific one:\n\n    local remote = game.get_replicated_storage():FindFirstChild(\"MainEvent\")\n    print(\"resolve ok:\", fireserver.resolve(remote))\n\nEXPLORER\n • Decompiler on any script you pick\n • Example: https://www.youtube.com/watch?v=Hg1B3L3Eg3A\n\nSTABILITY\n • Music player crashes\n • Hitsound crashes\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n Thanks for your patience.\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━",
+              "timestamp": 1787874156680,
+              "date": "2026-08-27T23:42:36.680Z",
+              "supportedRobloxVersion": "version-f5a60436d48947d3",
+              "updated": true
+            },
+            {
+              "version": "0.4.1-1ec191873b834455",
+              "changelog": "━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n AXIS UPDATE\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\nSILENT AIM\n • Raycast silent aim now survives Roblox updates,  fully on auto-update\n • Stability pass across the silent aim path\n • Mouse lock no longer jitters on low smoothness\n\nVOICE ASSISTANT\n • Configs actually apply now\n • Character rendering fixed (again)\n • Lag spikes from the assistant are gone\n\nLUA — FIRESERVER (Also auto-updated)\n Fire a remote:\n\n    local rs     = game.get_replicated_storage()\n    local remote = rs:FindFirstChild(\"MainEvent\")\n    local ws     = game.get_workspace()\n    local part   = ws:FindFirstChild(\"SomePart\")\n\n    remote:FireServer(\n        \"ShootGun\",\n        part,\n        part:GetPosition(),\n        Vector3.new(0, 0, -1),\n        true,\n        1.5,\n        nil\n    )\n\n Probe every remote:\n\n    print(\"resolved remotes:\", fireserver.probe())\n\n Resolve a specific one:\n\n    local remote = game.get_replicated_storage():FindFirstChild(\"MainEvent\")\n    print(\"resolve ok:\", fireserver.resolve(remote))\n\nEXPLORER\n • Decompiler on any script you pick\n • Example: https://www.youtube.com/watch?v=Hg1B3L3Eg3A\n\nSTABILITY\n • Music player crashes\n • Hitsound crashes\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n Thanks for your patience.\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━",
+              "timestamp": 1787911934529,
+              "date": "2026-08-28T10:12:14.529Z",
+              "supportedRobloxVersion": "version-f5a60436d48947d3",
+              "updated": true
+            }
+          ],
+          "count": 4
+        }
       }
     }
   }
