@@ -49,6 +49,18 @@
       "status": "supported"
     },
     {
+      "id": "funky-ass",
+      "name": "Funky Friday Autoplayer",
+      "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/Funky%20Friday/SexyPlayer.lua",
+      "placeIds": [
+        "6447798030"
+      ],
+      "universeIds": [
+        "2404080894"
+      ],
+      "status": "supported"
+    },
+    {
       "id": "fnb-autoplayer",
       "name": "FNB Autoplayer",
       "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/FNB-playerrrr/refs/heads/main/AutoPlayerRevived.luau",
