@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-08-30T08:03:39.882Z",
+  "fetchedAt": "2026-08-30T13:55:30.481Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -2393,8 +2393,8 @@
         "title": "Volt",
         "trackerId": "WEAO0fc0936f",
         "_id": "67576d22d9181811c292bb79",
-        "version": "1.3.8.1",
-        "updatedDate": "08/19/2026 at 5:53 AM UTC",
+        "version": "1.3.10.1",
+        "updatedDate": "08/28/2026 at 7:26 AM UTC",
         "changelogs": {
           "trackerId": "WEAO0fc0936f",
           "name": "awpgg",
@@ -4015,7 +4015,7 @@
         "trackerId": "WEAO1af938a2",
         "_id": "66633ac4b29bacaa7a568fdc",
         "version": "0.1.7",
-        "updatedDate": "08/26/2026 at 4:15 PM UTC",
+        "updatedDate": "08/27/2026 at 11:40 PM UTC",
         "changelogs": {
           "trackerId": "WEAO1af938a2",
           "name": "solara",
@@ -4933,8 +4933,8 @@
         "title": "Wave",
         "trackerId": "WEAO2c8e5827",
         "_id": "662ae7576238b7f2082f253b",
-        "version": "NEW-1.4.9",
-        "updatedDate": "08/26/2026 at 4:15 PM UTC",
+        "version": "NEW-1.5.0",
+        "updatedDate": "08/27/2026 at 10:18 PM UTC",
         "changelogs": {
           "trackerId": "WEAO2c8e5827",
           "name": "wave",
@@ -5956,7 +5956,7 @@
         "trackerId": "WEAO30580ddb",
         "_id": "688c1b3ccc42af0ea95977e3",
         "version": "v2",
-        "updatedDate": "08/21/2026 at 11:48 PM UTC",
+        "updatedDate": "08/27/2026 at 9:08 PM UTC",
         "changelogs": {
           "trackerId": "WEAO30580ddb",
           "name": "serotonin",
