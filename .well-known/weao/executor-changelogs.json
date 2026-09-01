@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-08-30T17:59:12.026Z",
+  "fetchedAt": "2026-09-01T22:28:16.922Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -6333,8 +6333,8 @@
         "title": "MacSploit",
         "trackerId": "WEAO10179289",
         "_id": "692794d789eb1e034ad699c3",
-        "version": "733.1",
-        "updatedDate": "08/10/2026 at 1:25 AM UTC",
+        "version": "736.1b",
+        "updatedDate": "08/31/2026 at 1:08 AM UTC",
         "changelogs": {
           "trackerId": "WEAO10179289",
           "name": "macsploit",
@@ -6603,9 +6603,17 @@
               "date": "2026-08-10T01:25:58.900Z",
               "supportedRobloxVersion": "version-897f957153bd4d18",
               "updated": true
+            },
+            {
+              "version": "736.1b",
+              "changelog": "- updated to latest roblox version",
+              "timestamp": 1788138532317,
+              "date": "2026-08-31T01:08:52.317Z",
+              "supportedRobloxVersion": "version-4c4fc877ca9b4c61",
+              "updated": true
             }
           ],
-          "count": 33
+          "count": 34
         }
       },
       "WEAO8c4f2b91": {
