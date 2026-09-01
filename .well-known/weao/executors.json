@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-08-31T16:18:13.887Z",
+  "fetchedAt": "2026-09-01T01:05:28.538Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -1172,8 +1172,8 @@
     {
       "_id": "6a8fee3adb361db6523cd934",
       "title": "Axis",
-      "version": "0.4.1-1ec191873b834455",
-      "updatedDate": "08/28/2026 at 10:12 AM UTC",
+      "version": "0.4.3-d3c733ba3b834455",
+      "updatedDate": "09/01/2026 at 12:46 AM UTC",
       "uncStatus": false,
       "free": false,
       "detected": false,
