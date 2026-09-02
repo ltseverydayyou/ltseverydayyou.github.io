@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-09-01T22:28:16.922Z",
+  "fetchedAt": "2026-09-02T00:27:43.565Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -6992,8 +6992,8 @@
         "title": "Madium",
         "trackerId": "WEAO4a1j38nv",
         "_id": "69f25c438d1db84cb50c8cfe",
-        "version": "2.1.0",
-        "updatedDate": "08/23/2026 at 5:57 PM UTC",
+        "version": "2.1.1",
+        "updatedDate": "08/31/2026 at 2:19 PM UTC",
         "changelogs": {
           "trackerId": "WEAO4a1j38nv",
           "name": "madium",
@@ -7096,9 +7096,17 @@
               "date": "2026-08-23T17:57:51.469Z",
               "supportedRobloxVersion": "version-ddf602d9cfe44005",
               "updated": true
+            },
+            {
+              "version": "2.1.1",
+              "changelog": "Updated To version-f5a60436d48947d3, Hi guys wow ok",
+              "timestamp": 1788185975911,
+              "date": "2026-08-31T14:19:35.911Z",
+              "supportedRobloxVersion": "version-f5a60436d48947d3",
+              "updated": true
             }
           ],
-          "count": 12
+          "count": 13
         }
       },
       "WEAO76ngr5y7": {
@@ -7454,8 +7462,8 @@
         "title": "Axis",
         "trackerId": "WEAO4ef9k768",
         "_id": "6a8fee3adb361db6523cd934",
-        "version": "0.4.1-1ec191873b834455",
-        "updatedDate": "08/28/2026 at 10:12 AM UTC",
+        "version": "0.4.3-d3c733ba3b834455",
+        "updatedDate": "09/01/2026 at 12:46 AM UTC",
         "changelogs": {
           "trackerId": "WEAO4ef9k768",
           "name": "axis",
@@ -7492,9 +7500,25 @@
               "date": "2026-08-28T10:12:14.529Z",
               "supportedRobloxVersion": "version-f5a60436d48947d3",
               "updated": true
+            },
+            {
+              "version": "0.4.2-8a79e6da3b834455",
+              "changelog": "━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n AXIS UPDATE\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\nSILENT AIM\n • Raycast silent aim now survives Roblox updates,  fully on auto-update\n • Stability pass across the silent aim path\n • Mouse lock no longer jitters on low smoothness\n\nVOICE ASSISTANT\n • Configs actually apply now\n • Character rendering fixed (again)\n • Lag spikes from the assistant are gone\n\nLUA — FIRESERVER (Also auto-updated)\n Fire a remote:\n\n    local rs     = game.get_replicated_storage()\n    local remote = rs:FindFirstChild(\"MainEvent\")\n    local ws     = game.get_workspace()\n    local part   = ws:FindFirstChild(\"SomePart\")\n\n    remote:FireServer(\n        \"ShootGun\",\n        part,\n        part:GetPosition(),\n        Vector3.new(0, 0, -1),\n        true,\n        1.5,\n        nil\n    )\n\n Probe every remote:\n\n    print(\"resolved remotes:\", fireserver.probe())\n\n Resolve a specific one:\n\n    local remote = game.get_replicated_storage():FindFirstChild(\"MainEvent\")\n    print(\"resolve ok:\", fireserver.resolve(remote))\n\nEXPLORER\n • Decompiler on any script you pick\n • Example: https://www.youtube.com/watch?v=Hg1B3L3Eg3A\n\nSTABILITY\n • Music player crashes\n • Hitsound crashes\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n Thanks for your patience.\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━",
+              "timestamp": 1788223233883,
+              "date": "2026-09-01T00:40:33.883Z",
+              "supportedRobloxVersion": "version-f5a60436d48947d3",
+              "updated": true
+            },
+            {
+              "version": "0.4.3-d3c733ba3b834455",
+              "changelog": "\n- UI \n* Added new UI (Main), Axis now has 3 UI Options,(Main, Axis, Classic), I do suggest you guys use the main one!!\n* Added liquid glass for main UI\n* Main UI Allows you to customize animation speed, and alot of stuff, i dont know, discover it by yourself\n* Redesigned Remote Spy (For main UI)\n* Redesigned waypoints (Main ui)\n* Redesigned Remote Spy (Main UI)\n* Redesigned server browser, also main ui\n\n- Aiming\n* Fixed closest point\n\n- AI Assistant\n* Fixed personalities not working\n* Fixed lag when closing UI\n* Removed the background character, honestly useless\n* In the main UI everything is now combined into one tab instead of two seperate ones.\n* Voice listening is much more accurate now\n* Made it more freaky, on the flirty personality ofc (Hehehe..)\n\n- Explorer\n* Rewrote the complete explorer, this is only for main ui!! SPECIAL EXPLORER IM TELLING YOU!!!\n* Added properties back (again, mb for removing it from old explorer but now it's back) \n* Decompiler has been improved and is way faster now\n* We're now using a new icon package, that seems to be alot sexier than before\n* Fixed roblox crashes when properties being fetched \n* Now docked to a specific side of your screen and you can choose between left and right alongside a minimize option\n\n- Movement & Extras\n* Added visualizer to hitbox expander, alongside fixed you being able to collide with people once you expand there hitbox\n\n\n- Configs\n* Synced all options \n\n- Lua VM\n* After some hate, it's been completely rewritten.\n* The enviroment now is almost 1:1 to how roblox luau is, no more get_replicated_storage...\n* Added queueonteleport\n* Added fireserver\n* Added invoke bound\n* Fixed HTTP Functions\n* Rewrote all datatypes\n* More, Check the documentation at https://useaxis.cc/docs\n\n- Bugs\n* Fixed aimbot being slow at max sens\n* Fixed freecam \n* Fixed gravity\n* Fixed hitbox expander breaking when a player respawns\n* Fixed spin\n* Fixed gravity\n\n- Stability\n* Several users were reporting crashes at random intervals while using axis, We've done our checks and all crashes should be resolved by now, if you ever experience a crash create a ticket in our discord server and we'll get it resolved\n* Fixed several things taking up so much useless resources\n* Performance logging is now more detailed, make a ticket if you ever experience fps drops!!\n\n\nI think there's more, i just cant remember, if you have any bugs on anything just make a ticket and i will get it resolved ASAP\nAXIS IS NOW CHEAPER!!!!!!!!!! \n# https://useaxis.cc/plans\n",
+              "timestamp": 1788223595866,
+              "date": "2026-09-01T00:46:35.866Z",
+              "supportedRobloxVersion": "version-f5a60436d48947d3",
+              "updated": true
             }
           ],
-          "count": 4
+          "count": 6
         }
       }
     }
