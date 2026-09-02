@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-09-02T00:27:43.565Z",
+  "fetchedAt": "2026-09-02T04:58:05.817Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -6333,8 +6333,8 @@
         "title": "MacSploit",
         "trackerId": "WEAO10179289",
         "_id": "692794d789eb1e034ad699c3",
-        "version": "736.1b",
-        "updatedDate": "08/31/2026 at 1:08 AM UTC",
+        "version": "736.1",
+        "updatedDate": "09/02/2026 at 2:42 AM UTC",
         "changelogs": {
           "trackerId": "WEAO10179289",
           "name": "macsploit",
@@ -6611,9 +6611,17 @@
               "date": "2026-08-31T01:08:52.317Z",
               "supportedRobloxVersion": "version-4c4fc877ca9b4c61",
               "updated": true
+            },
+            {
+              "version": "736.1",
+              "changelog": "- updated arm to latest roblox version\n- fixed some crash/stability problems\n- fixed ignoreexecutor issue with filtergc",
+              "timestamp": 1788316947654,
+              "date": "2026-09-02T02:42:27.654Z",
+              "supportedRobloxVersion": "version-4c4fc877ca9b4c61",
+              "updated": true
             }
           ],
-          "count": 34
+          "count": 35
         }
       },
       "WEAO8c4f2b91": {
@@ -7519,6 +7527,109 @@
             }
           ],
           "count": 6
+        }
+      },
+      "WEAO28fj47ht": {
+        "title": "Isaeva",
+        "trackerId": "WEAO28fj47ht",
+        "_id": "6a97a0b604f7721eb84803fd",
+        "version": "2.2.4",
+        "updatedDate": "09/02/2026 at 4:06 AM UTC",
+        "changelogs": {
+          "trackerId": "WEAO28fj47ht",
+          "name": "isaeva",
+          "displayName": "Isaeva",
+          "changelogs": [
+            {
+              "version": "1.2.4",
+              "changelog": "## New\r\n### What's New Overlay\r\nAdded persistent \"What's New\" overlay with state tracking.\r\n\r\n### Disable What's New\r\nAdded setting to disable the \"What's New\" screen after updates.\r\n\r\n### GameCard Scrolling\r\nAdded scrolling support to GameCard for user accounts.\r\n\r\n### New Icons\r\nIntroduced new icon set and removed legacy icons.\r\n\r\n## Improved\r\n### UI Animations\r\nSmooth mouse-over color transitions in XAML styles.\r\nUnified button animations (Run, Clear, Open, Save, etc.).\r\n\r\n### Docked Console\r\nRefined dropdown coloring and general visual polish.\r\n\r\n### Account Manager\r\nUpdated button colors and styling consistency.\r\n\r\n### Login & Loading\r\nLogin and loading screens now follow the active theme color.\r\n\r\n### App Styling Consistency\r\nUnified styling across the entire application for consistent appearance.\r\n\r\n## Fixed\r\n### GameCard Hover\r\nFixed hover state being visually clipped in user account GameCards.\r\n\r\n### External Console\r\nUpdated external console styling to match the new design system.\r\n\r\n### Visual & Stability\r\nVarious color fixes and minor stability improvements.",
+              "timestamp": 1772915764759,
+              "date": "2026-03-07T20:36:04.759Z",
+              "supportedRobloxVersion": "version-d599f7fc52a8404c",
+              "updated": true
+            },
+            {
+              "version": "1.2.5",
+              "changelog": "## New\r\n### debug.setinfo\r\nAdded debug.setinfo.\r\n\r\n## Improved\r\n### Execute Stability\r\nImproved execute stability.\r\n\r\n### Injection Stability\r\nImproved injection stability.\r\n\r\n### Client Session Stability\r\nImproved client session stability.\r\n\r\n### debug.isvalidlevel\r\nImproved debug.isvalidlevel.\r\n\r\n### debug.getcallstack\r\nImproved debug.getcallstack.\r\n\r\n### getcallbackvalue\r\nImproved getcallbackvalue.\r\n\r\n## Fixed\r\n### setfpscap / getfpscap\r\nFixed setfpscap / getfpscap.\r\n\r\n### getsignalwhitelist Crash\r\nFixed a crash related to getsignalwhitelist.\r\n\r\n### listfiles Issue\r\nFixed an issue with listfiles.\r\n\r\n### Typechecking\r\nFixed typechecking on several functions.",
+              "timestamp": 1772922185618,
+              "date": "2026-03-07T22:23:05.618Z",
+              "supportedRobloxVersion": "version-d599f7fc52a8404c",
+              "updated": true
+            },
+            {
+              "version": "1.2.6",
+              "changelog": "## New\r\n### raknet Library\r\nAdded `raknet` library with send/receive hooks and packet send/receive support.\r\n\r\n### Safe Mode\r\nAdded Safe Mode feature.\r\n\r\n### Roblox Install Manager\r\nAdded Roblox Install Manager with downgrade support.\r\n\r\n### ISAEVA Styled MessageBoxes\r\nAdded ISAEVA styled message boxes instead of default Windows message boxes.\r\n\r\n### Error Notification\r\nAdded an error notification if an account in auto reconnect cannot join Roblox.\r\n\r\n### Auto Dependency Install\r\nAdded automatic install for module or injector if a required dependency is missing.\r\n\r\n## Improved\r\n### UI and Parsing\r\nImproved UI and parsing.\r\n\r\n### Tab Spacing\r\nImproved tab spacing.\r\n\r\n### Multi-Instance Support\r\nUpdated Roblox mutex for multi-instance support.\r\n\r\n### ModuleInstances Safety\r\nImproved `ModuleInstances` add/update logic for better safety.\r\n\r\n### Login Window\r\nReduced noise on the login window for better performance.\r\n\r\n### Session & Injection Handling\r\nImproved \"No attached session found\" and \"Process Already Injected\" handling so these issues should happen less often.\r\n\r\n### Auto Reconnect\r\nImproved auto reconnect to always join a different server than other accounts.\r\n\r\n## Fixed\r\n### listfiles\r\nFixed `listfiles` causing issues with configs and nested paths.\r\n\r\n### setclipboard\r\nFixed `setclipboard` not supporting non-string values.\r\n\r\n### run_on_actor\r\nFixed `run_on_actor` not supporting some datatypes.\r\n\r\n### MonacoBackgroundCache\r\nFixed a performance issue in `MonacoBackgroundCache`.\r\n\r\n### TargetProcess\r\nFixed a memory leak in `TargetProcess`.\r\n\r\n### MessageBoxes\r\nFixed MessageBox issues.\r\n\r\n### Window Frame\r\nFixed window frame bugs for smoother resizing.\r\n\r\n### Console Filter\r\nFixed console filter issues.\r\n\r\n### App Stability\r\nFixed various app-related bugs.\r\n\r\n### Multi-Account Same Server\r\nFixed multiple accounts being able to join the same server through auto reconnect.\r\n\r\n## Removed\r\n### Performance Overlay\r\nRemoved the performance overlay.\r\n\r\n### Split View\r\nRemoved split view from editor and tabs.",
+              "timestamp": 1773090659719,
+              "date": "2026-03-09T21:10:59.719Z",
+              "supportedRobloxVersion": "version-d599f7fc52a8404c",
+              "updated": true
+            },
+            {
+              "version": "1.2.7",
+              "changelog": "## Improved\r\n### Tab Dragging\r\nImproved tab dragging when clicking tabs.\r\n\r\n## Fixed\r\n### Opening Selected Scripts\r\nFixed opening selected scripts.\r\n\r\n### Install Button Styling\r\nFixed install button using the correct styling.\r\n\r\n### Session Timed Out Error\r\nFixed session timed out error.\r\n\r\n## New\r\n### Client Close Button\r\nAdded a close button (`X`) for clients.\r\n\r\n### File Renaming\r\nAdded file renaming with double click, also in tabs.",
+              "timestamp": 1773215969992,
+              "date": "2026-03-11T07:59:29.992Z",
+              "supportedRobloxVersion": "version-d599f7fc52a8404c",
+              "updated": true
+            },
+            {
+              "version": "1.2.6",
+              "changelog": "## New\r\n### raknet Library\r\nAdded `raknet` library with send/receive hooks and packet send/receive support.\r\n\r\n### Safe Mode\r\nAdded Safe Mode feature.\r\n\r\n### Roblox Install Manager\r\nAdded Roblox Install Manager with downgrade support.\r\n\r\n### ISAEVA Styled MessageBoxes\r\nAdded ISAEVA styled message boxes instead of default Windows message boxes.\r\n\r\n### Error Notification\r\nAdded an error notification if an account in auto reconnect cannot join Roblox.\r\n\r\n### Auto Dependency Install\r\nAdded automatic install for module or injector if a required dependency is missing.\r\n\r\n## Improved\r\n### UI and Parsing\r\nImproved UI and parsing.\r\n\r\n### Tab Spacing\r\nImproved tab spacing.\r\n\r\n### Multi-Instance Support\r\nUpdated Roblox mutex for multi-instance support.\r\n\r\n### ModuleInstances Safety\r\nImproved `ModuleInstances` add/update logic for better safety.\r\n\r\n### Login Window\r\nReduced noise on the login window for better performance.\r\n\r\n### Session & Injection Handling\r\nImproved \"No attached session found\" and \"Process Already Injected\" handling so these issues should happen less often.\r\n\r\n### Auto Reconnect\r\nImproved auto reconnect to always join a different server than other accounts.\r\n\r\n## Fixed\r\n### listfiles\r\nFixed `listfiles` causing issues with configs and nested paths.\r\n\r\n### setclipboard\r\nFixed `setclipboard` not supporting non-string values.\r\n\r\n### run_on_actor\r\nFixed `run_on_actor` not supporting some datatypes.\r\n\r\n### MonacoBackgroundCache\r\nFixed a performance issue in `MonacoBackgroundCache`.\r\n\r\n### TargetProcess\r\nFixed a memory leak in `TargetProcess`.\r\n\r\n### MessageBoxes\r\nFixed MessageBox issues.\r\n\r\n### Window Frame\r\nFixed window frame bugs for smoother resizing.\r\n\r\n### Console Filter\r\nFixed console filter issues.\r\n\r\n### App Stability\r\nFixed various app-related bugs.\r\n\r\n### Multi-Account Same Server\r\nFixed multiple accounts being able to join the same server through auto reconnect.\r\n\r\n## Removed\r\n### Performance Overlay\r\nRemoved the performance overlay.\r\n\r\n### Split View\r\nRemoved split view from editor and tabs.",
+              "timestamp": 1773248737238,
+              "date": "2026-03-11T17:05:37.238Z",
+              "supportedRobloxVersion": "version-d599f7fc52a8404c",
+              "updated": true
+            },
+            {
+              "version": "1.2.7",
+              "changelog": "## Improved\r\n### Tab Dragging\r\nImproved tab dragging when clicking tabs.\r\n\r\n## Fixed\r\n### Opening Selected Scripts\r\nFixed opening selected scripts.\r\n\r\n### Install Button Styling\r\nFixed install button using the correct styling.\r\n\r\n### Session Timed Out Error\r\nFixed session timed out error.\r\n\r\n## New\r\n### Client Close Button\r\nAdded a close button (`X`) for clients.\r\n\r\n### File Renaming\r\nAdded file renaming with double click, also in tabs.",
+              "timestamp": 1773261258849,
+              "date": "2026-03-11T20:34:18.849Z",
+              "supportedRobloxVersion": "version-d599f7fc52a8404c",
+              "updated": true
+            },
+            {
+              "version": "1.2.8",
+              "changelog": "## Updated\r\n### Module Version\r\nUpdated module to `version-b130242ed064436f`.\r\n\r\n## New\r\n### getsignalarguments\r\nAdded `getsignalarguments`.\r\n\r\n### getsignalargumentsinfo\r\nAdded `getsignalargumentsinfo`.\r\n\r\n## Improved\r\n### run_on_actor\r\nImproved `run_on_actor` table argument support.\r\n\r\n## Fixed\r\n### debug.getproto\r\nFixed `debug.getproto` not containing the same debug info as the original.\r\n\r\n### compareinstances\r\nFixed `compareinstances` not erroring on non-instances.\r\n\r\n### debug.getinfo\r\nFixed `debug.getinfo` bug.\r\n\r\n### getconnections\r\nFixed huge `getconnections` issue.\r\n\r\n### Stability\r\nFixed stability issues caused by the previous update.",
+              "timestamp": 1773418312644,
+              "date": "2026-03-13T16:11:52.644Z",
+              "supportedRobloxVersion": "version-b130242ed064436f",
+              "updated": true
+            },
+            {
+              "version": "1.2.9",
+              "changelog": "## Updated\r\n### Module Version\r\nUpdated module to `version-ae421f0582e54718`.\r\n\r\n### Auto Reconnect\r\nUpdated to be more reliant and track dead processes more reliably.\r\n\r\n### Installer\r\nUpdated Deployment handling to install and launch on the live channel.",
+              "timestamp": 1773866157124,
+              "date": "2026-03-18T20:35:57.124Z",
+              "supportedRobloxVersion": "version-ae421f0582e54718",
+              "updated": true
+            },
+            {
+              "version": "1.3.0",
+              "changelog": "## Updated\r\n### Module\r\n- Fixed Freezing issues with `run_on_actor`\r\n- Fixed issues with getsignalargumentsinfo & getsignalarguments\r\n\r\n### Interface\r\n- Updated Selection, and Caret color to follow accent color.\r\n- Rename context menu will open an input dialog for both Files and Tabs\r\n- game launcher now supports Private Servers and Job Id's\r\n- VC++ 2015-2019/2022 Check on runtime\r\n- Added Impl. or Clear Games/Accounts\r\n- Danger Zone sections have an extra caution message\r\n- custom dialog and messageboxs are standard when applicable\r\n\r\n## New \r\n### Module\r\n- Added `getpid`/`get_process_identifier` returns process id.",
+              "timestamp": 1774036679121,
+              "date": "2026-03-20T19:57:59.121Z",
+              "supportedRobloxVersion": "version-ae421f0582e54718",
+              "updated": true
+            },
+            {
+              "version": "1.3.1",
+              "changelog": "## Update\r\n### Updated\r\n- Application Bug Fixes.",
+              "timestamp": 1774215215312,
+              "date": "2026-03-22T21:33:35.312Z",
+              "supportedRobloxVersion": "version-ae421f0582e54718",
+              "updated": true
+            },
+            {
+              "version": "2.2.4",
+              "changelog": "[*] Improved Auth & Session & Performance\n[*] Improved Valentine & Vesperino Theme\n[*] Improved Server Performance\n[*] Improved TreeView Design & Cleanup\n[*] Improved Settings & Launcher Sidebar",
+              "timestamp": 1788322018816,
+              "date": "2026-09-02T04:06:58.816Z",
+              "supportedRobloxVersion": "version-f5a60436d48947d3",
+              "updated": true
+            }
+          ],
+          "count": 11
         }
       }
     }

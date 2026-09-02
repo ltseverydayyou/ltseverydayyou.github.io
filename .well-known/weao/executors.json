@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-09-01T01:05:28.538Z",
+  "fetchedAt": "2026-09-02T04:58:05.817Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -874,8 +874,8 @@
     {
       "_id": "692794d789eb1e034ad699c3",
       "title": "MacSploit",
-      "version": "736.1b",
-      "updatedDate": "08/31/2026 at 1:08 AM UTC",
+      "version": "736.1",
+      "updatedDate": "09/02/2026 at 2:42 AM UTC",
       "uncStatus": true,
       "free": false,
       "detected": false,
@@ -1197,6 +1197,45 @@
       "slug": {
         "fullDescription": "No description currently available. Check back soon!"
       }
+    },
+    {
+      "_id": "6a97a0b604f7721eb84803fd",
+      "title": "Isaeva",
+      "version": "2.2.4",
+      "updatedDate": "09/02/2026 at 4:06 AM UTC",
+      "uncStatus": true,
+      "free": false,
+      "detected": true,
+      "rbxversion": "version-f5a60436d48947d3",
+      "updateStatus": true,
+      "websitelink": "null",
+      "discordlink": "null",
+      "beta": false,
+      "platform": "Windows",
+      "extype": "wexecutor",
+      "roleId": "1479935012488085716",
+      "purchaselink": "none",
+      "index": 100,
+      "cost": "none",
+      "decompiler": true,
+      "multiInject": true,
+      "suncPercentage": 100,
+      "uncPercentage": 99,
+      "sunc": {
+        "suncScrap": "null",
+        "suncKey": "null"
+      },
+      "__v": 1,
+      "recommendedReason": {
+        "features": []
+      },
+      "clientmods": true,
+      "trackerId": "WEAO28fj47ht",
+      "hasIssues": false,
+      "raknet": true,
+      "unknown": false,
+      "possibleBanwave": false,
+      "hidden": true
     }
   ]
 }
