@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-09-03T01:20:01.012Z",
+  "fetchedAt": "2026-09-03T06:17:56.592Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -85,8 +85,8 @@
     {
       "_id": "67c8a2cb376f9e598b466705",
       "title": "SirHurt",
-      "version": "V5.466",
-      "updatedDate": "09/02/2026 at 11:04 PM UTC",
+      "version": "V5.467",
+      "updatedDate": "09/03/2026 at 2:05 AM UTC",
       "uncStatus": true,
       "free": false,
       "detected": true,
@@ -903,12 +903,12 @@
       "_id": "6a0ea99cfd26ad90bea624eb",
       "title": "Lumen",
       "version": "1.0.9",
-      "updatedDate": "08/28/2026 at 8:53 PM UTC",
+      "updatedDate": "09/03/2026 at 1:29 AM UTC",
       "uncStatus": false,
       "free": false,
       "detected": false,
-      "rbxversion": "version-f5a60436d48947d3",
-      "updateStatus": false,
+      "rbxversion": "version-e7d81637d42c4b23",
+      "updateStatus": true,
       "websitelink": "https://getlumen.net/",
       "discordlink": "https://discord.gg/U6RKvuEBDv",
       "purchaselink": "https://bloxproducts.com/r/weao#Lumen",
