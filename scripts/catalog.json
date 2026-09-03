@@ -97,6 +97,18 @@
       "status": "supported"
     },
     {
+      "id": "Delta-rune",
+      "name": "Autoplayer",
+      "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/DeltaRhythm.luau",
+      "placeIds": [
+        "120249927456668"
+      ],
+      "universeIds": [
+        "8096046470"
+      ],
+      "status": "supported"
+    },
+    {
       "id": "delusional-office",
       "name": "Delusional Office",
       "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/Delulu%20Office.lua",
