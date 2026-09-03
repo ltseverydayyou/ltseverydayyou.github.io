@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-09-03T19:22:12.570Z",
+  "fetchedAt": "2026-09-03T21:50:31.728Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -134,7 +134,7 @@
       "_id": "6705f74ed02338b4f68f9c62",
       "title": "Matrix Hub",
       "version": "v2",
-      "updatedDate": "09/02/2026 at 10:39 PM UTC",
+      "updatedDate": "09/03/2026 at 9:35 PM UTC",
       "uncStatus": false,
       "free": false,
       "detected": false,
@@ -394,7 +394,7 @@
       "elementCertified": true,
       "decompiler": true,
       "multiInject": true,
-      "suncPercentage": 53,
+      "suncPercentage": 59,
       "uncPercentage": 66,
       "__v": 1,
       "recommendedReason": {
@@ -402,8 +402,8 @@
       },
       "clientmods": true,
       "sunc": {
-        "suncScrap": "wwKNNHq5iRDDxTV7",
-        "suncKey": "LNm6n6oDNjmADdxH0YNmvFVa0yhs2SBH"
+        "suncScrap": "SrFxKaJ6h4cLrJHp",
+        "suncKey": "B9Q5WC3qxlXPQ9wHov8TTBwqddwejbzt"
       },
       "trackerId": "WEAO1af938a2",
       "slug": {
