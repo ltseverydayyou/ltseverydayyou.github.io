@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-09-03T06:17:56.592Z",
+  "fetchedAt": "2026-09-03T11:34:07.818Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -7549,8 +7549,8 @@
         "title": "Isaeva",
         "trackerId": "WEAO28fj47ht",
         "_id": "6a97a0b604f7721eb84803fd",
-        "version": "2.2.4",
-        "updatedDate": "09/02/2026 at 4:06 AM UTC",
+        "version": "2.2.6",
+        "updatedDate": "09/02/2026 at 10:34 PM UTC",
         "changelogs": {
           "trackerId": "WEAO28fj47ht",
           "name": "isaeva",
@@ -7643,9 +7643,17 @@
               "date": "2026-09-02T04:06:58.816Z",
               "supportedRobloxVersion": "version-f5a60436d48947d3",
               "updated": true
+            },
+            {
+              "version": "2.2.6",
+              "changelog": "[*] Improved Decompiler & SaveInstance (1.0.0 -> 1.1.0)\n[!] Fixed getcallbackvalue\n[!] Fixed console redirection",
+              "timestamp": 1788388483788,
+              "date": "2026-09-02T22:34:43.788Z",
+              "supportedRobloxVersion": "version-f5a60436d48947d3",
+              "updated": true
             }
           ],
-          "count": 11
+          "count": 12
         }
       }
     }
