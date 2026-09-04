@@ -1,16 +1,16 @@
 {
-  "fetchedAt": "2026-09-04T21:41:30.595Z",
+  "fetchedAt": "2026-09-04T23:49:02.928Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
       "title": "Potassium",
-      "version": "2.4.6",
-      "updatedDate": "08/28/2026 at 5:31 PM UTC",
+      "version": "2.4.7",
+      "updatedDate": "09/04/2026 at 9:51 PM UTC",
       "uncStatus": true,
       "free": false,
       "detected": true,
-      "rbxversion": "version-f5a60436d48947d3",
-      "updateStatus": false,
+      "rbxversion": "version-e7d81637d42c4b23",
+      "updateStatus": true,
       "websitelink": "https://www.potassium.pro/",
       "discordlink": "https://discord.com/invite/potassium",
       "beta": false,
@@ -1201,8 +1201,8 @@
     {
       "_id": "6a97a0b604f7721eb84803fd",
       "title": "Isaeva",
-      "version": "2.2.6",
-      "updatedDate": "09/02/2026 at 10:34 PM UTC",
+      "version": "2.2.7",
+      "updatedDate": "09/04/2026 at 9:54 PM UTC",
       "uncStatus": true,
       "free": false,
       "detected": true,
