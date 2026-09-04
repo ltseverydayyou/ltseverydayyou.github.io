@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ltseverydayyou Hub")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.1.1.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.1.1+0efc77e5affb6c3182217d99eb918583c188958e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.1.1+2f9aa8a893c9e544e632cf02805b9a03926346a7")]
 [assembly: System.Reflection.AssemblyProductAttribute("ltseverydayyou Hub")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ltseverydayyou Hub")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.1.1.0")]
