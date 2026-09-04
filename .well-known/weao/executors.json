@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-09-04T13:17:43.689Z",
+  "fetchedAt": "2026-09-04T21:41:30.595Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -618,11 +618,11 @@
       "elementCertified": true,
       "decompiler": true,
       "multiInject": true,
-      "suncPercentage": 98,
+      "suncPercentage": 100,
       "uncPercentage": 99,
       "sunc": {
-        "suncScrap": "xCHG6srSWRb8t5OY",
-        "suncKey": "DR9cyu4nTolMlDMsGfQwXr07F21RVNOz"
+        "suncScrap": "yCeWcozoHLhM89G0",
+        "suncKey": "NsIbQGOwJFz7vyJRfy0cb3HDeattt0aT"
       },
       "__v": 1,
       "recommendedReason": {
@@ -1206,8 +1206,8 @@
       "uncStatus": true,
       "free": false,
       "detected": true,
-      "rbxversion": "version-f5a60436d48947d3",
-      "updateStatus": false,
+      "rbxversion": "version-e7d81637d42c4b23",
+      "updateStatus": true,
       "websitelink": "https://isaeva.xyz/",
       "discordlink": "https://discord.gg/6xFWKd4Qcr",
       "beta": false,
@@ -1219,11 +1219,11 @@
       "cost": "$3.99 Weekly",
       "decompiler": true,
       "multiInject": true,
-      "suncPercentage": 100,
+      "suncPercentage": 98,
       "uncPercentage": 99,
       "sunc": {
-        "suncScrap": "null",
-        "suncKey": "null"
+        "suncScrap": "e081yNtX6dwiS6x4",
+        "suncKey": "QCP8TiREWCnCflGrtDYR6K3K9KdnvmGc"
       },
       "__v": 1,
       "recommendedReason": {
