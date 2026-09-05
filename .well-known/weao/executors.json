@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-09-05T15:02:47.520Z",
+  "fetchedAt": "2026-09-05T19:23:25.174Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -1237,7 +1237,18 @@
       "raknet": true,
       "unknown": false,
       "possibleBanwave": false,
-      "hidden": false
+      "hidden": false,
+      "slug": {
+        "fullDescription": "",
+        "logo": "",
+        "owner": "Immune, vac",
+        "screenshots": [
+          "https://cdn.weao.gg/slug/isaeva/screenshot1.png",
+          "https://cdn.weao.gg/slug/isaeva/screenshot2.png",
+          "https://cdn.weao.gg/slug/isaeva/screenshot3.png",
+          "https://cdn.weao.gg/slug/isaeva/screenshot4.png"
+        ]
+      }
     }
   ]
 }
