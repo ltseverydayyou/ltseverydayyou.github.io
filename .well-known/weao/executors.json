@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-09-04T23:49:02.928Z",
+  "fetchedAt": "2026-09-05T03:41:38.067Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -234,13 +234,13 @@
     {
       "_id": "69a4acadfa8a3af13c8930a9",
       "title": "Opiumware",
-      "version": "v2.4.9",
-      "updatedDate": "08/22/2026 at 2:52 AM UTC",
+      "version": "v2.5.1",
+      "updatedDate": "09/05/2026 at 3:02 AM UTC",
       "uncStatus": true,
       "free": true,
       "detected": false,
-      "rbxversion": "version-31dba3b2537245ce",
-      "updateStatus": false,
+      "rbxversion": "version-2a3a7efa1a934799",
+      "updateStatus": true,
       "websitelink": "https://use.opiumware.today/",
       "discordlink": "https://discord.gg/opiumware",
       "beta": false,
@@ -689,7 +689,8 @@
         ]
       },
       "raknet": true,
-      "clientmods": true
+      "clientmods": true,
+      "purchaselink": "https://rcheatz.com/product?id=delta&ref=weao"
     },
     {
       "_id": "681baa53ab565e11d3feba0e",
@@ -780,7 +781,8 @@
         ]
       },
       "raknet": true,
-      "clientmods": true
+      "clientmods": true,
+      "purchaselink": "https://rcheatz.com/product?id=delta&ref=weao"
     },
     {
       "_id": "688c1b3ccc42af0ea95977e3",

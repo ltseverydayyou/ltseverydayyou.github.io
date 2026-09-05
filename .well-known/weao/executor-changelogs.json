@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-09-04T23:49:02.928Z",
+  "fetchedAt": "2026-09-05T03:41:38.067Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -986,8 +986,8 @@
         "title": "Opiumware",
         "trackerId": "WEAO442fb725",
         "_id": "69a4acadfa8a3af13c8930a9",
-        "version": "v2.4.9",
-        "updatedDate": "08/22/2026 at 2:52 AM UTC",
+        "version": "v2.5.1",
+        "updatedDate": "09/05/2026 at 3:02 AM UTC",
         "changelogs": {
           "trackerId": "WEAO442fb725",
           "name": "opiumware",
@@ -1184,9 +1184,17 @@
               "date": "2026-08-22T02:52:09.407Z",
               "supportedRobloxVersion": "version-31dba3b2537245ce",
               "updated": true
+            },
+            {
+              "version": "v2.5.1",
+              "changelog": "- updated to version-2a3a7efa1a934799",
+              "timestamp": 1788577373778,
+              "date": "2026-09-05T03:02:53.778Z",
+              "supportedRobloxVersion": "version-2a3a7efa1a934799",
+              "updated": true
             }
           ],
-          "count": 24
+          "count": 25
         }
       },
       "WEAOmhg67xtg": {
