@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-09-05T03:41:38.067Z",
+  "fetchedAt": "2026-09-05T08:11:44.715Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -986,8 +986,8 @@
         "title": "Opiumware",
         "trackerId": "WEAO442fb725",
         "_id": "69a4acadfa8a3af13c8930a9",
-        "version": "v2.5.1",
-        "updatedDate": "09/05/2026 at 3:02 AM UTC",
+        "version": "v2.5.1-a",
+        "updatedDate": "09/05/2026 at 4:15 AM UTC",
         "changelogs": {
           "trackerId": "WEAO442fb725",
           "name": "opiumware",
@@ -1192,9 +1192,17 @@
               "date": "2026-09-05T03:02:53.778Z",
               "supportedRobloxVersion": "version-2a3a7efa1a934799",
               "updated": true
+            },
+            {
+              "version": "v2.5.1-a",
+              "changelog": "- updated to version-2a3a7efa1a934799",
+              "timestamp": 1788581712181,
+              "date": "2026-09-05T04:15:12.181Z",
+              "supportedRobloxVersion": "version-2a3a7efa1a934799",
+              "updated": true
             }
           ],
-          "count": 25
+          "count": 26
         }
       },
       "WEAOmhg67xtg": {
@@ -7073,7 +7081,7 @@
         "trackerId": "WEAO4ef92j18",
         "_id": "6907cafc4b9bde193883d902",
         "version": "v2",
-        "updatedDate": "08/13/2026 at 4:21 AM UTC",
+        "updatedDate": "09/05/2026 at 6:52 AM UTC",
         "changelogs": {
           "trackerId": "WEAO4ef92j18",
           "name": "severe",
@@ -7573,8 +7581,8 @@
         "title": "Isaeva",
         "trackerId": "WEAO28fj47ht",
         "_id": "6a97a0b604f7721eb84803fd",
-        "version": "2.2.7",
-        "updatedDate": "09/04/2026 at 9:54 PM UTC",
+        "version": "2.2.8",
+        "updatedDate": "09/05/2026 at 4:56 AM UTC",
         "changelogs": {
           "trackerId": "WEAO28fj47ht",
           "name": "isaeva",
@@ -7683,9 +7691,17 @@
               "date": "2026-09-04T21:54:36.219Z",
               "supportedRobloxVersion": "version-e7d81637d42c4b23",
               "updated": true
+            },
+            {
+              "version": "2.2.8",
+              "changelog": "[+] Added Hide Internal in Streams setting  \n[+] Added Hide Drawing in Streams setting  \n[+] Added themed Monaco scrollbars  \n[+] Added welcome message after successful attach  \n[*] Improved tab animations  \n[*] Improved WebView2 rendering and editor stability  \n[*] Improved themes, console styling, notifications\n[*] Improved hookfunction & restorefunction  \n[!] Fixed Internal Menu settings and toggling  \n[!] Fixed Capture Privacy synchronization between Interface and Module  \n[!] Fixed Internal windows appearing or turning black in streams  \n[!] Fixed FilterGc\n[!] Fixed getrenv caching  \n[!] Fixed Allow Off-Screen Windows being enabled by default",
+              "timestamp": 1788584176607,
+              "date": "2026-09-05T04:56:16.607Z",
+              "supportedRobloxVersion": "version-e7d81637d42c4b23",
+              "updated": true
             }
           ],
-          "count": 13
+          "count": 14
         }
       }
     }

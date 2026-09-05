@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-09-05T03:41:38.067Z",
+  "fetchedAt": "2026-09-05T08:11:44.715Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -234,8 +234,8 @@
     {
       "_id": "69a4acadfa8a3af13c8930a9",
       "title": "Opiumware",
-      "version": "v2.5.1",
-      "updatedDate": "09/05/2026 at 3:02 AM UTC",
+      "version": "v2.5.1-a",
+      "updatedDate": "09/05/2026 at 4:15 AM UTC",
       "uncStatus": true,
       "free": true,
       "detected": false,
@@ -1056,12 +1056,12 @@
       "_id": "6907cafc4b9bde193883d902",
       "title": "Severe",
       "version": "v2",
-      "updatedDate": "08/13/2026 at 4:21 AM UTC",
+      "updatedDate": "09/05/2026 at 6:52 AM UTC",
       "uncStatus": false,
       "free": false,
       "detected": false,
-      "rbxversion": "version-ddf602d9cfe44005",
-      "updateStatus": false,
+      "rbxversion": "version-e7d81637d42c4b23",
+      "updateStatus": true,
       "websitelink": "https://discord.gg/QaheZpKzsX",
       "discordlink": "https://discord.gg/QaheZpKzsX",
       "purchaselink": "https://bloxproducts.com/r/weao#Severe",
@@ -1203,8 +1203,8 @@
     {
       "_id": "6a97a0b604f7721eb84803fd",
       "title": "Isaeva",
-      "version": "2.2.7",
-      "updatedDate": "09/04/2026 at 9:54 PM UTC",
+      "version": "2.2.8",
+      "updatedDate": "09/05/2026 at 4:56 AM UTC",
       "uncStatus": true,
       "free": false,
       "detected": true,
