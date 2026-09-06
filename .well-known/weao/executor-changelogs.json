@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-09-05T08:11:44.715Z",
+  "fetchedAt": "2026-09-06T03:43:52.822Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -7389,8 +7389,8 @@
         "title": "Madium",
         "trackerId": "WEAO4a1j38nv",
         "_id": "69f25c438d1db84cb50c8cfe",
-        "version": "2.1.1",
-        "updatedDate": "08/31/2026 at 2:19 PM UTC",
+        "version": "2.1.2",
+        "updatedDate": "09/06/2026 at 3:30 AM UTC",
         "changelogs": {
           "trackerId": "WEAO4a1j38nv",
           "name": "madium",
@@ -7501,9 +7501,17 @@
               "date": "2026-08-31T14:19:35.911Z",
               "supportedRobloxVersion": "version-f5a60436d48947d3",
               "updated": true
+            },
+            {
+              "version": "2.1.2",
+              "changelog": "Yo Lxzp never let me update again yo",
+              "timestamp": 1788665421787,
+              "date": "2026-09-06T03:30:21.787Z",
+              "supportedRobloxVersion": "version-e7d81637d42c4b23",
+              "updated": true
             }
           ],
-          "count": 13
+          "count": 14
         }
       },
       "WEAO4ef9k768": {
