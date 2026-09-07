@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-09-06T08:29:12.379Z",
+  "fetchedAt": "2026-09-07T00:47:07.532Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -5528,8 +5528,8 @@
         "title": "Synapse Z",
         "trackerId": "WEAO228206d0",
         "_id": "66a679cc5b36b46c9327b0a7",
-        "version": "1.0.3.5",
-        "updatedDate": "08/12/2026 at 4:24 PM UTC",
+        "version": "1.0.3.6",
+        "updatedDate": "09/06/2026 at 7:17 PM UTC",
         "changelogs": {
           "trackerId": "WEAO228206d0",
           "name": "synapsez",
@@ -5734,9 +5734,17 @@
               "date": "2026-08-12T16:24:57.516Z",
               "supportedRobloxVersion": "version-ddf602d9cfe44005",
               "updated": true
+            },
+            {
+              "version": "1.0.3.6",
+              "changelog": "real (real) synapse z update\r\n#spiderman #polyester\r\n+ reduced unc, sunc & myriad",
+              "timestamp": 1788722266970,
+              "date": "2026-09-06T19:17:46.970Z",
+              "supportedRobloxVersion": "version-e7d81637d42c4b23",
+              "updated": true
             }
           ],
-          "count": 25
+          "count": 26
         }
       },
       "WEAO8c4f2b91": {
