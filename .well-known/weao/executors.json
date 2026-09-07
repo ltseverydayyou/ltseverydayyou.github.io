@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-09-07T17:42:32.055Z",
+  "fetchedAt": "2026-09-07T21:19:01.866Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -1129,8 +1129,8 @@
     {
       "_id": "69f25c438d1db84cb50c8cfe",
       "title": "Madium",
-      "version": "2.1.3",
-      "updatedDate": "09/06/2026 at 6:43 PM UTC",
+      "version": "2.1.4",
+      "updatedDate": "09/07/2026 at 7:32 PM UTC",
       "uncStatus": true,
       "free": true,
       "detected": true,
@@ -1208,8 +1208,8 @@
     {
       "_id": "6a97a0b604f7721eb84803fd",
       "title": "Isaeva",
-      "version": "2.2.9",
-      "updatedDate": "09/05/2026 at 9:13 PM UTC",
+      "version": "2.3.0",
+      "updatedDate": "09/07/2026 at 6:13 PM UTC",
       "uncStatus": true,
       "free": false,
       "detected": true,
@@ -1221,7 +1221,7 @@
       "platform": "Windows",
       "extype": "wexecutor",
       "roleId": "1479935012488085716",
-      "purchaselink": "https://isaeva.xyz/purchase",
+      "purchaselink": "https://cheapkeyz.store/products/isaeva?r=weao",
       "index": 7,
       "cost": "$3.99 Weekly",
       "decompiler": true,
