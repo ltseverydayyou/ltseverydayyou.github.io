@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-09-07T21:19:01.866Z",
+  "fetchedAt": "2026-09-07T23:40:38.567Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -910,7 +910,7 @@
       "_id": "6a0ea99cfd26ad90bea624eb",
       "title": "Lumen",
       "version": "1.0.9",
-      "updatedDate": "09/03/2026 at 1:29 AM UTC",
+      "updatedDate": "09/07/2026 at 10:47 PM UTC",
       "uncStatus": false,
       "free": false,
       "detected": false,
@@ -1129,8 +1129,8 @@
     {
       "_id": "69f25c438d1db84cb50c8cfe",
       "title": "Madium",
-      "version": "2.1.4",
-      "updatedDate": "09/07/2026 at 7:32 PM UTC",
+      "version": "2.1.5",
+      "updatedDate": "09/07/2026 at 11:01 PM UTC",
       "uncStatus": true,
       "free": true,
       "detected": true,
