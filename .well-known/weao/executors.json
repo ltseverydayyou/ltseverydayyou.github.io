@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-09-06T22:47:29.018Z",
+  "fetchedAt": "2026-09-07T17:42:32.055Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -848,10 +848,15 @@
       },
       "slug": {
         "fullDescription": "No description currently available. Check back soon!",
-        "logo": "",
+        "logo": "https://cdn.weao.gg/slug/synapsez/logo.png",
         "owner": "GRH",
         "screenshots": [
-          ""
+          "https://cdn.weao.gg/slug/synapsez/screenshot1.png",
+          "https://cdn.weao.gg/slug/synapsez/screenshot2.png",
+          "https://cdn.weao.gg/slug/synapsez/screenshot3.png",
+          "https://cdn.weao.gg/slug/synapsez/screenshot4.png",
+          "https://cdn.weao.gg/slug/synapsez/screenshot5.png",
+          "https://cdn.weao.gg/slug/synapsez/screenshot6.png"
         ]
       },
       "hidden": false,
@@ -1240,7 +1245,7 @@
       "hidden": false,
       "slug": {
         "fullDescription": "",
-        "logo": "",
+        "logo": "https://cdn.weao.gg/slug/isaeva/logo.png",
         "owner": "Immune, vac",
         "screenshots": [
           "https://cdn.weao.gg/slug/isaeva/screenshot1.png",
