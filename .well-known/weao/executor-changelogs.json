@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-09-08T17:21:29.664Z",
+  "fetchedAt": "2026-09-08T20:07:45.061Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -1360,8 +1360,8 @@
         "title": "Real",
         "trackerId": "WEAO4a1f93j6",
         "_id": "6a5095abbb457d55d62f8061",
-        "version": "2.5.1",
-        "updatedDate": "09/06/2026 at 8:09 PM UTC",
+        "version": "2.5.2",
+        "updatedDate": "09/08/2026 at 1:45 PM UTC",
         "changelogs": {
           "trackerId": "WEAO4a1f93j6",
           "name": "real",
@@ -1718,9 +1718,17 @@
               "date": "2026-09-06T20:09:40.446Z",
               "supportedRobloxVersion": "version-e7d81637d42c4b23",
               "updated": true
+            },
+            {
+              "version": "2.5.2",
+              "changelog": "- Fixed login issues\r\n- Added ZeroDetections Theme\r\n- Adjusted some Theme\r\n- Fixed NavBar dragging",
+              "timestamp": 1788875140702,
+              "date": "2026-09-08T13:45:40.702Z",
+              "supportedRobloxVersion": "version-e7d81637d42c4b23",
+              "updated": true
             }
           ],
-          "count": 44
+          "count": 45
         }
       },
       "WEAO1af938a2": {
@@ -2639,7 +2647,7 @@
         "trackerId": "WEAO2c8e5827",
         "_id": "662ae7576238b7f2082f253b",
         "version": "NEW-1.5.1",
-        "updatedDate": "09/03/2026 at 6:42 PM UTC",
+        "updatedDate": "09/08/2026 at 4:27 PM UTC",
         "changelogs": {
           "trackerId": "WEAO2c8e5827",
           "name": "wave",
@@ -5782,7 +5790,7 @@
         "trackerId": "WEAO76ngr5y7",
         "_id": "6a0ea99cfd26ad90bea624eb",
         "version": "1.0.9",
-        "updatedDate": "09/03/2026 at 1:29 AM UTC",
+        "updatedDate": "09/07/2026 at 10:47 PM UTC",
         "changelogs": {
           "trackerId": "WEAO76ngr5y7",
           "name": "lumen",
@@ -7645,8 +7653,8 @@
         "title": "Isaeva",
         "trackerId": "WEAO28fj47ht",
         "_id": "6a97a0b604f7721eb84803fd",
-        "version": "2.2.9",
-        "updatedDate": "09/05/2026 at 9:13 PM UTC",
+        "version": "2.3.0",
+        "updatedDate": "09/07/2026 at 6:13 PM UTC",
         "changelogs": {
           "trackerId": "WEAO28fj47ht",
           "name": "isaeva",
@@ -7771,9 +7779,17 @@
               "date": "2026-09-05T21:13:21.734Z",
               "supportedRobloxVersion": "version-e7d81637d42c4b23",
               "updated": true
+            },
+            {
+              "version": "2.3.0",
+              "changelog": "[+] Added Internal Menu 2.0\n[*] Improved Notifications on Module\n[*] Improved authentication and relay handling across Module and Interface\n[!] Fixed Cobalt detections\n[!] Fixed various auth-related errors on startup/settings",
+              "timestamp": 1788804794312,
+              "date": "2026-09-07T18:13:14.312Z",
+              "supportedRobloxVersion": "version-e7d81637d42c4b23",
+              "updated": true
             }
           ],
-          "count": 15
+          "count": 16
         }
       }
     }
