@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-09-07T23:40:38.567Z",
+  "fetchedAt": "2026-09-08T17:21:29.664Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -328,8 +328,8 @@
     {
       "_id": "6a5095abbb457d55d62f8061",
       "title": "Real",
-      "version": "2.5.1",
-      "updatedDate": "09/06/2026 at 8:09 PM UTC",
+      "version": "2.5.2",
+      "updatedDate": "09/08/2026 at 1:45 PM UTC",
       "uncStatus": true,
       "free": true,
       "detected": true,
@@ -425,7 +425,7 @@
       "_id": "662ae7576238b7f2082f253b",
       "title": "Wave",
       "version": "NEW-1.5.1",
-      "updatedDate": "09/03/2026 at 6:42 PM UTC",
+      "updatedDate": "09/08/2026 at 4:27 PM UTC",
       "uncStatus": true,
       "free": false,
       "detected": true,

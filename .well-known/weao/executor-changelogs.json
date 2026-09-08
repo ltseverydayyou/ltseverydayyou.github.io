@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-09-07T05:50:22.084Z",
+  "fetchedAt": "2026-09-08T17:21:29.664Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -7421,8 +7421,8 @@
         "title": "Madium",
         "trackerId": "WEAO4a1j38nv",
         "_id": "69f25c438d1db84cb50c8cfe",
-        "version": "2.1.3",
-        "updatedDate": "09/06/2026 at 6:43 PM UTC",
+        "version": "2.1.5",
+        "updatedDate": "09/07/2026 at 11:01 PM UTC",
         "changelogs": {
           "trackerId": "WEAO4a1j38nv",
           "name": "madium",
@@ -7549,9 +7549,25 @@
               "date": "2026-09-06T18:43:13.720Z",
               "supportedRobloxVersion": "version-e7d81637d42c4b23",
               "updated": true
+            },
+            {
+              "version": "2.1.4",
+              "changelog": "Fixed Tauri/MCP build flow\nRemoved tutorial\nNew login screen\nAdded menu bars like vsc\nAdded option to unbind keybinds\nAdded logout button\nAdded .luau and .txt file support\nAdded Settings to Home navigation\nMore epstein changes I dont remember",
+              "timestamp": 1788809562293,
+              "date": "2026-09-07T19:32:42.293Z",
+              "supportedRobloxVersion": "version-e7d81637d42c4b23",
+              "updated": true
+            },
+            {
+              "version": "2.1.5",
+              "changelog": "Reverted UI because of a few people having execute-failed issues, get to work marko!!!!",
+              "timestamp": 1788822072239,
+              "date": "2026-09-07T23:01:12.239Z",
+              "supportedRobloxVersion": "version-e7d81637d42c4b23",
+              "updated": true
             }
           ],
-          "count": 15
+          "count": 17
         }
       },
       "WEAO4ef9k768": {
