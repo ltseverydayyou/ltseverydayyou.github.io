@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-09-09T06:29:19.636Z",
+  "fetchedAt": "2026-09-09T19:22:57.191Z",
   "data": {
     "current": {
       "Windows": "version-e7d81637d42c4b23",
@@ -11,13 +11,13 @@
         "timestamp": 1788388717,
         "type": "new"
       },
-      "Mac": "version-2a3a7efa1a934799",
-      "MacDate": "9/9/2026, 2:16:05 AM UTC",
+      "Mac": "version-5b15515e80624095",
+      "MacDate": "9/9/2026, 6:19:02 PM UTC",
       "MacResponse": {
-        "version": "0.737.0.7371584",
-        "clientVersionUpload": "version-2a3a7efa1a934799",
+        "version": "0.738.0.7381393",
+        "clientVersionUpload": "version-5b15515e80624095",
         "bootstrapperVersion": "",
-        "timestamp": 1788920165,
+        "timestamp": 1788977942,
         "type": "revert"
       },
       "Android": "2.737.1584",
@@ -34,13 +34,13 @@
       }
     },
     "future": {
-      "Windows": "version-e7d81637d42c4b23",
-      "WindowsDate": "9/2/2026, 1:47:12 PM UTC",
+      "Windows": "version-c5aecda2245e4fae",
+      "WindowsDate": "9/9/2026, 2:07:02 PM UTC",
       "WindowsResponse": {
-        "version": "0.737.0.7371584",
-        "clientVersionUpload": "version-e7d81637d42c4b23",
-        "bootstrapperVersion": "0, 737, 0, 7371584",
-        "timestamp": 1788356832
+        "version": "0.738.0.7381397",
+        "clientVersionUpload": "version-c5aecda2245e4fae",
+        "bootstrapperVersion": "0, 738, 0, 7381397",
+        "timestamp": 1788962822
       },
       "Mac": "version-5b15515e80624095",
       "MacDate": "9/8/2026, 2:47:43 PM UTC",
@@ -61,14 +61,14 @@
         "timestamp": 1787864882,
         "type": "new"
       },
-      "Mac": "version-5b15515e80624095",
-      "MacDate": "9/8/2026, 11:33:03 PM UTC",
+      "Mac": "version-2a3a7efa1a934799",
+      "MacDate": "9/9/2026, 2:16:05 AM UTC",
       "MacResponse": {
-        "version": "0.738.0.7381393",
-        "clientVersionUpload": "version-5b15515e80624095",
+        "version": "0.737.0.7371584",
+        "clientVersionUpload": "version-2a3a7efa1a934799",
         "bootstrapperVersion": "",
-        "timestamp": 1788910383,
-        "type": "new"
+        "timestamp": 1788920165,
+        "type": "revert"
       }
     }
   }
