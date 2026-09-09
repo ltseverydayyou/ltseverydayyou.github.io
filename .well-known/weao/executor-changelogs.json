@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-09-08T22:54:36.080Z",
+  "fetchedAt": "2026-09-09T11:46:37.156Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -7815,6 +7815,14 @@
           ],
           "count": 16
         }
+      },
+      "WEAO957nhh9s": {
+        "title": "Madius",
+        "trackerId": "WEAO957nhh9s",
+        "_id": "6aa12a9285a6e208beacc14b",
+        "version": "1.10.10a-beta",
+        "updatedDate": "09/09/2026 at 9:45 AM UTC",
+        "changelogs": []
       }
     }
   }

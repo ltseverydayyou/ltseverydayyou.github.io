@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-09-09T06:29:19.636Z",
+  "fetchedAt": "2026-09-09T11:46:37.156Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -1252,6 +1252,37 @@
           "https://cdn.weao.gg/slug/isaeva/screenshot2.png",
           "https://cdn.weao.gg/slug/isaeva/screenshot3.png",
           "https://cdn.weao.gg/slug/isaeva/screenshot4.png"
+        ]
+      }
+    },
+    {
+      "_id": "6aa12a9285a6e208beacc14b",
+      "title": "Madius",
+      "version": "1.10.10a-beta",
+      "updatedDate": "09/09/2026 at 9:45 AM UTC",
+      "uncStatus": false,
+      "free": true,
+      "detected": false,
+      "rbxversion": "version-e7d81637d42c4b23",
+      "updateStatus": true,
+      "websitelink": "https://madius.dev/",
+      "discordlink": "https://discord.com/invite/olemad",
+      "beta": false,
+      "platform": "Windows",
+      "extype": "wexternal",
+      "roleId": "1452844812234391562",
+      "index": 5,
+      "elementCertified": true,
+      "__v": 1,
+      "keysystem": true,
+      "recommendedReason": {
+        "features": []
+      },
+      "trackerId": "WEAO957nhh9s",
+      "slug": {
+        "fullDescription": "No description currently available. Check back soon!",
+        "screenshots": [
+          ""
         ]
       }
     }
