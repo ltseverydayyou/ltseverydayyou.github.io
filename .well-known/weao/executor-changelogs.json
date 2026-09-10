@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-09-09T23:55:01.561Z",
+  "fetchedAt": "2026-09-10T03:52:03.413Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -1724,8 +1724,8 @@
         "title": "SirHurt",
         "trackerId": "WEAO5caeb4a7",
         "_id": "67c8a2cb376f9e598b466705",
-        "version": "V5.467",
-        "updatedDate": "09/03/2026 at 2:05 AM UTC",
+        "version": "V5.468",
+        "updatedDate": "09/09/2026 at 10:34 PM UTC",
         "changelogs": {
           "trackerId": "WEAO5caeb4a7",
           "name": "sirhurt",
@@ -4047,7 +4047,7 @@
         "trackerId": "WEAO1af938a2",
         "_id": "66633ac4b29bacaa7a568fdc",
         "version": "0.1.7",
-        "updatedDate": "09/02/2026 at 11:11 PM UTC",
+        "updatedDate": "09/10/2026 at 12:04 AM UTC",
         "changelogs": {
           "trackerId": "WEAO1af938a2",
           "name": "solara",
@@ -6360,7 +6360,7 @@
         "trackerId": "WEAO4ef92j18",
         "_id": "6907cafc4b9bde193883d902",
         "version": "v2",
-        "updatedDate": "09/05/2026 at 6:52 AM UTC",
+        "updatedDate": "09/10/2026 at 2:46 AM UTC",
         "changelogs": {
           "trackerId": "WEAO4ef92j18",
           "name": "severe",
@@ -7614,8 +7614,8 @@
         "title": "Axis",
         "trackerId": "WEAO4ef9k768",
         "_id": "6a8fee3adb361db6523cd934",
-        "version": "0.4.4-12a50c9d2fa1cb1a",
-        "updatedDate": "09/08/2026 at 9:21 PM UTC",
+        "version": "0.4.4-12a50c9d694eb92d",
+        "updatedDate": "09/09/2026 at 10:30 PM UTC",
         "changelogs": {
           "trackerId": "WEAO4ef9k768",
           "name": "axis",
@@ -7684,9 +7684,17 @@
               "date": "2026-09-08T21:21:40.985Z",
               "supportedRobloxVersion": "version-e7d81637d42c4b23",
               "updated": true
+            },
+            {
+              "version": "0.4.4-12a50c9d694eb92d",
+              "changelog": "Updated to version-c5aecda2245e4fae",
+              "timestamp": 1788993040037,
+              "date": "2026-09-09T22:30:40.037Z",
+              "supportedRobloxVersion": "version-c5aecda2245e4fae",
+              "updated": true
             }
           ],
-          "count": 8
+          "count": 9
         }
       },
       "WEAO28fj47ht": {
