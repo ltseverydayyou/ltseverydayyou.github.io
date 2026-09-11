@@ -15,11 +15,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 3
+          fetch-depth: 4
       - name: Restore and remove pinned games
         shell: bash
         run: |
-          git show HEAD~2:index.html > index.html
+          git show HEAD~3:index.html > index.html
           python3 - <<'PY'
           from pathlib import Path
           import re
@@ -30,7 +30,7 @@ jobs:
           start = s.index('        <section class="pinned-games" id="pinned-games"')
           depth = 0
           end = None
-          for m in re.finditer(r'</?section\\b[^>]*>', s[start:], re.I):
+          for m in re.finditer(r'</?section\b[^>]*>', s[start:], re.I):
               tag = m.group(0)
               if tag.startswith('</'):
                   depth -= 1
