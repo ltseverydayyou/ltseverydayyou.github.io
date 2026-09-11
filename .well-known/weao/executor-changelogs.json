@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-09-11T00:26:39.407Z",
+  "fetchedAt": "2026-09-11T05:04:58.850Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -1360,8 +1360,8 @@
         "title": "Real",
         "trackerId": "WEAO4a1f93j6",
         "_id": "6a5095abbb457d55d62f8061",
-        "version": "2.5.3",
-        "updatedDate": "09/08/2026 at 8:21 PM UTC",
+        "version": "2.5.4",
+        "updatedDate": "09/10/2026 at 5:06 PM UTC",
         "changelogs": {
           "trackerId": "WEAO4a1f93j6",
           "name": "real",
@@ -1734,9 +1734,17 @@
               "date": "2026-09-08T20:21:17.226Z",
               "supportedRobloxVersion": "version-e7d81637d42c4b23",
               "updated": true
+            },
+            {
+              "version": "2.5.4",
+              "changelog": "* Updated for version-c5aecda2245e4fae\r\n* Luau 0.736 -> 0.737 (slowed + reverb + bass boosted)\r\n* Fixed roblox minimizing after injection\r\n\r\nUI:\r\n* Reworked Overview + Accounts Tab\r\n* Fixed disabling of AutoExec script is not working\r\n* Reworked Themes section\r\n* Fixed a broke Editor state which resulted that the Editorbeing invisible\r\n* Fixed Lower background Clients (0x80070001)\r\n* Smaller changes\r\n\r\nDecompiler:\r\n* Simplified fallback chains by replacing nested if blocks with cleaner or / and expressions.\r\n* Reduced unnecessary intermediate variables, aliases, local declarations, and repeated assignments.\r\n* Fixed several control-flow issues involving shared branches, jumps, nested loops, and a repeat bug.\r\n* Improved closure handling so captures, lifetimes, and stored values are preserved correctly.\r\n* Made evaluation order safer around side effects, possible errors, and changes to function references.\r\n* Improved table reconstruction, including contiguous constructors, special keys, and multiple return values.\r\n* Improved output readability with better names from available debug data, cleaner indentation, and improved line breaks.\r\n* Conditions are now structured internally instead of being processed as plain text.",
+              "timestamp": 1789060013814,
+              "date": "2026-09-10T17:06:53.814Z",
+              "supportedRobloxVersion": "version-c5aecda2245e4fae",
+              "updated": true
             }
           ],
-          "count": 46
+          "count": 47
         }
       },
       "WEAO1af938a2": {
@@ -3297,8 +3305,8 @@
         "title": "Volt",
         "trackerId": "WEAO0fc0936f",
         "_id": "67576d22d9181811c292bb79",
-        "version": "1.3.11.2",
-        "updatedDate": "09/06/2026 at 12:25 AM UTC",
+        "version": "1.3.12.2",
+        "updatedDate": "09/10/2026 at 11:06 PM UTC",
         "changelogs": {
           "trackerId": "WEAO0fc0936f",
           "name": "awpgg",
@@ -7453,8 +7461,8 @@
         "title": "Madium",
         "trackerId": "WEAO4a1j38nv",
         "_id": "69f25c438d1db84cb50c8cfe",
-        "version": "2.1.6",
-        "updatedDate": "09/09/2026 at 12:43 PM UTC",
+        "version": "2.1.7",
+        "updatedDate": "09/10/2026 at 10:24 PM UTC",
         "changelogs": {
           "trackerId": "WEAO4a1j38nv",
           "name": "madium",
@@ -7605,9 +7613,17 @@
               "date": "2026-09-09T12:43:42.437Z",
               "supportedRobloxVersion": "version-e7d81637d42c4b23",
               "updated": true
+            },
+            {
+              "version": "2.1.7",
+              "changelog": "HI GUYS I UPDATED WOW! Do NOT Put Rat EMOJI or you will be banned",
+              "timestamp": 1789079061524,
+              "date": "2026-09-10T22:24:21.524Z",
+              "supportedRobloxVersion": "version-c5aecda2245e4fae",
+              "updated": true
             }
           ],
-          "count": 18
+          "count": 19
         }
       },
       "WEAO4ef9k768": {
@@ -7844,8 +7860,8 @@
         "title": "Madius",
         "trackerId": "WEAO957nhh9s",
         "_id": "6aa12a9285a6e208beacc14b",
-        "version": "1.10.11-beta",
-        "updatedDate": "09/09/2026 at 10:36 PM UTC",
+        "version": "1.11.0-beta",
+        "updatedDate": "09/10/2026 at 10:43 PM UTC",
         "changelogs": {
           "trackerId": "WEAO957nhh9s",
           "name": "rbxcli",
@@ -8722,9 +8738,17 @@
               "date": "2026-09-09T22:36:17.064Z",
               "supportedRobloxVersion": "version-c5aecda2245e4fae",
               "updated": true
+            },
+            {
+              "version": "1.11.0-beta",
+              "changelog": "\"cool\"\n— GPT 6 Astra\n\n+ Fixed a bug where chameleon would render meshes with crazy sizes.\n+ Added Headshot ESP.\n+ You can now move items inside of the ESP preview to modify the final view of the ESP.\n+ Fixed a hang on slow hard drives when using the Explorer product of images being slow as hell to load.\n+ Fixed a hang when the Log view was open.\n+ Added support to Color3Value and BoolValue to Luau VM (You can read and write from them)\n+ Revamp of Entity List tab.\n+ Added 'Friendly' mode, you can use it for players inside of the Entity List tab with the action button `Mark Friendly`.\n+ Fixed mesh rendering in debug views.\n+ Fixed mesh rendering in ESP preview.\n+ Modified Madius MCP skills to better suit current available Luau APIs.\n+ Improved tools available in Madius MCP, models should now be able to work faster and be more accurate with what they do.\n+ Added `eq` and `neq` to `rbxcli_spec` when doing GameSpecifications in Luau API.\n+ Added `Default Rig` for ESP Preview as a dropdown to use a cube character for previewing the ESP. ",
+              "timestamp": 1789080180346,
+              "date": "2026-09-10T22:43:00.346Z",
+              "supportedRobloxVersion": "version-c5aecda2245e4fae",
+              "updated": true
             }
           ],
-          "count": 109
+          "count": 110
         }
       }
     }
