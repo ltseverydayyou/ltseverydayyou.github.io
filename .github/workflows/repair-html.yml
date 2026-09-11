@@ -1,0 +1,42 @@
+name: Repair HTML
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/repair-html.yml
+
+permissions:
+  contents: write
+
+jobs:
+  repair:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 4
+      - name: Restore and repair index
+        shell: bash
+        run: |
+          git show 473e353952fb154ce02e5df276ca6c2eeab52656^:index.html > index.html
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path('index.html')
+          s = p.read_text(encoding='utf-8')
+          needle = '\n    </div>\n    </main>\n    </div>\n\n    <div id="cursor-aura"'
+          repl = '\n    </main>\n    </div>\n\n    <div id="cursor-aura"'
+          if needle not in s:
+              raise RuntimeError('Expected broken closing-tag sequence not found')
+          s = s.replace(needle, repl, 1)
+          p.write_text(s, encoding='utf-8')
+          PY
+      - name: Commit repaired HTML
+        shell: bash
+        run: |
+          rm .github/workflows/repair-html.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html .github/workflows/repair-html.yml
+          git commit -m "Repair homepage HTML structure"
+          git push
