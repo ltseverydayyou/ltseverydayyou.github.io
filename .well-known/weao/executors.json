@@ -1,16 +1,16 @@
 {
-  "fetchedAt": "2026-09-10T22:26:38.328Z",
+  "fetchedAt": "2026-09-11T00:26:39.407Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
       "title": "Potassium",
-      "version": "2.4.7",
-      "updatedDate": "09/04/2026 at 9:51 PM UTC",
+      "version": "2.4.8",
+      "updatedDate": "09/10/2026 at 11:48 PM UTC",
       "uncStatus": true,
       "free": false,
       "detected": true,
-      "rbxversion": "version-e7d81637d42c4b23",
-      "updateStatus": false,
+      "rbxversion": "version-c5aecda2245e4fae",
+      "updateStatus": true,
       "websitelink": "https://www.potassium.pro/",
       "discordlink": "https://discord.com/invite/potassium",
       "beta": false,
@@ -550,8 +550,8 @@
     {
       "_id": "67576d22d9181811c292bb79",
       "title": "Volt",
-      "version": "1.3.12.1",
-      "updatedDate": "09/10/2026 at 9:14 PM UTC",
+      "version": "1.3.12.2",
+      "updatedDate": "09/10/2026 at 11:06 PM UTC",
       "uncStatus": true,
       "free": false,
       "detected": true,
@@ -1258,8 +1258,8 @@
     {
       "_id": "6aa12a9285a6e208beacc14b",
       "title": "Madius",
-      "version": "1.10.11-beta",
-      "updatedDate": "09/09/2026 at 10:36 PM UTC",
+      "version": "1.11.0-beta",
+      "updatedDate": "09/10/2026 at 10:43 PM UTC",
       "uncStatus": false,
       "free": true,
       "detected": false,
