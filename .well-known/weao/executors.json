@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-09-12T17:22:22.595Z",
+  "fetchedAt": "2026-09-13T00:09:10.027Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -328,8 +328,8 @@
     {
       "_id": "6a5095abbb457d55d62f8061",
       "title": "Real",
-      "version": "2.5.4",
-      "updatedDate": "09/10/2026 at 5:06 PM UTC",
+      "version": "2.6.0",
+      "updatedDate": "09/12/2026 at 11:00 PM UTC",
       "uncStatus": true,
       "free": true,
       "detected": true,
@@ -1179,8 +1179,8 @@
     {
       "_id": "6a8fee3adb361db6523cd934",
       "title": "Axis",
-      "version": "0.4.4-12a50c9d694eb92d",
-      "updatedDate": "09/09/2026 at 10:30 PM UTC",
+      "version": "0.4.5-04ccd36d694eb92d",
+      "updatedDate": "09/12/2026 at 10:48 PM UTC",
       "uncStatus": false,
       "free": false,
       "detected": false,
