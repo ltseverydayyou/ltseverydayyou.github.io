@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-09-11T05:04:58.850Z",
+  "fetchedAt": "2026-09-13T23:00:07.873Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -7461,8 +7461,8 @@
         "title": "Madium",
         "trackerId": "WEAO4a1j38nv",
         "_id": "69f25c438d1db84cb50c8cfe",
-        "version": "2.1.7",
-        "updatedDate": "09/10/2026 at 10:24 PM UTC",
+        "version": "2.2.2",
+        "updatedDate": "09/13/2026 at 8:59 PM UTC",
         "changelogs": {
           "trackerId": "WEAO4a1j38nv",
           "name": "madium",
@@ -7621,9 +7621,49 @@
               "date": "2026-09-10T22:24:21.524Z",
               "supportedRobloxVersion": "version-c5aecda2245e4fae",
               "updated": true
+            },
+            {
+              "version": "2.1.8",
+              "changelog": "- Fixed `setthreadidentity`\n- Fixed crashes with kiciahook\n- Fixed Raknet and Oth Hook On Cobalt\n- Fixed Cobalt reporting `raknet.add_receive_hook is not a function`.\n- Fixed Cobalt reporting that `oth.hook` was not running on a separate thread.",
+              "timestamp": 1789135322938,
+              "date": "2026-09-11T14:02:02.938Z",
+              "supportedRobloxVersion": "version-c5aecda2245e4fae",
+              "updated": true
+            },
+            {
+              "version": "2.1.9",
+              "changelog": "Fixed weird fps drop on execution, thank you codex, claude, glm, savage, marko, bytecode, ethan, everbox, cell, bass, swift, olemad, cg for helping with this undetected update, everyone send prayers to cg",
+              "timestamp": 1789312366698,
+              "date": "2026-09-13T15:12:46.698Z",
+              "supportedRobloxVersion": "version-c5aecda2245e4fae",
+              "updated": true
+            },
+            {
+              "version": "2.2.0",
+              "changelog": "My bad actually fixed it now",
+              "timestamp": 1789314294441,
+              "date": "2026-09-13T15:44:54.441Z",
+              "supportedRobloxVersion": "version-c5aecda2245e4fae",
+              "updated": true
+            },
+            {
+              "version": "2.2.1",
+              "changelog": "Fixed freeze part 3",
+              "timestamp": 1789320124974,
+              "date": "2026-09-13T17:22:04.974Z",
+              "supportedRobloxVersion": "version-c5aecda2245e4fae",
+              "updated": true
+            },
+            {
+              "version": "2.2.2",
+              "changelog": "- Updated Luau 0.737 to 0.738\n- Added native file dialogs: openfiledialog, openfilesdialog,\n  openfolderdialog, savefiledialog\n- Added firesignal support for Actor-registered connections\n- Added setcallbackvalue (+ setcallbackmember, set_callback_value)\n- Added cloneref reference view consistency\n- Fixed gethiddenproperty write-only aliases\n- Fixed debug.getupvalues/getupvalue/setupvalue on C closures\n- Fixed setrawmetatable breaking instances\n- Fixed cloneref metadata check on Myriad (Now 100% Myriad)",
+              "timestamp": 1789333170595,
+              "date": "2026-09-13T20:59:30.595Z",
+              "supportedRobloxVersion": "version-c5aecda2245e4fae",
+              "updated": true
             }
           ],
-          "count": 19
+          "count": 24
         }
       },
       "WEAO4ef9k768": {
