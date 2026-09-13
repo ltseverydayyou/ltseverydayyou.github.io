@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-09-13T00:09:10.027Z",
+  "fetchedAt": "2026-09-13T17:59:33.397Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -328,8 +328,8 @@
     {
       "_id": "6a5095abbb457d55d62f8061",
       "title": "Real",
-      "version": "2.6.0",
-      "updatedDate": "09/12/2026 at 11:00 PM UTC",
+      "version": "2.6.1",
+      "updatedDate": "09/13/2026 at 5:53 PM UTC",
       "uncStatus": true,
       "free": true,
       "detected": true,
@@ -1129,8 +1129,8 @@
     {
       "_id": "69f25c438d1db84cb50c8cfe",
       "title": "Madium",
-      "version": "2.1.8",
-      "updatedDate": "09/11/2026 at 2:02 PM UTC",
+      "version": "2.2.1",
+      "updatedDate": "09/13/2026 at 5:22 PM UTC",
       "uncStatus": true,
       "free": true,
       "detected": true,
