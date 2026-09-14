@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-09-14T06:04:14.914Z",
+  "fetchedAt": "2026-09-14T13:12:31.626Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -3336,7 +3336,7 @@
         "trackerId": "WEAO4a1e0747",
         "_id": "680eaddf8b44717c060fcf8d",
         "version": "1.3.9",
-        "updatedDate": "09/09/2026 at 2:18 AM UTC",
+        "updatedDate": "09/14/2026 at 7:30 AM UTC",
         "changelogs": {
           "trackerId": "WEAO4a1e0747",
           "name": "velocity",
