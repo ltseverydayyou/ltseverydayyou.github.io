@@ -1,241 +1,410 @@
 (function () {
   "use strict";
 
-  if (window.__VYPERIA_MOTION_V2__) return;
-  window.__VYPERIA_MOTION_V2__ = true;
-
-  var style = document.createElement('style');
-  style.id = 'vyperia-motion-v2';
-  style.textContent = "\n:root {\n  --motion-v2-x: 50%;\n  --motion-v2-y: 24%;\n  --motion-v2-rx: 0deg;\n  --motion-v2-ry: 0deg;\n  --motion-v2-ease: cubic-bezier(0.16, 1, 0.3, 1);\n  --motion-v2-soft: cubic-bezier(0.22, 1, 0.36, 1);\n}\n\nbody.motion-v2-ready {\n  --ambientA: 0.66;\n}\n\n.motion-v2-layer {\n  position: fixed;\n  inset: 0;\n  z-index: 0;\n  overflow: hidden;\n  pointer-events: none;\n  contain: strict;\n}\n\n.motion-v2-layer::before {\n  position: absolute;\n  inset: -20%;\n  content: \"\";\n  opacity: 0.72;\n  background:\n    radial-gradient(32% 30% at var(--motion-v2-x) var(--motion-v2-y), rgba(102, 227, 255, 0.15), transparent 72%),\n    radial-gradient(30% 42% at 82% 76%, rgba(167, 139, 250, 0.14), transparent 72%),\n    radial-gradient(28% 36% at 8% 82%, rgba(66, 108, 255, 0.1), transparent 72%);\n  filter: blur(20px) saturate(115%);\n  transition: background 800ms var(--motion-v2-soft);\n  animation: motionV2Breath 14s ease-in-out infinite alternate;\n}\n\n.motion-v2-layer::after {\n  position: absolute;\n  inset: 0;\n  content: \"\";\n  opacity: 0.12;\n  background-image:\n    linear-gradient(115deg, transparent 0 46%, rgba(255, 255, 255, 0.06) 50%, transparent 54%),\n    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.015) 0 1px, transparent 1px 4px);\n  background-size: 100% 100%, 100% 5px;\n  mix-blend-mode: screen;\n  animation: motionV2Scan 12s linear infinite;\n}\n\n.motion-v2-orb {\n  position: absolute;\n  width: var(--orb-size);\n  height: var(--orb-size);\n  left: var(--orb-x);\n  top: var(--orb-y);\n  border-radius: 50%;\n  opacity: var(--orb-opacity);\n  background: var(--orb-color);\n  filter: blur(var(--orb-blur));\n  transform: translate3d(-50%, -50%, 0);\n  animation: motionV2Orb var(--orb-duration) ease-in-out var(--orb-delay) infinite alternate;\n}\n\n.motion-v2-card {\n  --motion-v2-rx: 0deg;\n  --motion-v2-ry: 0deg;\n  --motion-v2-card-x: 50%;\n  --motion-v2-card-y: 50%;\n  position: relative;\n  isolation: isolate;\n  transform-style: preserve-3d;\n  transition:\n    transform 520ms var(--motion-v2-ease),\n    border-color 300ms ease,\n    box-shadow 520ms var(--motion-v2-ease),\n    filter 320ms ease;\n}\n\n.motion-v2-card > *:not(.motion-v2-sheen) {\n  position: relative;\n  z-index: 1;\n}\n\n.motion-v2-card .motion-v2-sheen {\n  position: absolute;\n  inset: 0;\n  z-index: 0;\n  overflow: hidden;\n  pointer-events: none;\n  border-radius: inherit;\n  opacity: 0;\n  background:\n    radial-gradient(circle at var(--motion-v2-card-x) var(--motion-v2-card-y), rgba(255, 255, 255, 0.16), transparent 28%),\n    linear-gradient(120deg, transparent 20%, rgba(102, 227, 255, 0.075) 48%, transparent 72%);\n  transition: opacity 360ms ease;\n}\n\n.motion-v2-card .motion-v2-sheen::after {\n  position: absolute;\n  top: -30%;\n  bottom: -30%;\n  left: -35%;\n  width: 28%;\n  content: \"\";\n  opacity: 0.34;\n  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.32), transparent);\n  transform: rotate(16deg) translateX(-250%);\n}\n\n.motion-v2-card:hover {\n  border-color: color-mix(in srgb, var(--ac) 36%, rgba(255, 255, 255, 0.1));\n  box-shadow:\n    0 22px 60px rgba(0, 0, 0, 0.3),\n    0 0 34px rgba(108, 92, 255, 0.1);\n  filter: saturate(1.06);\n}\n\n.motion-v2-card:hover .motion-v2-sheen {\n  opacity: 1;\n}\n\n.motion-v2-card:hover .motion-v2-sheen::after {\n  animation: motionV2Sheen 900ms var(--motion-v2-ease) both;\n}\n\n.motion-v2-tilt {\n  transform:\n    perspective(1200px)\n    rotateX(var(--motion-v2-rx))\n    rotateY(var(--motion-v2-ry))\n    translate3d(0, 0, 0);\n  will-change: transform;\n}\n\n.motion-v2-tilt:hover {\n  transform:\n    perspective(1200px)\n    rotateX(var(--motion-v2-rx))\n    rotateY(var(--motion-v2-ry))\n    translate3d(0, -6px, 0);\n}\n\n.motion-v2-card img {\n  transition:\n    transform 700ms var(--motion-v2-ease),\n    filter 500ms var(--motion-v2-ease);\n}\n\n.motion-v2-card:hover > img,\n.motion-v2-card:hover .script-card__thumb,\n.motion-v2-card:hover .private-server-card__icon,\n.motion-v2-card:hover .pinned-game-card__image,\n.motion-v2-card:hover .bootstrapper-card__logo {\n  transform: scale(1.045) translateZ(12px);\n  filter: saturate(1.12) brightness(1.06);\n}\n\n.brand-icon {\n  animation: motionV2BrandFloat 5s ease-in-out infinite;\n}\n\n.brand-icon::before {\n  position: absolute;\n  inset: -45%;\n  content: \"\";\n  border-radius: inherit;\n  background: conic-gradient(from 0deg, transparent, rgba(102, 227, 255, 0.45), transparent 32%);\n  animation: motionV2Spin 7s linear infinite;\n}\n\n.brand-icon::after {\n  position: absolute;\n  inset: 1px;\n  content: \"\";\n  border: 1px solid rgba(255, 255, 255, 0.12);\n  border-radius: inherit;\n  pointer-events: none;\n}\n\n.brand-icon img {\n  position: relative;\n  z-index: 1;\n}\n\n.tb {\n  isolation: isolate;\n}\n\n.tb::before {\n  position: absolute;\n  inset: 1px;\n  z-index: -1;\n  content: \"\";\n  border-radius: inherit;\n  opacity: 0;\n  background: linear-gradient(100deg, rgba(102, 227, 255, 0.14), rgba(167, 139, 250, 0.14), transparent);\n  transform: translateX(-105%);\n  transition: opacity 300ms ease, transform 650ms var(--motion-v2-ease);\n}\n\n.tb:hover::before,\n.tb.act::before {\n  opacity: 1;\n  transform: translateX(0);\n}\n\n.tb.act::after {\n  box-shadow: 0 0 12px var(--ac), 0 0 26px rgba(167, 139, 250, 0.55);\n  animation: motionV2NavPulse 2.2s ease-in-out infinite;\n}\n\n.hero__actions > *,\n.as-actions > *,\n.btn,\nbutton,\na {\n  transition-timing-function: var(--motion-v2-ease);\n}\n\n.hero__actions > *,\n.as-actions > *,\n.btn {\n  position: relative;\n  overflow: hidden;\n}\n\n.hero__actions > *::after,\n.btn::after {\n  position: absolute;\n  inset: -80% -30%;\n  content: \"\";\n  opacity: 0;\n  background: linear-gradient(115deg, transparent 42%, rgba(255, 255, 255, 0.28) 50%, transparent 58%);\n  transform: translateX(-65%) rotate(8deg);\n  transition: opacity 240ms ease;\n}\n\n.hero__actions > *:hover::after,\n.btn:hover::after {\n  opacity: 1;\n  animation: motionV2ButtonSweep 900ms var(--motion-v2-ease) both;\n}\n\n.motion-v2-ripple {\n  position: absolute;\n  width: 14px;\n  height: 14px;\n  pointer-events: none;\n  border-radius: 50%;\n  background: rgba(255, 255, 255, 0.46);\n  transform: translate(-50%, -50%) scale(0);\n  animation: motionV2Ripple 720ms ease-out forwards;\n}\n\n.motion-v2-scroll {\n  position: fixed;\n  top: 0;\n  left: 0;\n  z-index: 10000;\n  width: 100%;\n  height: 2px;\n  pointer-events: none;\n  background: linear-gradient(90deg, #58d7ff, #a78bfa 48%, #72f3b6);\n  box-shadow: 0 0 18px rgba(102, 227, 255, 0.7);\n  transform: scaleX(0);\n  transform-origin: left center;\n}\n\n.motion-v2-cursor {\n  position: fixed;\n  top: 0;\n  left: 0;\n  z-index: 10001;\n  width: 28px;\n  height: 28px;\n  pointer-events: none;\n  border: 1px solid rgba(172, 228, 255, 0.7);\n  border-radius: 50%;\n  opacity: 0;\n  mix-blend-mode: screen;\n  transform: translate3d(-100px, -100px, 0);\n  transition:\n    width 180ms var(--motion-v2-ease),\n    height 180ms var(--motion-v2-ease),\n    border-color 180ms ease,\n    opacity 180ms ease;\n}\n\n.motion-v2-cursor::before,\n.motion-v2-cursor::after {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  content: \"\";\n  transform: translate(-50%, -50%);\n}\n\n.motion-v2-cursor::before {\n  width: 4px;\n  height: 4px;\n  border-radius: 50%;\n  background: #fff;\n  box-shadow: 0 0 14px #66e3ff, 0 0 28px rgba(167, 139, 250, 0.85);\n}\n\n.motion-v2-cursor::after {\n  width: 42px;\n  height: 42px;\n  border: 1px solid rgba(102, 227, 255, 0.13);\n  border-radius: 50%;\n}\n\n.motion-v2-cursor.is-visible {\n  opacity: 0.78;\n}\n\n.motion-v2-cursor.is-pressing {\n  width: 42px;\n  height: 42px;\n  border-color: #fff;\n}\n\n.motion-v2-page-surge {\n  animation: motionV2PageSurge 620ms var(--motion-v2-ease) both !important;\n}\n\n.motion-v2-nav-burst {\n  position: fixed;\n  z-index: 10002;\n  width: 14px;\n  height: 14px;\n  pointer-events: none;\n  border: 1px solid rgba(162, 229, 255, 0.9);\n  border-radius: 50%;\n  transform: translate(-50%, -50%) scale(0);\n  animation: motionV2NavBurst 700ms var(--motion-v2-ease) forwards;\n}\n\n.motion-v2-live {\n  animation: motionV2Live 900ms var(--motion-v2-ease);\n}\n\n@keyframes motionV2Breath {\n  0% { transform: scale(1) translate3d(-1%, -1%, 0); }\n  100% { transform: scale(1.08) translate3d(1.5%, 1%, 0); }\n}\n\n@keyframes motionV2Scan {\n  to { background-position: 100% 0, 0 100%; }\n}\n\n@keyframes motionV2Orb {\n  0% { transform: translate3d(-50%, -50%, 0) scale(0.92); }\n  100% { transform: translate3d(calc(-50% + var(--orb-drift)), calc(-50% - var(--orb-rise)), 0) scale(1.12); }\n}\n\n@keyframes motionV2Sheen {\n  to { transform: rotate(16deg) translateX(600%); }\n}\n\n@keyframes motionV2Spin {\n  to { transform: rotate(360deg); }\n}\n\n@keyframes motionV2BrandFloat {\n  0%, 100% { transform: translate3d(0, 0, 0) rotate(0); }\n  50% { transform: translate3d(0, -3px, 0) rotate(-1deg); }\n}\n\n@keyframes motionV2NavPulse {\n  0%, 100% { filter: brightness(1); }\n  50% { filter: brightness(1.45); }\n}\n\n@keyframes motionV2ButtonSweep {\n  to { transform: translateX(65%) rotate(8deg); }\n}\n\n@keyframes motionV2Ripple {\n  to { opacity: 0; transform: translate(-50%, -50%) scale(30); }\n}\n\n@keyframes motionV2PageSurge {\n  0% { opacity: 0.62; transform: translate3d(0, 12px, 0) scale(0.992); filter: blur(2px) saturate(0.86); }\n  55% { opacity: 1; transform: translate3d(0, -2px, 0) scale(1.004); filter: blur(0) saturate(1.08); }\n  100% { opacity: 1; transform: none; filter: none; }\n}\n\n@keyframes motionV2NavBurst {\n  100% { opacity: 0; transform: translate(-50%, -50%) scale(18); }\n}\n\n@keyframes motionV2Live {\n  0% { filter: brightness(1); }\n  35% { filter: brightness(1.3) saturate(1.3); }\n  100% { filter: brightness(1); }\n}\n\n@media (max-width: 760px) {\n  .motion-v2-layer::after {\n    opacity: 0.06;\n  }\n\n  .motion-v2-cursor,\n  .motion-v2-tilt {\n    transform: none !important;\n  }\n\n  .motion-v2-card:hover {\n    transform: translate3d(0, -3px, 0);\n  }\n\n  .motion-v2-card:hover > img,\n  .motion-v2-card:hover .script-card__thumb,\n  .motion-v2-card:hover .private-server-card__icon,\n  .motion-v2-card:hover .pinned-game-card__image,\n  .motion-v2-card:hover .bootstrapper-card__logo {\n    transform: scale(1.025);\n  }\n}\n\n@media (prefers-reduced-motion: reduce) {\n  .motion-v2-layer,\n  .motion-v2-scroll,\n  .motion-v2-cursor {\n    display: none !important;\n  }\n\n  .motion-v2-card,\n  .motion-v2-card:hover,\n  .motion-v2-tilt,\n  .motion-v2-tilt:hover,\n  .motion-v2-card:hover > img,\n  .motion-v2-card:hover .script-card__thumb,\n  .motion-v2-card:hover .private-server-card__icon,\n  .motion-v2-card:hover .pinned-game-card__image,\n  .motion-v2-card:hover .bootstrapper-card__logo {\n    transform: none !important;\n    animation: none !important;\n    transition: none !important;\n  }\n\n  .motion-v2-card .motion-v2-sheen,\n  .motion-v2-card .motion-v2-sheen::after {\n    display: none !important;\n  }\n}\n";
-  document.head.appendChild(style);
+  if (window.__VYPERIA_MOTION_V3__) return;
+  window.__VYPERIA_MOTION_V3__ = true;
 
   var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var finePointer = window.matchMedia && window.matchMedia('(pointer: fine)').matches;
-  var root = document.documentElement;
+
+  var style = document.createElement('style');
+  style.id = 'vyperia-motion-v3';
+  style.textContent = `
+:root {
+  --mcp-purple: #8b5cf6;
+  --mcp-purple-bright: #a78bfa;
+  --mcp-purple-soft: rgba(139, 92, 246, .16);
+  --mcp-purple-faint: rgba(139, 92, 246, .08);
+  --mcp-surface: rgba(15, 12, 28, .72);
+  --mcp-surface-raised: rgba(23, 18, 40, .86);
+  --mcp-border: rgba(167, 139, 250, .16);
+  --mcp-border-hover: rgba(167, 139, 250, .34);
+  --mcp-shadow: 0 18px 60px rgba(0, 0, 0, .34);
+  --mcp-ease: cubic-bezier(.16, 1, .3, 1);
+  --mcp-fast: 150ms;
+  --mcp-med: 260ms;
+}
+
+html { scroll-behavior: smooth; }
+body { background-color: #090611; }
+body.mcp-motion-ready { --ambientA: .5; }
+
+.mcp-ambient {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  contain: strict;
+}
+.mcp-ambient::before {
+  content: "";
+  position: absolute;
+  inset: -18%;
+  background:
+    radial-gradient(38% 34% at var(--mcp-pointer-x, 58%) var(--mcp-pointer-y, 20%), rgba(139, 92, 246, .18), transparent 72%),
+    radial-gradient(34% 42% at 86% 76%, rgba(88, 28, 135, .17), transparent 72%),
+    radial-gradient(26% 34% at 8% 82%, rgba(99, 58, 180, .12), transparent 72%);
+  filter: blur(26px) saturate(118%);
+  animation: mcpAmbient 16s ease-in-out infinite alternate;
+}
+.mcp-ambient::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: .13;
+  background-image: linear-gradient(rgba(167,139,250,.028) 1px, transparent 1px), linear-gradient(90deg, rgba(167,139,250,.028) 1px, transparent 1px);
+  background-size: 38px 38px;
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,.75), transparent 76%);
+}
+
+.mcp-surface {
+  position: relative;
+  isolation: isolate;
+  border-color: var(--mcp-border) !important;
+  transition: transform var(--mcp-med) var(--mcp-ease), border-color var(--mcp-fast) ease, box-shadow var(--mcp-med) var(--mcp-ease), background var(--mcp-med) ease, filter var(--mcp-med) ease !important;
+}
+.mcp-surface::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  opacity: 0;
+  background: radial-gradient(circle at var(--mcp-card-x, 50%) var(--mcp-card-y, 50%), rgba(167,139,250,.14), transparent 34%);
+  transition: opacity var(--mcp-med) ease;
+}
+.mcp-surface > * { position: relative; z-index: 1; }
+.mcp-surface:hover {
+  transform: translateY(-3px);
+  border-color: var(--mcp-border-hover) !important;
+  box-shadow: var(--mcp-shadow), 0 0 0 1px rgba(139,92,246,.05), 0 0 38px rgba(99,58,180,.08) !important;
+  filter: saturate(1.04);
+}
+.mcp-surface:hover::before { opacity: 1; }
+
+button, .btn, [role="button"], a, input, select, textarea {
+  transition-timing-function: var(--mcp-ease) !important;
+}
+button, .btn, [role="button"] { transform: translateZ(0); }
+button:hover, .btn:hover, [role="button"]:hover { filter: brightness(1.06); }
+button:active, .btn:active, [role="button"]:active { transform: scale(.975); }
+button:focus-visible, .btn:focus-visible, [role="button"]:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+  outline: 2px solid var(--mcp-purple-bright) !important;
+  outline-offset: 2px !important;
+}
+
+.mcp-ripple {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  pointer-events: none;
+  background: rgba(196, 181, 253, .42);
+  transform: translate(-50%, -50%) scale(0);
+  animation: mcpRipple 620ms ease-out forwards;
+  z-index: 20;
+}
+
+.mcp-scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  z-index: 10020;
+  pointer-events: none;
+  transform: scaleX(0);
+  transform-origin: left center;
+  background: linear-gradient(90deg, #6d28d9, #8b5cf6 45%, #c4b5fd);
+  box-shadow: 0 0 16px rgba(139,92,246,.5);
+}
+
+.mcp-toast-stack {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 11000;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: min(380px, calc(100vw - 28px));
+  pointer-events: none;
+}
+.mcp-toast {
+  pointer-events: auto;
+  display: grid;
+  grid-template-columns: 34px 1fr auto;
+  gap: 10px;
+  align-items: start;
+  padding: 12px 12px 12px 11px;
+  border: 1px solid rgba(167,139,250,.2);
+  border-radius: 10px;
+  background: rgba(14, 10, 26, .94);
+  color: #f3efff;
+  box-shadow: 0 18px 50px rgba(0,0,0,.38), 0 0 0 1px rgba(139,92,246,.04) inset;
+  backdrop-filter: blur(14px);
+  animation: mcpToastIn 360ms var(--mcp-ease) both;
+  overflow: hidden;
+}
+.mcp-toast.is-leaving { animation: mcpToastOut 240ms ease forwards; }
+.mcp-toast-icon {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  color: #ddd2ff;
+  background: rgba(139,92,246,.14);
+  border: 1px solid rgba(167,139,250,.18);
+  font-weight: 800;
+}
+.mcp-toast-title { font: 700 13px/1.3 inherit; margin: 1px 0 3px; }
+.mcp-toast-message { color: rgba(226,220,242,.72); font-size: 12px; line-height: 1.45; }
+.mcp-toast-close {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: rgba(226,220,242,.55);
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1;
+  padding: 2px 3px;
+}
+.mcp-toast::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 100%;
+  transform-origin: left center;
+  background: linear-gradient(90deg, #7c3aed, #a78bfa);
+  animation: mcpToastTimer var(--mcp-toast-duration, 3200ms) linear forwards;
+}
+
+.mcp-modal-enter { animation: mcpModalIn 300ms var(--mcp-ease) both !important; }
+.mcp-dropdown-enter { animation: mcpDropIn 220ms var(--mcp-ease) both !important; transform-origin: top center; }
+
+.mcp-cursor {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 10030;
+  width: 24px;
+  height: 24px;
+  pointer-events: none;
+  border: 1px solid rgba(196,181,253,.58);
+  border-radius: 50%;
+  opacity: 0;
+  transform: translate3d(-100px,-100px,0);
+  transition: width 160ms var(--mcp-ease), height 160ms var(--mcp-ease), opacity 160ms ease, border-color 160ms ease;
+  mix-blend-mode: screen;
+}
+.mcp-cursor::after {
+  content: "";
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  left: 50%;
+  top: 50%;
+  border-radius: 50%;
+  transform: translate(-50%,-50%);
+  background: #fff;
+  box-shadow: 0 0 14px rgba(167,139,250,.9);
+}
+.mcp-cursor.is-visible { opacity: .72; }
+.mcp-cursor.is-active { width: 36px; height: 36px; border-color: #fff; }
+
+@keyframes mcpAmbient { from { transform: scale(1) translate3d(-1%,-1%,0); } to { transform: scale(1.07) translate3d(1%,1.5%,0); } }
+@keyframes mcpRipple { to { opacity: 0; transform: translate(-50%,-50%) scale(28); } }
+@keyframes mcpToastIn { from { opacity: 0; transform: translate3d(18px, 8px, 0) scale(.98); } to { opacity: 1; transform: none; } }
+@keyframes mcpToastOut { to { opacity: 0; transform: translate3d(16px, 0, 0) scale(.98); } }
+@keyframes mcpToastTimer { from { transform: scaleX(1); } to { transform: scaleX(0); } }
+@keyframes mcpModalIn { from { opacity: 0; transform: translateY(8px) scale(.985); } to { opacity: 1; transform: none; } }
+@keyframes mcpDropIn { from { opacity: 0; transform: translateY(-5px) scaleY(.97); } to { opacity: 1; transform: none; } }
+
+@media (max-width: 760px) {
+  .mcp-toast-stack { right: 12px; bottom: 12px; width: calc(100vw - 24px); }
+  .mcp-surface:hover { transform: translateY(-2px); }
+  .mcp-cursor { display: none !important; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .mcp-ambient, .mcp-scroll-progress, .mcp-cursor { display: none !important; }
+  .mcp-surface, .mcp-surface:hover, button, .btn, [role="button"], .mcp-toast, .mcp-modal-enter, .mcp-dropdown-enter {
+    animation: none !important;
+    transition-duration: 0ms !important;
+    transform: none !important;
+  }
+}
+`;
+  document.head.appendChild(style);
 
   function all(selector, scope) {
     return Array.prototype.slice.call((scope || document).querySelectorAll(selector));
   }
 
-  function addLayer() {
-    if (document.querySelector('.motion-v2-layer') || reduced) return;
+  function addAmbient() {
+    if (reduced || document.querySelector('.mcp-ambient')) return;
     var layer = document.createElement('div');
-    layer.className = 'motion-v2-layer';
+    layer.className = 'mcp-ambient';
     layer.setAttribute('aria-hidden', 'true');
-    var data = [
-      ['9%', '18%', '260px', 'rgba(102, 227, 255, 0.16)', '60px', '8s', '-1.1s', '18px', '12px'],
-      ['88%', '28%', '320px', 'rgba(167, 139, 250, 0.14)', '78px', '11s', '-4s', '-22px', '18px'],
-      ['42%', '91%', '240px', 'rgba(72, 199, 116, 0.07)', '70px', '13s', '-7s', '16px', '20px']
-    ];
-    data.forEach(function (item) {
-      var orb = document.createElement('span');
-      orb.className = 'motion-v2-orb';
-      orb.style.setProperty('--orb-x', item[0]);
-      orb.style.setProperty('--orb-y', item[1]);
-      orb.style.setProperty('--orb-size', item[2]);
-      orb.style.setProperty('--orb-color', item[3]);
-      orb.style.setProperty('--orb-blur', item[4]);
-      orb.style.setProperty('--orb-duration', item[5]);
-      orb.style.setProperty('--orb-delay', item[6]);
-      orb.style.setProperty('--orb-drift', item[7]);
-      orb.style.setProperty('--orb-rise', item[8]);
-      layer.appendChild(orb);
-    });
-    document.body.appendChild(layer);
+    document.body.prepend(layer);
   }
 
-  function addScrollBar() {
-    if (document.querySelector('.motion-v2-scroll')) return;
+  function addProgress() {
+    if (reduced || document.querySelector('.mcp-scroll-progress')) return;
     var bar = document.createElement('div');
-    bar.className = 'motion-v2-scroll';
+    bar.className = 'mcp-scroll-progress';
     bar.setAttribute('aria-hidden', 'true');
     document.body.appendChild(bar);
-    var queued = false;
     function update() {
-      var max = document.documentElement.scrollHeight - window.innerHeight;
-      var ratio = max > 0 ? Math.max(0, Math.min(1, window.scrollY / max)) : 0;
-      bar.style.transform = 'scaleX(' + ratio + ')';
-      queued = false;
+      var max = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+      bar.style.transform = 'scaleX(' + Math.max(0, Math.min(1, window.scrollY / max)) + ')';
     }
-    window.addEventListener('scroll', function () {
-      if (queued) return;
-      queued = true;
-      window.requestAnimationFrame(update);
-    }, { passive: true });
     update();
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update, { passive: true });
   }
 
-  function addCursor() {
-    if (reduced || !finePointer || document.querySelector('.motion-v2-cursor')) return;
+  function toast(title, message, options) {
+    options = options || {};
+    var duration = Number(options.duration || 3200);
+    var stack = document.querySelector('.mcp-toast-stack');
+    if (!stack) {
+      stack = document.createElement('div');
+      stack.className = 'mcp-toast-stack';
+      stack.setAttribute('aria-live', 'polite');
+      document.body.appendChild(stack);
+    }
+    var item = document.createElement('div');
+    item.className = 'mcp-toast';
+    item.style.setProperty('--mcp-toast-duration', duration + 'ms');
+    var icon = options.icon || (options.type === 'error' ? '!' : options.type === 'success' ? '✓' : 'i');
+    item.innerHTML = '<div class="mcp-toast-icon"></div><div><div class="mcp-toast-title"></div><div class="mcp-toast-message"></div></div><button class="mcp-toast-close" type="button" aria-label="Dismiss">×</button>';
+    item.querySelector('.mcp-toast-icon').textContent = icon;
+    item.querySelector('.mcp-toast-title').textContent = title || 'Notice';
+    item.querySelector('.mcp-toast-message').textContent = message || '';
+    stack.appendChild(item);
+    var dead = false;
+    function dismiss() {
+      if (dead) return;
+      dead = true;
+      item.classList.add('is-leaving');
+      window.setTimeout(function () { item.remove(); }, reduced ? 0 : 250);
+    }
+    item.querySelector('.mcp-toast-close').addEventListener('click', dismiss);
+    window.setTimeout(dismiss, duration);
+    return item;
+  }
+
+  window.VyperiaToast = toast;
+  window.vyperiaNotify = toast;
+
+  var surfaceSelector = [
+    '.card', '.panel', '.script-card', '.private-server-card', '.pinned-game-card', '.bootstrapper-card',
+    '.repo-card', '.tool-card', '.glass', '.modal-content', '.dialog', '.notice', '.status-card',
+    '.executor-card', '.feature-card', '.update-card', '.server-card', '.home-dashboard', '.presence-card',
+    '.mcp-spotlight', '.pinned-games', '.mcp-download', '.tl', '.hero-strip', '.home-social-hub'
+  ].join(',');
+
+  function decorate(root) {
+    all(surfaceSelector, root).forEach(function (el) {
+      if (el.classList.contains('mcp-surface')) return;
+      el.classList.add('mcp-surface');
+      if (!reduced && finePointer) {
+        el.addEventListener('pointermove', function (ev) {
+          var r = el.getBoundingClientRect();
+          el.style.setProperty('--mcp-card-x', ((ev.clientX - r.left) / Math.max(1, r.width) * 100).toFixed(1) + '%');
+          el.style.setProperty('--mcp-card-y', ((ev.clientY - r.top) / Math.max(1, r.height) * 100).toFixed(1) + '%');
+        });
+      }
+    });
+  }
+
+  function addRipple(ev) {
+    var target = ev.target.closest('button, .btn, [role="button"], .tb, .hero__actions > *, .as-actions > *');
+    if (!target || reduced) return;
+    var css = window.getComputedStyle(target);
+    if (css.position === 'static') target.style.position = 'relative';
+    if (css.overflow === 'visible') target.style.overflow = 'hidden';
+    var r = target.getBoundingClientRect();
+    var dot = document.createElement('span');
+    dot.className = 'mcp-ripple';
+    dot.style.left = (ev.clientX - r.left) + 'px';
+    dot.style.top = (ev.clientY - r.top) + 'px';
+    target.appendChild(dot);
+    window.setTimeout(function () { dot.remove(); }, 700);
+  }
+
+  function animateNewNode(node) {
+    if (!(node instanceof Element)) return;
+    decorate(node);
+    var cls = (node.className || '').toString().toLowerCase();
+    var role = (node.getAttribute('role') || '').toLowerCase();
+    if (/modal|dialog|overlay|popup/.test(cls) || role === 'dialog') node.classList.add('mcp-modal-enter');
+    if (/dropdown|menu|popover|context/.test(cls) || role === 'menu') node.classList.add('mcp-dropdown-enter');
+  }
+
+  function setupMutationObserver() {
+    var observer = new MutationObserver(function (records) {
+      records.forEach(function (record) {
+        Array.prototype.forEach.call(record.addedNodes, animateNewNode);
+      });
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
+  }
+
+  function setupCursor() {
+    if (reduced || !finePointer || document.querySelector('.mcp-cursor')) return;
     var cursor = document.createElement('div');
-    cursor.className = 'motion-v2-cursor';
+    cursor.className = 'mcp-cursor';
     cursor.setAttribute('aria-hidden', 'true');
     document.body.appendChild(cursor);
-    var x = -100;
-    var y = -100;
-    var queued = false;
-    function paint() {
-      root.style.setProperty('--motion-v2-x', x + 'px');
-      root.style.setProperty('--motion-v2-y', y + 'px');
-      cursor.style.transform = 'translate3d(' + (x - 14) + 'px, ' + (y - 14) + 'px, 0)';
-      queued = false;
+    var x = -100, y = -100, tx = -100, ty = -100;
+    function tick() {
+      x += (tx - x) * .24;
+      y += (ty - y) * .24;
+      cursor.style.transform = 'translate3d(' + (x - 12) + 'px,' + (y - 12) + 'px,0)';
+      requestAnimationFrame(tick);
     }
-    document.addEventListener('pointermove', function (event) {
-      x = event.clientX;
-      y = event.clientY;
+    document.addEventListener('pointermove', function (ev) {
+      tx = ev.clientX; ty = ev.clientY;
       cursor.classList.add('is-visible');
-      if (!queued) {
-        queued = true;
-        window.requestAnimationFrame(paint);
-      }
+      document.documentElement.style.setProperty('--mcp-pointer-x', (ev.clientX / Math.max(1, innerWidth) * 100).toFixed(1) + '%');
+      document.documentElement.style.setProperty('--mcp-pointer-y', (ev.clientY / Math.max(1, innerHeight) * 100).toFixed(1) + '%');
     }, { passive: true });
-    document.addEventListener('pointerdown', function () { cursor.classList.add('is-pressing'); });
-    document.addEventListener('pointerup', function () { cursor.classList.remove('is-pressing'); });
-    document.addEventListener('pointerleave', function () { cursor.classList.remove('is-visible'); });
+    document.addEventListener('pointerdown', function () { cursor.classList.add('is-active'); }, { passive: true });
+    document.addEventListener('pointerup', function () { cursor.classList.remove('is-active'); }, { passive: true });
+    document.addEventListener('mouseleave', function () { cursor.classList.remove('is-visible'); }, { passive: true });
+    requestAnimationFrame(tick);
   }
 
-  function addSheen(target) {
-    if (target.querySelector(':scope > .motion-v2-sheen')) return;
-    var sheen = document.createElement('span');
-    sheen.className = 'motion-v2-sheen';
-    sheen.setAttribute('aria-hidden', 'true');
-    target.appendChild(sheen);
-  }
-
-  function enhanceCards() {
-    var selector = [
-      '.home-dashboard',
-      '.presence-card',
-      '.mcp-spotlight',
-      '.pinned-games',
-      '.pinned-game-card',
-      '.private-server-card',
-      '.script-card',
-      '.bootstrapper-card',
-      '.mcp-download',
-      '.tl',
-      '.hero-strip',
-      '.home-social-hub'
-    ].join(',');
-    all(selector).forEach(function (target) {
-      target.classList.add('motion-v2-card');
-      addSheen(target);
-    });
-    all('.home-dashboard, .presence-card, .mcp-spotlight, .pinned-game-card, .private-server-card, .script-card, .bootstrapper-card, .mcp-download').forEach(function (target) {
-      target.classList.add('motion-v2-tilt');
-    });
-  }
-
-  function bindPointerCards() {
-    if (reduced || !finePointer) return;
-    var cardSelector = '.motion-v2-card';
-    document.addEventListener('pointermove', function (event) {
-      var target = event.target.closest && event.target.closest(cardSelector);
-      if (!target) return;
-      var bounds = target.getBoundingClientRect();
-      var x = ((event.clientX - bounds.left) / Math.max(bounds.width, 1)) * 100;
-      var y = ((event.clientY - bounds.top) / Math.max(bounds.height, 1)) * 100;
-      target.style.setProperty('--motion-v2-card-x', x.toFixed(2) + '%');
-      target.style.setProperty('--motion-v2-card-y', y.toFixed(2) + '%');
-      if (target.classList.contains('motion-v2-tilt')) {
-        target.style.setProperty('--motion-v2-rx', (-((y - 50) / 50) * 4.2).toFixed(2) + 'deg');
-        target.style.setProperty('--motion-v2-ry', (((x - 50) / 50) * 4.8).toFixed(2) + 'deg');
-      }
-    }, { passive: true });
-    document.addEventListener('pointerout', function (event) {
-      var target = event.target.closest && event.target.closest(cardSelector);
-      if (!target || (event.relatedTarget && target.contains(event.relatedTarget))) return;
-      target.style.setProperty('--motion-v2-rx', '0deg');
-      target.style.setProperty('--motion-v2-ry', '0deg');
-    }, { passive: true });
-  }
-
-  function bindRipples() {
-    if (reduced) return;
-    document.addEventListener('pointerdown', function (event) {
-      var button = event.target.closest && event.target.closest('button, .btn, .script-card__button, .mcp-download');
-      if (!button || button.disabled) return;
-      var bounds = button.getBoundingClientRect();
-      var ripple = document.createElement('span');
-      ripple.className = 'motion-v2-ripple';
-      ripple.style.left = (event.clientX - bounds.left) + 'px';
-      ripple.style.top = (event.clientY - bounds.top) + 'px';
-      button.appendChild(ripple);
-      ripple.addEventListener('animationend', function () { ripple.remove(); });
-    });
-  }
-
-  function burstAt(element) {
-    if (reduced) return;
-    var bounds = element.getBoundingClientRect();
-    var burst = document.createElement('span');
-    burst.className = 'motion-v2-nav-burst';
-    burst.style.left = (bounds.left + bounds.width / 2) + 'px';
-    burst.style.top = (bounds.top + bounds.height / 2) + 'px';
-    document.body.appendChild(burst);
-    burst.addEventListener('animationend', function () { burst.remove(); });
-  }
-
-  function bindNavigation() {
-    document.addEventListener('click', function (event) {
-      var tab = event.target.closest && event.target.closest('.tb');
-      if (!tab) return;
-      burstAt(tab);
-      var shell = document.querySelector('.pp.on');
-      if (shell) {
-        window.setTimeout(function () {
-          shell.classList.remove('motion-v2-page-surge');
-          void shell.offsetWidth;
-          shell.classList.add('motion-v2-page-surge');
-          window.setTimeout(function () { shell.classList.remove('motion-v2-page-surge'); }, 700);
-        }, 20);
-      }
-    });
-  }
-
-  function bindLiveUpdates() {
-    var rootNode = document.querySelector('#l');
-    if (!rootNode || !window.MutationObserver) return;
-    var queued = false;
-    var observer = new MutationObserver(function (records) {
-      var added = records.some(function (record) {
-        return record.type === 'childList' && record.addedNodes.length > 0;
-      });
-      if (!added || queued) return;
-      queued = true;
-      window.requestAnimationFrame(function () {
-        queued = false;
-        enhanceCards();
-      });
-    });
-    observer.observe(rootNode, { subtree: true, childList: true });
-  }
-
-  function bindLiveLog() {
-    var liveNodes = all('[data-live], .presence-card, .mcp-spotlight');
-    if (!window.MutationObserver) return;
-    liveNodes.forEach(function (node) {
-      new MutationObserver(function () {
-        if (reduced) return;
-        node.classList.remove('motion-v2-live');
-        void node.offsetWidth;
-        node.classList.add('motion-v2-live');
-      }).observe(node, { childList: true, subtree: true, characterData: true });
-    });
+  function setupCopyFeedback() {
+    document.addEventListener('click', function (ev) {
+      var el = ev.target.closest('[data-copy], .copy-btn, .copy-button, button');
+      if (!el) return;
+      var text = (el.textContent || '').trim().toLowerCase();
+      var title = (el.getAttribute('title') || '').toLowerCase();
+      if (!/copy/.test(text + ' ' + title) && !el.hasAttribute('data-copy')) return;
+      window.setTimeout(function () { toast('Copied', 'Copied to clipboard.', { type: 'success', duration: 1800 }); }, 30);
+    }, true);
   }
 
   function init() {
-    root.classList.add('motion-v2-ready');
-    addLayer();
-    addScrollBar();
-    addCursor();
-    enhanceCards();
-    bindPointerCards();
-    bindRipples();
-    bindNavigation();
-    bindLiveUpdates();
-    bindLiveLog();
+    addAmbient();
+    addProgress();
+    decorate(document);
+    setupMutationObserver();
+    setupCursor();
+    setupCopyFeedback();
+    document.addEventListener('pointerdown', addRipple, true);
+    document.body.classList.add('mcp-motion-ready');
   }
 
-  init();
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init, { once: true });
+  else init();
 })();
