@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-09-14T00:58:00.574Z",
+  "fetchedAt": "2026-09-14T06:04:14.914Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -7781,8 +7781,8 @@
         "title": "Isaeva",
         "trackerId": "WEAO28fj47ht",
         "_id": "6a97a0b604f7721eb84803fd",
-        "version": "2.3.2",
-        "updatedDate": "09/12/2026 at 5:18 PM UTC",
+        "version": "2.3.3",
+        "updatedDate": "09/14/2026 at 4:05 AM UTC",
         "changelogs": {
           "trackerId": "WEAO28fj47ht",
           "name": "isaeva",
@@ -7931,9 +7931,17 @@
               "date": "2026-09-12T17:18:10.694Z",
               "supportedRobloxVersion": "version-c5aecda2245e4fae",
               "updated": true
+            },
+            {
+              "version": "2.3.3",
+              "changelog": "[*] Improved loadstring (some scripts that previously freezed should now work properly)\n[*] Improved debug.info\n[!] Fixed WebSocket connections",
+              "timestamp": 1789358738127,
+              "date": "2026-09-14T04:05:38.127Z",
+              "supportedRobloxVersion": "version-c5aecda2245e4fae",
+              "updated": true
             }
           ],
-          "count": 18
+          "count": 19
         }
       },
       "WEAO957nhh9s": {
