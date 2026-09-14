@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-09-13T23:00:07.873Z",
+  "fetchedAt": "2026-09-14T00:58:00.574Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -1360,8 +1360,8 @@
         "title": "Real",
         "trackerId": "WEAO4a1f93j6",
         "_id": "6a5095abbb457d55d62f8061",
-        "version": "2.5.4",
-        "updatedDate": "09/10/2026 at 5:06 PM UTC",
+        "version": "2.6.1",
+        "updatedDate": "09/13/2026 at 5:53 PM UTC",
         "changelogs": {
           "trackerId": "WEAO4a1f93j6",
           "name": "real",
@@ -1742,9 +1742,25 @@
               "date": "2026-09-10T17:06:53.814Z",
               "supportedRobloxVersion": "version-c5aecda2245e4fae",
               "updated": true
+            },
+            {
+              "version": "2.6.0",
+              "changelog": "* Added thread support for run_on_actor\r\n* Added getconnection(signal, index)\r\n* Added RakNet.getallsendhooks, RakNet.removeallsendhooks, RakNet.getallreceivehooks, RakNet.removeallreceivehooks and added snake_case and non-snakecase aliases\r\n* restorefunction now perfectly restores the function\r\n* Improved performance for hooks and a few functions\r\n* Fixed a getrenv detection (SAB and prolly more games)\r\n* Fixed Yielding issues (crash on tp)\r\n* Fixed actor threads not being tracked correctly and returning a wrong result for checkcaller\r\n* Fixed OnClose not firing for WebSockets\r\n* Fixed debug.getinfo returning the level as .func instead of a function when passing a stack level\r\n* Removed alias \"getsignals\"\r\n\r\nUI:\r\n* Fixed Private Server launching\r\n* Fixed Account Generator (accounts are now provided by https://bloxgen.net)\r\n* Scripts folder is now hidden by default\r\n* Adjusted rate limits for Multi Injection\r\n* Fixed injection timeouts\r\n* Added \"Show Real Icon\"\r\n* Added custom titlebar logo\r\n* Exporting a theme now exports every setting from the Appearance tab\r\n* Fixed some Monaco Editor issues with themes\r\n* Added a new setting to disable Roblox System Tray\r\n* Fixed Auth accessing the Windows TPM/CNG key at the same time, which caused injection issues\r\n* Smaller UI adjustments",
+              "timestamp": 1789254035294,
+              "date": "2026-09-12T23:00:35.294Z",
+              "supportedRobloxVersion": "version-c5aecda2245e4fae",
+              "updated": true
+            },
+            {
+              "version": "2.6.1",
+              "changelog": "* Luau 0.737 -> 0.738 (Sped Up)\r\n* Added isuntouched and setuntouched\r\n* Added selective function blocking (you can blacklist / whitelist vulnerable functions)\r\n* Fixed hookfunction adjusting the upvalue count (fixed a crash)\r\n* Fixed error messages being stripped in loadstring and loadfile\r\n* Removed the max amount of 200 local register limit\r\n* Removed cryptopp\r\n\r\nUI:\r\n* Added 18+ account type to account gen (own key)\r\n* Improved runtime LSP\r\n* Fixed cloud folder moving in the explorer\r\n* Fixed theme importing/exporting",
+              "timestamp": 1789322029540,
+              "date": "2026-09-13T17:53:49.540Z",
+              "supportedRobloxVersion": "version-c5aecda2245e4fae",
+              "updated": true
             }
           ],
-          "count": 47
+          "count": 49
         }
       },
       "WEAO1af938a2": {
@@ -7670,8 +7686,8 @@
         "title": "Axis",
         "trackerId": "WEAO4ef9k768",
         "_id": "6a8fee3adb361db6523cd934",
-        "version": "0.4.4-12a50c9d694eb92d",
-        "updatedDate": "09/09/2026 at 10:30 PM UTC",
+        "version": "0.4.5-04ccd36d694eb92d",
+        "updatedDate": "09/12/2026 at 10:48 PM UTC",
         "changelogs": {
           "trackerId": "WEAO4ef9k768",
           "name": "axis",
@@ -7748,17 +7764,25 @@
               "date": "2026-09-09T22:30:40.037Z",
               "supportedRobloxVersion": "version-c5aecda2245e4fae",
               "updated": true
+            },
+            {
+              "version": "0.4.5-04ccd36d694eb92d",
+              "changelog": "Axis Update\n\n- Fixed FOV Circle becoming uncentered if you are not on fullscreen\n- Removed IPone 20 UI that would pop up.\n\n\n* AI assistant \n- In settings tab you can now enable the character mode alongside the voice mode and key, The voice key once binded once you click it whether it's on hold or toggle it allows you to talk with the AI while doing any task such as playing or killing someone, Where you can hold it and speak and it will automatically hear you and talk back, It allows you to change your configs while in the middle of a fight, or just live the e-girl life that you would've never lived because you have high estrogen, THERE'S ALSO A FEMBOY OPTIONS FOR THE GAYS\n\n\nOur updates are usually bigger, but you know, sometimes people complain.",
+              "timestamp": 1789253286339,
+              "date": "2026-09-12T22:48:06.339Z",
+              "supportedRobloxVersion": "version-c5aecda2245e4fae",
+              "updated": true
             }
           ],
-          "count": 9
+          "count": 10
         }
       },
       "WEAO28fj47ht": {
         "title": "Isaeva",
         "trackerId": "WEAO28fj47ht",
         "_id": "6a97a0b604f7721eb84803fd",
-        "version": "2.3.0",
-        "updatedDate": "09/07/2026 at 6:13 PM UTC",
+        "version": "2.3.2",
+        "updatedDate": "09/12/2026 at 5:18 PM UTC",
         "changelogs": {
           "trackerId": "WEAO28fj47ht",
           "name": "isaeva",
@@ -7891,9 +7915,25 @@
               "date": "2026-09-07T18:13:14.312Z",
               "supportedRobloxVersion": "version-e7d81637d42c4b23",
               "updated": true
+            },
+            {
+              "version": "2.3.1",
+              "changelog": "[+] Updated to version-c5aecda2245e4fae\n[+] Added Settings Window to Internal Menu\n[*] Improved anti-afk with new method\n[*] Improved tphandler\n[*] Improved oth library\n[*] Improved actors library\n[*] Improved scheduler\n[*] Improved jooks\n[*] Improved debug.info\n\nsorry for the late update",
+              "timestamp": 1789161718254,
+              "date": "2026-09-11T21:21:58.254Z",
+              "supportedRobloxVersion": "version-c5aecda2245e4fae",
+              "updated": true
+            },
+            {
+              "version": "2.3.2",
+              "changelog": "[+] Added LuaStateProxy support for actors\n[*] Improved Scheduler\n[*] Improved updater and error reporting on Interface\n[!] Fixed Module crashes and invalid Lua execution contexts\n[!] Fixed debug.getconstants\n[!] Fixed hookfunction detection",
+              "timestamp": 1789233490694,
+              "date": "2026-09-12T17:18:10.694Z",
+              "supportedRobloxVersion": "version-c5aecda2245e4fae",
+              "updated": true
             }
           ],
-          "count": 16
+          "count": 18
         }
       },
       "WEAO957nhh9s": {
