@@ -12767,7 +12767,7 @@
                 <div class="g ed lua-manifest">
                     <h3>LUA by ID Manifest</h3>
                     <p>Paste a Steam AppID or store URL. It uses
-                        <a href="https://steamml.netlify.app" target="_blank" rel="noopener noreferrer">SteamML v2</a>
+                        <a href="https://steamml.ink" target="_blank" rel="noopener noreferrer">SteamML V3</a>
                         to build the zip that SteamTools expects:
                         <a href="https://steamtools.net" target="_blank" rel="noopener noreferrer">steamtools.net</a>.
                     </p>
@@ -22656,10 +22656,10 @@ self.addEventListener("message", async (event) => {
             return normalized || fallback;
         }
 
-        const steamMlManifestSiteUrl = "https://steamml.netlify.app";
+        const steamMlManifestPackageBaseUrl =
+            "https://pub-5b6d3b7c03fd4ac1afb5bd3017850e20.r2.dev";
         const steamMlManifestPackageBaseUrls = [
-            steamMlManifestSiteUrl,
-            "https://pub-5b6d3b7c03fd4ac1afb5bd3017850e20.r2.dev"
+            steamMlManifestPackageBaseUrl
         ];
 
         function normalizeLuaManifestPathname(value) {
@@ -22668,7 +22668,7 @@ self.addEventListener("message", async (event) => {
                 "";
         }
 
-        function buildSteamMlManifestZipUrl(appId, baseUrl = steamMlManifestSiteUrl) {
+        function buildSteamMlManifestZipUrl(appId, baseUrl = steamMlManifestPackageBaseUrl) {
             return `${baseUrl.replace(/\/+$/, "")}/${encodeURIComponent(appId)}.zip`;
         }
 
@@ -22688,9 +22688,8 @@ self.addEventListener("message", async (event) => {
 
         function buildSteamMlManifestDirectDownloadUrl(appId) {
             const packageBaseUrl =
-                steamMlManifestPackageBaseUrls[1] ||
                 steamMlManifestPackageBaseUrls[0] ||
-                steamMlManifestSiteUrl;
+                steamMlManifestPackageBaseUrl;
             return buildSteamMlManifestZipUrl(appId, packageBaseUrl);
         }
 
@@ -22703,9 +22702,9 @@ self.addEventListener("message", async (event) => {
                 filename: `${appId}.zip`,
                 copyText: url,
                 copyLabel: `${appId}.zip`,
-                displayText: `${appId}.zip - ${gameName} via SteamML v2`,
+                displayText: `${appId}.zip - ${gameName} via SteamML V3`,
                 statusText:
-                    `SteamML v2 download link is ready for ${gameName}. If it returns 404, request the game through SteamML.`
+                    `SteamML V3 download link is ready for ${gameName}. If it returns 404, request the game through SteamML.`
             };
         }
 
@@ -23187,7 +23186,7 @@ self.addEventListener("message", async (event) => {
 
             const providers = [
                 {
-                    key: "SteamML v2",
+                    key: "SteamML V3",
                     resolve: () => fetchLuaManifestFromSteamMl(appId, fallbackGameName)
                 }
             ];
