@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-09-15T16:35:18.111Z",
+  "fetchedAt": "2026-09-15T20:04:07.295Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -2686,8 +2686,8 @@
         "title": "Wave",
         "trackerId": "WEAO2c8e5827",
         "_id": "662ae7576238b7f2082f253b",
-        "version": "NEW-1.5.2",
-        "updatedDate": "09/10/2026 at 5:33 AM UTC",
+        "version": "NEW-1.5.3",
+        "updatedDate": "09/15/2026 at 6:24 PM UTC",
         "changelogs": {
           "trackerId": "WEAO2c8e5827",
           "name": "wave",
@@ -2714,8 +2714,8 @@
         "title": "DX9WARE V2",
         "trackerId": "WEAO1181f437",
         "_id": "66837bf003fe5828bec91bc5",
-        "version": "1.1.218",
-        "updatedDate": "09/02/2026 at 11:07 PM UTC",
+        "version": "1.1.219",
+        "updatedDate": "09/15/2026 at 4:48 PM UTC",
         "changelogs": {
           "trackerId": "WEAO1181f437",
           "name": "dx9ware",
@@ -7966,8 +7966,8 @@
         "title": "Axis",
         "trackerId": "WEAO4ef9k768",
         "_id": "6a8fee3adb361db6523cd934",
-        "version": "0.4.5-04ccd36d694eb92d",
-        "updatedDate": "09/12/2026 at 10:48 PM UTC",
+        "version": "0.4.6-e7f981e9256cfef4",
+        "updatedDate": "09/15/2026 at 4:00 PM UTC",
         "changelogs": {
           "trackerId": "WEAO4ef9k768",
           "name": "axis",
@@ -8052,9 +8052,25 @@
               "date": "2026-09-12T22:48:06.339Z",
               "supportedRobloxVersion": "version-c5aecda2245e4fae",
               "updated": true
+            },
+            {
+              "version": "0.4.6-e7f981e9694eb92d",
+              "changelog": "Axis Update\n\n- Rivals\n* Added Rivals Skinchanger with support to all guns, you can set any skin to any weapon, even if the skin is not made for the specific gun, it works with everything ( Please note that this feature is available in ESP -> World ) (Premium)\n\n- Explorer, Decompiler\n* Added control flow\n* Added SSA\n* Added Variable Lifetime\n* Better optimizations\n\n- Lua VM\n* Added Intellisense to the editor, which autocompletes most functions and more.\n",
+              "timestamp": 1789428118069,
+              "date": "2026-09-14T23:21:58.069Z",
+              "supportedRobloxVersion": "version-c5aecda2245e4fae",
+              "updated": true
+            },
+            {
+              "version": "0.4.6-e7f981e9256cfef4",
+              "changelog": "Updated to version-4310300497aa4917",
+              "timestamp": 1789488028563,
+              "date": "2026-09-15T16:00:28.563Z",
+              "supportedRobloxVersion": "version-4310300497aa4917",
+              "updated": true
             }
           ],
-          "count": 10
+          "count": 12
         }
       },
       "WEAO28fj47ht": {

@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-09-15T16:35:18.111Z",
+  "fetchedAt": "2026-09-15T20:04:07.295Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -424,13 +424,13 @@
     {
       "_id": "662ae7576238b7f2082f253b",
       "title": "Wave",
-      "version": "NEW-1.5.2",
-      "updatedDate": "09/10/2026 at 5:33 AM UTC",
+      "version": "NEW-1.5.3",
+      "updatedDate": "09/15/2026 at 6:24 PM UTC",
       "uncStatus": true,
       "free": false,
       "detected": true,
-      "rbxversion": "version-c5aecda2245e4fae",
-      "updateStatus": false,
+      "rbxversion": "version-4310300497aa4917",
+      "updateStatus": true,
       "websitelink": "https://getwave.gg",
       "discordlink": "https://discord.gg/rARhPpN7fY",
       "beta": false,
@@ -521,13 +521,13 @@
     {
       "_id": "66837bf003fe5828bec91bc5",
       "title": "DX9WARE V2",
-      "version": "1.1.218",
-      "updatedDate": "09/02/2026 at 11:07 PM UTC",
+      "version": "1.1.219",
+      "updatedDate": "09/15/2026 at 4:48 PM UTC",
       "uncStatus": false,
       "free": false,
       "detected": false,
-      "rbxversion": "version-e7d81637d42c4b23",
-      "updateStatus": false,
+      "rbxversion": "version-4310300497aa4917",
+      "updateStatus": true,
       "websitelink": "https://cultofintellect.com/",
       "discordlink": "https://discord.gg/coi",
       "purchaselink": "https://cultofintellect.com/dx9ware#pricing",
