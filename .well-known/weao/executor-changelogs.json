@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-09-16T01:33:41.562Z",
+  "fetchedAt": "2026-09-16T07:25:43.541Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -1361,7 +1361,7 @@
         "trackerId": "WEAO4a1f93j6",
         "_id": "6a5095abbb457d55d62f8061",
         "version": "2.6.2",
-        "updatedDate": "09/14/2026 at 8:15 PM UTC",
+        "updatedDate": "09/16/2026 at 6:33 AM UTC",
         "changelogs": {
           "trackerId": "WEAO4a1f93j6",
           "name": "real",
@@ -1766,9 +1766,17 @@
               "date": "2026-09-14T20:15:08.136Z",
               "supportedRobloxVersion": "version-c5aecda2245e4fae",
               "updated": true
+            },
+            {
+              "version": "2.6.2",
+              "changelog": "* Updated Dependencies (curl)\r\n* Added getpid\r\n* Reverted local register limit to 200\r\n* Changed Compiler options (reduced UNC)\r\n\r\nUI:\r\n* Added a character limit to the LSP to improve performance with large scripts\r\n* Improved Monaco IntelliSense visibility across different themes\r\n* Improved Script Hub loading \r\n* Added Roblox game information to editor scripts in Script History\r\n* Fixed an issue where some Account Gen credentials were not  blurred while Streamer Mode was enabled",
+              "timestamp": 1789540422747,
+              "date": "2026-09-16T06:33:42.747Z",
+              "supportedRobloxVersion": "version-c5aecda2245e4fae",
+              "updated": false
             }
           ],
-          "count": 50
+          "count": 51
         }
       },
       "WEAO1af938a2": {
@@ -3329,8 +3337,8 @@
         "title": "Volt",
         "trackerId": "WEAO0fc0936f",
         "_id": "67576d22d9181811c292bb79",
-        "version": "1.3.12.2",
-        "updatedDate": "09/10/2026 at 11:06 PM UTC",
+        "version": "1.3.13.1",
+        "updatedDate": "09/16/2026 at 5:18 AM UTC",
         "changelogs": {
           "trackerId": "WEAO0fc0936f",
           "name": "awpgg",
@@ -6118,7 +6126,7 @@
         "trackerId": "WEAO76ngr5y7",
         "_id": "6a0ea99cfd26ad90bea624eb",
         "version": "1.0.9",
-        "updatedDate": "09/10/2026 at 4:33 AM UTC",
+        "updatedDate": "09/16/2026 at 4:19 AM UTC",
         "changelogs": {
           "trackerId": "WEAO76ngr5y7",
           "name": "lumen",
@@ -7757,8 +7765,8 @@
         "title": "Madium",
         "trackerId": "WEAO4a1j38nv",
         "_id": "69f25c438d1db84cb50c8cfe",
-        "version": "2.2.2",
-        "updatedDate": "09/13/2026 at 8:59 PM UTC",
+        "version": "2.2.3",
+        "updatedDate": "09/16/2026 at 3:09 AM UTC",
         "changelogs": {
           "trackerId": "WEAO4a1j38nv",
           "name": "madium",
@@ -7957,9 +7965,17 @@
               "date": "2026-09-13T20:59:30.595Z",
               "supportedRobloxVersion": "version-c5aecda2245e4fae",
               "updated": true
+            },
+            {
+              "version": "2.2.3",
+              "changelog": "- Updated to version-4310300497aa4917\n- Fixed leave to join crashes\n- Fixed anti-AFK crashing while Roblox replaces the DataModel during a rejoin\n- Fixed Drawing\n- Fixed Drawing Part 2 (Reverbed)\n- Fixed native File and Folder dialog\n- Fixed mousemoverel\n- Fixed request",
+              "timestamp": 1789528195579,
+              "date": "2026-09-16T03:09:55.579Z",
+              "supportedRobloxVersion": "version-4310300497aa4917",
+              "updated": true
             }
           ],
-          "count": 24
+          "count": 25
         }
       },
       "WEAO4ef9k768": {
