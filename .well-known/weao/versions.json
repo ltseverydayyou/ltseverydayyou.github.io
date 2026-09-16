@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-09-15T16:35:18.111Z",
+  "fetchedAt": "2026-09-16T23:45:10.384Z",
   "data": {
     "current": {
       "Windows": "version-4310300497aa4917",
@@ -26,11 +26,11 @@
         "version": "2.738.1397",
         "timestamp": 1789080452
       },
-      "iOS": "2.738.1390",
-      "iOSDate": "9/10/2026, 5:31:02 PM UTC",
+      "iOS": "2.739.687",
+      "iOSDate": "9/16/2026, 11:26:59 PM UTC",
       "iOSResponse": {
-        "version": "2.738.1390",
-        "timestamp": 1789061462
+        "version": "2.739.687",
+        "timestamp": 1789601219
       }
     },
     "future": {

@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-09-16T21:03:38.644Z",
+  "fetchedAt": "2026-09-16T23:45:10.384Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -1360,8 +1360,8 @@
         "title": "Real",
         "trackerId": "WEAO4a1f93j6",
         "_id": "6a5095abbb457d55d62f8061",
-        "version": "2.6.2",
-        "updatedDate": "09/16/2026 at 6:33 AM UTC",
+        "version": "2.6.4",
+        "updatedDate": "09/16/2026 at 6:53 PM UTC",
         "changelogs": {
           "trackerId": "WEAO4a1f93j6",
           "name": "real",
@@ -1774,9 +1774,25 @@
               "date": "2026-09-16T06:33:42.747Z",
               "supportedRobloxVersion": "version-c5aecda2245e4fae",
               "updated": false
+            },
+            {
+              "version": "2.6.3",
+              "changelog": "* Updated for version-4310300497aa4917 (ultra slowed)\r\nsorry for the late update",
+              "timestamp": 1789570000651,
+              "date": "2026-09-16T14:46:40.651Z",
+              "supportedRobloxVersion": "version-4310300497aa4917",
+              "updated": true
+            },
+            {
+              "version": "2.6.4",
+              "changelog": "* Fixed an issue in the Editor Panel where Streamer Mode wasn’t blurring account information\r\n* Fixed additional issues related to importing and exporting\r\n",
+              "timestamp": 1789584789438,
+              "date": "2026-09-16T18:53:09.438Z",
+              "supportedRobloxVersion": "version-4310300497aa4917",
+              "updated": true
             }
           ],
-          "count": 51
+          "count": 53
         }
       },
       "WEAO1af938a2": {
@@ -7765,8 +7781,8 @@
         "title": "Madium",
         "trackerId": "WEAO4a1j38nv",
         "_id": "69f25c438d1db84cb50c8cfe",
-        "version": "2.2.3",
-        "updatedDate": "09/16/2026 at 3:09 AM UTC",
+        "version": "2.2.4",
+        "updatedDate": "09/16/2026 at 7:08 PM UTC",
         "changelogs": {
           "trackerId": "WEAO4a1j38nv",
           "name": "madium",
@@ -7973,9 +7989,17 @@
               "date": "2026-09-16T03:09:55.579Z",
               "supportedRobloxVersion": "version-4310300497aa4917",
               "updated": true
+            },
+            {
+              "version": "2.2.4",
+              "changelog": "Turned off undetected debug moment *cutely*",
+              "timestamp": 1789585689542,
+              "date": "2026-09-16T19:08:09.542Z",
+              "supportedRobloxVersion": "version-4310300497aa4917",
+              "updated": true
             }
           ],
-          "count": 25
+          "count": 26
         }
       },
       "WEAO4ef9k768": {
