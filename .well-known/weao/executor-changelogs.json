@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-09-15T20:04:07.295Z",
+  "fetchedAt": "2026-09-16T01:33:41.562Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -1776,7 +1776,7 @@
         "trackerId": "WEAO1af938a2",
         "_id": "66633ac4b29bacaa7a568fdc",
         "version": "0.1.7",
-        "updatedDate": "09/10/2026 at 12:04 AM UTC",
+        "updatedDate": "09/15/2026 at 11:48 PM UTC",
         "changelogs": {
           "trackerId": "WEAO1af938a2",
           "name": "solara",
@@ -7449,7 +7449,7 @@
         "trackerId": "WEAO4ef92j18",
         "_id": "6907cafc4b9bde193883d902",
         "version": "v2",
-        "updatedDate": "09/10/2026 at 2:46 AM UTC",
+        "updatedDate": "09/15/2026 at 11:50 PM UTC",
         "changelogs": {
           "trackerId": "WEAO4ef92j18",
           "name": "severe",
