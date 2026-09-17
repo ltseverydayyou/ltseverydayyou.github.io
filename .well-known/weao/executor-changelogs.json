@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-09-16T23:45:10.384Z",
+  "fetchedAt": "2026-09-17T18:52:17.326Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -5261,9 +5261,305 @@
               "date": "2026-09-15T16:28:19.483Z",
               "supportedRobloxVersion": "version-e7d81637d42c4b23",
               "updated": false
+            },
+            {
+              "version": "1.3.9",
+              "changelog": "Fixed a crash where saveinstance would call gethiddenproperty / sethiddenproperty and corrupt the stack causing a instant crash with no trace would also cause myriad to crash sometimes\n---------------\nVelocity is now version 1.3.9\nClose the UI and reopen to apply the update. (Velocity Lite)",
+              "timestamp": 1789491095054,
+              "date": "2026-09-15T16:51:35.054Z",
+              "supportedRobloxVersion": "version-e7d81637d42c4b23",
+              "updated": false
+            },
+            {
+              "version": "1.3.9",
+              "changelog": "Fixed a crash where saveinstance would call gethiddenproperty / sethiddenproperty and corrupt the stack causing a instant crash with no trace would also cause myriad to crash sometimes\n---------------\nVelocity is now version 1.3.9\nClose the UI and reopen to apply the update. (Velocity Lite)",
+              "timestamp": 1789505830777,
+              "date": "2026-09-15T20:57:10.777Z",
+              "supportedRobloxVersion": "version-e7d81637d42c4b23",
+              "updated": false
+            },
+            {
+              "version": "1.3.9",
+              "changelog": "Fixed a crash where saveinstance would call gethiddenproperty / sethiddenproperty and corrupt the stack causing a instant crash with no trace would also cause myriad to crash sometimes\n---------------\nVelocity is now version 1.3.9\nClose the UI and reopen to apply the update. (Velocity Lite)",
+              "timestamp": 1789520833735,
+              "date": "2026-09-16T01:07:13.735Z",
+              "supportedRobloxVersion": "version-e7d81637d42c4b23",
+              "updated": false
+            },
+            {
+              "version": "1.3.9",
+              "changelog": "Fixed a crash where saveinstance would call gethiddenproperty / sethiddenproperty and corrupt the stack causing a instant crash with no trace would also cause myriad to crash sometimes\n---------------\nVelocity is now version 1.3.9\nClose the UI and reopen to apply the update. (Velocity Lite)",
+              "timestamp": 1789527586196,
+              "date": "2026-09-16T02:59:46.196Z",
+              "supportedRobloxVersion": "version-e7d81637d42c4b23",
+              "updated": false
+            },
+            {
+              "version": "1.3.9",
+              "changelog": "Fixed a crash where saveinstance would call gethiddenproperty / sethiddenproperty and corrupt the stack causing a instant crash with no trace would also cause myriad to crash sometimes\n---------------\nVelocity is now version 1.3.9\nClose the UI and reopen to apply the update. (Velocity Lite)",
+              "timestamp": 1789527596977,
+              "date": "2026-09-16T02:59:56.977Z",
+              "supportedRobloxVersion": "version-e7d81637d42c4b23",
+              "updated": false
+            },
+            {
+              "version": "1.3.9",
+              "changelog": "Fixed a crash where saveinstance would call gethiddenproperty / sethiddenproperty and corrupt the stack causing a instant crash with no trace would also cause myriad to crash sometimes\n---------------\nVelocity is now version 1.3.9\nClose the UI and reopen to apply the update. (Velocity Lite)",
+              "timestamp": 1789527608766,
+              "date": "2026-09-16T03:00:08.766Z",
+              "supportedRobloxVersion": "version-e7d81637d42c4b23",
+              "updated": false
+            },
+            {
+              "version": "1.3.9",
+              "changelog": "Fixed a crash where saveinstance would call gethiddenproperty / sethiddenproperty and corrupt the stack causing a instant crash with no trace would also cause myriad to crash sometimes\n---------------\nVelocity is now version 1.3.9\nClose the UI and reopen to apply the update. (Velocity Lite)",
+              "timestamp": 1789536172359,
+              "date": "2026-09-16T05:22:52.359Z",
+              "supportedRobloxVersion": "version-e7d81637d42c4b23",
+              "updated": false
+            },
+            {
+              "version": "1.3.9",
+              "changelog": "Fixed a crash where saveinstance would call gethiddenproperty / sethiddenproperty and corrupt the stack causing a instant crash with no trace would also cause myriad to crash sometimes\n---------------\nVelocity is now version 1.3.9\nClose the UI and reopen to apply the update. (Velocity Lite)",
+              "timestamp": 1789536902442,
+              "date": "2026-09-16T05:35:02.442Z",
+              "supportedRobloxVersion": "version-e7d81637d42c4b23",
+              "updated": false
+            },
+            {
+              "version": "1.3.9",
+              "changelog": "Fixed a crash where saveinstance would call gethiddenproperty / sethiddenproperty and corrupt the stack causing a instant crash with no trace would also cause myriad to crash sometimes\n---------------\nVelocity is now version 1.3.9\nClose the UI and reopen to apply the update. (Velocity Lite)",
+              "timestamp": 1789537220554,
+              "date": "2026-09-16T05:40:20.554Z",
+              "supportedRobloxVersion": "version-e7d81637d42c4b23",
+              "updated": false
+            },
+            {
+              "version": "1.3.9",
+              "changelog": "Fixed a crash where saveinstance would call gethiddenproperty / sethiddenproperty and corrupt the stack causing a instant crash with no trace would also cause myriad to crash sometimes\n---------------\nVelocity is now version 1.3.9\nClose the UI and reopen to apply the update. (Velocity Lite)",
+              "timestamp": 1789537316237,
+              "date": "2026-09-16T05:41:56.237Z",
+              "supportedRobloxVersion": "version-e7d81637d42c4b23",
+              "updated": false
+            },
+            {
+              "version": "1.3.9",
+              "changelog": "Fixed a crash where saveinstance would call gethiddenproperty / sethiddenproperty and corrupt the stack causing a instant crash with no trace would also cause myriad to crash sometimes\n---------------\nVelocity is now version 1.3.9\nClose the UI and reopen to apply the update. (Velocity Lite)",
+              "timestamp": 1789537336279,
+              "date": "2026-09-16T05:42:16.279Z",
+              "supportedRobloxVersion": "version-e7d81637d42c4b23",
+              "updated": false
+            },
+            {
+              "version": "1.3.9",
+              "changelog": "Fixed a crash where saveinstance would call gethiddenproperty / sethiddenproperty and corrupt the stack causing a instant crash with no trace would also cause myriad to crash sometimes\n---------------\nVelocity is now version 1.3.9\nClose the UI and reopen to apply the update. (Velocity Lite)",
+              "timestamp": 1789574655547,
+              "date": "2026-09-16T16:04:15.547Z",
+              "supportedRobloxVersion": "version-e7d81637d42c4b23",
+              "updated": false
+            },
+            {
+              "version": "1.3.9",
+              "changelog": "Fixed a crash where saveinstance would call gethiddenproperty / sethiddenproperty and corrupt the stack causing a instant crash with no trace would also cause myriad to crash sometimes\n---------------\nVelocity is now version 1.3.9\nClose the UI and reopen to apply the update. (Velocity Lite)",
+              "timestamp": 1789575205313,
+              "date": "2026-09-16T16:13:25.313Z",
+              "supportedRobloxVersion": "version-e7d81637d42c4b23",
+              "updated": false
+            },
+            {
+              "version": "1.3.9",
+              "changelog": "Fixed a crash where saveinstance would call gethiddenproperty / sethiddenproperty and corrupt the stack causing a instant crash with no trace would also cause myriad to crash sometimes\n---------------\nVelocity is now version 1.3.9\nClose the UI and reopen to apply the update. (Velocity Lite)",
+              "timestamp": 1789575333324,
+              "date": "2026-09-16T16:15:33.324Z",
+              "supportedRobloxVersion": "version-e7d81637d42c4b23",
+              "updated": false
+            },
+            {
+              "version": "1.3.9",
+              "changelog": "Fixed a crash where saveinstance would call gethiddenproperty / sethiddenproperty and corrupt the stack causing a instant crash with no trace would also cause myriad to crash sometimes\n---------------\nVelocity is now version 1.3.9\nClose the UI and reopen to apply the update. (Velocity Lite)",
+              "timestamp": 1789575425797,
+              "date": "2026-09-16T16:17:05.797Z",
+              "supportedRobloxVersion": "version-e7d81637d42c4b23",
+              "updated": false
+            },
+            {
+              "version": "1.3.9",
+              "changelog": "Fixed a crash where saveinstance would call gethiddenproperty / sethiddenproperty and corrupt the stack causing a instant crash with no trace would also cause myriad to crash sometimes\n---------------\nVelocity is now version 1.3.9\nClose the UI and reopen to apply the update. (Velocity Lite)",
+              "timestamp": 1789575511553,
+              "date": "2026-09-16T16:18:31.553Z",
+              "supportedRobloxVersion": "version-e7d81637d42c4b23",
+              "updated": false
+            },
+            {
+              "version": "1.3.9",
+              "changelog": "Fixed a crash where saveinstance would call gethiddenproperty / sethiddenproperty and corrupt the stack causing a instant crash with no trace would also cause myriad to crash sometimes\n---------------\nVelocity is now version 1.3.9\nClose the UI and reopen to apply the update. (Velocity Lite)",
+              "timestamp": 1789575531598,
+              "date": "2026-09-16T16:18:51.598Z",
+              "supportedRobloxVersion": "version-e7d81637d42c4b23",
+              "updated": false
+            },
+            {
+              "version": "1.3.9",
+              "changelog": "Fixed a crash where saveinstance would call gethiddenproperty / sethiddenproperty and corrupt the stack causing a instant crash with no trace would also cause myriad to crash sometimes\n---------------\nVelocity is now version 1.3.9\nClose the UI and reopen to apply the update. (Velocity Lite)",
+              "timestamp": 1789575622202,
+              "date": "2026-09-16T16:20:22.202Z",
+              "supportedRobloxVersion": "version-e7d81637d42c4b23",
+              "updated": false
+            },
+            {
+              "version": "1.3.9",
+              "changelog": "Fixed a crash where saveinstance would call gethiddenproperty / sethiddenproperty and corrupt the stack causing a instant crash with no trace would also cause myriad to crash sometimes\n---------------\nVelocity is now version 1.3.9\nClose the UI and reopen to apply the update. (Velocity Lite)",
+              "timestamp": 1789575644976,
+              "date": "2026-09-16T16:20:44.976Z",
+              "supportedRobloxVersion": "version-e7d81637d42c4b23",
+              "updated": false
+            },
+            {
+              "version": "1.3.9",
+              "changelog": "Fixed a crash where saveinstance would call gethiddenproperty / sethiddenproperty and corrupt the stack causing a instant crash with no trace would also cause myriad to crash sometimes\n---------------\nVelocity is now version 1.3.9\nClose the UI and reopen to apply the update. (Velocity Lite)",
+              "timestamp": 1789575796307,
+              "date": "2026-09-16T16:23:16.307Z",
+              "supportedRobloxVersion": "version-e7d81637d42c4b23",
+              "updated": false
+            },
+            {
+              "version": "1.3.9",
+              "changelog": "Fixed a crash where saveinstance would call gethiddenproperty / sethiddenproperty and corrupt the stack causing a instant crash with no trace would also cause myriad to crash sometimes\n---------------\nVelocity is now version 1.3.9\nClose the UI and reopen to apply the update. (Velocity Lite)",
+              "timestamp": 1789575875321,
+              "date": "2026-09-16T16:24:35.321Z",
+              "supportedRobloxVersion": "version-e7d81637d42c4b23",
+              "updated": false
+            },
+            {
+              "version": "1.3.9",
+              "changelog": "Fixed a crash where saveinstance would call gethiddenproperty / sethiddenproperty and corrupt the stack causing a instant crash with no trace would also cause myriad to crash sometimes\n---------------\nVelocity is now version 1.3.9\nClose the UI and reopen to apply the update. (Velocity Lite)",
+              "timestamp": 1789578761478,
+              "date": "2026-09-16T17:12:41.478Z",
+              "supportedRobloxVersion": "version-e7d81637d42c4b23",
+              "updated": false
+            },
+            {
+              "version": "1.3.9",
+              "changelog": "Fixed a crash where saveinstance would call gethiddenproperty / sethiddenproperty and corrupt the stack causing a instant crash with no trace would also cause myriad to crash sometimes\n---------------\nVelocity is now version 1.3.9\nClose the UI and reopen to apply the update. (Velocity Lite)",
+              "timestamp": 1789609367679,
+              "date": "2026-09-17T01:42:47.679Z",
+              "supportedRobloxVersion": "version-e7d81637d42c4b23",
+              "updated": false
+            },
+            {
+              "version": "1.3.9",
+              "changelog": "Fixed a crash where saveinstance would call gethiddenproperty / sethiddenproperty and corrupt the stack causing a instant crash with no trace would also cause myriad to crash sometimes\n---------------\nVelocity is now version 1.3.9\nClose the UI and reopen to apply the update. (Velocity Lite)",
+              "timestamp": 1789651297329,
+              "date": "2026-09-17T13:21:37.329Z",
+              "supportedRobloxVersion": "version-e7d81637d42c4b23",
+              "updated": false
+            },
+            {
+              "version": "1.3.9",
+              "changelog": "Fixed a crash where saveinstance would call gethiddenproperty / sethiddenproperty and corrupt the stack causing a instant crash with no trace would also cause myriad to crash sometimes\n---------------\nVelocity is now version 1.3.9\nClose the UI and reopen to apply the update. (Velocity Lite)",
+              "timestamp": 1789661541409,
+              "date": "2026-09-17T16:12:21.409Z",
+              "supportedRobloxVersion": "version-e7d81637d42c4b23",
+              "updated": false
+            },
+            {
+              "version": "1.3.9",
+              "changelog": "Fixed a crash where saveinstance would call gethiddenproperty / sethiddenproperty and corrupt the stack causing a instant crash with no trace would also cause myriad to crash sometimes\n---------------\nVelocity is now version 1.3.9\nClose the UI and reopen to apply the update. (Velocity Lite)",
+              "timestamp": 1789661558565,
+              "date": "2026-09-17T16:12:38.565Z",
+              "supportedRobloxVersion": "version-e7d81637d42c4b23",
+              "updated": false
+            },
+            {
+              "version": "1.3.9",
+              "changelog": "Fixed a crash where saveinstance would call gethiddenproperty / sethiddenproperty and corrupt the stack causing a instant crash with no trace would also cause myriad to crash sometimes\n---------------\nVelocity is now version 1.3.9\nClose the UI and reopen to apply the update. (Velocity Lite)",
+              "timestamp": 1789661581645,
+              "date": "2026-09-17T16:13:01.645Z",
+              "supportedRobloxVersion": "version-e7d81637d42c4b23",
+              "updated": false
+            },
+            {
+              "version": "1.3.9",
+              "changelog": "Fixed a crash where saveinstance would call gethiddenproperty / sethiddenproperty and corrupt the stack causing a instant crash with no trace would also cause myriad to crash sometimes\n---------------\nVelocity is now version 1.3.9\nClose the UI and reopen to apply the update. (Velocity Lite)",
+              "timestamp": 1789661611631,
+              "date": "2026-09-17T16:13:31.631Z",
+              "supportedRobloxVersion": "version-e7d81637d42c4b23",
+              "updated": false
+            },
+            {
+              "version": "1.3.9",
+              "changelog": "Fixed a crash where saveinstance would call gethiddenproperty / sethiddenproperty and corrupt the stack causing a instant crash with no trace would also cause myriad to crash sometimes\n---------------\nVelocity is now version 1.3.9\nClose the UI and reopen to apply the update. (Velocity Lite)",
+              "timestamp": 1789661625659,
+              "date": "2026-09-17T16:13:45.659Z",
+              "supportedRobloxVersion": "version-e7d81637d42c4b23",
+              "updated": false
+            },
+            {
+              "version": "1.3.9",
+              "changelog": "Fixed a crash where saveinstance would call gethiddenproperty / sethiddenproperty and corrupt the stack causing a instant crash with no trace would also cause myriad to crash sometimes\n---------------\nVelocity is now version 1.3.9\nClose the UI and reopen to apply the update. (Velocity Lite)",
+              "timestamp": 1789661661835,
+              "date": "2026-09-17T16:14:21.835Z",
+              "supportedRobloxVersion": "version-e7d81637d42c4b23",
+              "updated": false
+            },
+            {
+              "version": "1.3.9",
+              "changelog": "Fixed a crash where saveinstance would call gethiddenproperty / sethiddenproperty and corrupt the stack causing a instant crash with no trace would also cause myriad to crash sometimes\n---------------\nVelocity is now version 1.3.9\nClose the UI and reopen to apply the update. (Velocity Lite)",
+              "timestamp": 1789661873144,
+              "date": "2026-09-17T16:17:53.144Z",
+              "supportedRobloxVersion": "version-e7d81637d42c4b23",
+              "updated": false
+            },
+            {
+              "version": "1.3.9",
+              "changelog": "Fixed a crash where saveinstance would call gethiddenproperty / sethiddenproperty and corrupt the stack causing a instant crash with no trace would also cause myriad to crash sometimes\n---------------\nVelocity is now version 1.3.9\nClose the UI and reopen to apply the update. (Velocity Lite)",
+              "timestamp": 1789661890514,
+              "date": "2026-09-17T16:18:10.514Z",
+              "supportedRobloxVersion": "version-e7d81637d42c4b23",
+              "updated": false
+            },
+            {
+              "version": "1.3.9",
+              "changelog": "Fixed a crash where saveinstance would call gethiddenproperty / sethiddenproperty and corrupt the stack causing a instant crash with no trace would also cause myriad to crash sometimes\n---------------\nVelocity is now version 1.3.9\nClose the UI and reopen to apply the update. (Velocity Lite)",
+              "timestamp": 1789662086185,
+              "date": "2026-09-17T16:21:26.185Z",
+              "supportedRobloxVersion": "version-e7d81637d42c4b23",
+              "updated": false
+            },
+            {
+              "version": "1.3.9",
+              "changelog": "Fixed a crash where saveinstance would call gethiddenproperty / sethiddenproperty and corrupt the stack causing a instant crash with no trace would also cause myriad to crash sometimes\n---------------\nVelocity is now version 1.3.9\nClose the UI and reopen to apply the update. (Velocity Lite)",
+              "timestamp": 1789662101210,
+              "date": "2026-09-17T16:21:41.210Z",
+              "supportedRobloxVersion": "version-e7d81637d42c4b23",
+              "updated": false
+            },
+            {
+              "version": "1.3.9",
+              "changelog": "Fixed a crash where saveinstance would call gethiddenproperty / sethiddenproperty and corrupt the stack causing a instant crash with no trace would also cause myriad to crash sometimes\n---------------\nVelocity is now version 1.3.9\nClose the UI and reopen to apply the update. (Velocity Lite)",
+              "timestamp": 1789662146772,
+              "date": "2026-09-17T16:22:26.772Z",
+              "supportedRobloxVersion": "version-e7d81637d42c4b23",
+              "updated": false
+            },
+            {
+              "version": "1.3.9",
+              "changelog": "Fixed a crash where saveinstance would call gethiddenproperty / sethiddenproperty and corrupt the stack causing a instant crash with no trace would also cause myriad to crash sometimes\n---------------\nVelocity is now version 1.3.9\nClose the UI and reopen to apply the update. (Velocity Lite)",
+              "timestamp": 1789663255854,
+              "date": "2026-09-17T16:40:55.854Z",
+              "supportedRobloxVersion": "version-e7d81637d42c4b23",
+              "updated": false
+            },
+            {
+              "version": "1.3.9",
+              "changelog": "Fixed a crash where saveinstance would call gethiddenproperty / sethiddenproperty and corrupt the stack causing a instant crash with no trace would also cause myriad to crash sometimes\n---------------\nVelocity is now version 1.3.9\nClose the UI and reopen to apply the update. (Velocity Lite)",
+              "timestamp": 1789666593957,
+              "date": "2026-09-17T17:36:33.957Z",
+              "supportedRobloxVersion": "version-e7d81637d42c4b23",
+              "updated": false
             }
           ],
-          "count": 236
+          "count": 273
         }
       },
       "WEAO74bee327": {
