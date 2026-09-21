@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-09-21T19:08:42.290Z",
+  "fetchedAt": "2026-09-21T22:44:50.133Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -284,7 +284,7 @@
       "detected": true,
       "rbxversion": "version-d584fb6c717a43d9",
       "updateStatus": false,
-      "discordlink": "https://discord.gg/cosmicbest",
+      "discordlink": "",
       "beta": false,
       "platform": "Windows",
       "extype": "wexecutor",
@@ -328,8 +328,8 @@
     {
       "_id": "6a5095abbb457d55d62f8061",
       "title": "Real",
-      "version": "2.6.4",
-      "updatedDate": "09/16/2026 at 6:53 PM UTC",
+      "version": "2.7.0",
+      "updatedDate": "09/21/2026 at 9:03 PM UTC",
       "uncStatus": true,
       "free": true,
       "detected": true,
@@ -608,7 +608,7 @@
       "free": true,
       "detected": true,
       "rbxversion": "version-e7d81637d42c4b23",
-      "updateStatus": true,
+      "updateStatus": false,
       "discordlink": "https://discord.com/invite/velocityide",
       "beta": false,
       "platform": "Windows",
