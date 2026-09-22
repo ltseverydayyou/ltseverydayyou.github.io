@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-09-22T17:12:34.732Z",
+  "fetchedAt": "2026-09-22T20:25:19.430Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -224,8 +224,8 @@
         "title": "Photon",
         "trackerId": "WEAO6c35cab4",
         "_id": "680ab721b50548f01fd62715",
-        "version": "6.8",
-        "updatedDate": "09/15/2026 at 4:09 PM UTC",
+        "version": "7.0",
+        "updatedDate": "09/22/2026 at 5:26 PM UTC",
         "changelogs": {
           "trackerId": "WEAO6c35cab4",
           "name": "photon",
@@ -446,9 +446,17 @@
               "date": "2026-08-06T00:08:35.481Z",
               "supportedRobloxVersion": "version-d584fb6c717a43d9",
               "updated": true
+            },
+            {
+              "version": "7.0",
+              "changelog": "[+] updated to version-2366ba214ec740ca",
+              "timestamp": 1790098013861,
+              "date": "2026-09-22T17:26:53.861Z",
+              "supportedRobloxVersion": "version-2366ba214ec740ca",
+              "updated": true
             }
           ],
-          "count": 27
+          "count": 28
         }
       },
       "WEAO5caeb4a7": {
@@ -2746,8 +2754,8 @@
         "title": "DX9WARE V2",
         "trackerId": "WEAO1181f437",
         "_id": "66837bf003fe5828bec91bc5",
-        "version": "1.1.219",
-        "updatedDate": "09/15/2026 at 4:48 PM UTC",
+        "version": "1.1.220",
+        "updatedDate": "09/22/2026 at 4:32 PM UTC",
         "changelogs": {
           "trackerId": "WEAO1181f437",
           "name": "dx9ware",
@@ -6258,7 +6266,7 @@
         "trackerId": "WEAO30580ddb",
         "_id": "688c1b3ccc42af0ea95977e3",
         "version": "v2",
-        "updatedDate": "09/15/2026 at 4:01 PM UTC",
+        "updatedDate": "09/22/2026 at 4:00 PM UTC",
         "changelogs": {
           "trackerId": "WEAO30580ddb",
           "name": "serotonin",
@@ -6636,7 +6644,7 @@
         "trackerId": "WEAO7650fcf2",
         "_id": "67e0d0d87d091e8f8b6d2a35",
         "version": "v2",
-        "updatedDate": "09/15/2026 at 4:04 PM UTC",
+        "updatedDate": "09/22/2026 at 4:03 PM UTC",
         "changelogs": {
           "trackerId": "WEAO7650fcf2",
           "name": "matcha",
