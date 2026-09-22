@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-09-22T20:25:19.430Z",
+  "fetchedAt": "2026-09-22T23:11:26.182Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -1816,7 +1816,7 @@
         "trackerId": "WEAO1af938a2",
         "_id": "66633ac4b29bacaa7a568fdc",
         "version": "0.1.7",
-        "updatedDate": "09/15/2026 at 11:48 PM UTC",
+        "updatedDate": "09/22/2026 at 8:43 PM UTC",
         "changelogs": {
           "trackerId": "WEAO1af938a2",
           "name": "solara",
@@ -6995,7 +6995,7 @@
         "trackerId": "WEAO08b7927f",
         "_id": "679553cd2eea89d30d0dae57",
         "version": "1.3.60",
-        "updatedDate": "09/21/2026 at 4:25 AM UTC",
+        "updatedDate": "09/22/2026 at 4:00 PM UTC",
         "changelogs": {
           "trackerId": "WEAO08b7927f",
           "name": "xeno",
@@ -7969,7 +7969,7 @@
         "trackerId": "WEAO4ef92j18",
         "_id": "6907cafc4b9bde193883d902",
         "version": "v2",
-        "updatedDate": "09/15/2026 at 11:50 PM UTC",
+        "updatedDate": "09/22/2026 at 5:45 PM UTC",
         "changelogs": {
           "trackerId": "WEAO4ef92j18",
           "name": "severe",
@@ -7982,8 +7982,8 @@
         "title": "MacSploit",
         "trackerId": "WEAO10179289",
         "_id": "692794d789eb1e034ad699c3",
-        "version": "736.1",
-        "updatedDate": "09/02/2026 at 2:42 AM UTC",
+        "version": "739.1b",
+        "updatedDate": "09/22/2026 at 9:10 PM UTC",
         "changelogs": {
           "trackerId": "WEAO10179289",
           "name": "macsploit",
@@ -8268,9 +8268,17 @@
               "date": "2026-09-02T02:42:27.654Z",
               "supportedRobloxVersion": "version-4c4fc877ca9b4c61",
               "updated": true
+            },
+            {
+              "version": "739.1b",
+              "changelog": "- updated intel to the latest version",
+              "timestamp": 1790111409673,
+              "date": "2026-09-22T21:10:09.673Z",
+              "supportedRobloxVersion": "version-c53a25dbc3e44a42",
+              "updated": false
             }
           ],
-          "count": 35
+          "count": 36
         }
       },
       "WEAO4a1j38nv": {

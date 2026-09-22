@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-09-22T20:25:19.430Z",
+  "fetchedAt": "2026-09-22T23:11:26.182Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -378,12 +378,12 @@
       "_id": "66633ac4b29bacaa7a568fdc",
       "title": "Solara",
       "version": "0.1.7",
-      "updatedDate": "09/15/2026 at 11:48 PM UTC",
+      "updatedDate": "09/22/2026 at 8:43 PM UTC",
       "uncStatus": true,
       "free": true,
       "detected": true,
-      "rbxversion": "version-4310300497aa4917",
-      "updateStatus": false,
+      "rbxversion": "version-2366ba214ec740ca",
+      "updateStatus": true,
       "websitelink": "https://getsolara.dev",
       "discordlink": "https://getsolara.dev/discord",
       "beta": false,
@@ -1090,8 +1090,8 @@
     {
       "_id": "692794d789eb1e034ad699c3",
       "title": "MacSploit",
-      "version": "736.1",
-      "updatedDate": "09/02/2026 at 2:42 AM UTC",
+      "version": "739.1b",
+      "updatedDate": "09/22/2026 at 9:10 PM UTC",
       "uncStatus": true,
       "free": false,
       "detected": false,
