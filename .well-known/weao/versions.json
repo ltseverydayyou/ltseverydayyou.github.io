@@ -1,23 +1,23 @@
 {
-  "fetchedAt": "2026-09-22T01:29:56.151Z",
+  "fetchedAt": "2026-09-22T17:12:34.732Z",
   "data": {
     "current": {
-      "Windows": "version-4310300497aa4917",
-      "WindowsDate": "9/15/2026, 4:00:15 PM UTC",
+      "Windows": "version-2366ba214ec740ca",
+      "WindowsDate": "9/22/2026, 4:00:16 PM UTC",
       "WindowsResponse": {
-        "version": "0.739.0.7390687",
-        "clientVersionUpload": "version-4310300497aa4917",
+        "version": "0.740.0.7400927",
+        "clientVersionUpload": "version-2366ba214ec740ca",
         "bootstrapperVersion": "",
-        "timestamp": 1789488015,
+        "timestamp": 1790092816,
         "type": "new"
       },
-      "Mac": "version-c53a25dbc3e44a42",
-      "MacDate": "9/15/2026, 4:00:46 PM UTC",
+      "Mac": "version-00a4ca14e31b41e9",
+      "MacDate": "9/22/2026, 4:00:35 PM UTC",
       "MacResponse": {
-        "version": "0.739.0.7390687",
-        "clientVersionUpload": "version-c53a25dbc3e44a42",
+        "version": "0.740.0.7400927",
+        "clientVersionUpload": "version-00a4ca14e31b41e9",
         "bootstrapperVersion": "",
-        "timestamp": 1789488046,
+        "timestamp": 1790092835,
         "type": "new"
       },
       "Android": "2.739.691",
@@ -52,23 +52,23 @@
       }
     },
     "past": {
-      "Windows": "version-c5aecda2245e4fae",
-      "WindowsDate": "9/9/2026, 10:30:28 PM UTC",
+      "Windows": "version-4310300497aa4917",
+      "WindowsDate": "9/15/2026, 4:00:15 PM UTC",
       "WindowsResponse": {
-        "version": "0.738.0.7381397",
-        "clientVersionUpload": "version-c5aecda2245e4fae",
+        "version": "0.739.0.7390687",
+        "clientVersionUpload": "version-4310300497aa4917",
         "bootstrapperVersion": "",
-        "timestamp": 1788993028,
+        "timestamp": 1789488015,
         "type": "new"
       },
-      "Mac": "version-5b15515e80624095",
-      "MacDate": "9/9/2026, 6:19:02 PM UTC",
+      "Mac": "version-c53a25dbc3e44a42",
+      "MacDate": "9/15/2026, 4:00:46 PM UTC",
       "MacResponse": {
-        "version": "0.738.0.7381393",
-        "clientVersionUpload": "version-5b15515e80624095",
+        "version": "0.739.0.7390687",
+        "clientVersionUpload": "version-c53a25dbc3e44a42",
         "bootstrapperVersion": "",
-        "timestamp": 1788977942,
-        "type": "revert"
+        "timestamp": 1789488046,
+        "type": "new"
       }
     }
   }

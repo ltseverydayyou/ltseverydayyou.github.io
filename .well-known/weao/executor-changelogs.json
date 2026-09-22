@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-09-22T06:44:20.170Z",
+  "fetchedAt": "2026-09-22T17:12:34.732Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -455,8 +455,8 @@
         "title": "SirHurt",
         "trackerId": "WEAO5caeb4a7",
         "_id": "67c8a2cb376f9e598b466705",
-        "version": "V5.469",
-        "updatedDate": "09/15/2026 at 4:02 PM UTC",
+        "version": "V5.470",
+        "updatedDate": "09/22/2026 at 4:01 PM UTC",
         "changelogs": {
           "trackerId": "WEAO5caeb4a7",
           "name": "sirhurt",
