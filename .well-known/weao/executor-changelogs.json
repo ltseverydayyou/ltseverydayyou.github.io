@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-09-22T23:11:26.182Z",
+  "fetchedAt": "2026-09-23T01:41:27.569Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -8542,8 +8542,8 @@
         "title": "Axis",
         "trackerId": "WEAO4ef9k768",
         "_id": "6a8fee3adb361db6523cd934",
-        "version": "0.4.6-e7f981e9256cfef4",
-        "updatedDate": "09/15/2026 at 4:00 PM UTC",
+        "version": "0.4.6-e7f981e93518b158",
+        "updatedDate": "09/22/2026 at 4:00 PM UTC",
         "changelogs": {
           "trackerId": "WEAO4ef9k768",
           "name": "axis",
@@ -8644,9 +8644,17 @@
               "date": "2026-09-15T16:00:28.563Z",
               "supportedRobloxVersion": "version-4310300497aa4917",
               "updated": true
+            },
+            {
+              "version": "0.4.6-e7f981e93518b158",
+              "changelog": "Updated to version-2366ba214ec740ca",
+              "timestamp": 1790092852224,
+              "date": "2026-09-22T16:00:52.224Z",
+              "supportedRobloxVersion": "version-2366ba214ec740ca",
+              "updated": true
             }
           ],
-          "count": 12
+          "count": 13
         }
       },
       "WEAO28fj47ht": {
@@ -8820,8 +8828,8 @@
         "title": "Madius",
         "trackerId": "WEAO957nhh9s",
         "_id": "6aa12a9285a6e208beacc14b",
-        "version": "1.11.0-beta",
-        "updatedDate": "09/10/2026 at 10:43 PM UTC",
+        "version": "1.11.2a-beta",
+        "updatedDate": "09/22/2026 at 7:46 PM UTC",
         "changelogs": {
           "trackerId": "WEAO957nhh9s",
           "name": "rbxcli",
@@ -9706,9 +9714,25 @@
               "date": "2026-09-10T22:43:00.346Z",
               "supportedRobloxVersion": "version-c5aecda2245e4fae",
               "updated": true
+            },
+            {
+              "version": "1.11.1-beta",
+              "changelog": "\"[cyber]\"\n— Claude Fable 5.1\n\n+ Improved available tooling for AIs in the MCP.\n+ Fixed decompilation of Roblox CoreScripts\n\nDecompiler (Fission):\n+ Improved renaming.\n+ Improved lifting.\n+ Improved readability of decompiled output.\n+ Improved lifetime handling for certain opcodes.\n+ Added support for bytecode version 12.\n\nNote: Bytecode version 13 and version 14 are not yet completed. If scripts failed to decompile, then it is being rolled out. It will be complete by next update.\n\nSorry for the slow update. Currently working on improvements for the MCP which require a HUGE amount of work (model training).",
+              "timestamp": 1789765539368,
+              "date": "2026-09-18T21:05:39.368Z",
+              "supportedRobloxVersion": "version-4310300497aa4917",
+              "updated": true
+            },
+            {
+              "version": "1.11.2a-beta",
+              "changelog": "+ Updated to latest roblox patch\n+ Fixed crashes when moving fast through the game, causing characters to unload in Streaming Enabled games and crashes.\n+ Fixed a bug which broke the decompiler on scripts that had bytecode which was a compiler error.\n+ Improved decompiler",
+              "timestamp": 1790106392386,
+              "date": "2026-09-22T19:46:32.386Z",
+              "supportedRobloxVersion": "version-2366ba214ec740ca",
+              "updated": true
             }
           ],
-          "count": 110
+          "count": 112
         }
       }
     }
