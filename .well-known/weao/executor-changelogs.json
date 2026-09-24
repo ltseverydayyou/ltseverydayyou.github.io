@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-09-23T23:53:36.852Z",
+  "fetchedAt": "2026-09-24T22:07:27.024Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -8677,8 +8677,8 @@
         "title": "Isaeva",
         "trackerId": "WEAO28fj47ht",
         "_id": "6a97a0b604f7721eb84803fd",
-        "version": "2.3.3",
-        "updatedDate": "09/14/2026 at 4:05 AM UTC",
+        "version": "2.3.4",
+        "updatedDate": "09/24/2026 at 6:21 AM UTC",
         "changelogs": {
           "trackerId": "WEAO28fj47ht",
           "name": "isaeva",
@@ -8835,9 +8835,17 @@
               "date": "2026-09-14T04:05:38.127Z",
               "supportedRobloxVersion": "version-c5aecda2245e4fae",
               "updated": true
+            },
+            {
+              "version": "2.3.4",
+              "changelog": "[+] Added Script Hub\n[+] Added Luau language server integration to the editor\n[+] Added setup window for missing components (only shows when something is missing)\n[+] Added Roblox client version, channel, deployment settings\n[*] Improved injection with version checks & timeouts",
+              "timestamp": 1790230881594,
+              "date": "2026-09-24T06:21:21.594Z",
+              "supportedRobloxVersion": "version-2366ba214ec740ca",
+              "updated": true
             }
           ],
-          "count": 19
+          "count": 20
         }
       },
       "WEAO957nhh9s": {
