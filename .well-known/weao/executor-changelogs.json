@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-09-25T20:19:59.855Z",
+  "fetchedAt": "2026-09-25T23:26:05.767Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -1368,8 +1368,8 @@
         "title": "Real",
         "trackerId": "WEAO4a1f93j6",
         "_id": "6a5095abbb457d55d62f8061",
-        "version": "2.7.0",
-        "updatedDate": "09/25/2026 at 4:51 PM UTC",
+        "version": "2.7.1",
+        "updatedDate": "09/25/2026 at 10:22 PM UTC",
         "changelogs": {
           "trackerId": "WEAO4a1f93j6",
           "name": "real",
@@ -1814,9 +1814,17 @@
               "date": "2026-09-25T16:51:26.480Z",
               "supportedRobloxVersion": "version-4310300497aa4917",
               "updated": false
+            },
+            {
+              "version": "2.7.1",
+              "changelog": "* Updated for version-2366ba214ec740ca\r\n* Luau 0.739 -> 0.740\r\n* Fixed an issue with getfenv making luraph mad\r\n\r\nW Hassium",
+              "timestamp": 1790374972943,
+              "date": "2026-09-25T22:22:52.943Z",
+              "supportedRobloxVersion": "version-2366ba214ec740ca",
+              "updated": true
             }
           ],
-          "count": 55
+          "count": 56
         }
       },
       "WEAO1af938a2": {
