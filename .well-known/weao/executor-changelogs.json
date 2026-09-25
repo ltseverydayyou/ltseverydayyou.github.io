@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-09-25T16:52:25.274Z",
+  "fetchedAt": "2026-09-25T20:19:59.855Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -17637,8 +17637,8 @@
         "title": "Madium",
         "trackerId": "WEAO4a1j38nv",
         "_id": "69f25c438d1db84cb50c8cfe",
-        "version": "2.3.1",
-        "updatedDate": "09/23/2026 at 2:12 PM UTC",
+        "version": "2.3.2",
+        "updatedDate": "09/25/2026 at 8:12 PM UTC",
         "changelogs": {
           "trackerId": "WEAO4a1j38nv",
           "name": "madium",
@@ -17893,9 +17893,17 @@
               "date": "2026-09-23T14:12:16.716Z",
               "supportedRobloxVersion": "version-2366ba214ec740ca",
               "updated": true
+            },
+            {
+              "version": "2.3.2",
+              "changelog": "- Updated Luau 739 to 740 *walks in with aura* hello its me crewmate im the good guy on the spaceship that complete all the tasks my goal is to complete all tasks before the imposter try to distroy everyone before he kills everyone we must complete all tasks that is how we distroy the imporster now you tell me are you a crewmember or are you an imposter um im not neither im not a crewmember or imposter?? im actually a human. being.",
+              "timestamp": 1790367172753,
+              "date": "2026-09-25T20:12:52.753Z",
+              "supportedRobloxVersion": "version-2366ba214ec740ca",
+              "updated": true
             }
           ],
-          "count": 31
+          "count": 32
         }
       },
       "WEAO4ef9k768": {
