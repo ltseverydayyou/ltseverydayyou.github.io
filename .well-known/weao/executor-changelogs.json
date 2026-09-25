@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-09-25T00:42:25.384Z",
+  "fetchedAt": "2026-09-25T05:58:07.371Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -1815,8 +1815,8 @@
         "title": "Solara",
         "trackerId": "WEAO1af938a2",
         "_id": "66633ac4b29bacaa7a568fdc",
-        "version": "0.1.7",
-        "updatedDate": "09/22/2026 at 8:43 PM UTC",
+        "version": "0.1.7a",
+        "updatedDate": "09/25/2026 at 2:07 AM UTC",
         "changelogs": {
           "trackerId": "WEAO1af938a2",
           "name": "solara",
@@ -2717,9 +2717,17 @@
               "date": "2026-08-26T16:15:31.210Z",
               "supportedRobloxVersion": "version-17d504d2c9544583",
               "updated": true
+            },
+            {
+              "version": "0.1.7a",
+              "changelog": "[+] security patch",
+              "timestamp": 1790302067031,
+              "date": "2026-09-25T02:07:47.031Z",
+              "supportedRobloxVersion": "version-2366ba214ec740ca",
+              "updated": true
             }
           ],
-          "count": 112
+          "count": 113
         }
       },
       "WEAO2c8e5827": {
