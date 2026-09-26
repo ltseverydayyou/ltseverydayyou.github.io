@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-09-26T16:37:27.210Z",
+  "fetchedAt": "2026-09-26T19:36:31.343Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -21525,8 +21525,8 @@
         "title": "Isaeva",
         "trackerId": "WEAO28fj47ht",
         "_id": "6a97a0b604f7721eb84803fd",
-        "version": "2.3.4",
-        "updatedDate": "09/24/2026 at 6:21 AM UTC",
+        "version": "2.3.5",
+        "updatedDate": "09/26/2026 at 12:21 PM UTC",
         "changelogs": {
           "trackerId": "WEAO28fj47ht",
           "name": "isaeva",
@@ -21691,9 +21691,17 @@
               "date": "2026-09-24T06:21:21.594Z",
               "supportedRobloxVersion": "version-2366ba214ec740ca",
               "updated": true
+            },
+            {
+              "version": "2.3.5",
+              "changelog": "[*] Improved gethui\n[*] Improved cloneref\n[*] Improved cache.invalidate\n[*] Improved getgc\n[*] Improved Error Messages and Debugging for Injector Problems\n[+] Added JSON-Based Custom Themes for Interface, Editor and Console\n[!] Fixed Cloudflare DNS Detection During Setup",
+              "timestamp": 1790425267430,
+              "date": "2026-09-26T12:21:07.430Z",
+              "supportedRobloxVersion": "version-2366ba214ec740ca",
+              "updated": true
             }
           ],
-          "count": 20
+          "count": 21
         }
       },
       "WEAO957nhh9s": {
