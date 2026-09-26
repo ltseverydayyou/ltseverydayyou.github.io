@@ -49,6 +49,30 @@
       "status": "supported"
     },
     {
+      "id": "airsoft-battles",
+      "name": "Rapid Fire, No Recoil, Inf Ammo, Silent Aim, Wallbang + More",
+      "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/AirsoftJunk.luau",
+      "placeIds": [
+        "16261605398"
+      ],
+      "universeIds": [
+        "5611522097"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "blade-ball-auto-parry",
+      "name": "Auto Parry",
+      "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/BladeBallAutoParry.lua",
+      "placeIds": [
+        "13772394625"
+      ],
+      "universeIds": [
+        "4777817887"
+      ],
+      "status": "supported"
+    },
+    {
       "id": "funky-ass",
       "name": "Funky Friday Autoplayer",
       "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/Funky%20Friday/SexyPlayer.lua",
@@ -577,18 +601,6 @@
       "name": "Animation Spoofer",
       "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/Nameless-Admin/refs/heads/main/Animation%20Spoofer",
       "imageUrl": "https://raw.githubusercontent.com/ltseverydayyou/ltseverydayyou.github.io/refs/heads/main/images/AnimSpoof.png",
-      "status": "supported"
-    },
-    {
-      "id": "airsoft-battles",
-      "name": "Airsoft Battles",
-      "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/AirsoftJunk.luau",
-      "placeIds": [
-        "16261605398"
-      ],
-      "universeIds": [
-        "5611522097"
-      ],
       "status": "supported"
     }
   ]
