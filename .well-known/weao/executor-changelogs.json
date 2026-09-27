@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-09-27T17:35:56.231Z",
+  "fetchedAt": "2026-09-27T21:06:09.898Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -1368,8 +1368,8 @@
         "title": "Real",
         "trackerId": "WEAO4a1f93j6",
         "_id": "6a5095abbb457d55d62f8061",
-        "version": "2.7.1",
-        "updatedDate": "09/25/2026 at 10:22 PM UTC",
+        "version": "2.7.2",
+        "updatedDate": "09/27/2026 at 6:06 AM UTC",
         "changelogs": {
           "trackerId": "WEAO4a1f93j6",
           "name": "real",
@@ -1822,9 +1822,17 @@
               "date": "2026-09-25T22:22:52.943Z",
               "supportedRobloxVersion": "version-2366ba214ec740ca",
               "updated": true
+            },
+            {
+              "version": "2.7.2",
+              "changelog": "* Fully rewrote the tphandler (autoexec is fixed), now initializes instantly\r\n* Added support for NetAssetRef in gethiddenproperty\r\n* Fixed a possible RakNet initialization crash\r\n* Fixed error message stripping in newcclosure handling (fixed a hookfunction detection)\r\n* Fixed an isscriptable/setscriptable crash",
+              "timestamp": 1790489201873,
+              "date": "2026-09-27T06:06:41.873Z",
+              "supportedRobloxVersion": "version-2366ba214ec740ca",
+              "updated": true
             }
           ],
-          "count": 56
+          "count": 57
         }
       },
       "WEAO1af938a2": {
@@ -21133,8 +21141,8 @@
         "title": "Madium",
         "trackerId": "WEAO4a1j38nv",
         "_id": "69f25c438d1db84cb50c8cfe",
-        "version": "2.3.2",
-        "updatedDate": "09/25/2026 at 8:12 PM UTC",
+        "version": "2.3.3",
+        "updatedDate": "09/27/2026 at 4:29 PM UTC",
         "changelogs": {
           "trackerId": "WEAO4a1j38nv",
           "name": "madium",
@@ -21397,9 +21405,17 @@
               "date": "2026-09-25T20:12:52.753Z",
               "supportedRobloxVersion": "version-2366ba214ec740ca",
               "updated": true
+            },
+            {
+              "version": "2.3.3",
+              "changelog": "- Added Allow MarketplaceService Purchases under Settings → Client",
+              "timestamp": 1790526544648,
+              "date": "2026-09-27T16:29:04.648Z",
+              "supportedRobloxVersion": "version-2366ba214ec740ca",
+              "updated": true
             }
           ],
-          "count": 32
+          "count": 33
         }
       },
       "WEAO4ef9k768": {
