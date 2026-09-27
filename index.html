@@ -13478,7 +13478,7 @@
                                 <h4 class="bootstrapper-card__name">Delta</h4>
                             </div>
                         </div>
-                        <span class="bootstrapper-card__rank">Direct IPA</span>
+                        <span class="bootstrapper-card__rank" id="delta-ios-rank">Direct IPA</span>
                     </div>
 
                     <p class="bootstrapper-card__description">
@@ -13486,16 +13486,19 @@
                     </p>
 
                     <dl class="bootstrapper-card__facts">
-                        <div><dt>Version</dt><dd>2.739.687</dd></div>
+                        <div><dt>Version</dt><dd id="delta-ios-version">Checking…</dd></div>
                         <div><dt>Format</dt><dd>IPA</dd></div>
                     </dl>
 
                     <div class="bootstrapper-card__links">
-                        <a class="bootstrapper-card__link--primary"
+                        <a class="bootstrapper-card__link--primary" id="delta-ios-download"
                             href="https://cdn.glopdelivery.com/file/Delta-2.739.687.ipa">
                             Download IPA <span aria-hidden="true">↓</span>
                         </a>
                     </div>
+                    <small id="delta-ios-status" style="color: var(--mu); font-size: 11px; line-height: 1.45;">
+                        Checking Delta's official iOS page for the latest IPA…
+                    </small>
                 </article>
             </div>
         </div>
@@ -13589,6 +13592,64 @@
         };
 
         loadNeoReleases();
+    })();
+
+    (() => {
+        const iosPageUrl = "https://deltaexploits.gg/delta-executor-ios";
+        const fallbackIpaUrl = "https://cdn.glopdelivery.com/file/Delta-2.739.687.ipa";
+        const downloadLink = document.getElementById("delta-ios-download");
+        const versionValue = document.getElementById("delta-ios-version");
+        const statusText = document.getElementById("delta-ios-status");
+        const rank = document.getElementById("delta-ios-rank");
+
+        if (!downloadLink || !versionValue || !statusText || !rank) return;
+
+        const applyIpa = (url, detected = true) => {
+            const versionMatch = decodeURIComponent(url).match(/Delta[-_.]?([0-9]+(?:\.[0-9]+)+)\.ipa/i);
+            const version = versionMatch ? versionMatch[1] : "Latest";
+            downloadLink.href = url;
+            downloadLink.innerHTML = `Download IPA ${version !== "Latest" ? version : ""} <span aria-hidden="true">↓</span>`;
+            versionValue.textContent = version;
+            rank.textContent = detected ? `Latest ${version}` : "Direct IPA";
+            statusText.textContent = detected
+                ? "Auto-resolved from Delta's official iOS download page."
+                : "Automatic lookup unavailable — using the last known direct IPA.";
+        };
+
+        const loadLatestDeltaIpa = async () => {
+            try {
+                const pageResponse = await fetch(iosPageUrl, { cache: "no-store" });
+                if (!pageResponse.ok) {
+                    throw new Error(`Delta iOS page returned ${pageResponse.status}`);
+                }
+
+                const html = await pageResponse.text();
+                const chunkMatch = html.match(/<script[^>]+src=["']([^"']*\/_next\/static\/chunks\/pages\/delta-executor-ios-[^"']+\.js)["']/i);
+                if (!chunkMatch) {
+                    throw new Error("Delta iOS page bundle was not found");
+                }
+
+                const bundleUrl = new URL(chunkMatch[1], iosPageUrl).href;
+                const bundleResponse = await fetch(bundleUrl, { cache: "no-store" });
+                if (!bundleResponse.ok) {
+                    throw new Error(`Delta iOS bundle returned ${bundleResponse.status}`);
+                }
+
+                const bundle = await bundleResponse.text();
+                const ipaUrls = bundle.match(/https?:\/\/[^"'\\\s]+\.ipa(?:\?[^"'\\\s]*)?/gi) || [];
+                const ipaUrl = ipaUrls.find((url) => /delta/i.test(url)) || ipaUrls[0];
+                if (!ipaUrl) {
+                    throw new Error("No IPA URL was found in Delta's iOS bundle");
+                }
+
+                applyIpa(ipaUrl, true);
+            } catch (error) {
+                applyIpa(fallbackIpaUrl, false);
+                console.warn("Unable to auto-resolve Delta iOS IPA:", error);
+            }
+        };
+
+        loadLatestDeltaIpa();
     })();
 </script>
 
