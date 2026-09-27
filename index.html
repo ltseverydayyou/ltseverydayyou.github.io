@@ -1061,6 +1061,37 @@
             text-align: center;
         }
 
+        #pz .quick-download-version {
+            display: grid;
+            gap: 6px;
+            margin-top: 4px;
+        }
+
+        #pz .quick-download-version label {
+            color: var(--mu);
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        #pz .quick-download-version select {
+            width: 100%;
+            min-height: 40px;
+            cursor: pointer;
+        }
+
+        #pz .quick-download-version select:disabled {
+            cursor: wait;
+            opacity: 0.7;
+        }
+
+        #pz .quick-download-version small {
+            color: var(--mu);
+            font-size: 11px;
+            line-height: 1.45;
+        }
+
         select {
             background: rgba(255, 255, 255, 0.05);
             color: var(--tx);
@@ -13155,11 +13186,11 @@
                 <p class="bootstrapper-catalog__eyebrow">Executor downloads</p>
                 <h3>Executor Quick Downloads</h3>
                 <p class="bootstrapper-catalog__intro">
-                    Quick access to the current download sources for Solara, Velocity, and Madium.
+                    Quick access to the current download sources for Solara, Velocity, Madium, and Arceus X NEO.
                 </p>
             </div>
-            <div class="bootstrapper-catalog__count" aria-label="4 executor downloads">
-                <strong>04</strong>
+            <div class="bootstrapper-catalog__count" aria-label="5 executor downloads">
+                <strong>05</strong>
                 <span>downloads</span>
             </div>
         </header>
@@ -13253,9 +13284,138 @@
                     </a>
                 </div>
             </article>
+
+            <article class="bootstrapper-card bootstrapper-card--exploitstrap" id="arceus-neo-card">
+                <div class="bootstrapper-card__top">
+                    <div class="bootstrapper-card__brand">
+                        <img class="bootstrapper-card__logo"
+                            src="https://spdmteam.com/SPDM%20Team%20Logo.png"
+                            alt="SPDM Team logo" />
+                        <div>
+                            <span class="bootstrapper-card__type">Android executor</span>
+                            <h4 class="bootstrapper-card__name">Arceus X NEO</h4>
+                        </div>
+                    </div>
+                    <span class="bootstrapper-card__rank" id="arceus-neo-rank">NEO only</span>
+                </div>
+
+                <p class="bootstrapper-card__description">
+                    Free Android NEO builds from the official SPDM Team release repository. V5 is intentionally excluded.
+                </p>
+
+                <dl class="bootstrapper-card__facts">
+                    <div><dt>Latest NEO</dt><dd id="arceus-neo-latest">Loading…</dd></div>
+                    <div><dt>Source</dt><dd>SPDM Team / GitHub</dd></div>
+                </dl>
+
+                <div class="quick-download-version">
+                    <label for="arceus-neo-version">Choose NEO version</label>
+                    <select id="arceus-neo-version" disabled>
+                        <option>Loading official releases…</option>
+                    </select>
+                    <small id="arceus-neo-status">Fetching NEO release history…</small>
+                </div>
+
+                <div class="bootstrapper-card__links">
+                    <a class="bootstrapper-card__link--primary" id="arceus-neo-download"
+                        href="https://android.spdmteam.com/">
+                        Download latest NEO <span aria-hidden="true">↓</span>
+                    </a>
+                </div>
+            </article>
         </div>
     </div>
 </section>
+
+<script>
+    (() => {
+        const releasesUrl = "https://api.github.com/repos/SPDMTiahh/Updates/releases?per_page=100";
+        const fallbackUrl = "https://android.spdmteam.com/";
+        const versionSelect = document.getElementById("arceus-neo-version");
+        const downloadLink = document.getElementById("arceus-neo-download");
+        const latestValue = document.getElementById("arceus-neo-latest");
+        const statusText = document.getElementById("arceus-neo-status");
+        const rank = document.getElementById("arceus-neo-rank");
+
+        if (!versionSelect || !downloadLink || !latestValue || !statusText || !rank) return;
+
+        const setDownload = (release) => {
+            downloadLink.href = release.url;
+            downloadLink.innerHTML = `Download NEO ${release.version} <span aria-hidden="true">↓</span>`;
+        };
+
+        const loadNeoReleases = async () => {
+            try {
+                const response = await fetch(releasesUrl, {
+                    headers: {
+                        Accept: "application/vnd.github+json"
+                    }
+                });
+
+                if (!response.ok) {
+                    throw new Error(`GitHub API returned ${response.status}`);
+                }
+
+                const releases = await response.json();
+                const neoReleases = releases
+                    .filter((release) => !release.draft)
+                    .map((release) => {
+                        const asset = (release.assets || []).find((item) =>
+                            /^Roblox\.Arceus\.X\.NEO\..+\.apk$/i.test(item.name || "")
+                        );
+
+                        if (!asset) return null;
+
+                        return {
+                            version: release.tag_name || release.name || "Unknown",
+                            url: asset.browser_download_url,
+                            publishedAt: release.published_at || release.created_at || ""
+                        };
+                    })
+                    .filter(Boolean);
+
+                if (!neoReleases.length) {
+                    throw new Error("No NEO APK assets were found");
+                }
+
+                versionSelect.innerHTML = "";
+                neoReleases.forEach((release, index) => {
+                    const option = document.createElement("option");
+                    option.value = release.url;
+                    option.textContent = `NEO ${release.version}${index === 0 ? " — latest" : ""}`;
+                    option.dataset.version = release.version;
+                    versionSelect.appendChild(option);
+                });
+
+                const latest = neoReleases[0];
+                latestValue.textContent = latest.version;
+                rank.textContent = `Latest ${latest.version}`;
+                statusText.textContent = `${neoReleases.length} official NEO release${neoReleases.length === 1 ? "" : "s"} available`;
+                versionSelect.disabled = false;
+                setDownload(latest);
+
+                versionSelect.addEventListener("change", () => {
+                    const selected = versionSelect.options[versionSelect.selectedIndex];
+                    setDownload({
+                        version: selected.dataset.version || selected.textContent.replace(/^NEO\s+/, ""),
+                        url: selected.value
+                    });
+                });
+            } catch (error) {
+                versionSelect.innerHTML = '<option value="">Latest NEO (automatic)</option>';
+                versionSelect.disabled = true;
+                downloadLink.href = fallbackUrl;
+                downloadLink.innerHTML = 'Download latest NEO <span aria-hidden="true">↓</span>';
+                latestValue.textContent = "Automatic";
+                rank.textContent = "NEO only";
+                statusText.textContent = "Release list unavailable — latest NEO redirect is still active.";
+                console.warn("Unable to load Arceus X NEO releases:", error);
+            }
+        };
+
+        loadNeoReleases();
+    })();
+</script>
 
             <section id="pe" class="pp">
                 <div class="g ed">
