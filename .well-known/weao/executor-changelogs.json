@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-09-27T21:06:09.898Z",
+  "fetchedAt": "2026-09-27T23:53:17.829Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -21422,8 +21422,8 @@
         "title": "Axis",
         "trackerId": "WEAO4ef9k768",
         "_id": "6a8fee3adb361db6523cd934",
-        "version": "0.4.6-e7f981e93518b158",
-        "updatedDate": "09/22/2026 at 4:00 PM UTC",
+        "version": "0.4.7-c236ca6c3518b158",
+        "updatedDate": "09/27/2026 at 9:18 PM UTC",
         "changelogs": {
           "trackerId": "WEAO4ef9k768",
           "name": "axis",
@@ -21532,9 +21532,17 @@
               "date": "2026-09-22T16:00:52.224Z",
               "supportedRobloxVersion": "version-2366ba214ec740ca",
               "updated": true
+            },
+            {
+              "version": "0.4.7-c236ca6c3518b158",
+              "changelog": "Axis Update\n\n- added what's new dots, alot of people used to get lost in order to find new features, should be more helpful now.\n- basic plan now gets our main UI which is our recommended UI\n- typing in text boxes no longer loses keyboard focus.\n- removed the annoying debug window that showed while using Main UI\n- added an aspect ratio changer, allowing you to have stretched or very tight res without having to change ur monitor's actual res, very nice, i like it tight\n- fixed the jitter caused by random mode\n- fixed mouselock being slow\n- added mesh chams with over 20+ shaders, alongside liquid glass and all sort of cool stuff.\n- added multi-adapter support\n- multi monitor support\n- added F1 as a keybind\n- fixed panic key\n- more\n\nRivals\n- added a staff detector, which automatically detects if a staff member joins the server.\n\n",
+              "timestamp": 1790543937045,
+              "date": "2026-09-27T21:18:57.045Z",
+              "supportedRobloxVersion": "version-2366ba214ec740ca",
+              "updated": true
             }
           ],
-          "count": 13
+          "count": 14
         }
       },
       "WEAO28fj47ht": {
