@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-09-26T12:21:55.050Z",
+  "fetchedAt": "2026-09-27T06:56:52.478Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -328,8 +328,8 @@
     {
       "_id": "6a5095abbb457d55d62f8061",
       "title": "Real",
-      "version": "2.7.1",
-      "updatedDate": "09/25/2026 at 10:22 PM UTC",
+      "version": "2.7.2",
+      "updatedDate": "09/27/2026 at 6:06 AM UTC",
       "uncStatus": true,
       "free": true,
       "detected": true,
