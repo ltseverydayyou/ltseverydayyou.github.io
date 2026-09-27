@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-09-26T19:36:31.343Z",
+  "fetchedAt": "2026-09-27T17:35:56.231Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -21525,8 +21525,8 @@
         "title": "Isaeva",
         "trackerId": "WEAO28fj47ht",
         "_id": "6a97a0b604f7721eb84803fd",
-        "version": "2.3.5",
-        "updatedDate": "09/26/2026 at 12:21 PM UTC",
+        "version": "2.3.6",
+        "updatedDate": "09/27/2026 at 12:20 PM UTC",
         "changelogs": {
           "trackerId": "WEAO28fj47ht",
           "name": "isaeva",
@@ -21699,9 +21699,17 @@
               "date": "2026-09-26T12:21:07.430Z",
               "supportedRobloxVersion": "version-2366ba214ec740ca",
               "updated": true
+            },
+            {
+              "version": "2.3.6",
+              "changelog": "[*] Improved Hook & Callback\n[*] Improved UI & Theme Reload\n[!] Fixed namecall references\n[!] Fixed missing stack reservation when cloning C functions\n[!] Fixed getgc",
+              "timestamp": 1790511613979,
+              "date": "2026-09-27T12:20:13.979Z",
+              "supportedRobloxVersion": "version-2366ba214ec740ca",
+              "updated": true
             }
           ],
-          "count": 21
+          "count": 22
         }
       },
       "WEAO957nhh9s": {
