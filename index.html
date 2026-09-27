@@ -4231,6 +4231,56 @@
             margin-top: 16px;
         }
 
+        .quick-download-platform {
+            display: grid;
+            gap: 12px;
+            margin-top: 22px;
+        }
+
+        .quick-download-platform + .quick-download-platform {
+            margin-top: 28px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .quick-download-platform__header {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .quick-download-platform__eyebrow {
+            display: block;
+            margin-bottom: 3px;
+            color: var(--mu);
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .quick-download-platform__header h4 {
+            margin: 0;
+            color: #fff;
+            font-size: 18px;
+            font-weight: 850;
+        }
+
+        .quick-download-platform__count {
+            padding: 5px 9px;
+            border-radius: var(--radius-control);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--mu);
+            font-size: 11px;
+            font-weight: 750;
+        }
+
+        .quick-download-platform .bootstrappers-grid {
+            margin-top: 0;
+        }
+
         .bootstrapper-card {
             --bootstrapper-surface:
                 radial-gradient(circle at top right,
@@ -13195,7 +13245,15 @@
             </div>
         </header>
 
-        <div class="bootstrappers-grid">
+        <div class="quick-download-platform quick-download-platform--windows">
+            <div class="quick-download-platform__header">
+                <div>
+                    <span class="quick-download-platform__eyebrow">Desktop</span>
+                    <h4>Windows</h4>
+                </div>
+                <span class="quick-download-platform__count">3 executors</span>
+            </div>
+            <div class="bootstrappers-grid">
             <article class="bootstrapper-card bootstrapper-card--featured">
                 <div class="bootstrapper-card__top">
                     <div class="bootstrapper-card__brand">
@@ -13285,6 +13343,18 @@
                 </div>
             </article>
 
+            </div>
+        </div>
+
+        <div class="quick-download-platform quick-download-platform--android">
+            <div class="quick-download-platform__header">
+                <div>
+                    <span class="quick-download-platform__eyebrow">Mobile</span>
+                    <h4>Android</h4>
+                </div>
+                <span class="quick-download-platform__count">1 executor</span>
+            </div>
+            <div class="bootstrappers-grid">
             <article class="bootstrapper-card bootstrapper-card--exploitstrap" id="arceus-neo-card">
                 <div class="bootstrapper-card__top">
                     <div class="bootstrapper-card__brand">
@@ -13323,6 +13393,7 @@
                     </a>
                 </div>
             </article>
+            </div>
         </div>
     </div>
 </section>
