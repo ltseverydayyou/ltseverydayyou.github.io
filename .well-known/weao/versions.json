@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-09-28T23:53:06.426Z",
+  "fetchedAt": "2026-09-29T05:00:12.804Z",
   "data": {
     "current": {
       "Windows": "version-2366ba214ec740ca",
@@ -42,11 +42,11 @@
         "bootstrapperVersion": "0, 740, 0, 7400927",
         "timestamp": 1790026206
       },
-      "Mac": "version-hidden",
+      "Mac": "version-3bc33ee7ffad426f",
       "MacDate": "9/28/2026, 8:23:14 PM UTC",
       "MacResponse": {
         "version": "0.741.0.7411056",
-        "clientVersionUpload": "version-hidden",
+        "clientVersionUpload": "version-3bc33ee7ffad426f",
         "bootstrapperVersion": "0,741,0,7411056",
         "timestamp": 1790626994
       }
