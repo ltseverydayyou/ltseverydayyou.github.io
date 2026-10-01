@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-10-01T07:42:24.856Z",
+  "fetchedAt": "2026-10-01T15:14:25.460Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -644,7 +644,7 @@
       },
       "hasIssues": false,
       "websitelink": "https://realvelocity.xyz/",
-      "keysystem": true
+      "keysystem": false
     },
     {
       "_id": "66ee1eafe70ddffe81ca0f0b",
