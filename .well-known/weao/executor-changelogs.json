@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-10-02T00:04:39.355Z",
+  "fetchedAt": "2026-10-02T06:01:15.281Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -30062,7 +30062,7 @@
         "trackerId": "WEAO76ngr5y7",
         "_id": "6a0ea99cfd26ad90bea624eb",
         "version": "1.0.9",
-        "updatedDate": "09/23/2026 at 8:31 PM UTC",
+        "updatedDate": "10/01/2026 at 1:39 AM UTC",
         "changelogs": {
           "trackerId": "WEAO76ngr5y7",
           "name": "lumen",
@@ -31414,8 +31414,8 @@
         "title": "MacSploit",
         "trackerId": "WEAO10179289",
         "_id": "692794d789eb1e034ad699c3",
-        "version": "739.2b",
-        "updatedDate": "09/23/2026 at 7:30 AM UTC",
+        "version": "740.1b",
+        "updatedDate": "10/01/2026 at 5:04 AM UTC",
         "changelogs": {
           "trackerId": "WEAO10179289",
           "name": "macsploit",
@@ -31716,17 +31716,25 @@
               "date": "2026-09-23T07:30:12.554Z",
               "supportedRobloxVersion": "version-c53a25dbc3e44a42",
               "updated": false
+            },
+            {
+              "version": "740.1b",
+              "changelog": "- updated intel to the latest roblox version\n- fixed an issue with scriptcontext fflag",
+              "timestamp": 1790831090308,
+              "date": "2026-10-01T05:04:50.308Z",
+              "supportedRobloxVersion": "version-00a4ca14e31b41e9",
+              "updated": false
             }
           ],
-          "count": 37
+          "count": 38
         }
       },
       "WEAO4a1j38nv": {
         "title": "Madium",
         "trackerId": "WEAO4a1j38nv",
         "_id": "69f25c438d1db84cb50c8cfe",
-        "version": "2.3.6",
-        "updatedDate": "09/30/2026 at 5:10 PM UTC",
+        "version": "2.3.7",
+        "updatedDate": "10/01/2026 at 2:56 AM UTC",
         "changelogs": {
           "trackerId": "WEAO4a1j38nv",
           "name": "madium",
@@ -32021,17 +32029,25 @@
               "date": "2026-09-30T17:10:36.227Z",
               "supportedRobloxVersion": "version-02c37bc51a384b8f",
               "updated": true
+            },
+            {
+              "version": "2.3.7",
+              "changelog": "Fixed `gethiddenproperty` returning `HiddenPropertyValue` instead of string data for `NetAssetRef`.\n\n* Fixed missing NetAsset serialization headers causing “Invalid NetAsset version” errors in USSI saves.\n* Fixed previously failing hidden-property types and EditableImage Object inputs.\n* Fixed BinaryString memory cleanup to prevent crashes.\n\n* Improved USSI compatibility and reliability when saving and reopening unions.",
+              "timestamp": 1790823367949,
+              "date": "2026-10-01T02:56:07.949Z",
+              "supportedRobloxVersion": "version-02c37bc51a384b8f",
+              "updated": true
             }
           ],
-          "count": 36
+          "count": 37
         }
       },
       "WEAO4ef9k768": {
         "title": "Axis",
         "trackerId": "WEAO4ef9k768",
         "_id": "6a8fee3adb361db6523cd934",
-        "version": "0.4.7-c236ca6c3518b158",
-        "updatedDate": "09/27/2026 at 9:18 PM UTC",
+        "version": "0.4.8-55e0018a58c9e2ef",
+        "updatedDate": "10/01/2026 at 9:24 PM UTC",
         "changelogs": {
           "trackerId": "WEAO4ef9k768",
           "name": "axis",
@@ -32148,9 +32164,25 @@
               "date": "2026-09-27T21:18:57.045Z",
               "supportedRobloxVersion": "version-2366ba214ec740ca",
               "updated": true
+            },
+            {
+              "version": "0.4.7-c236ca6c58c9e2ef",
+              "changelog": "Updated to version-02c37bc51a384b8f",
+              "timestamp": 1790784065497,
+              "date": "2026-09-30T16:01:05.497Z",
+              "supportedRobloxVersion": "version-02c37bc51a384b8f",
+              "updated": true
+            },
+            {
+              "version": "0.4.8-55e0018a58c9e2ef",
+              "changelog": "- Fixed AI Assistant\n- Fixed Silentaim on Hood-Customs",
+              "timestamp": 1790889848931,
+              "date": "2026-10-01T21:24:08.931Z",
+              "supportedRobloxVersion": "version-02c37bc51a384b8f",
+              "updated": true
             }
           ],
-          "count": 14
+          "count": 16
         }
       },
       "WEAO28fj47ht": {
