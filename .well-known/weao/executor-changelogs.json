@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-10-02T06:01:15.281Z",
+  "fetchedAt": "2026-10-04T05:03:29.122Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -3439,8 +3439,8 @@
         "title": "Velocity",
         "trackerId": "WEAO4a1e0747",
         "_id": "680eaddf8b44717c060fcf8d",
-        "version": "1.4.1",
-        "updatedDate": "10/01/2026 at 12:25 AM UTC",
+        "version": "1.4.4",
+        "updatedDate": "10/03/2026 at 5:38 PM UTC",
         "changelogs": {
           "trackerId": "WEAO4a1e0747",
           "name": "velocity",
@@ -29181,9 +29181,33 @@
               "date": "2026-10-01T00:25:04.338Z",
               "supportedRobloxVersion": "version-02c37bc51a384b8f",
               "updated": true
+            },
+            {
+              "version": "1.4.2",
+              "changelog": "Fixed a rare race-condition when locking the DataModel primary mutex while another thread holds the lock which would cause the entire game to just freeze and eventually crash out.\nUpdated our luau to match luau 0.741\nUpdated all fast flags to match Roblox\nCompletely overwrote the old deprecated Decompiler.exe with a blank application to remove any risk of vulns (thanks to the user who reported this and kept pushing it) <3\n---------------\nVelocity is now version 1.4.2\nClose the UI and reopen to apply the update. (Velocity Lite)",
+              "timestamp": 1790995871693,
+              "date": "2026-10-03T02:51:11.693Z",
+              "supportedRobloxVersion": "version-02c37bc51a384b8f",
+              "updated": true
+            },
+            {
+              "version": "1.4.3",
+              "changelog": "Fixed get_comm_channel ( now returns an actual BindableEvent )\n---------------\nVelocity is now version 1.4.3\nClose the UI and reopen to apply the update. (Velocity Lite)",
+              "timestamp": 1791037544882,
+              "date": "2026-10-03T14:25:44.882Z",
+              "supportedRobloxVersion": "version-02c37bc51a384b8f",
+              "updated": true
+            },
+            {
+              "version": "1.4.4",
+              "changelog": "Fixed debug.setstack setting incorrect data / values\nFixed debug.getstack returning incorrect types and values\nPatched a private unknown RCE / Vuln 😘😘😘\n---------------\nVelocity is now version 1.4.4\nClose the UI and reopen to apply the update. (Velocity Lite)",
+              "timestamp": 1791049087124,
+              "date": "2026-10-03T17:38:07.124Z",
+              "supportedRobloxVersion": "version-02c37bc51a384b8f",
+              "updated": true
             }
           ],
-          "count": 3217
+          "count": 3220
         }
       },
       "WEAO74bee327": {
@@ -32189,8 +32213,8 @@
         "title": "Isaeva",
         "trackerId": "WEAO28fj47ht",
         "_id": "6a97a0b604f7721eb84803fd",
-        "version": "2.3.6",
-        "updatedDate": "09/27/2026 at 12:20 PM UTC",
+        "version": "2.3.9",
+        "updatedDate": "10/02/2026 at 9:02 PM UTC",
         "changelogs": {
           "trackerId": "WEAO28fj47ht",
           "name": "isaeva",
@@ -32371,9 +32395,33 @@
               "date": "2026-09-27T12:20:13.979Z",
               "supportedRobloxVersion": "version-2366ba214ec740ca",
               "updated": true
+            },
+            {
+              "version": "2.3.7",
+              "changelog": "[*] Improved Injector\n[!] Fixed trampoline_call\n[!] Fixed an issue in Scheduler",
+              "timestamp": 1790712490659,
+              "date": "2026-09-29T20:08:10.659Z",
+              "supportedRobloxVersion": "version-2366ba214ec740ca",
+              "updated": true
+            },
+            {
+              "version": "2.3.8",
+              "changelog": "[+] Updated to version-02c37bc51a384b8f\n[+] Added SplitView to Monaco Editor\n[*] Improved Auto Update\n[!] Fixed Background Image on Monaco Editor",
+              "timestamp": 1790794246861,
+              "date": "2026-09-30T18:50:46.861Z",
+              "supportedRobloxVersion": "version-02c37bc51a384b8f",
+              "updated": true
+            },
+            {
+              "version": "2.3.9",
+              "changelog": "[+] Added UUID Masking\n[+] Added Detection and Injection of Existing Roblox Clients\n[*] Improved Decompiler\n[*] Improved Notification Design\n[*] Improved Dropdown Design\n[*] Improved Client Information Detection\n[*] Improved Login and Session Reliability\n[*] Improved Injection Error Reporting\n[!] Fixed a few minor issues with the internal menu design",
+              "timestamp": 1790974939783,
+              "date": "2026-10-02T21:02:19.783Z",
+              "supportedRobloxVersion": "version-02c37bc51a384b8f",
+              "updated": true
             }
           ],
-          "count": 22
+          "count": 25
         }
       },
       "WEAO957nhh9s": {
