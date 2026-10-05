@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-10-05T07:31:46.569Z",
+  "fetchedAt": "2026-10-05T23:06:16.650Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -32468,8 +32468,8 @@
         "title": "Madius",
         "trackerId": "WEAO957nhh9s",
         "_id": "6aa12a9285a6e208beacc14b",
-        "version": "1.11.2a-beta",
-        "updatedDate": "09/22/2026 at 7:46 PM UTC",
+        "version": "1.11.3-beta",
+        "updatedDate": "09/30/2026 at 5:14 PM UTC",
         "changelogs": {
           "trackerId": "WEAO957nhh9s",
           "name": "rbxcli",
@@ -33370,9 +33370,17 @@
               "date": "2026-09-22T19:46:32.386Z",
               "supportedRobloxVersion": "version-2366ba214ec740ca",
               "updated": true
+            },
+            {
+              "version": "1.11.3-beta",
+              "changelog": "+ Updated to latest roblox patch\n+ Improved fission decompiler",
+              "timestamp": 1790788481712,
+              "date": "2026-09-30T17:14:41.712Z",
+              "supportedRobloxVersion": "version-02c37bc51a384b8f",
+              "updated": true
             }
           ],
-          "count": 112
+          "count": 113
         }
       }
     }
