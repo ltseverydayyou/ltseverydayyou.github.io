@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-10-04T05:03:29.122Z",
+  "fetchedAt": "2026-10-05T07:31:46.569Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -3439,8 +3439,8 @@
         "title": "Velocity",
         "trackerId": "WEAO4a1e0747",
         "_id": "680eaddf8b44717c060fcf8d",
-        "version": "1.4.4",
-        "updatedDate": "10/03/2026 at 5:38 PM UTC",
+        "version": "1.4.5",
+        "updatedDate": "10/05/2026 at 4:45 AM UTC",
         "changelogs": {
           "trackerId": "WEAO4a1e0747",
           "name": "velocity",
@@ -29205,9 +29205,17 @@
               "date": "2026-10-03T17:38:07.124Z",
               "supportedRobloxVersion": "version-02c37bc51a384b8f",
               "updated": true
+            },
+            {
+              "version": "1.4.5",
+              "changelog": "Added the missing gethwid function ( I honestly don't know how it disappeared out of the environment )\nFixed autoexec not working\nCompletely removed the AVX2 Instruction set from the module and injector which should fix injection not working for people.\n---------------\nVelocity is now version 1.4.5\nClose the UI and reopen to apply the update.",
+              "timestamp": 1791175524957,
+              "date": "2026-10-05T04:45:24.957Z",
+              "supportedRobloxVersion": "version-02c37bc51a384b8f",
+              "updated": true
             }
           ],
-          "count": 3220
+          "count": 3221
         }
       },
       "WEAO74bee327": {
@@ -31757,8 +31765,8 @@
         "title": "Madium",
         "trackerId": "WEAO4a1j38nv",
         "_id": "69f25c438d1db84cb50c8cfe",
-        "version": "2.3.7",
-        "updatedDate": "10/01/2026 at 2:56 AM UTC",
+        "version": "2.4.1",
+        "updatedDate": "10/04/2026 at 2:35 PM UTC",
         "changelogs": {
           "trackerId": "WEAO4a1j38nv",
           "name": "madium",
@@ -32061,9 +32069,41 @@
               "date": "2026-10-01T02:56:07.949Z",
               "supportedRobloxVersion": "version-02c37bc51a384b8f",
               "updated": true
+            },
+            {
+              "version": "2.3.8",
+              "changelog": "- Fixed Could not reach Madium error with maximum undetection rates therefore any issue with dns and whatever should be fixed",
+              "timestamp": 1790990580438,
+              "date": "2026-10-03T01:23:00.438Z",
+              "supportedRobloxVersion": "version-02c37bc51a384b8f",
+              "updated": true
+            },
+            {
+              "version": "2.3.9",
+              "changelog": "Reverted ts was not ud",
+              "timestamp": 1790997020724,
+              "date": "2026-10-03T03:10:20.724Z",
+              "supportedRobloxVersion": "version-02c37bc51a384b8f",
+              "updated": true
+            },
+            {
+              "version": "2.4.0",
+              "changelog": "Updated Luau to 741, Byfron Bypassing Zero Detections Undetected Bypass activated burger bitdancer",
+              "timestamp": 1791051715310,
+              "date": "2026-10-03T18:21:55.310Z",
+              "supportedRobloxVersion": "version-02c37bc51a384b8f",
+              "updated": true
+            },
+            {
+              "version": "2.4.1",
+              "changelog": "- Fixed weird fps drop on ui every couple seconds",
+              "timestamp": 1791124520793,
+              "date": "2026-10-04T14:35:20.793Z",
+              "supportedRobloxVersion": "version-02c37bc51a384b8f",
+              "updated": true
             }
           ],
-          "count": 37
+          "count": 41
         }
       },
       "WEAO4ef9k768": {

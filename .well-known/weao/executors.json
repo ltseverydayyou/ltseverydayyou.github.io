@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-10-04T15:55:23.590Z",
+  "fetchedAt": "2026-10-05T07:31:46.569Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -602,8 +602,8 @@
     {
       "_id": "680eaddf8b44717c060fcf8d",
       "title": "Velocity",
-      "version": "1.4.4",
-      "updatedDate": "10/03/2026 at 5:38 PM UTC",
+      "version": "1.4.5",
+      "updatedDate": "10/05/2026 at 4:45 AM UTC",
       "uncStatus": true,
       "free": true,
       "detected": true,
@@ -1090,13 +1090,13 @@
     {
       "_id": "692794d789eb1e034ad699c3",
       "title": "MacSploit",
-      "version": "740.1",
-      "updatedDate": "10/03/2026 at 8:37 AM UTC",
+      "version": "741.1",
+      "updatedDate": "10/05/2026 at 1:53 AM UTC",
       "uncStatus": true,
       "free": false,
       "detected": false,
-      "rbxversion": "version-4c4fc877ca9b4c61",
-      "updateStatus": false,
+      "rbxversion": "version-3bc33ee7ffad426f",
+      "updateStatus": true,
       "websitelink": "https://www.raptor.fun/",
       "discordlink": "https://discord.gg/macsploit",
       "beta": false,
