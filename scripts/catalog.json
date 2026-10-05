@@ -394,18 +394,6 @@
       "status": "supported"
     },
     {
-      "id": "toh-win-farm",
-      "name": "TOH Autofarm",
-      "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/TOH.luau",
-      "placeIds": [
-        "1962086868"
-      ],
-      "universeIds": [
-        "703124385"
-      ],
-      "status": "supported"
-    },
-    {
       "id": "tsb-auto-combat",
       "name": "TSB Auto Combat (BETA AND LAGGY)",
       "scriptUrl": "https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/TSB%20AutoCombat.luau",
