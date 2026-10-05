@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-10-05T07:31:46.569Z",
+  "fetchedAt": "2026-10-05T16:56:44.194Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -1090,8 +1090,8 @@
     {
       "_id": "692794d789eb1e034ad699c3",
       "title": "MacSploit",
-      "version": "741.1",
-      "updatedDate": "10/05/2026 at 1:53 AM UTC",
+      "version": "741.2",
+      "updatedDate": "10/05/2026 at 2:39 PM UTC",
       "uncStatus": true,
       "free": false,
       "detected": false,
@@ -1129,8 +1129,8 @@
     {
       "_id": "69f25c438d1db84cb50c8cfe",
       "title": "Madium",
-      "version": "2.4.1",
-      "updatedDate": "10/04/2026 at 2:35 PM UTC",
+      "version": "2.4.2",
+      "updatedDate": "10/05/2026 at 1:22 PM UTC",
       "uncStatus": true,
       "free": true,
       "detected": true,
@@ -1208,8 +1208,8 @@
     {
       "_id": "6a97a0b604f7721eb84803fd",
       "title": "Isaeva",
-      "version": "2.3.9",
-      "updatedDate": "10/02/2026 at 9:02 PM UTC",
+      "version": "2.4.0",
+      "updatedDate": "10/05/2026 at 12:30 PM UTC",
       "uncStatus": true,
       "free": false,
       "detected": true,
