@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-10-06T17:04:32.805Z",
+  "fetchedAt": "2026-10-06T21:48:56.025Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -1369,7 +1369,7 @@
         "trackerId": "WEAO4a1f93j6",
         "_id": "6a5095abbb457d55d62f8061",
         "version": "2.7.4",
-        "updatedDate": "09/30/2026 at 8:25 PM UTC",
+        "updatedDate": "10/06/2026 at 6:11 PM UTC",
         "changelogs": {
           "trackerId": "WEAO4a1f93j6",
           "name": "real",
@@ -1846,9 +1846,17 @@
               "date": "2026-09-30T20:25:55.988Z",
               "supportedRobloxVersion": "version-02c37bc51a384b8f",
               "updated": true
+            },
+            {
+              "version": "2.7.4",
+              "changelog": "* Fixed a restorefunction crash issue\r\n* Fixed filtergc object lifetime issues\r\n* Fixed hookfunction not hooking closures that are currently active\r\n* Improved decompiler (better cflow flattening, inlining and constant folding)\r\n* Improved replicatesignal and fixed a possible crash",
+              "timestamp": 1791310293111,
+              "date": "2026-10-06T18:11:33.111Z",
+              "supportedRobloxVersion": "version-02c37bc51a384b8f",
+              "updated": true
             }
           ],
-          "count": 59
+          "count": 60
         }
       },
       "WEAO1af938a2": {
