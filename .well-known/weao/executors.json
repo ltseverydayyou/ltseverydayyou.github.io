@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-10-06T03:13:41.329Z",
+  "fetchedAt": "2026-10-06T10:40:41.789Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -695,8 +695,8 @@
     {
       "_id": "681baa53ab565e11d3feba0e",
       "title": "Volcano",
-      "version": "v3.2.3",
-      "updatedDate": "10/06/2026 at 2:56 AM UTC",
+      "version": "v3.2.3.1",
+      "updatedDate": "10/06/2026 at 3:52 AM UTC",
       "uncStatus": true,
       "free": true,
       "detected": true,
@@ -711,7 +711,7 @@
       "index": 9,
       "unlinked": false,
       "decompiler": true,
-      "multiInject": true,
+      "multiInject": false,
       "suncPercentage": 96,
       "uncPercentage": 99,
       "sunc": {
@@ -722,7 +722,6 @@
       "recommendedReason": {
         "features": []
       },
-      "purchaselink": "https://gckeys.cc/product?slug=volcano-executor&ref=weao",
       "keysystem": true,
       "clientmods": true,
       "trackerId": "WEAO57c866d0",
@@ -735,7 +734,8 @@
           "https://cdn.weao.gg/slug/volcano/screenshot2.png"
         ]
       },
-      "hidden": true
+      "hidden": false,
+      "purcselink": "https://gckeys.cc/product?slug=volcano-executor&ref=weao"
     },
     {
       "_id": "68899ac3e376f58c849e0e68",
@@ -1207,8 +1207,8 @@
     {
       "_id": "6a97a0b604f7721eb84803fd",
       "title": "Isaeva",
-      "version": "2.4.0",
-      "updatedDate": "10/05/2026 at 12:30 PM UTC",
+      "version": "2.4.1",
+      "updatedDate": "10/06/2026 at 7:08 AM UTC",
       "uncStatus": true,
       "free": false,
       "detected": true,
