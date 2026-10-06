@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-10-05T23:06:16.650Z",
+  "fetchedAt": "2026-10-06T03:13:41.329Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -29236,8 +29236,8 @@
         "title": "Volcano",
         "trackerId": "WEAO57c866d0",
         "_id": "681baa53ab565e11d3feba0e",
-        "version": "v3.2.5.1",
-        "updatedDate": "03/01/2026 at 8:42 PM UTC",
+        "version": "v3.2.3",
+        "updatedDate": "10/06/2026 at 2:56 AM UTC",
         "changelogs": {
           "trackerId": "WEAO57c866d0",
           "name": "volcano",
@@ -29706,9 +29706,17 @@
               "date": "2026-03-01T20:42:27.558Z",
               "supportedRobloxVersion": "version-760d064d05424689",
               "updated": true
+            },
+            {
+              "version": "v3.2.3",
+              "changelog": "[>] Updated for version-02c37bc51a384b8f",
+              "timestamp": 1791255397111,
+              "date": "2026-10-06T02:56:37.111Z",
+              "supportedRobloxVersion": "version-02c37bc51a384b8f",
+              "updated": true
             }
           ],
-          "count": 58
+          "count": 59
         }
       },
       "WEAO719ba76e": {
@@ -31446,8 +31454,8 @@
         "title": "MacSploit",
         "trackerId": "WEAO10179289",
         "_id": "692794d789eb1e034ad699c3",
-        "version": "740.1b",
-        "updatedDate": "10/01/2026 at 5:04 AM UTC",
+        "version": "741.2",
+        "updatedDate": "10/05/2026 at 2:39 PM UTC",
         "changelogs": {
           "trackerId": "WEAO10179289",
           "name": "macsploit",
@@ -31756,17 +31764,41 @@
               "date": "2026-10-01T05:04:50.308Z",
               "supportedRobloxVersion": "version-00a4ca14e31b41e9",
               "updated": false
+            },
+            {
+              "version": "740.1",
+              "changelog": "- updated arm to the latest roblox version",
+              "timestamp": 1791016654186,
+              "date": "2026-10-03T08:37:34.186Z",
+              "supportedRobloxVersion": "version-00a4ca14e31b41e9",
+              "updated": false
+            },
+            {
+              "version": "741.1",
+              "changelog": "- auto updated intel and arm to the roblox version-3bc33ee7ffad426f (0.741.0.7411056)",
+              "timestamp": 1791165195549,
+              "date": "2026-10-05T01:53:15.549Z",
+              "supportedRobloxVersion": "version-3bc33ee7ffad426f",
+              "updated": true
+            },
+            {
+              "version": "741.2",
+              "changelog": "- added purchase prompt confirmation popup",
+              "timestamp": 1791211197204,
+              "date": "2026-10-05T14:39:57.204Z",
+              "supportedRobloxVersion": "version-3bc33ee7ffad426f",
+              "updated": true
             }
           ],
-          "count": 38
+          "count": 41
         }
       },
       "WEAO4a1j38nv": {
         "title": "Madium",
         "trackerId": "WEAO4a1j38nv",
         "_id": "69f25c438d1db84cb50c8cfe",
-        "version": "2.4.1",
-        "updatedDate": "10/04/2026 at 2:35 PM UTC",
+        "version": "2.4.2",
+        "updatedDate": "10/05/2026 at 1:22 PM UTC",
         "changelogs": {
           "trackerId": "WEAO4a1j38nv",
           "name": "madium",
@@ -32101,9 +32133,17 @@
               "date": "2026-10-04T14:35:20.793Z",
               "supportedRobloxVersion": "version-02c37bc51a384b8f",
               "updated": true
+            },
+            {
+              "version": "2.4.2",
+              "changelog": "- Added Get_Schema at request of user",
+              "timestamp": 1791206577101,
+              "date": "2026-10-05T13:22:57.101Z",
+              "supportedRobloxVersion": "version-02c37bc51a384b8f",
+              "updated": true
             }
           ],
-          "count": 41
+          "count": 42
         }
       },
       "WEAO4ef9k768": {
@@ -32253,8 +32293,8 @@
         "title": "Isaeva",
         "trackerId": "WEAO28fj47ht",
         "_id": "6a97a0b604f7721eb84803fd",
-        "version": "2.3.9",
-        "updatedDate": "10/02/2026 at 9:02 PM UTC",
+        "version": "2.4.0",
+        "updatedDate": "10/05/2026 at 12:30 PM UTC",
         "changelogs": {
           "trackerId": "WEAO28fj47ht",
           "name": "isaeva",
@@ -32459,9 +32499,17 @@
               "date": "2026-10-02T21:02:19.783Z",
               "supportedRobloxVersion": "version-02c37bc51a384b8f",
               "updated": true
+            },
+            {
+              "version": "2.4.0",
+              "changelog": "\u001b[2;32m[+]\u001b[0m Added Aimbot and Chams (Shaders) to the Internal Menu\n\u001b[2;32m[+]\u001b[0m Added Halloween Theme\n\u001b[2;32m[+]\u001b[0m Added Hardware Identity Overview\n\u001b[2;34m[*]\u001b[0m Improved Internal Menu Performance\n\u001b[2;34m[*]\u001b[0m Improved Local Relay and Session Handling\n\u001b[2;34m[*]\u001b[0m Improved Login Error Reporting\n\u001b[2;33m[!]\u001b[0m Fixed Rounded Corners in Menus and Popups\n\nImprovements in stability and other new features will be coming soon.",
+              "timestamp": 1791203421396,
+              "date": "2026-10-05T12:30:21.396Z",
+              "supportedRobloxVersion": "version-02c37bc51a384b8f",
+              "updated": true
             }
           ],
-          "count": 25
+          "count": 26
         }
       },
       "WEAO957nhh9s": {
