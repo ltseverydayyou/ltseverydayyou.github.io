@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-10-06T03:13:41.329Z",
+  "fetchedAt": "2026-10-06T17:04:32.805Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -29236,8 +29236,8 @@
         "title": "Volcano",
         "trackerId": "WEAO57c866d0",
         "_id": "681baa53ab565e11d3feba0e",
-        "version": "v3.2.3",
-        "updatedDate": "10/06/2026 at 2:56 AM UTC",
+        "version": "v3.2.3.1",
+        "updatedDate": "10/06/2026 at 3:52 AM UTC",
         "changelogs": {
           "trackerId": "WEAO57c866d0",
           "name": "volcano",
@@ -29714,9 +29714,25 @@
               "date": "2026-10-06T02:56:37.111Z",
               "supportedRobloxVersion": "version-02c37bc51a384b8f",
               "updated": true
+            },
+            {
+              "version": "v3.2.3.1",
+              "changelog": "[>] Fixed vulnerability\n[>] Fixed sethiddenproperty",
+              "timestamp": 1791258757740,
+              "date": "2026-10-06T03:52:37.740Z",
+              "supportedRobloxVersion": "version-02c37bc51a384b8f",
+              "updated": true
+            },
+            {
+              "version": "v3.2.3.2",
+              "changelog": "[>] Fixed auto updater",
+              "timestamp": 1791260214631,
+              "date": "2026-10-06T04:16:54.631Z",
+              "supportedRobloxVersion": "version-02c37bc51a384b8f",
+              "updated": true
             }
           ],
-          "count": 59
+          "count": 61
         }
       },
       "WEAO719ba76e": {
@@ -32293,8 +32309,8 @@
         "title": "Isaeva",
         "trackerId": "WEAO28fj47ht",
         "_id": "6a97a0b604f7721eb84803fd",
-        "version": "2.4.0",
-        "updatedDate": "10/05/2026 at 12:30 PM UTC",
+        "version": "2.4.1",
+        "updatedDate": "10/06/2026 at 7:08 AM UTC",
         "changelogs": {
           "trackerId": "WEAO28fj47ht",
           "name": "isaeva",
@@ -32507,9 +32523,17 @@
               "date": "2026-10-05T12:30:21.396Z",
               "supportedRobloxVersion": "version-02c37bc51a384b8f",
               "updated": true
+            },
+            {
+              "version": "2.4.1",
+              "changelog": "\u001b[2;32m[+]\u001b[0m Added Astral Cham\n\u001b[2;32m[+]\u001b[0m Added additional logs for future issues (Module & Interface)\n\u001b[2;34m[*]\u001b[0m Improved internal menu performance and made some cleanups\n\u001b[2;33m[!]\u001b[0m Fixed a timeout issue with IPv6 (now supports IPv4)\n\u001b[2;33m[!]\u001b[0m Fixed an issue with Cham details (the hand was not properly)\n\u001b[2;33m[!]\u001b[0m Fixed an issue where Cham was displayed before the settings",
+              "timestamp": 1791270508055,
+              "date": "2026-10-06T07:08:28.055Z",
+              "supportedRobloxVersion": "version-02c37bc51a384b8f",
+              "updated": true
             }
           ],
-          "count": 26
+          "count": 27
         }
       },
       "WEAO957nhh9s": {
