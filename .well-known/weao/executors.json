@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-10-06T21:48:56.025Z",
+  "fetchedAt": "2026-10-07T07:35:44.750Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -695,8 +695,8 @@
     {
       "_id": "681baa53ab565e11d3feba0e",
       "title": "Volcano",
-      "version": "v3.2.3.1",
-      "updatedDate": "10/06/2026 at 3:52 AM UTC",
+      "version": "v3.2.3.3",
+      "updatedDate": "10/07/2026 at 3:32 AM UTC",
       "uncStatus": true,
       "free": true,
       "detected": true,
@@ -1207,8 +1207,8 @@
     {
       "_id": "6a97a0b604f7721eb84803fd",
       "title": "Isaeva",
-      "version": "2.4.1",
-      "updatedDate": "10/06/2026 at 7:08 AM UTC",
+      "version": "2.4.2",
+      "updatedDate": "10/07/2026 at 5:11 AM UTC",
       "uncStatus": true,
       "free": false,
       "detected": true,
