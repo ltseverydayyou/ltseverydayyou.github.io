@@ -6,7 +6,7 @@
       "filled": "BuilderIcons-Filled.ttf"
     }
   },
-  "count": 772,
+  "count": 781,
   "icons": [
     {
       "index": 1,
@@ -2698,6 +2698,27 @@
     },
     {
       "index": 129,
+      "name": "circle-dashed-person",
+      "components": "circle-dashed-person",
+      "styles": {
+        "filled": {
+          "codepoint": 62469,
+          "codePoint": "U+F405",
+          "character": "\uf405"
+        },
+        "regular": {
+          "codepoint": 62469,
+          "codePoint": "U+F405",
+          "character": "\uf405"
+        }
+      },
+      "availableStyles": [
+        "filled",
+        "regular"
+      ]
+    },
+    {
+      "index": 130,
       "name": "circle-dollar-sign",
       "components": "circle-dollar-sign",
       "styles": {
@@ -2718,7 +2739,28 @@
       ]
     },
     {
-      "index": 130,
+      "index": 131,
+      "name": "circle-face-emoji",
+      "components": "circle-face-emoji",
+      "styles": {
+        "filled": {
+          "codepoint": 62470,
+          "codePoint": "U+F406",
+          "character": "\uf406"
+        },
+        "regular": {
+          "codepoint": 62470,
+          "codePoint": "U+F406",
+          "character": "\uf406"
+        }
+      },
+      "availableStyles": [
+        "filled",
+        "regular"
+      ]
+    },
+    {
+      "index": 132,
       "name": "circle-i",
       "components": "circle-i",
       "styles": {
@@ -2739,7 +2781,7 @@
       ]
     },
     {
-      "index": 131,
+      "index": 133,
       "name": "circle-line-target-cursor",
       "components": "circle-line-target-cursor",
       "styles": {
@@ -2760,7 +2802,7 @@
       ]
     },
     {
-      "index": 132,
+      "index": 134,
       "name": "circle-minus",
       "components": "circle-minus",
       "styles": {
@@ -2781,7 +2823,7 @@
       ]
     },
     {
-      "index": 133,
+      "index": 135,
       "name": "circle-outline",
       "components": "circle-outline",
       "styles": {
@@ -2802,7 +2844,7 @@
       ]
     },
     {
-      "index": 134,
+      "index": 136,
       "name": "circle-person",
       "components": "circle-person",
       "styles": {
@@ -2823,7 +2865,7 @@
       ]
     },
     {
-      "index": 135,
+      "index": 137,
       "name": "circle-person-three-horizontal-bars-wrapping-right",
       "components": "circle-person-three-horizontal-bars-wrapping-right",
       "styles": {
@@ -2844,7 +2886,7 @@
       ]
     },
     {
-      "index": 136,
+      "index": 138,
       "name": "circle-play",
       "components": "circle-play",
       "styles": {
@@ -2865,7 +2907,7 @@
       ]
     },
     {
-      "index": 137,
+      "index": 139,
       "name": "circle-plus",
       "components": "circle-plus",
       "styles": {
@@ -2886,7 +2928,7 @@
       ]
     },
     {
-      "index": 138,
+      "index": 140,
       "name": "circle-question",
       "components": "circle-question",
       "styles": {
@@ -2907,7 +2949,7 @@
       ]
     },
     {
-      "index": 139,
+      "index": 141,
       "name": "circle-slash",
       "components": "circle-slash",
       "styles": {
@@ -2928,7 +2970,7 @@
       ]
     },
     {
-      "index": 140,
+      "index": 142,
       "name": "circle-star",
       "components": "circle-star",
       "styles": {
@@ -2949,7 +2991,7 @@
       ]
     },
     {
-      "index": 141,
+      "index": 143,
       "name": "circle-three-dots-horizontal",
       "components": "circle-three-dots-horizontal",
       "styles": {
@@ -2970,7 +3012,7 @@
       ]
     },
     {
-      "index": 142,
+      "index": 144,
       "name": "circle-three-dots-vertical",
       "components": "circle-three-dots-vertical",
       "styles": {
@@ -2991,7 +3033,7 @@
       ]
     },
     {
-      "index": 143,
+      "index": 145,
       "name": "circle-x",
       "components": "circle-x",
       "styles": {
@@ -3012,7 +3054,7 @@
       ]
     },
     {
-      "index": 144,
+      "index": 146,
       "name": "clipboard-pencil",
       "components": "clipboard-pencil",
       "styles": {
@@ -3033,7 +3075,7 @@
       ]
     },
     {
-      "index": 145,
+      "index": 147,
       "name": "clock",
       "components": "clock",
       "styles": {
@@ -3054,7 +3096,7 @@
       ]
     },
     {
-      "index": 146,
+      "index": 148,
       "name": "clock-dashed",
       "components": "clock-dashed",
       "styles": {
@@ -3075,7 +3117,7 @@
       ]
     },
     {
-      "index": 147,
+      "index": 149,
       "name": "clock-spin-reverse",
       "components": "clock-spin-reverse",
       "styles": {
@@ -3096,7 +3138,7 @@
       ]
     },
     {
-      "index": 148,
+      "index": 150,
       "name": "clock-spin-reverse-dashed",
       "components": "clock-spin-reverse-dashed",
       "styles": {
@@ -3117,7 +3159,7 @@
       ]
     },
     {
-      "index": 149,
+      "index": 151,
       "name": "clothes-hanger",
       "components": "clothes-hanger",
       "styles": {
@@ -3138,7 +3180,7 @@
       ]
     },
     {
-      "index": 150,
+      "index": 152,
       "name": "cloud",
       "components": "cloud",
       "styles": {
@@ -3159,7 +3201,7 @@
       ]
     },
     {
-      "index": 151,
+      "index": 153,
       "name": "cloud-arrow-down",
       "components": "cloud-arrow-down",
       "styles": {
@@ -3180,7 +3222,7 @@
       ]
     },
     {
-      "index": 152,
+      "index": 154,
       "name": "code",
       "components": "code",
       "styles": {
@@ -3201,7 +3243,7 @@
       ]
     },
     {
-      "index": 153,
+      "index": 155,
       "name": "compact-makeup-brush",
       "components": "compact-makeup-brush",
       "styles": {
@@ -3222,7 +3264,7 @@
       ]
     },
     {
-      "index": 154,
+      "index": 156,
       "name": "compass",
       "components": "compass",
       "styles": {
@@ -3243,7 +3285,7 @@
       ]
     },
     {
-      "index": 155,
+      "index": 157,
       "name": "computer-monitor",
       "components": "computer-monitor",
       "styles": {
@@ -3264,7 +3306,7 @@
       ]
     },
     {
-      "index": 156,
+      "index": 158,
       "name": "constrain-x-center",
       "components": "constrain-x-center",
       "styles": {
@@ -3285,7 +3327,7 @@
       ]
     },
     {
-      "index": 157,
+      "index": 159,
       "name": "constrain-x-pin-both",
       "components": "constrain-x-pin-both",
       "styles": {
@@ -3306,7 +3348,7 @@
       ]
     },
     {
-      "index": 158,
+      "index": 160,
       "name": "constrain-x-pin-end",
       "components": "constrain-x-pin-end",
       "styles": {
@@ -3327,7 +3369,7 @@
       ]
     },
     {
-      "index": 159,
+      "index": 161,
       "name": "constrain-x-pin-scale",
       "components": "constrain-x-pin-scale",
       "styles": {
@@ -3348,7 +3390,7 @@
       ]
     },
     {
-      "index": 160,
+      "index": 162,
       "name": "constrain-x-pin-start",
       "components": "constrain-x-pin-start",
       "styles": {
@@ -3369,7 +3411,7 @@
       ]
     },
     {
-      "index": 161,
+      "index": 163,
       "name": "constrain-x-scale-both",
       "components": "constrain-x-scale-both",
       "styles": {
@@ -3390,7 +3432,7 @@
       ]
     },
     {
-      "index": 162,
+      "index": 164,
       "name": "constrain-x-scale-end",
       "components": "constrain-x-scale-end",
       "styles": {
@@ -3411,7 +3453,7 @@
       ]
     },
     {
-      "index": 163,
+      "index": 165,
       "name": "constrain-x-scale-pin",
       "components": "constrain-x-scale-pin",
       "styles": {
@@ -3432,7 +3474,7 @@
       ]
     },
     {
-      "index": 164,
+      "index": 166,
       "name": "constrain-x-scale-start",
       "components": "constrain-x-scale-start",
       "styles": {
@@ -3453,7 +3495,7 @@
       ]
     },
     {
-      "index": 165,
+      "index": 167,
       "name": "constrain-y-center",
       "components": "constrain-y-center",
       "styles": {
@@ -3474,7 +3516,7 @@
       ]
     },
     {
-      "index": 166,
+      "index": 168,
       "name": "constrain-y-pin-both",
       "components": "constrain-y-pin-both",
       "styles": {
@@ -3495,7 +3537,7 @@
       ]
     },
     {
-      "index": 167,
+      "index": 169,
       "name": "constrain-y-pin-end",
       "components": "constrain-y-pin-end",
       "styles": {
@@ -3516,7 +3558,7 @@
       ]
     },
     {
-      "index": 168,
+      "index": 170,
       "name": "constrain-y-pin-scale",
       "components": "constrain-y-pin-scale",
       "styles": {
@@ -3537,7 +3579,7 @@
       ]
     },
     {
-      "index": 169,
+      "index": 171,
       "name": "constrain-y-pin-start",
       "components": "constrain-y-pin-start",
       "styles": {
@@ -3558,7 +3600,7 @@
       ]
     },
     {
-      "index": 170,
+      "index": 172,
       "name": "constrain-y-scale-both",
       "components": "constrain-y-scale-both",
       "styles": {
@@ -3579,7 +3621,7 @@
       ]
     },
     {
-      "index": 171,
+      "index": 173,
       "name": "constrain-y-scale-end",
       "components": "constrain-y-scale-end",
       "styles": {
@@ -3600,7 +3642,7 @@
       ]
     },
     {
-      "index": 172,
+      "index": 174,
       "name": "constrain-y-scale-pin",
       "components": "constrain-y-scale-pin",
       "styles": {
@@ -3621,7 +3663,7 @@
       ]
     },
     {
-      "index": 173,
+      "index": 175,
       "name": "constrain-y-scale-start",
       "components": "constrain-y-scale-start",
       "styles": {
@@ -3642,7 +3684,7 @@
       ]
     },
     {
-      "index": 174,
+      "index": 176,
       "name": "controller",
       "components": "controller",
       "styles": {
@@ -3663,7 +3705,7 @@
       ]
     },
     {
-      "index": 175,
+      "index": 177,
       "name": "controller-with-cog",
       "components": "controller-with-cog",
       "styles": {
@@ -3684,7 +3726,7 @@
       ]
     },
     {
-      "index": 176,
+      "index": 178,
       "name": "corner-radius-bottom-left",
       "components": "corner-radius-bottom-left",
       "styles": {
@@ -3705,7 +3747,7 @@
       ]
     },
     {
-      "index": 177,
+      "index": 179,
       "name": "corner-radius-bottom-right",
       "components": "corner-radius-bottom-right",
       "styles": {
@@ -3726,7 +3768,7 @@
       ]
     },
     {
-      "index": 178,
+      "index": 180,
       "name": "corner-radius-top-left",
       "components": "corner-radius-top-left",
       "styles": {
@@ -3747,7 +3789,7 @@
       ]
     },
     {
-      "index": 179,
+      "index": 181,
       "name": "corner-radius-top-right",
       "components": "corner-radius-top-right",
       "styles": {
@@ -3768,7 +3810,7 @@
       ]
     },
     {
-      "index": 180,
+      "index": 182,
       "name": "credit-card",
       "components": "credit-card",
       "styles": {
@@ -3789,7 +3831,7 @@
       ]
     },
     {
-      "index": 181,
+      "index": 183,
       "name": "crop",
       "components": "crop",
       "styles": {
@@ -3810,7 +3852,7 @@
       ]
     },
     {
-      "index": 182,
+      "index": 184,
       "name": "cross-frame",
       "components": "cross-frame",
       "styles": {
@@ -3831,7 +3873,7 @@
       ]
     },
     {
-      "index": 183,
+      "index": 185,
       "name": "crosshairs",
       "components": "crosshairs",
       "styles": {
@@ -3852,7 +3894,7 @@
       ]
     },
     {
-      "index": 184,
+      "index": 186,
       "name": "crosshairs-slash",
       "components": "crosshairs-slash",
       "styles": {
@@ -3873,7 +3915,7 @@
       ]
     },
     {
-      "index": 185,
+      "index": 187,
       "name": "crown",
       "components": "crown",
       "styles": {
@@ -3894,7 +3936,7 @@
       ]
     },
     {
-      "index": 186,
+      "index": 188,
       "name": "cube",
       "components": "cube",
       "styles": {
@@ -3915,7 +3957,7 @@
       ]
     },
     {
-      "index": 187,
+      "index": 189,
       "name": "cube-question-mark",
       "components": "cube-question-mark",
       "styles": {
@@ -3936,7 +3978,7 @@
       ]
     },
     {
-      "index": 188,
+      "index": 190,
       "name": "cube-vertexes",
       "components": "cube-vertexes",
       "styles": {
@@ -3957,7 +3999,7 @@
       ]
     },
     {
-      "index": 189,
+      "index": 191,
       "name": "cursor",
       "components": "cursor",
       "styles": {
@@ -3978,7 +4020,7 @@
       ]
     },
     {
-      "index": 190,
+      "index": 192,
       "name": "cursor-stars",
       "components": "cursor-stars",
       "styles": {
@@ -3999,7 +4041,7 @@
       ]
     },
     {
-      "index": 191,
+      "index": 193,
       "name": "curved-rectangle-megaphone",
       "components": "curved-rectangle-megaphone",
       "styles": {
@@ -4020,7 +4062,7 @@
       ]
     },
     {
-      "index": 192,
+      "index": 194,
       "name": "design-assist",
       "components": "design-assist",
       "styles": {
@@ -4041,7 +4083,7 @@
       ]
     },
     {
-      "index": 193,
+      "index": 195,
       "name": "diagonal-line-pattern",
       "components": "diagonal-line-pattern",
       "styles": {
@@ -4062,7 +4104,7 @@
       ]
     },
     {
-      "index": 194,
+      "index": 196,
       "name": "diagonal-line-pattern-sticker",
       "components": "diagonal-line-pattern-sticker",
       "styles": {
@@ -4083,7 +4125,7 @@
       ]
     },
     {
-      "index": 195,
+      "index": 197,
       "name": "diamond",
       "components": "diamond",
       "styles": {
@@ -4104,7 +4146,7 @@
       ]
     },
     {
-      "index": 196,
+      "index": 198,
       "name": "diamond-simplified",
       "components": "diamond-simplified",
       "styles": {
@@ -4125,7 +4167,7 @@
       ]
     },
     {
-      "index": 197,
+      "index": 199,
       "name": "discord",
       "components": "discord",
       "styles": {
@@ -4146,7 +4188,7 @@
       ]
     },
     {
-      "index": 198,
+      "index": 200,
       "name": "disguise-nose-glasses",
       "components": "disguise-nose-glasses",
       "styles": {
@@ -4167,7 +4209,7 @@
       ]
     },
     {
-      "index": 199,
+      "index": 201,
       "name": "document-circle-slash",
       "components": "document-circle-slash",
       "styles": {
@@ -4188,7 +4230,7 @@
       ]
     },
     {
-      "index": 200,
+      "index": 202,
       "name": "document-list-heart",
       "components": "document-list-heart",
       "styles": {
@@ -4209,7 +4251,7 @@
       ]
     },
     {
-      "index": 201,
+      "index": 203,
       "name": "document-question-mark",
       "components": "document-question-mark",
       "styles": {
@@ -4230,7 +4272,7 @@
       ]
     },
     {
-      "index": 202,
+      "index": 204,
       "name": "door-open-arrow-to-bottom-right",
       "components": "door-open-arrow-to-bottom-right",
       "styles": {
@@ -4251,7 +4293,7 @@
       ]
     },
     {
-      "index": 203,
+      "index": 205,
       "name": "dot-frame-head-blank",
       "components": "dot-frame-head-blank",
       "styles": {
@@ -4272,7 +4314,7 @@
       ]
     },
     {
-      "index": 204,
+      "index": 206,
       "name": "dot-frame-person-standing",
       "components": "dot-frame-person-standing",
       "styles": {
@@ -4293,7 +4335,7 @@
       ]
     },
     {
-      "index": 205,
+      "index": 207,
       "name": "dot-frame-tshirt",
       "components": "dot-frame-tshirt",
       "styles": {
@@ -4314,7 +4356,7 @@
       ]
     },
     {
-      "index": 206,
+      "index": 208,
       "name": "double-chevron-large-condense-down",
       "components": "double-chevron-large-condense-down",
       "styles": {
@@ -4335,7 +4377,7 @@
       ]
     },
     {
-      "index": 207,
+      "index": 209,
       "name": "double-chevron-large-condensed-up",
       "components": "double-chevron-large-condensed-up",
       "styles": {
@@ -4356,7 +4398,7 @@
       ]
     },
     {
-      "index": 208,
+      "index": 210,
       "name": "double-chevron-large-down",
       "components": "double-chevron-large-down",
       "styles": {
@@ -4377,7 +4419,7 @@
       ]
     },
     {
-      "index": 209,
+      "index": 211,
       "name": "double-chevron-large-left",
       "components": "double-chevron-large-left",
       "styles": {
@@ -4398,7 +4440,7 @@
       ]
     },
     {
-      "index": 210,
+      "index": 212,
       "name": "double-chevron-large-right",
       "components": "double-chevron-large-right",
       "styles": {
@@ -4419,7 +4461,7 @@
       ]
     },
     {
-      "index": 211,
+      "index": 213,
       "name": "double-chevron-large-up",
       "components": "double-chevron-large-up",
       "styles": {
@@ -4440,7 +4482,7 @@
       ]
     },
     {
-      "index": 212,
+      "index": 214,
       "name": "dress",
       "components": "dress",
       "styles": {
@@ -4461,7 +4503,7 @@
       ]
     },
     {
-      "index": 213,
+      "index": 215,
       "name": "dual-arrows-horizontal",
       "components": "dual-arrows-horizontal",
       "styles": {
@@ -4482,7 +4524,7 @@
       ]
     },
     {
-      "index": 214,
+      "index": 216,
       "name": "dual-arrows-horizontal-text-v-a",
       "components": "dual-arrows-horizontal-text-v-a",
       "styles": {
@@ -4503,7 +4545,7 @@
       ]
     },
     {
-      "index": 215,
+      "index": 217,
       "name": "dual-arrows-large-horizontal",
       "components": "dual-arrows-large-horizontal",
       "styles": {
@@ -4524,7 +4566,7 @@
       ]
     },
     {
-      "index": 216,
+      "index": 218,
       "name": "dual-arrows-large-vertical",
       "components": "dual-arrows-large-vertical",
       "styles": {
@@ -4545,7 +4587,7 @@
       ]
     },
     {
-      "index": 217,
+      "index": 219,
       "name": "dual-arrows-to-corners",
       "components": "dual-arrows-to-corners",
       "styles": {
@@ -4566,7 +4608,7 @@
       ]
     },
     {
-      "index": 218,
+      "index": 220,
       "name": "dual-arrows-vertical",
       "components": "dual-arrows-vertical",
       "styles": {
@@ -4587,7 +4629,7 @@
       ]
     },
     {
-      "index": 219,
+      "index": 221,
       "name": "dual-arrows-vertical-four-horizontal-lines",
       "components": "dual-arrows-vertical-four-horizontal-lines",
       "styles": {
@@ -4608,7 +4650,7 @@
       ]
     },
     {
-      "index": 220,
+      "index": 222,
       "name": "egg",
       "components": "egg",
       "styles": {
@@ -4629,7 +4671,7 @@
       ]
     },
     {
-      "index": 221,
+      "index": 223,
       "name": "envelope",
       "components": "envelope",
       "styles": {
@@ -4650,7 +4692,7 @@
       ]
     },
     {
-      "index": 222,
+      "index": 224,
       "name": "eraser",
       "components": "eraser",
       "styles": {
@@ -4671,7 +4713,7 @@
       ]
     },
     {
-      "index": 223,
+      "index": 225,
       "name": "ethernet",
       "components": "ethernet",
       "styles": {
@@ -4692,7 +4734,7 @@
       ]
     },
     {
-      "index": 224,
+      "index": 226,
       "name": "eye",
       "components": "eye",
       "styles": {
@@ -4713,7 +4755,7 @@
       ]
     },
     {
-      "index": 225,
+      "index": 227,
       "name": "eye-slash",
       "components": "eye-slash",
       "styles": {
@@ -4734,7 +4776,7 @@
       ]
     },
     {
-      "index": 226,
+      "index": 228,
       "name": "eye-with-eyeliner",
       "components": "eye-with-eyeliner",
       "styles": {
@@ -4755,7 +4797,7 @@
       ]
     },
     {
-      "index": 227,
+      "index": 229,
       "name": "eyebrows",
       "components": "eyebrows",
       "styles": {
@@ -4776,7 +4818,7 @@
       ]
     },
     {
-      "index": 228,
+      "index": 230,
       "name": "eyelashes",
       "components": "eyelashes",
       "styles": {
@@ -4797,7 +4839,7 @@
       ]
     },
     {
-      "index": 229,
+      "index": 231,
       "name": "face-winking",
       "components": "face-winking",
       "styles": {
@@ -4818,7 +4860,7 @@
       ]
     },
     {
-      "index": 230,
+      "index": 232,
       "name": "facebook",
       "components": "facebook",
       "styles": {
@@ -4839,7 +4881,7 @@
       ]
     },
     {
-      "index": 231,
+      "index": 233,
       "name": "figma",
       "components": "figma",
       "styles": {
@@ -4860,7 +4902,7 @@
       ]
     },
     {
-      "index": 232,
+      "index": 234,
       "name": "file-box",
       "components": "file-box",
       "styles": {
@@ -4881,7 +4923,7 @@
       ]
     },
     {
-      "index": 233,
+      "index": 235,
       "name": "fingerprint",
       "components": "fingerprint",
       "styles": {
@@ -4902,7 +4944,7 @@
       ]
     },
     {
-      "index": 234,
+      "index": 236,
       "name": "fish",
       "components": "fish",
       "styles": {
@@ -4923,7 +4965,7 @@
       ]
     },
     {
-      "index": 235,
+      "index": 237,
       "name": "five-vertical-lines-wave",
       "components": "five-vertical-lines-wave",
       "styles": {
@@ -4944,7 +4986,7 @@
       ]
     },
     {
-      "index": 236,
+      "index": 238,
       "name": "flag",
       "components": "flag",
       "styles": {
@@ -4965,7 +5007,7 @@
       ]
     },
     {
-      "index": 237,
+      "index": 239,
       "name": "flame",
       "components": "flame",
       "styles": {
@@ -4986,7 +5028,7 @@
       ]
     },
     {
-      "index": 238,
+      "index": 240,
       "name": "floppy-disk",
       "components": "floppy-disk",
       "styles": {
@@ -5007,7 +5049,7 @@
       ]
     },
     {
-      "index": 239,
+      "index": 241,
       "name": "folder",
       "components": "folder",
       "styles": {
@@ -5028,7 +5070,7 @@
       ]
     },
     {
-      "index": 240,
+      "index": 242,
       "name": "folder-tabs",
       "components": "folder-tabs",
       "styles": {
@@ -5049,7 +5091,7 @@
       ]
     },
     {
-      "index": 241,
+      "index": 243,
       "name": "folder-tilt",
       "components": "folder-tilt",
       "styles": {
@@ -5070,7 +5112,7 @@
       ]
     },
     {
-      "index": 242,
+      "index": 244,
       "name": "fountain-pen-nib",
       "components": "fountain-pen-nib",
       "styles": {
@@ -5091,7 +5133,7 @@
       ]
     },
     {
-      "index": 243,
+      "index": 245,
       "name": "four-bars-horizontal-center-aligned",
       "components": "four-bars-horizontal-center-aligned",
       "styles": {
@@ -5112,7 +5154,7 @@
       ]
     },
     {
-      "index": 244,
+      "index": 246,
       "name": "four-bars-horizontal-chevron-left",
       "components": "four-bars-horizontal-chevron-left",
       "styles": {
@@ -5133,7 +5175,7 @@
       ]
     },
     {
-      "index": 245,
+      "index": 247,
       "name": "four-bars-horizontal-chevron-right",
       "components": "four-bars-horizontal-chevron-right",
       "styles": {
@@ -5154,7 +5196,7 @@
       ]
     },
     {
-      "index": 246,
+      "index": 248,
       "name": "four-bars-horizontal-justified-aligned",
       "components": "four-bars-horizontal-justified-aligned",
       "styles": {
@@ -5175,7 +5217,7 @@
       ]
     },
     {
-      "index": 247,
+      "index": 249,
       "name": "four-bars-horizontal-left-aligned",
       "components": "four-bars-horizontal-left-aligned",
       "styles": {
@@ -5196,7 +5238,7 @@
       ]
     },
     {
-      "index": 248,
+      "index": 250,
       "name": "four-bars-horizontal-right-aligned",
       "components": "four-bars-horizontal-right-aligned",
       "styles": {
@@ -5217,7 +5259,7 @@
       ]
     },
     {
-      "index": 249,
+      "index": 251,
       "name": "four-rectangles-mason-grid",
       "components": "four-rectangles-mason-grid",
       "styles": {
@@ -5238,7 +5280,7 @@
       ]
     },
     {
-      "index": 250,
+      "index": 252,
       "name": "four-squares-diamond-grid",
       "components": "four-squares-diamond-grid",
       "styles": {
@@ -5259,7 +5301,7 @@
       ]
     },
     {
-      "index": 251,
+      "index": 253,
       "name": "four-squares-grid",
       "components": "four-squares-grid",
       "styles": {
@@ -5280,7 +5322,7 @@
       ]
     },
     {
-      "index": 252,
+      "index": 254,
       "name": "frame-bubble-slash",
       "components": "frame-bubble-slash",
       "styles": {
@@ -5301,7 +5343,7 @@
       ]
     },
     {
-      "index": 253,
+      "index": 255,
       "name": "frame-bubble-soundwave",
       "components": "frame-bubble-soundwave",
       "styles": {
@@ -5322,7 +5364,7 @@
       ]
     },
     {
-      "index": 254,
+      "index": 256,
       "name": "frame-camera",
       "components": "frame-camera",
       "styles": {
@@ -5343,7 +5385,7 @@
       ]
     },
     {
-      "index": 255,
+      "index": 257,
       "name": "frame-camera-center",
       "components": "frame-camera-center",
       "styles": {
@@ -5364,7 +5406,7 @@
       ]
     },
     {
-      "index": 256,
+      "index": 258,
       "name": "frame-collapsed",
       "components": "frame-collapsed",
       "styles": {
@@ -5385,7 +5427,7 @@
       ]
     },
     {
-      "index": 257,
+      "index": 259,
       "name": "frame-corners",
       "components": "frame-corners",
       "styles": {
@@ -5406,7 +5448,7 @@
       ]
     },
     {
-      "index": 258,
+      "index": 260,
       "name": "frame-expanded",
       "components": "frame-expanded",
       "styles": {
@@ -5427,7 +5469,7 @@
       ]
     },
     {
-      "index": 259,
+      "index": 261,
       "name": "frame-face",
       "components": "frame-face",
       "styles": {
@@ -5448,7 +5490,7 @@
       ]
     },
     {
-      "index": 260,
+      "index": 262,
       "name": "frame-person-torso",
       "components": "frame-person-torso",
       "styles": {
@@ -5469,7 +5511,7 @@
       ]
     },
     {
-      "index": 261,
+      "index": 263,
       "name": "frame-record",
       "components": "frame-record",
       "styles": {
@@ -5490,7 +5532,7 @@
       ]
     },
     {
-      "index": 262,
+      "index": 264,
       "name": "frame-single-bar-horizontal",
       "components": "frame-single-bar-horizontal",
       "styles": {
@@ -5511,7 +5553,7 @@
       ]
     },
     {
-      "index": 263,
+      "index": 265,
       "name": "frame-small-diamond",
       "components": "frame-small-diamond",
       "styles": {
@@ -5532,7 +5574,7 @@
       ]
     },
     {
-      "index": 264,
+      "index": 266,
       "name": "frame-soundwave",
       "components": "frame-soundwave",
       "styles": {
@@ -5553,7 +5595,7 @@
       ]
     },
     {
-      "index": 265,
+      "index": 267,
       "name": "frame-video-camera",
       "components": "frame-video-camera",
       "styles": {
@@ -5574,7 +5616,7 @@
       ]
     },
     {
-      "index": 266,
+      "index": 268,
       "name": "gear",
       "components": "gear",
       "styles": {
@@ -5595,7 +5637,7 @@
       ]
     },
     {
-      "index": 267,
+      "index": 269,
       "name": "generic-dpad",
       "components": "generic-dpad",
       "styles": {
@@ -5616,7 +5658,7 @@
       ]
     },
     {
-      "index": 268,
+      "index": 270,
       "name": "gift-box",
       "components": "gift-box",
       "styles": {
@@ -5637,7 +5679,7 @@
       ]
     },
     {
-      "index": 269,
+      "index": 271,
       "name": "gift-card",
       "components": "gift-card",
       "styles": {
@@ -5658,7 +5700,7 @@
       ]
     },
     {
-      "index": 270,
+      "index": 272,
       "name": "github",
       "components": "github",
       "styles": {
@@ -5679,7 +5721,7 @@
       ]
     },
     {
-      "index": 271,
+      "index": 273,
       "name": "glasses",
       "components": "glasses",
       "styles": {
@@ -5700,7 +5742,7 @@
       ]
     },
     {
-      "index": 272,
+      "index": 274,
       "name": "globe-detailed",
       "components": "globe-detailed",
       "styles": {
@@ -5721,7 +5763,7 @@
       ]
     },
     {
-      "index": 273,
+      "index": 275,
       "name": "globe-simplified",
       "components": "globe-simplified",
       "styles": {
@@ -5742,7 +5784,7 @@
       ]
     },
     {
-      "index": 274,
+      "index": 276,
       "name": "globe-simplipfied-speech-bubble",
       "components": "globe-simplipfied-speech-bubble",
       "styles": {
@@ -5763,7 +5805,7 @@
       ]
     },
     {
-      "index": 275,
+      "index": 277,
       "name": "google",
       "components": "google",
       "styles": {
@@ -5784,7 +5826,7 @@
       ]
     },
     {
-      "index": 276,
+      "index": 278,
       "name": "grid",
       "components": "grid",
       "styles": {
@@ -5805,7 +5847,7 @@
       ]
     },
     {
-      "index": 277,
+      "index": 279,
       "name": "guilded",
       "components": "guilded",
       "styles": {
@@ -5826,7 +5868,7 @@
       ]
     },
     {
-      "index": 278,
+      "index": 280,
       "name": "hack-week",
       "components": "hack-week",
       "styles": {
@@ -5847,7 +5889,7 @@
       ]
     },
     {
-      "index": 279,
+      "index": 281,
       "name": "hammer-code",
       "components": "hammer-code",
       "styles": {
@@ -5868,7 +5910,7 @@
       ]
     },
     {
-      "index": 280,
+      "index": 282,
       "name": "hand-arrow-down",
       "components": "hand-arrow-down",
       "styles": {
@@ -5889,7 +5931,7 @@
       ]
     },
     {
-      "index": 281,
+      "index": 283,
       "name": "hand-curved-arrow-left",
       "components": "hand-curved-arrow-left",
       "styles": {
@@ -5910,7 +5952,7 @@
       ]
     },
     {
-      "index": 282,
+      "index": 284,
       "name": "hand-dual-arrows",
       "components": "hand-dual-arrows",
       "styles": {
@@ -5931,7 +5973,7 @@
       ]
     },
     {
-      "index": 283,
+      "index": 285,
       "name": "hand-ellipse",
       "components": "hand-ellipse",
       "styles": {
@@ -5952,7 +5994,7 @@
       ]
     },
     {
-      "index": 284,
+      "index": 286,
       "name": "hand-grip",
       "components": "hand-grip",
       "styles": {
@@ -5973,7 +6015,7 @@
       ]
     },
     {
-      "index": 285,
+      "index": 287,
       "name": "hand-grip-2x-text",
       "components": "hand-grip-2x-text",
       "styles": {
@@ -5994,7 +6036,7 @@
       ]
     },
     {
-      "index": 286,
+      "index": 288,
       "name": "hand-half-ellipse",
       "components": "hand-half-ellipse",
       "styles": {
@@ -6015,7 +6057,7 @@
       ]
     },
     {
-      "index": 287,
+      "index": 289,
       "name": "hand-two-arrows-horizontal",
       "components": "hand-two-arrows-horizontal",
       "styles": {
@@ -6036,7 +6078,7 @@
       ]
     },
     {
-      "index": 288,
+      "index": 290,
       "name": "hashtag",
       "components": "hashtag",
       "styles": {
@@ -6057,7 +6099,7 @@
       ]
     },
     {
-      "index": 289,
+      "index": 291,
       "name": "hat-fedora",
       "components": "hat-fedora",
       "styles": {
@@ -6078,7 +6120,7 @@
       ]
     },
     {
-      "index": 290,
+      "index": 292,
       "name": "hat-toque",
       "components": "hat-toque",
       "styles": {
@@ -6099,7 +6141,7 @@
       ]
     },
     {
-      "index": 291,
+      "index": 293,
       "name": "head-blank",
       "components": "head-blank",
       "styles": {
@@ -6120,7 +6162,7 @@
       ]
     },
     {
-      "index": 292,
+      "index": 294,
       "name": "head-blush",
       "components": "head-blush",
       "styles": {
@@ -6141,7 +6183,7 @@
       ]
     },
     {
-      "index": 293,
+      "index": 295,
       "name": "head-female",
       "components": "head-female",
       "styles": {
@@ -6162,7 +6204,7 @@
       ]
     },
     {
-      "index": 294,
+      "index": 296,
       "name": "head-freckles",
       "components": "head-freckles",
       "styles": {
@@ -6183,7 +6225,7 @@
       ]
     },
     {
-      "index": 295,
+      "index": 297,
       "name": "head-lips",
       "components": "head-lips",
       "styles": {
@@ -6204,7 +6246,7 @@
       ]
     },
     {
-      "index": 296,
+      "index": 298,
       "name": "head-male",
       "components": "head-male",
       "styles": {
@@ -6225,7 +6267,7 @@
       ]
     },
     {
-      "index": 297,
+      "index": 299,
       "name": "headphones",
       "components": "headphones",
       "styles": {
@@ -6246,7 +6288,7 @@
       ]
     },
     {
-      "index": 298,
+      "index": 300,
       "name": "headphones-arrow-up",
       "components": "headphones-arrow-up",
       "styles": {
@@ -6267,7 +6309,7 @@
       ]
     },
     {
-      "index": 299,
+      "index": 301,
       "name": "headphones-arrow-up-lock",
       "components": "headphones-arrow-up-lock",
       "styles": {
@@ -6288,7 +6330,7 @@
       ]
     },
     {
-      "index": 300,
+      "index": 302,
       "name": "headphones-slash",
       "components": "headphones-slash",
       "styles": {
@@ -6309,7 +6351,7 @@
       ]
     },
     {
-      "index": 301,
+      "index": 303,
       "name": "headphones-x",
       "components": "headphones-x",
       "styles": {
@@ -6330,7 +6372,7 @@
       ]
     },
     {
-      "index": 302,
+      "index": 304,
       "name": "headphones-x-lock",
       "components": "headphones-x-lock",
       "styles": {
@@ -6351,7 +6393,7 @@
       ]
     },
     {
-      "index": 303,
+      "index": 305,
       "name": "heart",
       "components": "heart",
       "styles": {
@@ -6372,7 +6414,7 @@
       ]
     },
     {
-      "index": 304,
+      "index": 306,
       "name": "hexagon-binding-complex",
       "components": "hexagon-binding-complex",
       "styles": {
@@ -6393,7 +6435,7 @@
       ]
     },
     {
-      "index": 305,
+      "index": 307,
       "name": "hexagon-dot",
       "components": "hexagon-dot",
       "styles": {
@@ -6414,7 +6456,7 @@
       ]
     },
     {
-      "index": 306,
+      "index": 308,
       "name": "horiztonal-lines-descending-rectangle",
       "components": "horiztonal-lines-descending-rectangle",
       "styles": {
@@ -6435,7 +6477,7 @@
       ]
     },
     {
-      "index": 307,
+      "index": 309,
       "name": "house",
       "components": "house",
       "styles": {
@@ -6456,7 +6498,7 @@
       ]
     },
     {
-      "index": 308,
+      "index": 310,
       "name": "image",
       "components": "image",
       "styles": {
@@ -6477,7 +6519,7 @@
       ]
     },
     {
-      "index": 309,
+      "index": 311,
       "name": "image-circle-slash",
       "components": "image-circle-slash",
       "styles": {
@@ -6498,7 +6540,28 @@
       ]
     },
     {
-      "index": 310,
+      "index": 312,
+      "name": "image-person",
+      "components": "image-person",
+      "styles": {
+        "filled": {
+          "codepoint": 62471,
+          "codePoint": "U+F407",
+          "character": "\uf407"
+        },
+        "regular": {
+          "codepoint": 62471,
+          "codePoint": "U+F407",
+          "character": "\uf407"
+        }
+      },
+      "availableStyles": [
+        "filled",
+        "regular"
+      ]
+    },
+    {
+      "index": 313,
       "name": "image-stacked",
       "components": "image-stacked",
       "styles": {
@@ -6519,7 +6582,7 @@
       ]
     },
     {
-      "index": 311,
+      "index": 314,
       "name": "instagram",
       "components": "instagram",
       "styles": {
@@ -6540,7 +6603,7 @@
       ]
     },
     {
-      "index": 312,
+      "index": 315,
       "name": "jacket",
       "components": "jacket",
       "styles": {
@@ -6561,7 +6624,7 @@
       ]
     },
     {
-      "index": 313,
+      "index": 316,
       "name": "key",
       "components": "key",
       "styles": {
@@ -6582,7 +6645,7 @@
       ]
     },
     {
-      "index": 314,
+      "index": 317,
       "name": "key-alt",
       "components": "key-alt",
       "styles": {
@@ -6603,7 +6666,7 @@
       ]
     },
     {
-      "index": 315,
+      "index": 318,
       "name": "key-apostrophe",
       "components": "key-apostrophe",
       "styles": {
@@ -6624,7 +6687,7 @@
       ]
     },
     {
-      "index": 316,
+      "index": 319,
       "name": "key-arrow-down",
       "components": "key-arrow-down",
       "styles": {
@@ -6645,7 +6708,7 @@
       ]
     },
     {
-      "index": 317,
+      "index": 320,
       "name": "key-arrow-left",
       "components": "key-arrow-left",
       "styles": {
@@ -6666,7 +6729,7 @@
       ]
     },
     {
-      "index": 318,
+      "index": 321,
       "name": "key-arrow-right",
       "components": "key-arrow-right",
       "styles": {
@@ -6687,7 +6750,7 @@
       ]
     },
     {
-      "index": 319,
+      "index": 322,
       "name": "key-arrow-up",
       "components": "key-arrow-up",
       "styles": {
@@ -6708,7 +6771,7 @@
       ]
     },
     {
-      "index": 320,
+      "index": 323,
       "name": "key-asterisk",
       "components": "key-asterisk",
       "styles": {
@@ -6729,7 +6792,7 @@
       ]
     },
     {
-      "index": 321,
+      "index": 324,
       "name": "key-backspace",
       "components": "key-backspace",
       "styles": {
@@ -6750,7 +6813,7 @@
       ]
     },
     {
-      "index": 322,
+      "index": 325,
       "name": "key-caps-lock",
       "components": "key-caps-lock",
       "styles": {
@@ -6771,7 +6834,7 @@
       ]
     },
     {
-      "index": 323,
+      "index": 326,
       "name": "key-caret",
       "components": "key-caret",
       "styles": {
@@ -6792,7 +6855,7 @@
       ]
     },
     {
-      "index": 324,
+      "index": 327,
       "name": "key-comma",
       "components": "key-comma",
       "styles": {
@@ -6813,7 +6876,7 @@
       ]
     },
     {
-      "index": 325,
+      "index": 328,
       "name": "key-command",
       "components": "key-command",
       "styles": {
@@ -6834,7 +6897,7 @@
       ]
     },
     {
-      "index": 326,
+      "index": 329,
       "name": "key-control",
       "components": "key-control",
       "styles": {
@@ -6855,7 +6918,7 @@
       ]
     },
     {
-      "index": 327,
+      "index": 330,
       "name": "key-grave-accent",
       "components": "key-grave-accent",
       "styles": {
@@ -6876,7 +6939,7 @@
       ]
     },
     {
-      "index": 328,
+      "index": 331,
       "name": "key-period",
       "components": "key-period",
       "styles": {
@@ -6897,7 +6960,7 @@
       ]
     },
     {
-      "index": 329,
+      "index": 332,
       "name": "key-return",
       "components": "key-return",
       "styles": {
@@ -6918,7 +6981,7 @@
       ]
     },
     {
-      "index": 330,
+      "index": 333,
       "name": "key-shift",
       "components": "key-shift",
       "styles": {
@@ -6939,7 +7002,7 @@
       ]
     },
     {
-      "index": 331,
+      "index": 334,
       "name": "key-shift-down",
       "components": "key-shift-down",
       "styles": {
@@ -6960,7 +7023,7 @@
       ]
     },
     {
-      "index": 332,
+      "index": 335,
       "name": "key-shift-right-chevron",
       "components": "key-shift-right-chevron",
       "styles": {
@@ -6981,7 +7044,7 @@
       ]
     },
     {
-      "index": 333,
+      "index": 336,
       "name": "key-space",
       "components": "key-space",
       "styles": {
@@ -7002,7 +7065,7 @@
       ]
     },
     {
-      "index": 334,
+      "index": 337,
       "name": "key-tab",
       "components": "key-tab",
       "styles": {
@@ -7023,7 +7086,7 @@
       ]
     },
     {
-      "index": 335,
+      "index": 338,
       "name": "keyboard",
       "components": "keyboard",
       "styles": {
@@ -7044,7 +7107,7 @@
       ]
     },
     {
-      "index": 336,
+      "index": 339,
       "name": "lab-beaker",
       "components": "lab-beaker",
       "styles": {
@@ -7065,7 +7128,7 @@
       ]
     },
     {
-      "index": 337,
+      "index": 340,
       "name": "language-characters",
       "components": "language-characters",
       "styles": {
@@ -7086,7 +7149,7 @@
       ]
     },
     {
-      "index": 338,
+      "index": 341,
       "name": "leg-right",
       "components": "leg",
       "styles": {
@@ -7107,7 +7170,7 @@
       ]
     },
     {
-      "index": 339,
+      "index": 342,
       "name": "leg-left",
       "components": "leg-left",
       "styles": {
@@ -7128,7 +7191,7 @@
       ]
     },
     {
-      "index": 340,
+      "index": 343,
       "name": "leg-right",
       "components": "leg-right",
       "styles": {
@@ -7149,7 +7212,7 @@
       ]
     },
     {
-      "index": 341,
+      "index": 344,
       "name": "lightning-bolt",
       "components": "lightning-bolt",
       "styles": {
@@ -7170,7 +7233,7 @@
       ]
     },
     {
-      "index": 342,
+      "index": 345,
       "name": "line-frame-plus",
       "components": "line-frame-plus",
       "styles": {
@@ -7191,7 +7254,7 @@
       ]
     },
     {
-      "index": 343,
+      "index": 346,
       "name": "line-horizontal",
       "components": "line-horizontal",
       "styles": {
@@ -7212,7 +7275,7 @@
       ]
     },
     {
-      "index": 344,
+      "index": 347,
       "name": "line-segment-horizontal",
       "components": "line-segment-horizontal",
       "styles": {
@@ -7233,7 +7296,7 @@
       ]
     },
     {
-      "index": 345,
+      "index": 348,
       "name": "line-segment-vertical",
       "components": "line-segment-vertical",
       "styles": {
@@ -7254,7 +7317,7 @@
       ]
     },
     {
-      "index": 346,
+      "index": 349,
       "name": "line-vertical",
       "components": "line-vertical",
       "styles": {
@@ -7275,7 +7338,7 @@
       ]
     },
     {
-      "index": 347,
+      "index": 350,
       "name": "linkedin",
       "components": "linkedin",
       "styles": {
@@ -7296,7 +7359,7 @@
       ]
     },
     {
-      "index": 348,
+      "index": 351,
       "name": "lips",
       "components": "lips",
       "styles": {
@@ -7317,7 +7380,7 @@
       ]
     },
     {
-      "index": 349,
+      "index": 352,
       "name": "lips-lipstick-makeup-brush",
       "components": "lips-lipstick-makeup-brush",
       "styles": {
@@ -7338,7 +7401,7 @@
       ]
     },
     {
-      "index": 350,
+      "index": 353,
       "name": "lipstick",
       "components": "lipstick",
       "styles": {
@@ -7359,7 +7422,7 @@
       ]
     },
     {
-      "index": 351,
+      "index": 354,
       "name": "list-bulleted",
       "components": "list-bulleted",
       "styles": {
@@ -7380,7 +7443,7 @@
       ]
     },
     {
-      "index": 352,
+      "index": 355,
       "name": "list-numbered",
       "components": "list-numbered",
       "styles": {
@@ -7401,7 +7464,7 @@
       ]
     },
     {
-      "index": 353,
+      "index": 356,
       "name": "location-pin",
       "components": "location-pin",
       "styles": {
@@ -7422,7 +7485,7 @@
       ]
     },
     {
-      "index": 354,
+      "index": 357,
       "name": "location-pin-map",
       "components": "location-pin-map",
       "styles": {
@@ -7443,7 +7506,7 @@
       ]
     },
     {
-      "index": 355,
+      "index": 358,
       "name": "lock-closed",
       "components": "lock-closed",
       "styles": {
@@ -7464,7 +7527,7 @@
       ]
     },
     {
-      "index": 356,
+      "index": 359,
       "name": "lollipop",
       "components": "lollipop",
       "styles": {
@@ -7485,7 +7548,7 @@
       ]
     },
     {
-      "index": 357,
+      "index": 360,
       "name": "luau",
       "components": "luau",
       "styles": {
@@ -7506,7 +7569,7 @@
       ]
     },
     {
-      "index": 358,
+      "index": 361,
       "name": "magnifying-glass",
       "components": "magnifying-glass",
       "styles": {
@@ -7527,7 +7590,7 @@
       ]
     },
     {
-      "index": 359,
+      "index": 362,
       "name": "magnifying-glass-minus",
       "components": "magnifying-glass-minus",
       "styles": {
@@ -7548,7 +7611,7 @@
       ]
     },
     {
-      "index": 360,
+      "index": 363,
       "name": "magnifying-glass-plus",
       "components": "magnifying-glass-plus",
       "styles": {
@@ -7569,7 +7632,7 @@
       ]
     },
     {
-      "index": 361,
+      "index": 364,
       "name": "mascara",
       "components": "mascara",
       "styles": {
@@ -7590,7 +7653,7 @@
       ]
     },
     {
-      "index": 362,
+      "index": 365,
       "name": "megaphone",
       "components": "megaphone",
       "styles": {
@@ -7611,7 +7674,7 @@
       ]
     },
     {
-      "index": 363,
+      "index": 366,
       "name": "megaphone-cheer",
       "components": "megaphone-cheer",
       "styles": {
@@ -7632,7 +7695,7 @@
       ]
     },
     {
-      "index": 364,
+      "index": 367,
       "name": "memory-card",
       "components": "memory-card",
       "styles": {
@@ -7653,7 +7716,7 @@
       ]
     },
     {
-      "index": 365,
+      "index": 368,
       "name": "messenger",
       "components": "messenger",
       "styles": {
@@ -7674,7 +7737,7 @@
       ]
     },
     {
-      "index": 366,
+      "index": 369,
       "name": "meta",
       "components": "meta",
       "styles": {
@@ -7695,7 +7758,7 @@
       ]
     },
     {
-      "index": 367,
+      "index": 370,
       "name": "microphone",
       "components": "microphone",
       "styles": {
@@ -7716,7 +7779,7 @@
       ]
     },
     {
-      "index": 368,
+      "index": 371,
       "name": "microphone-slash",
       "components": "microphone-slash",
       "styles": {
@@ -7737,7 +7800,7 @@
       ]
     },
     {
-      "index": 369,
+      "index": 372,
       "name": "microphone-text-box",
       "components": "microphone-text-box",
       "styles": {
@@ -7758,7 +7821,7 @@
       ]
     },
     {
-      "index": 370,
+      "index": 373,
       "name": "microphone-triangle-exclamation",
       "components": "microphone-triangle-exclamation",
       "styles": {
@@ -7779,7 +7842,7 @@
       ]
     },
     {
-      "index": 371,
+      "index": 374,
       "name": "microsoft",
       "components": "microsoft",
       "styles": {
@@ -7800,7 +7863,7 @@
       ]
     },
     {
-      "index": 372,
+      "index": 375,
       "name": "middle-dot",
       "components": "middle-dot",
       "styles": {
@@ -7821,7 +7884,7 @@
       ]
     },
     {
-      "index": 373,
+      "index": 376,
       "name": "milk",
       "components": "milk",
       "styles": {
@@ -7842,7 +7905,7 @@
       ]
     },
     {
-      "index": 374,
+      "index": 377,
       "name": "minus",
       "components": "minus",
       "styles": {
@@ -7863,7 +7926,7 @@
       ]
     },
     {
-      "index": 375,
+      "index": 378,
       "name": "minus-small",
       "components": "minus-small",
       "styles": {
@@ -7884,7 +7947,7 @@
       ]
     },
     {
-      "index": 376,
+      "index": 379,
       "name": "mirror-standing",
       "components": "mirror-standing",
       "styles": {
@@ -7905,7 +7968,7 @@
       ]
     },
     {
-      "index": 377,
+      "index": 380,
       "name": "moments",
       "components": "moments",
       "styles": {
@@ -7926,7 +7989,7 @@
       ]
     },
     {
-      "index": 378,
+      "index": 381,
       "name": "moon",
       "components": "moon",
       "styles": {
@@ -7947,7 +8010,7 @@
       ]
     },
     {
-      "index": 379,
+      "index": 382,
       "name": "moon-with-stars",
       "components": "moon-with-stars",
       "styles": {
@@ -7968,7 +8031,7 @@
       ]
     },
     {
-      "index": 380,
+      "index": 383,
       "name": "mouse-button-center",
       "components": "mouse-button-center",
       "styles": {
@@ -7989,7 +8052,7 @@
       ]
     },
     {
-      "index": 381,
+      "index": 384,
       "name": "mouse-button-left",
       "components": "mouse-button-left",
       "styles": {
@@ -8010,7 +8073,7 @@
       ]
     },
     {
-      "index": 382,
+      "index": 385,
       "name": "mouse-button-right",
       "components": "mouse-button-right",
       "styles": {
@@ -8031,7 +8094,7 @@
       ]
     },
     {
-      "index": 383,
+      "index": 386,
       "name": "mouse-scrollwheel",
       "components": "mouse-scrollwheel",
       "styles": {
@@ -8052,7 +8115,7 @@
       ]
     },
     {
-      "index": 384,
+      "index": 387,
       "name": "music-note",
       "components": "music-note",
       "styles": {
@@ -8073,7 +8136,7 @@
       ]
     },
     {
-      "index": 385,
+      "index": 388,
       "name": "nebula",
       "components": "nebula",
       "styles": {
@@ -8094,7 +8157,7 @@
       ]
     },
     {
-      "index": 386,
+      "index": 389,
       "name": "necklace",
       "components": "necklace",
       "styles": {
@@ -8115,7 +8178,7 @@
       ]
     },
     {
-      "index": 387,
+      "index": 390,
       "name": "nexus",
       "components": "nexus",
       "styles": {
@@ -8136,7 +8199,7 @@
       ]
     },
     {
-      "index": 388,
+      "index": 391,
       "name": "nine-dots-grid",
       "components": "nine-dots-grid",
       "styles": {
@@ -8157,7 +8220,7 @@
       ]
     },
     {
-      "index": 389,
+      "index": 392,
       "name": "ninja",
       "components": "ninja",
       "styles": {
@@ -8178,7 +8241,7 @@
       ]
     },
     {
-      "index": 390,
+      "index": 393,
       "name": "nose",
       "components": "nose",
       "styles": {
@@ -8199,7 +8262,7 @@
       ]
     },
     {
-      "index": 391,
+      "index": 394,
       "name": "octogon",
       "components": "octogon",
       "styles": {
@@ -8220,7 +8283,7 @@
       ]
     },
     {
-      "index": 392,
+      "index": 395,
       "name": "page",
       "components": "page",
       "styles": {
@@ -8241,7 +8304,7 @@
       ]
     },
     {
-      "index": 393,
+      "index": 396,
       "name": "paint-brush",
       "components": "paint-brush",
       "styles": {
@@ -8262,7 +8325,7 @@
       ]
     },
     {
-      "index": 394,
+      "index": 397,
       "name": "paint-bucket",
       "components": "paint-bucket",
       "styles": {
@@ -8283,7 +8346,7 @@
       ]
     },
     {
-      "index": 395,
+      "index": 398,
       "name": "pants",
       "components": "pants",
       "styles": {
@@ -8304,7 +8367,7 @@
       ]
     },
     {
-      "index": 396,
+      "index": 399,
       "name": "pants-2d-text",
       "components": "pants-2d-text",
       "styles": {
@@ -8325,7 +8388,7 @@
       ]
     },
     {
-      "index": 397,
+      "index": 400,
       "name": "paper-airplane",
       "components": "paper-airplane",
       "styles": {
@@ -8346,7 +8409,7 @@
       ]
     },
     {
-      "index": 398,
+      "index": 401,
       "name": "paragraph",
       "components": "paragraph",
       "styles": {
@@ -8367,7 +8430,7 @@
       ]
     },
     {
-      "index": 399,
+      "index": 402,
       "name": "parrot",
       "components": "parrot",
       "styles": {
@@ -8388,7 +8451,7 @@
       ]
     },
     {
-      "index": 400,
+      "index": 403,
       "name": "pause-large",
       "components": "pause-large",
       "styles": {
@@ -8409,7 +8472,7 @@
       ]
     },
     {
-      "index": 401,
+      "index": 404,
       "name": "pause-small",
       "components": "pause-small",
       "styles": {
@@ -8430,7 +8493,7 @@
       ]
     },
     {
-      "index": 402,
+      "index": 405,
       "name": "peanut",
       "components": "peanut",
       "styles": {
@@ -8451,7 +8514,7 @@
       ]
     },
     {
-      "index": 403,
+      "index": 406,
       "name": "pencil",
       "components": "pencil",
       "styles": {
@@ -8472,7 +8535,7 @@
       ]
     },
     {
-      "index": 404,
+      "index": 407,
       "name": "pencil-square",
       "components": "pencil-square",
       "styles": {
@@ -8493,7 +8556,7 @@
       ]
     },
     {
-      "index": 405,
+      "index": 408,
       "name": "person",
       "components": "person",
       "styles": {
@@ -8514,7 +8577,7 @@
       ]
     },
     {
-      "index": 406,
+      "index": 409,
       "name": "person-arrow-from-bottom-right",
       "components": "person-arrow-from-bottom-right",
       "styles": {
@@ -8535,7 +8598,7 @@
       ]
     },
     {
-      "index": 407,
+      "index": 410,
       "name": "person-check",
       "components": "person-check",
       "styles": {
@@ -8556,7 +8619,7 @@
       ]
     },
     {
-      "index": 408,
+      "index": 411,
       "name": "person-circle-slash",
       "components": "person-circle-slash",
       "styles": {
@@ -8577,7 +8640,7 @@
       ]
     },
     {
-      "index": 409,
+      "index": 412,
       "name": "person-climbing",
       "components": "person-climbing",
       "styles": {
@@ -8598,7 +8661,7 @@
       ]
     },
     {
-      "index": 410,
+      "index": 413,
       "name": "person-clock",
       "components": "person-clock",
       "styles": {
@@ -8619,7 +8682,7 @@
       ]
     },
     {
-      "index": 411,
+      "index": 414,
       "name": "person-crouching",
       "components": "person-crouching",
       "styles": {
@@ -8640,7 +8703,7 @@
       ]
     },
     {
-      "index": 412,
+      "index": 415,
       "name": "person-falling",
       "components": "person-falling",
       "styles": {
@@ -8661,7 +8724,7 @@
       ]
     },
     {
-      "index": 413,
+      "index": 416,
       "name": "person-graduate",
       "components": "person-graduate",
       "styles": {
@@ -8682,7 +8745,7 @@
       ]
     },
     {
-      "index": 414,
+      "index": 417,
       "name": "person-jumping",
       "components": "person-jumping",
       "styles": {
@@ -8703,7 +8766,7 @@
       ]
     },
     {
-      "index": 415,
+      "index": 418,
       "name": "person-magnifying-glass",
       "components": "person-magnifying-glass",
       "styles": {
@@ -8724,7 +8787,7 @@
       ]
     },
     {
-      "index": 416,
+      "index": 419,
       "name": "person-photo-camera",
       "components": "person-photo-camera",
       "styles": {
@@ -8745,7 +8808,7 @@
       ]
     },
     {
-      "index": 417,
+      "index": 420,
       "name": "person-play",
       "components": "person-play",
       "styles": {
@@ -8766,7 +8829,7 @@
       ]
     },
     {
-      "index": 418,
+      "index": 421,
       "name": "person-play-clock",
       "components": "person-play-clock",
       "styles": {
@@ -8787,7 +8850,7 @@
       ]
     },
     {
-      "index": 419,
+      "index": 422,
       "name": "person-plus",
       "components": "person-plus",
       "styles": {
@@ -8808,7 +8871,7 @@
       ]
     },
     {
-      "index": 420,
+      "index": 423,
       "name": "person-racing",
       "components": "person-racing",
       "styles": {
@@ -8829,7 +8892,7 @@
       ]
     },
     {
-      "index": 421,
+      "index": 424,
       "name": "person-rectangle-horizontal-line",
       "components": "person-rectangle-horizontal-line",
       "styles": {
@@ -8850,7 +8913,7 @@
       ]
     },
     {
-      "index": 422,
+      "index": 425,
       "name": "person-running",
       "components": "person-running",
       "styles": {
@@ -8871,7 +8934,7 @@
       ]
     },
     {
-      "index": 423,
+      "index": 426,
       "name": "person-standing",
       "components": "person-standing",
       "styles": {
@@ -8892,7 +8955,7 @@
       ]
     },
     {
-      "index": 424,
+      "index": 427,
       "name": "person-standing-arrow-reverse",
       "components": "person-standing-arrow-reverse",
       "styles": {
@@ -8913,7 +8976,7 @@
       ]
     },
     {
-      "index": 425,
+      "index": 428,
       "name": "person-standing-dual-arrows-vertical",
       "components": "person-standing-dual-arrows-vertical",
       "styles": {
@@ -8934,7 +8997,7 @@
       ]
     },
     {
-      "index": 426,
+      "index": 429,
       "name": "person-standing-gear",
       "components": "person-standing-gear",
       "styles": {
@@ -8955,7 +9018,7 @@
       ]
     },
     {
-      "index": 427,
+      "index": 430,
       "name": "person-swimming",
       "components": "person-swimming",
       "styles": {
@@ -8976,7 +9039,7 @@
       ]
     },
     {
-      "index": 428,
+      "index": 431,
       "name": "person-teleport",
       "components": "person-teleport",
       "styles": {
@@ -8997,7 +9060,7 @@
       ]
     },
     {
-      "index": 429,
+      "index": 432,
       "name": "person-trash-can",
       "components": "person-trash-can",
       "styles": {
@@ -9018,7 +9081,7 @@
       ]
     },
     {
-      "index": 430,
+      "index": 433,
       "name": "person-walking",
       "components": "person-walking",
       "styles": {
@@ -9039,7 +9102,7 @@
       ]
     },
     {
-      "index": 431,
+      "index": 434,
       "name": "person-walking-dual-chevrons-horizontal",
       "components": "person-walking-dual-chevrons-horizontal",
       "styles": {
@@ -9060,7 +9123,7 @@
       ]
     },
     {
-      "index": 432,
+      "index": 435,
       "name": "person-with-smaller-person",
       "components": "person-with-smaller-person",
       "styles": {
@@ -9081,7 +9144,7 @@
       ]
     },
     {
-      "index": 433,
+      "index": 436,
       "name": "phone",
       "components": "phone",
       "styles": {
@@ -9102,7 +9165,7 @@
       ]
     },
     {
-      "index": 434,
+      "index": 437,
       "name": "phone-arrow-diagonal-down",
       "components": "phone-arrow-diagonal-down",
       "styles": {
@@ -9123,7 +9186,7 @@
       ]
     },
     {
-      "index": 435,
+      "index": 438,
       "name": "phone-arrow-diagonal-up",
       "components": "phone-arrow-diagonal-up",
       "styles": {
@@ -9144,7 +9207,7 @@
       ]
     },
     {
-      "index": 436,
+      "index": 439,
       "name": "phone-down",
       "components": "phone-down",
       "styles": {
@@ -9165,7 +9228,7 @@
       ]
     },
     {
-      "index": 437,
+      "index": 440,
       "name": "phone-plus",
       "components": "phone-plus",
       "styles": {
@@ -9186,7 +9249,7 @@
       ]
     },
     {
-      "index": 438,
+      "index": 441,
       "name": "phone-triangle-exclamation",
       "components": "phone-triangle-exclamation",
       "styles": {
@@ -9207,7 +9270,7 @@
       ]
     },
     {
-      "index": 439,
+      "index": 442,
       "name": "phone-volume",
       "components": "phone-volume",
       "styles": {
@@ -9228,7 +9291,7 @@
       ]
     },
     {
-      "index": 440,
+      "index": 443,
       "name": "phone-x",
       "components": "phone-x",
       "styles": {
@@ -9249,7 +9312,7 @@
       ]
     },
     {
-      "index": 441,
+      "index": 444,
       "name": "photo-camera",
       "components": "photo-camera",
       "styles": {
@@ -9270,7 +9333,7 @@
       ]
     },
     {
-      "index": 442,
+      "index": 445,
       "name": "photo-camera-face",
       "components": "photo-camera-face",
       "styles": {
@@ -9291,7 +9354,7 @@
       ]
     },
     {
-      "index": 443,
+      "index": 446,
       "name": "photo-camera-face-lightning-bolt",
       "components": "photo-camera-face-lightning-bolt",
       "styles": {
@@ -9312,7 +9375,7 @@
       ]
     },
     {
-      "index": 444,
+      "index": 447,
       "name": "photo-camera-slash",
       "components": "photo-camera-slash",
       "styles": {
@@ -9333,7 +9396,7 @@
       ]
     },
     {
-      "index": 445,
+      "index": 448,
       "name": "picture-in-picture",
       "components": "picture-in-picture",
       "styles": {
@@ -9354,7 +9417,7 @@
       ]
     },
     {
-      "index": 446,
+      "index": 449,
       "name": "pig",
       "components": "pig",
       "styles": {
@@ -9375,7 +9438,7 @@
       ]
     },
     {
-      "index": 447,
+      "index": 450,
       "name": "pin",
       "components": "pin",
       "styles": {
@@ -9396,7 +9459,7 @@
       ]
     },
     {
-      "index": 448,
+      "index": 451,
       "name": "pin-slash",
       "components": "pin-slash",
       "styles": {
@@ -9417,7 +9480,7 @@
       ]
     },
     {
-      "index": 449,
+      "index": 452,
       "name": "pistachio",
       "components": "pistachio",
       "styles": {
@@ -9438,7 +9501,7 @@
       ]
     },
     {
-      "index": 450,
+      "index": 453,
       "name": "play-large",
       "components": "play-large",
       "styles": {
@@ -9459,7 +9522,7 @@
       ]
     },
     {
-      "index": 451,
+      "index": 454,
       "name": "play-small",
       "components": "play-small",
       "styles": {
@@ -9480,7 +9543,7 @@
       ]
     },
     {
-      "index": 452,
+      "index": 455,
       "name": "play-xlarge",
       "components": "play-xlarge",
       "styles": {
@@ -9501,7 +9564,7 @@
       ]
     },
     {
-      "index": 453,
+      "index": 456,
       "name": "playstation",
       "components": "playstation",
       "styles": {
@@ -9522,7 +9585,7 @@
       ]
     },
     {
-      "index": 454,
+      "index": 457,
       "name": "playstation-circle",
       "components": "playstation-circle",
       "styles": {
@@ -9543,7 +9606,7 @@
       ]
     },
     {
-      "index": 455,
+      "index": 458,
       "name": "plus-large",
       "components": "plus-large",
       "styles": {
@@ -9564,7 +9627,7 @@
       ]
     },
     {
-      "index": 456,
+      "index": 459,
       "name": "plus-small",
       "components": "plus-small",
       "styles": {
@@ -9585,7 +9648,7 @@
       ]
     },
     {
-      "index": 457,
+      "index": 460,
       "name": "premium",
       "components": "premium",
       "styles": {
@@ -9606,7 +9669,7 @@
       ]
     },
     {
-      "index": 458,
+      "index": 461,
       "name": "ps-circle",
       "components": "ps-circle",
       "styles": {
@@ -9627,7 +9690,7 @@
       ]
     },
     {
-      "index": 459,
+      "index": 462,
       "name": "ps-circle-pressed",
       "components": "ps-circle-pressed",
       "styles": {
@@ -9648,7 +9711,7 @@
       ]
     },
     {
-      "index": 460,
+      "index": 463,
       "name": "ps-circle-unpressed",
       "components": "ps-circle-unpressed",
       "styles": {
@@ -9669,7 +9732,7 @@
       ]
     },
     {
-      "index": 461,
+      "index": 464,
       "name": "ps-dpad",
       "components": "ps-dpad",
       "styles": {
@@ -9690,7 +9753,7 @@
       ]
     },
     {
-      "index": 462,
+      "index": 465,
       "name": "ps-dpad-down",
       "components": "ps-dpad-down",
       "styles": {
@@ -9711,7 +9774,7 @@
       ]
     },
     {
-      "index": 463,
+      "index": 466,
       "name": "ps-dpad-left",
       "components": "ps-dpad-left",
       "styles": {
@@ -9732,7 +9795,7 @@
       ]
     },
     {
-      "index": 464,
+      "index": 467,
       "name": "ps-dpad-right",
       "components": "ps-dpad-right",
       "styles": {
@@ -9753,7 +9816,7 @@
       ]
     },
     {
-      "index": 465,
+      "index": 468,
       "name": "ps-dpad-up",
       "components": "ps-dpad-up",
       "styles": {
@@ -9774,7 +9837,7 @@
       ]
     },
     {
-      "index": 466,
+      "index": 469,
       "name": "ps-l1",
       "components": "ps-l1",
       "styles": {
@@ -9795,7 +9858,7 @@
       ]
     },
     {
-      "index": 467,
+      "index": 470,
       "name": "ps-l2",
       "components": "ps-l2",
       "styles": {
@@ -9816,7 +9879,7 @@
       ]
     },
     {
-      "index": 468,
+      "index": 471,
       "name": "ps-l3",
       "components": "ps-l3",
       "styles": {
@@ -9837,7 +9900,7 @@
       ]
     },
     {
-      "index": 469,
+      "index": 472,
       "name": "ps-r1",
       "components": "ps-r1",
       "styles": {
@@ -9858,7 +9921,7 @@
       ]
     },
     {
-      "index": 470,
+      "index": 473,
       "name": "ps-r2",
       "components": "ps-r2",
       "styles": {
@@ -9879,7 +9942,7 @@
       ]
     },
     {
-      "index": 471,
+      "index": 474,
       "name": "ps-r3",
       "components": "ps-r3",
       "styles": {
@@ -9900,7 +9963,7 @@
       ]
     },
     {
-      "index": 472,
+      "index": 475,
       "name": "ps-square",
       "components": "ps-square",
       "styles": {
@@ -9921,7 +9984,7 @@
       ]
     },
     {
-      "index": 473,
+      "index": 476,
       "name": "ps-square-pressed",
       "components": "ps-square-pressed",
       "styles": {
@@ -9942,7 +10005,7 @@
       ]
     },
     {
-      "index": 474,
+      "index": 477,
       "name": "ps-square-unpressed",
       "components": "ps-square-unpressed",
       "styles": {
@@ -9963,7 +10026,7 @@
       ]
     },
     {
-      "index": 475,
+      "index": 478,
       "name": "ps-stick-left",
       "components": "ps-stick-left",
       "styles": {
@@ -9984,7 +10047,7 @@
       ]
     },
     {
-      "index": 476,
+      "index": 479,
       "name": "ps-stick-right",
       "components": "ps-stick-right",
       "styles": {
@@ -10005,7 +10068,7 @@
       ]
     },
     {
-      "index": 477,
+      "index": 480,
       "name": "ps-triagle",
       "components": "ps-triagle",
       "styles": {
@@ -10026,7 +10089,7 @@
       ]
     },
     {
-      "index": 478,
+      "index": 481,
       "name": "ps-triangle-pressed",
       "components": "ps-triangle-pressed",
       "styles": {
@@ -10047,7 +10110,7 @@
       ]
     },
     {
-      "index": 479,
+      "index": 482,
       "name": "ps-triangle-unpressed",
       "components": "ps-triangle-unpressed",
       "styles": {
@@ -10068,7 +10131,7 @@
       ]
     },
     {
-      "index": 480,
+      "index": 483,
       "name": "ps-x",
       "components": "ps-x",
       "styles": {
@@ -10089,7 +10152,7 @@
       ]
     },
     {
-      "index": 481,
+      "index": 484,
       "name": "ps-x-pressed",
       "components": "ps-x-pressed",
       "styles": {
@@ -10110,7 +10173,7 @@
       ]
     },
     {
-      "index": 482,
+      "index": 485,
       "name": "ps-x-unpressed",
       "components": "ps-x-unpressed",
       "styles": {
@@ -10131,7 +10194,7 @@
       ]
     },
     {
-      "index": 483,
+      "index": 486,
       "name": "ps4-options",
       "components": "ps4-options",
       "styles": {
@@ -10152,7 +10215,7 @@
       ]
     },
     {
-      "index": 484,
+      "index": 487,
       "name": "ps4-share",
       "components": "ps4-share",
       "styles": {
@@ -10173,7 +10236,7 @@
       ]
     },
     {
-      "index": 485,
+      "index": 488,
       "name": "ps4-touchpad",
       "components": "ps4-touchpad",
       "styles": {
@@ -10194,7 +10257,7 @@
       ]
     },
     {
-      "index": 486,
+      "index": 489,
       "name": "ps5-options",
       "components": "ps5-options",
       "styles": {
@@ -10215,7 +10278,7 @@
       ]
     },
     {
-      "index": 487,
+      "index": 490,
       "name": "ps5-share",
       "components": "ps5-share",
       "styles": {
@@ -10236,7 +10299,7 @@
       ]
     },
     {
-      "index": 488,
+      "index": 491,
       "name": "ps5-touchpad",
       "components": "ps5-touchpad",
       "styles": {
@@ -10257,7 +10320,7 @@
       ]
     },
     {
-      "index": 489,
+      "index": 492,
       "name": "pumpkin",
       "components": "pumpkin",
       "styles": {
@@ -10278,7 +10341,7 @@
       ]
     },
     {
-      "index": 490,
+      "index": 493,
       "name": "purse",
       "components": "purse",
       "styles": {
@@ -10299,7 +10362,7 @@
       ]
     },
     {
-      "index": 491,
+      "index": 494,
       "name": "quotation",
       "components": "quotation",
       "styles": {
@@ -10320,7 +10383,7 @@
       ]
     },
     {
-      "index": 492,
+      "index": 495,
       "name": "react",
       "components": "react",
       "styles": {
@@ -10341,7 +10404,7 @@
       ]
     },
     {
-      "index": 493,
+      "index": 496,
       "name": "rectangle-cursor",
       "components": "rectangle-cursor",
       "styles": {
@@ -10362,7 +10425,7 @@
       ]
     },
     {
-      "index": 494,
+      "index": 497,
       "name": "rectangle-line-divider",
       "components": "rectangle-line-divider",
       "styles": {
@@ -10383,7 +10446,7 @@
       ]
     },
     {
-      "index": 495,
+      "index": 498,
       "name": "rectangle-list",
       "components": "rectangle-list",
       "styles": {
@@ -10404,7 +10467,7 @@
       ]
     },
     {
-      "index": 496,
+      "index": 499,
       "name": "rectangle-list-pencil",
       "components": "rectangle-list-pencil",
       "styles": {
@@ -10425,7 +10488,7 @@
       ]
     },
     {
-      "index": 497,
+      "index": 500,
       "name": "rectangle-numbers-counting",
       "components": "rectangle-numbers-counting",
       "styles": {
@@ -10446,7 +10509,7 @@
       ]
     },
     {
-      "index": 498,
+      "index": 501,
       "name": "rectangle-person-with-three-horizontal-lines",
       "components": "rectangle-person-with-three-horizontal-lines",
       "styles": {
@@ -10467,7 +10530,7 @@
       ]
     },
     {
-      "index": 499,
+      "index": 502,
       "name": "rectangle-play-stacked",
       "components": "rectangle-play-stacked",
       "styles": {
@@ -10488,7 +10551,49 @@
       ]
     },
     {
-      "index": 500,
+      "index": 503,
+      "name": "rectangle-right-pane-chevron-left",
+      "components": "rectangle-right-pane-chevron-left",
+      "styles": {
+        "filled": {
+          "codepoint": 62475,
+          "codePoint": "U+F40B",
+          "character": "\uf40b"
+        },
+        "regular": {
+          "codepoint": 62475,
+          "codePoint": "U+F40B",
+          "character": "\uf40b"
+        }
+      },
+      "availableStyles": [
+        "filled",
+        "regular"
+      ]
+    },
+    {
+      "index": 504,
+      "name": "rectangle-right-pane-chevron-right",
+      "components": "rectangle-right-pane-chevron-right",
+      "styles": {
+        "filled": {
+          "codepoint": 62476,
+          "codePoint": "U+F40C",
+          "character": "\uf40c"
+        },
+        "regular": {
+          "codepoint": 62476,
+          "codePoint": "U+F40C",
+          "character": "\uf40c"
+        }
+      },
+      "availableStyles": [
+        "filled",
+        "regular"
+      ]
+    },
+    {
+      "index": 505,
       "name": "rectangle-two-chevrons-fill-x",
       "components": "rectangle-two-chevrons-fill-x",
       "styles": {
@@ -10509,7 +10614,7 @@
       ]
     },
     {
-      "index": 501,
+      "index": 506,
       "name": "rectangle-two-chevrons-fill-y",
       "components": "rectangle-two-chevrons-fill-y",
       "styles": {
@@ -10530,7 +10635,7 @@
       ]
     },
     {
-      "index": 502,
+      "index": 507,
       "name": "rectangle-two-chevrons-fit-x",
       "components": "rectangle-two-chevrons-fit-x",
       "styles": {
@@ -10551,7 +10656,7 @@
       ]
     },
     {
-      "index": 503,
+      "index": 508,
       "name": "rectangle-two-chevrons-fit-y",
       "components": "rectangle-two-chevrons-fit-y",
       "styles": {
@@ -10572,7 +10677,7 @@
       ]
     },
     {
-      "index": 504,
+      "index": 509,
       "name": "rectangle-two-chevrons-x-axis",
       "components": "rectangle-two-chevrons-x-axis",
       "styles": {
@@ -10593,7 +10698,7 @@
       ]
     },
     {
-      "index": 505,
+      "index": 510,
       "name": "rectangle-two-chevrons-y-axis",
       "components": "rectangle-two-chevrons-y-axis",
       "styles": {
@@ -10614,7 +10719,7 @@
       ]
     },
     {
-      "index": 506,
+      "index": 511,
       "name": "ro-gro",
       "components": "ro-gro",
       "styles": {
@@ -10635,7 +10740,28 @@
       ]
     },
     {
-      "index": 507,
+      "index": 512,
+      "name": "roblox-classic",
+      "components": "roblox-classic",
+      "styles": {
+        "filled": {
+          "codepoint": 62472,
+          "codePoint": "U+F408",
+          "character": "\uf408"
+        },
+        "regular": {
+          "codepoint": 62472,
+          "codePoint": "U+F408",
+          "character": "\uf408"
+        }
+      },
+      "availableStyles": [
+        "filled",
+        "regular"
+      ]
+    },
+    {
+      "index": 513,
       "name": "roblox-plus",
       "components": "roblox-plus",
       "styles": {
@@ -10656,7 +10782,7 @@
       ]
     },
     {
-      "index": 508,
+      "index": 514,
       "name": "robux",
       "components": "robux",
       "styles": {
@@ -10677,7 +10803,7 @@
       ]
     },
     {
-      "index": 509,
+      "index": 515,
       "name": "rosette-seven-point",
       "components": "rosette-seven-point",
       "styles": {
@@ -10698,7 +10824,7 @@
       ]
     },
     {
-      "index": 510,
+      "index": 516,
       "name": "rosette-ten-point",
       "components": "rosette-ten-point",
       "styles": {
@@ -10719,7 +10845,7 @@
       ]
     },
     {
-      "index": 511,
+      "index": 517,
       "name": "ruler",
       "components": "ruler",
       "styles": {
@@ -10740,7 +10866,7 @@
       ]
     },
     {
-      "index": 512,
+      "index": 518,
       "name": "sesame-seeds",
       "components": "sesame-seeds",
       "styles": {
@@ -10761,7 +10887,7 @@
       ]
     },
     {
-      "index": 513,
+      "index": 519,
       "name": "seven-point-rosette",
       "components": "seven-point-rosette",
       "styles": {
@@ -10782,7 +10908,7 @@
       ]
     },
     {
-      "index": 514,
+      "index": 520,
       "name": "shield-check",
       "components": "shield-check",
       "styles": {
@@ -10803,7 +10929,7 @@
       ]
     },
     {
-      "index": 515,
+      "index": 521,
       "name": "shield-lock",
       "components": "shield-lock",
       "styles": {
@@ -10824,7 +10950,7 @@
       ]
     },
     {
-      "index": 516,
+      "index": 522,
       "name": "shirt",
       "components": "shirt",
       "styles": {
@@ -10845,7 +10971,7 @@
       ]
     },
     {
-      "index": 517,
+      "index": 523,
       "name": "shirt-2d-text",
       "components": "shirt-2d-text",
       "styles": {
@@ -10866,7 +10992,7 @@
       ]
     },
     {
-      "index": 518,
+      "index": 524,
       "name": "shirt-pants",
       "components": "shirt-pants",
       "styles": {
@@ -10887,7 +11013,7 @@
       ]
     },
     {
-      "index": 519,
+      "index": 525,
       "name": "shoe-right",
       "components": "shoe",
       "styles": {
@@ -10908,7 +11034,7 @@
       ]
     },
     {
-      "index": 520,
+      "index": 526,
       "name": "shoe-left",
       "components": "shoe-left",
       "styles": {
@@ -10929,7 +11055,7 @@
       ]
     },
     {
-      "index": 521,
+      "index": 527,
       "name": "shoe-right",
       "components": "shoe-right",
       "styles": {
@@ -10950,7 +11076,7 @@
       ]
     },
     {
-      "index": 522,
+      "index": 528,
       "name": "shopping-basket",
       "components": "shopping-basket",
       "styles": {
@@ -10971,7 +11097,7 @@
       ]
     },
     {
-      "index": 523,
+      "index": 529,
       "name": "shopping-basket-check",
       "components": "shopping-basket-check",
       "styles": {
@@ -10992,7 +11118,7 @@
       ]
     },
     {
-      "index": 524,
+      "index": 530,
       "name": "shopping-cart",
       "components": "shopping-cart",
       "styles": {
@@ -11013,7 +11139,7 @@
       ]
     },
     {
-      "index": 525,
+      "index": 531,
       "name": "shorts",
       "components": "shorts",
       "styles": {
@@ -11034,7 +11160,7 @@
       ]
     },
     {
-      "index": 526,
+      "index": 532,
       "name": "shrimp",
       "components": "shrimp",
       "styles": {
@@ -11055,7 +11181,7 @@
       ]
     },
     {
-      "index": 527,
+      "index": 533,
       "name": "sidebar",
       "components": "sidebar",
       "styles": {
@@ -11076,7 +11202,7 @@
       ]
     },
     {
-      "index": 528,
+      "index": 534,
       "name": "sidebar-right",
       "components": "sidebar-right",
       "styles": {
@@ -11097,7 +11223,7 @@
       ]
     },
     {
-      "index": 529,
+      "index": 535,
       "name": "signal-exclamation",
       "components": "signal-exclamation",
       "styles": {
@@ -11118,7 +11244,7 @@
       ]
     },
     {
-      "index": 530,
+      "index": 536,
       "name": "six-dots-two-column-grid",
       "components": "six-dots-two-column-grid",
       "styles": {
@@ -11139,7 +11265,7 @@
       ]
     },
     {
-      "index": 531,
+      "index": 537,
       "name": "skip-end-large",
       "components": "skip-end-large",
       "styles": {
@@ -11160,7 +11286,7 @@
       ]
     },
     {
-      "index": 532,
+      "index": 538,
       "name": "skip-end-small",
       "components": "skip-end-small",
       "styles": {
@@ -11181,7 +11307,7 @@
       ]
     },
     {
-      "index": 533,
+      "index": 539,
       "name": "skip-next-large",
       "components": "skip-next-large",
       "styles": {
@@ -11202,7 +11328,7 @@
       ]
     },
     {
-      "index": 534,
+      "index": 540,
       "name": "skip-next-small",
       "components": "skip-next-small",
       "styles": {
@@ -11223,7 +11349,7 @@
       ]
     },
     {
-      "index": 535,
+      "index": 541,
       "name": "skip-previous-large",
       "components": "skip-previous-large",
       "styles": {
@@ -11244,7 +11370,7 @@
       ]
     },
     {
-      "index": 536,
+      "index": 542,
       "name": "skip-previous-small",
       "components": "skip-previous-small",
       "styles": {
@@ -11265,7 +11391,7 @@
       ]
     },
     {
-      "index": 537,
+      "index": 543,
       "name": "skip-start-large",
       "components": "skip-start-large",
       "styles": {
@@ -11286,7 +11412,7 @@
       ]
     },
     {
-      "index": 538,
+      "index": 544,
       "name": "skip-start-small",
       "components": "skip-start-small",
       "styles": {
@@ -11307,7 +11433,7 @@
       ]
     },
     {
-      "index": 539,
+      "index": 545,
       "name": "skip-to-first-frame-large",
       "components": "skip-to-first-frame-large",
       "styles": {
@@ -11328,7 +11454,7 @@
       ]
     },
     {
-      "index": 540,
+      "index": 546,
       "name": "skip-to-first-frame-small",
       "components": "skip-to-first-frame-small",
       "styles": {
@@ -11349,7 +11475,7 @@
       ]
     },
     {
-      "index": 541,
+      "index": 547,
       "name": "skip-to-last-frame-large",
       "components": "skip-to-last-frame-large",
       "styles": {
@@ -11370,7 +11496,7 @@
       ]
     },
     {
-      "index": 542,
+      "index": 548,
       "name": "skip-to-last-frame-small",
       "components": "skip-to-last-frame-small",
       "styles": {
@@ -11391,7 +11517,7 @@
       ]
     },
     {
-      "index": 543,
+      "index": 549,
       "name": "slack",
       "components": "slack",
       "styles": {
@@ -11412,7 +11538,7 @@
       ]
     },
     {
-      "index": 544,
+      "index": 550,
       "name": "small-square-over-dashed-large-square",
       "components": "small-square-over-dashed-large-square",
       "styles": {
@@ -11433,7 +11559,7 @@
       ]
     },
     {
-      "index": 545,
+      "index": 551,
       "name": "smartphone-portrait",
       "components": "smartphone-portrait",
       "styles": {
@@ -11454,7 +11580,7 @@
       ]
     },
     {
-      "index": 546,
+      "index": 552,
       "name": "speaker",
       "components": "speaker",
       "styles": {
@@ -11475,7 +11601,7 @@
       ]
     },
     {
-      "index": 547,
+      "index": 553,
       "name": "speaker-slash",
       "components": "speaker-slash",
       "styles": {
@@ -11496,7 +11622,7 @@
       ]
     },
     {
-      "index": 548,
+      "index": 554,
       "name": "speaker-triangle-exclamation",
       "components": "speaker-triangle-exclamation",
       "styles": {
@@ -11517,7 +11643,7 @@
       ]
     },
     {
-      "index": 549,
+      "index": 555,
       "name": "speaker-x",
       "components": "speaker-x",
       "styles": {
@@ -11538,7 +11664,7 @@
       ]
     },
     {
-      "index": 550,
+      "index": 556,
       "name": "speech-bubble-align-center",
       "components": "speech-bubble-align-center",
       "styles": {
@@ -11559,7 +11685,7 @@
       ]
     },
     {
-      "index": 551,
+      "index": 557,
       "name": "speech-bubble-align-left",
       "components": "speech-bubble-align-left",
       "styles": {
@@ -11580,7 +11706,7 @@
       ]
     },
     {
-      "index": 552,
+      "index": 558,
       "name": "speech-bubble-exclamation",
       "components": "speech-bubble-exclamation",
       "styles": {
@@ -11601,7 +11727,7 @@
       ]
     },
     {
-      "index": 553,
+      "index": 559,
       "name": "speech-bubble-round",
       "components": "speech-bubble-round",
       "styles": {
@@ -11622,7 +11748,7 @@
       ]
     },
     {
-      "index": 554,
+      "index": 560,
       "name": "speedometer",
       "components": "speedometer",
       "styles": {
@@ -11643,7 +11769,7 @@
       ]
     },
     {
-      "index": 555,
+      "index": 561,
       "name": "square",
       "components": "square",
       "styles": {
@@ -11664,7 +11790,7 @@
       ]
     },
     {
-      "index": 556,
+      "index": 562,
       "name": "square-arrow-rotate-bottom-left",
       "components": "square-arrow-rotate-bottom-left",
       "styles": {
@@ -11685,7 +11811,7 @@
       ]
     },
     {
-      "index": 557,
+      "index": 563,
       "name": "square-arrow-rotate-bottom-right",
       "components": "square-arrow-rotate-bottom-right",
       "styles": {
@@ -11706,7 +11832,7 @@
       ]
     },
     {
-      "index": 558,
+      "index": 564,
       "name": "square-arrow-rotate-top-left",
       "components": "square-arrow-rotate-top-left",
       "styles": {
@@ -11727,7 +11853,7 @@
       ]
     },
     {
-      "index": 559,
+      "index": 565,
       "name": "square-arrow-rotate-top-right",
       "components": "square-arrow-rotate-top-right",
       "styles": {
@@ -11748,7 +11874,7 @@
       ]
     },
     {
-      "index": 560,
+      "index": 566,
       "name": "square-bar-graph",
       "components": "square-bar-graph",
       "styles": {
@@ -11769,7 +11895,7 @@
       ]
     },
     {
-      "index": 561,
+      "index": 567,
       "name": "square-bone",
       "components": "square-bone",
       "styles": {
@@ -11790,7 +11916,7 @@
       ]
     },
     {
-      "index": 562,
+      "index": 568,
       "name": "square-books",
       "components": "square-books",
       "styles": {
@@ -11811,7 +11937,7 @@
       ]
     },
     {
-      "index": 563,
+      "index": 569,
       "name": "square-check",
       "components": "square-check",
       "styles": {
@@ -11832,7 +11958,7 @@
       ]
     },
     {
-      "index": 564,
+      "index": 570,
       "name": "square-clipping-circle",
       "components": "square-clipping-circle",
       "styles": {
@@ -11853,7 +11979,7 @@
       ]
     },
     {
-      "index": 565,
+      "index": 571,
       "name": "square-code",
       "components": "square-code",
       "styles": {
@@ -11874,7 +12000,7 @@
       ]
     },
     {
-      "index": 566,
+      "index": 572,
       "name": "square-corner-line",
       "components": "square-corner-line",
       "styles": {
@@ -11895,7 +12021,7 @@
       ]
     },
     {
-      "index": 567,
+      "index": 573,
       "name": "square-corner-line-small",
       "components": "square-corner-line-small",
       "styles": {
@@ -11916,7 +12042,7 @@
       ]
     },
     {
-      "index": 568,
+      "index": 574,
       "name": "square-dashed-person-standing",
       "components": "square-dashed-person-standing",
       "styles": {
@@ -11937,7 +12063,7 @@
       ]
     },
     {
-      "index": 569,
+      "index": 575,
       "name": "square-dots-increasing-size",
       "components": "square-dots-increasing-size",
       "styles": {
@@ -11958,7 +12084,7 @@
       ]
     },
     {
-      "index": 570,
+      "index": 576,
       "name": "square-dual-arrows-horizontal",
       "components": "square-dual-arrows-horizontal",
       "styles": {
@@ -11979,7 +12105,7 @@
       ]
     },
     {
-      "index": 571,
+      "index": 577,
       "name": "square-dual-arrows-to-corner",
       "components": "square-dual-arrows-to-corner",
       "styles": {
@@ -12000,7 +12126,7 @@
       ]
     },
     {
-      "index": 572,
+      "index": 578,
       "name": "square-face-emoji",
       "components": "square-face-emoji",
       "styles": {
@@ -12021,7 +12147,7 @@
       ]
     },
     {
-      "index": 573,
+      "index": 579,
       "name": "square-face-sound",
       "components": "square-face-sound",
       "styles": {
@@ -12042,7 +12168,7 @@
       ]
     },
     {
-      "index": 574,
+      "index": 580,
       "name": "square-face-waving-hand",
       "components": "square-face-waving-hand",
       "styles": {
@@ -12063,7 +12189,7 @@
       ]
     },
     {
-      "index": 575,
+      "index": 581,
       "name": "square-face-winking",
       "components": "square-face-winking",
       "styles": {
@@ -12084,7 +12210,7 @@
       ]
     },
     {
-      "index": 576,
+      "index": 582,
       "name": "square-minus",
       "components": "square-minus",
       "styles": {
@@ -12105,7 +12231,7 @@
       ]
     },
     {
-      "index": 577,
+      "index": 583,
       "name": "square-person",
       "components": "square-person",
       "styles": {
@@ -12126,7 +12252,7 @@
       ]
     },
     {
-      "index": 578,
+      "index": 584,
       "name": "square-small",
       "components": "square-small",
       "styles": {
@@ -12147,7 +12273,7 @@
       ]
     },
     {
-      "index": 579,
+      "index": 585,
       "name": "square-text-alt",
       "components": "square-text-alt",
       "styles": {
@@ -12168,7 +12294,7 @@
       ]
     },
     {
-      "index": 580,
+      "index": 586,
       "name": "square-text-esc",
       "components": "square-text-esc",
       "styles": {
@@ -12189,7 +12315,7 @@
       ]
     },
     {
-      "index": 581,
+      "index": 587,
       "name": "square-text-fix-width",
       "components": "square-text-fix-width",
       "styles": {
@@ -12210,7 +12336,7 @@
       ]
     },
     {
-      "index": 582,
+      "index": 588,
       "name": "square-text-ip",
       "components": "square-text-ip",
       "styles": {
@@ -12231,7 +12357,7 @@
       ]
     },
     {
-      "index": 583,
+      "index": 589,
       "name": "square-text-l",
       "components": "square-text-l",
       "styles": {
@@ -12252,7 +12378,7 @@
       ]
     },
     {
-      "index": 584,
+      "index": 590,
       "name": "square-text-r",
       "components": "square-text-r",
       "styles": {
@@ -12273,7 +12399,7 @@
       ]
     },
     {
-      "index": 585,
+      "index": 591,
       "name": "square-thick-line-bottom",
       "components": "square-thick-line-bottom",
       "styles": {
@@ -12294,7 +12420,7 @@
       ]
     },
     {
-      "index": 586,
+      "index": 592,
       "name": "square-thick-line-frame",
       "components": "square-thick-line-frame",
       "styles": {
@@ -12315,7 +12441,7 @@
       ]
     },
     {
-      "index": 587,
+      "index": 593,
       "name": "square-thick-line-left",
       "components": "square-thick-line-left",
       "styles": {
@@ -12336,7 +12462,7 @@
       ]
     },
     {
-      "index": 588,
+      "index": 594,
       "name": "square-thick-line-right",
       "components": "square-thick-line-right",
       "styles": {
@@ -12357,7 +12483,7 @@
       ]
     },
     {
-      "index": 589,
+      "index": 595,
       "name": "square-thick-line-top",
       "components": "square-thick-line-top",
       "styles": {
@@ -12378,7 +12504,7 @@
       ]
     },
     {
-      "index": 590,
+      "index": 596,
       "name": "square-two-parallel-thick-lines-left-right",
       "components": "square-two-parallel-thick-lines-left-right",
       "styles": {
@@ -12399,7 +12525,7 @@
       ]
     },
     {
-      "index": 591,
+      "index": 597,
       "name": "square-two-parallel-thick-lines-top-bottom",
       "components": "square-two-parallel-thick-lines-top-bottom",
       "styles": {
@@ -12420,7 +12546,7 @@
       ]
     },
     {
-      "index": 592,
+      "index": 598,
       "name": "squares-grid-plus",
       "components": "squares-grid-plus",
       "styles": {
@@ -12441,7 +12567,7 @@
       ]
     },
     {
-      "index": 593,
+      "index": 599,
       "name": "squares-grid-qr",
       "components": "squares-grid-qr",
       "styles": {
@@ -12462,7 +12588,7 @@
       ]
     },
     {
-      "index": 594,
+      "index": 600,
       "name": "stackable-check",
       "components": "stackable-check",
       "styles": {
@@ -12483,7 +12609,7 @@
       ]
     },
     {
-      "index": 595,
+      "index": 601,
       "name": "stackable-exclamation",
       "components": "stackable-exclamation",
       "styles": {
@@ -12504,7 +12630,7 @@
       ]
     },
     {
-      "index": 596,
+      "index": 602,
       "name": "stackable-i",
       "components": "stackable-i",
       "styles": {
@@ -12525,7 +12651,7 @@
       ]
     },
     {
-      "index": 597,
+      "index": 603,
       "name": "stackable-star",
       "components": "stackable-star",
       "styles": {
@@ -12546,7 +12672,7 @@
       ]
     },
     {
-      "index": 598,
+      "index": 604,
       "name": "stackable-x",
       "components": "stackable-x",
       "styles": {
@@ -12567,7 +12693,7 @@
       ]
     },
     {
-      "index": 599,
+      "index": 605,
       "name": "stacked-squares-arrow-down-left",
       "components": "stacked-squares-arrow-down-left",
       "styles": {
@@ -12588,7 +12714,7 @@
       ]
     },
     {
-      "index": 600,
+      "index": 606,
       "name": "stacked-squares-arrow-up-right",
       "components": "stacked-squares-arrow-up-right",
       "styles": {
@@ -12609,7 +12735,7 @@
       ]
     },
     {
-      "index": 601,
+      "index": 607,
       "name": "stacked-squares-plus",
       "components": "stacked-squares-plus",
       "styles": {
@@ -12630,7 +12756,7 @@
       ]
     },
     {
-      "index": 602,
+      "index": 608,
       "name": "star",
       "components": "star",
       "styles": {
@@ -12651,7 +12777,7 @@
       ]
     },
     {
-      "index": 603,
+      "index": 609,
       "name": "star-three-vertical-bars",
       "components": "star-three-vertical-bars",
       "styles": {
@@ -12672,7 +12798,7 @@
       ]
     },
     {
-      "index": 604,
+      "index": 610,
       "name": "stop-large",
       "components": "stop-large",
       "styles": {
@@ -12693,7 +12819,7 @@
       ]
     },
     {
-      "index": 605,
+      "index": 611,
       "name": "stop-small",
       "components": "stop-small",
       "styles": {
@@ -12714,7 +12840,7 @@
       ]
     },
     {
-      "index": 606,
+      "index": 612,
       "name": "studio",
       "components": "studio",
       "styles": {
@@ -12735,7 +12861,7 @@
       ]
     },
     {
-      "index": 607,
+      "index": 613,
       "name": "sun",
       "components": "sun",
       "styles": {
@@ -12756,7 +12882,7 @@
       ]
     },
     {
-      "index": 608,
+      "index": 614,
       "name": "sweater",
       "components": "sweater",
       "styles": {
@@ -12777,7 +12903,7 @@
       ]
     },
     {
-      "index": 609,
+      "index": 615,
       "name": "sword",
       "components": "sword",
       "styles": {
@@ -12798,7 +12924,7 @@
       ]
     },
     {
-      "index": 610,
+      "index": 616,
       "name": "tag",
       "components": "tag",
       "styles": {
@@ -12819,7 +12945,7 @@
       ]
     },
     {
-      "index": 611,
+      "index": 617,
       "name": "tag-arrow-up",
       "components": "tag-arrow-up",
       "styles": {
@@ -12840,7 +12966,7 @@
       ]
     },
     {
-      "index": 612,
+      "index": 618,
       "name": "tag-sparkle",
       "components": "tag-sparkle",
       "styles": {
@@ -12861,7 +12987,7 @@
       ]
     },
     {
-      "index": 613,
+      "index": 619,
       "name": "tag-sparkle-arrow-up",
       "components": "tag-sparkle-arrow-up",
       "styles": {
@@ -12882,7 +13008,7 @@
       ]
     },
     {
-      "index": 614,
+      "index": 620,
       "name": "teletype",
       "components": "teletype",
       "styles": {
@@ -12903,7 +13029,7 @@
       ]
     },
     {
-      "index": 615,
+      "index": 621,
       "name": "rosette-ten-point",
       "components": "ten-point-rosette",
       "styles": {
@@ -12924,7 +13050,7 @@
       ]
     },
     {
-      "index": 616,
+      "index": 622,
       "name": "tencent-qq",
       "components": "tencent-qq",
       "styles": {
@@ -12945,7 +13071,7 @@
       ]
     },
     {
-      "index": 617,
+      "index": 623,
       "name": "text-b-bold",
       "components": "text-b-bold",
       "styles": {
@@ -12966,7 +13092,7 @@
       ]
     },
     {
-      "index": 618,
+      "index": 624,
       "name": "text-box-microphone",
       "components": "text-box-microphone",
       "styles": {
@@ -12987,7 +13113,7 @@
       ]
     },
     {
-      "index": 619,
+      "index": 625,
       "name": "text-ff-farm",
       "components": "text-ff-farm",
       "styles": {
@@ -13008,7 +13134,7 @@
       ]
     },
     {
-      "index": 620,
+      "index": 626,
       "name": "text-g-arrow-down",
       "components": "text-g-arrow-down",
       "styles": {
@@ -13029,7 +13155,7 @@
       ]
     },
     {
-      "index": 621,
+      "index": 627,
       "name": "text-h-humane",
       "components": "text-h-humane",
       "styles": {
@@ -13050,7 +13176,7 @@
       ]
     },
     {
-      "index": 622,
+      "index": 628,
       "name": "text-h-subscript-1",
       "components": "text-h-subscript-1",
       "styles": {
@@ -13071,7 +13197,7 @@
       ]
     },
     {
-      "index": 623,
+      "index": 629,
       "name": "text-h-subscript-2",
       "components": "text-h-subscript-2",
       "styles": {
@@ -13092,7 +13218,7 @@
       ]
     },
     {
-      "index": 624,
+      "index": 630,
       "name": "text-h-subscript-3",
       "components": "text-h-subscript-3",
       "styles": {
@@ -13113,7 +13239,7 @@
       ]
     },
     {
-      "index": 625,
+      "index": 631,
       "name": "text-hl-halal",
       "components": "text-hl-halal",
       "styles": {
@@ -13134,7 +13260,7 @@
       ]
     },
     {
-      "index": 626,
+      "index": 632,
       "name": "text-i-italic",
       "components": "text-i-italic",
       "styles": {
@@ -13155,7 +13281,7 @@
       ]
     },
     {
-      "index": 627,
+      "index": 633,
       "name": "text-in-balance",
       "components": "text-in-balance",
       "styles": {
@@ -13176,7 +13302,7 @@
       ]
     },
     {
-      "index": 628,
+      "index": 634,
       "name": "text-lc-local",
       "components": "text-lc-local",
       "styles": {
@@ -13197,7 +13323,7 @@
       ]
     },
     {
-      "index": 629,
+      "index": 635,
       "name": "text-o-organic",
       "components": "text-o-organic",
       "styles": {
@@ -13218,7 +13344,7 @@
       ]
     },
     {
-      "index": 630,
+      "index": 636,
       "name": "text-s-seafood",
       "components": "text-s-seafood",
       "styles": {
@@ -13239,7 +13365,7 @@
       ]
     },
     {
-      "index": 631,
+      "index": 637,
       "name": "text-s-strikethrough",
       "components": "text-s-strikethrough",
       "styles": {
@@ -13260,7 +13386,28 @@
       ]
     },
     {
-      "index": 632,
+      "index": 638,
+      "name": "text-sd-supplier-diversity",
+      "components": "text-sd-supplier-diversity",
+      "styles": {
+        "filled": {
+          "codepoint": 62473,
+          "codePoint": "U+F409",
+          "character": "\uf409"
+        },
+        "regular": {
+          "codepoint": 62473,
+          "codePoint": "U+F409",
+          "character": "\uf409"
+        }
+      },
+      "availableStyles": [
+        "filled",
+        "regular"
+      ]
+    },
+    {
+      "index": 639,
       "name": "text-t-serif",
       "components": "text-t-serif",
       "styles": {
@@ -13281,7 +13428,7 @@
       ]
     },
     {
-      "index": 633,
+      "index": 640,
       "name": "text-u-underline",
       "components": "text-u-underline",
       "styles": {
@@ -13302,7 +13449,7 @@
       ]
     },
     {
-      "index": 634,
+      "index": 641,
       "name": "text-uppercase-a-lowercase-a",
       "components": "text-uppercase-a-lowercase-a",
       "styles": {
@@ -13323,7 +13470,7 @@
       ]
     },
     {
-      "index": 635,
+      "index": 642,
       "name": "text-v-vegetarian",
       "components": "text-v-vegetarian",
       "styles": {
@@ -13344,7 +13491,7 @@
       ]
     },
     {
-      "index": 636,
+      "index": 643,
       "name": "text-vg-vegan",
       "components": "text-vg-vegan",
       "styles": {
@@ -13365,7 +13512,7 @@
       ]
     },
     {
-      "index": 637,
+      "index": 644,
       "name": "text-x-subscript-2",
       "components": "text-x-subscript-2",
       "styles": {
@@ -13386,7 +13533,7 @@
       ]
     },
     {
-      "index": 638,
+      "index": 645,
       "name": "text-x-superscript-2",
       "components": "text-x-superscript-2",
       "styles": {
@@ -13407,7 +13554,7 @@
       ]
     },
     {
-      "index": 639,
+      "index": 646,
       "name": "three-bars-horizontal",
       "components": "three-bars-horizontal",
       "styles": {
@@ -13428,7 +13575,7 @@
       ]
     },
     {
-      "index": 640,
+      "index": 647,
       "name": "three-bars-horizontal-chevron-left",
       "components": "three-bars-horizontal-chevron-left",
       "styles": {
@@ -13449,7 +13596,7 @@
       ]
     },
     {
-      "index": 641,
+      "index": 648,
       "name": "three-bars-horizontal-narrowing",
       "components": "three-bars-horizontal-narrowing",
       "styles": {
@@ -13470,7 +13617,7 @@
       ]
     },
     {
-      "index": 642,
+      "index": 649,
       "name": "three-bars-horizontal-triangles-vertical",
       "components": "three-bars-horizontal-triangles-vertical",
       "styles": {
@@ -13491,7 +13638,7 @@
       ]
     },
     {
-      "index": 643,
+      "index": 650,
       "name": "three-bars-vertical-triangles-horizontal",
       "components": "three-bars-vertical-triangles-horizontal",
       "styles": {
@@ -13512,7 +13659,7 @@
       ]
     },
     {
-      "index": 644,
+      "index": 651,
       "name": "three-bars-x-aligned-center",
       "components": "three-bars-x-aligned-center",
       "styles": {
@@ -13533,7 +13680,7 @@
       ]
     },
     {
-      "index": 645,
+      "index": 652,
       "name": "three-bars-x-aligned-left",
       "components": "three-bars-x-aligned-left",
       "styles": {
@@ -13554,7 +13701,7 @@
       ]
     },
     {
-      "index": 646,
+      "index": 653,
       "name": "three-bars-x-aligned-right",
       "components": "three-bars-x-aligned-right",
       "styles": {
@@ -13575,7 +13722,7 @@
       ]
     },
     {
-      "index": 647,
+      "index": 654,
       "name": "three-bars-y-aligned-bottom",
       "components": "three-bars-y-aligned-bottom",
       "styles": {
@@ -13596,7 +13743,7 @@
       ]
     },
     {
-      "index": 648,
+      "index": 655,
       "name": "three-bars-y-aligned-center",
       "components": "three-bars-y-aligned-center",
       "styles": {
@@ -13617,7 +13764,7 @@
       ]
     },
     {
-      "index": 649,
+      "index": 656,
       "name": "three-bars-y-aligned-top",
       "components": "three-bars-y-aligned-top",
       "styles": {
@@ -13638,7 +13785,7 @@
       ]
     },
     {
-      "index": 650,
+      "index": 657,
       "name": "three-box-flowchart",
       "components": "three-box-flowchart",
       "styles": {
@@ -13659,7 +13806,7 @@
       ]
     },
     {
-      "index": 651,
+      "index": 658,
       "name": "three-chevrons-enlarging-down",
       "components": "three-chevrons-enlarging-down",
       "styles": {
@@ -13680,7 +13827,7 @@
       ]
     },
     {
-      "index": 652,
+      "index": 659,
       "name": "three-chevrons-enlarging-up",
       "components": "three-chevrons-enlarging-up",
       "styles": {
@@ -13701,7 +13848,7 @@
       ]
     },
     {
-      "index": 653,
+      "index": 660,
       "name": "three-dots-horizontal",
       "components": "three-dots-horizontal",
       "styles": {
@@ -13722,7 +13869,7 @@
       ]
     },
     {
-      "index": 654,
+      "index": 661,
       "name": "three-dots-vertical",
       "components": "three-dots-vertical",
       "styles": {
@@ -13743,7 +13890,7 @@
       ]
     },
     {
-      "index": 655,
+      "index": 662,
       "name": "three-horizontal-bars-wrapping-right",
       "components": "three-horizontal-bars-wrapping-right",
       "styles": {
@@ -13764,7 +13911,7 @@
       ]
     },
     {
-      "index": 656,
+      "index": 663,
       "name": "three-people",
       "components": "three-people",
       "styles": {
@@ -13785,7 +13932,7 @@
       ]
     },
     {
-      "index": 657,
+      "index": 664,
       "name": "three-ring-note",
       "components": "three-ring-note",
       "styles": {
@@ -13806,7 +13953,7 @@
       ]
     },
     {
-      "index": 658,
+      "index": 665,
       "name": "three-sliders-horizontal",
       "components": "three-sliders-horizontal",
       "styles": {
@@ -13827,7 +13974,7 @@
       ]
     },
     {
-      "index": 659,
+      "index": 666,
       "name": "three-small-squares",
       "components": "three-small-squares",
       "styles": {
@@ -13848,7 +13995,7 @@
       ]
     },
     {
-      "index": 660,
+      "index": 667,
       "name": "three-stacked-squares-tilted",
       "components": "three-stacked-squares-tilted",
       "styles": {
@@ -13869,7 +14016,7 @@
       ]
     },
     {
-      "index": 661,
+      "index": 668,
       "name": "thumb-down",
       "components": "thumb-down",
       "styles": {
@@ -13890,7 +14037,7 @@
       ]
     },
     {
-      "index": 662,
+      "index": 669,
       "name": "thumb-up",
       "components": "thumb-up",
       "styles": {
@@ -13911,7 +14058,7 @@
       ]
     },
     {
-      "index": 663,
+      "index": 670,
       "name": "tik-tok",
       "components": "tik-tok",
       "styles": {
@@ -13932,7 +14079,7 @@
       ]
     },
     {
-      "index": 664,
+      "index": 671,
       "name": "tilt",
       "components": "tilt",
       "styles": {
@@ -13953,7 +14100,7 @@
       ]
     },
     {
-      "index": 665,
+      "index": 672,
       "name": "toggle-left",
       "components": "toggle-left",
       "styles": {
@@ -13974,7 +14121,7 @@
       ]
     },
     {
-      "index": 666,
+      "index": 673,
       "name": "toggle-right",
       "components": "toggle-right",
       "styles": {
@@ -13995,7 +14142,7 @@
       ]
     },
     {
-      "index": 667,
+      "index": 674,
       "name": "torso",
       "components": "torso",
       "styles": {
@@ -14016,7 +14163,7 @@
       ]
     },
     {
-      "index": 668,
+      "index": 675,
       "name": "trash-can",
       "components": "trash-can",
       "styles": {
@@ -14037,7 +14184,7 @@
       ]
     },
     {
-      "index": 669,
+      "index": 676,
       "name": "triangle",
       "components": "triangle",
       "styles": {
@@ -14058,7 +14205,7 @@
       ]
     },
     {
-      "index": 670,
+      "index": 677,
       "name": "triangle-exclamation",
       "components": "triangle-exclamation",
       "styles": {
@@ -14079,7 +14226,7 @@
       ]
     },
     {
-      "index": 671,
+      "index": 678,
       "name": "triple-chevron-large-condense-down",
       "components": "triple-chevron-large-condense-down",
       "styles": {
@@ -14100,7 +14247,7 @@
       ]
     },
     {
-      "index": 672,
+      "index": 679,
       "name": "triple-chevron-large-condensed-up",
       "components": "triple-chevron-large-condensed-up",
       "styles": {
@@ -14121,7 +14268,7 @@
       ]
     },
     {
-      "index": 673,
+      "index": 680,
       "name": "trophy",
       "components": "trophy",
       "styles": {
@@ -14142,7 +14289,7 @@
       ]
     },
     {
-      "index": 674,
+      "index": 681,
       "name": "tshirt",
       "components": "tshirt",
       "styles": {
@@ -14163,7 +14310,7 @@
       ]
     },
     {
-      "index": 675,
+      "index": 682,
       "name": "tshirt-2d-text",
       "components": "tshirt-2d-text",
       "styles": {
@@ -14184,7 +14331,7 @@
       ]
     },
     {
-      "index": 676,
+      "index": 683,
       "name": "tshirt-dual-arrows",
       "components": "tshirt-dual-arrows",
       "styles": {
@@ -14205,7 +14352,7 @@
       ]
     },
     {
-      "index": 677,
+      "index": 684,
       "name": "tshirt-play",
       "components": "tshirt-play",
       "styles": {
@@ -14226,7 +14373,7 @@
       ]
     },
     {
-      "index": 678,
+      "index": 685,
       "name": "twitch",
       "components": "twitch",
       "styles": {
@@ -14247,7 +14394,7 @@
       ]
     },
     {
-      "index": 679,
+      "index": 686,
       "name": "twitter",
       "components": "twitter",
       "styles": {
@@ -14268,7 +14415,7 @@
       ]
     },
     {
-      "index": 680,
+      "index": 687,
       "name": "two-arrows-branch-right",
       "components": "two-arrows-branch-right",
       "styles": {
@@ -14289,7 +14436,7 @@
       ]
     },
     {
-      "index": 681,
+      "index": 688,
       "name": "two-arrows-down-and-up",
       "components": "two-arrows-down-and-up",
       "styles": {
@@ -14310,7 +14457,7 @@
       ]
     },
     {
-      "index": 682,
+      "index": 689,
       "name": "two-arrows-down-and-up-to-center",
       "components": "two-arrows-down-and-up-to-center",
       "styles": {
@@ -14331,7 +14478,7 @@
       ]
     },
     {
-      "index": 683,
+      "index": 690,
       "name": "two-arrows-from-center",
       "components": "two-arrows-from-center",
       "styles": {
@@ -14352,7 +14499,7 @@
       ]
     },
     {
-      "index": 684,
+      "index": 691,
       "name": "two-arrows-left-and-right-to-center",
       "components": "two-arrows-left-and-right-to-center",
       "styles": {
@@ -14373,7 +14520,7 @@
       ]
     },
     {
-      "index": 685,
+      "index": 692,
       "name": "two-arrows-left-right",
       "components": "two-arrows-left-right",
       "styles": {
@@ -14394,7 +14541,7 @@
       ]
     },
     {
-      "index": 686,
+      "index": 693,
       "name": "two-arrows-loop-clockwise",
       "components": "two-arrows-loop-clockwise",
       "styles": {
@@ -14415,7 +14562,7 @@
       ]
     },
     {
-      "index": 687,
+      "index": 694,
       "name": "two-arrows-loop-clockwise-1",
       "components": "two-arrows-loop-clockwise-1",
       "styles": {
@@ -14436,7 +14583,7 @@
       ]
     },
     {
-      "index": 688,
+      "index": 695,
       "name": "two-arrows-loop-clockwise-infinity",
       "components": "two-arrows-loop-clockwise-infinity",
       "styles": {
@@ -14457,7 +14604,7 @@
       ]
     },
     {
-      "index": 689,
+      "index": 696,
       "name": "two-arrows-spin-clockwise",
       "components": "two-arrows-spin-clockwise",
       "styles": {
@@ -14478,7 +14625,7 @@
       ]
     },
     {
-      "index": 690,
+      "index": 697,
       "name": "two-arrows-spin-clockwise-plus",
       "components": "two-arrows-spin-clockwise-plus",
       "styles": {
@@ -14499,7 +14646,7 @@
       ]
     },
     {
-      "index": 691,
+      "index": 698,
       "name": "two-arrows-switch-right",
       "components": "two-arrows-switch-right",
       "styles": {
@@ -14520,7 +14667,7 @@
       ]
     },
     {
-      "index": 692,
+      "index": 699,
       "name": "two-arrows-to-center",
       "components": "two-arrows-to-center",
       "styles": {
@@ -14541,7 +14688,7 @@
       ]
     },
     {
-      "index": 693,
+      "index": 700,
       "name": "two-bars-x-aligned-center-to-line",
       "components": "two-bars-x-aligned-center-to-line",
       "styles": {
@@ -14562,7 +14709,7 @@
       ]
     },
     {
-      "index": 694,
+      "index": 701,
       "name": "two-bars-x-aligned-left-to-line",
       "components": "two-bars-x-aligned-left-to-line",
       "styles": {
@@ -14583,7 +14730,7 @@
       ]
     },
     {
-      "index": 695,
+      "index": 702,
       "name": "two-bars-x-aligned-right-to-line",
       "components": "two-bars-x-aligned-right-to-line",
       "styles": {
@@ -14604,7 +14751,7 @@
       ]
     },
     {
-      "index": 696,
+      "index": 703,
       "name": "two-bars-y-aligned-bottom-to-line",
       "components": "two-bars-y-aligned-bottom-to-line",
       "styles": {
@@ -14625,7 +14772,7 @@
       ]
     },
     {
-      "index": 697,
+      "index": 704,
       "name": "two-bars-y-aligned-center-to-line",
       "components": "two-bars-y-aligned-center-to-line",
       "styles": {
@@ -14646,7 +14793,7 @@
       ]
     },
     {
-      "index": 698,
+      "index": 705,
       "name": "two-bars-y-aligned-top-to-line",
       "components": "two-bars-y-aligned-top-to-line",
       "styles": {
@@ -14667,7 +14814,7 @@
       ]
     },
     {
-      "index": 699,
+      "index": 706,
       "name": "two-carets-bar-horizontal-flip",
       "components": "two-carets-bar-horizontal-flip",
       "styles": {
@@ -14688,7 +14835,7 @@
       ]
     },
     {
-      "index": 700,
+      "index": 707,
       "name": "two-carets-bar-vertical-flip",
       "components": "two-carets-bar-vertical-flip",
       "styles": {
@@ -14709,7 +14856,28 @@
       ]
     },
     {
-      "index": 701,
+      "index": 708,
+      "name": "two-controllers-curved-arrow-right",
+      "components": "two-controllers-curved-arrow-right",
+      "styles": {
+        "filled": {
+          "codepoint": 62474,
+          "codePoint": "U+F40A",
+          "character": "\uf40a"
+        },
+        "regular": {
+          "codepoint": 62474,
+          "codePoint": "U+F40A",
+          "character": "\uf40a"
+        }
+      },
+      "availableStyles": [
+        "filled",
+        "regular"
+      ]
+    },
+    {
+      "index": 709,
       "name": "two-folders",
       "components": "two-folders",
       "styles": {
@@ -14730,7 +14898,28 @@
       ]
     },
     {
-      "index": 702,
+      "index": 710,
+      "name": "two-horizontal-bars-dot",
+      "components": "two-horizontal-bars-dot",
+      "styles": {
+        "filled": {
+          "codepoint": 62477,
+          "codePoint": "U+F40D",
+          "character": "\uf40d"
+        },
+        "regular": {
+          "codepoint": 62477,
+          "codePoint": "U+F40D",
+          "character": "\uf40d"
+        }
+      },
+      "availableStyles": [
+        "filled",
+        "regular"
+      ]
+    },
+    {
+      "index": 711,
       "name": "two-location-pins-connecting-arrow",
       "components": "two-location-pins-connecting-arrow",
       "styles": {
@@ -14751,7 +14940,7 @@
       ]
     },
     {
-      "index": 703,
+      "index": 712,
       "name": "two-makeup-brushes",
       "components": "two-makeup-brushes",
       "styles": {
@@ -14772,7 +14961,7 @@
       ]
     },
     {
-      "index": 704,
+      "index": 713,
       "name": "two-people",
       "components": "two-people",
       "styles": {
@@ -14793,7 +14982,7 @@
       ]
     },
     {
-      "index": 705,
+      "index": 714,
       "name": "two-people-speech-bubble",
       "components": "two-people-speech-bubble",
       "styles": {
@@ -14814,7 +15003,7 @@
       ]
     },
     {
-      "index": 706,
+      "index": 715,
       "name": "two-rulers-cursor",
       "components": "two-rulers-cursor",
       "styles": {
@@ -14835,7 +15024,7 @@
       ]
     },
     {
-      "index": 707,
+      "index": 716,
       "name": "two-sliders-horizontal",
       "components": "two-sliders-horizontal",
       "styles": {
@@ -14856,7 +15045,7 @@
       ]
     },
     {
-      "index": 708,
+      "index": 717,
       "name": "two-sliders-vertical",
       "components": "two-sliders-vertical",
       "styles": {
@@ -14877,7 +15066,7 @@
       ]
     },
     {
-      "index": 709,
+      "index": 718,
       "name": "two-speech-bubbles",
       "components": "two-speech-bubbles",
       "styles": {
@@ -14898,7 +15087,7 @@
       ]
     },
     {
-      "index": 710,
+      "index": 719,
       "name": "two-squares-arrow-down",
       "components": "two-squares-arrow-down",
       "styles": {
@@ -14919,7 +15108,7 @@
       ]
     },
     {
-      "index": 711,
+      "index": 720,
       "name": "two-squares-arrow-left",
       "components": "two-squares-arrow-left",
       "styles": {
@@ -14940,7 +15129,7 @@
       ]
     },
     {
-      "index": 712,
+      "index": 721,
       "name": "two-stacked-squares",
       "components": "two-stacked-squares",
       "styles": {
@@ -14961,7 +15150,7 @@
       ]
     },
     {
-      "index": 713,
+      "index": 722,
       "name": "two-stacked-squares-code",
       "components": "two-stacked-squares-code",
       "styles": {
@@ -14982,7 +15171,7 @@
       ]
     },
     {
-      "index": 714,
+      "index": 723,
       "name": "two-switches-horizontal",
       "components": "two-switches-horizontal",
       "styles": {
@@ -15003,7 +15192,7 @@
       ]
     },
     {
-      "index": 715,
+      "index": 724,
       "name": "two-vertical-bars-dot",
       "components": "two-vertical-bars-dot",
       "styles": {
@@ -15024,7 +15213,7 @@
       ]
     },
     {
-      "index": 716,
+      "index": 725,
       "name": "two-vertical-bars-text-auto-width",
       "components": "two-vertical-bars-text-auto-width",
       "styles": {
@@ -15045,7 +15234,7 @@
       ]
     },
     {
-      "index": 717,
+      "index": 726,
       "name": "verified-backplate",
       "components": "verified-backplate",
       "styles": {
@@ -15066,7 +15255,7 @@
       ]
     },
     {
-      "index": 718,
+      "index": 727,
       "name": "verified-check",
       "components": "verified-check",
       "styles": {
@@ -15087,7 +15276,7 @@
       ]
     },
     {
-      "index": 719,
+      "index": 728,
       "name": "verified-mono",
       "components": "verified-mono",
       "styles": {
@@ -15108,7 +15297,7 @@
       ]
     },
     {
-      "index": 720,
+      "index": 729,
       "name": "video-camera",
       "components": "video-camera",
       "styles": {
@@ -15129,7 +15318,7 @@
       ]
     },
     {
-      "index": 721,
+      "index": 730,
       "name": "video-camera-arrow-to-bottom-left",
       "components": "video-camera-arrow-to-bottom-left",
       "styles": {
@@ -15150,7 +15339,7 @@
       ]
     },
     {
-      "index": 722,
+      "index": 731,
       "name": "video-camera-arrow-to-top-right",
       "components": "video-camera-arrow-to-top-right",
       "styles": {
@@ -15171,7 +15360,7 @@
       ]
     },
     {
-      "index": 723,
+      "index": 732,
       "name": "video-camera-slash",
       "components": "video-camera-slash",
       "styles": {
@@ -15192,7 +15381,7 @@
       ]
     },
     {
-      "index": 724,
+      "index": 733,
       "name": "video-camera-triangle-exclamation",
       "components": "video-camera-triangle-exclamation",
       "styles": {
@@ -15213,7 +15402,7 @@
       ]
     },
     {
-      "index": 725,
+      "index": 734,
       "name": "video-camera-x",
       "components": "video-camera-x",
       "styles": {
@@ -15234,7 +15423,7 @@
       ]
     },
     {
-      "index": 726,
+      "index": 735,
       "name": "wallet",
       "components": "wallet",
       "styles": {
@@ -15255,7 +15444,7 @@
       ]
     },
     {
-      "index": 727,
+      "index": 736,
       "name": "we-chat",
       "components": "we-chat",
       "styles": {
@@ -15276,7 +15465,7 @@
       ]
     },
     {
-      "index": 728,
+      "index": 737,
       "name": "whatsapp",
       "components": "whatsapp",
       "styles": {
@@ -15297,7 +15486,7 @@
       ]
     },
     {
-      "index": 729,
+      "index": 738,
       "name": "wheat",
       "components": "wheat",
       "styles": {
@@ -15318,7 +15507,7 @@
       ]
     },
     {
-      "index": 730,
+      "index": 739,
       "name": "wifi-signal-fair",
       "components": "wifi-signal-fair",
       "styles": {
@@ -15339,7 +15528,7 @@
       ]
     },
     {
-      "index": 731,
+      "index": 740,
       "name": "wifi-signal-good",
       "components": "wifi-signal-good",
       "styles": {
@@ -15360,7 +15549,7 @@
       ]
     },
     {
-      "index": 732,
+      "index": 741,
       "name": "wifi-signal-poor",
       "components": "wifi-signal-poor",
       "styles": {
@@ -15381,7 +15570,7 @@
       ]
     },
     {
-      "index": 733,
+      "index": 742,
       "name": "windows-app-close",
       "components": "windows-app-close",
       "styles": {
@@ -15402,7 +15591,7 @@
       ]
     },
     {
-      "index": 734,
+      "index": 743,
       "name": "windows-app-fullscreen",
       "components": "windows-app-fullscreen",
       "styles": {
@@ -15423,7 +15612,7 @@
       ]
     },
     {
-      "index": 735,
+      "index": 744,
       "name": "windows-app-minimize",
       "components": "windows-app-minimize",
       "styles": {
@@ -15444,7 +15633,7 @@
       ]
     },
     {
-      "index": 736,
+      "index": 745,
       "name": "windows-app-restore",
       "components": "windows-app-restore",
       "styles": {
@@ -15465,7 +15654,7 @@
       ]
     },
     {
-      "index": 737,
+      "index": 746,
       "name": "x",
       "components": "x",
       "styles": {
@@ -15486,7 +15675,7 @@
       ]
     },
     {
-      "index": 738,
+      "index": 747,
       "name": "x-small",
       "components": "x-small",
       "styles": {
@@ -15507,7 +15696,7 @@
       ]
     },
     {
-      "index": 739,
+      "index": 748,
       "name": "xbox",
       "components": "xbox",
       "styles": {
@@ -15528,7 +15717,7 @@
       ]
     },
     {
-      "index": 740,
+      "index": 749,
       "name": "xbox-a",
       "components": "xbox-a",
       "styles": {
@@ -15549,7 +15738,7 @@
       ]
     },
     {
-      "index": 741,
+      "index": 750,
       "name": "xbox-a-pressed",
       "components": "xbox-a-pressed",
       "styles": {
@@ -15570,7 +15759,7 @@
       ]
     },
     {
-      "index": 742,
+      "index": 751,
       "name": "xbox-a-unpressed",
       "components": "xbox-a-unpressed",
       "styles": {
@@ -15591,7 +15780,7 @@
       ]
     },
     {
-      "index": 743,
+      "index": 752,
       "name": "xbox-b",
       "components": "xbox-b",
       "styles": {
@@ -15612,7 +15801,7 @@
       ]
     },
     {
-      "index": 744,
+      "index": 753,
       "name": "xbox-b-pressed",
       "components": "xbox-b-pressed",
       "styles": {
@@ -15633,7 +15822,7 @@
       ]
     },
     {
-      "index": 745,
+      "index": 754,
       "name": "xbox-b-unpressed",
       "components": "xbox-b-unpressed",
       "styles": {
@@ -15654,7 +15843,7 @@
       ]
     },
     {
-      "index": 746,
+      "index": 755,
       "name": "xbox-dpad",
       "components": "xbox-dpad",
       "styles": {
@@ -15675,7 +15864,7 @@
       ]
     },
     {
-      "index": 747,
+      "index": 756,
       "name": "xbox-dpad-down",
       "components": "xbox-dpad-down",
       "styles": {
@@ -15696,7 +15885,7 @@
       ]
     },
     {
-      "index": 748,
+      "index": 757,
       "name": "xbox-dpad-left",
       "components": "xbox-dpad-left",
       "styles": {
@@ -15717,7 +15906,7 @@
       ]
     },
     {
-      "index": 749,
+      "index": 758,
       "name": "xbox-dpad-right",
       "components": "xbox-dpad-right",
       "styles": {
@@ -15738,7 +15927,7 @@
       ]
     },
     {
-      "index": 750,
+      "index": 759,
       "name": "xbox-dpad-up",
       "components": "xbox-dpad-up",
       "styles": {
@@ -15759,7 +15948,7 @@
       ]
     },
     {
-      "index": 751,
+      "index": 760,
       "name": "xbox-lb",
       "components": "xbox-lb",
       "styles": {
@@ -15780,7 +15969,7 @@
       ]
     },
     {
-      "index": 752,
+      "index": 761,
       "name": "xbox-lt",
       "components": "xbox-lt",
       "styles": {
@@ -15801,7 +15990,7 @@
       ]
     },
     {
-      "index": 753,
+      "index": 762,
       "name": "xbox-menu",
       "components": "xbox-menu",
       "styles": {
@@ -15822,7 +16011,7 @@
       ]
     },
     {
-      "index": 754,
+      "index": 763,
       "name": "xbox-rb",
       "components": "xbox-rb",
       "styles": {
@@ -15843,7 +16032,7 @@
       ]
     },
     {
-      "index": 755,
+      "index": 764,
       "name": "xbox-rt",
       "components": "xbox-rt",
       "styles": {
@@ -15864,7 +16053,7 @@
       ]
     },
     {
-      "index": 756,
+      "index": 765,
       "name": "xbox-stick-left",
       "components": "xbox-stick-left",
       "styles": {
@@ -15885,7 +16074,7 @@
       ]
     },
     {
-      "index": 757,
+      "index": 766,
       "name": "xbox-stick-left-directional",
       "components": "xbox-stick-left-directional",
       "styles": {
@@ -15906,7 +16095,7 @@
       ]
     },
     {
-      "index": 758,
+      "index": 767,
       "name": "xbox-stick-left-horizontal",
       "components": "xbox-stick-left-horizontal",
       "styles": {
@@ -15927,7 +16116,7 @@
       ]
     },
     {
-      "index": 759,
+      "index": 768,
       "name": "xbox-stick-left-vertical",
       "components": "xbox-stick-left-vertical",
       "styles": {
@@ -15948,7 +16137,7 @@
       ]
     },
     {
-      "index": 760,
+      "index": 769,
       "name": "xbox-stick-right",
       "components": "xbox-stick-right",
       "styles": {
@@ -15969,7 +16158,7 @@
       ]
     },
     {
-      "index": 761,
+      "index": 770,
       "name": "xbox-stick-right-directional",
       "components": "xbox-stick-right-directional",
       "styles": {
@@ -15990,7 +16179,7 @@
       ]
     },
     {
-      "index": 762,
+      "index": 771,
       "name": "xbox-stick-right-horizontal",
       "components": "xbox-stick-right-horizontal",
       "styles": {
@@ -16011,7 +16200,7 @@
       ]
     },
     {
-      "index": 763,
+      "index": 772,
       "name": "xbox-stick-right-vertical",
       "components": "xbox-stick-right-vertical",
       "styles": {
@@ -16032,7 +16221,7 @@
       ]
     },
     {
-      "index": 764,
+      "index": 773,
       "name": "xbox-view",
       "components": "xbox-view",
       "styles": {
@@ -16053,7 +16242,7 @@
       ]
     },
     {
-      "index": 765,
+      "index": 774,
       "name": "xbox-x",
       "components": "xbox-x",
       "styles": {
@@ -16074,7 +16263,7 @@
       ]
     },
     {
-      "index": 766,
+      "index": 775,
       "name": "xbox-x-pressed",
       "components": "xbox-x-pressed",
       "styles": {
@@ -16095,7 +16284,7 @@
       ]
     },
     {
-      "index": 767,
+      "index": 776,
       "name": "xbox-x-unpressed",
       "components": "xbox-x-unpressed",
       "styles": {
@@ -16116,7 +16305,7 @@
       ]
     },
     {
-      "index": 768,
+      "index": 777,
       "name": "xbox-y",
       "components": "xbox-y",
       "styles": {
@@ -16137,7 +16326,7 @@
       ]
     },
     {
-      "index": 769,
+      "index": 778,
       "name": "xbox-y-pressed",
       "components": "xbox-y-pressed",
       "styles": {
@@ -16158,7 +16347,7 @@
       ]
     },
     {
-      "index": 770,
+      "index": 779,
       "name": "xbox-y-unpressed",
       "components": "xbox-y-unpressed",
       "styles": {
@@ -16179,7 +16368,7 @@
       ]
     },
     {
-      "index": 771,
+      "index": 780,
       "name": "xr-headset",
       "components": "xr-headset",
       "styles": {
@@ -16200,7 +16389,7 @@
       ]
     },
     {
-      "index": 772,
+      "index": 781,
       "name": "youtube",
       "components": "youtube",
       "styles": {
@@ -16221,5 +16410,5 @@
       ]
     }
   ],
-  "generatedAt": "2026-09-03T01:55:24+00:00"
+  "generatedAt": "2026-10-08T03:24:56+00:00"
 }
