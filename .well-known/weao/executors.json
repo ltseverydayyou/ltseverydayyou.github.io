@@ -1,16 +1,16 @@
 {
-  "fetchedAt": "2026-10-08T07:07:47.825Z",
+  "fetchedAt": "2026-10-08T14:47:45.504Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
       "title": "Potassium",
-      "version": "2.5.1",
-      "updatedDate": "10/01/2026 at 12:04 AM UTC",
+      "version": "2.5.2",
+      "updatedDate": "10/08/2026 at 12:47 PM UTC",
       "uncStatus": true,
       "free": false,
       "detected": true,
-      "rbxversion": "version-02c37bc51a384b8f",
-      "updateStatus": false,
+      "rbxversion": "version-cec3ad5889b447cf",
+      "updateStatus": true,
       "websitelink": "https://www.potassium.pro/",
       "discordlink": "https://discord.com/invite/potassium",
       "beta": false,
@@ -378,7 +378,7 @@
       },
       "hasIssues": false,
       "websitelink": "https://realvelocity.xyz/",
-      "keysystem": false
+      "keysystem": true
     },
     {
       "_id": "66633ac4b29bacaa7a568fdc",
@@ -880,8 +880,8 @@
     {
       "_id": "692794d789eb1e034ad699c3",
       "title": "MacSploit",
-      "version": "742.2",
-      "updatedDate": "10/08/2026 at 5:48 AM UTC",
+      "version": "742.3",
+      "updatedDate": "10/08/2026 at 10:01 AM UTC",
       "uncStatus": true,
       "free": false,
       "detected": false,
@@ -1050,8 +1050,8 @@
     {
       "_id": "69f25c438d1db84cb50c8cfe",
       "title": "Madium",
-      "version": "2.4.3",
-      "updatedDate": "10/07/2026 at 5:13 PM UTC",
+      "version": "2.4.4",
+      "updatedDate": "10/08/2026 at 12:23 PM UTC",
       "uncStatus": true,
       "free": true,
       "detected": true,
