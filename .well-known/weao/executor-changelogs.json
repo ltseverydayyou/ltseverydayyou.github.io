@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-10-07T20:42:58.340Z",
+  "fetchedAt": "2026-10-08T00:49:34.896Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -1740,8 +1740,8 @@
         "title": "SirHurt",
         "trackerId": "WEAO5caeb4a7",
         "_id": "67c8a2cb376f9e598b466705",
-        "version": "V5.471",
-        "updatedDate": "09/30/2026 at 4:01 PM UTC",
+        "version": "V5.472",
+        "updatedDate": "10/07/2026 at 5:05 PM UTC",
         "changelogs": {
           "trackerId": "WEAO5caeb4a7",
           "name": "sirhurt",
@@ -2417,8 +2417,8 @@
         "title": "Volt",
         "trackerId": "WEAO0fc0936f",
         "_id": "67576d22d9181811c292bb79",
-        "version": "1.3.15.1",
-        "updatedDate": "09/30/2026 at 9:11 PM UTC",
+        "version": "1.3.16.3",
+        "updatedDate": "10/07/2026 at 10:47 PM UTC",
         "changelogs": {
           "trackerId": "WEAO0fc0936f",
           "name": "awpgg",
@@ -30212,7 +30212,7 @@
         "trackerId": "WEAO30580ddb",
         "_id": "688c1b3ccc42af0ea95977e3",
         "version": "v2",
-        "updatedDate": "09/30/2026 at 4:01 PM UTC",
+        "updatedDate": "10/07/2026 at 5:02 PM UTC",
         "changelogs": {
           "trackerId": "WEAO30580ddb",
           "name": "serotonin",
@@ -30360,8 +30360,8 @@
         "title": "Synapse Z",
         "trackerId": "WEAO228206d0",
         "_id": "66a679cc5b36b46c9327b0a7",
-        "version": "1.0.3.6",
-        "updatedDate": "09/06/2026 at 7:17 PM UTC",
+        "version": "1.0.3.7",
+        "updatedDate": "10/07/2026 at 6:50 PM UTC",
         "changelogs": {
           "trackerId": "WEAO228206d0",
           "name": "synapsez",
@@ -30574,9 +30574,17 @@
               "date": "2026-09-06T19:17:46.970Z",
               "supportedRobloxVersion": "version-e7d81637d42c4b23",
               "updated": true
+            },
+            {
+              "version": "1.0.3.7",
+              "changelog": "She's on my phone lookin' for C Closure\r\nthis update was sponsored by doogie",
+              "timestamp": 1791399036830,
+              "date": "2026-10-07T18:50:36.830Z",
+              "supportedRobloxVersion": "version-02c37bc51a384b8f",
+              "updated": false
             }
           ],
-          "count": 26
+          "count": 27
         }
       },
       "WEAO4ef92j18": {
