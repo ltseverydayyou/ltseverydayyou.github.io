@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-10-08T14:47:45.504Z",
+  "fetchedAt": "2026-10-08T20:33:56.365Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -2431,8 +2431,8 @@
         "title": "Velocity",
         "trackerId": "WEAO4a1e0747",
         "_id": "680eaddf8b44717c060fcf8d",
-        "version": "1.4.6",
-        "updatedDate": "10/07/2026 at 5:13 PM UTC",
+        "version": "1.4.8",
+        "updatedDate": "10/08/2026 at 6:33 AM UTC",
         "changelogs": {
           "trackerId": "WEAO4a1e0747",
           "name": "velocity",
@@ -28213,9 +28213,25 @@
               "date": "2026-10-07T17:13:29.598Z",
               "supportedRobloxVersion": "version-cec3ad5889b447cf",
               "updated": true
+            },
+            {
+              "version": "1.4.7",
+              "changelog": "Fully removed D3DCompiler_47 / D3DCompiler entirely from the module due it causing Roblox to crash with \"Incompatible software\"\n---------------\nVelocity is now version 1.4.7\nClose the UI and reopen to apply the update.",
+              "timestamp": 1791423745304,
+              "date": "2026-10-08T01:42:25.304Z",
+              "supportedRobloxVersion": "version-cec3ad5889b447cf",
+              "updated": true
+            },
+            {
+              "version": "1.4.8",
+              "changelog": "Removed even more imports to prevent any more \"Incompatible Software\" crashes that could randomly appear and peg us later on\n\"[>] Improved gethwid\" how the fuck do you improve a identifier function that quite literally just pushes the identifier string onto the stack sonion 😭😭😭😭\n---------------\nVelocity is now version 1.4.8\nClose the UI and reopen to apply the update.",
+              "timestamp": 1791441205194,
+              "date": "2026-10-08T06:33:25.194Z",
+              "supportedRobloxVersion": "version-cec3ad5889b447cf",
+              "updated": true
             }
           ],
-          "count": 3222
+          "count": 3224
         }
       },
       "WEAO1af938a2": {
@@ -28223,7 +28239,7 @@
         "trackerId": "WEAO1af938a2",
         "_id": "66633ac4b29bacaa7a568fdc",
         "version": "0.1.7b",
-        "updatedDate": "10/01/2026 at 4:09 AM UTC",
+        "updatedDate": "10/08/2026 at 1:56 AM UTC",
         "changelogs": {
           "trackerId": "WEAO1af938a2",
           "name": "solara",
@@ -29199,8 +29215,8 @@
         "title": "Volcano",
         "trackerId": "WEAO57c866d0",
         "_id": "681baa53ab565e11d3feba0e",
-        "version": "v3.2.3.3",
-        "updatedDate": "10/07/2026 at 3:32 AM UTC",
+        "version": "v3.2.4",
+        "updatedDate": "10/08/2026 at 4:59 AM UTC",
         "changelogs": {
           "trackerId": "WEAO57c866d0",
           "name": "volcano",
@@ -29701,9 +29717,17 @@
               "date": "2026-10-07T03:32:16.384Z",
               "supportedRobloxVersion": "version-02c37bc51a384b8f",
               "updated": true
+            },
+            {
+              "version": "v3.2.4",
+              "changelog": "[>] Updated for version-cec3ad5889b447cf\n[>] Improved gethwid\n[>] Fixed oth hook on synchronous operation",
+              "timestamp": 1791435547803,
+              "date": "2026-10-08T04:59:07.803Z",
+              "supportedRobloxVersion": "version-cec3ad5889b447cf",
+              "updated": true
             }
           ],
-          "count": 62
+          "count": 63
         }
       },
       "WEAO622afd8b": {
@@ -30592,7 +30616,7 @@
         "trackerId": "WEAO4ef92j18",
         "_id": "6907cafc4b9bde193883d902",
         "version": "v2",
-        "updatedDate": "09/30/2026 at 4:01 PM UTC",
+        "updatedDate": "10/07/2026 at 5:03 PM UTC",
         "changelogs": {
           "trackerId": "WEAO4ef92j18",
           "name": "severe",
