@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-10-09T01:02:48.552Z",
+  "fetchedAt": "2026-10-09T07:50:32.908Z",
   "data": [
     {
       "_id": "67d6005efa8c791236079278",
@@ -602,8 +602,8 @@
     {
       "_id": "681baa53ab565e11d3feba0e",
       "title": "Volcano",
-      "version": "v3.2.4",
-      "updatedDate": "10/08/2026 at 4:59 AM UTC",
+      "version": "v3.2.4.1",
+      "updatedDate": "10/09/2026 at 1:40 AM UTC",
       "uncStatus": true,
       "free": true,
       "detected": true,
