@@ -45,6 +45,7 @@ body.dungeon-ui .l {
     margin: 0;
     padding: 0;
     position: relative;
+    z-index: auto;
     animation: none;
 }
 body.dungeon-ui .as {
