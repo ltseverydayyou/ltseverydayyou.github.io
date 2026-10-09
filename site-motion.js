@@ -39,6 +39,8 @@
     };
 
     const buttons = Array.from(list.querySelectorAll(".tb"));
+    const shortcut = list.querySelector(".nav-shortcut");
+    if (shortcut) shortcut.textContent = navigator.platform?.toLowerCase().includes("mac") ? "⌘ K" : "Ctrl K";
     const names = new Map();
     for (const btn of buttons) {
         const id = btn.dataset.t;

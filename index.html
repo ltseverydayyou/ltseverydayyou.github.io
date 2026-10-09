@@ -11691,7 +11691,7 @@
     <script defer src="tools/dat-editor.js"></script>
 
 <link rel="stylesheet" href="site.css?v=5.1" />
-    <script defer src="site-motion.js?v=5"></script>
+    <script defer src="site-motion.js?v=5.1"></script>
 </head>
 
 <body class="dungeon-ui" data-page="h">
@@ -12038,7 +12038,7 @@
                         <div class="scripts-showcase__tools">
                             <label class="scripts-showcase__search" for="scripts-filter-input">
                                 <span aria-hidden="true">⌕</span>
-                                <input id="scripts-filter-input" type="search" autocomplete="off" spellcheck="false"
+                                <input id="scripts-filter-input" type="search" aria-label="Search scripts" autocomplete="off" spellcheck="false"
                                     placeholder="Search by script, game, or source" />
                             </label>
                             <div class="scripts-showcase__filters" aria-label="Script filters">
@@ -19613,7 +19613,8 @@
             if (searchLabel && !searchLabel.querySelector(".scripts-showcase__shortcut")) {
                 const shortcut = document.createElement("kbd");
                 shortcut.className = "scripts-showcase__shortcut";
-                shortcut.textContent = navigator.platform?.toLowerCase().includes("mac") ? "⌘ K" : "Ctrl K";
+                shortcut.textContent = "/";
+                shortcut.setAttribute("aria-hidden", "true");
                 searchLabel.appendChild(shortcut);
             }
 
@@ -20010,18 +20011,12 @@
             if (document.documentElement.dataset.scriptShortcutBound !== "1") {
                 document.documentElement.dataset.scriptShortcutBound = "1";
                 document.addEventListener("keydown", (event) => {
+                    if (event.defaultPrevented) return;
                     const target = event.target;
                     const editing = target instanceof HTMLInputElement ||
                         target instanceof HTMLTextAreaElement ||
                         target?.isContentEditable;
-                    if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "k") {
-                        event.preventDefault();
-                        tab("s");
-                        window.setTimeout(() => {
-                            input?.focus();
-                            input?.select();
-                        }, 80);
-                    } else if (!editing && event.key === "/") {
+                    if (!editing && !event.ctrlKey && !event.metaKey && !event.altKey && event.key === "/") {
                         event.preventDefault();
                         tab("s");
                         window.setTimeout(() => input?.focus(), 80);
