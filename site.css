@@ -296,6 +296,7 @@ body.dungeon-ui .home-social-card__icon { width: 30px; height: 30px; flex: 0 0 3
 body.dungeon-ui .home-social-card__title { font-size: 11px; font-weight: 700; }
 body.dungeon-ui .home-social-card__meta { font-size: 9px; color: var(--mu); }
 body.dungeon-ui .home-social-card__badge { font-size: 8px; }
+body.dungeon-ui .home-social-card__status { display: inline-flex; align-self: flex-start; width: fit-content; margin-top: 3px; padding: 3px 6px; border-radius: 4px; color: color-mix(in srgb, var(--social-accent) 78%, var(--tx)); background: color-mix(in srgb, var(--social-accent) 10%, transparent); font-size: 8px; line-height: 1.2; }
 body.dungeon-ui .home-social-hub__footer { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--ui-line); }
 body.dungeon-ui .home-social-hub__footer > div { display: flex; align-items: baseline; flex-wrap: wrap; gap: 8px; padding: 0; border: 0; }
 body.dungeon-ui .home-social-hub__footer strong { font-size: 20px; }
