@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-10-09T15:05:36.290Z",
+  "fetchedAt": "2026-10-09T20:15:04.123Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -32294,8 +32294,8 @@
         "title": "Axis",
         "trackerId": "WEAO4ef9k768",
         "_id": "6a8fee3adb361db6523cd934",
-        "version": "0.4.8-55e0018a58c9e2ef",
-        "updatedDate": "10/01/2026 at 9:24 PM UTC",
+        "version": "0.4.8-55e0018a57de7c12",
+        "updatedDate": "10/07/2026 at 5:02 PM UTC",
         "changelogs": {
           "trackerId": "WEAO4ef9k768",
           "name": "axis",
@@ -32428,9 +32428,17 @@
               "date": "2026-10-01T21:24:08.931Z",
               "supportedRobloxVersion": "version-02c37bc51a384b8f",
               "updated": true
+            },
+            {
+              "version": "0.4.8-55e0018a57de7c12",
+              "changelog": "Updated to version-cec3ad5889b447cf",
+              "timestamp": 1791392569281,
+              "date": "2026-10-07T17:02:49.281Z",
+              "supportedRobloxVersion": "version-cec3ad5889b447cf",
+              "updated": true
             }
           ],
-          "count": 16
+          "count": 17
         }
       },
       "WEAO28fj47ht": {
