@@ -348,10 +348,10 @@ body.dungeon-ui :where(.script-searcher__controls, .roblox-user-search__controls
 body.dungeon-ui :where(.script-searcher__controls, .roblox-user-search__controls, .assets-downloader__controls) > input { flex: 1 1 220px; width: auto; }
 body.dungeon-ui :where(.text-diff__grid, .html-lab__panels, .codex-convert__grid, .image-converter__grid) { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
 body.dungeon-ui :where(.text-diff__grid, .html-lab__panels, .codex-convert__grid, .image-converter__grid) > * { min-width: 0; }
-body.dungeon-ui :where(.html-lab__header, .text-diff__header, .roblox-user-search__head) { padding: 0 0 18px; border: 0; border-bottom: 1px solid var(--ui-line); border-radius: 0; background: none; box-shadow: none; animation: none; transform: none; }
+body.dungeon-ui :where(.html-lab__header, .text-diff__header, .roblox-user-search__head, .assets-downloader__head) { padding: 0 0 18px; border: 0; border-bottom: 1px solid var(--ui-line); border-radius: 0; background: none; box-shadow: none; animation: none; transform: none; }
 body.dungeon-ui :where(.html-lab__actions, .text-diff__actions) { display: flex; flex-wrap: wrap; gap: 8px; }
 body.dungeon-ui :where(.html-lab__actions, .text-diff__actions) > button { flex: 0 1 auto; min-width: 0; width: auto; }
-body.dungeon-ui :where(.roblox-user-search, .lua-manifest, .text-diff, .html-lab) { grid-template-columns: minmax(0, 1fr); min-width: 0; }
+body.dungeon-ui :where(.roblox-user-search, .assets-downloader, .lua-manifest, .text-diff, .html-lab) { grid-template-columns: minmax(0, 1fr); min-width: 0; }
 body.dungeon-ui .lua-manifest__search { flex: 1 1 180px; min-width: 0; grid-template-columns: minmax(0, 1fr); }
 body.dungeon-ui .lua-manifest__actions { display: flex; flex-wrap: wrap; gap: 8px; }
 body.dungeon-ui :where(.rdd-field, .rdd-card, .rdd-layout) { min-width: 0; }
@@ -361,6 +361,11 @@ body.dungeon-ui .text-diff__stats { grid-template-columns: repeat(4, minmax(0, 1
 body.dungeon-ui :where(.scripts-showcase__hero, .codex-convert__intro, .image-converter__head) { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(220px, .7fr); gap: 20px; }
 body.dungeon-ui #ps :where(.scripts-showcase__intro, .scripts-showcase__tools, .scripts-showcase__summary) { background: transparent; border: 0; padding: 0; box-shadow: none; }
 body.dungeon-ui .scripts-showcase__summary { display: flex; flex-wrap: wrap; gap: 12px; }
+body.dungeon-ui .scripts-showcase__summary > * { min-width: 0; max-width: 100%; }
+body.dungeon-ui #ps .scripts-showcase__intro { min-width: 0; }
+body.dungeon-ui :where(.scripts-catalog-sort, .scripts-catalog-view, .scripts-catalog-bar__results) { min-width: 0; max-width: 100%; }
+body.dungeon-ui .scripts-catalog-sort { display: flex; flex-wrap: wrap; gap: 8px; }
+body.dungeon-ui .scripts-catalog-sort select { flex: 1 1 140px; width: auto; min-width: 0; max-width: 100%; }
 body.dungeon-ui .scripts-showcase__stat { min-width: 0; padding: 10px 12px; border: 1px solid var(--ui-line); border-radius: 7px; background: var(--ui-hover); }
 body.dungeon-ui #ps .scripts-showcase__intro h3 { font-size: 1.875rem; }
 body.dungeon-ui #ps .scripts-showcase__grid > .sc { border-color: var(--ui-line); border-radius: var(--radius-panel); background: var(--ui-hover); box-shadow: none; }
@@ -467,6 +472,7 @@ body.dungeon-ui .workspace-head { animation: dungeonPage 350ms var(--ui-ease) bo
     body.dungeon-ui :where(.pl, .bn, .btn, .executor-tab, .script-searcher__tab, .version-card__refresh) { min-height: 44px; }
 }
 @media (max-width: 760px) {
+    body.dungeon-ui .scripts-catalog-bar { grid-template-columns: minmax(0, 1fr); }
     body.dungeon-ui .theme-grid { grid-template-columns: minmax(0, 1fr); gap: 20px; }
     body.dungeon-ui .theme-colors { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
     body.dungeon-ui .theme-group { padding: 14px; }

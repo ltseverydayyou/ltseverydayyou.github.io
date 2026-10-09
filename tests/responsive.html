@@ -40,7 +40,7 @@
         </select></label>
         <button id="rotate" type="button">Rotate viewport</button><span id="info">390 × 844</span>
     </header>
-    <div id="stage"><iframe id="preview" title="Site preview" src="../?ui=5.2#h"></iframe></div>
+    <div id="stage"><iframe id="preview" title="Site preview" src="../?ui=5.3#h"></iframe></div>
     <script>
         const frame = document.getElementById("preview");
         const size = document.getElementById("size");
@@ -53,7 +53,7 @@
             info.textContent = dims[0] + " × " + dims[1];
         }
         size.addEventListener("change", () => { dims = size.value.split(",").map(Number); fit(); });
-        route.addEventListener("change", () => { frame.src = "../?ui=5.2#" + route.value; });
+        route.addEventListener("change", () => { frame.src = "../?ui=5.3#" + route.value; });
         document.getElementById("rotate").addEventListener("click", () => { dims.reverse(); fit(); });
     </script>
 </body>
