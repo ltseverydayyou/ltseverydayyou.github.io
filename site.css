@@ -328,7 +328,13 @@ body.dungeon-ui .mcp-download { min-width: 0; min-height: 76px; padding: 14px 16
 body.dungeon-ui .mcp-download::before, body.dungeon-ui .mcp-download::after { display: none; }
 body.dungeon-ui .mcp-download strong { font-size: 0.75rem; }
 body.dungeon-ui .mcp-download span { font-size: 0.5625rem; color: var(--mu); }
-body.dungeon-ui :where(.mcp-spotlight__links, .mcp-spotlight__actions) { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 18px; }
+body.dungeon-ui .mcp-spotlight__actions { grid-column: 2; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: stretch; gap: 10px; min-width: 0; width: 100%; margin-top: 8px; }
+body.dungeon-ui .mcp-spotlight__links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 18px; }
+body.dungeon-ui .mcp-link-row { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 10px 18px; min-width: 0; }
+body.dungeon-ui .mcp-download { display: flex; align-items: center; justify-content: space-between; gap: 12px; width: 100%; min-width: 0; max-width: none; overflow-wrap: normal; word-break: normal; }
+body.dungeon-ui .mcp-download__copy { display: flex; flex-direction: column; min-width: 0; flex: 1 1 auto; overflow-wrap: normal; word-break: normal; }
+body.dungeon-ui .mcp-download__copy :where(strong, span) { display: block; overflow-wrap: normal; word-break: normal; }
+body.dungeon-ui .mcp-download__arrow { flex: 0 0 auto; }
 body.dungeon-ui :where(.mcp-details, .bootstrappers-grid, .versions-grid, .executor-grid, .script-searcher__grid, .assets-downloader__results-grid, .scripts-showcase__grid, #sc_list) { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 16px; min-width: 0; }
 body.dungeon-ui #pu .bootstrapper-catalog .bootstrappers-grid, body.dungeon-ui #pz .bootstrapper-catalog .bootstrappers-grid { grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 16px; }
 body.dungeon-ui :where(.bootstrapper-card, .executor-card, .version-card, .script-card, .rdd-card, .codex-convert__card, .image-converter__card, .script-searcher__panel, .roblox-user-search__results-panel, .roblox-user-search__detail-panel, .codex-tabs) { min-width: 0; border-color: var(--ui-line); border-radius: var(--radius-panel); background: var(--ui-hover); box-shadow: none; backdrop-filter: none; transform: none; }
@@ -492,6 +498,7 @@ body.dungeon-ui .workspace-head { animation: dungeonPage 350ms var(--ui-ease) bo
     body.dungeon-ui .codex-tabs__list { max-height: 240px; }
     body.dungeon-ui .mcp-spotlight__inner { grid-template-columns: 48px minmax(0, 1fr); gap: 14px; }
     body.dungeon-ui .mcp-spotlight__logo { width: 48px; height: 48px; padding: 6px; border-radius: var(--radius-control); }
+    body.dungeon-ui .mcp-spotlight__actions { gap: 10px; }
     body.dungeon-ui .home-social-hub__footer { gap: 12px; }
     body.dungeon-ui .home-social-hub__footer > div { flex-direction: column; gap: 2px; }
     body.dungeon-ui .home-social-hub__footer strong { font-size: 1.125rem; }
@@ -517,6 +524,7 @@ body.dungeon-ui .workspace-head { animation: dungeonPage 350ms var(--ui-ease) bo
     body.dungeon-ui .home-social-hub__grid { grid-template-columns: minmax(0, 1fr); }
     body.dungeon-ui .home-social-card { min-height: 68px; }
     body.dungeon-ui .mcp-spotlight__inner { grid-template-columns: minmax(0, 1fr); }
+    body.dungeon-ui .mcp-spotlight__actions { grid-column: 1; grid-template-columns: minmax(0, 1fr); }
     body.dungeon-ui .mcp-spotlight__logo { width: 44px; height: 44px; }
     body.dungeon-ui .mcp-spotlight__downloads { grid-template-columns: minmax(0, 1fr); }
     body.dungeon-ui .presence-card__eyebrow { font-size: 0.5rem; letter-spacing: .06em; }
