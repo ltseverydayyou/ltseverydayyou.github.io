@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>Dungeon layout checks</title>
+    <style>
+        * { box-sizing: border-box; }
+        body { margin: 0; min-width: max-content; background: #24222c; color: #eeeaf7; font: 13px/1.5 system-ui, sans-serif; }
+        header { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; padding: 14px 18px; min-height: 66px; background: #17151e; }
+        strong { margin-right: 12px; }
+        label { display: flex; align-items: center; gap: 8px; }
+        select, button { font: inherit; padding: 8px 10px; border: 1px solid #4d455f; border-radius: 6px; background: #292333; color: inherit; }
+        button { cursor: pointer; }
+        #stage { margin: 16px; width: max-content; border: 1px solid #534764; border-radius: 10px; overflow: hidden; }
+        iframe { display: block; border: 0; width: 390px; height: 844px; background: #0c0b12; }
+        #info { color: #beb3d3; font-variant-numeric: tabular-nums; }
+    </style>
+</head>
+<body>
+    <header>
+        <strong>Dungeon layout checks</strong>
+        <label>Viewport <select id="size" aria-label="Viewport size">
+            <option value="320,568">Small phone · 320 × 568</option>
+            <option value="390,844" selected>Phone portrait · 390 × 844</option>
+            <option value="844,390">Phone landscape · 844 × 390</option>
+            <option value="768,1024">Tablet portrait · 768 × 1024</option>
+            <option value="1024,768">Tablet landscape · 1024 × 768</option>
+            <option value="1440,900">Desktop · 1440 × 900</option>
+            <option value="2560,1440">Wide desktop · 2560 × 1440</option>
+        </select></label>
+        <label>Section <select id="route" aria-label="Preview section">
+            <option value="h">Home</option><option value="q">MCP Bridge</option><option value="s">Scripts</option>
+            <option value="x">Script Searcher</option><option value="y">Roblox Users</option><option value="a">Assets Downloader</option>
+            <option value="v">Versions</option><option value="u">Bootstrappers</option><option value="z">Quick Downloads</option>
+            <option value="e">Executors</option><option value="r">RDD</option><option value="b">Roblox BuilderIcons</option>
+            <option value="i">File Converter</option><option value="c">Codex Editor</option><option value="l">Lua</option>
+            <option value="m">Manifest Generator</option><option value="w">HTML</option><option value="d">Text Diff</option><option value="t">Theme settings</option>
+        </select></label>
+        <button id="rotate" type="button">Rotate viewport</button><span id="info">390 × 844</span>
+    </header>
+    <div id="stage"><iframe id="preview" title="Site preview" src="../#h"></iframe></div>
+    <script>
+        const frame = document.getElementById("preview");
+        const size = document.getElementById("size");
+        const route = document.getElementById("route");
+        const info = document.getElementById("info");
+        let dims = [390, 844];
+        function fit() {
+            frame.style.width = dims[0] + "px";
+            frame.style.height = dims[1] + "px";
+            info.textContent = dims[0] + " × " + dims[1];
+        }
+        size.addEventListener("change", () => { dims = size.value.split(",").map(Number); fit(); });
+        route.addEventListener("change", () => { frame.src = "../#" + route.value; });
+        document.getElementById("rotate").addEventListener("click", () => { dims.reverse(); fit(); });
+    </script>
+</body>
+</html>
