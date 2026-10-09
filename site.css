@@ -376,6 +376,34 @@ body.dungeon-ui .bi-entry { min-width: 0; border-color: var(--ui-line); border-r
 body.dungeon-ui .bi-entry__name { overflow-wrap: anywhere; }
 body.dungeon-ui .rdd-grid { gap: 16px; }
 
+body.dungeon-ui .theme-settings { display: block; }
+body.dungeon-ui .theme-head { margin-bottom: 28px; padding-bottom: 24px; border-bottom: 1px solid var(--ui-line); }
+body.dungeon-ui .theme-eyebrow { margin: 0 0 8px; color: var(--ac2); font-size: .625rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+body.dungeon-ui .theme-head h3 { margin: 0 0 10px; }
+body.dungeon-ui .theme-head > p:last-child { margin: 0; color: var(--mu); font-size: .8125rem; max-width: 64ch; }
+body.dungeon-ui .theme-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; align-items: start; }
+body.dungeon-ui .theme-group { min-width: 0; min-inline-size: 0; margin: 0; padding: 18px; border: 1px solid var(--ui-line); border-radius: var(--radius-control); background: rgba(0, 0, 0, .08); }
+body.dungeon-ui .theme-group legend { padding: 0 8px; font-family: "Space Grotesk", sans-serif; font-size: .9375rem; font-weight: 600; color: var(--tx); }
+body.dungeon-ui .theme-group--colors { grid-column: 1 / -1; }
+body.dungeon-ui .theme-colors { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+body.dungeon-ui .theme-fields { display: grid; gap: 0; }
+body.dungeon-ui .theme-field { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); align-items: center; min-width: 0; gap: 14px; min-height: 62px; padding: 10px 0; color: var(--mu); font-size: .75rem; }
+body.dungeon-ui .theme-fields .theme-field + .theme-field { border-top: 1px solid var(--ui-line); }
+body.dungeon-ui .theme-control { display: flex; align-items: center; justify-content: flex-end; gap: 8px; min-width: 0; }
+body.dungeon-ui .theme-field input[type="range"] { flex: 1; width: 100%; min-width: 0; height: 36px; margin: 0; accent-color: var(--ac); cursor: pointer; }
+body.dungeon-ui .theme-field input[type="number"] { width: 70px; min-width: 0; min-height: 38px; padding: 7px 8px; font-size: .875rem; }
+body.dungeon-ui .theme-field output { flex: 0 0 auto; min-width: 44px; color: var(--tx); font-family: "Space Grotesk", ui-monospace, monospace; font-size: .6875rem; font-variant-numeric: tabular-nums; text-align: right; }
+body.dungeon-ui .theme-field--color { grid-template-columns: minmax(0, 1fr); gap: 12px; min-height: 100px; padding: 12px; border: 1px solid var(--ui-line); border-radius: var(--radius-compact); background: var(--ui-hover); }
+body.dungeon-ui .theme-color { display: flex; align-items: center; gap: 10px; min-width: 0; }
+body.dungeon-ui .theme-field input[type="color"] { flex: 0 0 34px; width: 34px; height: 34px; min-width: 0; padding: 0; border: 0; border-radius: 4px; background: transparent; cursor: pointer; }
+body.dungeon-ui .theme-field input[type="color"]::-webkit-color-swatch-wrapper { padding: 0; }
+body.dungeon-ui .theme-field input[type="color"]::-webkit-color-swatch { border: 1px solid var(--ui-line); border-radius: 4px; }
+body.dungeon-ui .theme-color output { min-width: 0; text-align: left; }
+body.dungeon-ui .theme-help { margin: 16px 0 0; color: var(--mu); font-size: .6875rem; line-height: 1.8; }
+body.dungeon-ui .theme-footer { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--ui-line); }
+body.dungeon-ui .theme-footer p { margin: 0; color: var(--mu); font-size: .6875rem; }
+body.dungeon-ui .theme-footer .cs { margin: 0; }
+
 body.dungeon-ui .md { padding: max(16px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right)) max(16px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left)); background: rgba(4, 3, 8, .8); backdrop-filter: blur(calc(var(--blurAmt) * 1px)); }
 body.dungeon-ui .mc { width: min(900px, 100%); max-width: 100%; max-height: calc(100dvh - 32px); border: 1px solid var(--ui-line); border-radius: var(--radius-panel); background: var(--g2); box-shadow: 0 24px 80px rgba(0, 0, 0, .4); }
 body.dungeon-ui .mh { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; padding: 16px 20px; }
@@ -428,6 +456,7 @@ body.dungeon-ui .workspace-head { animation: dungeonPage 350ms var(--ui-ease) bo
     body.dungeon-ui .nav-label { grid-column: 1 / -1; }
     body.dungeon-ui .tb { min-height: 44px; }
     body.dungeon-ui .nav-find input { font-size: max(1rem, 16px); }
+    body.dungeon-ui .theme-field input[type="number"] { font-size: max(1rem, 16px); }
     body.dungeon-ui .nav-source { padding: 11px 10px 3px; min-height: 40px; }
     body.dungeon-ui .nav-shade:not([hidden]) { display: block; position: fixed; inset: 0; width: 100%; height: 100%; padding: 0; border: 0; background: rgba(3, 2, 8, .7); z-index: 190; animation: dungeonPage 160ms ease; }
     body.dungeon-ui main { margin: 0; padding: calc(96px + env(safe-area-inset-top)) max(24px, env(safe-area-inset-right)) max(48px, env(safe-area-inset-bottom)) max(24px, env(safe-area-inset-left)); }
@@ -438,6 +467,12 @@ body.dungeon-ui .workspace-head { animation: dungeonPage 350ms var(--ui-ease) bo
     body.dungeon-ui :where(.pl, .bn, .btn, .executor-tab, .script-searcher__tab, .version-card__refresh) { min-height: 44px; }
 }
 @media (max-width: 760px) {
+    body.dungeon-ui .theme-grid { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+    body.dungeon-ui .theme-colors { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+    body.dungeon-ui .theme-group { padding: 14px; }
+    body.dungeon-ui .theme-field:not(.theme-field--color) { grid-template-columns: minmax(0, 1fr); gap: 4px; padding-block: 12px; }
+    body.dungeon-ui .theme-control { justify-content: space-between; }
+    body.dungeon-ui .theme-field input[type="range"] { height: 44px; }
     body.dungeon-ui main { padding-inline: max(18px, env(safe-area-inset-left)) max(18px, env(safe-area-inset-right)); }
     body.dungeon-ui .hero { grid-template-columns: minmax(0, 1fr); gap: 26px; }
     body.dungeon-ui .tt { font-size: clamp(2.625rem, calc(9vw * var(--title-scale)), calc(var(--titleMax) * .94)); }
@@ -459,6 +494,8 @@ body.dungeon-ui .workspace-head { animation: dungeonPage 350ms var(--ui-ease) bo
     body.dungeon-ui .mc { max-height: calc(100dvh - 32px); }
 }
 @media (max-width: 420px) {
+    body.dungeon-ui .theme-color { flex-direction: column; align-items: stretch; gap: 8px; }
+    body.dungeon-ui .theme-field input[type="color"] { flex-basis: auto; width: 100%; height: 32px; }
     body.dungeon-ui .workspace-head h2 { font-size: 1.125rem; }
     body.dungeon-ui .workspace-tools { gap: 12px; }
     body.dungeon-ui .workspace-tools a { font-size: 0.625rem; }
