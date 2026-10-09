@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-10-09T01:02:48.552Z",
+  "fetchedAt": "2026-10-09T15:05:36.290Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -29215,8 +29215,8 @@
         "title": "Volcano",
         "trackerId": "WEAO57c866d0",
         "_id": "681baa53ab565e11d3feba0e",
-        "version": "v3.2.4",
-        "updatedDate": "10/08/2026 at 4:59 AM UTC",
+        "version": "v3.2.4.1",
+        "updatedDate": "10/09/2026 at 1:40 AM UTC",
         "changelogs": {
           "trackerId": "WEAO57c866d0",
           "name": "volcano",
@@ -29725,9 +29725,17 @@
               "date": "2026-10-08T04:59:07.803Z",
               "supportedRobloxVersion": "version-cec3ad5889b447cf",
               "updated": true
+            },
+            {
+              "version": "v3.2.4.1",
+              "changelog": "[>] Fixed crashes on scripts",
+              "timestamp": 1791510008782,
+              "date": "2026-10-09T01:40:08.782Z",
+              "supportedRobloxVersion": "version-cec3ad5889b447cf",
+              "updated": true
             }
           ],
-          "count": 63
+          "count": 64
         }
       },
       "WEAO622afd8b": {
@@ -31384,8 +31392,8 @@
         "title": "Madium",
         "trackerId": "WEAO4a1j38nv",
         "_id": "69f25c438d1db84cb50c8cfe",
-        "version": "2.4.5",
-        "updatedDate": "10/09/2026 at 12:53 AM UTC",
+        "version": "2.4.6",
+        "updatedDate": "10/09/2026 at 1:09 PM UTC",
         "changelogs": {
           "trackerId": "WEAO4a1j38nv",
           "name": "madium",
@@ -31752,9 +31760,17 @@
               "date": "2026-10-09T00:53:30.472Z",
               "supportedRobloxVersion": "version-cec3ad5889b447cf",
               "updated": true
+            },
+            {
+              "version": "2.4.6",
+              "changelog": "- Fixed issue with Cloneref, Digga hass mich nicht, weil ich schön bin, Digga. Vielleicht würdest du ein paar Fräuleins abkriegen, wenn du dir diesen alten Yee-Yee-Haarschnitt abrasieren lassen würdest. Oder noch besser: Vielleicht würde Tanisha deinen jämmerlichen Arsch anrufen, wenn sie nicht gerade mit diesem Hirnchirurgen oder Anwalt rummachen würde. Digga.",
+              "timestamp": 1791551370933,
+              "date": "2026-10-09T13:09:30.933Z",
+              "supportedRobloxVersion": "version-cec3ad5889b447cf",
+              "updated": true
             }
           ],
-          "count": 45
+          "count": 46
         }
       },
       "WEAO76ngr5y7": {
