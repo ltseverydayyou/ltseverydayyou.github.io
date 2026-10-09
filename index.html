@@ -11690,8 +11690,8 @@
 <link rel="stylesheet" href="tools/dat-editor.css?v=4.1" />
     <script defer src="tools/dat-editor.js"></script>
 
-<link rel="stylesheet" href="site.css?v=4.4" />
-    <script defer src="site-motion.js?v=4"></script>
+<link rel="stylesheet" href="site.css?v=5.0" />
+    <script defer src="site-motion.js?v=5"></script>
 </head>
 
 <body class="dungeon-ui" data-page="h">
@@ -11714,7 +11714,8 @@
                 </button>
             </div>
             <nav class="nb" id="nb" aria-label="Sections">
-                <label class="nav-find"><svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="m15 15 5 5" stroke="currentColor" stroke-width="1.7"/></svg><input id="nav-find" type="search" placeholder="Find a section" aria-label="Find a section" autocomplete="off" /></label>
+                <label class="nav-find"><svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="m15 15 5 5" stroke="currentColor" stroke-width="1.7"/></svg><input id="nav-find" type="search" placeholder="Find a section" aria-label="Find a section" aria-keyshortcuts="Control+K Meta+K" aria-describedby="nav-results" autocomplete="off" /><kbd class="nav-shortcut" aria-hidden="true">Ctrl K</kbd></label>
+                <span id="nav-results" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></span>
                 <div class="nav-group"><span class="nav-label">Explore</span>
                 <button class="tb act" data-t="h">Home</button>
                 <button class="tb" data-t="q">MCP Bridge</button>
@@ -12164,73 +12165,54 @@
             </section>
 
             <section id="pt" class="pp">
-                <div class="g ed">
-                    <h3>Theme</h3>
-                    <div class="th">
-                        <div class="fi">
-                            <span>Accent</span>
-                            <input id="c_ac" type="color" value="#6c5cff" />
-                        </div>
-                        <div class="fi">
-                            <span>Accent 2</span>
-                            <input id="c_ac2" type="color" value="#a37bff" />
-                        </div>
-                        <div class="fi">
-                            <span>BG 1</span>
-                            <input id="c_g1" type="color" value="#050507" />
-                        </div>
-                        <div class="fi">
-                            <span>BG 2</span>
-                            <input id="c_g2" type="color" value="#0d0d12" />
-                        </div>
-                        <div class="fi">
-                            <span>Glass</span>
-                            <input id="r_gl" type="range" min="0" max="0.3" step="0.01" value="0.08" />
-                        </div>
-                        <div class="fi">
-                            <span>Border</span>
-                            <input id="r_bd" type="range" min="0" max="0.3" step="0.01" value="0.12" />
-                        </div>
-                        <div class="fi">
-                            <span>Radius</span>
-                            <input id="n_rad" type="number" min="8" max="30" step="1" value="16" />
-                        </div>
-                        <div class="fi">
-                            <span>Font px</span>
-                            <input id="n_fs" type="number" min="12" max="20" step="1" value="15" />
-                        </div>
-                        <div class="fi">
-                            <span>Panel</span>
-                            <input id="r_panel" type="range" min="0.72" max="0.98" step="0.01" value="0.92" />
-                        </div>
-                        <div class="fi">
-                            <span>Blur</span>
-                            <input id="r_blur" type="range" min="0" max="36" step="1" value="22" />
-                        </div>
-                        <div class="fi">
-                            <span>Glow</span>
-                            <input id="r_glow" type="range" min="0.15" max="1" step="0.01" value="0.55" />
-                        </div>
-                        <div class="fi">
-                            <span>Motion</span>
-                            <input id="r_motion" type="range" min="0.6" max="1.8" step="0.05" value="1" />
-                        </div>
-                        <div class="fi">
-                            <span>Title px</span>
-                            <input id="n_title" type="number" min="56" max="140" step="1" value="101" />
-                        </div>
-                        <div class="fi">
-                            <span>Cursor glow</span>
-                            <input id="n_cursor" type="number" min="80" max="320" step="10" value="180" />
-                        </div>
+                <div class="g ed theme-settings">
+                    <header class="theme-head">
+                        <p class="theme-eyebrow">Your workspace</p>
+                        <h3>Make it yours.</h3>
+                        <p>Fine-tune the colors, surfaces, and motion. Every change previews as you go.</p>
+                    </header>
+                    <div class="theme-grid">
+                        <fieldset class="theme-group theme-group--colors">
+                            <legend>Colors</legend>
+                            <div class="theme-colors">
+                                <label class="theme-field theme-field--color" for="c_ac"><span>Primary accent</span><span class="theme-color"><input id="c_ac" type="color" value="#a38aff" /><output for="c_ac" data-theme-value="c_ac" aria-hidden="true">#A38AFF</output></span></label>
+                                <label class="theme-field theme-field--color" for="c_ac2"><span>Secondary accent</span><span class="theme-color"><input id="c_ac2" type="color" value="#c9b9ff" /><output for="c_ac2" data-theme-value="c_ac2" aria-hidden="true">#C9B9FF</output></span></label>
+                                <label class="theme-field theme-field--color" for="c_g1"><span>Page background</span><span class="theme-color"><input id="c_g1" type="color" value="#0c0b12" /><output for="c_g1" data-theme-value="c_g1" aria-hidden="true">#0C0B12</output></span></label>
+                                <label class="theme-field theme-field--color" for="c_g2"><span>Panel background</span><span class="theme-color"><input id="c_g2" type="color" value="#14111e" /><output for="c_g2" data-theme-value="c_g2" aria-hidden="true">#14111E</output></span></label>
+                            </div>
+                        </fieldset>
+                        <fieldset class="theme-group">
+                            <legend>Surfaces</legend>
+                            <div class="theme-fields">
+                                <label class="theme-field" for="r_gl"><span>Hover highlight</span><span class="theme-control"><input id="r_gl" type="range" min="0" max="0.3" step="0.005" value="0.045" /><output for="r_gl" data-theme-value="r_gl" data-unit="%" aria-hidden="true">4.5%</output></span></label>
+                                <label class="theme-field" for="r_bd"><span>Border strength</span><span class="theme-control"><input id="r_bd" type="range" min="0" max="0.3" step="0.005" value="0.085" /><output for="r_bd" data-theme-value="r_bd" data-unit="%" aria-hidden="true">8.5%</output></span></label>
+                                <label class="theme-field" for="n_rad"><span>Card corners</span><span class="theme-control"><input id="n_rad" type="number" min="8" max="30" step="1" value="12" /><output for="n_rad" data-theme-value="n_rad" data-unit="px" aria-hidden="true">12px</output></span></label>
+                                <label class="theme-field" for="r_panel"><span>Panel shade</span><span class="theme-control"><input id="r_panel" type="range" min="0.72" max="0.98" step="0.01" value="0.94" /><output for="r_panel" data-theme-value="r_panel" data-unit="%" aria-hidden="true">94%</output></span></label>
+                                <label class="theme-field" for="r_blur"><span>Modal backdrop blur</span><span class="theme-control"><input id="r_blur" type="range" min="0" max="36" step="1" value="5" /><output for="r_blur" data-theme-value="r_blur" data-unit="px" aria-hidden="true">5px</output></span></label>
+                                <label class="theme-field" for="r_glow"><span>Ambient glow</span><span class="theme-control"><input id="r_glow" type="range" min="0.15" max="1" step="0.01" value="0.55" /><output for="r_glow" data-theme-value="r_glow" data-unit="%" aria-hidden="true">55%</output></span></label>
+                            </div>
+                        </fieldset>
+                        <fieldset class="theme-group">
+                            <legend>Type &amp; motion</legend>
+                            <div class="theme-fields">
+                                <label class="theme-field" for="n_fs"><span>Text size</span><span class="theme-control"><input id="n_fs" type="number" min="12" max="20" step="1" value="16" /><output for="n_fs" data-theme-value="n_fs" data-unit="px" aria-hidden="true">16px</output></span></label>
+                                <label class="theme-field" for="n_title"><span>Homepage title size</span><span class="theme-control"><input id="n_title" type="number" min="56" max="140" step="1" value="68" /><output for="n_title" data-theme-value="n_title" data-unit="px" aria-hidden="true">68px</output></span></label>
+                                <label class="theme-field" for="r_motion"><span>Animation timing</span><span class="theme-control"><input id="r_motion" type="range" min="0.6" max="1.8" step="0.05" value="1" /><output for="r_motion" data-theme-value="r_motion" data-unit="×" aria-hidden="true">1×</output></span></label>
+                                <label class="theme-field" for="n_cursor"><span>Cursor glow size</span><span class="theme-control"><input id="n_cursor" type="number" min="80" max="320" step="10" value="180" /><output for="n_cursor" data-theme-value="n_cursor" data-unit="px" aria-hidden="true">180px</output></span></label>
+                            </div>
+                            <p class="theme-help">Cursor glow appears with a mouse. Animations follow your device's reduced-motion preference.</p>
+                        </fieldset>
                     </div>
-                    <div class="cs">
-                        <button class="pl" id="t_apply">Apply</button>
-                        <button class="pl sc" id="t_save">Save</button>
-                        <button class="pl" id="t_random">Randomize</button>
-                        <button class="pl" id="t_copy">Copy JSON</button>
-                        <button class="pl" id="t_reset">Reset</button>
-                    </div>
+                    <footer class="theme-footer">
+                        <p>Save keeps your choices on this device.</p>
+                        <div class="cs">
+                            <button class="pl" id="t_apply" type="button">Apply</button>
+                            <button class="pl sc" id="t_save" type="button">Save theme</button>
+                            <button class="pl" id="t_random" type="button">Randomize</button>
+                            <button class="pl" id="t_copy" type="button">Copy JSON</button>
+                            <button class="pl" id="t_reset" type="button">Reset</button>
+                        </div>
+                    </footer>
                 </div>
             </section>
 
@@ -24130,19 +24112,19 @@ self.addEventListener("message", async (event) => {
 
         function themeDefaultConfig() {
             return {
-                ac: "#6c5cff",
-                ac2: "#a37bff",
-                g1: "#050507",
-                g2: "#0d0d12",
-                glA: "0.08",
-                bdA: "0.12",
-                rad: "16px",
-                fs: 15,
-                panelA: "0.92",
-                blurAmt: 22,
+                ac: "#a38aff",
+                ac2: "#c9b9ff",
+                g1: "#0c0b12",
+                g2: "#14111e",
+                glA: "0.045",
+                bdA: "0.085",
+                rad: "12px",
+                fs: 16,
+                panelA: "0.94",
+                blurAmt: 5,
                 ambientA: "0.55",
                 motion: "1",
-                titleMax: "101px",
+                titleMax: "68px",
                 cursorGlow: 180
             };
         }
@@ -24159,32 +24141,33 @@ self.addEventListener("message", async (event) => {
             if (q("#c_g2")) q("#c_g2").value = normalized.g2;
             if (q("#r_gl")) q("#r_gl").value = normalized.glA;
             if (q("#r_bd")) q("#r_bd").value = normalized.bdA;
-            if (q("#n_rad")) q("#n_rad").value = parseInt(normalized.rad, 10) || 16;
-            if (q("#n_fs")) q("#n_fs").value = normalized.fs || 15;
+            if (q("#n_rad")) q("#n_rad").value = parseInt(normalized.rad, 10) || 12;
+            if (q("#n_fs")) q("#n_fs").value = normalized.fs || 16;
             if (q("#r_panel")) q("#r_panel").value = normalized.panelA;
-            if (q("#r_blur")) q("#r_blur").value = parseInt(normalized.blurAmt, 10) || 22;
+            if (q("#r_blur")) q("#r_blur").value = parseInt(normalized.blurAmt, 10) || 0;
             if (q("#r_glow")) q("#r_glow").value = normalized.ambientA;
             if (q("#r_motion")) q("#r_motion").value = normalized.motion;
-            if (q("#n_title")) q("#n_title").value = parseInt(normalized.titleMax, 10) || 101;
+            if (q("#n_title")) q("#n_title").value = parseInt(normalized.titleMax, 10) || 68;
             if (q("#n_cursor")) q("#n_cursor").value = parseInt(normalized.cursorGlow, 10) || 180;
+            window.dispatchEvent(new CustomEvent("dungeon:theme"));
         }
 
         function themeGet() {
             const styles = getComputedStyle(document.documentElement);
             return {
-                ac: styles.getPropertyValue("--ac").trim() || "#6c5cff",
-                ac2: styles.getPropertyValue("--ac2").trim() || "#a37bff",
-                g1: styles.getPropertyValue("--g1").trim() || "#050507",
-                g2: styles.getPropertyValue("--g2").trim() || "#0d0d12",
-                glA: styles.getPropertyValue("--glA").trim() || "0.08",
-                bdA: styles.getPropertyValue("--bdA").trim() || "0.12",
-                rad: styles.getPropertyValue("--rad").trim() || "16px",
-                fs: parseInt(styles.fontSize, 10) || 15,
-                panelA: styles.getPropertyValue("--panelA").trim() || "0.92",
-                blurAmt: parseInt(styles.getPropertyValue("--blurAmt"), 10) || 22,
+                ac: styles.getPropertyValue("--ac").trim() || "#a38aff",
+                ac2: styles.getPropertyValue("--ac2").trim() || "#c9b9ff",
+                g1: styles.getPropertyValue("--g1").trim() || "#0c0b12",
+                g2: styles.getPropertyValue("--g2").trim() || "#14111e",
+                glA: styles.getPropertyValue("--glA").trim() || "0.045",
+                bdA: styles.getPropertyValue("--bdA").trim() || "0.085",
+                rad: styles.getPropertyValue("--rad").trim() || "12px",
+                fs: parseInt(styles.fontSize, 10) || 16,
+                panelA: styles.getPropertyValue("--panelA").trim() || "0.94",
+                blurAmt: parseInt(styles.getPropertyValue("--blurAmt"), 10) || 0,
                 ambientA: styles.getPropertyValue("--ambientA").trim() || "0.55",
                 motion: styles.getPropertyValue("--motion").trim() || "1",
-                titleMax: styles.getPropertyValue("--titleMax").trim() || "101px",
+                titleMax: styles.getPropertyValue("--titleMax").trim() || "68px",
                 cursorGlow: parseInt(styles.getPropertyValue("--cursorGlow"), 10) || 180
             };
         }
@@ -24207,7 +24190,7 @@ self.addEventListener("message", async (event) => {
             );
             root.style.setProperty("--panelA", `${normalized.panelA}`);
             root.style.setProperty("--panel", `rgba(9, 9, 14, ${normalized.panelA})`);
-            root.style.setProperty("--blurAmt", `${parseInt(normalized.blurAmt, 10) || 22}`);
+            root.style.setProperty("--blurAmt", `${Number.isFinite(Number(normalized.blurAmt)) ? Number(normalized.blurAmt) : 5}`);
             root.style.setProperty("--ambientA", `${normalized.ambientA}`);
             root.style.setProperty("--motion", `${normalized.motion}`);
             root.style.setProperty(
@@ -24215,7 +24198,9 @@ self.addEventListener("message", async (event) => {
                 typeof normalized.titleMax === "number" ? `${normalized.titleMax}px` : normalized.titleMax
             );
             root.style.setProperty("--cursorGlow", `${parseInt(normalized.cursorGlow, 10) || 180}`);
-            root.style.fontSize = `${normalized.fs || 15}px`;
+            root.style.setProperty("--title-scale", String((parseInt(normalized.titleMax, 10) || 68) / 68));
+            root.style.fontSize = `${normalized.fs || 16}px`;
+            window.dispatchEvent(new CustomEvent("dungeon:theme"));
         }
 
         function themeSave() {
@@ -24291,12 +24276,12 @@ self.addEventListener("message", async (event) => {
                 glA: q("#r_gl").value,
                 bdA: q("#r_bd").value,
                 rad: `${q("#n_rad").value}px`,
-                fs: parseInt(q("#n_fs").value, 10) || 15,
+                fs: parseInt(q("#n_fs").value, 10) || 16,
                 panelA: q("#r_panel").value,
-                blurAmt: parseInt(q("#r_blur").value, 10) || 22,
+                blurAmt: parseInt(q("#r_blur").value, 10) || 0,
                 ambientA: q("#r_glow").value,
                 motion: q("#r_motion").value,
-                titleMax: `${parseInt(q("#n_title").value, 10) || 101}px`,
+                titleMax: `${parseInt(q("#n_title").value, 10) || 68}px`,
                 cursorGlow: parseInt(q("#n_cursor").value, 10) || 180
             };
             themeApply(theme);

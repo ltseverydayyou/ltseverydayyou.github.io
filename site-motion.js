@@ -1,8 +1,8 @@
 (function () {
     "use strict";
 
-    if (window.__DUNGEON_UI_V4__) return;
-    window.__DUNGEON_UI_V4__ = true;
+    if (window.__DUNGEON_UI_V5__) return;
+    window.__DUNGEON_UI_V5__ = true;
 
     const nav = document.getElementById("site-nav");
     const list = document.getElementById("nb");
@@ -78,6 +78,9 @@
             part.hidden = !Array.from(part.querySelectorAll(".tb")).some(btn => !btn.hidden);
         }
         empty.hidden = count > 0;
+        const results = document.getElementById("nav-results");
+        if (results) results.textContent = query ? count + " " + (count === 1 ? "section" : "sections") + " found" : "";
+        list.scrollTop = 0;
     }
 
     function menu(open, restore = true) {
@@ -94,7 +97,8 @@
             main.inert = true;
             const active = list.querySelector(".tb.act");
             if (active && !active.hidden) {
-                list.scrollTop = Math.max(0, active.offsetTop - list.clientHeight / 2);
+                const top = active.getBoundingClientRect().top - list.getBoundingClientRect().top + list.scrollTop;
+                list.scrollTop = Math.max(0, top - list.clientHeight / 2);
             }
         } else {
             document.body.style.overflow = saved;
@@ -146,8 +150,15 @@
             void panel.offsetWidth;
             panel.classList.add("page-enter");
         }
+        const searchFocused = document.activeElement === find;
+        if (find.value) {
+            find.value = "";
+            filter();
+        }
         if (opened) {
             menu(false, false);
+            main.focus({ preventScroll: true });
+        } else if (searchFocused && animate) {
             main.focus({ preventScroll: true });
         }
         if (!mobile.matches && btn && !btn.hidden) {
@@ -164,6 +175,22 @@
     shade.addEventListener("click", () => menu(false));
     find.addEventListener("input", filter);
     find.addEventListener("keydown", event => {
+        if (event.key === "Escape" && !opened && find.value) {
+            event.preventDefault();
+            find.value = "";
+            filter();
+            return;
+        }
+        if (event.key === "ArrowDown" || event.key === "ArrowUp") {
+            const hits = buttons.filter(btn => !btn.hidden);
+            const hit = event.key === "ArrowDown" ? hits[0] : hits[hits.length - 1];
+            if (hit) {
+                event.preventDefault();
+                hit.focus({ preventScroll: true });
+                hit.scrollIntoView({ block: "nearest", inline: "nearest" });
+            }
+            return;
+        }
         if (event.key !== "Enter") return;
         const hit = buttons.find(btn => !btn.hidden);
         if (hit) {
@@ -172,6 +199,16 @@
         }
     });
     nav.addEventListener("keydown", event => {
+        const current = event.target.closest(".tb");
+        if (current && ["ArrowDown", "ArrowUp", "Home", "End"].includes(event.key)) {
+            const hits = buttons.filter(btn => !btn.hidden);
+            const index = hits.indexOf(current);
+            const next = event.key === "Home" ? 0 : event.key === "End" ? hits.length - 1 : (index + (event.key === "ArrowDown" ? 1 : -1) + hits.length) % hits.length;
+            event.preventDefault();
+            hits[next]?.focus({ preventScroll: true });
+            hits[next]?.scrollIntoView({ block: "nearest", inline: "nearest" });
+            return;
+        }
         if (!opened) return;
         if (event.key === "Escape") {
             event.preventDefault();
@@ -190,6 +227,13 @@
             first.focus();
         }
     });
+    document.addEventListener("keydown", event => {
+        if (event.key.toLowerCase() !== "k" || !(event.ctrlKey || event.metaKey) || event.altKey || event.repeat) return;
+        event.preventDefault();
+        menu(true, false);
+        find.focus({ preventScroll: true });
+        find.select();
+    });
     mobile.addEventListener("change", () => menu(false, false));
     reduce.addEventListener("change", () => {
         if (!reduce.matches) return;
@@ -206,6 +250,52 @@
         const id = location.hash.slice(1) || "h";
         if (document.getElementById("p" + id) && typeof window.tab === "function") window.tab(id, { preserveHash: true });
     });
+
+    const themePanel = document.getElementById("pt");
+    function themeReadouts() {
+        if (!themePanel) return;
+        for (const output of themePanel.querySelectorAll("[data-theme-value]")) {
+            const input = document.getElementById(output.dataset.themeValue);
+            if (!input) continue;
+            const unit = output.dataset.unit || "";
+            const value = unit === "%" ? Number((Number(input.value) * 100).toFixed(1)) : unit === "×" ? Number(input.value).toFixed(2).replace(/0+$/, "").replace(/\.$/, "") : input.type === "color" ? input.value.toUpperCase() : input.value;
+            output.value = value + unit;
+            if (input.type === "range") input.setAttribute("aria-valuetext", output.value);
+        }
+    }
+    themePanel?.addEventListener("input", themeReadouts);
+    window.addEventListener("dungeon:theme", themeReadouts);
+    document.addEventListener("DOMContentLoaded", themeReadouts);
+    themeReadouts();
+
+    const aura = document.getElementById("cursor-aura");
+    const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
+    let pointerFrame = 0;
+    let pointerX = 0;
+    let pointerY = 0;
+    function clearPointer() {
+        if (pointerFrame) window.cancelAnimationFrame(pointerFrame);
+        pointerFrame = 0;
+        aura?.classList.remove("aura-active");
+    }
+    if (aura) {
+        document.addEventListener("pointermove", event => {
+            if (!finePointer.matches || reduce.matches || event.pointerType === "touch") return;
+            pointerX = event.clientX;
+            pointerY = event.clientY;
+            if (pointerFrame) return;
+            pointerFrame = window.requestAnimationFrame(() => {
+                aura.style.transform = "translate3d(" + pointerX + "px, " + pointerY + "px, 0) translate(-50%, -50%)";
+                aura.classList.add("aura-active");
+                pointerFrame = 0;
+            });
+        }, { passive: true });
+        document.documentElement.addEventListener("pointerleave", clearPointer);
+        window.addEventListener("blur", clearPointer);
+        document.addEventListener("visibilitychange", () => { if (document.hidden) clearPointer(); });
+        reduce.addEventListener("change", clearPointer);
+        finePointer.addEventListener("change", clearPointer);
+    }
 
     window.VyperiaToast = window.vyperiaNotify = function (heading, message, opts = {}) {
         const el = document.getElementById("ts");
