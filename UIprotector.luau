@@ -1,7 +1,7 @@
 --!nonstrict
 
 local build = "shared_hui_singleton_v4"
-local patch = "luau_module_global_gethui_override_coregui_folder_v7"
+local patch = "luau_module_global_gethui_override_coregui_folder_v8"
 
 type AnyTable = { [any]: any }
 type PropertyMap = { [string]: any }
@@ -663,36 +663,60 @@ local function nextSessionKey(prefix)
 	return tostring(prefix or "session") .. ":" .. tostring(state.sessionNameCounter) .. ":" .. tostring(os.clock())
 end
 
-local function cursedString()
-	local len = math.random(10, 20)
-	local out = {}
-	local marks = {"̶", "̷", "̸", "̹", "̺", "̻", "͓", "͔", "͘", "͜", "͞", "͟", "͢"}
+local glyphs = {"\u{0482}", "\u{046E}", "\u{04FE}", "\u{A66E}", "\u{A66C}", "\u{22C7}", "\u{22C8}", "\u{2317}", "\u{2301}", "\u{235F}", "\u{2573}", "\u{27C1}", "\u{29C6}", "\u{29C9}", "\u{FFFD}"}
+local upper = {"\u{0300}", "\u{0301}", "\u{0302}", "\u{0303}", "\u{0304}", "\u{0307}", "\u{0308}", "\u{030A}", "\u{030B}", "\u{030C}", "\u{0310}", "\u{0311}", "\u{0350}", "\u{035B}", "\u{0363}"}
+local lower = {"\u{0316}", "\u{0317}", "\u{0318}", "\u{0319}", "\u{0320}", "\u{0323}", "\u{0324}", "\u{0325}", "\u{0326}", "\u{0329}", "\u{032A}", "\u{032C}", "\u{0330}", "\u{0331}", "\u{0353}", "\u{0354}"}
+local overlay = {"\u{0334}", "\u{0335}", "\u{0336}", "\u{0337}", "\u{0338}", "\u{0488}", "\u{0489}"}
+local gaps = {"\u{200B}", "\u{200C}", "\u{200D}", "\u{2060}", "\u{034F}", "\u{FE0E}", "\u{FE0F}"}
 
-	for i = 1, len do
-		out[#out + 1] = string.char(math.random(32, 126))
-		if math.random() < 0.5 then
-			for _ = 1, math.random(1, 4) do
-				out[#out + 1] = marks[math.random(#marks)]
+local function cursedString(seed)
+	local bases = {}
+	if type(seed) == "string" then
+		if utf8 and type(utf8.codes) == "function" and type(utf8.char) == "function" then
+			pcall(function()
+				for pos, cp in utf8.codes(seed) do
+					if pos > 128 then break end
+					if cp >= 0x20 and cp ~= 0x7F and not (cp >= 0x202A and cp <= 0x202E) and not (cp >= 0x2066 and cp <= 0x2069) then
+						bases[#bases + 1] = utf8.char(cp)
+						if #bases == 8 then break end
+					end
+				end
+			end)
+		else
+			for i = 1, math.min(#seed, 64) do
+				local b = seed:byte(i)
+				if b >= 32 and b <= 126 then
+					bases[#bases + 1] = string.char(b)
+					if #bases == 8 then break end
+				end
 			end
 		end
 	end
-
-	if utf8 and type(utf8.char) == "function" and math.random() < 0.3 then
-		out[#out + 1] = utf8.char(math.random(0x0300, 0x036F))
+	local out = {}
+	local size, count = 0, 0
+	local function add(s)
+		if size + #s > 232 or count >= 92 then return false end
+		size += #s
+		count += 1
+		out[#out + 1] = s
+		return true
 	end
-
-	if math.random() < 0.1 then
-		out[#out + 1] = string.rep("​", math.random(5, 20))
+	add("\u{2068}")
+	add(math.random(2) == 1 and "\u{202D}" or "\u{202E}")
+	for i = 1, math.random(9, 12) do
+		local base = i % 2 == 1 and bases[math.floor(i / 2) + 1] or nil
+		if not add(base or glyphs[math.random(#glyphs)]) then break end
+		add(overlay[math.random(#overlay)])
+		for _ = 1, math.random(2, 4) do add(upper[math.random(#upper)]) end
+		for _ = 1, math.random(2, 4) do add(lower[math.random(#lower)]) end
+		add(gaps[math.random(#gaps)])
 	end
-
-	if utf8 and type(utf8.char) == "function" and math.random() < 0.2 then
-		out[#out + 1] = utf8.char(0x202E)
-	end
-
+	out[#out + 1] = "\u{202C}"
+	out[#out + 1] = "\u{2069}"
 	return table.concat(out)
 end
 
-local function localSessionName(key)
+local function localSessionName(key, keep)
 	key = tostring(key or nextSessionKey("local"))
 	local map = state.sessionNameMap
 	if type(map) ~= "table" then
@@ -700,7 +724,7 @@ local function localSessionName(key)
 		state.sessionNameMap = map
 	end
 
-	local old = map[key]
+	local old = keep ~= false and map[key] or nil
 	if type(old) == "string" and old ~= "" then
 		return old
 	end
@@ -715,7 +739,7 @@ local function localSessionName(key)
 	end
 
 	local ret = table.concat(out)
-	map[key] = ret
+	if keep ~= false then map[key] = ret end
 	return ret
 end
 
@@ -724,7 +748,7 @@ function protector.setSessionNameProvider(fn: any): boolean
 	return state.sessionNameProvider ~= nil
 end
 
-function protector.getSessionInstanceName(key: any): string
+local function sessName(key, keep)
 	local fn = state.sessionNameProvider
 	if type(fn) == "function" then
 		local ok, ret = pcall(fn, key)
@@ -733,30 +757,16 @@ function protector.getSessionInstanceName(key: any): string
 		end
 	end
 
-	return localSessionName(key)
+	return localSessionName(key, keep)
+end
+
+function protector.getSessionInstanceName(key: any): string
+	return sessName(key, key and true or false)
 end
 
 function protector.randomString(key: any): string
-	local out = {}
-	local sessionKey = key or nextSessionKey("random")
-	local sess = protector.getSessionInstanceName(sessionKey)
-
-	if type(sess) == "string" and sess ~= "" then
-		out[#out + 1] = sess
-	end
-
-	local cursed = cursedString()
-	if type(cursed) == "string" and cursed ~= "" then
-		out[#out + 1] = cursed
-	end
-
-	out[#out + 1] = "\0"
-
-	local ret = table.concat(out)
-	if ret ~= "" then
-		return ret
-	end
-	return "\0"
+	local sess = sessName(key or nextSessionKey("random"), key and true or false)
+	return cursedString(sess).."\0"
 end
 
 function protector.nativeProtect(obj: any): any
