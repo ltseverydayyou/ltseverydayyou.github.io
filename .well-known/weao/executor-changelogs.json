@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-10-10T00:13:49.612Z",
+  "fetchedAt": "2026-10-10T06:14:26.826Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -31026,8 +31026,8 @@
         "title": "Opiumware",
         "trackerId": "WEAO442fb725",
         "_id": "69a4acadfa8a3af13c8930a9",
-        "version": "v2.5.1-a",
-        "updatedDate": "09/05/2026 at 4:15 AM UTC",
+        "version": "v2.5.5",
+        "updatedDate": "10/10/2026 at 5:09 AM UTC",
         "changelogs": {
           "trackerId": "WEAO442fb725",
           "name": "opiumware",
@@ -31240,9 +31240,17 @@
               "date": "2026-09-05T04:15:12.181Z",
               "supportedRobloxVersion": "version-2a3a7efa1a934799",
               "updated": true
+            },
+            {
+              "version": "v2.5.5",
+              "changelog": "- updated to version-f9247f9560044102\n- decompiler should now decompile scripts much more accurately than before\n- added oth library\n - added setstackhidden, trampoline_call, hooksignal, restoresignal",
+              "timestamp": 1791608962331,
+              "date": "2026-10-10T05:09:22.331Z",
+              "supportedRobloxVersion": "version-f9247f9560044102",
+              "updated": true
             }
           ],
-          "count": 26
+          "count": 27
         }
       },
       "WEAOmhg67xtg": {
