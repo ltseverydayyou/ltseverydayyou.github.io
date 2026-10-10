@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-10-09T20:15:04.123Z",
+  "fetchedAt": "2026-10-10T00:13:49.612Z",
   "data": {
     "mode": "per-exploit",
     "endpointPattern": "https://weao.xyz/api/status/exploits/changelogs/{exploit}",
@@ -2431,8 +2431,8 @@
         "title": "Velocity",
         "trackerId": "WEAO4a1e0747",
         "_id": "680eaddf8b44717c060fcf8d",
-        "version": "1.4.8",
-        "updatedDate": "10/08/2026 at 6:33 AM UTC",
+        "version": "1.4.9",
+        "updatedDate": "10/09/2026 at 10:16 PM UTC",
         "changelogs": {
           "trackerId": "WEAO4a1e0747",
           "name": "velocity",
@@ -28229,9 +28229,17 @@
               "date": "2026-10-08T06:33:25.194Z",
               "supportedRobloxVersion": "version-cec3ad5889b447cf",
               "updated": true
+            },
+            {
+              "version": "1.4.9",
+              "changelog": "Fixed all incompatible software crashes\n---------------\nVelocity is now version 1.4.9\nClose the UI and reopen to apply the update.",
+              "timestamp": 1791584216405,
+              "date": "2026-10-09T22:16:56.405Z",
+              "supportedRobloxVersion": "version-cec3ad5889b447cf",
+              "updated": true
             }
           ],
-          "count": 3224
+          "count": 3225
         }
       },
       "WEAO1af938a2": {
